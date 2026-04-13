@@ -98,7 +98,7 @@
         }
         .frame {
             border: 1px solid var(--ink-12);
-            padding: 3rem 2.75rem 2.5rem;
+            padding: 3rem 2.75rem;
             position: relative;
         }
         .frame .c {
@@ -142,12 +142,12 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--ink-50);
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.25rem;
             text-align: left;
         }
         .links-wrap {
             border-top: 1px solid var(--ink-12);
-            padding-top: 1.5rem;
+            padding-top: 1.4rem;
         }
         .links {
             display: flex;
@@ -175,8 +175,8 @@
             user-select: none;
         }
         .recs {
-            margin-top: 2rem;
-            padding-top: 1.25rem;
+            margin-top: 1.75rem;
+            padding-top: 1.4rem;
             border-top: 1px solid var(--ink-12);
         }
         .recs-heading {
@@ -185,10 +185,10 @@
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--ink-20);
-            margin-bottom: 1.1rem;
+            margin-bottom: 1.25rem;
         }
         .recs-group {
-            margin-bottom: 0.9rem;
+            margin-bottom: 1.15rem;
         }
         .recs-group:last-child {
             margin-bottom: 0;
@@ -199,7 +199,7 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--ink-50);
-            margin-bottom: 0.35rem;
+            margin-bottom: 0.4rem;
         }
         .recs-sublabel {
             font-family: 'Courier New', Courier, monospace;
@@ -207,15 +207,15 @@
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--ink-20);
-            margin-bottom: 0.3rem;
-            margin-top: 0.55rem;
+            margin-bottom: 0.35rem;
+            margin-top: 0.7rem;
         }
         .recs-items {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
-            gap: 0;
+            gap: 0.3rem 0;
         }
         .recs-items a {
             font-family: 'Courier New', Courier, monospace;
@@ -233,24 +233,59 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.58rem;
             color: var(--ink-20);
-            padding: 0 0.5rem;
+            padding: 0 0.6rem;
             user-select: none;
         }
         @media (max-width: 480px) {
+            body {
+                padding: 1.25rem;
+            }
             .frame {
-                padding: 2.5rem 1.75rem 2rem;
+                padding: 2.25rem 1.5rem;
+            }
+            .logo {
+                margin-bottom: 1.5rem;
             }
             .logo img {
                 width: 108px;
             }
+            .rule {
+                margin: 0 auto 1.8rem;
+            }
             .quote {
                 font-size: 0.96rem;
+                line-height: 1.85;
+            }
+            .attribution {
+                margin-bottom: 1.75rem;
+            }
+            .links-wrap {
+                padding-top: 1.2rem;
             }
             .links-sep {
-                padding: 0 0.65rem;
+                padding: 0 0.6rem;
+            }
+            .links a {
+                font-size: 0.62rem;
+            }
+            .recs {
+                margin-top: 1.4rem;
+                padding-top: 1.2rem;
+            }
+            .recs-heading {
+                margin-bottom: 1rem;
+            }
+            .recs-group {
+                margin-bottom: 1rem;
             }
             .recs-sep {
-                padding: 0 0.35rem;
+                padding: 0 0.4rem;
+            }
+            .recs-items a {
+                font-size: 0.55rem;
+            }
+            .recs-sep {
+                font-size: 0.55rem;
             }
         }
     </style>
