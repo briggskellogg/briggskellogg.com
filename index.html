@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briggs Kellogg</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg:       #868662;
+            --ink:      #F7BC8B;
+            --ink-80:   rgba(247, 188, 139, 1.0);
+            --ink-50:   rgba(247, 188, 139, 0.67);
+            --ink-20:   rgba(247, 188, 139, 0.32);
+            --ink-12:   rgba(247, 188, 139, 0.18);
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(
+                circle,
+                rgba(247, 188, 139, 0.08) 1px,
+                transparent 1px
+            );
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        .catalogue-id {
+            position: fixed;
+            top: 1.25rem;
+            left: 1.5rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            color: var(--ink-20);
+            text-transform: none;
+            user-select: none;
+            z-index: 10;
+            line-height: 1.6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .catalogue-id:hover {
+            color: var(--ink-50);
+        }
+        .page {
+            max-width: 460px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: emerge 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+        }
+        @keyframes emerge {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .frame {
+            border: 1px solid var(--ink-12);
+            padding: 3rem 2.75rem 2.5rem;
+            position: relative;
+        }
+        .frame .c {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+        .frame .c-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--ink-50);  border-left:  2px solid var(--ink-50); }
+        .frame .c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
+        .frame .c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
+        .frame .c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
+        .logo {
+            margin-bottom: 2rem;
+        }
+        .logo img {
+            width: 136px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            opacity: 0.93;
+        }
+        .rule {
+            width: 32px;
+            height: 1px;
+            background: var(--ink-20);
+            margin: 0 auto 2.4rem;
+        }
+        .quote {
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.02rem;
+            line-height: 1.95;
+            color: var(--ink-80);
+            margin-bottom: 1.1rem;
+            padding: 0;
+            text-align: left;
+        }
+        .attribution {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.63rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        .links-wrap {
+            border-top: 1px solid var(--ink-12);
+            padding-top: 1.5rem;
+        }
+        .links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+        .links a {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: lowercase;
+            color: var(--ink-50);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .links a:hover {
+            color: var(--ink);
+        }
+        .links-sep {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.68rem;
+            color: var(--ink-20);
+            padding: 0 1rem;
+            user-select: none;
+        }
+        @media (max-width: 480px) {
+            .frame {
+                padding: 2.5rem 1.75rem 2rem;
+            }
+            .logo img {
+                width: 108px;
+            }
+            .quote {
+                font-size: 0.96rem;
+            }
+            .links-sep {
+                padding: 0 0.65rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?lqgy99hcpg0zwc5pjc83fkti9pqm3kwducwo4sj-w4-s2-v27:397" target="_blank" rel="noopener">
+        lqgy99hcpg0zw<br>
+        w4-s2-v27&thinsp;·&thinsp;p.397
+    </a>
+    <main class="page">
+        <div class="frame">
+            <div class="c c-tl"></div>
+            <div class="c c-tr"></div>
+            <div class="c c-bl"></div>
+            <div class="c c-br"></div>
+            <div class="logo">
+                <img src="logo.png" alt="BEK">
+            </div>
+            <div class="rule"></div>
+            <p class="quote">
+                "I have a purpose. You don't. If you think that's some kind
+                of blessing, it's not. It puts me at a huge life disadvantage.
+                It means I have an obligation to see a very specific thing
+                through. And with obligation comes sacrifice."
+            </p>
+            <p class="attribution">&mdash;&thinsp;Marty Supreme</p>
+            <div class="links-wrap">
+                <nav class="links">
+                    <a href="https://www.linkedin.com/in/imbriggskellogg/" target="_blank" rel="noopener">linkedin</a>
+                    <span class="links-sep">/</span>
+                    <a href="https://github.com/briggskellogg" target="_blank" rel="noopener">github</a>
+                    <span class="links-sep">/</span>
+                    <a href="mailto:me@briggskellogg.com">me@briggskellogg.com</a>
+                </nav>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
