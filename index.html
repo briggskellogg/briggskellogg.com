@@ -174,6 +174,51 @@
             padding: 0 1rem;
             user-select: none;
         }
+        .recs {
+            margin-top: 2rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--ink-12);
+        }
+        .recs-group {
+            margin-bottom: 0.9rem;
+        }
+        .recs-group:last-child {
+            margin-bottom: 0;
+        }
+        .recs-label {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-20);
+            margin-bottom: 0.35rem;
+        }
+        .recs-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+        }
+        .recs-items a {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.06em;
+            text-transform: lowercase;
+            color: var(--ink-20);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .recs-items a:hover {
+            color: var(--ink-50);
+        }
+        .recs-sep {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.58rem;
+            color: var(--ink-12);
+            padding: 0 0.5rem;
+            user-select: none;
+        }
         @media (max-width: 480px) {
             .frame {
                 padding: 2.5rem 1.75rem 2rem;
@@ -186,6 +231,9 @@
             }
             .links-sep {
                 padding: 0 0.65rem;
+            }
+            .recs-sep {
+                padding: 0 0.35rem;
             }
         }
     </style>
@@ -222,6 +270,46 @@
                     <span class="links-sep">/</span>
                     <a href="mailto:me@briggskellogg.com">me@briggskellogg.com</a>
                 </nav>
+            </div>
+            <div class="recs">
+                <div class="recs-group">
+                    <div class="recs-label">games</div>
+                    <div class="recs-items">
+                        <a href="https://www.supergiantgames.com/games/hades-ii/" target="_blank" rel="noopener">hades ii</a>
+                        <span class="recs-sep">&middot;</span>
+                        <a href="https://discoelysium.com/" target="_blank" rel="noopener">disco elysium</a>
+                    </div>
+                </div>
+                <div class="recs-group">
+                    <div class="recs-label">dune</div>
+                    <div class="recs-items">
+                        <a href="https://www.imdb.com/title/tt1160419/" target="_blank" rel="noopener">part one</a>
+                        <span class="recs-sep">&middot;</span>
+                        <a href="https://www.imdb.com/title/tt15239678/" target="_blank" rel="noopener">part two</a>
+                        <span class="recs-sep">&middot;</span>
+                        <a href="https://www.imdb.com/title/tt31378509/" target="_blank" rel="noopener">part three</a>
+                    </div>
+                </div>
+                <div class="recs-group">
+                    <div class="recs-label">films</div>
+                    <div class="recs-items">
+                        <a href="https://www.imdb.com/title/tt32916440/" target="_blank" rel="noopener">marty supreme</a>
+                        <span class="recs-sep">&middot;</span>
+                        <a href="https://www.imdb.com/title/tt0245429/" target="_blank" rel="noopener">spirited away</a>
+                        <span class="recs-sep">&middot;</span>
+                        <a href="https://www.imdb.com/title/tt8633464/" target="_blank" rel="noopener">after yang</a>
+                    </div>
+                </div>
+                <div class="recs-group">
+                    <div class="recs-label">musicians</div>
+                    <div class="recs-items">
+                        <a href="https://www.renmakesmusic.com/" target="_blank" rel="noopener">ren</a>
+                        <span class="recs-sep">&middot;</span>
+                        <a href="https://johnmayer.com/" target="_blank" rel="noopener">john mayer</a>
+                        <span class="recs-sep">&middot;</span>
+                        <a href="https://jacobcollier.com/" target="_blank" rel="noopener">jacob collier</a>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
