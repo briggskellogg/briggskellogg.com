@@ -185,10 +185,13 @@
         }
         .attribution-name {
             display: inline-block;
-            transition: opacity 0.4s ease;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 1px solid transparent;
+            vertical-align: bottom;
         }
-        .attribution-name.fading {
-            opacity: 0;
+        .attribution-name.typing {
+            border-right-color: var(--ink-50);
         }
         .quote-nav {
             display: flex;
@@ -424,12 +427,26 @@
                         "Now we know. We're all we've got."
                     </p>
                 </div>
+                <div class="quote-slide" data-attr="Meet the Robinsons">
+                    <p class="quote">
+                        "From failing, you learn. From success, not so much."
+                    </p>
+                </div>
+                <div class="quote-slide" data-attr="A Bug's Life">
+                    <p class="quote">
+                        "Everything that made that giant tree is already contained
+                        inside this tiny little seed. All it needs is some
+                        time&hellip;"
+                    </p>
+                </div>
             </div>
             <p class="attribution">&mdash;&thinsp;<span class="attribution-name">Marty Supreme</span></p>
             <div class="quote-nav">
                 <button class="quote-prev" aria-label="Previous quote">&larr;</button>
                 <div class="quote-dots">
                     <div class="quote-dot active"></div>
+                    <div class="quote-dot"></div>
+                    <div class="quote-dot"></div>
                     <div class="quote-dot"></div>
                     <div class="quote-dot"></div>
                 </div>
@@ -493,9 +510,40 @@
             var dots = document.querySelectorAll('.quote-dot');
             var nameEl = document.querySelector('.attribution-name');
             var current = 0;
+            var typeTimer = null;
 
             function updateHeight() {
                 carousel.style.height = slides[current].scrollHeight + 'px';
+            }
+
+            function typeOut(cb) {
+                var text = nameEl.textContent;
+                if (!text.length) { cb(); return; }
+                nameEl.classList.add('typing');
+                clearInterval(typeTimer);
+                typeTimer = setInterval(function() {
+                    text = text.slice(0, -1);
+                    nameEl.textContent = text;
+                    if (!text.length) {
+                        clearInterval(typeTimer);
+                        nameEl.classList.remove('typing');
+                        cb();
+                    }
+                }, 30);
+            }
+
+            function typeIn(str) {
+                var i = 0;
+                nameEl.classList.add('typing');
+                clearInterval(typeTimer);
+                typeTimer = setInterval(function() {
+                    i++;
+                    nameEl.textContent = str.slice(0, i);
+                    if (i >= str.length) {
+                        clearInterval(typeTimer);
+                        nameEl.classList.remove('typing');
+                    }
+                }, 40);
             }
 
             function show(idx) {
@@ -505,12 +553,9 @@
                 slides[current].classList.add('active');
                 dots[current].classList.add('active');
                 updateHeight();
-
-                nameEl.classList.add('fading');
-                setTimeout(function() {
-                    nameEl.textContent = slides[current].dataset.attr;
-                    nameEl.classList.remove('fading');
-                }, 400);
+                typeOut(function() {
+                    setTimeout(function() { typeIn(slides[current].dataset.attr); }, 150);
+                });
             }
 
             function manual(idx) {
