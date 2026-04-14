@@ -310,16 +310,24 @@
         }
         .recs-updated {
             display: inline-block;
+            position: relative;
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.45rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             color: var(--ink-20);
-            border: 1px solid var(--ink-12);
-            padding: 0.25rem 0.6rem;
+            padding: 0.3rem 0.65rem;
             margin-top: 1.25rem;
-            border-radius: 2px;
         }
+        .recs-updated .uc {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+        }
+        .recs-updated .uc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
+        .recs-updated .uc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
+        .recs-updated .uc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
+        .recs-updated .uc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
         @media (max-width: 480px) {
             body {
                 padding: 1.25rem;
@@ -468,7 +476,13 @@
                         <a href="https://johnmayer.com/" target="_blank" rel="noopener">john mayer</a>
                     </div>
                 </div>
-                <div class="recs-updated">updated apr 2026</div>
+                <div class="recs-updated">
+                    <span class="uc uc-tl"></span>
+                    <span class="uc uc-tr"></span>
+                    <span class="uc uc-bl"></span>
+                    <span class="uc uc-br"></span>
+                    updated apr 2026
+                </div>
             </div>
         </div>
     </main>
