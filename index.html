@@ -138,6 +138,8 @@
         .quotes-carousel {
             position: relative;
             margin-bottom: 2.25rem;
+            overflow: hidden;
+            transition: height 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .quote-slide {
             position: absolute;
@@ -149,7 +151,6 @@
             pointer-events: none;
         }
         .quote-slide.active {
-            position: relative;
             opacity: 1;
             pointer-events: auto;
         }
@@ -432,10 +433,14 @@
     </main>
     <script>
         (function() {
-            const slides = document.querySelectorAll('.quote-slide');
-            const dots = document.querySelectorAll('.quote-dot');
-            let current = 0;
-            let auto = setInterval(function() { show(current + 1); }, 5000);
+            var carousel = document.querySelector('.quotes-carousel');
+            var slides = document.querySelectorAll('.quote-slide');
+            var dots = document.querySelectorAll('.quote-dot');
+            var current = 0;
+
+            function updateHeight() {
+                carousel.style.height = slides[current].scrollHeight + 'px';
+            }
 
             function show(idx) {
                 slides[current].classList.remove('active');
@@ -443,12 +448,17 @@
                 current = (idx + slides.length) % slides.length;
                 slides[current].classList.add('active');
                 dots[current].classList.add('active');
+                updateHeight();
             }
 
             function manual(idx) {
                 clearInterval(auto);
                 show(idx);
             }
+
+            updateHeight();
+            window.addEventListener('resize', updateHeight);
+            var auto = setInterval(function() { show(current + 1); }, 5000);
 
             document.querySelector('.quote-prev').addEventListener('click', function() { manual(current - 1); });
             document.querySelector('.quote-next').addEventListener('click', function() { manual(current + 1); });
