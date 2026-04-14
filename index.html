@@ -135,6 +135,16 @@
             background: var(--ink-20);
             margin: 0 auto 2.4rem;
         }
+        .quotes-carousel {
+            position: relative;
+            margin-bottom: 2.25rem;
+        }
+        .quote-slide {
+            display: none;
+        }
+        .quote-slide.active {
+            display: block;
+        }
         .quote {
             font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
             font-style: italic;
@@ -144,6 +154,7 @@
             margin-bottom: 1.1rem;
             padding: 0;
             text-align: left;
+            animation: fadeIn 0.5s ease;
         }
         .attribution {
             font-family: 'Courier New', Courier, monospace;
@@ -151,8 +162,46 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--ink-50);
-            margin-bottom: 2.25rem;
             text-align: left;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .quote-nav {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .quote-nav button {
+            background: none;
+            border: none;
+            color: var(--ink-20);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.75rem;
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+            transition: color 0.2s ease;
+            line-height: 1;
+        }
+        .quote-nav button:hover {
+            color: var(--ink-50);
+        }
+        .quote-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+        .quote-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--ink-20);
+            transition: background 0.2s ease;
+        }
+        .quote-dot.active {
+            background: var(--ink-50);
         }
         .links-wrap {
             border-top: 1px solid var(--ink-12);
@@ -307,13 +356,33 @@
                 <img src="logo.png" alt="BEK">
             </div>
             <div class="rule"></div>
-            <p class="quote">
-                "I have a purpose [&hellip;] If you think that's some kind
-                of blessing, it's not. It puts me at a huge life disadvantage.
-                It means I have an obligation to see a very specific thing
-                through. And with obligation comes sacrifice."
-            </p>
-            <p class="attribution">&mdash;&thinsp;Marty Supreme</p>
+            <div class="quotes-carousel">
+                <div class="quote-slide active">
+                    <p class="quote">
+                        "I have a purpose [&hellip;] If you think that's some kind
+                        of blessing, it's not. It puts me at a huge life disadvantage.
+                        It means I have an obligation to see a very specific thing
+                        through. And with obligation comes sacrifice."
+                    </p>
+                    <p class="attribution">&mdash;&thinsp;Marty Supreme</p>
+                </div>
+                <div class="quote-slide">
+                    <p class="quote">
+                        "No. This is somewhere to be. This is all you have, but
+                        it's still something. Streets and sodium lights. The sky,
+                        the world. You're still alive."
+                    </p>
+                    <p class="attribution">&mdash;&thinsp;Disco Elysium</p>
+                </div>
+                <div class="quote-nav">
+                    <button class="quote-prev" aria-label="Previous quote">&larr;</button>
+                    <div class="quote-dots">
+                        <div class="quote-dot active"></div>
+                        <div class="quote-dot"></div>
+                    </div>
+                    <button class="quote-next" aria-label="Next quote">&rarr;</button>
+                </div>
+            </div>
             <div class="links-wrap">
                 <nav class="links">
                     <a href="https://www.linkedin.com/in/imbriggskellogg/" target="_blank" rel="noopener">linkedin</a>
@@ -358,5 +427,23 @@
             </div>
         </div>
     </main>
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.quote-slide');
+            const dots = document.querySelectorAll('.quote-dot');
+            let current = 0;
+
+            function show(idx) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = (idx + slides.length) % slides.length;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+            }
+
+            document.querySelector('.quote-prev').addEventListener('click', function() { show(current - 1); });
+            document.querySelector('.quote-next').addEventListener('click', function() { show(current + 1); });
+        })();
+    </script>
 </body>
 </html>
