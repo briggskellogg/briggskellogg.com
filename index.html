@@ -160,7 +160,7 @@
             font-size: 1.02rem;
             line-height: 1.95;
             color: var(--ink-80);
-            margin-bottom: 1.1rem;
+            margin-bottom: 0;
             padding: 0;
             text-align: left;
         }
@@ -171,6 +171,14 @@
             text-transform: uppercase;
             color: var(--ink-50);
             text-align: left;
+            margin-top: 1.1rem;
+        }
+        .attribution-name {
+            display: inline-block;
+            transition: opacity 0.4s ease;
+        }
+        .attribution-name.fading {
+            opacity: 0;
         }
         .quote-nav {
             display: flex;
@@ -362,30 +370,28 @@
             </div>
             <div class="rule"></div>
             <div class="quotes-carousel">
-                <div class="quote-slide active">
+                <div class="quote-slide active" data-attr="Marty Supreme">
                     <p class="quote">
                         "I have a purpose [&hellip;] If you think that's some kind
                         of blessing, it's not. It puts me at a huge life disadvantage.
                         It means I have an obligation to see a very specific thing
                         through. And with obligation comes sacrifice."
                     </p>
-                    <p class="attribution">&mdash;&thinsp;Marty Supreme</p>
                 </div>
-                <div class="quote-slide">
+                <div class="quote-slide" data-attr="Disco Elysium">
                     <p class="quote">
                         "No. This is somewhere to be. This is all you have, but
                         it's still something. Streets and sodium lights. The sky,
                         the world. You're still alive."
                     </p>
-                    <p class="attribution">&mdash;&thinsp;Disco Elysium</p>
                 </div>
-                <div class="quote-slide">
+                <div class="quote-slide" data-attr="Ad Astra">
                     <p class="quote">
                         "Now we know. We're all we've got."
                     </p>
-                    <p class="attribution">&mdash;&thinsp;Ad Astra</p>
                 </div>
             </div>
+            <p class="attribution">&mdash;&thinsp;<span class="attribution-name">Marty Supreme</span></p>
             <div class="quote-nav">
                 <button class="quote-prev" aria-label="Previous quote">&larr;</button>
                 <div class="quote-dots">
@@ -444,6 +450,7 @@
             var carousel = document.querySelector('.quotes-carousel');
             var slides = document.querySelectorAll('.quote-slide');
             var dots = document.querySelectorAll('.quote-dot');
+            var nameEl = document.querySelector('.attribution-name');
             var current = 0;
 
             function updateHeight() {
@@ -457,6 +464,12 @@
                 slides[current].classList.add('active');
                 dots[current].classList.add('active');
                 updateHeight();
+
+                nameEl.classList.add('fading');
+                setTimeout(function() {
+                    nameEl.textContent = slides[current].dataset.attr;
+                    nameEl.classList.remove('fading');
+                }, 400);
             }
 
             function manual(idx) {
