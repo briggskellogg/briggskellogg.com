@@ -137,7 +137,7 @@
         }
         .quotes-carousel {
             position: relative;
-            margin-bottom: 2.25rem;
+            margin-bottom: 0;
             overflow: hidden;
             transition: height 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -178,6 +178,7 @@
             justify-content: left;
             gap: 1rem;
             margin-top: 1rem;
+            margin-bottom: 2.25rem;
         }
         .quote-nav button {
             background: none;
@@ -378,14 +379,14 @@
                     </p>
                     <p class="attribution">&mdash;&thinsp;Disco Elysium</p>
                 </div>
-                <div class="quote-nav">
-                    <button class="quote-prev" aria-label="Previous quote">&larr;</button>
-                    <div class="quote-dots">
-                        <div class="quote-dot active"></div>
-                        <div class="quote-dot"></div>
-                    </div>
-                    <button class="quote-next" aria-label="Next quote">&rarr;</button>
+            </div>
+            <div class="quote-nav">
+                <button class="quote-prev" aria-label="Previous quote">&larr;</button>
+                <div class="quote-dots">
+                    <div class="quote-dot active"></div>
+                    <div class="quote-dot"></div>
                 </div>
+                <button class="quote-next" aria-label="Next quote">&rarr;</button>
             </div>
             <div class="links-wrap">
                 <nav class="links">
