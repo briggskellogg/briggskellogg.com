@@ -432,6 +432,7 @@
             const slides = document.querySelectorAll('.quote-slide');
             const dots = document.querySelectorAll('.quote-dot');
             let current = 0;
+            let auto = setInterval(function() { show(current + 1); }, 5000);
 
             function show(idx) {
                 slides[current].classList.remove('active');
@@ -441,8 +442,13 @@
                 dots[current].classList.add('active');
             }
 
-            document.querySelector('.quote-prev').addEventListener('click', function() { show(current - 1); });
-            document.querySelector('.quote-next').addEventListener('click', function() { show(current + 1); });
+            function manual(idx) {
+                clearInterval(auto);
+                show(idx);
+            }
+
+            document.querySelector('.quote-prev').addEventListener('click', function() { manual(current - 1); });
+            document.querySelector('.quote-next').addEventListener('click', function() { manual(current + 1); });
         })();
     </script>
 </body>
