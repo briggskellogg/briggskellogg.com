@@ -63,10 +63,14 @@
             line-height: 1.6;
             text-decoration: none;
             text-align: right;
-            transition: color 0.2s ease;
+            border: 1px solid rgba(251, 225, 182, 0.12);
+            padding: 0.4rem 0.6rem;
+            border-radius: 2px;
+            transition: color 0.2s ease, border-color 0.2s ease;
         }
         .catalogue-id:hover {
             color: rgba(201, 126, 85, 0.92);
+            border-color: rgba(251, 225, 182, 0.22);
         }
         .page {
             max-width: 460px;
@@ -255,7 +259,7 @@
             font-size: 0.58rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--ink-20);
+            color: rgba(115, 137, 161, 0.45);
             margin-bottom: 1.25rem;
         }
         .recs-group {
@@ -269,7 +273,7 @@
             font-size: 0.55rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--ink-50);
+            color: rgba(115, 137, 161, 0.6);
             margin-bottom: 0.4rem;
         }
         .recs-items {
@@ -284,27 +288,31 @@
             font-size: 0.58rem;
             letter-spacing: 0.06em;
             text-transform: lowercase;
-            color: var(--ink-50);
+            color: rgba(115, 137, 161, 0.55);
             text-decoration: none;
             transition: color 0.2s ease;
         }
         .recs-items a:hover {
-            color: var(--ink);
+            color: rgba(115, 137, 161, 0.85);
         }
         .recs-sep {
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.58rem;
-            color: var(--ink-20);
+            color: rgba(115, 137, 161, 0.3);
             padding: 0 0.6rem;
             user-select: none;
         }
         .recs-updated {
+            display: inline-block;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.48rem;
+            font-size: 0.45rem;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--ink-20);
+            color: rgba(115, 137, 161, 0.5);
+            border: 1px solid rgba(115, 137, 161, 0.2);
+            padding: 0.25rem 0.6rem;
             margin-top: 1.25rem;
+            border-radius: 2px;
         }
         @media (max-width: 480px) {
             body {
