@@ -38,17 +38,7 @@
             overflow-x: hidden;
         }
         body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: radial-gradient(
-                circle,
-                rgba(251, 225, 182, 0.18) 1px,
-                transparent 1px
-            );
-            background-size: 20px 20px;
-            pointer-events: none;
-            z-index: 0;
+            display: none;
         }
         body::after {
             content: '';
@@ -61,21 +51,22 @@
         }
         .catalogue-id {
             position: fixed;
-            top: 1.25rem;
-            left: 1.5rem;
+            bottom: 1.25rem;
+            right: 1.5rem;
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.6rem;
             letter-spacing: 0.12em;
-            color: var(--ink-20);
+            color: rgba(174, 125, 131, 0.28);
             text-transform: none;
             user-select: none;
             z-index: 10;
             line-height: 1.6;
             text-decoration: none;
+            text-align: right;
             transition: color 0.2s ease;
         }
         .catalogue-id:hover {
-            color: var(--ink-50);
+            color: rgba(174, 125, 131, 0.45);
         }
         .page {
             max-width: 460px;
@@ -100,6 +91,21 @@
             border: 1px solid var(--ink-12);
             padding: 3rem 2.75rem;
             position: relative;
+            overflow: hidden;
+        }
+        .frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(
+                circle,
+                rgba(251, 225, 182, 0.18) 1px,
+                transparent 1px
+            );
+            background-size: 20px 20px;
+            background-position: 10px 10px;
+            pointer-events: none;
+            z-index: 0;
         }
         .frame .c {
             position: absolute;
@@ -110,6 +116,10 @@
         .frame .c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
         .frame .c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
         .frame .c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
+        .frame > * {
+            position: relative;
+            z-index: 1;
+        }
         .logo {
             margin-bottom: 2rem;
         }
