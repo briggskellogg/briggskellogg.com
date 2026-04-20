@@ -54,14 +54,32 @@
             pointer-events: none;
             z-index: 0;
         }
-        .easter-egg {
+        .egg-wrap {
             position: fixed;
             bottom: 1.25rem;
             right: 1.5rem;
             z-index: 10;
+            padding: 0.5rem 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: padding 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .egg-wrap .cc {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+        }
+        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
+        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
+        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
+        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
+        .easter-egg {
             cursor: pointer;
             width: 30px;
             height: 40px;
+            display: block;
+            transition: opacity 0.4s ease;
         }
         .egg-shell {
             width: 30px;
@@ -137,46 +155,25 @@
             animation: eggBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         .catalogue-id {
-            position: fixed;
-            bottom: 1.25rem;
-            right: 1.5rem;
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.6rem;
             letter-spacing: 0.12em;
             color: rgba(184, 178, 163, 0);
             text-transform: none;
             user-select: none;
-            z-index: 10;
             line-height: 1.6;
             text-decoration: none;
             text-align: right;
-            padding: 0.45rem 0.65rem;
-            pointer-events: none;
-            transform: translateY(6px);
-            transition: color 0.6s ease, transform 0.6s ease;
+            display: none;
+            transition: color 0.6s ease;
         }
         .catalogue-id.revealed {
+            display: block;
             color: rgba(184, 178, 163, 0.6);
-            pointer-events: auto;
-            transform: translateY(0);
         }
         .catalogue-id.revealed:hover {
             color: rgba(184, 178, 163, 0.85);
         }
-        .catalogue-id .cc {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-        .catalogue-id.revealed .cc {
-            opacity: 1;
-        }
-        .catalogue-id .cc-tl { top: 0; left: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
-        .catalogue-id .cc-tr { top: 0; right: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
-        .catalogue-id .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
-        .catalogue-id .cc-br { bottom: 0; right: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
         .page {
             max-width: 460px;
             width: 100%;
@@ -493,27 +490,25 @@
                 margin-top: 0.9rem;
                 font-size: 0.4rem;
             }
+            .egg-wrap {
+                bottom: 0.75rem;
+                right: 0.75rem;
+                padding: 0.4rem 0.5rem;
+            }
+            .egg-wrap .cc {
+                width: 5px;
+                height: 5px;
+            }
             .easter-egg {
-                position: relative;
-                bottom: auto;
-                right: auto;
-                display: block;
-                margin: 0.75rem auto 0;
-                width: 28px;
+                width: 24px;
+                height: 32px;
+            }
+            .egg-shell {
+                width: 24px;
+                height: 32px;
             }
             .catalogue-id {
-                position: relative;
-                bottom: auto;
-                right: auto;
-                display: block;
-                text-align: center;
-                margin: 0.5rem auto 0;
-                padding: 0.3rem 0.4rem;
                 font-size: 0.45rem;
-            }
-            .catalogue-id .cc {
-                width: 4px;
-                height: 4px;
             }
         }
     </style>
@@ -625,6 +620,12 @@
                 </div>
             </div>
         </div>
+    </main>
+    <div class="egg-wrap">
+        <span class="cc cc-tl"></span>
+        <span class="cc cc-tr"></span>
+        <span class="cc cc-bl"></span>
+        <span class="cc cc-br"></span>
         <div class="easter-egg" role="button" tabindex="0" aria-label="Easter egg">
             <svg class="egg-shell" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -644,16 +645,12 @@
             </svg>
         </div>
         <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?3idcb0mfw0pny69b473kzl7cthp72moq91bpbp04drsavs2hlqfw6gw4g8kmkpmtwofta3r87yt46buko41064f25cdnwy24317tsdjzjaqfosb0if2wm5h19bjk0576nh6p1jz56qnq4baontcal4tepx408ws1cqzu3sgpp6g06sg0abfv1pnok8ph90zoz46jvl5frhas5stv2kfap4znvm8lvahpg721uv4gjein1y0g5ukgxz51n2qiguhamlsr67dwfx2gvjhypavoajz5mnlcudap1615ix0eea4313og589uh671mt6ub4vunieuv8almlzap3965z66i1316vuog8y1j9hji0wiov1zdj85cgb2hepb590rmr5lswo5fus5urcjkfo7chtjam6cm8vc21ytddcn7wol9scl4s3ionowgi71z5ca7h0awo8jf60skl21eg31b4fvrr18ukh82ouu7tdny4jp36cjd9cg50r3qx6wti9ihmp1wuzhceoathyn1idoavtkwf44mfiimoxe024vkrj7vsuuhucqodiyqk0c41eqwqxouk8vtlp3myp5xby0rnopazmebixp7ah4ugksa49h8lsj40pgqsqdda7jkpnp44gqcfog1mrt3all2omyyo8z6gced8ouiitb04ezyeqay778euhhlfty04f6519jynpds97b0miyz21uix525iia1mfwq36jmorbdmttay9de28h2o66dxnznh9f1h31f94944g98y8hw8bz1ds6ew4pfjyqb2y9qc7z0ds7c6i7tk79aknftwbr1ff81cpz5zxup3v8k6dlcejtdjz2ejfr28ij1278dcgaw4oxx1h5judmi2emi7djbrkvx7fqfcg94z4a2yr7bz3ge88rh7aepf8gb3ry4t3g12o7a8z7opk65aabqif6s8snye28ryli9xqo5msneijrtbzyqyovyea5ttwgosj06hcdtrqdvu767g9o1elz4lcmpwhyw66wv7mgw9gfl7ntm5i7h8ck7om5eox0cn5fqxbqqoeht93uccsew37dvu1enpbqzyynv9pc67k8gesgr3ukqbe9qyanujchry33p52fh2nb4p9dhd0ygpcqz7vdoya3cc3tbk482vv75cubhw0z93kck9pxkcd81uz437ogy88mhmqszkay65pzhf04xilepqedvxxx0hzji7k3bgvf77zl6m5lt2xolk20muet6s9cg5z0k0v7l38b10tmzyi7klvy4mh5fwf8kyeh6p8w3ik75w0q8pilumuux3z1lww6o3hvejai6ggq6hf48lid0eujp8yabo1plxiocv9vsv001zcncojb96nsd0ap9yt3kt30xwy80h14hu0pp5xv5jeg81dc4spcnu9hl7aegl7tda5v67by6b02798wmiqo54bz7sb99fu6gdprqao61tmcndr64pbdp0cmmd4zu83mjsmilrm2vj6rfq2tk9xn95zn15hulmapdx19knbzq89v5hvf0xllreb128wfsook46w2no37k26m7vzn79g44c5sm2a4b8ziykzd3trtgav84w6utk2om0pytxjufgwlx9osvpbc6zpjp4xzbaqe1dcm80zk1rwteoie5vzzj1vqg8scsr5wo5tefbw62yfvre5cuspefgu6ykuue9vx189jsj0hscv2680xvr7cjb7ihmx6ya8c6zi0fatfnj4us6v3lw7gaevkrcvn0rjntxpw2kgxf6nqjeov88n63eo3dlu8xtpcuz7kxha1dqze6uiw2uf0h1shpdjcsaszmqvw21bq4tb1ed0kahlwnil6klp571gzyvc0cj8x5i023v6ijihkq1gjp2ymntj9afrzdmo15sq2fh02j60suqla6wgr5nkavohxmomnxboj62pil559fw5h1w8e9hgak8wt0dnozf56chy8uf9anthpkspyxll7abau9u7jpoqdg9fhq3941vtso4n3chctybmbhizbm5ghi90okjxu78zsw8ukw5wvqw5u1e1det40j0sz4jjfmoh159ai88ir0lamjo11nyt9lmfe9pe5koo0aoummle1evywkuq615l78avn5psr3eufq23u9ua1490ul5r6vwzjylhpotro34af2z95bgggrtr7nnwos6mtr3knnroakecfotawvl3sfu9skdbkmnhmmkzqb7umx73okl1mzl68cx3xdoos3q5ua97softu6ts1pong45crfreudo53v5wy5rqej43z6fwinyzqkfqtdg78belmg8iqdyop4ee8ool4qc9vcs4500qj7lq9uvw87bu6n2g3do0scmpmlfnhp628g857w5zxupnp7po8vpfowzqutspb5qqhhwzwg4a31wy9w3j3anllnyxe15n989eeruyt1keym4uvei78voyff5p2pwn4j007kva2hjw4pgg4bxbg8e2h2brxgvxfbq7yg6uelxgig41muwggrrdg87yzto90ltkfywitz8v1pwo5s80qftou5jes6h9eoey4mtlwhx6fvy1u1m8p2b8tm9qzy9d5kxcl1r41pdreeupbtek6cch97a9t0yu0zqxikyhts07mj2islgbsw1ipaxsblnn8zkmxeug3p6kzplguu89x4z2nrez0a7fcag1bl621abwutwsqgtxh67upt7gjz5sacpquwdqb5ldsofxfy1w6flr64miz6uhi3ogipsatlwpgvd0zf4ryidy60iilu6hff7h23fxw65evu0sirbs3avpvookofb3w5ei1yxz9dfdx6lq6kpvgofhwflw8il459eql62l7o5oestxrduy656ggtikbosj0fxeojcb16m86vhi197b1q59e3drx2l1zx4ay0yw980x2erfhvokpfj3sdzk1296tkhlvmcgsb41c50isnwn79efxqdlftuizcewgs0uwnrwzu73u0p53i49rdlbns449hqg0b84o4nj2hcjg7y9yqafmrzaybh06t1205pstxz2eufduwrnuc937tovcjq82n8hfvl774yhfhxgbigy9pn1lluv8fqa2lnx91wq3cmdooa592etrt1suni0yqti1kvzuac406yg49i9i2kd43i16uacwle7nxxfzcu8207e2jr80eojhi5a4rsgw1rk61a7i51ukn1ico65sqw63e3nswieclmz4nznemmryvqwljd-w2-s2-v17:255" target="_blank" rel="noopener">
-            <span class="cc cc-tl"></span>
-            <span class="cc cc-tr"></span>
-            <span class="cc cc-bl"></span>
-            <span class="cc cc-br"></span>
             3idcb0mfw0pny<br>
             69b473kzl7cth<br>
             p72moq91bpbp0<br>
             ...-w2-s2-v17
         </a>
-    </main>
+    </div>
     <script>
         (function() {
             var carousel = document.querySelector('.quotes-carousel');
@@ -723,6 +720,7 @@
         })();
 
         (function() {
+            var wrap = document.querySelector('.egg-wrap');
             var egg = document.querySelector('.easter-egg');
             var shell = document.querySelector('.egg-shell');
             var cracks = document.querySelectorAll('.crack');
@@ -744,14 +742,13 @@
                 }
 
                 if (taps >= 3) {
-                    var dur = taps === 3 ? 600 : 400;
                     setTimeout(function() {
                         shell.classList.add('egg-split');
                         setTimeout(function() {
                             egg.style.display = 'none';
                             catalogueId.classList.add('revealed');
-                        }, 700);
-                    }, dur);
+                        }, 600);
+                    }, 500);
                 }
             });
         })();
