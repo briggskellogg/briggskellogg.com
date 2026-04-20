@@ -22,6 +22,11 @@
             --ink-50:   rgba(247, 188, 139, 0.67);
             --ink-20:   rgba(247, 188, 139, 0.32);
             --ink-12:   rgba(247, 188, 139, 0.18);
+            --gold:     #D4A24C;
+            --silver:   #B8B2A3;
+            --instinct: #AE7D83;
+            --psyche:   #7389A1;
+            --logic:    #FBE1B6;
         }
         html, body {
             height: 100%;
@@ -64,19 +69,19 @@
             display: block;
         }
         .egg-shell .egg-body {
-            fill: rgba(247, 188, 139, 0.06);
-            stroke: var(--ink-20);
+            fill: rgba(184, 178, 163, 0.06);
+            stroke: rgba(184, 178, 163, 0.4);
             stroke-width: 0.8;
             transition: stroke 0.2s ease, fill 0.2s ease;
         }
         .egg-shell .egg-highlight {
             fill: none;
-            stroke: rgba(247, 188, 139, 0.15);
+            stroke: rgba(184, 178, 163, 0.18);
             stroke-width: 0.5;
         }
         .egg-shell .crack {
             fill: none;
-            stroke: var(--ink-50);
+            stroke: rgba(184, 178, 163, 0.7);
             stroke-width: 0.7;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -88,8 +93,8 @@
             stroke-dashoffset: 0;
         }
         .easter-egg:hover .egg-body {
-            stroke: var(--ink-50);
-            fill: rgba(247, 188, 139, 0.1);
+            stroke: rgba(184, 178, 163, 0.65);
+            fill: rgba(184, 178, 163, 0.1);
         }
         @keyframes eggShake1 {
             0%, 100% { transform: rotate(0deg) translateX(0); }
@@ -137,7 +142,7 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.6rem;
             letter-spacing: 0.12em;
-            color: rgba(201, 126, 85, 0);
+            color: rgba(184, 178, 163, 0);
             text-transform: none;
             user-select: none;
             z-index: 10;
@@ -150,12 +155,12 @@
             transition: color 0.6s ease, transform 0.6s ease;
         }
         .catalogue-id.revealed {
-            color: rgba(201, 126, 85, 0.75);
+            color: rgba(184, 178, 163, 0.6);
             pointer-events: auto;
             transform: translateY(0);
         }
         .catalogue-id.revealed:hover {
-            color: rgba(201, 126, 85, 0.92);
+            color: rgba(184, 178, 163, 0.85);
         }
         .catalogue-id .cc {
             position: absolute;
@@ -167,10 +172,10 @@
         .catalogue-id.revealed .cc {
             opacity: 1;
         }
-        .catalogue-id .cc-tl { top: 0; left: 0; border-top: 1px solid rgba(247, 188, 139, 0.4); border-left: 1px solid rgba(247, 188, 139, 0.4); }
-        .catalogue-id .cc-tr { top: 0; right: 0; border-top: 1px solid rgba(247, 188, 139, 0.4); border-right: 1px solid rgba(247, 188, 139, 0.4); }
-        .catalogue-id .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid rgba(247, 188, 139, 0.4); border-left: 1px solid rgba(247, 188, 139, 0.4); }
-        .catalogue-id .cc-br { bottom: 0; right: 0; border-bottom: 1px solid rgba(247, 188, 139, 0.4); border-right: 1px solid rgba(247, 188, 139, 0.4); }
+        .catalogue-id .cc-tl { top: 0; left: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
+        .catalogue-id .cc-tr { top: 0; right: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
+        .catalogue-id .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
+        .catalogue-id .cc-br { bottom: 0; right: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
         .page {
             max-width: 460px;
             width: 100%;
@@ -231,7 +236,7 @@
             display: block;
             margin: 0 auto;
             opacity: 0.93;
-            filter: drop-shadow(0 0 18px rgba(247, 188, 139, 0.45)) drop-shadow(0 0 40px rgba(247, 188, 139, 0.2));
+            filter: drop-shadow(0 0 18px rgba(212, 162, 76, 0.5)) drop-shadow(0 0 40px rgba(212, 162, 76, 0.25));
         }
         .rule {
             width: 32px;
@@ -379,6 +384,18 @@
             color: var(--ink-50);
             margin-bottom: 0.4rem;
         }
+        .recs-group--logic .recs-label { color: rgba(251, 225, 182, 0.7); }
+        .recs-group--logic .recs-items a { color: rgba(251, 225, 182, 0.55); }
+        .recs-group--logic .recs-items a:hover { color: #FBE1B6; }
+        .recs-group--logic .recs-sep { color: rgba(251, 225, 182, 0.25); }
+        .recs-group--psyche .recs-label { color: rgba(115, 137, 161, 0.75); }
+        .recs-group--psyche .recs-items a { color: rgba(115, 137, 161, 0.6); }
+        .recs-group--psyche .recs-items a:hover { color: #7389A1; }
+        .recs-group--psyche .recs-sep { color: rgba(115, 137, 161, 0.3); }
+        .recs-group--instinct .recs-label { color: rgba(174, 125, 131, 0.75); }
+        .recs-group--instinct .recs-items a { color: rgba(174, 125, 131, 0.6); }
+        .recs-group--instinct .recs-items a:hover { color: #AE7D83; }
+        .recs-group--instinct .recs-sep { color: rgba(174, 125, 131, 0.3); }
         .recs-items {
             display: flex;
             flex-wrap: wrap;
@@ -580,7 +597,7 @@
             </div>
             <div class="recs">
                 <div class="recs-heading">recommendations</div>
-                <div class="recs-group">
+                <div class="recs-group recs-group--logic">
                     <div class="recs-label">games</div>
                     <div class="recs-items">
                         <a href="https://www.supergiantgames.com/games/hades-ii/" target="_blank" rel="noopener">hades ii</a>
@@ -590,7 +607,7 @@
                         <a href="https://starcraft2.blizzard.com/" target="_blank" rel="noopener">starcraft ii</a>
                     </div>
                 </div>
-                <div class="recs-group">
+                <div class="recs-group recs-group--psyche">
                     <div class="recs-label">films</div>
                     <div class="recs-items">
                         <a href="https://www.imdb.com/title/tt32916440/" target="_blank" rel="noopener">marty supreme</a>
@@ -600,7 +617,7 @@
                         <a href="https://www.imdb.com/title/tt5990474/" target="_blank" rel="noopener">columbus</a>
                     </div>
                 </div>
-                <div class="recs-group">
+                <div class="recs-group recs-group--instinct">
                     <div class="recs-label">musicians</div>
                     <div class="recs-items">
                         <a href="https://www.renmakesmusic.com/" target="_blank" rel="noopener">ren</a>
