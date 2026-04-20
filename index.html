@@ -160,18 +160,23 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.6rem;
             letter-spacing: 0.12em;
-            color: rgba(184, 178, 163, 0);
+            color: rgba(184, 178, 163, 0.6);
             text-transform: none;
             user-select: none;
             line-height: 1.6;
             text-decoration: none;
             text-align: right;
-            display: none;
-            transition: color 0.6s ease;
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .catalogue-id.measured {
+            position: static;
+            visibility: visible;
         }
         .catalogue-id.revealed {
-            display: block;
-            color: rgba(184, 178, 163, 0.6);
+            opacity: 1;
         }
         .catalogue-id.revealed:hover {
             color: rgba(184, 178, 163, 0.85);
@@ -748,21 +753,34 @@
                     var startH = wrap.offsetHeight;
                     wrap.style.width = startW + 'px';
                     wrap.style.height = startH + 'px';
+                    wrap.style.overflow = 'hidden';
 
                     setTimeout(function() {
                         shell.classList.add('egg-split');
+
                         setTimeout(function() {
-                            egg.style.display = 'none';
-                            catalogueId.style.display = 'block';
-                            var targetW = wrap.scrollWidth;
-                            var targetH = wrap.scrollHeight;
-                            wrap.style.width = targetW + 'px';
-                            wrap.style.height = targetH + 'px';
-                            setTimeout(function() {
-                                catalogueId.classList.add('revealed');
-                                wrap.style.width = '';
-                                wrap.style.height = '';
-                            }, 50);
+                            egg.style.position = 'absolute';
+                            egg.style.visibility = 'hidden';
+                            catalogueId.classList.add('measured');
+
+                            void wrap.offsetWidth;
+                            var targetW = catalogueId.offsetWidth + parseFloat(getComputedStyle(wrap).paddingLeft) * 2;
+                            var targetH = catalogueId.offsetHeight + parseFloat(getComputedStyle(wrap).paddingTop) * 2;
+
+                            requestAnimationFrame(function() {
+                                wrap.style.width = targetW + 'px';
+                                wrap.style.height = targetH + 'px';
+
+                                setTimeout(function() {
+                                    egg.style.display = 'none';
+                                    catalogueId.classList.add('revealed');
+                                    wrap.style.overflow = '';
+                                    setTimeout(function() {
+                                        wrap.style.width = '';
+                                        wrap.style.height = '';
+                                    }, 100);
+                                }, 700);
+                            });
                         }, 600);
                     }, 500);
                 }
