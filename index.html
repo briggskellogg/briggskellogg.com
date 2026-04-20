@@ -63,7 +63,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: padding 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        padding 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .egg-wrap .cc {
             position: absolute;
@@ -742,11 +744,25 @@
                 }
 
                 if (taps >= 3) {
+                    var startW = wrap.offsetWidth;
+                    var startH = wrap.offsetHeight;
+                    wrap.style.width = startW + 'px';
+                    wrap.style.height = startH + 'px';
+
                     setTimeout(function() {
                         shell.classList.add('egg-split');
                         setTimeout(function() {
                             egg.style.display = 'none';
-                            catalogueId.classList.add('revealed');
+                            catalogueId.style.display = 'block';
+                            var targetW = wrap.scrollWidth;
+                            var targetH = wrap.scrollHeight;
+                            wrap.style.width = targetW + 'px';
+                            wrap.style.height = targetH + 'px';
+                            setTimeout(function() {
+                                catalogueId.classList.add('revealed');
+                                wrap.style.width = '';
+                                wrap.style.height = '';
+                            }, 50);
                         }, 600);
                     }, 500);
                 }
