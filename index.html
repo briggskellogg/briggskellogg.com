@@ -125,30 +125,16 @@
         .egg-shake-2 { animation: eggShake2 0.5s ease; }
         .egg-shake-3 { animation: eggShake3 0.6s ease; }
         .egg-half {
-            transform-origin: center bottom;
+            transform-origin: center center;
         }
-        @keyframes shellFallLeft {
-            0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 1; }
-            20% { transform: translateX(-4px) translateY(-6px) rotate(-12deg); opacity: 1; }
-            50% { transform: translateX(-12px) translateY(2px) rotate(-35deg); opacity: 0.8; }
-            100% { transform: translateX(-18px) translateY(20px) rotate(-60deg); opacity: 0; }
+        @keyframes eggBurst {
+            0% { transform: scale(1); opacity: 1; filter: blur(0); }
+            15% { transform: scale(1.3); opacity: 1; filter: blur(0); }
+            40% { transform: scale(1.6); opacity: 0.7; filter: blur(1px); }
+            100% { transform: scale(2.5); opacity: 0; filter: blur(4px); }
         }
-        @keyframes shellFallRight {
-            0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 1; }
-            20% { transform: translateX(4px) translateY(-5px) rotate(10deg); opacity: 1; }
-            50% { transform: translateX(10px) translateY(3px) rotate(30deg); opacity: 0.8; }
-            100% { transform: translateX(16px) translateY(22px) rotate(55deg); opacity: 0; }
-        }
-        .egg-split .egg-half-l {
-            animation: shellFallLeft 0.8s cubic-bezier(0.4, 0, 1, 1) forwards;
-        }
-        .egg-split .egg-half-r {
-            animation: shellFallRight 0.8s cubic-bezier(0.4, 0, 1, 1) forwards;
-        }
-        .egg-split .egg-highlight,
-        .egg-split .crack {
-            transition: opacity 0.3s ease;
-            opacity: 0;
+        .egg-split .egg-shell {
+            animation: eggBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         .catalogue-id {
             position: fixed;
