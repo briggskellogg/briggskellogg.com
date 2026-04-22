@@ -236,12 +236,53 @@
             margin-bottom: 2rem;
         }
         .logo img {
+            display: none;
+        }
+        .logo-sheen {
             width: 136px;
-            height: auto;
-            display: block;
+            height: 136px;
             margin: 0 auto;
-            opacity: 0.93;
-            filter: none;
+            background-image:
+                linear-gradient(
+                    100deg,
+                    transparent 0%,
+                    transparent 38%,
+                    rgba(255, 255, 255, 0.75) 50%,
+                    transparent 62%,
+                    transparent 100%
+                ),
+                linear-gradient(
+                    180deg,
+                    #c9943a 0%,
+                    #f5e0a0 18%,
+                    #a07828 38%,
+                    #7a5a18 50%,
+                    #a07828 62%,
+                    #f5e0a0 82%,
+                    #c9943a 100%
+                );
+            background-size: 260% 100%, 100% 100%;
+            background-position: 200% 0, 0 0;
+            background-repeat: no-repeat;
+            -webkit-mask-image: url('logo.png');
+                    mask-image: url('logo.png');
+            -webkit-mask-size: contain;
+                    mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+                    mask-position: center;
+            filter:
+                drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25))
+                drop-shadow(0 0 6px rgba(212, 162, 76, 0.35));
+            animation: gold-sweep 7s linear infinite;
+        }
+        @keyframes gold-sweep {
+            from { background-position: 200% 0, 0 0; }
+            to   { background-position: -200% 0, 0 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .logo-sheen { animation: none; }
         }
         .rule {
             width: 32px;
@@ -448,6 +489,10 @@
             .logo img {
                 width: 80px;
             }
+            .logo-sheen {
+                width: 80px;
+                height: 80px;
+            }
             .rule {
                 margin: 0 auto 1.2rem;
             }
@@ -529,6 +574,7 @@
             <div class="c c-br"></div>
             <div class="logo">
                 <img src="logo.png" alt="BEK">
+                <div class="logo-sheen"></div>
             </div>
             <div class="rule"></div>
             <div class="quotes-carousel">
