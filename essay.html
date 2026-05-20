@@ -1538,21 +1538,21 @@
                 //     against the dot field. We move BOTH endpoints to grid-aligned Ys
                 //     when possible (won't shift by more than ~10px from their natural Y)
                 //   - All wires bend at the same gutter X (sharedGutterX)
-                // The origin endpoint sits at the bottom-right corner of the
-                // footnote ref number so the wire reads as exiting the digit
-                // diagonally, not bisecting it. `refRect.bottom - 2` parks the
-                // dot just inside the baseline so single- and double-digit
-                // numbers (1, 9, 10) all anchor consistently in the same
-                // visual position. A 1px x offset gives a hair of breath
-                // between the digit and the dot.
+                // The origin endpoint sits at the vertical center of the
+                // footnote ref number's right edge. The midpoint of the
+                // bounding box is stable across single- and double-digit
+                // widths (1, 9, 10) so the dot anchors at the same visual
+                // height regardless of which footnote you hover. A 1px x
+                // offset gives a hair of breath between the digit and the
+                // dot.
                 var x1 = (refRect.right - layoutRect.left) + 1;
-                var rawY1 = (refRect.bottom - layoutRect.top) - 2;
+                var rawY1 = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
                 var x2 = (noteRect.left - layoutRect.left) - 4;
                 var rawY2 = (noteRect.top - layoutRect.top) + 14;
 
-                // y1 stays raw (always pinned to the digit's bottom-right);
-                // y2 still snaps to the 20px grid so the right-column wire
-                // endpoints rhyme with the dot field.
+                // y1 stays raw (always pinned to the digit's right-edge
+                // midpoint); y2 still snaps to the 20px grid so the
+                // right-column wire endpoints rhyme with the dot field.
                 var y1 = rawY1;
                 var y2 = snap20(rawY2);
                 if (Math.abs(y2 - rawY2) > 10) y2 = rawY2;
