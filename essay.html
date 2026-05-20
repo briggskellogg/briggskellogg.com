@@ -691,7 +691,10 @@
             transform: translate3d(var(--mx, 50vw), var(--my, 50vh), 0);
             opacity: 0;
             transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-            z-index: 2;
+            /* Above the egg and playlist modules (both z-index: 10) so the
+               candlelight glow paints across them too instead of being
+               clipped by the footer chrome as the cursor moves over it. */
+            z-index: 20;
             will-change: transform;
         }
         .reading-light.active { opacity: 1; }
