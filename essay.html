@@ -1504,22 +1504,10 @@
                 return el;
             }
 
-            // Shared gutter column, computed once per layout so every wire
-            // bends at the same X. Snapped to the 20px dot-grid.
-            var sharedGutterX = null;
-            function computeGutterX() {
-                if (isStacked()) { sharedGutterX = null; return; }
-                var layoutRect = layout.getBoundingClientRect();
-                var bodyRect = body.getBoundingClientRect();
-                var notesRect = notes.getBoundingClientRect();
-                var gutterLeft = (bodyRect.right - layoutRect.left) + 8;
-                var gutterRight = (notesRect.left - layoutRect.left) - 8;
-                var mid = (gutterLeft + gutterRight) / 2;
-                var snapped = snap20(mid);
-                if (snapped < gutterLeft) snapped = Math.ceil(gutterLeft);
-                if (snapped > gutterRight) snapped = Math.floor(gutterRight);
-                sharedGutterX = snapped;
-            }
+            // The shared gutter X used to live here (so every wire bent at
+            // the same column rail). The down-then-right elbow doesn't need
+            // a shared bend X — each wire pivots at its own ref's right edge
+            // — so the gutter computation has been retired.
 
             var ARCHETYPE_WIRE = {
                 logic:    { stroke: 'rgba(184, 134, 45, 0.32)',  dot: '#B8862D' },
@@ -1531,7 +1519,6 @@
                 sizeSvg();
                 clearWires();
                 if (isStacked()) return;
-                if (sharedGutterX === null) computeGutterX();
                 var archetype = ref.getAttribute('data-archetype');
                 var palette = ARCHETYPE_WIRE[archetype] || null;
 
@@ -1546,7 +1533,12 @@
                 //   - Horizontal runs snap to the nearest 20px grid line for visual rhythm
                 //     against the dot field. We move BOTH endpoints to grid-aligned Ys
                 //     when possible (won't shift by more than ~10px from their natural Y)
-                //   - All wires bend at the same gutter X (sharedGutterX)
+                //   - Bend is DOWN-THEN-RIGHT: the wire drops vertically from
+                //     the ref's right-edge midpoint first, then turns east at
+                //     the footnote's row to its left edge. (The shared gutter
+                //     bend has been retired — each wire now bends at its own
+                //     ref's X so the elbow stays anchored to "this note for
+                //     this number" rather than hopping over to a column rail.)
                 // The origin endpoint sits at the vertical center of the
                 // footnote ref number's right edge. The midpoint of the
                 // bounding box is stable across single- and double-digit
@@ -1566,17 +1558,17 @@
                 var y2 = snap20(rawY2);
                 if (Math.abs(y2 - rawY2) > 10) y2 = rawY2;
 
-                var midX = sharedGutterX;
-
                 var d;
                 if (Math.abs(y1 - y2) < 1) {
                     // Same row — single straight line, no elbows
                     d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
                         ' L ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
                 } else {
+                    // Down-then-right L-shape: drop straight down from the
+                    // ref's right-edge midpoint, then turn east at the
+                    // footnote's row to the footnote's left edge.
                     d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' L ' + midX + ' ' + y1.toFixed(1) +
-                        ' L ' + midX + ' ' + y2.toFixed(1) +
+                        ' L ' + x1.toFixed(1) + ' ' + y2.toFixed(1) +
                         ' L ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
                 }
 
@@ -1650,14 +1642,12 @@
                 if (resizeTimer) clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(function() {
                     layoutFootnotes();
-                    computeGutterX();
                     clearWires();
                 }, 80);
             }
 
             function init() {
                 layoutFootnotes();
-                computeGutterX();
                 clearWires();
                 setupHover();
                 window.addEventListener('resize', onResize);
@@ -1677,7 +1667,6 @@
             if (document.fonts && document.fonts.ready) {
                 document.fonts.ready.then(function() {
                     layoutFootnotes();
-                    computeGutterX();
                     clearWires();
                 });
             }
