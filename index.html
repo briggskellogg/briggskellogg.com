@@ -34,6 +34,20 @@
         }
         body {
             background-color: var(--bg);
+            /* Dot grid lives on the body — same approach as the essay
+               page — so the pattern naturally covers the entire surface
+               (top to bottom, edge to edge) without needing a 300vmax
+               pseudo-element on .frame that would either spawn giant
+               scrollbars (overflow:auto) or block mobile scrolling
+               (overflow:hidden). Boxes that need to read as discrete
+               surfaces paint over the grid with `background: var(--bg)`. */
+            background-image: radial-gradient(
+                circle,
+                rgba(255, 188, 140, 0.18) 1px,
+                transparent 1px
+            );
+            background-size: 20px 20px;
+            background-position: 0 0;
             color: var(--ink);
             min-height: 100vh;
             display: flex;
@@ -41,7 +55,7 @@
             justify-content: center;
             padding: 2rem 2rem 5.5rem;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         body::before {
             display: none;
@@ -204,7 +218,13 @@
         .sticker-tag[data-archetype="instinct"] .sticker-dot { background: var(--instinct); }
         .sticker-tag[data-archetype="psyche"]   .sticker-dot { background: var(--psyche); }
         .egg-wrap {
-            position: fixed;
+            /* Anchored to the bottom-left of the body, not pinned to the
+               viewport. On landing the body is exactly 100vh so the egg
+               still sits at the bottom-left corner of the visible page;
+               on mobile (where content overflows the viewport) the egg
+               becomes a "you've reached the end" reward instead of
+               sticky chrome that follows the reader around. */
+            position: absolute;
             bottom: 1.25rem;
             left: 1.5rem;
             z-index: 10;
@@ -356,24 +376,10 @@
             border: 1px solid var(--ink-12);
             padding: 3rem 2.75rem;
             position: relative;
-        }
-        .frame::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300vmax;
-            height: 300vmax;
-            transform: translate(-50%, -50%);
-            background-image: radial-gradient(
-                circle,
-                rgba(255, 188, 140, 0.18) 1px,
-                transparent 1px
-            );
-            background-size: 20px 20px;
-            background-position: 0 0;
-            pointer-events: none;
-            z-index: -1;
+            /* Opaque page bg covers the body's dot grid wherever the
+               frame sits on top of it. Dots remain visible outside the
+               frame; inside, the box reads as a discrete surface. */
+            background-color: var(--bg);
         }
         .frame .c {
             position: absolute;
@@ -908,6 +914,11 @@
         @media (max-width: 480px) {
             body {
                 padding: 0.75rem 0.75rem 4.5rem;
+                /* Stack vertically on mobile so the rights footer (which
+                   becomes position: static below) sits cleanly under main
+                   instead of being squeezed in next to it by the default
+                   flex-row layout. */
+                flex-direction: column;
             }
             .frame {
                 padding: 1.5rem 1.25rem;

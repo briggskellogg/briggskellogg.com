@@ -136,6 +136,11 @@
             border: 1px solid var(--ink-12);
             padding: 3.5rem 3rem;
             position: relative;
+            /* Opaque cream bg covers the body's dot grid wherever the
+               reading frame sits on top of it. Dots remain visible
+               outside the frame; inside, the essay reads on a clean
+               Logic-paper surface. */
+            background-color: var(--bg);
         }
         .frame .c {
             position: absolute;
@@ -930,7 +935,12 @@
 
         /* ---------- Easter egg ---------- */
         .egg-wrap {
-            position: fixed;
+            /* Anchored to the bottom-left of the body, not pinned to the
+               viewport. The essay is much taller than one screen, so the
+               egg becomes a "you've reached the end" reward at the
+               bottom-left corner of the document — same vocabulary as
+               the rights footer that sits just above it. */
+            position: absolute;
             bottom: 1.25rem;
             left: 1.5rem;
             z-index: 10;
