@@ -114,8 +114,10 @@
         }
         /* Stickers overlap (negative margins + rotations) so the cluster
            reads as a stacked pile of stickers on a fridge, not three
-           separate tiles. Z-index ordering puts nest on top of slash on
-           top of build; the hover lift bumps z-index higher still. */
+           separate tiles. Z-index ordering puts the rightmost sticker
+           (instinct, the slash blob) on top of psyche (nest blob), which
+           sits on top of logic (build blob); the hover lift bumps
+           z-index higher still. */
         .stickers-row {
             display: flex;
             align-items: flex-end;
@@ -140,83 +142,20 @@
             pointer-events: none;
             user-select: none;
         }
+        /* Layout order is logic → psyche → instinct (build → nest → slash).
+           Negative margin-left pulls each sticker into the previous one;
+           z-index walks up so the rightmost sticker lands on top. nest
+           stays the visually biggest blob (64px) — sitting in the middle
+           it acts as the cluster's anchor. */
         .sticker-build  { transform: rotate(-9deg); z-index: 1; }
-        .sticker-slash  { transform: rotate(6deg);  margin-left: -14px; z-index: 2; }
-        .sticker-nest   { transform: rotate(-4deg); margin-left: -16px; width: 64px; height: 64px; z-index: 3; }
+        .sticker-nest   { transform: rotate(-4deg); margin-left: -16px; width: 64px; height: 64px; z-index: 2; }
+        .sticker-slash  { transform: rotate(6deg);  margin-left: -14px; z-index: 3; }
         .sticker:hover {
             transform: rotate(0deg) scale(1.12) translateY(-4px);
             filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25))
                     drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
             z-index: 11;
         }
-        /* Tag row below the stickers — surfaces only on hover (on devices
-           that have hover). On touch devices the labels stay visible so
-           the build/slash/nest = logic/instinct/psyche mapping isn't
-           hidden behind a gesture that doesn't exist there. */
-        .stickers-tags {
-            display: flex;
-            align-items: center;
-            gap: 0.45em;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.46rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--ink-50);
-            user-select: none;
-        }
-        @media (hover: hover) {
-            /* Tags are faded by default — the structure is legible without
-               interaction but the individual labels recede until you point
-               at a sticker. Hovering a sticker brightens *only* the
-               matching label and tints it with the archetype color, so the
-               sticker→faculty mapping is reinforced live as you explore. */
-            .sticker-tag,
-            .sticker-sep {
-                opacity: 0.4;
-                transition: opacity 0.3s ease, color 0.3s ease;
-            }
-            .stickers:has(.sticker[data-archetype="logic"]:hover) .sticker-tag[data-archetype="logic"],
-            .stickers:has(.sticker[data-archetype="logic"]:focus-visible) .sticker-tag[data-archetype="logic"] {
-                opacity: 1;
-                color: #B8862D;
-            }
-            .stickers:has(.sticker[data-archetype="instinct"]:hover) .sticker-tag[data-archetype="instinct"],
-            .stickers:has(.sticker[data-archetype="instinct"]:focus-visible) .sticker-tag[data-archetype="instinct"] {
-                opacity: 1;
-                color: var(--instinct);
-            }
-            .stickers:has(.sticker[data-archetype="psyche"]:hover) .sticker-tag[data-archetype="psyche"],
-            .stickers:has(.sticker[data-archetype="psyche"]:focus-visible) .sticker-tag[data-archetype="psyche"] {
-                opacity: 1;
-                color: var(--psyche);
-            }
-        }
-        .sticker-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4em;
-        }
-        .sticker-sep {
-            color: var(--ink-12);
-        }
-        .sticker-dot {
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            display: inline-block;
-            background: var(--ink-50);
-        }
-        /* Each playlist tags its faculty:
-             build = Logic    (structure, repetition, the work loop)
-             slash = Instinct (cut, attack, gut decision)
-             nest  = Psyche   (inner world, reflection, sit)
-           Canonical --logic is the cream paper color, which barely shows
-           on the landing's green field, so the logic dot reaches for the
-           deep gold variant. Instinct and psyche read with full contrast
-           on green and use their canonical brand values. */
-        .sticker-tag[data-archetype="logic"]    .sticker-dot { background: #B8862D; }
-        .sticker-tag[data-archetype="instinct"] .sticker-dot { background: var(--instinct); }
-        .sticker-tag[data-archetype="psyche"]   .sticker-dot { background: var(--psyche); }
         .egg-wrap {
             /* Anchored to the bottom-left of the body, not pinned to the
                viewport. On landing the body is exactly 100vh so the egg
@@ -992,8 +931,6 @@
             .sticker-build  { transform: rotate(-9deg); }
             .sticker-slash  { transform: rotate(6deg); }
             .sticker-nest   { width: 48px; height: 48px; transform: rotate(-4deg); }
-            .stickers-tags { font-size: 0.4rem; gap: 0.3em; letter-spacing: 0.14em; }
-            .sticker-dot { width: 4px; height: 4px; }
             .links-wrap {
                 padding-top: 1rem;
             }
@@ -1198,22 +1135,15 @@
         <span class="sc sc-br"></span>
         <div class="stickers-eyebrow">playlists</div>
         <div class="stickers-row">
-            <a class="sticker sticker-build" data-archetype="logic" href="https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30" target="_blank" rel="noopener" aria-label="Build playlist on Spotify — Logic">
+            <a class="sticker sticker-build" data-archetype="logic" href="https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30" target="_blank" rel="noopener" aria-label="Logic playlist on Spotify">
                 <img src="assets/stickers/build.png" alt="" class="sticker-img">
             </a>
-            <a class="sticker sticker-slash" data-archetype="instinct" href="https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec" target="_blank" rel="noopener" aria-label="Slash playlist on Spotify — Instinct">
-                <img src="assets/stickers/slash.png" alt="" class="sticker-img">
-            </a>
-            <a class="sticker sticker-nest" data-archetype="psyche" href="https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab" target="_blank" rel="noopener" aria-label="Nest playlist on Spotify — Psyche">
+            <a class="sticker sticker-nest" data-archetype="psyche" href="https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab" target="_blank" rel="noopener" aria-label="Psyche playlist on Spotify">
                 <img src="assets/stickers/nest.png" alt="" class="sticker-img">
             </a>
-        </div>
-        <div class="stickers-tags">
-            <span class="sticker-tag" data-archetype="logic"><span class="sticker-dot"></span>build</span>
-            <span class="sticker-sep">&middot;</span>
-            <span class="sticker-tag" data-archetype="instinct"><span class="sticker-dot"></span>slash</span>
-            <span class="sticker-sep">&middot;</span>
-            <span class="sticker-tag" data-archetype="psyche"><span class="sticker-dot"></span>nest</span>
+            <a class="sticker sticker-slash" data-archetype="instinct" href="https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec" target="_blank" rel="noopener" aria-label="Instinct playlist on Spotify">
+                <img src="assets/stickers/slash.png" alt="" class="sticker-img">
+            </a>
         </div>
     </nav>
     <div class="egg-wrap">
