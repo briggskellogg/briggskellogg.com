@@ -1523,19 +1523,21 @@
                 var refRect = ref.getBoundingClientRect();
                 var noteRect = note.getBoundingClientRect();
 
-                // ELBOW RULES:
-                //   - Wire begins at right edge of the footnote ref (with 2px breath)
-                //   - Wire ends at left edge of the footnote (with 4px breath), at
-                //     the vertical midpoint of the marker line so it points "at" the number
-                //   - Horizontal runs snap to the nearest 20px grid line for visual rhythm
-                //     against the dot field. We move BOTH endpoints to grid-aligned Ys
-                //     when possible (won't shift by more than ~10px from their natural Y)
-                //   - Bend is DOWN-THEN-RIGHT: the wire drops vertically from
-                //     the ref's right-edge midpoint first, then turns east at
-                //     the footnote's row to its left edge. (The shared gutter
-                //     bend has been retired — each wire now bends at its own
-                //     ref's X so the elbow stays anchored to "this note for
-                //     this number" rather than hopping over to a column rail.)
+                // WIRE SHAPE:
+                //   - Begins at the right-edge midpoint of the footnote ref
+                //     (with 1px breath)
+                //   - Ends at the left edge of the footnote (with 4px breath),
+                //     at the vertical midpoint of the marker line so it points
+                //     "at" the number
+                //   - The wire is a single quadratic Bézier that drops down
+                //     from the ref and sweeps east into the footnote — the
+                //     control point sits at where a sharp down-then-right
+                //     corner would be, which makes the start tangent vertical
+                //     and the end tangent horizontal, giving a smooth quarter
+                //     arc instead of a hard 90° elbow.
+                //   - y2 snaps to the 20px grid so the right-column endpoints
+                //     rhyme with the dot field (won't shift by more than ~10px
+                //     from natural Y)
                 // The origin endpoint sits at the vertical center of the
                 // footnote ref number's right edge. The midpoint of the
                 // bounding box is stable across single- and double-digit
@@ -1557,16 +1559,18 @@
 
                 var d;
                 if (Math.abs(y1 - y2) < 1) {
-                    // Same row — single straight line, no elbows
+                    // Same row — single straight line, no curve needed
                     d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
                         ' L ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
                 } else {
-                    // Down-then-right L-shape: drop straight down from the
-                    // ref's right-edge midpoint, then turn east at the
-                    // footnote's row to the footnote's left edge.
+                    // Down-then-right quadratic curve. Control point at
+                    // (x1, y2) — i.e. the corner of a sharp L — pulls the
+                    // start tangent vertical and the end tangent horizontal,
+                    // sweeping through a smooth quarter-arc instead of an
+                    // elbowed step.
                     d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' L ' + x1.toFixed(1) + ' ' + y2.toFixed(1) +
-                        ' L ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
+                        ' Q ' + x1.toFixed(1) + ' ' + y2.toFixed(1) +
+                        ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
                 }
 
                 var path = createSvg('path', { d: d, 'class': 'wire-path' });
