@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Being Booed &mdash; Briggs Kellogg</title>
+    <meta name="description" content="A short essay by Briggs Kellogg on the booing of AI at university commencements this May, the vagueness of the industry, and what is owed to graduates.">
+    <meta name="theme-color" content="#FFE2B9">
+    <meta property="og:title" content="On Being Booed &mdash; Briggs Kellogg">
+    <meta property="og:description" content="A short essay on the booing of AI at university commencements this May, and what is owed to graduates.">
+    <meta property="og:image" content="https://briggskellogg.com/logo.png">
+    <meta property="og:url" content="https://briggskellogg.com/essay.html">
+    <meta property="og:type" content="article">
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            /* ESSAY SURFACE — Path B (canonical-anchored).
+               The essay surface encodes the framework: Logic ground,
+               Logic+Psyche ink, Instinct and Psyche as accent wires.
+               Every value is derived from a canonical palette token; nothing
+               is invented. Do not "tune for readability" by sliding hex
+               values around — that's how the system loses its meaning. */
+
+            /* Substrate = canonical Logic (#FFE2B9).
+               The reader is literally reading on Logic. Logic is ground, not
+               figure, on this page. Because Logic IS the substrate, it cannot
+               also serve as a wire color; --logic-deep below carries that load. */
+            --bg:       #FFE2B9;
+
+            /* Ink = canonical Logic+Psyche intersection (#818960) darkened to L≈14%.
+               Every word the reader reads is rendered in thinking-feeling.
+               This is the whole essay project, expressed as a typesetting decision. */
+            --ink:      #2C3318;
+            --ink-80:   rgba(44, 51, 24, 0.92);
+            --ink-50:   rgba(44, 51, 24, 0.60);
+            --ink-25:   rgba(44, 51, 24, 0.32);
+            --ink-20:   rgba(44, 51, 24, 0.25);
+            --ink-12:   rgba(44, 51, 24, 0.14);
+            --silver:   #6B6E58;
+
+            /* Archetype accents.
+               Instinct and Psyche are canonical-literal — they enter the essay
+               page from the brand untouched. Logic must use a deep variant
+               (canonical Logic darkened to L≈44%) because canonical Logic is
+               already underneath everything as --bg. */
+            --logic:    #B8862D;   /* canonical Logic deepened — the operational Logic accent */
+            --instinct: #AD7C84;   /* canonical, unchanged */
+            --psyche:   #658DA4;   /* canonical, unchanged */
+
+            /* Wire colors track their parent accent. Kept quiet (~0.35
+               alpha) so the wires read as connective tissue underneath
+               the text rather than ink drawn on top of it. */
+            --logic-wire:    rgba(184, 134, 45, 0.32);
+            --instinct-wire: rgba(173, 124, 132, 0.36);
+            --psyche-wire:   rgba(101, 141, 164, 0.36);
+
+            /* Reading light stays gold-honey (deep canonical Logic) — the essay
+               surface lives in one internally coherent temperature. The canonical
+               Highlight peach #FFBC8C lives on the landing, where it's doing
+               brand-envelope work. Letting the two surfaces have different
+               highlight colors clarifies what each surface is for:
+               landing = brand, essay = reading. Same system, different jobs. */
+            --light-glow:    rgba(184, 134, 45, 1);
+        }
+        html, body {
+            min-height: 100%;
+        }
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(
+                circle,
+                rgba(44, 51, 24, 0.10) 1px,
+                transparent 1px
+            );
+            background-size: 20px 20px;
+            background-position: 0 0;
+            color: var(--ink);
+            min-height: 100vh;
+            /* Extra top padding clears the fixed BEK mark; extra bottom padding
+               keeps the inline rights footer scrollable above the fixed
+               playlists + egg modules. */
+            padding: 5.5rem 2rem 7rem;
+            position: relative;
+            overflow-x: hidden;
+            /* Subtle ink-dot cursor — lets the reading light read as
+               the dominant signal of "where I am" on the page. */
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="7" height="7"><circle cx="3.5" cy="3.5" r="1.8" fill="%232C3318" fill-opacity="0.42"/></svg>') 4 4, default;
+        }
+        a, button {
+            cursor: pointer;
+        }
+        input[type="email"] { cursor: text; }
+        /* Footnote interactions are part of reading, not navigation — keep
+           the subtle dot cursor instead of switching to the pointing-finger
+           cursor that other links use. `cursor: inherit` pulls back the
+           body's custom dot SVG. */
+        .fnref, .fnref a,
+        .footnote, .fn-marker, .fn-back, .fn-content {
+            cursor: inherit;
+        }
+        @media (hover: none) {
+            body { cursor: auto; }
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        .page {
+            max-width: 1080px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: emerge 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+        }
+        @keyframes emerge {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .frame {
+            border: 1px solid var(--ink-12);
+            padding: 3.5rem 3rem;
+            position: relative;
+        }
+        .frame .c {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+        .frame .c-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--ink-50);  border-left:  2px solid var(--ink-50); }
+        .frame .c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
+        .frame .c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
+        .frame .c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
+        .rule {
+            width: 32px;
+            height: 1px;
+            background: var(--ink-20);
+            margin: 1.75rem auto;
+        }
+        /* BEK mark — page chrome, fixed top-left of the viewport.
+           Reads as branding sticking to the corner, not an in-frame
+           navigation element.
+
+           Color note: canonical brand peach (#FFBC8C, used on the
+           landing) sits too close in value to the essay's cream
+           paper, so the BEK washes out. On the essay surface we paint
+           the BEK in the body-text ink instead — typographically
+           coherent with the prose below it, and gives the hover
+           sheen real contrast to glint against. The peach logo.png
+           is still the single source of truth for the SHAPE (used as
+           a mask), so swapping the logo file would update both
+           surfaces automatically. */
+        .essay-home-mark {
+            position: fixed;
+            top: 1.25rem;
+            left: 1.5rem;
+            z-index: 10;
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            line-height: 0;
+            text-decoration: none;
+        }
+        /* The img stays in the DOM so the BEK is a real <img alt>
+           for assistive tech / no-CSS fallback, but it's painted
+           out (visibility:hidden preserves layout). The visible
+           BEK is rendered by ::before below, color-controlled. */
+        .essay-home-mark img {
+            width: 48px;
+            height: 48px;
+            display: block;
+            visibility: hidden;
+        }
+        /* Visible BEK — peach logo.png used as a mask, filled with
+           deep olive ink. Matches the body text temperature on the
+           cream surface. */
+        .essay-home-mark::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--ink);
+            -webkit-mask-image: url('logo.png');
+                    mask-image: url('logo.png');
+            -webkit-mask-size: contain;
+                    mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+                    mask-position: center;
+            opacity: 0.92;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+        }
+        .essay-home-mark:hover::before { opacity: 1; }
+        /* Hover-only sheen — diagonal cream highlight that travels
+           across the BEK once per hover, painted ON TOP of the dark
+           ink BEK so the glint reads with full contrast. The mask
+           clips the gradient to the logo's alpha so the glint only
+           crosses the BEK pixels, never the surrounding rectangle. */
+        .essay-home-mark::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(
+                100deg,
+                transparent 0%,
+                transparent 40%,
+                rgba(255, 244, 220, 0.55) 48%,
+                rgba(255, 248, 230, 0.90) 50%,
+                rgba(255, 244, 220, 0.55) 52%,
+                transparent 60%,
+                transparent 100%
+            );
+            background-size: 260% 100%;
+            background-position: 200% 0;
+            background-repeat: no-repeat;
+            -webkit-mask-image: url('logo.png');
+                    mask-image: url('logo.png');
+            -webkit-mask-size: contain;
+                    mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+                    mask-position: center;
+            pointer-events: none;
+            opacity: 0;
+        }
+        .essay-home-mark:hover::after {
+            opacity: 1;
+            /* Same pace as the landing's continuous .logo-sheen sweep
+               (linear, landing-tempo) but the keyframe starts with the
+               glint already at the right edge of the BEK so the shine
+               is visible *immediately* on hover instead of leading in
+               from off-screen. Background-size is 260%, so a position
+               of -30% places the gradient's 50% glint stop at ~100%
+               (the logo's right edge); -180% places the glint past the
+               left edge. Single sweep per hover, ~1.9s of visible
+               travel at landing pace. */
+            animation: bek-shine 1.9s linear;
+        }
+        @keyframes bek-shine {
+            from { background-position: -30% 0; }
+            to   { background-position: -180% 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .essay-home-mark::after { display: none; }
+        }
+        .essay-head { text-align: center; margin-bottom: 0.6rem; }
+        /* "NO. 01 · DRAFT" rendered by JS above the title. The number and
+           status both come from dispatches.js so editing the manifest
+           updates the rendered page automatically. */
+        .essay-number {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.55em;
+        }
+        .essay-number .num { color: var(--ink); }
+        .essay-number .sep { color: var(--ink-12); }
+
+        /* Version status badge — top-right of the frame, color-coded by
+           state. The pulsing dot signals the piece is still alive
+           (actively being drafted or patched); on `finalized` the pulse
+           goes silent. Sits above the frame border, below the corner
+           brackets which use a higher z-index. */
+        .frame-status {
+            position: absolute;
+            top: 1.1rem;
+            right: 1.25rem;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            /* Generous gap so the pulse ring (statusPulse expands the
+               dot by ~2.4x) clears the text by a comfortable margin
+               instead of brushing the first letter. */
+            gap: 1em;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+        }
+        .frame-status[data-status="draft"]     { color: var(--instinct); }
+        .frame-status[data-status^="patch"]    { color: var(--logic); }
+        .frame-status[data-status="finalized"] { color: var(--psyche); }
+        .status-dot {
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            flex-shrink: 0;
+        }
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: currentColor;
+            transform-origin: center;
+            animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes statusPulse {
+            0%   { transform: scale(1);   opacity: 0.55; }
+            70%  { transform: scale(2.4); opacity: 0; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+        [data-status="finalized"] .status-dot::after { display: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .status-dot::after { animation: none; }
+        }
+        .essay-title {
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 1.95rem;
+            line-height: 1.25;
+            color: var(--ink);
+            margin-bottom: 0.6rem;
+        }
+        .essay-meta {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+        }
+
+        /* ---------- Two-column layout ---------- */
+        .essay-layout {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 280px;
+            gap: 56px;
+        }
+        .essay-body {
+            font-family: 'Newsreader', 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-size: 1.075rem;
+            line-height: 1.7;
+            color: var(--ink-80);
+            text-align: left;
+            min-width: 0;
+            font-variant-numeric: oldstyle-nums;
+            -webkit-font-smoothing: antialiased;
+        }
+        .essay-body p { margin-bottom: 1.2rem; }
+        .essay-body p:last-child { margin-bottom: 0; }
+        .essay-body em { font-style: italic; }
+        .essay-body .sep {
+            text-align: center;
+            color: var(--ink-20);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.5em;
+            margin: 1.5rem 0;
+            user-select: none;
+        }
+        .essay-body .sep::before { content: '\00B7 \00B7 \00B7'; }
+
+        /* ---------- Footnote references in body ---------- */
+        .fnref {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.62em;
+            vertical-align: super;
+            line-height: 0;
+            padding: 0 0.1em;
+            position: relative;
+            top: -0.2em;
+        }
+        .fnref a {
+            color: var(--ink-50);
+            text-decoration: none;
+            padding: 0 0.2em;
+            border-radius: 2px;
+            transition: color 0.18s ease, background 0.18s ease;
+        }
+        .fnref:hover a,
+        .fnref:focus-within a,
+        .fnref.linked a {
+            color: var(--ink);
+            background: var(--ink-12);
+        }
+        .fnref[data-archetype="logic"].linked a,
+        .fnref[data-archetype="logic"]:hover a,
+        .fnref[data-archetype="logic"]:focus-within a {
+            color: var(--logic);
+            background: rgba(184, 134, 45, 0.15);
+        }
+        .fnref[data-archetype="instinct"].linked a,
+        .fnref[data-archetype="instinct"]:hover a,
+        .fnref[data-archetype="instinct"]:focus-within a {
+            color: var(--instinct);
+            background: rgba(173, 124, 132, 0.18);
+        }
+        .fnref[data-archetype="psyche"].linked a,
+        .fnref[data-archetype="psyche"]:hover a,
+        .fnref[data-archetype="psyche"]:focus-within a {
+            color: var(--psyche);
+            background: rgba(101, 141, 164, 0.18);
+        }
+
+        /* No explicit legend — the structure is hidden in the colors.
+           See data-archetype on .fnref and .footnote elements. */
+
+        /* ---------- Footnotes column ---------- */
+        .essay-notes {
+            position: relative;
+            min-width: 0;
+        }
+        .footnote {
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: grid;
+            /* Marker column needs room for dot (5px) + gap (6px) + 2-digit
+               number (~12px) = ~23px. 26px keeps comfortable buffer and
+               aligns all markers uniformly regardless of digit count. */
+            grid-template-columns: 26px 1fr;
+            column-gap: 10px;
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-size: 0.78rem;
+            line-height: 1.65;
+            color: var(--ink-80);
+            padding: 4px 0 4px 8px;
+            border-left: 1px solid transparent;
+            margin-left: -9px;
+            scroll-margin-top: 1rem;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+        .footnote em { font-style: italic; color: var(--ink); }
+        .fn-marker {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6rem;
+            color: var(--ink-50);
+            text-decoration: none;
+            align-self: start;
+            line-height: 1.4;
+            padding-top: 0.25em;
+            letter-spacing: 0.05em;
+            transition: color 0.2s ease;
+            white-space: nowrap;
+        }
+        .fn-content a {
+            color: var(--ink);
+            text-decoration: underline;
+            text-decoration-color: var(--ink-20);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+        .fn-content a:hover { text-decoration-color: var(--ink); }
+        .fn-back { display: none; }
+        .footnote.linked {
+            color: var(--ink);
+            border-left-color: var(--ink-50);
+        }
+        .footnote.linked .fn-marker { color: var(--ink); }
+        .footnote[data-archetype="logic"].linked    { border-left-color: var(--logic); }
+        .footnote[data-archetype="logic"].linked    .fn-marker { color: var(--logic); }
+        .footnote[data-archetype="instinct"].linked { border-left-color: var(--instinct); }
+        .footnote[data-archetype="instinct"].linked .fn-marker { color: var(--instinct); }
+        .footnote[data-archetype="psyche"].linked   { border-left-color: var(--psyche); }
+        .footnote[data-archetype="psyche"].linked   .fn-marker { color: var(--psyche); }
+        .footnote[data-archetype] .fn-marker::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+            opacity: 0.55;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .footnote[data-archetype="logic"]    .fn-marker::before { background: var(--logic); }
+        .footnote[data-archetype="instinct"] .fn-marker::before { background: var(--instinct); }
+        .footnote[data-archetype="psyche"]   .fn-marker::before { background: var(--psyche); }
+        .footnote.linked .fn-marker::before { opacity: 1; transform: scale(1.15); }
+        .footnote:target {
+            border-left-color: var(--ink-50);
+            color: var(--ink);
+        }
+        .footnote:target .fn-marker { color: var(--ink); }
+
+        /* ---------- The wire overlay ----------
+           The SVG sits underneath the body + notes (z-index 0) and the
+           text columns are explicitly lifted above (z-index 1) so wires
+           read as connective tissue *behind* the page, not ink drawn on
+           top of the words. Stroke colors are kept quiet (~0.35 alpha)
+           for the same reason. */
+        .essay-wires {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: visible;
+            z-index: 0;
+        }
+        .essay-body,
+        .essay-notes {
+            position: relative;
+            z-index: 1;
+        }
+        .essay-wires .wire-path {
+            fill: none;
+            stroke: var(--ink-25);
+            stroke-width: 1;
+            stroke-linecap: square;
+            stroke-linejoin: miter;
+        }
+        .essay-wires .wire-dot {
+            fill: var(--ink);
+            opacity: 0.55;
+        }
+        @keyframes wire-pulse {
+            0%   { r: 1.5; opacity: 0; }
+            40%  { r: 2.5; opacity: 1; }
+            100% { r: 1.8; opacity: 1; }
+        }
+        .essay-wires .wire-dot.pulse {
+            animation: wire-pulse 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* ---------- Footer ----------
+           The subscribe form sits centered in the vertical space
+           between the essay-nav border (the "ending divider" of the
+           essay proper) and the bottom of the frame box. The frame
+           has padding-bottom: 3.5rem, so giving .essay-foot the same
+           top margin produces visually equal cushioning above and
+           below the form. */
+        .essay-foot {
+            text-align: center;
+            margin-top: 3.5rem;
+        }
+        @media (max-width: 720px) {
+            .essay-foot { margin-top: 2rem; }
+        }
+
+        /* ---------- Essay prev/next nav (other dispatches) ---------- */
+        .essay-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--ink-12);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            min-height: 1rem;
+        }
+        .essay-nav a {
+            color: var(--ink-50);
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-flex;
+            flex-direction: column;
+            gap: 0.3em;
+            max-width: 45%;
+        }
+        .essay-nav .essay-nav-label {
+            font-size: 0.55rem;
+            letter-spacing: 0.22em;
+            color: var(--ink-25);
+        }
+        .essay-nav .essay-nav-title {
+            font-family: 'IM Fell English', Georgia, serif;
+            font-style: italic;
+            text-transform: none;
+            letter-spacing: 0.01em;
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+        .essay-nav a.essay-nav-prev { text-align: left; }
+        .essay-nav a.essay-nav-next { text-align: right; align-items: flex-end; }
+        .essay-nav a:hover .essay-nav-title { color: var(--ink); }
+        .essay-nav a.essay-nav-prev:hover { transform: translateX(-3px); }
+        .essay-nav a.essay-nav-next:hover { transform: translateX(3px); }
+        /* Empty older/newer slots disappear entirely when there's no
+           dispatch on that side. The placeholder span exists in the markup
+           only so the JS can findOrReplace it; CSS hides it visually.
+           If BOTH slots are empty (the .is-empty case, set by JS), the
+           nav still draws as the essay's ending divider — we just
+           collapse the content row to zero height so the border-top
+           draws as a clean horizontal rule with nothing above or below
+           it, marking where the essay proper ends. */
+        .essay-nav-empty {
+            display: none;
+        }
+        .essay-nav.is-empty {
+            min-height: 0;
+            padding-top: 0;
+        }
+
+        /* ---------- Rights footer ---------- */
+        /* Mirrors the landing footer (corner brackets, one line) but is
+           inline rather than fixed — the user reads to it, it doesn't
+           hover. Playlists + easter egg remain the sticky chrome. */
+        .rights {
+            position: relative;
+            display: inline-block;
+            margin: 2.25rem auto 0;
+            padding: 0.55rem 1.1rem;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+            white-space: nowrap;
+            /* Opaque page bg covers the dot grid behind the line. */
+            background-color: var(--bg);
+        }
+        .rights-wrap { text-align: center; margin-top: 0.5rem; }
+        .rights .rights-mark { margin-right: 0.6em; letter-spacing: 0; }
+        /* Pipe separator — matches the landing footer exactly so the rights
+           line reads as one shared element across surfaces. */
+        .rights .rights-sep {
+            display: inline-block;
+            margin: 0 0.85em;
+            color: var(--ink-50);
+            opacity: 0.55;
+            letter-spacing: 0;
+            transform: translateY(-0.05em);
+        }
+        .rights .rc {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+        }
+        .rights .rc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .rights .rc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .rights .rc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .rights .rc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+
+        /* ---------- Reading light cursor effect ---------- */
+        /* Circular gold-honey glow with a hot center and fast falloff —
+           like candlelight following the reader's eye. */
+        .reading-light {
+            position: fixed;
+            pointer-events: none;
+            width: 240px;
+            height: 240px;
+            top: 0;
+            left: 0;
+            margin-top: -120px;
+            margin-left: -120px;
+            background: radial-gradient(
+                circle closest-side at center,
+                rgba(184, 134, 45, 0.32) 0%,
+                rgba(184, 134, 45, 0.20) 18%,
+                rgba(184, 134, 45, 0.10) 38%,
+                rgba(184, 134, 45, 0.04) 62%,
+                transparent 82%
+            );
+            transform: translate3d(var(--mx, 50vw), var(--my, 50vh), 0);
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 2;
+            will-change: transform;
+        }
+        .reading-light.active { opacity: 1; }
+        @media (hover: none), (prefers-reduced-motion: reduce) {
+            .reading-light { display: none; }
+        }
+
+        /* ---------- Subscribe (essay end) ----------
+           No border-top or margin-top here — the essay-nav above
+           supplies the single "ending divider", and .essay-foot
+           handles the vertical centering between that divider and
+           the frame bottom. Adding another border here would double
+           up the dividers. */
+        .essay-subscribe {
+            text-align: center;
+        }
+        .essay-subscribe .subscribe-label {
+            display: block;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 0.7rem;
+        }
+        .essay-subscribe .subscribe-row {
+            display: inline-flex;
+            border: 1px solid var(--ink-20);
+            transition: border-color 0.2s ease;
+        }
+        .essay-subscribe .subscribe-row:focus-within { border-color: var(--ink-50); }
+        .essay-subscribe input[type="email"] {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.72rem;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--ink);
+            padding: 0.55rem 0.7rem;
+            width: 240px;
+        }
+        .essay-subscribe input[type="email"]::placeholder { color: var(--ink-20); }
+        .essay-subscribe button {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.75rem;
+            background: transparent;
+            border: none;
+            border-left: 1px solid var(--ink-20);
+            color: var(--ink-50);
+            padding: 0 0.8rem;
+            cursor: pointer;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+        .essay-subscribe button:hover {
+            color: var(--ink);
+            background: var(--ink-12);
+        }
+
+        /* ---------- Collapse to single column ---------- */
+        @media (max-width: 880px) {
+            .page { max-width: 720px; }
+            .essay-layout { display: block; }
+            .essay-notes {
+                margin-top: 2.5rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--ink-12);
+                min-height: 0 !important;
+            }
+            .footnote {
+                position: static !important;
+                top: auto !important;
+                margin-bottom: 1.2rem;
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+                grid-template-columns: 28px 1fr;
+            }
+            .footnote:last-child { margin-bottom: 0; }
+            .fn-back {
+                display: inline-block;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 0.7rem;
+                color: var(--ink-50);
+                text-decoration: none;
+                margin-left: 0.35em;
+                vertical-align: baseline;
+                transition: color 0.2s ease;
+            }
+            .fn-back:hover { color: var(--ink); }
+            .essay-wires { display: none; }
+        }
+        @media (max-width: 600px) {
+            body { padding: 3.5rem 0.75rem 5.5rem; }
+            .frame { padding: 1.75rem 1.25rem; }
+            .essay-home-mark { top: 0.9rem; left: 0.9rem; width: 36px; height: 36px; }
+            .essay-home-mark img { width: 36px; height: 36px; }
+            .essay-home-mark::after { width: 36px; height: 36px; }
+            .essay-number {
+                font-size: 0.48rem;
+                letter-spacing: 0.26em;
+                margin-bottom: 0.9rem;
+                gap: 0.45em;
+            }
+            .frame-status { top: 0.85rem; right: 0.9rem; font-size: 0.44rem; letter-spacing: 0.2em; gap: 0.45em; }
+            .frame-status .status-dot { width: 5px; height: 5px; }
+            .essay-title { font-size: 1.5rem; }
+            .essay-meta { font-size: 0.52rem; }
+            .essay-body { font-size: 0.95rem; line-height: 1.75; }
+            .essay-body p { margin-bottom: 1rem; }
+            .footnote { font-size: 0.82rem; }
+            .rule { margin: 1.2rem auto; }
+            .essay-subscribe input[type="email"] { width: 180px; font-size: 0.65rem; padding: 0.45rem 0.6rem; }
+            .essay-subscribe button { font-size: 0.65rem; padding: 0 0.65rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .page { animation: none; opacity: 1; }
+        }
+
+        /* ---------- Sticky page chrome (mirrors landing) ----------
+           Playlists module (bottom-right) and the easter egg (bottom-left)
+           live as fixed-position chrome on the essay too, so the brand
+           envelope is consistent across surfaces. The rights footer is
+           the only bottom element that scrolls with the content. */
+        .stickers {
+            position: fixed;
+            bottom: 1.4rem;
+            right: 1.3rem;
+            z-index: 10;
+            padding: 0.7rem 0.9rem 0.55rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            /* Opaque page bg covers the dot grid behind the box so the
+               module reads as a discrete surface, not transparent chrome
+               with the grid bleeding through. */
+            background-color: var(--bg);
+        }
+        .stickers .sc {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+        }
+        /* All footer modules share the same ink-25 border. */
+        .stickers .sc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .stickers .sc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .stickers .sc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .stickers .sc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .stickers-eyebrow {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+            text-align: center;
+            padding-left: 0.28em;
+        }
+        /* Overlapping cluster — same as landing. */
+        .stickers-row {
+            display: flex;
+            align-items: flex-end;
+        }
+        .sticker {
+            position: relative;
+            display: block;
+            width: 60px;
+            height: 60px;
+            text-decoration: none;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18))
+                    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 0.35s ease;
+            will-change: transform;
+        }
+        .sticker img,
+        .sticker .sticker-img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+        }
+        .sticker-build  { transform: rotate(-9deg); z-index: 1; }
+        .sticker-slash  { transform: rotate(6deg);  margin-left: -14px; z-index: 2; }
+        .sticker-nest   { transform: rotate(-4deg); margin-left: -16px; width: 64px; height: 64px; z-index: 3; }
+        .sticker:hover {
+            transform: rotate(0deg) scale(1.12) translateY(-4px);
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25))
+                    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+            z-index: 11;
+        }
+        /* Labels surface only on hover — same behavior as landing. */
+        .stickers-tags {
+            display: flex;
+            align-items: center;
+            gap: 0.45em;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.46rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+        }
+        @media (hover: hover) {
+            /* Faded labels, archetype-colored on the matching sticker's
+               hover — same behavior as landing. */
+            .sticker-tag,
+            .sticker-sep {
+                opacity: 0.4;
+                transition: opacity 0.3s ease, color 0.3s ease;
+            }
+            .stickers:has(.sticker[data-archetype="logic"]:hover) .sticker-tag[data-archetype="logic"],
+            .stickers:has(.sticker[data-archetype="logic"]:focus-visible) .sticker-tag[data-archetype="logic"] {
+                opacity: 1;
+                color: var(--logic);
+            }
+            .stickers:has(.sticker[data-archetype="instinct"]:hover) .sticker-tag[data-archetype="instinct"],
+            .stickers:has(.sticker[data-archetype="instinct"]:focus-visible) .sticker-tag[data-archetype="instinct"] {
+                opacity: 1;
+                color: var(--instinct);
+            }
+            .stickers:has(.sticker[data-archetype="psyche"]:hover) .sticker-tag[data-archetype="psyche"],
+            .stickers:has(.sticker[data-archetype="psyche"]:focus-visible) .sticker-tag[data-archetype="psyche"] {
+                opacity: 1;
+                color: var(--psyche);
+            }
+        }
+        .sticker-tag { display: inline-flex; align-items: center; gap: 0.4em; }
+        .sticker-sep { color: var(--ink-12); }
+        .sticker-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            display: inline-block;
+            background: var(--ink-50);
+        }
+        .sticker-tag[data-archetype="logic"]    .sticker-dot { background: var(--logic); }
+        .sticker-tag[data-archetype="instinct"] .sticker-dot { background: var(--instinct); }
+        .sticker-tag[data-archetype="psyche"]   .sticker-dot { background: var(--psyche); }
+
+        /* ---------- Easter egg ---------- */
+        .egg-wrap {
+            position: fixed;
+            bottom: 1.25rem;
+            left: 1.5rem;
+            z-index: 10;
+            padding: 0.5rem 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        padding 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            /* Opaque page bg covers the dot grid behind the egg. */
+            background-color: var(--bg);
+        }
+        .egg-wrap .cc { position: absolute; width: 6px; height: 6px; }
+        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .easter-egg {
+            cursor: pointer;
+            width: 30px;
+            height: 40px;
+            display: block;
+            transition: opacity 0.4s ease;
+        }
+        .egg-shell { width: 30px; height: 40px; display: block; }
+        .egg-shell .egg-body {
+            fill: rgba(44, 51, 24, 0.05);
+            stroke: var(--ink-50);
+            stroke-width: 0.8;
+            transition: stroke 0.2s ease, fill 0.2s ease;
+        }
+        .egg-shell .egg-highlight {
+            fill: none;
+            stroke: var(--ink-25);
+            stroke-width: 0.5;
+        }
+        .egg-shell .crack {
+            fill: none;
+            stroke: var(--ink);
+            stroke-width: 0.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            transition: stroke-dashoffset 0.4s ease;
+        }
+        .egg-shell .crack.visible { stroke-dashoffset: 0; }
+        .easter-egg:hover .egg-body {
+            stroke: var(--ink);
+            fill: rgba(44, 51, 24, 0.08);
+        }
+        @keyframes eggShake1 {
+            0%, 100% { transform: rotate(0deg) translateX(0); }
+            20% { transform: rotate(5deg) translateX(1px); }
+            40% { transform: rotate(-4deg) translateX(-1px); }
+            60% { transform: rotate(3deg) translateX(0.5px); }
+            80% { transform: rotate(-2deg); }
+        }
+        @keyframes eggShake2 {
+            0%, 100% { transform: rotate(0deg) translateX(0); }
+            15% { transform: rotate(10deg) translateX(2px); }
+            30% { transform: rotate(-8deg) translateX(-2px); }
+            45% { transform: rotate(7deg) translateX(1px); }
+            60% { transform: rotate(-5deg) translateX(-1px); }
+            75% { transform: rotate(3deg); }
+        }
+        @keyframes eggShake3 {
+            0%, 100% { transform: rotate(0deg) translateX(0); }
+            10% { transform: rotate(14deg) translateX(3px); }
+            20% { transform: rotate(-12deg) translateX(-3px); }
+            30% { transform: rotate(10deg) translateX(2px); }
+            40% { transform: rotate(-8deg) translateX(-2px); }
+            50% { transform: rotate(6deg) translateX(1px); }
+            60% { transform: rotate(-4deg); }
+            70% { transform: rotate(2deg); }
+        }
+        .egg-shake-1 { animation: eggShake1 0.4s ease; }
+        .egg-shake-2 { animation: eggShake2 0.5s ease; }
+        .egg-shake-3 { animation: eggShake3 0.6s ease; }
+        .egg-half { transform-origin: center center; }
+        @keyframes eggBurst {
+            0%   { transform: scale(1);   opacity: 1;   filter: blur(0); }
+            15%  { transform: scale(1.3); opacity: 1;   filter: blur(0); }
+            40%  { transform: scale(1.6); opacity: 0.7; filter: blur(1px); }
+            100% { transform: scale(2.5); opacity: 0;   filter: blur(4px); }
+        }
+        .egg-split .egg-shell { animation: eggBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .catalogue-id {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            color: var(--ink-50);
+            text-transform: none;
+            user-select: none;
+            line-height: 1.6;
+            text-decoration: none;
+            text-align: right;
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .catalogue-id.measured { position: static; visibility: visible; }
+        .catalogue-id.revealed { opacity: 1; }
+        .catalogue-id.revealed:hover { color: var(--ink); }
+
+        /* Mobile overrides for the sticky chrome — same as landing. */
+        @media (max-width: 600px) {
+            .stickers { bottom: 0.85rem; right: 0.65rem; gap: 0.5rem; padding: 0.55rem 0.7rem 0.45rem; }
+            .stickers .sc { width: 5px; height: 5px; }
+            .stickers-eyebrow { font-size: 0.44rem; letter-spacing: 0.22em; padding-left: 0.22em; }
+            .stickers-row { gap: 3px; }
+            .sticker { width: 44px; height: 44px; }
+            .sticker-build  { transform: rotate(-9deg); }
+            .sticker-slash  { transform: rotate(6deg); }
+            .sticker-nest   { width: 48px; height: 48px; transform: rotate(-4deg); }
+            .stickers-tags { font-size: 0.4rem; gap: 0.3em; letter-spacing: 0.14em; }
+            .sticker-dot { width: 4px; height: 4px; }
+            .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
+            .egg-wrap .cc { width: 5px; height: 5px; }
+            .easter-egg { width: 24px; height: 32px; }
+            .egg-shell { width: 24px; height: 32px; }
+        }
+    </style>
+</head>
+<body data-essay-id="on-being-booed">
+    <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
+         Natural PNG color at rest; a masked cream sheen sweeps across
+         on hover (see .essay-home-mark::after). -->
+    <a class="essay-home-mark" href="/" aria-label="Return to briggskellogg.com" title="briggskellogg.com">
+        <img src="logo.png" alt="BEK">
+    </a>
+
+    <main class="page">
+        <article class="frame">
+            <div class="c c-tl"></div>
+            <div class="c c-tr"></div>
+            <div class="c c-bl"></div>
+            <div class="c c-br"></div>
+
+            <!-- Version status — top-right of the frame, pulsing dot
+                 signals the piece is still alive. Populated by JS. -->
+            <div class="frame-status" data-frame-status hidden>
+                <span class="status-dot"></span>
+                <span class="frame-status-text" data-frame-status-text></span>
+            </div>
+
+            <header class="essay-head">
+                <!-- "no. 01 · essay" — number populated by JS. The
+                     version status lives in the top-right of the frame,
+                     not in this centered eyebrow. -->
+                <p class="essay-number" data-essay-meta>
+                    <span class="num">no. 01</span>
+                    <span class="sep">&middot;</span>
+                    <span>essay</span>
+                </p>
+                <h1 class="essay-title">On Being Booed</h1>
+                <p class="essay-meta">may 2026</p>
+            </header>
+
+            <div class="rule"></div>
+
+            <div class="essay-layout">
+                <svg class="essay-wires" aria-hidden="true"></svg>
+
+                <div class="essay-body">
+                    <p>This month, at two separate university commencement ceremonies, the mention of artificial intelligence was met with booing.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup> Not polite disagreement. Booing. From graduates. At their own ceremonies. In the middle of speeches meant to send them off into the world.</p>
+
+                    <p>I work in the industry being booed at.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="psyche"><a href="#fn-2">2</a></sup> I want to say some things about it plainly, because plainness is what the moment requires, and plainness is the one thing the industry I work in is currently refusing to offer.</p>
+
+                    <div class="sep"></div>
+
+                    <p>The students are not wrong to boo.</p>
+
+                    <p>I begin there because most of what has been written about this in the last week has been written by people whose first instinct was to explain the students to themselves &mdash; to suggest they don't understand the technology, or that they've been misled by alarmism, or that they'll come around once they see the productivity gains.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="logic"><a href="#fn-3">3</a></sup> This is the voice of an industry that has decided the people most affected by its product are the people least qualified to have feelings about it. It is the voice you use when you have something to hide and you're hoping the listener won't notice you're hiding it.</p>
+
+                    <p>The students notice. They are twenty-two years old, not stupid. They have spent four years and a hundred thousand dollars preparing for a labor market in which only thirty percent of last year's graduates secured full-time work in their field, down from forty-one percent the year before.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4">4</a></sup> They are correct to be afraid. They are correct to be angry. They are correct that the people on the stage telling them everything will be fine are mostly the people who stand to profit from everything not being fine for them in particular.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="logic"><a href="#fn-5">5</a></sup></p>
+
+                    <p>Booing is, under the circumstances, a remarkably restrained response.</p>
+
+                    <div class="sep"></div>
+
+                    <p>The sin of my industry right now is not the technology. The technology is what it is. Some of it will be good, some of it will be ruinous, most of it will be ambiguous in ways we won't understand for a decade. That's true of every technology. That's not the problem.</p>
+
+                    <p>The sin is the vagueness.</p>
+
+                    <p>Every public-facing sentence about what this technology will do to working people passes through a filter designed to make it impossible to act on. &ldquo;Augmenting human capability.&rdquo; &ldquo;Reshaping the nature of work.&rdquo; &ldquo;Creating new opportunities we can't yet imagine.&rdquo;<sup class="fnref" id="fnref-6" data-fn="6" data-archetype="instinct"><a href="#fn-6">6</a></sup> Each of these phrases is doing the same job: replacing a question someone could answer with a fog no one can argue with. The question is: will my job exist in five years? The fog is: the future of work will be transformed.</p>
+
+                    <p>I have sat in rooms where the honest answer was known. I have watched the honest answer get sanded down into the fog before it left the room. I have done some of the sanding myself.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="instinct"><a href="#fn-7">7</a></sup> This is not a confession that requires absolution &mdash; I'm not the villain of the story and neither are my colleagues, most of whom are decent people doing what they understand to be reasonable work. But the cumulative effect of thousands of decent people each sanding down their own small piece is a public conversation in which the people who know the most are telling the people who need to know the most the least useful version of the truth.</p>
+
+                    <p>The students are booing the fog. They are right to.</p>
+
+                    <div class="sep"></div>
+
+                    <p>I am not going to tell you what to do, graduate, because I do not know what you should do. Anyone telling you what to do right now is either selling something or lying.<sup class="fnref" id="fnref-8" data-fn="8" data-archetype="psyche"><a href="#fn-8">8</a></sup> The honest position is that the next five years are going to be strange and that nobody &mdash; not the people building the technology, not the people regulating it, not the people writing op-eds about it &mdash; knows exactly how strange.</p>
+
+                    <p>But I can offer you one thing, because I have asked it of myself.</p>
+
+                    <p>Assume the parts of your education designed to make you a competent processor of information are now worth less than they were when you started school. Assume the parts designed to make you a person &mdash; judgment, taste, the ability to read a room, the ability to know when something is wrong even though everyone around you is saying it's fine, the ability to care about a specific other human being and act on that care &mdash; are worth more.<sup class="fnref" id="fnref-9" data-fn="9" data-archetype="logic"><a href="#fn-9">9</a></sup> The machines are good at the first and not good at the second, and the evidence that they'll become good at the second is thinner than the people selling them want you to believe.</p>
+
+                    <p>Do not retreat into nihilism, because nihilism is what the people in charge are hoping you'll do. A demoralized graduating class is a graduating class that doesn't organize, doesn't vote, doesn't demand things, doesn't notice when its government quietly stops representing it. The fog is downstream of an interest in your not noticing. Stay noticing.</p>
+
+                    <p>And don't let anyone &mdash; including me &mdash; convince you that being scared is unreasonable. It is reasonable. The fear is information. The fear is, in this case, a more accurate reading of the situation than the optimism being offered to you. Trust the fear. Then do what humans have always done with fear: use it to figure out what to do next, slowly, in the company of people who love you.</p>
+
+                    <div class="sep"></div>
+
+                    <p>There is a thing the industry I work in tells itself, late at night, when the question of what it is doing comes up. The thing is: someone is going to build this technology. If we don't build it, someone worse will build it. Therefore the people who care should build it, so that at least the people in the room when decisions are made are the people who care.</p>
+
+                    <p>I have made this argument. I have heard it made. It is not a stupid argument. It is also the argument that every powerful institution in history has made about its own continuation, and the historical record on whether the people in the room actually behave like they care once they're in the room is mixed at best.<sup class="fnref" id="fnref-10" data-fn="10" data-archetype="psyche"><a href="#fn-10">10</a></sup></p>
+
+                    <p>What I would ask of the people in the room &mdash; the colleagues I work with, the leaders above me, the founders whose names are on the buildings &mdash; is that we stop hiding behind the fog. The fog protects us, not the public. It lets us avoid saying out loud what we know to be true about the next five years. It lets us collect our salaries and tell ourselves we are the good guys because we have not personally fired anyone. The fog is the moral hazard. The fog is what the students are booing.</p>
+
+                    <p>Speak plainly. Tell people what is coming. Tell them what you don't know. Tell them where the technology helps and where it harms and which of those two outcomes you are working on this week. If you cannot do this in public because your company will fire you, do it in private with the people in your life who need to hear it. Tell your nieces. Tell your nephews. Tell the kid from your hometown who's about to take out loans for a degree in a field that may not exist. Tell your own children. Tell them what you actually think.</p>
+
+                    <p>The people booing at commencement this month are not asking us to stop building. They are asking us to stop lying. That request is so much smaller than the panic-readers of this moment are making it out to be. It is also so much more important.</p>
+
+                    <div class="sep"></div>
+
+                    <p>I write this from inside. I am not quitting my job. I am not announcing a moral conversion. I have a family to take care of and I believe, on balance, that the work I am doing inside this industry is more useful than the work I could do outside it. These are choices I have made and I will live with them.</p>
+
+                    <p>But I will not pretend the students are wrong. They are not wrong. They have seen the fog and named it, in the only language they had available to them on a Saturday morning under a tent, which was booing. They are owed a better response than condescension. They are owed plainness.</p>
+                </div>
+
+                <div class="essay-notes" aria-label="Footnotes">
+                    <aside id="fn-1" class="footnote" data-fn="1" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-1">1</a>
+                        <div class="fn-content">At the University of Central Florida on May 10, real estate executive Gloria Caulfield called AI &ldquo;the next industrial revolution&rdquo; and was booed by graduating arts and humanities students; she paused, looked at the other speakers, and asked, &ldquo;What happened?&rdquo; Days later, at the University of Arizona, former Google CEO Eric Schmidt was booed multiple times during his commencement address as he likened the emergence of AI to the rise of the personal computer. At one point Schmidt said, &ldquo;If you'd let me make this point, please &mdash;&rdquo; while the crowd jeered. Schmidt's invitation had been protested by student groups before the ceremony even began. <em>Two incidents in two weeks at two different schools is not yet a pattern. It is, however, no longer an outlier.</em><a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-2">2</a>
+                        <div class="fn-content">As of writing this, I work at ElevenLabs. I am not a researcher or a founder. I am closer to the people booing than I am to the people on the stage, which is part of why I think it's worth saying any of this at all. The view from the middle layer of the industry is different from the view from the top, and almost no one writes from here.<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-3">3</a>
+                        <div class="fn-content">The TechCrunch piece quoting Brian Merchant got the closest to honesty: &ldquo;I too would loudly boo at the prospect of this next industrial revolution if I was in my early twenties, unemployed, and had aspirations for my future greater than entering prompts into an LLM.&rdquo; The rest of the coverage I read was significantly more interested in protecting the speakers' dignity than in taking the students seriously.<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-4" class="footnote" data-fn="4" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-4">4</a>
+                        <div class="fn-content">Cengage Group's 2025 Graduate Employability Report. Thirty percent in their field, down from forty-one percent the year prior. Thirty-three percent unemployed and actively seeking, up from twenty percent. These numbers predate the most aggressive phase of AI-driven hiring contraction. <em>They will get worse before they get better. I am not certain they will get better.</em><a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-5" class="footnote" data-fn="5" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-5">5</a>
+                        <div class="fn-content">An incomplete list of people who currently profit from optimism about AI's effect on labor: every founder who has raised on the productivity narrative, every executive whose stock-based compensation depends on continued enthusiasm, every analyst whose firm has placed a bullish call, every commencement speaker selected by a university whose endowment is invested in those firms. An incomplete list of people who do not: the graduates.<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="instinct" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-6">6</a>
+                        <div class="fn-content">I have written sentences like this. I have approved sentences like this. I have nodded along in meetings where sentences like this were workshopped into a final form so smooth that nothing could catch on it. The smoothness is the tell. Honest sentences have edges.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-7" class="footnote" data-fn="7" data-archetype="instinct" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-7">7</a>
+                        <div class="fn-content">I want to be specific here, because vagueness about my own complicity would undercut the whole essay. I have softened &ldquo;this will eliminate certain roles&rdquo; into &ldquo;this will reshape how teams operate.&rdquo; I have softened &ldquo;we don't know what happens to the people whose jobs go away&rdquo; into &ldquo;we're optimistic about emergent opportunities.&rdquo; I have done this because saying the harder version in those rooms would have cost me something &mdash; credibility, capital, the next meeting &mdash; and the softer version cost me nothing visible. The cost was paid downstream, by people I will never meet.<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-8" class="footnote" data-fn="8" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-8">8</a>
+                        <div class="fn-content">This sentence is itself a form of the disclaimer I'm warning against. The honest version: I am about to tell you a few things to do, and you should weigh them against the warning I just issued, and ultimately decide for yourself. The two-step is the most I can offer in good faith.<a class="fn-back" href="#fnref-8" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-9" class="footnote" data-fn="9" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-9">9</a>
+                        <div class="fn-content">The frame is borrowed loosely from the distinction Erik Brynjolfsson has made between <em>augmentation</em> and <em>automation</em> &mdash; technology that makes humans more capable versus technology that replaces them. The industry vocabulary has collapsed the two into a single word (&ldquo;AI&rdquo;) on purpose, because the collapse is rhetorically useful to the people selling it. Keep the two ideas separate in your own head even when the marketing won't.<a class="fn-back" href="#fnref-9" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-10" class="footnote" data-fn="10" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-10">10</a>
+                        <div class="fn-content">The argument is structurally identical to the one made by the people who built the first atomic weapons, by the people who designed the social media algorithms, by the people who pioneered subprime lending. In some of those cases the inside-the-room theory was correct and harm was reduced. In others it was a rationalization that allowed harm to compound. The argument is not self-validating. It has to be earned, repeatedly, by the actual behavior of the people inside the room. <em>This is the part I think about most.</em><a class="fn-back" href="#fnref-10" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+                </div>
+            </div>
+
+            <nav class="essay-nav" aria-label="Other dispatches" id="essay-nav">
+                <span class="essay-nav-empty essay-nav-prev"><span class="essay-nav-label">&larr; older</span><span class="essay-nav-title">&mdash;</span></span>
+                <span class="essay-nav-empty essay-nav-next"><span class="essay-nav-label">newer &rarr;</span><span class="essay-nav-title">&mdash;</span></span>
+            </nav>
+
+            <footer class="essay-foot">
+                <form class="essay-subscribe" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post" target="popupwindow">
+                    <label class="subscribe-label" for="bd-email-essay">if you'd like the next one in your inbox</label>
+                    <div class="subscribe-row">
+                        <input id="bd-email-essay" type="email" name="email" placeholder="your email" autocomplete="email" required>
+                        <button type="submit" aria-label="Subscribe">subscribe &rarr;</button>
+                    </div>
+                </form>
+            </footer>
+        </article>
+        <div class="rights-wrap">
+            <footer class="rights">
+                <span class="rc rc-tl"></span>
+                <span class="rc rc-tr"></span>
+                <span class="rc rc-bl"></span>
+                <span class="rc rc-br"></span>
+                <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">|</span>all rights reserved
+            </footer>
+        </div>
+    </main>
+    <div class="reading-light" aria-hidden="true"></div>
+
+    <!-- Sticky chrome — mirrors the landing. Sits at fixed bottom corners
+         so the brand envelope is consistent across surfaces. -->
+    <nav class="stickers" aria-label="Playlists">
+        <span class="sc sc-tl"></span>
+        <span class="sc sc-tr"></span>
+        <span class="sc sc-bl"></span>
+        <span class="sc sc-br"></span>
+        <div class="stickers-eyebrow">playlists</div>
+        <div class="stickers-row">
+            <a class="sticker sticker-build" data-archetype="logic" href="https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30" target="_blank" rel="noopener" aria-label="Build playlist on Spotify — Logic">
+                <img src="assets/stickers/build.png" alt="" class="sticker-img">
+            </a>
+            <a class="sticker sticker-slash" data-archetype="instinct" href="https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec" target="_blank" rel="noopener" aria-label="Slash playlist on Spotify — Instinct">
+                <img src="assets/stickers/slash.png" alt="" class="sticker-img">
+            </a>
+            <a class="sticker sticker-nest" data-archetype="psyche" href="https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab" target="_blank" rel="noopener" aria-label="Nest playlist on Spotify — Psyche">
+                <img src="assets/stickers/nest.png" alt="" class="sticker-img">
+            </a>
+        </div>
+        <div class="stickers-tags">
+            <span class="sticker-tag" data-archetype="logic"><span class="sticker-dot"></span>build</span>
+            <span class="sticker-sep">&middot;</span>
+            <span class="sticker-tag" data-archetype="instinct"><span class="sticker-dot"></span>slash</span>
+            <span class="sticker-sep">&middot;</span>
+            <span class="sticker-tag" data-archetype="psyche"><span class="sticker-dot"></span>nest</span>
+        </div>
+    </nav>
+    <div class="egg-wrap">
+        <span class="cc cc-tl"></span>
+        <span class="cc cc-tr"></span>
+        <span class="cc cc-bl"></span>
+        <span class="cc cc-br"></span>
+        <div class="easter-egg" role="button" tabindex="0" aria-label="Easter egg">
+            <svg class="egg-shell" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="left-half"><rect x="0" y="0" width="15" height="40"/></clipPath>
+                    <clipPath id="right-half"><rect x="15" y="0" width="15" height="40"/></clipPath>
+                </defs>
+                <g class="egg-half egg-half-l" clip-path="url(#left-half)">
+                    <path class="egg-body" d="M15 2C9 2 4 11 4 22c0 8 5 16 11 16s11-8 11-16C26 11 21 2 15 2z"/>
+                </g>
+                <g class="egg-half egg-half-r" clip-path="url(#right-half)">
+                    <path class="egg-body" d="M15 2C9 2 4 11 4 22c0 8 5 16 11 16s11-8 11-16C26 11 21 2 15 2z"/>
+                </g>
+                <path class="egg-highlight" d="M11 6c-2 4-4 9-4 16"/>
+                <path class="crack crack-1" d="M15 3L13.5 7L16 9.5L13 12L15.5 14"/>
+                <path class="crack crack-2" d="M13 12L10 15L12.5 17.5L9 20L11 22"/>
+                <!-- crack-3 deliberately keeps to the right + center band.
+                     The dropped subpath was `M9 20L6 23` which ran straight
+                     through the egg-highlight curve on the left side and
+                     read as a cross-hatch with the shine. Matches the
+                     landing-page egg exactly so both surfaces crack the
+                     same way on the third tap. -->
+                <path class="crack crack-3" d="M15.5 14L18 16L15 19L17.5 22L14 25L16 27M18 16L21 18L19 21"/>
+            </svg>
+        </div>
+        <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?2p0s4dbh47b538ghl110gig2yp7pmm2of41tgs463g42i7u3vxv4feulvjs2ftgydmpkz3i29ivk1jlm79cf164c3tamcspt13mrqyj4elm2w98b5xbxjasd1lbo67dgg7nmd39sit22yxo5tkakfa3rwjuucykvbqifcfsle2b6tvvwlkzj3a71426intirdiw8b2mv0a8jv0rnh1l3igck4eqyllnh43mfrnyk4sqo80i677imbdcd3hpx4af0vb98oc923w8paojtowrpahqjiuxorqrdktep0bnxmydj95r2pdu3ikvspx5t0al62ph3kf8fjyzvbodm2k73a6isjeq2imb3hzpnjk15peovvyutjt8m0ryude49nok9c92z3n6bc4zb3vjdcpcen16q62nn19fkb7idzg54q6xdg4abxyfdybe18t1ldce8975xu1a335s0psrllfjwcnlnxz01hsll9fjflwfhgv0in898s6pssdbq6f0uvzinpqzk6n5z7d4yy9wo76n4vzr9l1k0roj5mtz6s3y7ceazsxiu6ffsivixiriamujp7uluz9b883zcq96k1ele7d09wsfqzgpdtku2vuz4ugzc8jh992unffeaeo1p8eid07roe6lb6sj2bxdruoz66ltx8gl8fdob3qdux922tyk3j516rubsffryjaanskeprfme39q049dkoh1l11uy589ehaxcz4u3y4zueyw1ybxzgxhylp2r6tvygcrjsrhfalqhvt2jzgpql7ixr8z9kn8jtw5jquol2ydtoqse8q3x4oqvlqfbyt4pr61xngc218w1bcja67cyvm140evyubdolutipdp7sdkwj7o095jpn01xyqb8bfk0kfba76z4l8bzhg9iob73cjgxvnt0rjqzgshvyd81meqp5j64pwzhy18w8gt8iejx4u0wpn2m7bxpgdafa2r7fy0barlk1aoh1c80b0e5o63rqsi15l1jadupm8512vsgb05czmq4uzn6x05pzvb685xwmsg962l2p1pw04v5qpaipzerdnr31i2q1r0ro9s6k9glvl7221aenelm2ti94dab39a5dajvvevs6qc83mifjn9dhhncl275oc3z4f28e5e8rhyld6efryac69umvpzmgqnyf3fjgo05zpxvwb3o68ja3wsw6mvpeoz5shs5a3xqi8dfijlw9b4m44plcpexpmtdeou25tu8ryvxfdzyn2ljqa9ejvd46f78j1c4qlsr8i0m0la6i0l1tgzr7xe711xeh2x489lelqp9k1af4sx102diwtmsru1wli4b05fn847ym1coejjjmih53kq1d9ti7jysc8v19h5ibrmguts8xw8ece7y71rjfga3l4vphdfgh6f3lb4toj602irdmb85v1wjz1xntfzwf2f70rbm4427h3cbreaml1b28jfldu1s9ujlao45aiklg6czusivi6kaswyywp6kkvmdbnreo57qp75g4wsai33fzby475unmo92703t2s0n1p3g1yys7pqtzl32ttty6t7gdy63fodhkbtuklblpd04l9smces36mpjggv9fnlfrkcbm1n30nnv9gwq9tp05poqdy50o9wh3jfzwvl03t20jxvdwqifci5m0wpmu95rl83p5rvlu9l6kf0u810u7mtguj2q5jmm73el0wp77tcmfk6gfhjnldjne28jerxgk3hnzufekiikcsktl4qheoi1w37yixzx36wakv0xa9idvdbaqr69nhja67cdqwy1f6btm4psfaq9plsc3ws20vmmwqd3ak5kuu5z5iufy4qo6wxwqeyhlrm06rsg7wevfrv6x9wmtumczupq1krncncy82959zlvtwoew8eaht21bv3ta7dmv8h3t0qu2we4scpxo8uz4l2lzd52stybihsv4nnygayii755cl2dhx5965z08bnud0661kubpbfdxe9vz6tmcnoq492r4edts4yumay8vmnrd9ihulxvcf1e5fv2ldigqvom9jfsilb0vsrmz64ykul232seuut4fxc4ysqrfpvguwhz5lmdfl1g5p4m73frkeyccjwnenba9lss9gvs6wx97wyn651r4ebbboavn20j76jc9t7fwbjk2i9v48tkxu8yn52sk3s9mdhu40cfpcfef55vwn4bsdhh2804gpvwsa8saxi3q75nmmdgqdwehz1j426utqgx05rqun89ofh68lqwkv1ofwsjrjais1az6try6bz0vlmw8tch4dkfimqjzpplogmcbl2aknrph66smqnq6p7rzk2ookxg1gwql5hp8r5xk7sepjd2j1xol0cspdvx0szy9ojbcs3kbh26o18hmbkba4k20tdulh6kcyt4c0fi4zwrj3zpv5v92kz794mtjuwimld2p21j2966fvzcbdk277whthnagu1feakrukn1xtt859zq73b9e5507yk2d7y39239hu8irggmh5zdtcbn6twp8fek49u485g3e17ev54o51rtkzau8dwuv5jg5a6ukg14c81wttnloadi4mm52nkgp5mrrdv5bzly81fxjhqz31qmexr59aw055mqrr84lpppweo2jiik6ec4ekvgugo3nb70u8jgvj9cwisdm1hsb5762fsnamyuxekodviw2mfftgvqn7ulppkks5xkfigoqi3s264hiukj0suk4xfhctzd741gnckwd6d3ni3hyz13382530k5yw6sxy7hdor0ne3lbnbd19wcpquydxfx7d2okf4tnorgsl2k0qowfb26aax7jdkl3k8cskpm1tey6oj4ai2bkz4z3jmvp60k55qv0dr4e5nn7ab8hg1uht8459d4tr3rbyotym9vcufgpb2st6btz7w8s4cqg787p1ugbfye4ccqwq9vam1qs635h01xyyxg8ze7odxgp1fc2o0aiwox391bldev790k8oaaqkot7gbh676n0d6w09pj11coc3v286ul0snxzasq7xpfn30q8mp3gm2kd1t8ieuylf88d5rz73rm8bkvgkaeuj8lxvnjm39o9skljpu2hb26ea0xoqxjiauotnwy67jf7oaonwwvi8oqr1fzky98ejq86b9yz9qodjlgukv9fp1640nntcc6edmq08ix319rg6crqt86ofrjq6b532zl50bqvbg1oxlpyj71z6fshapd8rf7n1eg39q6i2-w1-s2-v12:5" target="_blank" rel="noopener">
+            2p0s4dbh47b53<br>
+            8ghl110gig2yp<br>
+            7pmm2of41tgs4<br>
+            ...-w1-s2-v12</a>
+    </div>
+
+    <script src="dispatches.js"></script>
+    <script>
+        // ---------- Dispatch number + status ----------
+        // Reads the matching entry from window.DISPATCHES (loaded above) and
+        // populates the "no. NN · dispatch · STATUS" line over the title.
+        // Status values supported: 'draft', 'patch-N', 'finalized'.
+        // Editing dispatches.js updates the rendered page automatically —
+        // no need to touch this file when bumping a draft to patch-1, etc.
+        (function() {
+            var list = (window.DISPATCHES || []);
+            var id = document.body.dataset.essayId;
+            if (!id) return;
+            var entry = null;
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].id === id) { entry = list[i]; break; }
+            }
+            if (!entry) return;
+
+            var numEl = document.querySelector('.essay-number .num');
+            if (numEl && typeof entry.number === 'number') {
+                var n = entry.number;
+                numEl.textContent = 'no. ' + (n < 10 ? '0' + n : n);
+            }
+
+            // Top-right frame badge: pulsing dot + status text.
+            var badgeEl = document.querySelector('[data-frame-status]');
+            var badgeTx = document.querySelector('[data-frame-status-text]');
+            if (badgeEl && entry.status) {
+                // 'patch-2' -> 'PATCH 2', 'draft' -> 'DRAFT', 'finalized' -> 'FINALIZED'
+                if (badgeTx) badgeTx.textContent = entry.status.replace('-', ' ').toUpperCase();
+                badgeEl.setAttribute('data-status', entry.status);
+                badgeEl.hidden = false;
+            }
+        })();
+
+        // ---------- Essay nav (prev/next dispatches) ----------
+        (function() {
+            var list = (window.DISPATCHES || []).slice();
+            var nav = document.getElementById('essay-nav');
+            if (!nav) return;
+            function collapse() { nav.classList.add('is-empty'); }
+            if (!list.length) { collapse(); return; }
+            var id = document.body.dataset.essayId;
+            var idx = -1;
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].id === id) { idx = i; break; }
+            }
+            if (idx < 0) { collapse(); return; }
+            // Array is most-recent first, so:
+            // older  -> idx + 1
+            // newer  -> idx - 1
+            var older = list[idx + 1] || null;
+            var newer = list[idx - 1] || null;
+
+            var prevSlot = nav.querySelector('.essay-nav-prev');
+            var nextSlot = nav.querySelector('.essay-nav-next');
+
+            function renderSlot(slot, dispatch, labelText) {
+                if (dispatch) {
+                    var a = document.createElement('a');
+                    a.className = slot.className.replace('essay-nav-empty', '');
+                    a.href = dispatch.url;
+                    a.innerHTML = '<span class="essay-nav-label">' + labelText + '</span>' +
+                                  '<span class="essay-nav-title">' + dispatch.title + '</span>';
+                    slot.parentNode.replaceChild(a, slot);
+                }
+            }
+            renderSlot(prevSlot, older, '&larr; older');
+            renderSlot(nextSlot, newer, 'newer &rarr;');
+
+            // If neither slot turned into a real link, collapse the
+            // whole nav row (border + spacing) so the essay ends with
+            // the subscribe form, not an empty horizontal rule.
+            if (!nav.querySelector('a')) {
+                nav.classList.add('is-empty');
+            }
+        })();
+
+        // ---------- Reading light (cursor follower) ----------
+        (function() {
+            var light = document.querySelector('.reading-light');
+            if (!light) return;
+            if (window.matchMedia('(hover: none)').matches) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            var targetX = window.innerWidth / 2;
+            var targetY = window.innerHeight / 2;
+            var currentX = targetX;
+            var currentY = targetY;
+            var rafId = null;
+            var active = false;
+
+            function step() {
+                currentX += (targetX - currentX) * 0.22;
+                currentY += (targetY - currentY) * 0.22;
+                light.style.setProperty('--mx', currentX + 'px');
+                light.style.setProperty('--my', currentY + 'px');
+                if (Math.abs(targetX - currentX) > 0.4 || Math.abs(targetY - currentY) > 0.4) {
+                    rafId = requestAnimationFrame(step);
+                } else {
+                    rafId = null;
+                }
+            }
+
+            document.addEventListener('mousemove', function(e) {
+                targetX = e.clientX;
+                targetY = e.clientY;
+                if (!active) {
+                    light.classList.add('active');
+                    active = true;
+                }
+                if (!rafId) rafId = requestAnimationFrame(step);
+            }, { passive: true });
+
+            document.addEventListener('mouseleave', function() {
+                light.classList.remove('active');
+                active = false;
+            });
+        })();
+
+        (function() {
+            var SVG_NS = 'http://www.w3.org/2000/svg';
+            var layout = document.querySelector('.essay-layout');
+            var body = document.querySelector('.essay-body');
+            var notes = document.querySelector('.essay-notes');
+            var svg = document.querySelector('.essay-wires');
+            var refs = Array.prototype.slice.call(document.querySelectorAll('.fnref'));
+            var footnotes = Array.prototype.slice.call(document.querySelectorAll('.footnote'));
+            var stackedMQ = window.matchMedia('(max-width: 880px)');
+            var clearTimer = null;
+
+            function isStacked() {
+                return stackedMQ.matches;
+            }
+
+            function snap20(v) {
+                return Math.round(v / 20) * 20;
+            }
+
+            function layoutFootnotes() {
+                if (isStacked()) {
+                    notes.style.minHeight = '';
+                    footnotes.forEach(function(f) { f.style.top = ''; });
+                    sizeSvg();
+                    return;
+                }
+                var containerRect = notes.getBoundingClientRect();
+                var items = refs.map(function(ref) {
+                    var fnId = ref.dataset.fn;
+                    var note = document.getElementById('fn-' + fnId);
+                    if (!note) return null;
+                    var refRect = ref.getBoundingClientRect();
+                    var targetY = Math.max(0, Math.round(refRect.top - containerRect.top - 4));
+                    return { note: note, targetY: targetY };
+                }).filter(Boolean);
+
+                items.sort(function(a, b) { return a.targetY - b.targetY; });
+
+                var lastBottom = 0;
+                var gap = 16;
+                items.forEach(function(item) {
+                    var y = Math.max(item.targetY, lastBottom + gap);
+                    item.note.style.top = y + 'px';
+                    lastBottom = y + item.note.offsetHeight;
+                });
+                notes.style.minHeight = lastBottom + 'px';
+                sizeSvg();
+            }
+
+            function sizeSvg() {
+                var w = layout.clientWidth;
+                var h = layout.clientHeight;
+                svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+                svg.setAttribute('width', w);
+                svg.setAttribute('height', h);
+            }
+
+            function clearWires() {
+                while (svg.firstChild) svg.removeChild(svg.firstChild);
+            }
+
+            function createSvg(tag, attrs) {
+                var el = document.createElementNS(SVG_NS, tag);
+                Object.keys(attrs).forEach(function(k) { el.setAttribute(k, attrs[k]); });
+                return el;
+            }
+
+            // Shared gutter column, computed once per layout so every wire
+            // bends at the same X. Snapped to the 20px dot-grid.
+            var sharedGutterX = null;
+            function computeGutterX() {
+                if (isStacked()) { sharedGutterX = null; return; }
+                var layoutRect = layout.getBoundingClientRect();
+                var bodyRect = body.getBoundingClientRect();
+                var notesRect = notes.getBoundingClientRect();
+                var gutterLeft = (bodyRect.right - layoutRect.left) + 8;
+                var gutterRight = (notesRect.left - layoutRect.left) - 8;
+                var mid = (gutterLeft + gutterRight) / 2;
+                var snapped = snap20(mid);
+                if (snapped < gutterLeft) snapped = Math.ceil(gutterLeft);
+                if (snapped > gutterRight) snapped = Math.floor(gutterRight);
+                sharedGutterX = snapped;
+            }
+
+            var ARCHETYPE_WIRE = {
+                logic:    { stroke: 'rgba(184, 134, 45, 0.32)',  dot: '#B8862D' },
+                instinct: { stroke: 'rgba(173, 124, 132, 0.36)', dot: '#AD7C84' },
+                psyche:   { stroke: 'rgba(101, 141, 164, 0.36)', dot: '#658DA4' }
+            };
+
+            function drawWire(ref, note) {
+                sizeSvg();
+                clearWires();
+                if (isStacked()) return;
+                if (sharedGutterX === null) computeGutterX();
+                var archetype = ref.getAttribute('data-archetype');
+                var palette = ARCHETYPE_WIRE[archetype] || null;
+
+                var layoutRect = layout.getBoundingClientRect();
+                var refRect = ref.getBoundingClientRect();
+                var noteRect = note.getBoundingClientRect();
+
+                // ELBOW RULES:
+                //   - Wire begins at right edge of the footnote ref (with 2px breath)
+                //   - Wire ends at left edge of the footnote (with 4px breath), at
+                //     the vertical midpoint of the marker line so it points "at" the number
+                //   - Horizontal runs snap to the nearest 20px grid line for visual rhythm
+                //     against the dot field. We move BOTH endpoints to grid-aligned Ys
+                //     when possible (won't shift by more than ~10px from their natural Y)
+                //   - All wires bend at the same gutter X (sharedGutterX)
+                // The origin endpoint sits at the bottom-right corner of the
+                // footnote ref number so the wire reads as exiting the digit
+                // diagonally, not bisecting it. `refRect.bottom - 2` parks the
+                // dot just inside the baseline so single- and double-digit
+                // numbers (1, 9, 10) all anchor consistently in the same
+                // visual position. A 1px x offset gives a hair of breath
+                // between the digit and the dot.
+                var x1 = (refRect.right - layoutRect.left) + 1;
+                var rawY1 = (refRect.bottom - layoutRect.top) - 2;
+                var x2 = (noteRect.left - layoutRect.left) - 4;
+                var rawY2 = (noteRect.top - layoutRect.top) + 14;
+
+                // y1 stays raw (always pinned to the digit's bottom-right);
+                // y2 still snaps to the 20px grid so the right-column wire
+                // endpoints rhyme with the dot field.
+                var y1 = rawY1;
+                var y2 = snap20(rawY2);
+                if (Math.abs(y2 - rawY2) > 10) y2 = rawY2;
+
+                var midX = sharedGutterX;
+
+                var d;
+                if (Math.abs(y1 - y2) < 1) {
+                    // Same row — single straight line, no elbows
+                    d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
+                        ' L ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
+                } else {
+                    d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
+                        ' L ' + midX + ' ' + y1.toFixed(1) +
+                        ' L ' + midX + ' ' + y2.toFixed(1) +
+                        ' L ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
+                }
+
+                var path = createSvg('path', { d: d, 'class': 'wire-path' });
+                if (palette) path.style.stroke = palette.stroke;
+                svg.appendChild(path);
+
+                var len = path.getTotalLength();
+                path.style.strokeDasharray = len;
+                path.style.strokeDashoffset = len;
+                path.style.transition = 'stroke-dashoffset 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+                path.getBoundingClientRect();
+                path.style.strokeDashoffset = 0;
+
+                var endpoints = [
+                    { x: x1, y: y1, delay: 0 },
+                    { x: x2, y: y2, delay: 460 }
+                ];
+                endpoints.forEach(function(p) {
+                    var c = createSvg('circle', {
+                        cx: p.x.toFixed(1),
+                        cy: p.y.toFixed(1),
+                        r: 1.5,
+                        'class': 'wire-dot'
+                    });
+                    if (palette) c.style.fill = palette.dot;
+                    c.style.opacity = 0;
+                    svg.appendChild(c);
+                    setTimeout(function() {
+                        c.classList.add('pulse');
+                    }, p.delay);
+                });
+            }
+
+            function activate(fnId) {
+                if (isStacked()) return;
+                if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
+                var ref = document.querySelector('.fnref[data-fn="' + fnId + '"]');
+                var note = document.getElementById('fn-' + fnId);
+                if (!ref || !note) return;
+                refs.forEach(function(r) { r.classList.remove('linked'); });
+                footnotes.forEach(function(f) { f.classList.remove('linked'); });
+                ref.classList.add('linked');
+                note.classList.add('linked');
+                drawWire(ref, note);
+            }
+
+            function deactivate() {
+                if (isStacked()) return;
+                if (clearTimer) clearTimeout(clearTimer);
+                clearTimer = setTimeout(function() {
+                    refs.forEach(function(r) { r.classList.remove('linked'); });
+                    footnotes.forEach(function(f) { f.classList.remove('linked'); });
+                    clearWires();
+                    clearTimer = null;
+                }, 90);
+            }
+
+            function setupHover() {
+                refs.concat(footnotes).forEach(function(el) {
+                    var fnId = el.dataset.fn;
+                    el.addEventListener('mouseenter', function() { activate(fnId); });
+                    el.addEventListener('mouseleave', deactivate);
+                    el.addEventListener('focusin', function() { activate(fnId); });
+                    el.addEventListener('focusout', deactivate);
+                });
+            }
+
+            var resizeTimer = null;
+            function onResize() {
+                if (resizeTimer) clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    layoutFootnotes();
+                    computeGutterX();
+                    clearWires();
+                }, 80);
+            }
+
+            function init() {
+                layoutFootnotes();
+                computeGutterX();
+                clearWires();
+                setupHover();
+                window.addEventListener('resize', onResize);
+                if (stackedMQ.addEventListener) {
+                    stackedMQ.addEventListener('change', onResize);
+                } else if (stackedMQ.addListener) {
+                    stackedMQ.addListener(onResize);
+                }
+            }
+
+            if (document.readyState === 'complete') {
+                init();
+            } else {
+                window.addEventListener('load', init);
+            }
+            // Re-layout once webfonts are loaded (font metrics shift positions)
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(function() {
+                    layoutFootnotes();
+                    computeGutterX();
+                    clearWires();
+                });
+            }
+        })();
+
+        // ---------- Easter egg (matches the landing) ----------
+        (function() {
+            var wrap = document.querySelector('.egg-wrap');
+            var egg = document.querySelector('.easter-egg');
+            var shell = document.querySelector('.egg-shell');
+            var cracks = document.querySelectorAll('.crack');
+            var catalogueId = document.querySelector('.catalogue-id');
+            if (!wrap || !egg || !shell || !catalogueId) return;
+            var taps = 0;
+            var shakeClasses = ['egg-shake-1', 'egg-shake-2', 'egg-shake-3'];
+
+            egg.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (taps >= 3) return;
+                taps++;
+
+                shakeClasses.forEach(function(c) { shell.classList.remove(c); });
+                void shell.offsetWidth;
+                shell.classList.add(shakeClasses[taps - 1]);
+
+                for (var i = 0; i < taps; i++) {
+                    cracks[i].classList.add('visible');
+                }
+
+                if (taps >= 3) {
+                    var startW = wrap.offsetWidth;
+                    var startH = wrap.offsetHeight;
+                    wrap.style.width = startW + 'px';
+                    wrap.style.height = startH + 'px';
+                    wrap.style.overflow = 'hidden';
+
+                    setTimeout(function() {
+                        shell.classList.add('egg-split');
+
+                        setTimeout(function() {
+                            egg.style.position = 'absolute';
+                            egg.style.visibility = 'hidden';
+                            catalogueId.classList.add('measured');
+
+                            void wrap.offsetWidth;
+                            var targetW = catalogueId.offsetWidth + parseFloat(getComputedStyle(wrap).paddingLeft) * 2;
+                            var targetH = catalogueId.offsetHeight + parseFloat(getComputedStyle(wrap).paddingTop) * 2;
+
+                            requestAnimationFrame(function() {
+                                wrap.style.width = targetW + 'px';
+                                wrap.style.height = targetH + 'px';
+
+                                setTimeout(function() {
+                                    egg.style.display = 'none';
+                                    catalogueId.classList.add('revealed');
+                                    wrap.style.overflow = '';
+                                    setTimeout(function() {
+                                        wrap.style.width = '';
+                                        wrap.style.height = '';
+                                    }, 100);
+                                }, 700);
+                            });
+                        }, 600);
+                    }, 500);
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

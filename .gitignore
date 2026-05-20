@@ -1,0 +1,8 @@
+.DS_Store
+
+logo-gold-backup.png
+
+# Lottie JSON sources from an abandoned experiment — PNG stickers are the
+# canonical assets. Keep on disk locally in case we revisit, but don't ship
+# 5.5 MB of unused payload to the live site.
+assets/stickers/*.lottie.json

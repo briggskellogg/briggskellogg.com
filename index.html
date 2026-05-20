@@ -16,17 +16,18 @@
             box-sizing: border-box;
         }
         :root {
-            --bg:       #868662;
-            --ink:      #F7BC8B;
-            --ink-80:   rgba(247, 188, 139, 1.0);
-            --ink-50:   rgba(247, 188, 139, 0.67);
-            --ink-20:   rgba(247, 188, 139, 0.32);
-            --ink-12:   rgba(247, 188, 139, 0.18);
-            --gold:     #D4A24C;
+            --bg:       #818960;
+            --ink:      #FFBC8C;
+            --ink-80:   rgba(255, 188, 140, 1.0);
+            --ink-50:   rgba(255, 188, 140, 0.67);
+            --ink-25:   rgba(255, 188, 140, 0.40);
+            --ink-20:   rgba(255, 188, 140, 0.32);
+            --ink-12:   rgba(255, 188, 140, 0.18);
             --silver:   #B8B2A3;
-            --instinct: #AE7D83;
-            --psyche:   #7389A1;
-            --logic:    #FBE1B6;
+            --instinct: #AD7C84;
+            --psyche:   #658DA4;
+            --logic:    #FFE2B9;
+            --orange:   #D37B50;
         }
         html, body {
             height: 100%;
@@ -38,7 +39,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 2rem 2rem 5.5rem;
             position: relative;
             overflow: hidden;
         }
@@ -54,10 +55,158 @@
             pointer-events: none;
             z-index: 0;
         }
+        /* Playlists module — bottom-right framed corner element.
+           Matches the modular vocabulary used by .egg-wrap and .rights
+           (corner brackets, internal padding, content stacked vertically).
+           Stickers keep their rotations for character but lose the
+           negative-translate overlap so the cluster has a clean
+           rectangular footprint the brackets can frame. */
+        .stickers {
+            position: fixed;
+            bottom: 1.4rem;
+            right: 1.3rem;
+            z-index: 10;
+            padding: 0.7rem 0.9rem 0.55rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            /* Opaque page bg covers the dot grid behind the box so the
+               module reads as a discrete surface, not transparent chrome
+               with the grid bleeding through. */
+            background-color: var(--bg);
+        }
+        .stickers .sc {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+        }
+        /* Bottom-chrome modal borders all share the same color
+           (var(--ink-25)) so playlists, rights, and the egg read as one
+           family of corner-bracketed footer modules. */
+        .stickers .sc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .stickers .sc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .stickers .sc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .stickers .sc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .stickers-eyebrow {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+            text-align: center;
+            padding-left: 0.28em;
+        }
+        /* Stickers overlap (negative margins + rotations) so the cluster
+           reads as a stacked pile of stickers on a fridge, not three
+           separate tiles. Z-index ordering puts nest on top of slash on
+           top of build; the hover lift bumps z-index higher still. */
+        .stickers-row {
+            display: flex;
+            align-items: flex-end;
+        }
+        .sticker {
+            position: relative;
+            display: block;
+            width: 60px;
+            height: 60px;
+            text-decoration: none;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18))
+                    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        filter 0.35s ease;
+            will-change: transform;
+        }
+        .sticker img,
+        .sticker .sticker-img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            pointer-events: none;
+            user-select: none;
+        }
+        .sticker-build  { transform: rotate(-9deg); z-index: 1; }
+        .sticker-slash  { transform: rotate(6deg);  margin-left: -14px; z-index: 2; }
+        .sticker-nest   { transform: rotate(-4deg); margin-left: -16px; width: 64px; height: 64px; z-index: 3; }
+        .sticker:hover {
+            transform: rotate(0deg) scale(1.12) translateY(-4px);
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25))
+                    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+            z-index: 11;
+        }
+        /* Tag row below the stickers — surfaces only on hover (on devices
+           that have hover). On touch devices the labels stay visible so
+           the build/slash/nest = logic/instinct/psyche mapping isn't
+           hidden behind a gesture that doesn't exist there. */
+        .stickers-tags {
+            display: flex;
+            align-items: center;
+            gap: 0.45em;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.46rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+        }
+        @media (hover: hover) {
+            /* Tags are faded by default — the structure is legible without
+               interaction but the individual labels recede until you point
+               at a sticker. Hovering a sticker brightens *only* the
+               matching label and tints it with the archetype color, so the
+               sticker→faculty mapping is reinforced live as you explore. */
+            .sticker-tag,
+            .sticker-sep {
+                opacity: 0.4;
+                transition: opacity 0.3s ease, color 0.3s ease;
+            }
+            .stickers:has(.sticker[data-archetype="logic"]:hover) .sticker-tag[data-archetype="logic"],
+            .stickers:has(.sticker[data-archetype="logic"]:focus-visible) .sticker-tag[data-archetype="logic"] {
+                opacity: 1;
+                color: #B8862D;
+            }
+            .stickers:has(.sticker[data-archetype="instinct"]:hover) .sticker-tag[data-archetype="instinct"],
+            .stickers:has(.sticker[data-archetype="instinct"]:focus-visible) .sticker-tag[data-archetype="instinct"] {
+                opacity: 1;
+                color: var(--instinct);
+            }
+            .stickers:has(.sticker[data-archetype="psyche"]:hover) .sticker-tag[data-archetype="psyche"],
+            .stickers:has(.sticker[data-archetype="psyche"]:focus-visible) .sticker-tag[data-archetype="psyche"] {
+                opacity: 1;
+                color: var(--psyche);
+            }
+        }
+        .sticker-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+        }
+        .sticker-sep {
+            color: var(--ink-12);
+        }
+        .sticker-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            display: inline-block;
+            background: var(--ink-50);
+        }
+        /* Each playlist tags its faculty:
+             build = Logic    (structure, repetition, the work loop)
+             slash = Instinct (cut, attack, gut decision)
+             nest  = Psyche   (inner world, reflection, sit)
+           Canonical --logic is the cream paper color, which barely shows
+           on the landing's green field, so the logic dot reaches for the
+           deep gold variant. Instinct and psyche read with full contrast
+           on green and use their canonical brand values. */
+        .sticker-tag[data-archetype="logic"]    .sticker-dot { background: #B8862D; }
+        .sticker-tag[data-archetype="instinct"] .sticker-dot { background: var(--instinct); }
+        .sticker-tag[data-archetype="psyche"]   .sticker-dot { background: var(--psyche); }
         .egg-wrap {
             position: fixed;
             bottom: 1.25rem;
-            right: 1.5rem;
+            left: 1.5rem;
             z-index: 10;
             padding: 0.5rem 0.6rem;
             display: flex;
@@ -66,16 +215,19 @@
             transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
                         height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
                         padding 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            /* Opaque page bg covers the dot grid behind the egg. */
+            background-color: var(--bg);
         }
         .egg-wrap .cc {
             position: absolute;
             width: 6px;
             height: 6px;
         }
-        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
-        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
-        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-left: 1px solid rgba(184, 178, 163, 0.35); }
-        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid rgba(184, 178, 163, 0.35); border-right: 1px solid rgba(184, 178, 163, 0.35); }
+        /* Same ink-25 border as the other footer modules. */
+        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
         .easter-egg {
             cursor: pointer;
             width: 30px;
@@ -215,7 +367,7 @@
             transform: translate(-50%, -50%);
             background-image: radial-gradient(
                 circle,
-                rgba(247, 188, 139, 0.18) 1px,
+                rgba(255, 188, 140, 0.18) 1px,
                 transparent 1px
             );
             background-size: 20px 20px;
@@ -247,16 +399,16 @@
                     100deg,
                     transparent 0%,
                     transparent 40%,
-                    rgba(255, 248, 220, 0.45) 48%,
-                    rgba(255, 255, 255, 0.7) 50%,
-                    rgba(255, 248, 220, 0.45) 52%,
+                    rgba(255, 226, 185, 0.45) 48%,
+                    rgba(255, 240, 220, 0.85) 50%,
+                    rgba(255, 226, 185, 0.45) 52%,
                     transparent 60%,
                     transparent 100%
                 ),
                 linear-gradient(
                     180deg,
-                    #D4A24C 0%,
-                    #D4A24C 100%
+                    var(--ink) 0%,
+                    var(--ink) 100%
                 );
             background-size: 260% 100%, 100% 100%;
             background-position: 200% 0, 0 0;
@@ -270,11 +422,11 @@
             -webkit-mask-position: center;
                     mask-position: center;
             filter:
-                drop-shadow(0 1px 0 rgba(0, 0, 0, 0.20))
-                drop-shadow(0 0 8px rgba(212, 162, 76, 0.3));
-            animation: gold-sweep 5s linear infinite;
+                drop-shadow(0 1px 0 rgba(0, 0, 0, 0.18))
+                drop-shadow(0 0 10px rgba(255, 188, 140, 0.25));
+            animation: peach-sweep 5s linear infinite;
         }
-        @keyframes gold-sweep {
+        @keyframes peach-sweep {
             from { background-position: 200% 0, 0 0; }
             to   { background-position: -200% 0, 0 0; }
         }
@@ -371,6 +523,264 @@
         .quote-dot.active {
             background: var(--ink-50);
         }
+        .dispatch-wrap {
+            text-align: center;
+            margin: 2.2rem auto 0;
+            padding: 0 1rem;
+        }
+        .dispatch-shelf {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.1rem;
+        }
+        .dispatch-arrow {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            background: transparent;
+            border: none;
+            color: var(--ink-50);
+            cursor: pointer;
+            padding: 0.5rem 0.4rem;
+            line-height: 1;
+            transition: color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .dispatch-arrow:hover { color: var(--ink); }
+        .dispatch-arrow:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+            color: var(--ink-50);
+        }
+        .dispatch-prev:hover:not(:disabled) { transform: translateX(-2px); }
+        .dispatch-next:hover:not(:disabled) { transform: translateX(2px); }
+        .dispatch-shelf.single .dispatch-arrow { display: none; }
+        .dispatch-index {
+            font-variant-numeric: tabular-nums;
+        }
+        /* Version status surfaced on the dispatch card (draft / patch N /
+           finalized). Color-coded so the state of the piece reads at a
+           glance: draft = instinct (raw), patch = logic (revision in
+           progress), finalized = psyche (settled). A pulsing dot precedes
+           the text while the piece is still alive (draft / patch); the
+           pulse stops once the piece is finalized. */
+        .dispatch-status {
+            display: inline-flex;
+            align-items: center;
+            /* Generous gap — the pulse ring expands the dot by ~2.4x,
+               so a small gap would let the pulse brush the first
+               letter of the status text. */
+            gap: 1em;
+            font-variant-numeric: tabular-nums;
+        }
+        /* Status colors — canonical archetypes, matching the essay
+           page's frame-status badge:
+             draft     → instinct rose (canonical, also matches the
+                         corner alive-signal dot above)
+             patch-N   → deep gold (canonical Logic deepened, #B8862D
+                         — overridden further down because canonical
+                         Logic itself is the cream paper color and
+                         disappears against the landing's green field)
+             finalized → psyche blue. */
+        .dispatch-status[data-status="draft"]     { color: var(--instinct); }
+        .dispatch-status[data-status^="patch"]    { color: var(--logic); }
+        .dispatch-status[data-status="finalized"] { color: var(--psyche); }
+
+        /* Corner alive-signal dot on the dispatch box. Inset well
+           inside the corner bracket so it sits between the bracket
+           and the body text, not crowding the corner itself.
+
+           Color + pulse intentionally match the essay page's
+           frame-status badge exactly:
+             - canonical archetype colors (instinct rose for draft,
+               deep gold for patch, psyche blue for finalized — same
+               values the essay's --instinct / --logic (deepened) /
+               --psyche resolve to on that surface)
+             - same statusPulse keyframe + duration as the essay
+           so the two surfaces speak the same alive-signal vocabulary. */
+        .dispatch-mark {
+            position: absolute;
+            /* Tucked into the top-right corner bracket itself, not floating
+               midway between the bracket and the text — so the alive-signal
+               reads as a corner indicator, not a stray dot. */
+            top: 0.55rem;
+            right: 0.6rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            color: var(--ink-50);
+            pointer-events: none;
+            z-index: 2;
+        }
+        .dispatch-mark::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: currentColor;
+            transform-origin: center;
+            /* Slightly wider pulse than the essay's frame-status because
+               the corner dot has no accompanying text to anchor it — the
+               extra reach makes the heartbeat read at a glance. */
+            animation: dispatchMarkPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes dispatchMarkPulse {
+            0%   { transform: scale(1);   opacity: 0.85; }
+            70%  { transform: scale(3.4); opacity: 0;    }
+            100% { transform: scale(3.4); opacity: 0;    }
+        }
+        .dispatch-mark[data-status="draft"]     { color: var(--instinct); }
+        .dispatch-mark[data-status^="patch"]    { color: #B8862D; }
+        .dispatch-mark[data-status="finalized"] { color: var(--psyche); }
+        .dispatch-mark[data-status="finalized"]::after { display: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .dispatch-mark::after { animation: none; }
+        }
+
+        .status-dot {
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            flex-shrink: 0;
+        }
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: currentColor;
+            transform-origin: center;
+            animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes statusPulse {
+            0%   { transform: scale(1);   opacity: 0.55; }
+            70%  { transform: scale(2.4); opacity: 0; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+        /* Finalized pieces are settled — no pulse. */
+        [data-status="finalized"] .status-dot::after { display: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .status-dot::after { animation: none; }
+        }
+
+        /* Single-line framed rights footer. Same vocabulary used on the
+           essay page (where it's inline, not fixed). */
+        .rights {
+            position: fixed;
+            bottom: 1.4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            z-index: 10;
+            padding: 0.55rem 1.1rem;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+            white-space: nowrap;
+            /* Opaque page bg covers the dot grid behind the line. */
+            background-color: var(--bg);
+        }
+        .rights .rights-mark { margin-right: 0.6em; letter-spacing: 0; }
+        /* Pipe separator between the byline and the rights notice. Inherits
+           the footer's tracked uppercase rhythm so it reads as part of the
+           same line, not a stray glyph; sits at half-strength of the body
+           text so it's clearly present without competing for attention. */
+        .rights .rights-sep {
+            display: inline-block;
+            margin: 0 0.85em;
+            color: var(--ink-50);
+            opacity: 0.55;
+            letter-spacing: 0;
+            transform: translateY(-0.05em);
+        }
+        .rights .rc {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+        }
+        .rights .rc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .rights .rc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .rights .rc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .rights .rc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        /* Dispatch card — sits on the green field directly. Same modal
+           vocabulary as the egg and rights footer (corner brackets,
+           peach ink). Logic-coded elements that need to read on green
+           (build-archetype dot, patch-status text) reach for the deep
+           gold variant; everything else uses the canonical landing
+           palette so the surface stays internally consistent. */
+        .dispatch {
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            /* Bigger interior so the corner alive-signal dot has
+               breathing room between the bracket and the label. */
+            padding: 1.5rem 1.9rem 1.35rem;
+            /* Opaque page bg covers the dot grid behind the dispatch box
+               so the modal reads as a discrete surface, not transparent
+               chrome with the grid bleeding through. */
+            background-color: var(--bg);
+            transition: background 0.25s ease;
+        }
+        .dispatch .dc {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            transition: border-color 0.25s ease;
+        }
+        .dispatch .dc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-50); border-left: 1px solid var(--ink-50); }
+        .dispatch .dc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-50); border-right: 1px solid var(--ink-50); }
+        .dispatch .dc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-50); border-left: 1px solid var(--ink-50); }
+        .dispatch .dc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-50); border-right: 1px solid var(--ink-50); }
+        .dispatch-label {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 0.85rem;
+            transition: color 0.2s ease;
+        }
+        .dispatch-title {
+            display: block;
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.22rem;
+            line-height: 1.35;
+            color: var(--ink);
+            transition: color 0.2s ease;
+        }
+        .dispatch-cta {
+            margin-top: 0.7rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            transition: color 0.2s ease;
+        }
+        .dispatch-cta .arr {
+            display: inline-block;
+            padding-left: 0.3em;
+            transition: transform 0.2s ease;
+        }
+        .dispatch:hover .dispatch-title { color: var(--logic); }
+        .dispatch:hover .dispatch-cta,
+        .dispatch:hover .dispatch-label { color: var(--ink); }
+        .dispatch:hover .dc { border-color: var(--ink); }
+        .dispatch:hover .dispatch-cta .arr { transform: translateX(3px); }
+        /* Patch status reaches for the deep gold variant — canonical
+           --logic is the cream paper color (#FFE2B9), which is barely
+           visible on the green landing surface. The deep gold reads
+           with full contrast while still belonging to the logic family. */
+        .dispatch-status[data-status^="patch"] { color: #B8862D; }
         .links-wrap {
             border-top: 1px solid var(--ink-12);
             padding-top: 1.4rem;
@@ -426,7 +836,29 @@
             text-transform: uppercase;
             color: var(--ink-50);
             margin-bottom: 0.4rem;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
         }
+        /* Archetype dot rendered as a leading marker, same vocabulary as
+           the essay's footnote dot (small filled circle, archetype-coded).
+           Games → logic (cream/deep gold for visibility on green), films →
+           psyche (blue), musicians → instinct (rose). The dot replaces the
+           old sub-1px underline — same archetype mapping, more legible
+           syntax that rhymes with the footnotes on the essay page. */
+        .recs-label::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            margin-right: 0.55em;
+            background: currentColor;
+            opacity: 0.55;
+        }
+        .recs-group--logic    .recs-label::before { background: #B8862D; opacity: 0.85; }
+        .recs-group--psyche   .recs-label::before { background: var(--psyche); opacity: 0.85; }
+        .recs-group--instinct .recs-label::before { background: var(--instinct); opacity: 0.85; }
         .recs-items {
             display: flex;
             flex-wrap: wrap;
@@ -475,7 +907,7 @@
         .recs-updated .uc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
         @media (max-width: 480px) {
             body {
-                padding: 0.75rem;
+                padding: 0.75rem 0.75rem 4.5rem;
             }
             .frame {
                 padding: 1.5rem 1.25rem;
@@ -505,6 +937,52 @@
                 margin-top: 0.7rem;
                 margin-bottom: 1.5rem;
             }
+            .dispatch-wrap {
+                margin-top: 1.4rem;
+                padding: 0 0.5rem;
+            }
+            .dispatch-shelf { gap: 0.5rem; }
+            .dispatch-arrow { font-size: 0.85rem; padding: 0.4rem 0.25rem; }
+            .rights {
+                position: static;
+                transform: none;
+                left: auto;
+                bottom: auto;
+                margin: 1.6rem auto 0;
+                padding: 0.4rem 0.7rem;
+                font-size: 0.42rem;
+                letter-spacing: 0.18em;
+                white-space: normal;
+            }
+            .rights .rc { width: 5px; height: 5px; }
+            .dispatch {
+                padding: 0.85rem 1.1rem 0.8rem;
+            }
+            .dispatch .dc {
+                width: 6px;
+                height: 6px;
+            }
+            .dispatch-label {
+                font-size: 0.5rem;
+                margin-bottom: 0.55rem;
+            }
+            .dispatch-title {
+                font-size: 1.05rem;
+            }
+            .dispatch-cta {
+                margin-top: 0.55rem;
+                font-size: 0.5rem;
+            }
+            .stickers { bottom: 0.85rem; right: 0.65rem; gap: 0.5rem; padding: 0.55rem 0.7rem 0.45rem; }
+            .stickers .sc { width: 5px; height: 5px; }
+            .stickers-eyebrow { font-size: 0.44rem; letter-spacing: 0.22em; padding-left: 0.22em; }
+            .stickers-row { gap: 3px; }
+            .sticker { width: 44px; height: 44px; }
+            .sticker-build  { transform: rotate(-9deg); }
+            .sticker-slash  { transform: rotate(6deg); }
+            .sticker-nest   { width: 48px; height: 48px; transform: rotate(-4deg); }
+            .stickers-tags { font-size: 0.4rem; gap: 0.3em; letter-spacing: 0.14em; }
+            .sticker-dot { width: 4px; height: 4px; }
             .links-wrap {
                 padding-top: 1rem;
             }
@@ -541,7 +1019,7 @@
             }
             .egg-wrap {
                 bottom: 0.75rem;
-                right: 0.75rem;
+                left: 0.75rem;
                 padding: 0.4rem 0.5rem;
             }
             .egg-wrap .cc {
@@ -638,7 +1116,7 @@
                         <span class="recs-sep">/</span>
                         <a href="https://discoelysium.com/" target="_blank" rel="noopener">disco elysium</a>
                         <span class="recs-sep">/</span>
-                        <a href="https://starcraft2.blizzard.com/" target="_blank" rel="noopener">starcraft ii</a>
+                        <a href="https://playvalorant.com/" target="_blank" rel="noopener">valorant</a>
                     </div>
                 </div>
                 <div class="recs-group recs-group--psyche">
@@ -666,11 +1144,67 @@
                     <span class="uc uc-tr"></span>
                     <span class="uc uc-bl"></span>
                     <span class="uc uc-br"></span>
-                    updated apr 2026
+                    updated may 2026
                 </div>
             </div>
         </div>
+
+        <section class="dispatch-wrap" aria-label="Latest dispatch">
+            <div class="dispatch-shelf">
+                <button class="dispatch-arrow dispatch-prev" type="button" aria-label="Older dispatch" disabled>&larr;</button>
+                <a class="dispatch" id="dispatch-card" href="essay.html">
+                    <span class="dc dc-tl"></span>
+                    <span class="dc dc-tr"></span>
+                    <span class="dc dc-bl"></span>
+                    <span class="dc dc-br"></span>
+                    <!-- Alive-signal dot in the top-right corner of the
+                         dispatch box. Color + pulse are driven by
+                         data-status (set from JS). Always rendered so a
+                         fresh draft still shows the pulse — the in-label
+                         status pill below carries only the optional text
+                         for patch/finalized states. -->
+                    <span class="dispatch-mark" data-dispatch-mark hidden aria-hidden="true"></span>
+                    <div class="dispatch-label"><span class="dispatch-index">no. 01</span> &middot; <span class="dispatch-date">may 2026</span><span class="dispatch-status-sep" hidden> &middot; </span><span class="dispatch-status" hidden><span class="dispatch-status-text"></span></span></div>
+                    <div class="dispatch-title">&ldquo;On Being Booed&rdquo;</div>
+                    <div class="dispatch-cta">read the essay <span class="arr">&rarr;</span></div>
+                </a>
+                <button class="dispatch-arrow dispatch-next" type="button" aria-label="Newer dispatch" disabled>&rarr;</button>
+            </div>
+        </section>
+
     </main>
+    <footer class="rights">
+        <span class="rc rc-tl"></span>
+        <span class="rc rc-tr"></span>
+        <span class="rc rc-bl"></span>
+        <span class="rc rc-br"></span>
+        <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">|</span>all rights reserved
+    </footer>
+    <nav class="stickers" aria-label="Playlists">
+        <span class="sc sc-tl"></span>
+        <span class="sc sc-tr"></span>
+        <span class="sc sc-bl"></span>
+        <span class="sc sc-br"></span>
+        <div class="stickers-eyebrow">playlists</div>
+        <div class="stickers-row">
+            <a class="sticker sticker-build" data-archetype="logic" href="https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30" target="_blank" rel="noopener" aria-label="Build playlist on Spotify — Logic">
+                <img src="assets/stickers/build.png" alt="" class="sticker-img">
+            </a>
+            <a class="sticker sticker-slash" data-archetype="instinct" href="https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec" target="_blank" rel="noopener" aria-label="Slash playlist on Spotify — Instinct">
+                <img src="assets/stickers/slash.png" alt="" class="sticker-img">
+            </a>
+            <a class="sticker sticker-nest" data-archetype="psyche" href="https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab" target="_blank" rel="noopener" aria-label="Nest playlist on Spotify — Psyche">
+                <img src="assets/stickers/nest.png" alt="" class="sticker-img">
+            </a>
+        </div>
+        <div class="stickers-tags">
+            <span class="sticker-tag" data-archetype="logic"><span class="sticker-dot"></span>build</span>
+            <span class="sticker-sep">&middot;</span>
+            <span class="sticker-tag" data-archetype="instinct"><span class="sticker-dot"></span>slash</span>
+            <span class="sticker-sep">&middot;</span>
+            <span class="sticker-tag" data-archetype="psyche"><span class="sticker-dot"></span>nest</span>
+        </div>
+    </nav>
     <div class="egg-wrap">
         <span class="cc cc-tl"></span>
         <span class="cc cc-tr"></span>
@@ -691,17 +1225,97 @@
                 <path class="egg-highlight" d="M11 6c-2 4-4 9-4 16"/>
                 <path class="crack crack-1" d="M15 3L13.5 7L16 9.5L13 12L15.5 14"/>
                 <path class="crack crack-2" d="M13 12L10 15L12.5 17.5L9 20L11 22"/>
-                <path class="crack crack-3" d="M15.5 14L18 16L15 19L17.5 22L14 25L16 27M9 20L6 23M18 16L21 18L19 21"/>
+                <!-- crack-3 deliberately keeps to the right + center band.
+                     The dropped subpath was `M9 20L6 23` which ran straight
+                     through the egg-highlight curve on the left side and
+                     read as a cross-hatch with the shine. The remaining
+                     branches arc down-right and east so the shine on the
+                     left stays unbroken. -->
+                <path class="crack crack-3" d="M15.5 14L18 16L15 19L17.5 22L14 25L16 27M18 16L21 18L19 21"/>
             </svg>
         </div>
-        <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?3idcb0mfw0pny69b473kzl7cthp72moq91bpbp04drsavs2hlqfw6gw4g8kmkpmtwofta3r87yt46buko41064f25cdnwy24317tsdjzjaqfosb0if2wm5h19bjk0576nh6p1jz56qnq4baontcal4tepx408ws1cqzu3sgpp6g06sg0abfv1pnok8ph90zoz46jvl5frhas5stv2kfap4znvm8lvahpg721uv4gjein1y0g5ukgxz51n2qiguhamlsr67dwfx2gvjhypavoajz5mnlcudap1615ix0eea4313og589uh671mt6ub4vunieuv8almlzap3965z66i1316vuog8y1j9hji0wiov1zdj85cgb2hepb590rmr5lswo5fus5urcjkfo7chtjam6cm8vc21ytddcn7wol9scl4s3ionowgi71z5ca7h0awo8jf60skl21eg31b4fvrr18ukh82ouu7tdny4jp36cjd9cg50r3qx6wti9ihmp1wuzhceoathyn1idoavtkwf44mfiimoxe024vkrj7vsuuhucqodiyqk0c41eqwqxouk8vtlp3myp5xby0rnopazmebixp7ah4ugksa49h8lsj40pgqsqdda7jkpnp44gqcfog1mrt3all2omyyo8z6gced8ouiitb04ezyeqay778euhhlfty04f6519jynpds97b0miyz21uix525iia1mfwq36jmorbdmttay9de28h2o66dxnznh9f1h31f94944g98y8hw8bz1ds6ew4pfjyqb2y9qc7z0ds7c6i7tk79aknftwbr1ff81cpz5zxup3v8k6dlcejtdjz2ejfr28ij1278dcgaw4oxx1h5judmi2emi7djbrkvx7fqfcg94z4a2yr7bz3ge88rh7aepf8gb3ry4t3g12o7a8z7opk65aabqif6s8snye28ryli9xqo5msneijrtbzyqyovyea5ttwgosj06hcdtrqdvu767g9o1elz4lcmpwhyw66wv7mgw9gfl7ntm5i7h8ck7om5eox0cn5fqxbqqoeht93uccsew37dvu1enpbqzyynv9pc67k8gesgr3ukqbe9qyanujchry33p52fh2nb4p9dhd0ygpcqz7vdoya3cc3tbk482vv75cubhw0z93kck9pxkcd81uz437ogy88mhmqszkay65pzhf04xilepqedvxxx0hzji7k3bgvf77zl6m5lt2xolk20muet6s9cg5z0k0v7l38b10tmzyi7klvy4mh5fwf8kyeh6p8w3ik75w0q8pilumuux3z1lww6o3hvejai6ggq6hf48lid0eujp8yabo1plxiocv9vsv001zcncojb96nsd0ap9yt3kt30xwy80h14hu0pp5xv5jeg81dc4spcnu9hl7aegl7tda5v67by6b02798wmiqo54bz7sb99fu6gdprqao61tmcndr64pbdp0cmmd4zu83mjsmilrm2vj6rfq2tk9xn95zn15hulmapdx19knbzq89v5hvf0xllreb128wfsook46w2no37k26m7vzn79g44c5sm2a4b8ziykzd3trtgav84w6utk2om0pytxjufgwlx9osvpbc6zpjp4xzbaqe1dcm80zk1rwteoie5vzzj1vqg8scsr5wo5tefbw62yfvre5cuspefgu6ykuue9vx189jsj0hscv2680xvr7cjb7ihmx6ya8c6zi0fatfnj4us6v3lw7gaevkrcvn0rjntxpw2kgxf6nqjeov88n63eo3dlu8xtpcuz7kxha1dqze6uiw2uf0h1shpdjcsaszmqvw21bq4tb1ed0kahlwnil6klp571gzyvc0cj8x5i023v6ijihkq1gjp2ymntj9afrzdmo15sq2fh02j60suqla6wgr5nkavohxmomnxboj62pil559fw5h1w8e9hgak8wt0dnozf56chy8uf9anthpkspyxll7abau9u7jpoqdg9fhq3941vtso4n3chctybmbhizbm5ghi90okjxu78zsw8ukw5wvqw5u1e1det40j0sz4jjfmoh159ai88ir0lamjo11nyt9lmfe9pe5koo0aoummle1evywkuq615l78avn5psr3eufq23u9ua1490ul5r6vwzjylhpotro34af2z95bgggrtr7nnwos6mtr3knnroakecfotawvl3sfu9skdbkmnhmmkzqb7umx73okl1mzl68cx3xdoos3q5ua97softu6ts1pong45crfreudo53v5wy5rqej43z6fwinyzqkfqtdg78belmg8iqdyop4ee8ool4qc9vcs4500qj7lq9uvw87bu6n2g3do0scmpmlfnhp628g857w5zxupnp7po8vpfowzqutspb5qqhhwzwg4a31wy9w3j3anllnyxe15n989eeruyt1keym4uvei78voyff5p2pwn4j007kva2hjw4pgg4bxbg8e2h2brxgvxfbq7yg6uelxgig41muwggrrdg87yzto90ltkfywitz8v1pwo5s80qftou5jes6h9eoey4mtlwhx6fvy1u1m8p2b8tm9qzy9d5kxcl1r41pdreeupbtek6cch97a9t0yu0zqxikyhts07mj2islgbsw1ipaxsblnn8zkmxeug3p6kzplguu89x4z2nrez0a7fcag1bl621abwutwsqgtxh67upt7gjz5sacpquwdqb5ldsofxfy1w6flr64miz6uhi3ogipsatlwpgvd0zf4ryidy60iilu6hff7h23fxw65evu0sirbs3avpvookofb3w5ei1yxz9dfdx6lq6kpvgofhwflw8il459eql62l7o5oestxrduy656ggtikbosj0fxeojcb16m86vhi197b1q59e3drx2l1zx4ay0yw980x2erfhvokpfj3sdzk1296tkhlvmcgsb41c50isnwn79efxqdlftuizcewgs0uwnrwzu73u0p53i49rdlbns449hqg0b84o4nj2hcjg7y9yqafmrzaybh06t1205pstxz2eufduwrnuc937tovcjq82n8hfvl774yhfhxgbigy9pn1lluv8fqa2lnx91wq3cmdooa592etrt1suni0yqti1kvzuac406yg49i9i2kd43i16uacwle7nxxfzcu8207e2jr80eojhi5a4rsgw1rk61a7i51ukn1ico65sqw63e3nswieclmz4nznemmryvqwljd-w2-s2-v17:255" target="_blank" rel="noopener">
-            3idcb0mfw0pny<br>
-            69b473kzl7cth<br>
-            p72moq91bpbp0<br>
-            ...-w2-s2-v17
-        </a>
+        <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?2p0s4dbh47b538ghl110gig2yp7pmm2of41tgs463g42i7u3vxv4feulvjs2ftgydmpkz3i29ivk1jlm79cf164c3tamcspt13mrqyj4elm2w98b5xbxjasd1lbo67dgg7nmd39sit22yxo5tkakfa3rwjuucykvbqifcfsle2b6tvvwlkzj3a71426intirdiw8b2mv0a8jv0rnh1l3igck4eqyllnh43mfrnyk4sqo80i677imbdcd3hpx4af0vb98oc923w8paojtowrpahqjiuxorqrdktep0bnxmydj95r2pdu3ikvspx5t0al62ph3kf8fjyzvbodm2k73a6isjeq2imb3hzpnjk15peovvyutjt8m0ryude49nok9c92z3n6bc4zb3vjdcpcen16q62nn19fkb7idzg54q6xdg4abxyfdybe18t1ldce8975xu1a335s0psrllfjwcnlnxz01hsll9fjflwfhgv0in898s6pssdbq6f0uvzinpqzk6n5z7d4yy9wo76n4vzr9l1k0roj5mtz6s3y7ceazsxiu6ffsivixiriamujp7uluz9b883zcq96k1ele7d09wsfqzgpdtku2vuz4ugzc8jh992unffeaeo1p8eid07roe6lb6sj2bxdruoz66ltx8gl8fdob3qdux922tyk3j516rubsffryjaanskeprfme39q049dkoh1l11uy589ehaxcz4u3y4zueyw1ybxzgxhylp2r6tvygcrjsrhfalqhvt2jzgpql7ixr8z9kn8jtw5jquol2ydtoqse8q3x4oqvlqfbyt4pr61xngc218w1bcja67cyvm140evyubdolutipdp7sdkwj7o095jpn01xyqb8bfk0kfba76z4l8bzhg9iob73cjgxvnt0rjqzgshvyd81meqp5j64pwzhy18w8gt8iejx4u0wpn2m7bxpgdafa2r7fy0barlk1aoh1c80b0e5o63rqsi15l1jadupm8512vsgb05czmq4uzn6x05pzvb685xwmsg962l2p1pw04v5qpaipzerdnr31i2q1r0ro9s6k9glvl7221aenelm2ti94dab39a5dajvvevs6qc83mifjn9dhhncl275oc3z4f28e5e8rhyld6efryac69umvpzmgqnyf3fjgo05zpxvwb3o68ja3wsw6mvpeoz5shs5a3xqi8dfijlw9b4m44plcpexpmtdeou25tu8ryvxfdzyn2ljqa9ejvd46f78j1c4qlsr8i0m0la6i0l1tgzr7xe711xeh2x489lelqp9k1af4sx102diwtmsru1wli4b05fn847ym1coejjjmih53kq1d9ti7jysc8v19h5ibrmguts8xw8ece7y71rjfga3l4vphdfgh6f3lb4toj602irdmb85v1wjz1xntfzwf2f70rbm4427h3cbreaml1b28jfldu1s9ujlao45aiklg6czusivi6kaswyywp6kkvmdbnreo57qp75g4wsai33fzby475unmo92703t2s0n1p3g1yys7pqtzl32ttty6t7gdy63fodhkbtuklblpd04l9smces36mpjggv9fnlfrkcbm1n30nnv9gwq9tp05poqdy50o9wh3jfzwvl03t20jxvdwqifci5m0wpmu95rl83p5rvlu9l6kf0u810u7mtguj2q5jmm73el0wp77tcmfk6gfhjnldjne28jerxgk3hnzufekiikcsktl4qheoi1w37yixzx36wakv0xa9idvdbaqr69nhja67cdqwy1f6btm4psfaq9plsc3ws20vmmwqd3ak5kuu5z5iufy4qo6wxwqeyhlrm06rsg7wevfrv6x9wmtumczupq1krncncy82959zlvtwoew8eaht21bv3ta7dmv8h3t0qu2we4scpxo8uz4l2lzd52stybihsv4nnygayii755cl2dhx5965z08bnud0661kubpbfdxe9vz6tmcnoq492r4edts4yumay8vmnrd9ihulxvcf1e5fv2ldigqvom9jfsilb0vsrmz64ykul232seuut4fxc4ysqrfpvguwhz5lmdfl1g5p4m73frkeyccjwnenba9lss9gvs6wx97wyn651r4ebbboavn20j76jc9t7fwbjk2i9v48tkxu8yn52sk3s9mdhu40cfpcfef55vwn4bsdhh2804gpvwsa8saxi3q75nmmdgqdwehz1j426utqgx05rqun89ofh68lqwkv1ofwsjrjais1az6try6bz0vlmw8tch4dkfimqjzpplogmcbl2aknrph66smqnq6p7rzk2ookxg1gwql5hp8r5xk7sepjd2j1xol0cspdvx0szy9ojbcs3kbh26o18hmbkba4k20tdulh6kcyt4c0fi4zwrj3zpv5v92kz794mtjuwimld2p21j2966fvzcbdk277whthnagu1feakrukn1xtt859zq73b9e5507yk2d7y39239hu8irggmh5zdtcbn6twp8fek49u485g3e17ev54o51rtkzau8dwuv5jg5a6ukg14c81wttnloadi4mm52nkgp5mrrdv5bzly81fxjhqz31qmexr59aw055mqrr84lpppweo2jiik6ec4ekvgugo3nb70u8jgvj9cwisdm1hsb5762fsnamyuxekodviw2mfftgvqn7ulppkks5xkfigoqi3s264hiukj0suk4xfhctzd741gnckwd6d3ni3hyz13382530k5yw6sxy7hdor0ne3lbnbd19wcpquydxfx7d2okf4tnorgsl2k0qowfb26aax7jdkl3k8cskpm1tey6oj4ai2bkz4z3jmvp60k55qv0dr4e5nn7ab8hg1uht8459d4tr3rbyotym9vcufgpb2st6btz7w8s4cqg787p1ugbfye4ccqwq9vam1qs635h01xyyxg8ze7odxgp1fc2o0aiwox391bldev790k8oaaqkot7gbh676n0d6w09pj11coc3v286ul0snxzasq7xpfn30q8mp3gm2kd1t8ieuylf88d5rz73rm8bkvgkaeuj8lxvnjm39o9skljpu2hb26ea0xoqxjiauotnwy67jf7oaonwwvi8oqr1fzky98ejq86b9yz9qodjlgukv9fp1640nntcc6edmq08ix319rg6crqt86ofrjq6b532zl50bqvbg1oxlpyj71z6fshapd8rf7n1eg39q6i2-w1-s2-v12:5" target="_blank" rel="noopener">
+            2p0s4dbh47b53<br>
+            8ghl110gig2yp<br>
+            7pmm2of41tgs4<br>
+            ...-w1-s2-v12</a>
     </div>
+    <script src="dispatches.js"></script>
     <script>
+        // ---------- Dispatch carousel ----------
+        (function() {
+            var dispatches = (window.DISPATCHES || []).slice();
+            if (!dispatches.length) return;
+            var shelf  = document.querySelector('.dispatch-shelf');
+            var card   = document.getElementById('dispatch-card');
+            if (!shelf || !card) return;
+            var indexEl    = card.querySelector('.dispatch-index');
+            var dateEl     = card.querySelector('.dispatch-date');
+            var titleEl    = card.querySelector('.dispatch-title');
+            var statusEl   = card.querySelector('.dispatch-status');
+            var statusTxt  = card.querySelector('.dispatch-status-text');
+            var statusSep  = card.querySelector('.dispatch-status-sep');
+            var markEl     = card.querySelector('[data-dispatch-mark]');
+            var prev    = shelf.querySelector('.dispatch-prev');
+            var next    = shelf.querySelector('.dispatch-next');
+            var cursor  = 0;
+            function pad2(n) { return (n < 10 ? '0' : '') + n; }
+            function render() {
+                var d = dispatches[cursor];
+                if (!d) return;
+                // Prefer the explicit `number` from the manifest; fall back to
+                // positional inference when older entries don't have one yet.
+                var num = (typeof d.number === 'number') ? d.number : (dispatches.length - cursor);
+                if (indexEl) indexEl.textContent = 'no. ' + pad2(num);
+                if (dateEl)  dateEl.textContent  = d.date;
+                if (titleEl) titleEl.textContent = d.title;
+                if (statusEl) {
+                    // Hide the in-label status pill for plain drafts — the
+                    // landing card stays quiet for a fresh piece. Patches
+                    // and `finalized` still surface their text so version
+                    // state reads at a glance.
+                    var showStatus = d.status && d.status !== 'draft';
+                    if (showStatus) {
+                        if (statusTxt) statusTxt.textContent = d.status.replace('-', ' ');
+                        statusEl.setAttribute('data-status', d.status);
+                        statusEl.hidden = false;
+                        if (statusSep) statusSep.hidden = false;
+                    } else {
+                        statusEl.hidden = true;
+                        if (statusSep) statusSep.hidden = true;
+                    }
+                }
+                // Corner alive-signal dot — always visible when the entry
+                // has any status (including draft). Color + pulse follow
+                // data-status via the CSS rules. title= gives the textual
+                // state for hover / a11y so the corner dot isn't cryptic.
+                if (markEl) {
+                    if (d.status) {
+                        markEl.setAttribute('data-status', d.status);
+                        markEl.setAttribute('title', d.status.replace('-', ' '));
+                        markEl.hidden = false;
+                    } else {
+                        markEl.removeAttribute('data-status');
+                        markEl.removeAttribute('title');
+                        markEl.hidden = true;
+                    }
+                }
+                card.setAttribute('href', d.url);
+                prev.disabled = cursor >= dispatches.length - 1;
+                next.disabled = cursor <= 0;
+            }
+            if (dispatches.length <= 1) {
+                shelf.classList.add('single');
+            }
+            prev.addEventListener('click', function() {
+                if (cursor < dispatches.length - 1) { cursor++; render(); }
+            });
+            next.addEventListener('click', function() {
+                if (cursor > 0) { cursor--; render(); }
+            });
+            render();
+        })();
+
         (function() {
             var carousel = document.querySelector('.quotes-carousel');
             var slides = document.querySelectorAll('.quote-slide');
@@ -830,5 +1444,6 @@
             });
         })();
     </script>
+
 </body>
 </html>
