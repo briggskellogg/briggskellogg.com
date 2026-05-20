@@ -784,7 +784,10 @@
             .essay-wires { display: none; }
         }
         @media (max-width: 600px) {
-            body { padding: 3.5rem 0.75rem 5.5rem; }
+            /* Top padding clears the fixed BEK mark (36px logo + 0.9rem
+               top offset ≈ 3.15rem total) with a full 1.85rem of breath
+               so the frame doesn't kiss the logo on narrow screens. */
+            body { padding: 5rem 0.75rem 5.5rem; }
             .frame { padding: 1.75rem 1.25rem; }
             .essay-home-mark { top: 0.9rem; left: 0.9rem; width: 36px; height: 36px; }
             .essay-home-mark img { width: 36px; height: 36px; }
@@ -829,6 +832,12 @@
                module reads as a discrete surface, not transparent chrome
                with the grid bleeding through. */
             background-color: var(--bg);
+            /* Very subtle drop shadow — gives the playlist module the
+               faintest sense of lift off the page, like a real sticker
+               sheet pinned to the surface. Neutral black at low alpha
+               so the cue reads consistently against both the green
+               landing field and the cream essay surface. */
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.07);
         }
         .stickers .sc {
             position: absolute;
