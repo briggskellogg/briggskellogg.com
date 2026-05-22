@@ -30,7 +30,14 @@
             --orange:   #D37B50;
         }
         html, body {
-            height: 100%;
+            /* Don't lock body to exactly viewport height — that pushes
+               flex content into a centered stack with leftover space
+               carved out top/bottom, which causes overflow on mobile
+               when the natural content height already approaches the
+               viewport. Use min-height: 100vh on body instead so the
+               body fills the viewport when content is short, but
+               grows to fit when content is taller. */
+            height: auto;
         }
         body {
             background-color: var(--bg);
@@ -496,6 +503,99 @@
             .status-dot::after { animation: none; }
         }
 
+        /* "Current → <place>" status tag — two-row modal sitting just
+           below the main frame. Same family as the rights footer and
+           "updated may 2026" mini-modal: corner brackets, opaque bg
+           covering the dot grid, all-mono small caps.
+
+           Two-row vertical stack:
+             1. eyebrow — pulsing alive-signal dot + small mono caps
+                          ("current"). The dot tells you it's live;
+                          the word tells you what kind of fact you're
+                          reading.
+             2. focal   — the company name (mono, larger, full --ink,
+                          tighter letter-spacing). Color and size carry
+                          the hierarchy so the eye lands here.
+
+           Pulse-dot color is logic-deepened (#B8862D) — the work-loop
+           archetype is logic; the canonical cream barely shows on the
+           green field, so the deep variant carries the load. */
+        .status-card-wrap {
+            text-align: center;
+            margin: 1.8rem auto 0;
+            padding: 0 1rem;
+        }
+        .status-card {
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            color: var(--ink-50);
+            padding: 0.7rem 1.4rem 0.6rem;
+            background-color: var(--bg);
+            transition: color 0.2s ease;
+        }
+        .status-card .sc-c {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            transition: border-color 0.25s ease;
+        }
+        .status-card .sc-c-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .status-card .sc-c-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .status-card .sc-c-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
+        .status-card .sc-c-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .status-card-eyebrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65em;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.5rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 0.5rem;
+        }
+        .status-card-dot {
+            position: relative;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #B8862D;
+            color: #B8862D;
+            flex-shrink: 0;
+        }
+        .status-card-dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: currentColor;
+            transform-origin: center;
+            animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .status-card-dot::after { animation: none; }
+        }
+        .status-card-target {
+            display: block;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink);
+            transition: color 0.2s ease;
+        }
+        .status-card:hover .status-card-target,
+        .status-card:focus-visible .status-card-target {
+            color: #B8862D;
+        }
+        .status-card:hover .sc-c,
+        .status-card:focus-visible .sc-c {
+            border-color: var(--ink-50);
+        }
+
         /* Single-line framed rights footer. Same vocabulary used on the
            essay page (where it's inline, not fixed). */
         .rights {
@@ -664,112 +764,175 @@
         .recs-updated .uc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
         .recs-updated .uc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
         @media (max-width: 480px) {
+            /* Mobile target: fit the entire landing on a standard iPhone
+               viewport (390x844 / 430x932) with the URL bar showing —
+               effective viewport drops to ~700-760px. Strategy:
+                 - small logo + tight top stack
+                 - compact quote typography (longest quote wraps to ~5
+                   lines on narrow mobile; this caps the vertical hit)
+                 - dense recs section
+                 - small floating egg + playlists that share the bottom
+                   row with the rights footer without overlapping it
+                 - body uses dvh (with vh fallback) so iOS Safari's URL
+                   bar doesn't fight 100vh
+                 - content stays centered vertically so any leftover
+                   space sits symmetrically above + below the stack
+                   rather than dumping at the bottom. */
             body {
-                padding: 0.75rem 0.75rem 4.5rem;
-                /* Stack vertically on mobile so the rights footer (which
-                   becomes position: static below) sits cleanly under main
-                   instead of being squeezed in next to it by the default
-                   flex-row layout. */
+                padding: 0.4rem 0.6rem 3.4rem;
+                /* Sticky-footer pattern: body fills the viewport,
+                   .page grows to take available space, and the
+                   .rights footer settles at body bottom (just above
+                   the floating egg/playlists). If content ever
+                   exceeds viewport height, the body grows and the
+                   page scrolls naturally — no leftover gap. */
                 flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+            main.page {
+                flex: 1 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .rights {
+                flex: 0 0 auto;
             }
             .frame {
-                padding: 1.5rem 1.25rem;
+                padding: 0.9rem 1.05rem 0.95rem;
             }
             .logo {
-                margin-bottom: 1rem;
+                margin-bottom: 0.4rem;
             }
             .logo img {
-                width: 80px;
+                width: 54px;
             }
             .logo-sheen {
-                width: 80px;
-                height: 80px;
+                width: 54px;
+                height: 54px;
             }
             .rule {
-                margin: 0 auto 1.2rem;
+                margin: 0 auto 0.55rem;
+            }
+            .status-card-wrap {
+                margin-top: 0.6rem;
+                padding: 0 0.5rem;
+            }
+            .status-card {
+                padding: 0.4rem 0.9rem 0.35rem;
+            }
+            .status-card .sc-c {
+                width: 5px;
+                height: 5px;
+            }
+            .status-card-eyebrow {
+                font-size: 0.42rem;
+                letter-spacing: 0.24em;
+                gap: 0.5em;
+                margin-bottom: 0.25rem;
+            }
+            .status-card-dot {
+                width: 4px;
+                height: 4px;
+            }
+            .status-card-target {
+                font-size: 0.58rem;
+                letter-spacing: 0.14em;
             }
             .quote {
-                font-size: 0.85rem;
-                line-height: 1.75;
+                font-size: 0.72rem;
+                line-height: 1.5;
             }
             .attribution {
-                margin-top: 0.7rem;
-                font-size: 0.55rem;
+                margin-top: 0.4rem;
+                font-size: 0.48rem;
             }
             .quote-nav {
-                margin-top: 0.7rem;
-                margin-bottom: 1.5rem;
+                margin-top: 0.4rem;
+                margin-bottom: 0.6rem;
+            }
+            .quote-nav button {
+                font-size: 0.85rem;
+                padding: 0.15rem 0.5rem;
+            }
+            .quote-dot {
+                width: 4px;
+                height: 4px;
             }
             .rights {
                 position: static;
                 transform: none;
                 left: auto;
                 bottom: auto;
-                margin: 1.6rem auto 0;
-                padding: 0.4rem 0.7rem;
-                font-size: 0.42rem;
+                margin: 0.7rem auto 0;
+                padding: 0.3rem 0.6rem;
+                font-size: 0.38rem;
                 letter-spacing: 0.18em;
                 white-space: normal;
             }
             .rights .rc { width: 5px; height: 5px; }
-            .stickers { bottom: 0.85rem; right: 0.65rem; gap: 0.5rem; padding: 0.55rem 0.7rem 0.45rem; }
+            .stickers { bottom: 0.55rem; right: 0.55rem; gap: 0.3rem; padding: 0.35rem 0.5rem 0.3rem; }
             .stickers .sc { width: 5px; height: 5px; }
-            .stickers-eyebrow { font-size: 0.44rem; letter-spacing: 0.22em; padding-left: 0.22em; }
-            .stickers-row { gap: 3px; }
-            .sticker { width: 44px; height: 44px; }
+            .stickers-eyebrow { font-size: 0.38rem; letter-spacing: 0.22em; padding-left: 0.22em; }
+            .stickers-row { gap: 2px; }
+            .sticker { width: 32px; height: 32px; }
             .sticker-build  { transform: rotate(-9deg); }
             .sticker-slash  { transform: rotate(6deg); }
-            .sticker-nest   { width: 48px; height: 48px; transform: rotate(-4deg); }
+            .sticker-nest   { width: 36px; height: 36px; transform: rotate(-4deg); }
             .links-wrap {
-                padding-top: 1rem;
+                padding-top: 0.55rem;
             }
             .links-sep {
-                padding: 0 0.5rem;
+                padding: 0 0.4rem;
             }
             .links a {
-                font-size: 0.58rem;
+                font-size: 0.52rem;
             }
             .recs {
-                margin-top: 1rem;
-                padding-top: 1rem;
+                margin-top: 0.6rem;
+                padding-top: 0.6rem;
             }
             .recs-heading {
-                margin-bottom: 0.75rem;
-                font-size: 0.5rem;
+                margin-bottom: 0.4rem;
+                font-size: 0.46rem;
             }
             .recs-group {
-                margin-bottom: 0.75rem;
+                margin-bottom: 0.35rem;
             }
             .recs-label {
-                font-size: 0.48rem;
+                font-size: 0.44rem;
             }
             .recs-sep {
-                padding: 0 0.35rem;
-                font-size: 0.5rem;
+                padding: 0 0.28rem;
+                font-size: 0.46rem;
             }
             .recs-items a {
-                font-size: 0.5rem;
+                font-size: 0.48rem;
             }
             .recs-updated {
-                margin-top: 0.9rem;
-                font-size: 0.4rem;
+                margin-top: 0.5rem;
+                font-size: 0.38rem;
+                padding: 0.32rem 0.55rem;
             }
             .egg-wrap {
-                bottom: 0.75rem;
-                left: 0.75rem;
-                padding: 0.4rem 0.5rem;
+                bottom: 0.55rem;
+                left: 0.55rem;
+                padding: 0.3rem 0.4rem;
             }
             .egg-wrap .cc {
                 width: 5px;
                 height: 5px;
             }
             .easter-egg {
-                width: 24px;
-                height: 32px;
+                width: 20px;
+                height: 28px;
             }
             .egg-shell {
-                width: 24px;
-                height: 32px;
+                width: 20px;
+                height: 28px;
             }
             .catalogue-id {
                 font-size: 0.45rem;
@@ -885,6 +1048,20 @@
                 </div>
             </div>
         </div>
+
+        <section class="status-card-wrap" aria-label="Current status">
+            <a class="status-card" href="https://elevenlabs.io" target="_blank" rel="noopener">
+                <span class="sc-c sc-c-tl"></span>
+                <span class="sc-c sc-c-tr"></span>
+                <span class="sc-c sc-c-bl"></span>
+                <span class="sc-c sc-c-br"></span>
+                <div class="status-card-eyebrow">
+                    <span class="status-card-dot" aria-hidden="true"></span>
+                    current
+                </div>
+                <div class="status-card-target">elevenlabs</div>
+            </a>
+        </section>
 
     </main>
     <footer class="rights">
