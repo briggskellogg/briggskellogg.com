@@ -92,23 +92,25 @@
             flex-direction: column;
             align-items: center;
             gap: 0.6rem;
-            /* Opaque page bg covers the dot grid behind the box so the
-               module reads as a discrete surface, not transparent chrome
-               with the grid bleeding through. */
+            /* Heavy-frame treatment matching the main .frame: faint 1px
+               connecting border between the corners + opaque page bg so
+               the box reads as a discrete surface (not floating chrome
+               with the dot grid bleeding through). */
             background-color: var(--bg);
+            border: 1px solid var(--ink-12);
         }
         .stickers .sc {
             position: absolute;
-            width: 7px;
-            height: 7px;
+            width: 10px;
+            height: 10px;
         }
-        /* Bottom-chrome modal borders all share the same color
-           (var(--ink-25)) so playlists, rights, and the egg read as one
-           family of corner-bracketed footer modules. */
-        .stickers .sc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .stickers .sc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
-        .stickers .sc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .stickers .sc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        /* Heavy corner brackets — same 10px/2px/--ink-50 vocabulary as
+           the main .frame so the playlists read as a sibling of the
+           central box rather than a lighter satellite. */
+        .stickers .sc-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--ink-50);  border-left:  2px solid var(--ink-50); }
+        .stickers .sc-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
+        .stickers .sc-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
+        .stickers .sc-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
         .stickers-eyebrow {
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.5rem;
@@ -336,8 +338,17 @@
         .frame .c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
         .frame .c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
         .frame .c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
+        /* Logo lives inside a .logo-frame (mini-frame variant) with the
+           same corner-bracket vocabulary as the links box. Padding
+           breathes the BEK mask away from the brackets so the corners
+           read as decoration, not a tight collar. */
         .logo {
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
+            display: flex;
+            justify-content: center;
+        }
+        .logo-frame {
+            padding: 0.7rem 1.3rem;
         }
         .logo img {
             display: none;
@@ -385,14 +396,12 @@
         @media (prefers-reduced-motion: reduce) {
             .logo-sheen { animation: none; }
         }
-        .rule {
-            width: 32px;
-            height: 1px;
-            background: var(--ink-20);
-            margin: 0 auto 2.4rem;
-        }
+        /* Rule removed — the logo's corner-bracket mini-frame plus the
+           quote's own breathing margin do the separation work that the
+           tiny centered 1px rule used to. */
         .quotes-carousel {
             position: relative;
+            margin-top: 0.4rem;
             margin-bottom: 0;
             overflow: hidden;
             transition: height 0.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -493,9 +502,9 @@
             animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         @keyframes statusPulse {
-            0%   { transform: scale(1);   opacity: 0.55; }
-            70%  { transform: scale(2.4); opacity: 0; }
-            100% { transform: scale(2.4); opacity: 0; }
+            0%   { transform: scale(1);   opacity: 0.75; }
+            70%  { transform: scale(3);   opacity: 0; }
+            100% { transform: scale(3);   opacity: 0; }
         }
         /* Finalized pieces are settled — no pulse. */
         [data-status="finalized"] .status-dot::after { display: none; }
@@ -533,18 +542,24 @@
             color: var(--ink-50);
             padding: 0.7rem 1.4rem 0.6rem;
             background-color: var(--bg);
+            /* Heavy-frame treatment matching the main .frame and the
+               playlists: faint 1px connecting border between corners. */
+            border: 1px solid var(--ink-12);
             transition: color 0.2s ease;
         }
         .status-card .sc-c {
             position: absolute;
-            width: 7px;
-            height: 7px;
+            width: 10px;
+            height: 10px;
             transition: border-color 0.25s ease;
         }
-        .status-card .sc-c-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .status-card .sc-c-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
-        .status-card .sc-c-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .status-card .sc-c-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        /* Heavy corner brackets — 10px/2px/--ink-50 family, same as the
+           main .frame. Negative offsets sit the brackets on top of the
+           thin connecting border so the corners read as one stroke. */
+        .status-card .sc-c-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--ink-50);  border-left:  2px solid var(--ink-50); }
+        .status-card .sc-c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
+        .status-card .sc-c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
+        .status-card .sc-c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
         .status-card-eyebrow {
             display: flex;
             align-items: center;
@@ -559,12 +574,16 @@
         }
         .status-card-dot {
             position: relative;
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background: #B8862D;
-            color: #B8862D;
+            background: #C8932F;
+            color: #C8932F;
             flex-shrink: 0;
+            /* The dot itself breathes — subtle scale + glow shift so the
+               core reads as "alive" even before you notice the halo. */
+            animation: statusDotBreathe 1.8s ease-in-out infinite;
+            box-shadow: 0 0 0 0 rgba(200, 147, 47, 0);
         }
         .status-card-dot::after {
             content: '';
@@ -573,10 +592,20 @@
             border-radius: 50%;
             background: currentColor;
             transform-origin: center;
-            animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            /* Halo pulse — starts stronger (0.75 opacity) and pushes
+               farther (scale 3) than the original so the ripple reads
+               clearly against the green field. Cycle synced with the
+               dot breathe so the two animations land in phase. */
+            animation: statusPulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes statusDotBreathe {
+            0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(200, 147, 47, 0); }
+            50%      { transform: scale(1.15); box-shadow: 0 0 6px 1px rgba(200, 147, 47, 0.35); }
         }
         @media (prefers-reduced-motion: reduce) {
+            .status-card-dot,
             .status-card-dot::after { animation: none; }
+            .status-card-dot { box-shadow: 0 0 4px 1px rgba(200, 147, 47, 0.4); }
         }
         .status-card-target {
             display: block;
@@ -639,9 +668,18 @@
         .rights .rc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
         .rights .rc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
         .rights .rc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        /* No divider lines — the .links-frame mini-modal (corner brackets
+           only, balanced padding on all four sides) is the visual
+           separator now. Earlier iteration used top + bottom rules
+           which read asymmetric because the type sits on the optical
+           baseline rather than the geometric center. */
         .links-wrap {
-            border-top: 1px solid var(--ink-12);
-            padding-top: 1.4rem;
+            display: flex;
+            justify-content: center;
+            margin-top: 1.4rem;
+        }
+        .links-frame {
+            padding: 0.85rem 1.4rem;
         }
         .links {
             display: flex;
@@ -670,8 +708,7 @@
         }
         .recs {
             margin-top: 1.75rem;
-            padding-top: 1.4rem;
-            border-top: 1px solid var(--ink-12);
+            padding-top: 0;
         }
         .recs-heading {
             font-family: 'Courier New', Courier, monospace;
@@ -743,26 +780,27 @@
             padding: 0 0.6rem;
             user-select: none;
         }
-        .recs-updated {
+        /* Light corner-bracket mini-modal — used to wrap discrete bits of
+           hierarchy (logo, links nav) inside the main frame. Shared
+           vocabulary: 5px corner squares, 1px stroke at --ink-20, no
+           connecting border (the corners imply the box). Sits flush
+           inside its container so the box reads as decoration framing
+           the contents rather than a heavy sub-box competing with the
+           outer frame's brackets. */
+        .mini-frame {
             display: inline-block;
             position: relative;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.45rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--ink-20);
-            padding: 0.3rem 0.65rem;
-            margin-top: 1.25rem;
         }
-        .recs-updated .uc {
+        .mini-frame .mc {
             position: absolute;
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
+            pointer-events: none;
         }
-        .recs-updated .uc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
-        .recs-updated .uc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
-        .recs-updated .uc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
-        .recs-updated .uc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
+        .mini-frame .mc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
+        .mini-frame .mc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
+        .mini-frame .mc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
+        .mini-frame .mc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
         @media (max-width: 480px) {
             /* Mobile target: fit the entire landing on a standard iPhone
                viewport (390x844 / 430x932) with the URL bar showing —
@@ -805,7 +843,10 @@
                 padding: 0.9rem 1.05rem 0.95rem;
             }
             .logo {
-                margin-bottom: 0.4rem;
+                margin-bottom: 0.55rem;
+            }
+            .logo-frame {
+                padding: 0.4rem 0.85rem;
             }
             .logo img {
                 width: 54px;
@@ -813,9 +854,6 @@
             .logo-sheen {
                 width: 54px;
                 height: 54px;
-            }
-            .rule {
-                margin: 0 auto 0.55rem;
             }
             .status-card-wrap {
                 margin-top: 0.6rem;
@@ -825,8 +863,8 @@
                 padding: 0.4rem 0.9rem 0.35rem;
             }
             .status-card .sc-c {
-                width: 5px;
-                height: 5px;
+                width: 7px;
+                height: 7px;
             }
             .status-card-eyebrow {
                 font-size: 0.42rem;
@@ -835,8 +873,8 @@
                 margin-bottom: 0.25rem;
             }
             .status-card-dot {
-                width: 4px;
-                height: 4px;
+                width: 5px;
+                height: 5px;
             }
             .status-card-target {
                 font-size: 0.58rem;
@@ -875,7 +913,7 @@
             }
             .rights .rc { width: 5px; height: 5px; }
             .stickers { bottom: 0.55rem; right: 0.55rem; gap: 0.3rem; padding: 0.35rem 0.5rem 0.3rem; }
-            .stickers .sc { width: 5px; height: 5px; }
+            .stickers .sc { width: 7px; height: 7px; }
             .stickers-eyebrow { font-size: 0.38rem; letter-spacing: 0.22em; padding-left: 0.22em; }
             .stickers-row { gap: 2px; }
             .sticker { width: 32px; height: 32px; }
@@ -883,7 +921,10 @@
             .sticker-slash  { transform: rotate(6deg); }
             .sticker-nest   { width: 36px; height: 36px; transform: rotate(-4deg); }
             .links-wrap {
-                padding-top: 0.55rem;
+                margin-top: 0.7rem;
+            }
+            .links-frame {
+                padding: 0.5rem 0.85rem;
             }
             .links-sep {
                 padding: 0 0.4rem;
@@ -911,11 +952,6 @@
             }
             .recs-items a {
                 font-size: 0.48rem;
-            }
-            .recs-updated {
-                margin-top: 0.5rem;
-                font-size: 0.38rem;
-                padding: 0.32rem 0.55rem;
             }
             .egg-wrap {
                 bottom: 0.55rem;
@@ -948,10 +984,15 @@
             <div class="c c-bl"></div>
             <div class="c c-br"></div>
             <div class="logo">
-                <img src="logo.png" alt="BEK">
-                <div class="logo-sheen"></div>
+                <div class="logo-frame mini-frame">
+                    <span class="mc mc-tl"></span>
+                    <span class="mc mc-tr"></span>
+                    <span class="mc mc-bl"></span>
+                    <span class="mc mc-br"></span>
+                    <img src="logo.png" alt="BEK">
+                    <div class="logo-sheen"></div>
+                </div>
             </div>
-            <div class="rule"></div>
             <div class="quotes-carousel">
                 <div class="quote-slide active" data-attr="Marty Supreme">
                     <p class="quote">
@@ -999,13 +1040,19 @@
                 <button class="quote-next" aria-label="Next quote">&rarr;</button>
             </div>
             <div class="links-wrap">
-                <nav class="links">
-                    <a href="https://www.linkedin.com/in/imbriggskellogg/" target="_blank" rel="noopener">linkedin</a>
-                    <span class="links-sep">/</span>
-                    <a href="https://github.com/briggskellogg" target="_blank" rel="noopener">github</a>
-                    <span class="links-sep">/</span>
-                    <a href="mailto:me@briggskellogg.com">me@briggskellogg.com</a>
-                </nav>
+                <div class="links-frame mini-frame">
+                    <span class="mc mc-tl"></span>
+                    <span class="mc mc-tr"></span>
+                    <span class="mc mc-bl"></span>
+                    <span class="mc mc-br"></span>
+                    <nav class="links">
+                        <a href="https://www.linkedin.com/in/imbriggskellogg/" target="_blank" rel="noopener">linkedin</a>
+                        <span class="links-sep">/</span>
+                        <a href="https://github.com/briggskellogg" target="_blank" rel="noopener">github</a>
+                        <span class="links-sep">/</span>
+                        <a href="mailto:me@briggskellogg.com">me@briggskellogg.com</a>
+                    </nav>
+                </div>
             </div>
             <div class="recs">
                 <div class="recs-heading">recommendations</div>
@@ -1038,13 +1085,6 @@
                         <span class="recs-sep">/</span>
                         <a href="https://johnmayer.com/" target="_blank" rel="noopener">john mayer</a>
                     </div>
-                </div>
-                <div class="recs-updated">
-                    <span class="uc uc-tl"></span>
-                    <span class="uc uc-tr"></span>
-                    <span class="uc uc-bl"></span>
-                    <span class="uc uc-br"></span>
-                    updated may 2026
                 </div>
             </div>
         </div>
