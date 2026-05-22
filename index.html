@@ -67,15 +67,15 @@
         body::before {
             display: none;
         }
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            opacity: 0.035;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 0;
-        }
+        /* No fractal-noise overlay. Earlier iterations had a 0.035-opacity
+           feTurbulence layer painted over the entire field, which subtly
+           warmed the body bg but did not touch modal backgrounds (those
+           paint a solid var(--bg) on top). The opacity gap made modals
+           read as a different shade from the surrounding field. Dropping
+           the noise leaves only the peach dot grid over the base color;
+           any remaining perceived mismatch between the patterned field
+           and a solid modal is now pure simultaneous-contrast optical
+           illusion — the underlying var(--bg) is identical on both. */
         /* Playlists module — bottom-right framed corner element.
            Matches the modular vocabulary used by .egg-wrap and .rights
            (corner brackets, internal padding, content stacked vertically).
@@ -1057,7 +1057,7 @@
                 <span class="sc-c sc-c-br"></span>
                 <div class="status-card-eyebrow">
                     <span class="status-card-dot" aria-hidden="true"></span>
-                    current
+                    current status
                 </div>
                 <div class="status-card-target">elevenlabs</div>
             </a>
