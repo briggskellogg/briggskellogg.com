@@ -855,8 +855,23 @@
                    air than the bottom of the stack (status card + recs)
                    to feel balanced. Horizontal padding stays generous so
                    the inner stack reads as well-buffered from the
-                   bracket frame itself. */
+                   bracket frame itself.
+
+                   min-height: 62vh lets the frame breathe on tall
+                   phones (iPhone 14/Max/Pro Max) — at 932vh that's
+                   ~578px, ~50% taller than the natural content height,
+                   so the frame feels deliberately sized for the device
+                   rather than a small card stranded in a sea of
+                   background. On short phones (iPhone SE @ 568vh =
+                   352px) the natural content height wins, so the frame
+                   stays compact. Flex column + center vertically pools
+                   the gained height as even top/bottom buffer around
+                   the cluster instead of trailing white space. */
                 padding: 1rem 1.3rem 1.2rem;
+                min-height: 62vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
             .logo {
                 margin-bottom: 0.55rem;
@@ -979,6 +994,14 @@
                 font-size: 0.48rem;
             }
             .egg-wrap {
+                /* position: fixed so it pins to the viewport bottom
+                   instead of the body bottom. On mobile the body is
+                   now content-sized (min-height: 0) and shorter than
+                   the viewport on tall phones, so an absolute-anchored
+                   egg would float mid-screen above the body's end.
+                   Fixed positioning keeps it glued to the bottom-left
+                   corner of the screen on every device. */
+                position: fixed;
                 bottom: 0.55rem;
                 left: 0.55rem;
                 padding: 0.3rem 0.4rem;
