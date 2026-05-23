@@ -87,22 +87,17 @@
             bottom: 1.4rem;
             right: 1.3rem;
             z-index: 10;
-            padding: 0.95rem 1.15rem 0.8rem;
+            padding: 0.7rem 0.9rem 0.55rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
             /* Heavy-frame treatment matching the main .frame: faint 1px
                connecting border between the corners + opaque page bg so
                the box reads as a discrete surface (not floating chrome
-               with the dot grid bleeding through). Drop-shadow gives the
-               whole module a subtle lift off the field so it reads as
-               the focal point of the bottom-right corner. */
+               with the dot grid bleeding through). */
             background-color: var(--bg);
             border: 1px solid var(--ink-12);
-            box-shadow:
-                0 4px 14px rgba(40, 35, 25, 0.12),
-                0 1px 3px rgba(40, 35, 25, 0.08);
         }
         .stickers .sc {
             position: absolute;
@@ -118,10 +113,10 @@
         .stickers .sc-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
         .stickers-eyebrow {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.58rem;
+            font-size: 0.5rem;
             letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: var(--ink);
+            color: var(--ink-50);
             user-select: none;
             text-align: center;
             padding-left: 0.28em;
@@ -139,8 +134,8 @@
         .sticker {
             position: relative;
             display: block;
-            width: 76px;
-            height: 76px;
+            width: 60px;
+            height: 60px;
             text-decoration: none;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18))
                     drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
@@ -162,8 +157,8 @@
            stays the visually biggest blob (64px) — sitting in the middle
            it acts as the cluster's anchor. */
         .sticker-build  { transform: rotate(-9deg); z-index: 1; }
-        .sticker-nest   { transform: rotate(-4deg); margin-left: -20px; width: 82px; height: 82px; z-index: 2; }
-        .sticker-slash  { transform: rotate(6deg);  margin-left: -18px; z-index: 3; }
+        .sticker-nest   { transform: rotate(-4deg); margin-left: -16px; width: 64px; height: 64px; z-index: 2; }
+        .sticker-slash  { transform: rotate(6deg);  margin-left: -14px; z-index: 3; }
         .sticker:hover {
             transform: rotate(0deg) scale(1.12) translateY(-4px);
             filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25))
@@ -637,16 +632,15 @@
             border-color: var(--ink-50);
         }
 
-        /* Inline-flow rights line. Lives directly under the status card
-           so the central column reads top-to-bottom as a single stack
-           (frame → status → rights). Previously was position:fixed at
-           bottom-center, which fought the bottom-right playlists for
-           visual real estate; freeing the bottom row lets the playlists
-           own that corner. */
+        /* Single-line framed rights footer. Same vocabulary used on the
+           essay page (where it's inline, not fixed). */
         .rights {
-            display: inline-block;
-            position: relative;
-            margin: 1rem auto 0;
+            position: fixed;
+            bottom: 1.4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+            z-index: 10;
             padding: 0.55rem 1.1rem;
             text-align: center;
             font-family: 'Courier New', Courier, monospace;
@@ -658,10 +652,6 @@
             white-space: nowrap;
             /* Opaque page bg covers the dot grid behind the line. */
             background-color: var(--bg);
-        }
-        .rights-row {
-            text-align: center;
-            margin: 0 auto;
         }
         .rights .rights-mark { margin-right: 0.6em; letter-spacing: 0; }
         /* Slash separator between the byline and the rights notice — same
@@ -853,11 +843,13 @@
                 min-height: 100dvh;
             }
             main.page {
-                /* On mobile the column reads top-to-bottom inside main,
-                   ending with the rights line directly under the status
-                   card. No sticky-footer pattern needed since rights is
-                   no longer a sibling that has to anchor at body bottom. */
-                width: 100%;
+                flex: 1 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .rights {
+                flex: 0 0 auto;
             }
             .frame {
                 /* Tighter top, generous bottom — the BEK mark needs less
@@ -929,6 +921,10 @@
                 gap: 0.22rem;
             }
             .rights {
+                position: static;
+                transform: none;
+                left: auto;
+                bottom: auto;
                 margin: 0.7rem auto 0;
                 padding: 0.3rem 0.6rem;
                 font-size: 0.38rem;
@@ -936,15 +932,14 @@
                 white-space: normal;
             }
             .rights .rc { width: 5px; height: 5px; }
-            .stickers { bottom: 0.65rem; right: 0.65rem; gap: 0.45rem; padding: 0.55rem 0.75rem 0.45rem; }
+            .stickers { bottom: 0.55rem; right: 0.55rem; gap: 0.3rem; padding: 0.35rem 0.5rem 0.3rem; }
             .stickers .sc { width: 7px; height: 7px; }
-            .stickers-eyebrow { font-size: 0.46rem; letter-spacing: 0.22em; padding-left: 0.22em; }
+            .stickers-eyebrow { font-size: 0.38rem; letter-spacing: 0.22em; padding-left: 0.22em; }
             .stickers-row { gap: 2px; }
-            .sticker { width: 46px; height: 46px; }
+            .sticker { width: 32px; height: 32px; }
             .sticker-build  { transform: rotate(-9deg); }
             .sticker-slash  { transform: rotate(6deg); }
-            .sticker-nest   { width: 52px; height: 52px; transform: rotate(-4deg); margin-left: -14px; }
-            .sticker-slash  { margin-left: -12px; }
+            .sticker-nest   { width: 36px; height: 36px; transform: rotate(-4deg); }
             .links-wrap {
                 margin-top: 0.7rem;
             }
@@ -1140,6 +1135,8 @@
                         <span class="links-sep">/</span>
                         <a href="https://github.com/briggskellogg" target="_blank" rel="noopener">github</a>
                         <span class="links-sep">/</span>
+                        <a href="https://x.com/briggskellogg" target="_blank" rel="noopener">x</a>
+                        <span class="links-sep">/</span>
                         <a href="mailto:me@briggskellogg.com">me@briggskellogg.com</a>
                     </nav>
                 </div>
@@ -1197,17 +1194,14 @@
             </a>
         </section>
 
-        <div class="rights-row">
-            <footer class="rights">
-                <span class="rc rc-tl"></span>
-                <span class="rc rc-tr"></span>
-                <span class="rc rc-bl"></span>
-                <span class="rc rc-br"></span>
-                <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
-            </footer>
-        </div>
-
     </main>
+    <footer class="rights">
+        <span class="rc rc-tl"></span>
+        <span class="rc rc-tr"></span>
+        <span class="rc rc-bl"></span>
+        <span class="rc rc-br"></span>
+        <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
+    </footer>
     <nav class="stickers" aria-label="Playlists">
         <span class="sc sc-tl"></span>
         <span class="sc sc-tr"></span>
