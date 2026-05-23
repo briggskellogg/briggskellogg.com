@@ -825,11 +825,10 @@
                    space sits symmetrically above + below the stack
                    rather than dumping at the bottom. */
             body {
-                /* Less top padding (the body's natural centering pulls
-                   the stack visually upward anyway) + wider horizontal
-                   buffer so the frame doesn't kiss the screen edge.
-                   Bottom padding clears the floating egg + playlists. */
-                padding: 0.25rem 1.1rem 3.4rem;
+                /* Generous side + top buffer so the central frame
+                   doesn't kiss the screen edge. Bottom padding clears
+                   the floating egg + playlists. */
+                padding: 1.2rem 1.5rem 3.4rem;
                 /* Sticky-footer pattern: body fills the viewport,
                    .page grows to take available space, and the
                    .rights footer settles at body bottom (just above
@@ -854,10 +853,10 @@
             .frame {
                 /* Tighter top, generous bottom — the BEK mark needs less
                    air than the bottom of the stack (status card + recs)
-                   to feel balanced. Horizontal padding is symmetrical
-                   and tight since the body padding now does the
-                   outer-edge breathing. */
-                padding: 0.7rem 0.85rem 1.05rem;
+                   to feel balanced. Horizontal padding stays generous so
+                   the inner stack reads as well-buffered from the
+                   bracket frame itself. */
+                padding: 1rem 1.3rem 1.2rem;
             }
             .logo {
                 margin-bottom: 0.55rem;
@@ -921,15 +920,22 @@
                 gap: 0.22rem;
             }
             .rights {
-                position: static;
+                /* Stays in-flow on mobile (sits below main inside the
+                   body's flex column) but uses position: relative so
+                   the absolute-positioned .rc corner brackets anchor
+                   to .rights itself — `position: static` would let
+                   them jump to the body. */
+                position: relative;
                 transform: none;
                 left: auto;
                 bottom: auto;
+                display: inline-block;
                 margin: 0.7rem auto 0;
-                padding: 0.3rem 0.6rem;
-                font-size: 0.38rem;
+                padding: 0.4rem 0.75rem;
+                font-size: 0.4rem;
                 letter-spacing: 0.18em;
-                white-space: normal;
+                white-space: nowrap;
+                align-self: center;
             }
             .rights .rc { width: 5px; height: 5px; }
             .stickers { bottom: 0.55rem; right: 0.55rem; gap: 0.3rem; padding: 0.35rem 0.5rem 0.3rem; }
