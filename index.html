@@ -825,30 +825,30 @@
                    space sits symmetrically above + below the stack
                    rather than dumping at the bottom. */
             body {
-                /* Generous side + top buffer so the central frame
-                   doesn't kiss the screen edge. Bottom padding clears
-                   the floating egg + playlists. */
-                padding: 1.2rem 1.5rem 3.4rem;
-                /* Sticky-footer pattern: body fills the viewport,
-                   .page grows to take available space, and the
-                   .rights footer settles at body bottom (just above
-                   the floating egg/playlists). If content ever
-                   exceeds viewport height, the body grows and the
-                   page scrolls naturally — no leftover gap. */
+                /* Top-anchored mobile layout. Generous side buffer so
+                   the central frame stays narrow + breathes from the
+                   screen edges. Top padding is just enough to clear
+                   the iOS status bar; the content sits high in the
+                   viewport rather than being centered by min-height.
+                   Bottom padding clears the floating egg + playlists. */
+                padding: 0.9rem 1.8rem 3.6rem;
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                min-height: 100vh;
-                min-height: 100dvh;
+                /* No min-height: 100vh on mobile — the body sizes to
+                   its content. Combined with the in-flow rights (now
+                   right under main rather than parked at body bottom),
+                   this stops the rights line from drifting down into
+                   the playlists' bottom-right zone. */
+                min-height: 0;
             }
             main.page {
-                flex: 1 0 auto;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            .rights {
-                flex: 0 0 auto;
+                /* Content-sized, top-anchored. No flex grow + no
+                   internal centering, so the frame + status card sit
+                   at the top of main and the rights line falls
+                   naturally just below them, well above the floating
+                   playlists. */
+                width: 100%;
             }
             .frame {
                 /* Tighter top, generous bottom — the BEK mark needs less
@@ -920,17 +920,16 @@
                 gap: 0.22rem;
             }
             .rights {
-                /* Stays in-flow on mobile (sits below main inside the
-                   body's flex column) but uses position: relative so
-                   the absolute-positioned .rc corner brackets anchor
-                   to .rights itself — `position: static` would let
-                   them jump to the body. */
+                /* Sits inline below main, just under the status card,
+                   well above the floating playlists. position: relative
+                   (not static) so the absolute .rc corner brackets
+                   anchor to .rights itself instead of jumping to body. */
                 position: relative;
                 transform: none;
                 left: auto;
                 bottom: auto;
                 display: inline-block;
-                margin: 0.7rem auto 0;
+                margin: 0.85rem auto 0;
                 padding: 0.4rem 0.75rem;
                 font-size: 0.4rem;
                 letter-spacing: 0.18em;
@@ -1327,6 +1326,53 @@
 
             document.querySelector('.quote-prev').addEventListener('click', function() { manual(current - 1); });
             document.querySelector('.quote-next').addEventListener('click', function() { manual(current + 1); });
+        })();
+
+        // Rights footer placement — fixed bottom-center on desktop, but
+        // moved inside main on mobile so it sits directly under the
+        // status card instead of drifting down toward the floating
+        // playlists in the bottom-right corner. Listens via matchMedia
+        // (more reliable across resize/orientation than raw resize
+        // events on iOS).
+        (function() {
+            var mq = window.matchMedia('(max-width: 480px)');
+
+            function place() {
+                var rights = document.querySelector('.rights');
+                var main   = document.querySelector('main.page');
+                var body   = document.body;
+                var stickers = document.querySelector('.stickers');
+                if (!rights || !main || !body) return;
+
+                if (mq.matches) {
+                    if (rights.parentNode !== main) main.appendChild(rights);
+                } else {
+                    if (rights.parentNode !== body) {
+                        if (stickers && stickers.parentNode === body) {
+                            body.insertBefore(rights, stickers);
+                        } else {
+                            body.appendChild(rights);
+                        }
+                    }
+                }
+            }
+
+            // Modern + legacy listener APIs for matchMedia (Safari < 14).
+            if (typeof mq.addEventListener === 'function') {
+                mq.addEventListener('change', place);
+            } else if (typeof mq.addListener === 'function') {
+                mq.addListener(place);
+            }
+            // Also re-run on raw resize as a belt-and-suspenders for
+            // edge cases (e.g. desktop browser dragging window across
+            // the breakpoint without the mq listener firing).
+            window.addEventListener('resize', place);
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', place);
+            } else {
+                place();
+            }
         })();
 
         (function() {
