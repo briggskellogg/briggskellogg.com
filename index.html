@@ -404,7 +404,10 @@
             margin-top: 0.4rem;
             margin-bottom: 0;
             overflow: hidden;
-            transition: height 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            /* Longer, gentler curve so the box reflowing between two
+               quotes of very different lengths reads as a slow breath
+               rather than a snap. */
+            transition: height 1.4s cubic-bezier(0.32, 0.72, 0.24, 1);
         }
         .quote-slide {
             position: absolute;
@@ -412,7 +415,10 @@
             left: 0;
             width: 100%;
             opacity: 0;
-            transition: opacity 0.8s ease;
+            /* Softer ease-out so quotes melt in/out rather than fading
+               linearly. Pair with the longer height transition above
+               so the crossfade and reflow share the same tempo. */
+            transition: opacity 1.3s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
         .quote-slide.active {
@@ -1294,34 +1300,51 @@
                 carousel.style.height = slides[current].scrollHeight + 'px';
             }
 
+            // Deleting feels mechanical/swift, like backspacing through
+            // a wrong line. Slight jitter (±18ms) keeps it from reading
+            // as a machine, and a tiny final pause lets the cursor
+            // rest before the new word starts arriving.
             function typeOut(cb) {
                 var text = nameEl.textContent;
                 if (!text.length) { cb(); return; }
                 nameEl.classList.add('typing');
-                clearInterval(typeTimer);
-                typeTimer = setInterval(function() {
+                clearTimeout(typeTimer);
+                function tick() {
                     text = text.slice(0, -1);
                     nameEl.textContent = text;
                     if (!text.length) {
-                        clearInterval(typeTimer);
                         nameEl.classList.remove('typing');
                         cb();
+                        return;
                     }
-                }, 30);
+                    typeTimer = setTimeout(tick, 32 + Math.random() * 18);
+                }
+                typeTimer = setTimeout(tick, 32 + Math.random() * 18);
             }
 
+            // Typing in has a more human cadence: wider per-keystroke
+            // jitter (~55-115ms), an extra pause after spaces to mimic
+            // word boundaries, and a brief micro-pause on punctuation.
+            // Mixed slow + quick characters feel less robotic than a
+            // uniform setInterval.
             function typeIn(str) {
                 var i = 0;
                 nameEl.classList.add('typing');
-                clearInterval(typeTimer);
-                typeTimer = setInterval(function() {
+                clearTimeout(typeTimer);
+                function tick() {
                     i++;
                     nameEl.textContent = str.slice(0, i);
                     if (i >= str.length) {
-                        clearInterval(typeTimer);
                         nameEl.classList.remove('typing');
+                        return;
                     }
-                }, 40);
+                    var prev = str[i - 1] || '';
+                    var delay = 55 + Math.random() * 60;
+                    if (prev === ' ') delay += 70;
+                    if (/[.,;:!?]/.test(prev)) delay += 110;
+                    typeTimer = setTimeout(tick, delay);
+                }
+                typeTimer = setTimeout(tick, 60 + Math.random() * 40);
             }
 
             function show(idx) {
@@ -1332,18 +1355,22 @@
                 dots[current].classList.add('active');
                 updateHeight();
                 typeOut(function() {
-                    setTimeout(function() { typeIn(slides[current].dataset.attr); }, 150);
+                    // Variable pause between backspacing the old name
+                    // and typing the new one. 250-500ms keeps the cursor
+                    // visible briefly so the swap feels considered, not
+                    // instant.
+                    setTimeout(function() {
+                        typeIn(slides[current].dataset.attr);
+                    }, 250 + Math.random() * 250);
                 });
             }
 
             function manual(idx) {
-                clearInterval(auto);
+                clearTimeout(auto);
                 show(idx);
+                scheduleNext();
             }
 
-            // Random index that isn't the current one — used for both the
-            // initial slide and each auto-rotation tick. Never repeats the
-            // same slide back-to-back (would feel like a "stuck" rotation).
             function randomNext() {
                 if (slides.length < 2) return current;
                 var next;
@@ -1351,6 +1378,19 @@
                     next = Math.floor(Math.random() * slides.length);
                 } while (next === current);
                 return next;
+            }
+
+            // Auto-rotation now uses a recursive setTimeout instead of
+            // setInterval so each cycle can pick its own delay. Centered
+            // on ~10s (double the previous 5s) with ±3s of jitter, so
+            // some quotes linger ~7s and some hang for ~13s. The varied
+            // tempo feels like an attentive reader, not a metronome.
+            function scheduleNext() {
+                var delay = 7500 + Math.random() * 6000;
+                auto = setTimeout(function() {
+                    show(randomNext());
+                    scheduleNext();
+                }, delay);
             }
 
             // Pick a random starting slide. The HTML's default `.active`
@@ -1371,7 +1411,8 @@
 
             updateHeight();
             window.addEventListener('resize', updateHeight);
-            var auto = setInterval(function() { show(randomNext()); }, 5000);
+            var auto;
+            scheduleNext();
 
             document.querySelector('.quote-prev').addEventListener('click', function() { manual(current - 1); });
             document.querySelector('.quote-next').addEventListener('click', function() { manual(current + 1); });
