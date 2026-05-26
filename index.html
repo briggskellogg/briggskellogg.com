@@ -404,10 +404,7 @@
             margin-top: 0.4rem;
             margin-bottom: 0;
             overflow: hidden;
-            /* Longer, gentler curve so the box reflowing between two
-               quotes of very different lengths reads as a slow breath
-               rather than a snap. */
-            transition: height 1.4s cubic-bezier(0.32, 0.72, 0.24, 1);
+            transition: height 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .quote-slide {
             position: absolute;
@@ -415,10 +412,7 @@
             left: 0;
             width: 100%;
             opacity: 0;
-            /* Softer ease-out so quotes melt in/out rather than fading
-               linearly. Pair with the longer height transition above
-               so the crossfade and reflow share the same tempo. */
-            transition: opacity 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: opacity 0.8s ease;
             pointer-events: none;
         }
         .quote-slide.active {
@@ -523,119 +517,6 @@
         [data-status="finalized"] .status-dot::after { display: none; }
         @media (prefers-reduced-motion: reduce) {
             .status-dot::after { animation: none; }
-        }
-
-        /* "Current → <place>" status tag — two-row modal sitting just
-           below the main frame. Same family as the rights footer and
-           "updated may 2026" mini-modal: corner brackets, opaque bg
-           covering the dot grid, all-mono small caps.
-
-           Two-row vertical stack:
-             1. eyebrow — pulsing alive-signal dot + small mono caps
-                          ("current"). The dot tells you it's live;
-                          the word tells you what kind of fact you're
-                          reading.
-             2. focal   — the company name (mono, larger, full --ink,
-                          tighter letter-spacing). Color and size carry
-                          the hierarchy so the eye lands here.
-
-           Pulse-dot color is logic-deepened (#B8862D) — the work-loop
-           archetype is logic; the canonical cream barely shows on the
-           green field, so the deep variant carries the load. */
-        .status-card-wrap {
-            text-align: center;
-            margin: 1.8rem auto 0;
-            padding: 0 1rem;
-        }
-        .status-card {
-            display: inline-block;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            color: var(--ink-50);
-            padding: 0.7rem 1.4rem 0.6rem;
-            background-color: var(--bg);
-            /* Heavy-frame treatment matching the main .frame and the
-               playlists: faint 1px connecting border between corners. */
-            border: 1px solid var(--ink-12);
-            transition: color 0.2s ease;
-        }
-        .status-card .sc-c {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            transition: border-color 0.25s ease;
-        }
-        /* Heavy corner brackets — 10px/2px/--ink-50 family, same as the
-           main .frame. Negative offsets sit the brackets on top of the
-           thin connecting border so the corners read as one stroke. */
-        .status-card .sc-c-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--ink-50);  border-left:  2px solid var(--ink-50); }
-        .status-card .sc-c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
-        .status-card .sc-c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
-        .status-card .sc-c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
-        .status-card-eyebrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.65em;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.5rem;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: var(--ink-50);
-            margin-bottom: 0.5rem;
-        }
-        .status-card-dot {
-            position: relative;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #C8932F;
-            color: #C8932F;
-            flex-shrink: 0;
-            /* The dot itself breathes — subtle scale + glow shift so the
-               core reads as "alive" even before you notice the halo. */
-            animation: statusDotBreathe 1.8s ease-in-out infinite;
-            box-shadow: 0 0 0 0 rgba(200, 147, 47, 0);
-        }
-        .status-card-dot::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: currentColor;
-            transform-origin: center;
-            /* Halo pulse — starts stronger (0.75 opacity) and pushes
-               farther (scale 3) than the original so the ripple reads
-               clearly against the green field. Cycle synced with the
-               dot breathe so the two animations land in phase. */
-            animation: statusPulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        @keyframes statusDotBreathe {
-            0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(200, 147, 47, 0); }
-            50%      { transform: scale(1.15); box-shadow: 0 0 6px 1px rgba(200, 147, 47, 0.35); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .status-card-dot,
-            .status-card-dot::after { animation: none; }
-            .status-card-dot { box-shadow: 0 0 4px 1px rgba(200, 147, 47, 0.4); }
-        }
-        .status-card-target {
-            display: block;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.72rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--ink);
-            transition: color 0.2s ease;
-        }
-        .status-card:hover .status-card-target,
-        .status-card:focus-visible .status-card-target {
-            color: #B8862D;
-        }
-        .status-card:hover .sc-c,
-        .status-card:focus-visible .sc-c {
-            border-color: var(--ink-50);
         }
 
         /* Single-line framed rights footer. Same vocabulary used on the
@@ -850,10 +731,9 @@
             }
             main.page {
                 /* Content-sized, top-anchored. No flex grow + no
-                   internal centering, so the frame + status card sit
-                   at the top of main and the rights line falls
-                   naturally just below them, well above the floating
-                   playlists. */
+                   internal centering, so the frame sits at the top of
+                   main and the rights line falls naturally just below
+                   it, well above the floating playlists. */
                 width: 100%;
             }
             .frame {
@@ -887,33 +767,6 @@
                 width: clamp(54px, 9.5vh, 86px);
                 height: clamp(54px, 9.5vh, 86px);
             }
-            .status-card-wrap {
-                margin-top: clamp(0.6rem, 1.6vh, 1.2rem);
-                padding: 0 0.5rem;
-            }
-            .status-card {
-                padding: clamp(0.4rem, 1vh, 0.75rem)
-                         clamp(0.9rem, 2.4vw, 1.4rem)
-                         clamp(0.35rem, 0.9vh, 0.7rem);
-            }
-            .status-card .sc-c {
-                width: 7px;
-                height: 7px;
-            }
-            .status-card-eyebrow {
-                font-size: clamp(0.42rem, 0.95vh, 0.54rem);
-                letter-spacing: 0.24em;
-                gap: 0.5em;
-                margin-bottom: clamp(0.25rem, 0.7vh, 0.5rem);
-            }
-            .status-card-dot {
-                width: 5px;
-                height: 5px;
-            }
-            .status-card-target {
-                font-size: clamp(0.58rem, 1.3vh, 0.78rem);
-                letter-spacing: 0.14em;
-            }
             .quote {
                 font-size: clamp(0.72rem, 1.8vh, 1rem);
                 line-height: 1.5;
@@ -938,7 +791,7 @@
                 gap: 0.22rem;
             }
             .rights {
-                /* Sits inline below main, just under the status card,
+                /* Sits inline below main, just under the frame,
                    well above the floating playlists. position: relative
                    (not static) so the absolute .rc corner brackets
                    anchor to .rights itself instead of jumping to body. */
@@ -1192,10 +1045,6 @@
                         <span class="recs-sep">/</span>
                         <a href="https://www.imdb.com/title/tt5990474/" target="_blank" rel="noopener">columbus</a>
                         <span class="recs-sep">/</span>
-                        <a href="https://www.imdb.com/title/tt1160419/" target="_blank" rel="noopener">dune</a>
-                        <span class="recs-sep">/</span>
-                        <a href="https://www.imdb.com/title/tt15239678/" target="_blank" rel="noopener">dune: part two</a>
-                        <span class="recs-sep">/</span>
                         <a href="https://www.imdb.com/title/tt32820897/" target="_blank" rel="noopener">dune: part three</a>
                     </div>
                 </div>
@@ -1211,20 +1060,6 @@
                 </div>
             </div>
         </div>
-
-        <section class="status-card-wrap" aria-label="Current status">
-            <a class="status-card" href="https://elevenlabs.io" target="_blank" rel="noopener">
-                <span class="sc-c sc-c-tl"></span>
-                <span class="sc-c sc-c-tr"></span>
-                <span class="sc-c sc-c-bl"></span>
-                <span class="sc-c sc-c-br"></span>
-                <div class="status-card-eyebrow">
-                    <span class="status-card-dot" aria-hidden="true"></span>
-                    current status
-                </div>
-                <div class="status-card-target">@elevenlabs</div>
-            </a>
-        </section>
 
     </main>
     <footer class="rights">
@@ -1300,10 +1135,8 @@
                 carousel.style.height = slides[current].scrollHeight + 'px';
             }
 
-            // Deleting feels mechanical/swift, like backspacing through
-            // a wrong line. Slight jitter (±18ms) keeps it from reading
-            // as a machine, and a tiny final pause lets the cursor
-            // rest before the new word starts arriving.
+            // Quick backspace through the previous name. Uniform 30ms
+            // matches the original interval-based feel.
             function typeOut(cb) {
                 var text = nameEl.textContent;
                 if (!text.length) { cb(); return; }
@@ -1317,16 +1150,12 @@
                         cb();
                         return;
                     }
-                    typeTimer = setTimeout(tick, 32 + Math.random() * 18);
+                    typeTimer = setTimeout(tick, 30);
                 }
-                typeTimer = setTimeout(tick, 32 + Math.random() * 18);
+                typeTimer = setTimeout(tick, 30);
             }
 
-            // Typing in has a more human cadence: wider per-keystroke
-            // jitter (~55-115ms), an extra pause after spaces to mimic
-            // word boundaries, and a brief micro-pause on punctuation.
-            // Mixed slow + quick characters feel less robotic than a
-            // uniform setInterval.
+            // Quick type-in at the original 40ms/char cadence.
             function typeIn(str) {
                 var i = 0;
                 nameEl.classList.add('typing');
@@ -1338,13 +1167,9 @@
                         nameEl.classList.remove('typing');
                         return;
                     }
-                    var prev = str[i - 1] || '';
-                    var delay = 55 + Math.random() * 60;
-                    if (prev === ' ') delay += 70;
-                    if (/[.,;:!?]/.test(prev)) delay += 110;
-                    typeTimer = setTimeout(tick, delay);
+                    typeTimer = setTimeout(tick, 40);
                 }
-                typeTimer = setTimeout(tick, 60 + Math.random() * 40);
+                typeTimer = setTimeout(tick, 40);
             }
 
             function show(idx) {
@@ -1355,13 +1180,7 @@
                 dots[current].classList.add('active');
                 updateHeight();
                 typeOut(function() {
-                    // Variable pause between backspacing the old name
-                    // and typing the new one. 250-500ms keeps the cursor
-                    // visible briefly so the swap feels considered, not
-                    // instant.
-                    setTimeout(function() {
-                        typeIn(slides[current].dataset.attr);
-                    }, 250 + Math.random() * 250);
+                    setTimeout(function() { typeIn(slides[current].dataset.attr); }, 150);
                 });
             }
 
@@ -1380,13 +1199,12 @@
                 return next;
             }
 
-            // Auto-rotation now uses a recursive setTimeout instead of
-            // setInterval so each cycle can pick its own delay. Centered
-            // on ~10s (double the previous 5s) with ±3s of jitter, so
-            // some quotes linger ~7s and some hang for ~13s. The varied
-            // tempo feels like an attentive reader, not a metronome.
+            // Recursive setTimeout so each cycle can pick its own
+            // delay (and so manual prev/next can cleanly reschedule).
+            // Centered on ~7.5s with ±3s of jitter — varied enough to
+            // feel like an attentive reader rather than a metronome.
             function scheduleNext() {
-                var delay = 7500 + Math.random() * 6000;
+                var delay = 4500 + Math.random() * 6000;
                 auto = setTimeout(function() {
                     show(randomNext());
                     scheduleNext();
@@ -1420,10 +1238,10 @@
 
         // Rights footer placement — fixed bottom-center on desktop, but
         // moved inside main on mobile so it sits directly under the
-        // status card instead of drifting down toward the floating
-        // playlists in the bottom-right corner. Listens via matchMedia
-        // (more reliable across resize/orientation than raw resize
-        // events on iOS).
+        // frame instead of drifting down toward the floating playlists
+        // in the bottom-right corner. Listens via matchMedia (more
+        // reliable across resize/orientation than raw resize events
+        // on iOS).
         (function() {
             var mq = window.matchMedia('(max-width: 480px)');
 
