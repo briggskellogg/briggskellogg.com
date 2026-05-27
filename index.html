@@ -899,16 +899,35 @@
                 </div>
             </div>
             <div class="quotes-carousel">
-                <div class="quote-slide active" data-attr="Ad Astra">
+                <!-- Curated cycle order: each adjacent pair contrasts in
+                     length (long/medium/short) and tone (heavy / witty /
+                     poetic / philosophical) so the rotation feels
+                     well-paced rather than monotone. Page-load picks a
+                     random starting slide, then auto-rotation walks the
+                     cycle sequentially from there. -->
+                <div class="quote-slide active" data-attr="Marty Supreme">
                     <p class="quote">
-                        "Now we know. We're all we've got."
+                        "I have a purpose [&hellip;] If you think that's some kind
+                        of blessing, it's not. It puts me at a huge life disadvantage.
+                        It means I have an obligation to see a very specific thing
+                        through. And with obligation comes sacrifice."
                     </p>
                 </div>
-                <div class="quote-slide" data-attr="After Yang">
+                <div class="quote-slide" data-attr="Spirited Away">
                     <p class="quote">
-                        "The ancient Chinese philosopher Lao Tzu once said: what
-                        the caterpillar calls &lsquo;the end&rsquo; the rest of
-                        the world calls a butterfly."
+                        "Once you do something, you never forget. Even if you
+                        can't remember."
+                    </p>
+                </div>
+                <div class="quote-slide" data-attr="Silence">
+                    <p class="quote">
+                        "I pray but I'm lost. Am I just praying to silence?"
+                    </p>
+                </div>
+                <div class="quote-slide" data-attr="The Royal Tenenbaums">
+                    <p class="quote">
+                        "I don't think you're an asshole, Royal. I just think
+                        you're kind of a son of a bitch."
                     </p>
                 </div>
                 <div class="quote-slide" data-attr="Call Me by Your Name">
@@ -931,6 +950,13 @@
                         "May thy knife chip and shatter."
                     </p>
                 </div>
+                <div class="quote-slide" data-attr="After Yang">
+                    <p class="quote">
+                        "The ancient Chinese philosopher Lao Tzu once said: what
+                        the caterpillar calls &lsquo;the end&rsquo; the rest of
+                        the world calls a butterfly."
+                    </p>
+                </div>
                 <div class="quote-slide" data-attr="Good Will Hunting">
                     <p class="quote">
                         "Sometimes I wish I had never met you, because then I
@@ -938,33 +964,13 @@
                         like you out there."
                     </p>
                 </div>
-                <div class="quote-slide" data-attr="Marty Supreme">
+                <div class="quote-slide" data-attr="Ad Astra">
                     <p class="quote">
-                        "I have a purpose [&hellip;] If you think that's some kind
-                        of blessing, it's not. It puts me at a huge life disadvantage.
-                        It means I have an obligation to see a very specific thing
-                        through. And with obligation comes sacrifice."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Silence">
-                    <p class="quote">
-                        "I pray but I'm lost. Am I just praying to silence?"
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Spirited Away">
-                    <p class="quote">
-                        "Once you do something, you never forget. Even if you
-                        can't remember."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="The Royal Tenenbaums">
-                    <p class="quote">
-                        "I don't think you're an asshole, Royal. I just think
-                        you're kind of a son of a bitch."
+                        "Now we know. We're all we've got."
                     </p>
                 </div>
             </div>
-            <p class="attribution">&mdash;&thinsp;<span class="attribution-name">Ad Astra</span></p>
+            <p class="attribution">&mdash;&thinsp;<span class="attribution-name">Marty Supreme</span></p>
             <div class="quote-nav">
                 <button class="quote-prev" aria-label="Previous quote">&larr;</button>
                 <div class="quote-dots">
@@ -1160,32 +1166,24 @@
                 scheduleNext();
             }
 
-            function randomNext() {
-                if (slides.length < 2) return current;
-                var next;
-                do {
-                    next = Math.floor(Math.random() * slides.length);
-                } while (next === current);
-                return next;
-            }
-
             // Recursive setTimeout so each cycle can pick its own
             // delay (and so manual prev/next can cleanly reschedule).
             // Centered on ~7.5s with ±3s of jitter — varied enough to
             // feel like an attentive reader rather than a metronome.
+            // Walks the HTML order sequentially: the curated cycle
+            // already alternates length and tone, so simple `current +
+            // 1` produces a well-paced rotation without shuffling.
             function scheduleNext() {
                 var delay = 4500 + Math.random() * 6000;
                 auto = setTimeout(function() {
-                    show(randomNext());
+                    show(current + 1);
                     scheduleNext();
                 }, delay);
             }
 
-            // Pick a random starting slide. The HTML's default `.active`
-            // sits on the first alphabetical slide (Ad Astra), so on the
-            // (1/N) chance the random pick lands on 0 we leave the
-            // active state alone; otherwise swap the active class +
-            // attribution to the chosen slide.
+            // Page-load picks a random starting slide so visitors don't
+            // always greet the same opener — but the rotation that
+            // follows walks the curated cycle in order from there.
             (function randomizeStart() {
                 var start = Math.floor(Math.random() * slides.length);
                 if (start === 0) return;
