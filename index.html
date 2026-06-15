@@ -25,10 +25,10 @@
             --ink-12:   rgba(255, 226, 185, 0.18);
             --border:   #D37B50;
             --border-80: rgba(211, 123, 80, 1.0);
-            --border-50: rgba(211, 123, 80, 0.82);
-            --border-25: rgba(211, 123, 80, 0.55);
-            --border-20: rgba(211, 123, 80, 0.45);
-            --border-12: rgba(211, 123, 80, 0.30);
+            --border-50: rgba(211, 123, 80, 0.67);
+            --border-25: rgba(211, 123, 80, 0.40);
+            --border-20: rgba(211, 123, 80, 0.32);
+            --border-12: rgba(211, 123, 80, 0.18);
             --instinct: #AD7C84;
             --psyche:   #658DA4;
             --logic:    #FFE2B9;
@@ -102,7 +102,7 @@
                the box reads as a discrete surface (not floating chrome
                with the dot grid bleeding through). */
             background-color: var(--bg);
-            border: 1px solid var(--border-20);
+            border: 1px solid var(--border-12);
         }
         .stickers .sc {
             position: absolute;
@@ -196,11 +196,11 @@
             width: 10px;
             height: 10px;
         }
-        /* Heavy corners — same 10px/2px/--border-50 as the main frame. */
-        .egg-wrap .cc-tl { top: -1px; left: -1px; border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .egg-wrap .cc-tr { top: -1px; right: -1px; border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .egg-wrap .cc-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .egg-wrap .cc-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        /* Light corners at full frame size — 10px arms, 1px stroke. */
+        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
         .easter-egg {
             cursor: pointer;
             width: 30px;
@@ -326,7 +326,7 @@
             }
         }
         .frame {
-            border: 1px solid var(--border-20);
+            border: 1px solid var(--border-12);
             padding: 3rem 2.75rem;
             position: relative;
             /* Opaque page bg covers the body's dot grid wherever the
@@ -564,10 +564,10 @@
             width: 10px;
             height: 10px;
         }
-        .rights .rc-tl { top: -1px; left: -1px; border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .rights .rc-tr { top: -1px; right: -1px; border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .rights .rc-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .rights .rc-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .rights .rc-tl { top: 0; left: 0; border-top: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .rights .rc-tr { top: 0; right: 0; border-top: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+        .rights .rc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .rights .rc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
         /* No divider lines — the .links-frame mini-modal (corner brackets
            only, balanced padding on all four sides) is the visual
            separator now. Earlier iteration used top + bottom rules
@@ -680,9 +680,8 @@
             padding: 0 0.6rem;
             user-select: none;
         }
-        /* Corner-bracket mini-modal — logo + social links. Same heavy
-           10px/2px/--border-50 vocabulary as the outer frame corners,
-           but no connecting border (the brackets alone imply the box). */
+        /* Corner-bracket mini-modal — logo + social links. Longer 10px
+           arms at the lighter 1px/--border-20 weight (no connecting border). */
         .mini-frame {
             display: inline-block;
             position: relative;
@@ -693,10 +692,10 @@
             height: 10px;
             pointer-events: none;
         }
-        .mini-frame .mc-tl { top: -1px; left: -1px; border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .mini-frame .mc-tr { top: -1px; right: -1px; border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .mini-frame .mc-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .mini-frame .mc-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .mini-frame .mc-tl { top: 0; left: 0; border-top: 1px solid var(--border-20); border-left: 1px solid var(--border-20); }
+        .mini-frame .mc-tr { top: 0; right: 0; border-top: 1px solid var(--border-20); border-right: 1px solid var(--border-20); }
+        .mini-frame .mc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-20); border-left: 1px solid var(--border-20); }
+        .mini-frame .mc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-20); border-right: 1px solid var(--border-20); }
         @media (max-width: 480px) {
             /* Mobile target: fit the entire landing on a standard iPhone
                viewport (390x844 / 430x932) with the URL bar showing —
