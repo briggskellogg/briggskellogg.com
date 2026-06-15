@@ -17,13 +17,18 @@
         }
         :root {
             --bg:       #818960;
-            --ink:      #FFBC8C;
-            --ink-80:   rgba(255, 188, 140, 1.0);
-            --ink-50:   rgba(255, 188, 140, 0.67);
-            --ink-25:   rgba(255, 188, 140, 0.40);
-            --ink-20:   rgba(255, 188, 140, 0.32);
-            --ink-12:   rgba(255, 188, 140, 0.18);
-            --silver:   #B8B2A3;
+            --ink:      #FFE2B9;
+            --ink-80:   rgba(255, 226, 185, 1.0);
+            --ink-50:   rgba(255, 226, 185, 0.67);
+            --ink-25:   rgba(255, 226, 185, 0.40);
+            --ink-20:   rgba(255, 226, 185, 0.32);
+            --ink-12:   rgba(255, 226, 185, 0.18);
+            --border:   #D37B50;
+            --border-80: rgba(211, 123, 80, 1.0);
+            --border-50: rgba(211, 123, 80, 0.67);
+            --border-25: rgba(211, 123, 80, 0.40);
+            --border-20: rgba(211, 123, 80, 0.32);
+            --border-12: rgba(211, 123, 80, 0.18);
             --instinct: #AD7C84;
             --psyche:   #658DA4;
             --logic:    #FFE2B9;
@@ -50,7 +55,7 @@
                surfaces paint over the grid with `background: var(--bg)`. */
             background-image: radial-gradient(
                 circle,
-                rgba(255, 188, 140, 0.18) 1px,
+                rgba(255, 226, 185, 0.18) 1px,
                 transparent 1px
             );
             background-size: 20px 20px;
@@ -72,7 +77,7 @@
            warmed the body bg but did not touch modal backgrounds (those
            paint a solid var(--bg) on top). The opacity gap made modals
            read as a different shade from the surrounding field. Dropping
-           the noise leaves only the peach dot grid over the base color;
+           the noise leaves only the faded cream dot grid over the base color;
            any remaining perceived mismatch between the patterned field
            and a solid modal is now pure simultaneous-contrast optical
            illusion — the underlying var(--bg) is identical on both. */
@@ -97,20 +102,20 @@
                the box reads as a discrete surface (not floating chrome
                with the dot grid bleeding through). */
             background-color: var(--bg);
-            border: 1px solid var(--ink-12);
+            border: 1px solid var(--border-12);
         }
         .stickers .sc {
             position: absolute;
             width: 10px;
             height: 10px;
         }
-        /* Heavy corner brackets — same 10px/2px/--ink-50 vocabulary as
+        /* Heavy corner brackets — same 10px/2px/--border-50 vocabulary as
            the main .frame so the playlists read as a sibling of the
            central box rather than a lighter satellite. */
-        .stickers .sc-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--ink-50);  border-left:  2px solid var(--ink-50); }
-        .stickers .sc-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
-        .stickers .sc-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
-        .stickers .sc-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
+        .stickers .sc-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--border-50);  border-left:  2px solid var(--border-50); }
+        .stickers .sc-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--border-50);  border-right: 2px solid var(--border-50); }
+        .stickers .sc-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--border-50); border-left:  2px solid var(--border-50); }
+        .stickers .sc-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
         .stickers-eyebrow {
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.5rem;
@@ -191,11 +196,11 @@
             width: 6px;
             height: 6px;
         }
-        /* Same ink-25 border as the other footer modules. */
-        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
-        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        /* Same border-25 corners as the other footer modules. */
+        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
         .easter-egg {
             cursor: pointer;
             width: 30px;
@@ -209,19 +214,19 @@
             display: block;
         }
         .egg-shell .egg-body {
-            fill: rgba(184, 178, 163, 0.06);
-            stroke: rgba(184, 178, 163, 0.4);
+            fill: rgba(255, 226, 185, 0.06);
+            stroke: rgba(255, 226, 185, 0.4);
             stroke-width: 0.8;
             transition: stroke 0.2s ease, fill 0.2s ease;
         }
         .egg-shell .egg-highlight {
             fill: none;
-            stroke: rgba(184, 178, 163, 0.18);
+            stroke: rgba(255, 226, 185, 0.18);
             stroke-width: 0.5;
         }
         .egg-shell .crack {
             fill: none;
-            stroke: rgba(184, 178, 163, 0.7);
+            stroke: rgba(255, 226, 185, 0.7);
             stroke-width: 0.7;
             stroke-linecap: round;
             stroke-linejoin: round;
@@ -233,8 +238,8 @@
             stroke-dashoffset: 0;
         }
         .easter-egg:hover .egg-body {
-            stroke: rgba(184, 178, 163, 0.65);
-            fill: rgba(184, 178, 163, 0.1);
+            stroke: rgba(255, 226, 185, 0.65);
+            fill: rgba(255, 226, 185, 0.1);
         }
         @keyframes eggShake1 {
             0%, 100% { transform: rotate(0deg) translateX(0); }
@@ -280,7 +285,7 @@
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.6rem;
             letter-spacing: 0.12em;
-            color: rgba(184, 178, 163, 0.6);
+            color: var(--ink-50);
             text-transform: none;
             user-select: none;
             line-height: 1.6;
@@ -299,7 +304,7 @@
             opacity: 1;
         }
         .catalogue-id.revealed:hover {
-            color: rgba(184, 178, 163, 0.85);
+            color: var(--ink-80);
         }
         .page {
             max-width: 460px;
@@ -321,7 +326,7 @@
             }
         }
         .frame {
-            border: 1px solid var(--ink-12);
+            border: 1px solid var(--border-12);
             padding: 3rem 2.75rem;
             position: relative;
             /* Opaque page bg covers the body's dot grid wherever the
@@ -334,10 +339,10 @@
             width: 10px;
             height: 10px;
         }
-        .frame .c-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--ink-50);  border-left:  2px solid var(--ink-50); }
-        .frame .c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--ink-50);  border-right: 2px solid var(--ink-50); }
-        .frame .c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--ink-50); border-left:  2px solid var(--ink-50); }
-        .frame .c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--ink-50); border-right: 2px solid var(--ink-50); }
+        .frame .c-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--border-50);  border-left:  2px solid var(--border-50); }
+        .frame .c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--border-50);  border-right: 2px solid var(--border-50); }
+        .frame .c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--border-50); border-left:  2px solid var(--border-50); }
+        .frame .c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
         /* Logo lives inside a .logo-frame (mini-frame variant) with the
            same corner-bracket vocabulary as the links box. Padding
            breathes the BEK mask away from the brackets so the corners
@@ -386,7 +391,7 @@
                     mask-position: center;
             filter:
                 drop-shadow(0 1px 0 rgba(0, 0, 0, 0.18))
-                drop-shadow(0 0 10px rgba(255, 188, 140, 0.25));
+                drop-shadow(0 0 10px rgba(255, 226, 185, 0.25));
             animation: peach-sweep 5s linear infinite;
         }
         @keyframes peach-sweep {
@@ -559,10 +564,10 @@
             width: 7px;
             height: 7px;
         }
-        .rights .rc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .rights .rc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
-        .rights .rc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-25); border-left: 1px solid var(--ink-25); }
-        .rights .rc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-25); border-right: 1px solid var(--ink-25); }
+        .rights .rc-tl { top: 0; left: 0; border-top: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .rights .rc-tr { top: 0; right: 0; border-top: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+        .rights .rc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .rights .rc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
         /* No divider lines — the .links-frame mini-modal (corner brackets
            only, balanced padding on all four sides) is the visual
            separator now. Earlier iteration used top + bottom rules
@@ -632,7 +637,7 @@
         }
         /* Archetype dot rendered as a leading marker, same vocabulary as
            the essay's footnote dot (small filled circle, archetype-coded).
-           Games → logic (cream/deep gold for visibility on green), films →
+           Games → logic (cream), films →
            psyche (blue), musicians → instinct (rose). The dot replaces the
            old sub-1px underline — same archetype mapping, more legible
            syntax that rhymes with the footnotes on the essay page. */
@@ -646,7 +651,7 @@
             background: currentColor;
             opacity: 0.55;
         }
-        .recs-group--logic    .recs-label::before { background: #B8862D; opacity: 0.85; }
+        .recs-group--logic    .recs-label::before { background: var(--logic); opacity: 0.85; }
         .recs-group--psyche   .recs-label::before { background: var(--psyche); opacity: 0.85; }
         .recs-group--instinct .recs-label::before { background: var(--instinct); opacity: 0.85; }
         .recs-items {
@@ -677,7 +682,7 @@
         }
         /* Light corner-bracket mini-modal — used to wrap discrete bits of
            hierarchy (logo, links nav) inside the main frame. Shared
-           vocabulary: 5px corner squares, 1px stroke at --ink-20, no
+           vocabulary: 5px corner squares, 1px stroke at --border-20, no
            connecting border (the corners imply the box). Sits flush
            inside its container so the box reads as decoration framing
            the contents rather than a heavy sub-box competing with the
@@ -692,10 +697,10 @@
             height: 6px;
             pointer-events: none;
         }
-        .mini-frame .mc-tl { top: 0; left: 0; border-top: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
-        .mini-frame .mc-tr { top: 0; right: 0; border-top: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
-        .mini-frame .mc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--ink-20); border-left: 1px solid var(--ink-20); }
-        .mini-frame .mc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--ink-20); border-right: 1px solid var(--ink-20); }
+        .mini-frame .mc-tl { top: 0; left: 0; border-top: 1px solid var(--border-20); border-left: 1px solid var(--border-20); }
+        .mini-frame .mc-tr { top: 0; right: 0; border-top: 1px solid var(--border-20); border-right: 1px solid var(--border-20); }
+        .mini-frame .mc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-20); border-left: 1px solid var(--border-20); }
+        .mini-frame .mc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-20); border-right: 1px solid var(--border-20); }
         @media (max-width: 480px) {
             /* Mobile target: fit the entire landing on a standard iPhone
                viewport (390x844 / 430x932) with the URL bar showing —
@@ -994,9 +999,11 @@
                     <span class="mc mc-bl"></span>
                     <span class="mc mc-br"></span>
                     <nav class="links">
-                        <a href="https://www.linkedin.com/in/imbriggskellogg/" target="_blank" rel="noopener">linkedin</a>
-                        <span class="links-sep">/</span>
                         <a href="https://github.com/briggskellogg" target="_blank" rel="noopener">github</a>
+                        <span class="links-sep">/</span>
+                        <a href="https://x.com/briggskellogg" target="_blank" rel="noopener">x</a>
+                        <span class="links-sep">/</span>
+                        <a href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener">linkedin</a>
                         <span class="links-sep">/</span>
                         <a href="mailto:me@briggskellogg.com">me@briggskellogg.com</a>
                     </nav>
@@ -1092,11 +1099,11 @@
                 <path class="crack crack-3" d="M15.5 14L18 16L15 19L17.5 22L14 25L16 27M18 16L21 18L19 21"/>
             </svg>
         </div>
-        <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?2p0s4dbh47b538ghl110gig2yp7pmm2of41tgs463g42i7u3vxv4feulvjs2ftgydmpkz3i29ivk1jlm79cf164c3tamcspt13mrqyj4elm2w98b5xbxjasd1lbo67dgg7nmd39sit22yxo5tkakfa3rwjuucykvbqifcfsle2b6tvvwlkzj3a71426intirdiw8b2mv0a8jv0rnh1l3igck4eqyllnh43mfrnyk4sqo80i677imbdcd3hpx4af0vb98oc923w8paojtowrpahqjiuxorqrdktep0bnxmydj95r2pdu3ikvspx5t0al62ph3kf8fjyzvbodm2k73a6isjeq2imb3hzpnjk15peovvyutjt8m0ryude49nok9c92z3n6bc4zb3vjdcpcen16q62nn19fkb7idzg54q6xdg4abxyfdybe18t1ldce8975xu1a335s0psrllfjwcnlnxz01hsll9fjflwfhgv0in898s6pssdbq6f0uvzinpqzk6n5z7d4yy9wo76n4vzr9l1k0roj5mtz6s3y7ceazsxiu6ffsivixiriamujp7uluz9b883zcq96k1ele7d09wsfqzgpdtku2vuz4ugzc8jh992unffeaeo1p8eid07roe6lb6sj2bxdruoz66ltx8gl8fdob3qdux922tyk3j516rubsffryjaanskeprfme39q049dkoh1l11uy589ehaxcz4u3y4zueyw1ybxzgxhylp2r6tvygcrjsrhfalqhvt2jzgpql7ixr8z9kn8jtw5jquol2ydtoqse8q3x4oqvlqfbyt4pr61xngc218w1bcja67cyvm140evyubdolutipdp7sdkwj7o095jpn01xyqb8bfk0kfba76z4l8bzhg9iob73cjgxvnt0rjqzgshvyd81meqp5j64pwzhy18w8gt8iejx4u0wpn2m7bxpgdafa2r7fy0barlk1aoh1c80b0e5o63rqsi15l1jadupm8512vsgb05czmq4uzn6x05pzvb685xwmsg962l2p1pw04v5qpaipzerdnr31i2q1r0ro9s6k9glvl7221aenelm2ti94dab39a5dajvvevs6qc83mifjn9dhhncl275oc3z4f28e5e8rhyld6efryac69umvpzmgqnyf3fjgo05zpxvwb3o68ja3wsw6mvpeoz5shs5a3xqi8dfijlw9b4m44plcpexpmtdeou25tu8ryvxfdzyn2ljqa9ejvd46f78j1c4qlsr8i0m0la6i0l1tgzr7xe711xeh2x489lelqp9k1af4sx102diwtmsru1wli4b05fn847ym1coejjjmih53kq1d9ti7jysc8v19h5ibrmguts8xw8ece7y71rjfga3l4vphdfgh6f3lb4toj602irdmb85v1wjz1xntfzwf2f70rbm4427h3cbreaml1b28jfldu1s9ujlao45aiklg6czusivi6kaswyywp6kkvmdbnreo57qp75g4wsai33fzby475unmo92703t2s0n1p3g1yys7pqtzl32ttty6t7gdy63fodhkbtuklblpd04l9smces36mpjggv9fnlfrkcbm1n30nnv9gwq9tp05poqdy50o9wh3jfzwvl03t20jxvdwqifci5m0wpmu95rl83p5rvlu9l6kf0u810u7mtguj2q5jmm73el0wp77tcmfk6gfhjnldjne28jerxgk3hnzufekiikcsktl4qheoi1w37yixzx36wakv0xa9idvdbaqr69nhja67cdqwy1f6btm4psfaq9plsc3ws20vmmwqd3ak5kuu5z5iufy4qo6wxwqeyhlrm06rsg7wevfrv6x9wmtumczupq1krncncy82959zlvtwoew8eaht21bv3ta7dmv8h3t0qu2we4scpxo8uz4l2lzd52stybihsv4nnygayii755cl2dhx5965z08bnud0661kubpbfdxe9vz6tmcnoq492r4edts4yumay8vmnrd9ihulxvcf1e5fv2ldigqvom9jfsilb0vsrmz64ykul232seuut4fxc4ysqrfpvguwhz5lmdfl1g5p4m73frkeyccjwnenba9lss9gvs6wx97wyn651r4ebbboavn20j76jc9t7fwbjk2i9v48tkxu8yn52sk3s9mdhu40cfpcfef55vwn4bsdhh2804gpvwsa8saxi3q75nmmdgqdwehz1j426utqgx05rqun89ofh68lqwkv1ofwsjrjais1az6try6bz0vlmw8tch4dkfimqjzpplogmcbl2aknrph66smqnq6p7rzk2ookxg1gwql5hp8r5xk7sepjd2j1xol0cspdvx0szy9ojbcs3kbh26o18hmbkba4k20tdulh6kcyt4c0fi4zwrj3zpv5v92kz794mtjuwimld2p21j2966fvzcbdk277whthnagu1feakrukn1xtt859zq73b9e5507yk2d7y39239hu8irggmh5zdtcbn6twp8fek49u485g3e17ev54o51rtkzau8dwuv5jg5a6ukg14c81wttnloadi4mm52nkgp5mrrdv5bzly81fxjhqz31qmexr59aw055mqrr84lpppweo2jiik6ec4ekvgugo3nb70u8jgvj9cwisdm1hsb5762fsnamyuxekodviw2mfftgvqn7ulppkks5xkfigoqi3s264hiukj0suk4xfhctzd741gnckwd6d3ni3hyz13382530k5yw6sxy7hdor0ne3lbnbd19wcpquydxfx7d2okf4tnorgsl2k0qowfb26aax7jdkl3k8cskpm1tey6oj4ai2bkz4z3jmvp60k55qv0dr4e5nn7ab8hg1uht8459d4tr3rbyotym9vcufgpb2st6btz7w8s4cqg787p1ugbfye4ccqwq9vam1qs635h01xyyxg8ze7odxgp1fc2o0aiwox391bldev790k8oaaqkot7gbh676n0d6w09pj11coc3v286ul0snxzasq7xpfn30q8mp3gm2kd1t8ieuylf88d5rz73rm8bkvgkaeuj8lxvnjm39o9skljpu2hb26ea0xoqxjiauotnwy67jf7oaonwwvi8oqr1fzky98ejq86b9yz9qodjlgukv9fp1640nntcc6edmq08ix319rg6crqt86ofrjq6b532zl50bqvbg1oxlpyj71z6fshapd8rf7n1eg39q6i2-w1-s2-v12:5" target="_blank" rel="noopener">
-            2p0s4dbh47b53<br>
-            8ghl110gig2yp<br>
-            7pmm2of41tgs4<br>
-            ...-w1-s2-v12</a>
+        <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?0ud0z8db0vela8mm0ixqle36g86ceuj503oo9sdt99yhqj1x6xa30xnyll5ezoqlmiijveul8pig8ljv6z023324lin00h0bze69ali95k619eaqpy6fh3edqlknsndspdeqjqhanc7y1pbn711osjiz6hi3u2c891vxo87ncgrt6clksccz39e3juz6apuvdbmx3hn72uirb9lzd3bjarnauw086bi7ralto7neepumt2m4xtd8mxt0by49ltvmal9tl875hcne88dqjbcwstasedwaeana9i1iw76p9czrgca67cefsfe5gn5iyp66ii9uglgqpfhuwuocjr53cqmwme7r31437ift5yldzhz0rif5hqv6a4t3kmt1bukjnreevghxf5xk5zqetofz2i0s1crseoajxiqvsn79med2q0pfn7b0nmbdgavcvlyetqx6weojhe4btcprrqlt7dpkgp472bt6q844iq2y19ha7kw4e4h6fpbz6h9whdd6izdrw1bgf5yptn15gmj8bu3nrrca1nsqfw371asiz5dm6kpvwjae9vs41dt5r06whgjw7lg7jjuy86q4nqsrm8gclw5v1xsowhsg0vbl0cmho7qdtrsdonez3qxltg8yynbg82t9nw5vf2zjc4f5famgas2c7mr87lpucbwsui3vintm1tqukuh4kcwrxjo01rlcbpbfoq6bl5mgre9nj1z50dipachrpmktgktwgd6co2qj422tgm9aiq52gw2mmyn3km685rx4u9q1fdhqc5vuvjvp2hc0yc29688xjjyh2xwu04o3knl2wu0uq0fjl17aifvqyrjq76tjb9z6v8fodz5jsoohepcinzmqbvuxxumrhfw1wv5ihg3wwqv14hp8tna7sp3brfoimvu5fquae84ked2fdo966ngajxks3uxn9ctonbw81u6nq7u9jixctln6fovlo5yycpi9ppyr3jgj0r4a85u4o4bie1d1mgvmzg3n5mh09zymw2yum4wndzmm808zjx4w1102kz03t2ncn5lowuapasllea1sgd29pr7cz5wwrho6nyzjy5wdwdhlwvcl3fume80h5u6v2cgjr00y2q39t16ov9o5843espug5dxfxgcutyvx8st89tpahrwyvkbkk6by7fev03r3v5v91qqheow6ty920kemwgxks6e97478kr437hosvzj6jqzwypsj0sfdgzqbjruapc622phddfur4u4dbglf2ks73yo73f8ebfoy9lwmfisoisucswrud64q7u6knajjil7enug3jux3g50ms78nosoecm5kzgq2k1t3u4p4h8o39ju76tct7p942g6l6uwc6ezmqfaiey3b8y1618awc20ucpxkbpszfrdijb9oscyyuvzumpruntkuvtzfmilyt1rg6nyhg8a28vo3oz12qb2687lglcffvrl8zuda0o1hd7gzjyiz83oiseywk706wjcvzj8vwjeecnu3zpzu25i5a38jbcp20ay8xjqsuxvk67s9ts3nv3nfy2vyzxgg4xqsltm5co6jl3c6pzmgyoostetlcmi5zfcgdc7v3huzbuu8b9ziv7u3l6faeuq2ofn1p7u68ecybebkgge8rfxkpy5z56ofsu5u7m53pmmj3xa9w1emfwl4riij4l8jy6y0swy88jjqwn6rdbfdcmssqcr8zak8gwmyjn6ujkt09dhyxvpj3bjxmzrr937eiw50zz8obnmo0wq35kd729udsrbunnzt5rjvijhquwl9ydpzxrd7lrueubbc7dal3b33bta7xmdghag1k1nc51nhe59uddin18cmrjyutmitei18lhnj4wepcemrznbyz6b9gn1hqxe2uju9filhsmntzjskc22vlbml5fjpvyevgizop086uzb7lfwd3z2d8ulshdyjzkehhbmqa72i0cnyln15gsth80vyy1p3aa4cbb8677r8lyah9k97bar7nujlkdy3yc0y1p2ltj0kbee5nhco3xzei6ppt2ak50fym4tr2uo1uxm76te65yhg35qive36l1ehnvuahhs71p3i68yccwfav761n23rrpk7orwfo4bf729ju9q086u9q4jj92gumyvk395fcnplmdvphfvn7j4vd8g4jrvlahq88w3swz7p7jsgt9cshs8l2q7mriuk7o3hk7avsyutrev5gjb2r3nimtm0t6yh1ccvdf4ysif5rq1tjkbz3nge94zscyu7nygtlcrkt66jtgmpcdf5adbppo8lbllomx0wxe1utklk3d3vo4s5w68r3jyoyu2r14kf5xfm2usrdhjxpeuikw1afavaf1cwow0nowr6215oojeixjw95ksezz40ayxgm4gccns6azlw28cr850cbu5i3kqjy5sqs0nu17h0u7h6zu13qq75nrgic8gbmrcz5tdsdlti8nj9k1vezq4bm62ick7wjkeoglvmdjjjt072hwdgfh1cui79zo9sink8y22ijzdhd7h7xdmrdvhbpt3lqcsgpv9hracjhph0nuvqatb3z5xx51w8w52nri1gn7vrjnrrmqze2zhysnkrj9pmpkezz58sgr4llq1oq7qp8q5dc6mqahlp14fygrad46l1jgza8aophldn8oroao6a71o6sr8i418naaq55s2y6rpx8if7wlu7ez7pakrggxdc5qnx6t2itljf1f73z4rdr8lzkrlgsajx3b9lp4jzaxu0c3kstfzj0hjz1w89lvnhtmor48vys7ydgtdjlijf55g522fvl3f40cb33gcxaqrhsga61ce6r9tfmaef7kmboh4ba8p9tp4aau20uaumf472vv0o71ba47brtkqrl5a08kecmttotfvxahj1beuk97sei1cxmcmt22hx0iqph9oy6mm2ccvve7czrbluiprekoebgctwrxh04nmzpzn5r61ufu8gafga8s2qevwgp9gyas3zj0pyvxnpmdt46njh4q3lj1sm8mwfpaxbx2kq4jttd6az4ek277sak487679psus70ljq5ghj8on5k3ufhpr2c7i8z69wo8tn6enidktzzig4c5z63w8qx79rnv11u2quuxt52nswdbtbxaqb6sahcn51yhhufa3rcy6syi1f944fcexuazykxahdodtcz67e5di4xwpoq9u9hhdhtyob2gv0kiekahlbr5ftkpglvaj9gxw31o-w4-s2-v16:305" target="_blank" rel="noopener">
+            0ud0z8db0vela<br>
+            8mm0ixqle36g8<br>
+            6ceuj503oo9sd<br>
+            ...-w4-s2-v16</a>
     </div>
     <script>
         (function() {
