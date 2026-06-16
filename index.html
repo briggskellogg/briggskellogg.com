@@ -680,6 +680,100 @@
             padding: 0 0.6rem;
             user-select: none;
         }
+        /* ---------- Featured essay (latest dispatch) ---------- */
+        /* Sits inside the main frame, below the recs. Heavy 2px orange
+           corners give it real presence so the writing reads as a live,
+           ongoing series rather than a buried link. Content hydrates from
+           dispatches.js so the newest essay always surfaces here. */
+        .featured {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .featured-eyebrow {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-20);
+            margin-bottom: 1rem;
+        }
+        .featured-card {
+            position: relative;
+            display: block;
+            text-align: left;
+            text-decoration: none;
+            color: inherit;
+            padding: 1.4rem 1.5rem 1.25rem;
+            background-color: var(--bg);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .featured-card:hover { transform: translateY(-2px); }
+        .featured-card .fcc {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            transition: border-color 0.25s ease;
+        }
+        .featured-card .fcc-tl { top: -1px; left: -1px;   border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
+        .featured-card .fcc-tr { top: -1px; right: -1px;  border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .featured-card .fcc-bl { bottom: -1px; left: -1px;  border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
+        .featured-card .fcc-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .featured-card:hover .fcc { border-color: var(--border-80); }
+        .featured-meta {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.54rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 0.55rem;
+        }
+        .featured-no { color: var(--ink); }
+        .featured-meta .sep { color: var(--ink-20); margin: 0 0.1em; }
+        .featured-status { color: var(--instinct); }
+        .featured-status[data-status^="patch"] { color: var(--logic); }
+        .featured-status[data-status="finalized"] { color: var(--psyche); }
+        .featured-title {
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 1.25rem;
+            line-height: 1.3;
+            color: var(--ink);
+            margin-bottom: 0.5rem;
+            transition: color 0.2s ease;
+        }
+        .featured-card:hover .featured-title { color: var(--logic); }
+        .featured-excerpt {
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--ink-50);
+            margin-bottom: 0.85rem;
+        }
+        .featured-cta {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.54rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            transition: color 0.2s ease;
+        }
+        .featured-cta .arr { display: inline-block; padding-left: 0.3em; transition: transform 0.2s ease; }
+        .featured-card:hover .featured-cta { color: var(--ink); }
+        .featured-card:hover .featured-cta .arr { transform: translateX(3px); }
+        .featured-all {
+            display: inline-block;
+            margin-top: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.54rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .featured-all:hover { color: var(--ink); transform: translateX(3px); }
         /* Corner-bracket mini-modal — logo + social links. 6px arms,
            1px/--border-20 stroke, no connecting border. */
         .mini-frame {
@@ -1037,6 +1131,25 @@
                     </div>
                 </div>
             </div>
+
+            <section class="featured" aria-label="Latest essay">
+                <div class="featured-eyebrow">essays</div>
+                <a class="featured-card" id="featured-card" href="the-students-are-right.html">
+                    <span class="fcc fcc-tl"></span>
+                    <span class="fcc fcc-tr"></span>
+                    <span class="fcc fcc-bl"></span>
+                    <span class="fcc fcc-br"></span>
+                    <div class="featured-meta">
+                        <span class="featured-no">no. 01</span>
+                        <span class="sep">&middot;</span>
+                        <span class="featured-date">may 2026</span>
+                    </div>
+                    <h2 class="featured-title">&ldquo;The Students Are Right&rdquo;</h2>
+                    <p class="featured-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
+                    <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="featured-all" href="/essays">all essays &rarr;</a>
+            </section>
         </div>
 
     </main>
@@ -1312,6 +1425,48 @@
                     }, 500);
                 }
             });
+        })();
+    </script>
+
+    <script src="dispatches.js"></script>
+    <script>
+        // ---------- Featured essay (hydrate from manifest) ----------
+        // Fills the featured card with the most recent dispatch so the
+        // homepage always points at the newest essay. Falls back silently
+        // to the hard-coded markup if the manifest is missing.
+        (function() {
+            var list = (window.DISPATCHES || []);
+            if (!list.length) return;
+            var d = list[0];
+            var card = document.getElementById('featured-card');
+            if (!card) return;
+            function pad2(n) { return (n < 10 ? '0' : '') + n; }
+            if (d.url) card.setAttribute('href', d.url);
+            var noEl = card.querySelector('.featured-no');
+            if (noEl && typeof d.number === 'number') noEl.textContent = 'no. ' + pad2(d.number);
+            var dateEl = card.querySelector('.featured-date');
+            if (dateEl && d.date) dateEl.textContent = d.date;
+            var titleEl = card.querySelector('.featured-title');
+            if (titleEl && d.title) titleEl.textContent = d.title;
+            var exEl = card.querySelector('.featured-excerpt');
+            if (exEl && d.excerpt) exEl.textContent = d.excerpt;
+            // Optional status pill (draft stays implicit; patch/finalized show).
+            if (d.status && d.status !== 'draft') {
+                var meta = card.querySelector('.featured-meta');
+                if (meta) {
+                    var sep = document.createElement('span');
+                    sep.className = 'sep';
+                    sep.innerHTML = '&middot;';
+                    var pill = document.createElement('span');
+                    pill.className = 'featured-status';
+                    pill.setAttribute('data-status', d.status);
+                    pill.textContent = d.status.replace('-', ' ');
+                    meta.appendChild(document.createTextNode(' '));
+                    meta.appendChild(sep);
+                    meta.appendChild(document.createTextNode(' '));
+                    meta.appendChild(pill);
+                }
+            }
         })();
     </script>
 

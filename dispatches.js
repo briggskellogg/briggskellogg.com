@@ -17,7 +17,10 @@ window.DISPATCHES = [
         number: 1,
         title: '\u201CThe Students Are Right\u201D',
         date: 'may 2026',
-        url: 'essays.html',
-        status: 'draft'
+        url: 'the-students-are-right.html',
+        status: 'draft',
+        // One-line standfirst used on the essays index + the homepage
+        // featured card. Keep it to a sentence or two.
+        excerpt: 'This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at \u2014 and the students are right.'
     }
 ];
