@@ -13,7 +13,6 @@
 //   playlist — optional listening recommendation while reading:
 //                  archetype — 'logic' | 'psyche' | 'instinct' (picks the icon)
 //                  url       — Spotify playlist link
-//                  label     — short name shown on the essay page
 //   excerpt  — one-line standfirst for index + homepage featured card
 window.formatDispatchVersion = function(status) {
     if (!status || status === 'draft') {
@@ -40,8 +39,7 @@ window.DISPATCHES = [
         status: 'draft',
         playlist: {
             archetype: 'psyche',
-            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab',
-            label: 'psyche playlist'
+            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
         },
         excerpt: 'This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at \u2014 and the students are right.'
     },
@@ -55,8 +53,7 @@ window.DISPATCHES = [
         status: 'draft',
         playlist: {
             archetype: 'logic',
-            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30',
-            label: 'logic playlist'
+            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
         },
         excerpt: 'I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it \u2014 and adoption turned out to be the only honest metric.'
     },
@@ -70,8 +67,7 @@ window.DISPATCHES = [
         status: 'draft',
         playlist: {
             archetype: 'psyche',
-            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab',
-            label: 'psyche playlist'
+            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
         },
         excerpt: 'A product lead corrected me in front of the whole room over a point that wasn\u2019t even right. I cried in the bathroom \u2014 and you can, in fact, agree with a fact.'
     },
@@ -85,8 +81,7 @@ window.DISPATCHES = [
         status: 'draft',
         playlist: {
             archetype: 'logic',
-            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30',
-            label: 'logic playlist'
+            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
         },
         excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
     },
@@ -100,8 +95,7 @@ window.DISPATCHES = [
         status: 'draft',
         playlist: {
             archetype: 'instinct',
-            url: 'https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec',
-            label: 'instinct playlist'
+            url: 'https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec'
         },
         excerpt: 'I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren\u2019t magic \u2014 just pattern-matching at planetary scale, and a question about what we get back.'
     }

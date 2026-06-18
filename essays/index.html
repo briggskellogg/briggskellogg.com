@@ -1023,9 +1023,9 @@
                     drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
             transition: filter 0.35s ease;
         }
-        .archetype-logic   { transform: rotate(-11deg); z-index: 1; }
-        .archetype-psyche  { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
-        .archetype-instinct { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
+        .archetype-instinct { transform: rotate(-11deg); z-index: 1; }
+        .archetype-logic    { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
+        .archetype-psyche   { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
         .archetype-card:hover {
             transform: rotate(0deg) scale(1.1) translateY(-10px);
             z-index: 11;
@@ -1053,37 +1053,54 @@
         .essay-playlist-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.65rem;
+            gap: 0.8rem;
             text-decoration: none;
             color: inherit;
-            padding: 0.55rem 0.85rem 0.5rem;
-            border: 1px solid var(--border-20);
-            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease;
+            padding: 0.6rem 1.05rem 0.55rem 0.8rem;
+            border: 1px solid var(--border-12);
+            background: rgba(255, 226, 185, 0.04);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                        border-color 0.2s ease,
+                        background 0.2s ease;
+        }
+        .essay-playlist-link::after {
+            content: '\2197';
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.62rem;
+            color: var(--ink-25);
+            margin-left: 0.15rem;
+            opacity: 0;
+            transform: translate(-3px, 2px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
         }
         .essay-playlist-link:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             border-color: var(--border-50);
+            background: rgba(255, 226, 185, 0.08);
+        }
+        .essay-playlist-link:hover::after {
+            opacity: 1;
+            transform: translate(0, 0);
         }
         .essay-playlist-icon {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             display: block;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+            flex-shrink: 0;
+            transform: rotate(-7deg);
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .essay-playlist-link:hover .essay-playlist-icon {
+            transform: rotate(5deg) scale(1.06);
         }
         .essay-playlist-copy {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.52rem;
-            letter-spacing: 0.18em;
+            font-size: 0.54rem;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--ink-50);
-            text-align: left;
+            color: var(--ink);
         }
-        .essay-playlist-eyebrow {
-            display: block;
-            color: var(--ink-20);
-            margin-bottom: 0.15rem;
-        }
-        .essay-playlist-name { color: var(--ink); }
         .essay-card-version {
             display: inline-block;
             margin-left: 0.35rem;
@@ -1212,8 +1229,8 @@
         @media (max-width: 600px) {
             .archetypes { bottom: 0.85rem; right: 0.75rem; padding: 10px 8px 14px 36px; }
             .archetype-card { width: 58px; }
-            .archetype-psyche { width: 62px; margin-left: -22px; }
-            .archetype-instinct { margin-left: -20px; }
+            .archetype-logic { width: 62px; margin-left: -22px; }
+            .archetype-psyche { margin-left: -20px; }
             .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
@@ -1310,14 +1327,14 @@
          so the brand envelope is consistent across surfaces. -->
     <nav class="archetypes" aria-label="Archetypes">
 <div class="archetypes-row">
+            <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
+                <img src="/assets/archetypes/instinct.png" alt="" class="archetype-img">
+            </a>
             <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
                 <img src="/assets/archetypes/logic.png" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
                 <img src="/assets/archetypes/psyche.png" alt="" class="archetype-img">
-            </a>
-            <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
-                <img src="/assets/archetypes/instinct.png" alt="" class="archetype-img">
             </a>
         </div>
     </nav>
