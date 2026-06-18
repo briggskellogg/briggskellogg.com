@@ -872,22 +872,14 @@
             bottom: 1.4rem;
             right: 1.3rem;
             z-index: 10;
-            padding: 0.55rem 0.75rem 0.45rem;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: transparent;
-            border: 1px solid var(--border-12);
+            background: none;
+            border: none;
         }
-        .archetypes .ac {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-        }
-        .archetypes .ac-tl { top: -1px; left: -1px; border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .archetypes .ac-tr { top: -1px; right: -1px; border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .archetypes .ac-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .archetypes .ac-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .archetypes .ac { display: none; }
         .archetypes-row {
             display: flex;
             align-items: flex-end;
@@ -895,11 +887,11 @@
         .archetype-card {
             position: relative;
             display: block;
-            width: 46px;
-            height: 72px;
+            width: 68px;
+            height: 104px;
             text-decoration: none;
-            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.22))
-                    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.14));
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
+                    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
                         filter 0.35s ease;
             will-change: transform;
@@ -913,12 +905,12 @@
             user-select: none;
         }
         .archetype-logic   { transform: rotate(-11deg); z-index: 1; }
-        .archetype-psyche  { transform: rotate(-3deg); margin-left: -18px; width: 50px; height: 78px; z-index: 2; }
-        .archetype-instinct { transform: rotate(9deg); margin-left: -16px; z-index: 3; }
+        .archetype-psyche  { transform: rotate(-3deg); margin-left: -26px; width: 74px; height: 112px; z-index: 2; }
+        .archetype-instinct { transform: rotate(9deg); margin-left: -24px; z-index: 3; }
         .archetype-card:hover {
-            transform: rotate(0deg) scale(1.14) translateY(-6px);
-            filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28))
-                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16));
+            transform: rotate(0deg) scale(1.12) translateY(-8px);
+            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3))
+                    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
             z-index: 11;
         }
         /* ---------- Easter egg ---------- */
@@ -1097,11 +1089,10 @@
 
         /* Mobile overrides for the sticky chrome — same as landing. */
         @media (max-width: 600px) {
-            .archetypes { bottom: 0.85rem; right: 0.65rem; padding: 0.45rem 0.55rem 0.35rem; }
-            .archetypes .ac { width: 5px; height: 5px; }
-            .archetype-card { width: 38px; height: 58px; }
-            .archetype-psyche { width: 42px; height: 64px; margin-left: -14px; }
-            .archetype-instinct { margin-left: -12px; }
+            .archetypes { bottom: 0.85rem; right: 0.65rem; padding: 0; }
+            .archetype-card { width: 54px; height: 82px; }
+            .archetype-psyche { width: 58px; height: 88px; margin-left: -20px; }
+            .archetype-instinct { margin-left: -18px; }
             .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
@@ -1334,11 +1325,7 @@
     <!-- Sticky chrome — mirrors the landing. Sits at fixed bottom corners
          so the brand envelope is consistent across surfaces. -->
     <nav class="archetypes" aria-label="Archetypes">
-        <span class="ac ac-tl"></span>
-        <span class="ac ac-tr"></span>
-        <span class="ac ac-bl"></span>
-        <span class="ac ac-br"></span>
-        <div class="archetypes-row">
+<div class="archetypes-row">
             <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
                 <img src="/assets/archetypes/logic.png" alt="" class="archetype-img">
             </a>
