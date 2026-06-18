@@ -24,11 +24,11 @@ window.DISPATCHES = [
         excerpt: 'This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at \u2014 and the students are right.'
     },
     {
-        id: 'americans-europeans-and-autism',
+        id: 'americans-europeans-and-autism-oh-my',
         number: 1,
         title: 'Americans, Europeans, and Autism, Oh My!',
         date: 'november 2025',
-        url: '/essays/americans-europeans-and-autism',
+        url: '/essays/americans-europeans-and-autism-oh-my/',
         status: 'draft',
         excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
     }
