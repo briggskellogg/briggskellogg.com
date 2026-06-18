@@ -84,25 +84,11 @@
             padding: 5.5rem 2rem 7rem;
             position: relative;
             overflow-x: hidden;
-            /* Subtle ink-dot cursor — lets the reading light read as
-               the dominant signal of "where I am" on the page. */
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="7" height="7"><circle cx="3.5" cy="3.5" r="1.8" fill="%23FFE2B9" fill-opacity="0.5"/></svg>') 4 4, default;
         }
         a, button {
             cursor: pointer;
         }
         input[type="email"] { cursor: text; }
-        /* Footnote interactions are part of reading, not navigation — keep
-           the subtle dot cursor instead of switching to the pointing-finger
-           cursor that other links use. `cursor: inherit` pulls back the
-           body's custom dot SVG. */
-        .fnref, .fnref a,
-        .footnote, .fn-marker, .fn-back, .fn-content {
-            cursor: inherit;
-        }
-        @media (hover: none) {
-            body { cursor: auto; }
-        }
         body::after {
             content: '';
             position: fixed;

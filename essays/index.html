@@ -84,25 +84,11 @@
             padding: 5.5rem 2rem 7rem;
             position: relative;
             overflow-x: hidden;
-            /* Subtle ink-dot cursor — lets the reading light read as
-               the dominant signal of "where I am" on the page. */
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="7" height="7"><circle cx="3.5" cy="3.5" r="1.8" fill="%23FFE2B9" fill-opacity="0.5"/></svg>') 4 4, default;
         }
         a, button {
             cursor: pointer;
         }
         input[type="email"] { cursor: text; }
-        /* Footnote interactions are part of reading, not navigation — keep
-           the subtle dot cursor instead of switching to the pointing-finger
-           cursor that other links use. `cursor: inherit` pulls back the
-           body's custom dot SVG. */
-        .fnref, .fnref a,
-        .footnote, .fn-marker, .fn-back, .fn-content {
-            cursor: inherit;
-        }
-        @media (hover: none) {
-            body { cursor: auto; }
-        }
         body::after {
             content: '';
             position: fixed;
@@ -1023,10 +1009,8 @@
             flex-shrink: 0;
             text-decoration: none;
             transform-origin: bottom center;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
-                    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                        filter 0.35s ease;
+            background: none;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: transform;
         }
         .archetype-img {
@@ -1035,15 +1019,20 @@
             height: auto;
             pointer-events: none;
             user-select: none;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
+                    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+            transition: filter 0.35s ease;
         }
         .archetype-logic   { transform: rotate(-11deg); z-index: 1; }
         .archetype-psyche  { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
         .archetype-instinct { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
         .archetype-card:hover {
             transform: rotate(0deg) scale(1.1) translateY(-10px);
+            z-index: 11;
+        }
+        .archetype-card:hover .archetype-img {
             filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3))
                     drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
-            z-index: 11;
         }
         /* ---------- Easter egg ---------- */
 
