@@ -455,35 +455,19 @@
             top: -0.2em;
         }
         .fnref a {
-            color: var(--ink-50);
+            color: var(--ink);
             text-decoration: none;
             padding: 0 0.2em;
             border-radius: 2px;
-            transition: color 0.18s ease, background 0.18s ease;
+            transition: background 0.18s ease;
         }
+        /* Footnote numbers never recolor — only a subtle neutral highlight
+           signals the active link. Archetype color lives on the footnote-side
+           dot + left rule, not the digits. */
         .fnref:hover a,
         .fnref:focus-within a,
         .fnref.linked a {
-            color: var(--ink);
             background: var(--ink-12);
-        }
-        .fnref[data-archetype="logic"].linked a,
-        .fnref[data-archetype="logic"]:hover a,
-        .fnref[data-archetype="logic"]:focus-within a {
-            color: var(--logic);
-            background: rgba(255, 226, 185, 0.15);
-        }
-        .fnref[data-archetype="instinct"].linked a,
-        .fnref[data-archetype="instinct"]:hover a,
-        .fnref[data-archetype="instinct"]:focus-within a {
-            color: var(--instinct);
-            background: rgba(173, 124, 132, 0.18);
-        }
-        .fnref[data-archetype="psyche"].linked a,
-        .fnref[data-archetype="psyche"]:hover a,
-        .fnref[data-archetype="psyche"]:focus-within a {
-            color: var(--psyche);
-            background: rgba(101, 141, 164, 0.18);
         }
 
         /* No explicit legend — the structure is hidden in the colors.
@@ -518,13 +502,12 @@
         .fn-marker {
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.6rem;
-            color: var(--ink-50);
+            color: var(--ink);
             text-decoration: none;
             align-self: start;
             line-height: 1.4;
             padding-top: 0.25em;
             letter-spacing: 0.05em;
-            transition: color 0.2s ease;
             white-space: nowrap;
         }
         .fn-content a {
@@ -540,13 +523,11 @@
             color: var(--ink);
             border-left-color: var(--ink-50);
         }
-        .footnote.linked .fn-marker { color: var(--ink); }
+        /* Left rule takes the archetype color on link; the marker number
+           itself stays ink (see .fn-marker). Only the dot + rule carry hue. */
         .footnote[data-archetype="logic"].linked    { border-left-color: var(--logic); }
-        .footnote[data-archetype="logic"].linked    .fn-marker { color: var(--logic); }
         .footnote[data-archetype="instinct"].linked { border-left-color: var(--instinct); }
-        .footnote[data-archetype="instinct"].linked .fn-marker { color: var(--instinct); }
         .footnote[data-archetype="psyche"].linked   { border-left-color: var(--psyche); }
-        .footnote[data-archetype="psyche"].linked   .fn-marker { color: var(--psyche); }
         .footnote[data-archetype] .fn-marker::before {
             content: '';
             display: inline-block;
@@ -568,7 +549,6 @@
             border-left-color: var(--ink-50);
             color: var(--ink);
         }
-        .footnote:target .fn-marker { color: var(--ink); }
 
         /* ---------- The wire overlay ----------
            The SVG sits underneath the body + notes (z-index 0) and the
@@ -1126,7 +1106,7 @@
                      version status lives in the top-right of the frame,
                      not in this centered eyebrow. -->
                 <p class="essay-number" data-essay-meta>
-                    <span class="num">no. 02</span>
+                    <span class="num">no. 05</span>
                     <span class="sep">&middot;</span>
                     <span>essay</span>
                 </p>
@@ -1604,10 +1584,26 @@
 
                 var x1 = refRightX;
                 var y1 = refMidY;
-                var xMid = x1 + (x2 - x1) * 0.5;
+                // Clamp the horizontal control handles so the curve always
+                // leaves the number and arrives at the footnote dot
+                // horizontally, and never overshoots past x2 (which would
+                // curl the wire in front of the footnote's left rule). The
+                // handle is a fraction of the horizontal gap, capped to a
+                // max, and collapsed to the midpoint when the gap is too
+                // narrow to fit two handles. Both control x's stay within
+                // [x1, x2], so the curve's x can never exceed the endpoint.
+                var dx = x2 - x1;
+                var handle = Math.max(24, Math.min(dx * 0.5, 90));
+                var c1x = x1 + handle;
+                var c2x = x2 - handle;
+                if (c2x < c1x) {
+                    var mid = x1 + dx * 0.5;
+                    c1x = mid;
+                    c2x = mid;
+                }
                 var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' C ' + xMid.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' ' + xMid.toFixed(1) + ' ' + y2.toFixed(1) +
+                        ' C ' + c1x.toFixed(1) + ' ' + y1.toFixed(1) +
+                        ' ' + c2x.toFixed(1) + ' ' + y2.toFixed(1) +
                         ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
 
                 // Neutral wire — no archetype stroke override.

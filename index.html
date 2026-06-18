@@ -681,12 +681,14 @@
             user-select: none;
         }
         /* ---------- Featured essay (latest dispatch) ---------- */
-        /* Sits inside the main frame, below the recs. Heavy 2px orange
-           corners give it real presence so the writing reads as a live,
-           ongoing series rather than a buried link. Content hydrates from
-           dispatches.js so the newest essay always surfaces here. */
+        /* Standalone module that sits directly BELOW the main frame (a
+           sibling of .frame inside .page), matched to the frame's width.
+           Heavy 2px orange corners give it real presence so the writing
+           reads as a live, ongoing series rather than a buried link.
+           Content hydrates from dispatches.js so the newest essay always
+           surfaces here. */
         .featured {
-            margin-top: 2rem;
+            margin-top: 1.75rem;
             text-align: center;
         }
         .featured-eyebrow {
@@ -1131,26 +1133,26 @@
                     </div>
                 </div>
             </div>
-
-            <section class="featured" aria-label="Latest essay">
-                <div class="featured-eyebrow">essays</div>
-                <a class="featured-card" id="featured-card" href="/essays/the-students-are-right">
-                    <span class="fcc fcc-tl"></span>
-                    <span class="fcc fcc-tr"></span>
-                    <span class="fcc fcc-bl"></span>
-                    <span class="fcc fcc-br"></span>
-                    <div class="featured-meta">
-                        <span class="featured-no">no. 02</span>
-                        <span class="sep">&middot;</span>
-                        <span class="featured-date">may 2026</span>
-                    </div>
-                    <h2 class="featured-title">&ldquo;The Students Are Right&rdquo;</h2>
-                    <p class="featured-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
-                    <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
-                </a>
-                <a class="featured-all" href="/essays">all essays &rarr;</a>
-            </section>
         </div>
+
+        <section class="featured" aria-label="Latest essay">
+            <div class="featured-eyebrow">essays</div>
+            <a class="featured-card" id="featured-card" href="/essays/the-students-are-right">
+                <span class="fcc fcc-tl"></span>
+                <span class="fcc fcc-tr"></span>
+                <span class="fcc fcc-bl"></span>
+                <span class="fcc fcc-br"></span>
+                <div class="featured-meta">
+                    <span class="featured-no">no. 05</span>
+                    <span class="sep">&middot;</span>
+                    <span class="featured-date">may 2026</span>
+                </div>
+                <h2 class="featured-title">&ldquo;The Students Are Right&rdquo;</h2>
+                <p class="featured-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
+                <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
+            </a>
+            <a class="featured-all" href="/essays">all essays &rarr;</a>
+        </section>
 
     </main>
     <footer class="rights">

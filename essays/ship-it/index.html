@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Americans, Europeans, and Autism, Oh My! &mdash; Briggs Kellogg</title>
-    <meta name="description" content="A short essay by Briggs Kellogg on autistic directness, American professional communication norms, and why clarity is kindness.">
+    <title>Ship It &mdash; Briggs Kellogg</title>
+    <meta name="description" content="A short essay by Briggs Kellogg on building an automated Slack briefing nobody asked for, treating colleagues like customers, and why adoption is the only honest metric.">
     <meta name="theme-color" content="#818960">
-    <meta property="og:title" content="Americans, Europeans, and Autism, Oh My! &mdash; Briggs Kellogg">
-    <meta property="og:description" content="A short essay on autistic directness, American professional communication norms, and why clarity is kindness.">
+    <meta property="og:title" content="Ship It &mdash; Briggs Kellogg">
+    <meta property="og:description" content="A short essay on building an internal tool nobody asked for, and why adoption is the only honest metric.">
     <meta property="og:image" content="https://briggskellogg.com/logo.png">
-    <meta property="og:url" content="https://briggskellogg.com/essays/americans-europeans-and-autism-oh-my/">
+    <meta property="og:url" content="https://briggskellogg.com/essays/ship-it/">
     <meta property="og:type" content="article">
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="apple-touch-icon" href="/logo.png">
@@ -1075,7 +1075,7 @@
         }
     </style>
 </head>
-<body data-essay-id="americans-europeans-and-autism-oh-my">
+<body data-essay-id="ship-it">
     <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
          Natural PNG color at rest; a masked cream sheen sweeps across
          on hover (see .essay-home-mark::after). -->
@@ -1106,12 +1106,12 @@
                      version status lives in the top-right of the frame,
                      not in this centered eyebrow. -->
                 <p class="essay-number" data-essay-meta>
-                    <span class="num">no. 02</span>
+                    <span class="num">no. 04</span>
                     <span class="sep">&middot;</span>
                     <span>essay</span>
                 </p>
-                <h1 class="essay-title">Americans, Europeans, and Autism, Oh My!</h1>
-                <p class="essay-meta">november 2025</p>
+                <h1 class="essay-title">Ship It</h1>
+                <p class="essay-meta">december 2025</p>
             </header>
 
             <figure class="essay-figure">
@@ -1119,128 +1119,159 @@
                 <span class="fc fc-tr"></span>
                 <span class="fc fc-bl"></span>
                 <span class="fc fc-br"></span>
-                <img src="/pexels-anna-shevchuk-11507617.png" alt="Two people sitting close together on a wooden pallet at the shoreline, talking as they look out at a calm sea at dusk." loading="lazy">
-                <figcaption>Photo by Anna Shevchuk</figcaption>
+                <img src="/pexels-cottonbro-4709285.png" alt="A young person in a dim room sipping from a blue mug while working at a desktop monitor filled with code." loading="lazy">
+                <figcaption>Photo by cottonbro studio</figcaption>
             </figure>
 
             <div class="essay-layout">
                 <svg class="essay-wires" aria-hidden="true"></svg>
 
                 <div class="essay-body">
-                    <p>A few weeks into a new job, I tried to explain something to a colleague.</p>
+                    <p>The message wasn&rsquo;t from my boss. It was from someone in engineering I&rsquo;d never spoken to.</p>
 
-                    <p>He&rsquo;d asked about pricing tiers&mdash;how they work, when charges kick in. Standard stuff. I used an analogy about water and buckets. Structured it so the concept would click on first read. Edited it once for clarity before hitting send.</p>
+                    <p>Three words. Posted in a public channel at 7:43 AM on a Tuesday.</p>
 
-                    <p>My lead flagged it as potentially AI-generated.</p>
+                    <p>&ldquo;I listen daily.&rdquo;</p>
 
-                    <p>Not because it was wrong.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup> But before the accuracy issue even came up, the concern was: <em>this seems like it was written by a machine.</em></p>
+                    <p>I stared at it longer than I should have. I don&rsquo;t remember what I said back. Something casual, probably. Something that hid the fact that I&rsquo;d been refreshing the listener count more times that month than I will ever admit out loud.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup></p>
 
-                    <p>It wasn&rsquo;t.</p>
+                    <p>Here&rsquo;s what happened: I was drowning. Too many Slack channels. Too much context scattered everywhere. I kept showing up to meetings and realizing I&rsquo;d missed something important, and the shame of not knowing was starting to harden into something worse.</p>
 
-                    <p>I&rsquo;d just... thought about it and written it clearly.</p>
+                    <p>I&rsquo;m not good at asking for help. I&rsquo;m better at building systems that make the asking unnecessary.</p>
 
-                    <div class="sep"></div>
+                    <p>So I built a thing. An automated podcast that turns our company&rsquo;s Slack into a ten-minute morning briefing. n8n workflow running at 4 AM. Gemini for analysis, Claude for the script, our own voice tech for the audio. By the time I pour my coffee, the briefing is waiting.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="instinct"><a href="#fn-2">2</a></sup></p>
 
-                    <p>I&rsquo;m autistic. I don&rsquo;t always mention it&mdash;it&rsquo;s not the first thing I lead with in professional contexts. But it&rsquo;s relevant here because it explains something that might otherwise seem like a stylistic choice.</p>
+                    <p>I didn&rsquo;t tell anyone. I just started posting episodes in a channel and figured if people found it useful, they&rsquo;d listen. If they didn&rsquo;t, I&rsquo;d still have solved my own problem.</p>
 
-                    <p>My brain prefers precision. It likes structured analogies, clean reasoning, edited prose. When I communicate, I tend to state conclusions directly rather than circling toward them. I don&rsquo;t naturally produce the hedges, softeners, and visible uncertainty that American professional culture treats as proof of humanity.</p>
+                    <p>Thirty percent of the company listens now. No announcement. No mandate. No one asked them to.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="psyche"><a href="#fn-3">3</a></sup></p>
 
-                    <p>This used to confuse me. I&rsquo;d write something clear and get a reaction that felt like suspicion. Not &ldquo;you&rsquo;re wrong&rdquo;&mdash;I can handle being wrong. More like &ldquo;something about this doesn&rsquo;t seem right.&rdquo;</p>
-
-                    <p>It took me a while to realize what was happening: I was failing a test I didn&rsquo;t know I was taking.</p>
+                    <p>I think about those three words a lot.</p>
 
                     <div class="sep"></div>
 
-                    <p>American professional communication has an implicit proof-of-humanity baked into it.</p>
+                    <p>Here&rsquo;s what I&rsquo;ve learned: internal tools die in a very specific way.</p>
 
-                    <p>You&rsquo;re supposed to hedge. You&rsquo;re supposed to show visible effort, visible uncertainty, visible struggle. You&rsquo;re supposed to make your thinking look <em>effortful</em>&mdash;not in the sense that it took time, but in the sense that you want everyone to see the gears turning.</p>
+                    <p>They don&rsquo;t explode. They don&rsquo;t get formally killed. They just... stop. Someone builds something useful, gets busy with other work, and the thing that required their attention quietly rots. People notice it&rsquo;s stale. They stop checking. Eventually someone asks &ldquo;whatever happened to that thing?&rdquo; and the answer is a shrug.</p>
 
-                    <p>Clean reasoning reads as suspicious. Structured explanations trigger &ldquo;did you use ChatGPT?&rdquo; Confidence without performed doubt gets labeled arrogance.</p>
+                    <p>Cisco tried an internal radio channel years ago. Same basic idea&mdash;synthesize company information into audio. Good instinct. They abandoned it. Not because people didn&rsquo;t want it. Because someone had to show up every day and make it happen, and eventually that someone had other priorities.</p>
 
-                    <p>The irony is that I work at an AI company. We spend enormous effort making synthetic voices sound natural and warm. And here I am, a human, being told my natural communication style sounds synthetic.</p>
-
-                    <p>The machines are getting better at sounding like us. And apparently, some of us are getting flagged for sounding like them.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="instinct"><a href="#fn-2">2</a></sup></p>
+                    <p>That&rsquo;s the trap. The idea isn&rsquo;t the hard part. The sustainability is.</p>
 
                     <div class="sep"></div>
 
-                    <p>Here&rsquo;s what makes this more than a personal quirk: my autistic communication style maps almost perfectly onto communication norms in other cultures.</p>
+                    <p>I think most internal initiatives fail because they&rsquo;re treated like favors.</p>
 
-                    <p>I&rsquo;ve worked with engineers in Poland who would never dream of wrapping a correction in three layers of softening. &ldquo;This is wrong, here&rsquo;s why&rdquo; isn&rsquo;t rude to them. It&rsquo;s efficient. It&rsquo;s <em>respectful</em>&mdash;because it assumes you&rsquo;re an adult who can handle direct information without emotional scaffolding.</p>
+                    <p>Someone builds a tool, shares it with the team, and waits for gratitude. When the gratitude doesn&rsquo;t come&mdash;or worse, when people start requesting features&mdash;the builder gets resentful. <em>I did this for free. I did this on top of my real job. Why are you asking for more?</em></p>
 
-                    <p>I&rsquo;ve worked with colleagues in Germany, Israel, the Netherlands&mdash;places where professional directness isn&rsquo;t a character flaw. Where being wrong is treated as data, not moral failure. Where the response to a mistake is &ldquo;okay, here&rsquo;s the correct information&rdquo; rather than a fifteen-minute dance of face-saving.</p>
+                    <p>Your colleagues are the most hostile user base you will ever face.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4">4</a></sup></p>
 
-                    <p>And then I&rsquo;ve watched those same people get labeled &ldquo;abrasive&rdquo; or &ldquo;cold&rdquo; in American contexts. Not because their content was wrong. Because their <em>form</em> didn&rsquo;t match expectations.</p>
+                    <p>They didn&rsquo;t opt in. They&rsquo;re already overloaded. They will route around friction instantly. They have zero obligation to use your thing just because you made it. They&rsquo;re not customers who chose you over a competitor. They&rsquo;re people who showed up to work and found your tool sitting in their path like a tollbooth they didn&rsquo;t ask to pass through.</p>
 
-                    <p>The first time I worked closely with a Polish colleague, I felt something click. <em>Oh. This is how my brain already works.</em> I wasn&rsquo;t being rude all those years. I was just speaking a different dialect.</p>
+                    <p>If you want internal adoption, you have to earn it the same way you&rsquo;d earn it externally. Clear value proposition. Consistent delivery. Zero cognitive load. The kind of experience where using the tool is easier than not using it.</p>
 
-                    <div class="sep"></div>
-
-                    <p>The American professional class has developed a very specific communication style and mistaken it for universal politeness. It isn&rsquo;t. It&rsquo;s local. It&rsquo;s cultural. And it&rsquo;s increasingly expensive in a world where your team might span six countries and three generations.</p>
-
-                    <p>I watched a meeting fall apart once because a senior American executive couldn&rsquo;t parse feedback from a junior European engineer. The engineer said, plainly: &ldquo;This approach won&rsquo;t work. Here&rsquo;s why. Here&rsquo;s what I&rsquo;d suggest instead.&rdquo;</p>
-
-                    <p>Clear. Actionable. Respectful of everyone&rsquo;s time.</p>
-
-                    <p>The executive heard: <em>This person is being combative and doesn&rsquo;t understand their place.</em></p>
-
-                    <p>The engineer heard, in the awkward silence that followed: <em>Americans are fragile and I don&rsquo;t understand the rules.</em></p>
-
-                    <p>Nothing got resolved. The actual technical problem&mdash;which had a real answer&mdash;got buried under a meta-conversation about &ldquo;communication styles&rdquo; and &ldquo;cultural sensitivity.&rdquo; Two weeks later, they did what the engineer originally suggested.</p>
-
-                    <p>This happens constantly. The cushioning that&rsquo;s supposed to smooth collaboration actively degrades it. People spend so much energy managing the meta-layer&mdash;the hedging, the softening, the strategic vagueness&mdash;that the actual content gets lost.</p>
+                    <p>I treat my colleagues like customers. That&rsquo;s not a metaphor. That&rsquo;s the whole thing.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="instinct"><a href="#fn-5">5</a></sup></p>
 
                     <div class="sep"></div>
 
-                    <p>The generational layer makes this messier.</p>
+                    <p>The Weather Report works because I refused to make it optional.<sup class="fnref" id="fnref-6" data-fn="6" data-archetype="psyche"><a href="#fn-6">6</a></sup></p>
 
-                    <p>There&rsquo;s a Boomer-influenced professional norm that treats hedging as respect and directness as insubordination. You earn the right to speak plainly after decades of deference. Before that, you soften. You qualify. You make sure everyone knows you know your place.</p>
+                    <p>Not optional in the sense of mandatory&mdash;no one has to listen. Optional in the sense of <em>variable</em>. The episode ships every morning at the same time. The format is consistent. The voice is the same. The runtime is predictable. You know exactly what you&rsquo;re getting, which means you can build it into your routine without thinking.</p>
 
-                    <p>But I&rsquo;ve sat in rooms with senior leaders who hedged so aggressively that nobody knew what they actually thought. The meeting ends. Everyone leaves. Three different people have three different interpretations of what was decided. A week later, someone has to have the &ldquo;clarifying conversation&rdquo; that should have happened in the first place.</p>
+                    <p>I automated everything I could. The data pull, the analysis, the script generation, the audio synthesis. The only manual step is me occasionally tweaking prompts when I notice the output drifting. Otherwise, it runs whether I&rsquo;m paying attention or not.</p>
 
-                    <p>The younger workers who want transparency aren&rsquo;t being disrespectful. They&rsquo;re being efficient. They&rsquo;ve watched the hedging culture produce meetings about meetings, decisions that never quite get made, accountability that dissolves into vagueness.</p>
+                    <p>That&rsquo;s what killed the Cisco version. It required a human to show up and care every single day. Mine requires a human to have cared <em>once</em>&mdash;when building the system&mdash;and then the system takes over.</p>
 
-                    <p>They&rsquo;re not wrong. They&rsquo;re early.</p>
-
-                    <div class="sep"></div>
-
-                    <p>So here&rsquo;s what I&rsquo;ve learned, mostly by getting it wrong in both directions.</p>
-
-                    <p>If you&rsquo;re wired like me&mdash;direct, precise, made anxious by fluff even when it&rsquo;s coming out of your own mouth just trying to get by&mdash;the work isn&rsquo;t learning to hedge. It&rsquo;s learning to give people context. A quick &ldquo;I&rsquo;m going to be blunt here because I think it matters&mdash;it&rsquo;s not personal&rdquo; costs nothing and saves the other person from hearing an attack that isn&rsquo;t there. Directness without warning can feel like an ambush to people who weren&rsquo;t raised on it.</p>
-
-                    <p>If you&rsquo;re wired the other way&mdash;if hedging is your native tongue&mdash;the work is risking clarity. Say the thing. Not &ldquo;I feel like maybe we should consider...&rdquo; but &ldquo;I think X.&rdquo; If you&rsquo;re wrong, you&rsquo;ll find out. And here&rsquo;s the part that took me years to understand from the other side: when someone drops the cushioning and tells you something straight, they&rsquo;re trusting you. They&rsquo;re treating you like someone who can handle information without being managed. That&rsquo;s respect, even when it doesn&rsquo;t feel like it.</p>
-
-                    <p>The goal isn&rsquo;t meeting in the middle at some bland compromise. It&rsquo;s building cultures where both modes are legible&mdash;where the Polish engineer&rsquo;s directness and the American executive&rsquo;s caution can actually hear each other. Where telling your boss they&rsquo;re doing well isn&rsquo;t weird. Where naming what&rsquo;s broken isn&rsquo;t career suicide. Where asking for what you want is just... asking for what you want.</p>
+                    <p>Automation changes which ideas are viable. The Weather Report isn&rsquo;t a better idea than what Cisco tried. It&rsquo;s the same idea with a different sustainability model. Same instinct, different infrastructure. Same dream, different bones.</p>
 
                     <div class="sep"></div>
 
-                    <p>I&rsquo;m not arguing for cruelty. I&rsquo;m not arguing against warmth.</p>
+                    <p>The part I didn&rsquo;t expect was what happens when something crosses from &ldquo;internal tool&rdquo; to &ldquo;thing people actually want.&rdquo;</p>
 
-                    <p>But clarity is kindness. Vagueness is not politeness&mdash;it&rsquo;s risk distribution. When everyone hedges, nobody knows what anyone thinks, decisions get made in the gaps between what people said and what they meant, and accountability dissolves into plausible deniability.</p>
+                    <p>A few weeks in, a customer reached out asking if they could build their own version. Not because we&rsquo;d pitched it. Because someone on their side had heard about it from someone on our side and wanted to know if the capability existed.</p>
 
-                    <p>That&rsquo;s not collaboration. That&rsquo;s theater.</p>
+                    <p>Then another customer asked. Then a third.</p>
+
+                    <p>I&rsquo;d accidentally built something people would pay for by refusing to half-ass something I&rsquo;d built for myself.</p>
+
+                    <p>That&rsquo;s the pattern. The best internal tools aren&rsquo;t designed to be products. They&rsquo;re designed to solve a real problem for a real person&mdash;usually the builder&mdash;and they become products when other people recognize themselves in the solution.</p>
+
+                    <p>The Weather Report started as a confession: <em>I can&rsquo;t keep up with Slack and it&rsquo;s making me worse at my job.</em> That&rsquo;s not a product pitch. That&rsquo;s embarrassing. But it turns out a lot of people have the same embarrassment, and some of them have budget.</p>
 
                     <div class="sep"></div>
 
-                    <p>My autism isn&rsquo;t a limitation I&rsquo;m working around. It&rsquo;s a communication style that happens to align with how a significant portion of the world already operates. The fact that it doesn&rsquo;t match American professional defaults isn&rsquo;t my problem to solve. It&rsquo;s a translation gap&mdash;and translation goes both ways.</p>
+                    <p>I don&rsquo;t know if we&rsquo;ll productize it. That&rsquo;s a different conversation with different stakeholders and different tradeoffs. What I know is this:</p>
 
-                    <p>I still use analogies when I explain things. I still edit for clarity. I still say what I mean in as few words as possible.</p>
+                    <p>Adoption is the only honest metric.</p>
 
-                    <p>And here&rsquo;s my bet: the cultures that figure this out first&mdash;that treat directness as a feature, that stop penalizing clarity, that build teams where a Polish engineer and an American executive can actually hear each other&mdash;those are the ones that will move fastest and build best.</p>
+                    <p>Not engagement. Not satisfaction surveys. Not the number of people who said &ldquo;cool idea&rdquo; in the launch thread and never opened it again. Adoption. Repeated use. The thing people reach for without being asked because it makes their life better.</p>
 
-                    <p>The rest will keep hedging their way toward decisions that never quite get made.</p>
+                    <p>Thirty percent adoption in a month, with zero marketing, tells me the problem is real. The customer requests tell me the solution travels. Everything else is stories we tell ourselves about why something should work.</p>
 
-                    <p>I know which one I&rsquo;m choosing.</p>
+                    <div class="sep"></div>
+
+                    <p>There&rsquo;s a version of this essay that&rsquo;s about strategy. About internal tooling philosophy, about infrastructure layers, about treating colleague experience with the same rigor as customer experience.</p>
+
+                    <p>But honestly? I didn&rsquo;t build The Weather Report because I had a thesis. I built it because I was overwhelmed and needed help. I built it because the alternative was admitting I couldn&rsquo;t keep up, and I&rsquo;m not very good at admitting that. I&rsquo;m not very good at asking for help. I&rsquo;m better at building systems that make the asking unnecessary.</p>
+
+                    <p>The philosophy came after. After it worked. After people started listening. After I had time to reverse-engineer why.</p>
+
+                    <p>That&rsquo;s how it usually goes. You build something because you need it. You keep building because it&rsquo;s working. And somewhere in the middle, you start telling a story about what you believe&mdash;but the belief came from the artifact, not the other way around.</p>
+
+                    <div class="sep"></div>
+
+                    <p>I&rsquo;m going to be honest about something. Part of why I built this wasn&rsquo;t the overwhelm. It was that I wanted to be special. Not useful&mdash;<em>special</em>. I wanted someone to notice I&rsquo;d made a thing nobody asked me to make. That&rsquo;s why I kept refreshing the count. I was waiting for proof that I mattered, and three words from a stranger in engineering handed it to me, and I felt it more than I&rsquo;d like to put in writing.</p>
+
+                    <p>But I shipped it. It&rsquo;s working. Thirty percent of the company wakes up to something I made.</p>
+
+                    <p>For now, that&rsquo;s enough.</p>
+
+                    <div class="sep"></div>
+
+                    <p>Here&rsquo;s what I believe:</p>
+
+                    <p>Internal tools fail because nobody treats caring as a system.</p>
+
+                    <p>And you&rsquo;re only special until you ship&mdash;after that, you&rsquo;re just useful.</p>
+
+                    <p>Useful is better. Useful survives. Useful compounds.</p>
+
+                    <p>Special is a story. Shipping is a fact.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="logic"><a href="#fn-7">7</a></sup></p>
                 </div>
 
                 <div class="essay-notes" aria-label="Footnotes">
                     <aside id="fn-1" class="footnote" data-fn="1" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-1">1</a>
-                        <div class="fn-content">It was, partially&mdash;I&rsquo;d conflated two tier models.<a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">I just admitted it in the footnotes, which I&rsquo;ve decided don&rsquo;t count. The whole point of a footnote is that it&rsquo;s where you put the true thing in a smaller font.<a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
                     <aside id="fn-2" class="footnote" data-fn="2" data-archetype="instinct" tabindex="-1">
                         <a class="fn-marker" href="#fnref-2">2</a>
-                        <div class="fn-content"><em>Yeah, bitch, I use em dashes&mdash;and I have for about a decade now. I spend time writing literary fiction and philosophy in my free time. It is and always will be a little classy. That&rsquo;s the point.</em><a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">n8n is the unglamorous plumbing&mdash;a workflow tool that wires the pieces together and does what it&rsquo;s told. The entire operation hangs on a scheduled job that fires at 4 AM while I sleep. The least impressive part of the system is the part that makes it survive, which is true of most systems and most people.<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-3">3</a>
+                        <div class="fn-content">Listens, not opens. I don&rsquo;t count the click; I count whether you come back tomorrow. A tool everyone opens once and a tool a third of the company returns to daily are different species wearing the same launch announcement. That difference is the rest of this essay.<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-4" class="footnote" data-fn="4" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-4">4</a>
+                        <div class="fn-content">I say this with love, and as somebody&rsquo;s hostile user myself. We all are. The person who built the expense-report tool you refuse to learn is, at this very moment, having this exact thought about you.<a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-5" class="footnote" data-fn="5" data-archetype="instinct" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-5">5</a>
+                        <div class="fn-content">Which means I also let them churn. If someone stops listening, that&rsquo;s data about my product, not a flaw in their character. Internal tools that guilt people into staying aren&rsquo;t tools. They&rsquo;re taxes with a friendly Slack emoji.<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-6">6</a>
+                        <div class="fn-content">The name is the design spec. The weather is ambient, recurring, useful, and never urgent enough to go hunting for on its own&mdash;you don&rsquo;t open an app to seek out the forecast, it&rsquo;s just there when you wake up. A briefing you have to remember to go get has already lost.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-7" class="footnote" data-fn="7" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-7">7</a>
+                        <div class="fn-content">This is a note to myself, obviously. The whole essay is. You don&rsquo;t write &ldquo;useful survives&rdquo; unless some part of you is afraid you won&rsquo;t.<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
                     </aside>
                 </div>
             </div>
