@@ -1,18 +1,34 @@
 // Ordered most-recent first. Add new dispatches to the top of the array.
 // Each entry:
-//   id      — slug matched against <body data-essay-id="...">
-//   number  — 1-based dispatch number (used for "no. 01" display)
-//   title   — human-readable title (curly quotes ok)
-//   date    — initial publication month/year ("may 2026")
-//   url     — path on the site
-//   image   — root-relative lead photo, shown as the preview thumbnail on
-//             the homepage featured card + the essays directory cards
-//   status  — version state. One of:
-//               'draft'     — initial post, still being shaped
-//               'patch-N'   — incremental revision N (e.g. 'patch-1', 'patch-2')
-//               'finalized' — locked, no further edits planned
-//             The essay page reads this and shows it inline next to the
-//             dispatch number; the landing dispatch card surfaces it too.
+//   id       — slug matched against <body data-essay-id="...">
+//   number   — 1-based dispatch number (used for "no. 01" display)
+//   title    — human-readable title (curly quotes ok)
+//   date     — initial publication month/year ("may 2026")
+//   url      — path on the site
+//   image    — root-relative lead photo for preview cards
+//   status   — version state. One of:
+//                  'draft'     — initial post, still being shaped (shown as v0)
+//                  'patch-N'   — incremental revision N (shown as vN)
+//                  'finalized' — locked, no further edits planned
+//   playlist — optional listening recommendation while reading:
+//                  archetype — 'logic' | 'psyche' | 'instinct' (picks the icon)
+//                  url       — Spotify playlist link
+//                  label     — short name shown on the essay page
+//   excerpt  — one-line standfirst for index + homepage featured card
+window.formatDispatchVersion = function(status) {
+    if (!status || status === 'draft') {
+        return { label: 'v0 · living draft', short: 'v0', slug: 'draft' };
+    }
+    if (status === 'finalized') {
+        return { label: 'final · locked', short: 'final', slug: 'finalized' };
+    }
+    if (status.indexOf('patch-') === 0) {
+        var n = status.slice(6);
+        return { label: 'v' + n + ' · revision', short: 'v' + n, slug: status };
+    }
+    return { label: status.replace('-', ' '), short: status, slug: status };
+};
+
 window.DISPATCHES = [
     {
         id: 'the-students-are-right',
@@ -22,8 +38,11 @@ window.DISPATCHES = [
         url: '/essays/the-students-are-right/',
         image: '/pexels-tara-winstead-8849288.jpg',
         status: 'draft',
-        // One-line standfirst used on the essays index + the homepage
-        // featured card. Keep it to a sentence or two.
+        playlist: {
+            archetype: 'psyche',
+            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab',
+            label: 'psyche playlist'
+        },
         excerpt: 'This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at \u2014 and the students are right.'
     },
     {
@@ -34,6 +53,11 @@ window.DISPATCHES = [
         url: '/essays/ship-it/',
         image: '/pexels-cottonbro-4709285.png',
         status: 'draft',
+        playlist: {
+            archetype: 'logic',
+            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30',
+            label: 'logic playlist'
+        },
         excerpt: 'I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it \u2014 and adoption turned out to be the only honest metric.'
     },
     {
@@ -44,6 +68,11 @@ window.DISPATCHES = [
         url: '/essays/i-cried-at-work-i-was-also-right/',
         image: '/pexels-pranavsinh232-5466185.png',
         status: 'draft',
+        playlist: {
+            archetype: 'psyche',
+            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab',
+            label: 'psyche playlist'
+        },
         excerpt: 'A product lead corrected me in front of the whole room over a point that wasn\u2019t even right. I cried in the bathroom \u2014 and you can, in fact, agree with a fact.'
     },
     {
@@ -54,6 +83,11 @@ window.DISPATCHES = [
         url: '/essays/americans-europeans-and-autism-oh-my/',
         image: '/pexels-anna-shevchuk-11507617.png',
         status: 'draft',
+        playlist: {
+            archetype: 'logic',
+            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30',
+            label: 'logic playlist'
+        },
         excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
     },
     {
@@ -64,6 +98,11 @@ window.DISPATCHES = [
         url: '/essays/you-might-be-special-but-youre-definitely-predictable/',
         image: '/pexels-cottonbro-6153354.png',
         status: 'draft',
+        playlist: {
+            archetype: 'instinct',
+            url: 'https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec',
+            label: 'instinct playlist'
+        },
         excerpt: 'I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren\u2019t magic \u2014 just pattern-matching at planetary scale, and a question about what we get back.'
     }
 ];

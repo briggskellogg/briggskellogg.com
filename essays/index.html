@@ -324,10 +324,14 @@
             text-transform: uppercase;
             color: var(--ink-50);
             user-select: none;
+            padding: 0.4rem 0.65rem 0.35rem;
+            border: 1px solid var(--border-30);
+            background: rgba(255, 226, 185, 0.05);
+            color: var(--ink);
         }
-        .frame-status[data-status="draft"]     { color: var(--instinct); }
-        .frame-status[data-status^="patch"]    { color: var(--logic); }
-        .frame-status[data-status="finalized"] { color: var(--psyche); }
+        .frame-status[data-status="draft"]     { border-color: var(--border-50); }
+        .frame-status[data-status^="patch"]    { border-color: var(--border-50); }
+        .frame-status[data-status="finalized"] { border-color: var(--border-25); opacity: 0.9; }
         .status-dot {
             position: relative;
             width: 6px;
@@ -434,9 +438,7 @@
         }
         .essay-card-no { color: var(--ink); }
         .essay-card-sep { color: var(--ink-20); margin: 0 0.1em; }
-        .essay-card-status { color: var(--instinct); }
-        .essay-card-status[data-status^="patch"] { color: var(--logic); }
-        .essay-card-status[data-status="finalized"] { color: var(--psyche); }
+        .essay-card-status { display: none; }
         .essay-card-title {
             font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
             font-style: italic;
@@ -649,13 +651,7 @@
             color: var(--ink);
             border-left-color: var(--ink-50);
         }
-        .footnote.linked .fn-marker { color: var(--ink); }
-        .footnote[data-archetype="logic"].linked    { border-left-color: var(--logic); }
-        .footnote[data-archetype="logic"].linked    .fn-marker { color: var(--logic); }
-        .footnote[data-archetype="instinct"].linked { border-left-color: var(--instinct); }
-        .footnote[data-archetype="instinct"].linked .fn-marker { color: var(--instinct); }
-        .footnote[data-archetype="psyche"].linked   { border-left-color: var(--psyche); }
-        .footnote[data-archetype="psyche"].linked   .fn-marker { color: var(--psyche); }
+
         .footnote[data-archetype] .fn-marker::before {
             content: '';
             display: inline-block;
@@ -668,10 +664,8 @@
             top: -1px;
             opacity: 0.55;
             transition: opacity 0.2s ease, transform 0.2s ease;
+            background: var(--ink-50);
         }
-        .footnote[data-archetype="logic"]    .fn-marker::before { background: var(--logic); }
-        .footnote[data-archetype="instinct"] .fn-marker::before { background: var(--instinct); }
-        .footnote[data-archetype="psyche"]   .fn-marker::before { background: var(--psyche); }
         .footnote.linked .fn-marker::before { opacity: 1; transform: scale(1.15); }
         .footnote:target {
             border-left-color: var(--ink-50);
@@ -998,81 +992,120 @@
            live as fixed-position chrome on the essay too, so the brand
            envelope is consistent across surfaces. The rights footer is
            the only bottom element that scrolls with the content. */
-        .stickers {
+        .archetypes {
             position: fixed;
             bottom: 1.4rem;
             right: 1.3rem;
             z-index: 10;
-            padding: 0.7rem 0.9rem 0.55rem;
+            padding: 0.55rem 0.75rem 0.45rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.6rem;
-            /* Opaque page bg covers the dot grid behind the box so the
-               module reads as a discrete surface, not transparent chrome
-               with the grid bleeding through. */
             background-color: transparent;
             border: 1px solid var(--border-12);
         }
-        .stickers .sc {
+        .archetypes .ac {
             position: absolute;
             width: 10px;
             height: 10px;
         }
-        /* Heavy corner brackets — 10px/2px/--border-50, matching the landing. */
-        .stickers .sc-tl { top: -1px; left: -1px; border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .stickers .sc-tr { top: -1px; right: -1px; border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .stickers .sc-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .stickers .sc-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .stickers-eyebrow {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.5rem;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: var(--ink-50);
-            user-select: none;
-            text-align: center;
-            padding-left: 0.28em;
-        }
-        /* Overlapping cluster — same as landing. */
-        .stickers-row {
+        .archetypes .ac-tl { top: -1px; left: -1px; border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
+        .archetypes .ac-tr { top: -1px; right: -1px; border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .archetypes .ac-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
+        .archetypes .ac-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .archetypes-row {
             display: flex;
             align-items: flex-end;
         }
-        .sticker {
+        .archetype-card {
             position: relative;
             display: block;
-            width: 60px;
-            height: 60px;
+            width: 46px;
+            height: 72px;
             text-decoration: none;
-            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18))
-                    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.12));
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.22))
+                    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.14));
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
                         filter 0.35s ease;
             will-change: transform;
         }
-        .sticker img,
-        .sticker .sticker-img {
+        .archetype-img {
             width: 100%;
             height: 100%;
             display: block;
+            object-fit: cover;
             pointer-events: none;
             user-select: none;
         }
-        /* Layout order is logic → psyche → instinct (build → nest → slash).
-           Z-index walks up so the rightmost sticker (instinct) lands on
-           top. nest stays the visually biggest blob (64px) — sitting in
-           the middle it acts as the cluster's anchor. */
-        .sticker-build  { transform: rotate(-9deg); z-index: 1; }
-        .sticker-nest   { transform: rotate(-4deg); margin-left: -16px; width: 64px; height: 64px; z-index: 2; }
-        .sticker-slash  { transform: rotate(6deg);  margin-left: -14px; z-index: 3; }
-        .sticker:hover {
-            transform: rotate(0deg) scale(1.12) translateY(-4px);
-            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25))
-                    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.15));
+        .archetype-logic   { transform: rotate(-11deg); z-index: 1; }
+        .archetype-psyche  { transform: rotate(-3deg); margin-left: -18px; width: 50px; height: 78px; z-index: 2; }
+        .archetype-instinct { transform: rotate(9deg); margin-left: -16px; z-index: 3; }
+        .archetype-card:hover {
+            transform: rotate(0deg) scale(1.14) translateY(-6px);
+            filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28))
+                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16));
             z-index: 11;
         }
         /* ---------- Easter egg ---------- */
+
+        .version-badge {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.52rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink);
+            padding: 0.14rem 0.45rem 0.1rem;
+            border: 1px solid var(--border-30);
+            background: rgba(255, 226, 185, 0.06);
+        }
+        .essay-playlist {
+            margin: 2rem 0 1.75rem;
+            text-align: center;
+        }
+        .essay-playlist-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            text-decoration: none;
+            color: inherit;
+            padding: 0.55rem 0.85rem 0.5rem;
+            border: 1px solid var(--border-20);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.2s ease;
+        }
+        .essay-playlist-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-50);
+        }
+        .essay-playlist-icon {
+            width: 36px;
+            height: 36px;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+        }
+        .essay-playlist-copy {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.52rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            text-align: left;
+        }
+        .essay-playlist-eyebrow {
+            display: block;
+            color: var(--ink-20);
+            margin-bottom: 0.15rem;
+        }
+        .essay-playlist-name { color: var(--ink); }
+        .essay-card-version {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.12rem 0.4rem 0.08rem;
+            border: 1px solid var(--border-30);
+            background: rgba(255, 226, 185, 0.06);
+            color: var(--ink);
+            font-size: 0.5rem;
+            letter-spacing: 0.16em;
+        }
         .egg-wrap {
             /* Anchored to the bottom-left of the body, not pinned to the
                viewport. The essay is much taller than one screen, so the
@@ -1189,14 +1222,11 @@
 
         /* Mobile overrides for the sticky chrome — same as landing. */
         @media (max-width: 600px) {
-            .stickers { bottom: 0.85rem; right: 0.65rem; gap: 0.5rem; padding: 0.55rem 0.7rem 0.45rem; }
-            .stickers .sc { width: 5px; height: 5px; }
-            .stickers-eyebrow { font-size: 0.44rem; letter-spacing: 0.22em; padding-left: 0.22em; }
-            .stickers-row { gap: 3px; }
-            .sticker { width: 44px; height: 44px; }
-            .sticker-build  { transform: rotate(-9deg); }
-            .sticker-slash  { transform: rotate(6deg); }
-            .sticker-nest   { width: 48px; height: 48px; transform: rotate(-4deg); }
+            .archetypes { bottom: 0.85rem; right: 0.65rem; padding: 0.45rem 0.55rem 0.35rem; }
+            .archetypes .ac { width: 5px; height: 5px; }
+            .archetype-card { width: 38px; height: 58px; }
+            .archetype-psyche { width: 42px; height: 64px; margin-left: -14px; }
+            .archetype-instinct { margin-left: -12px; }
             .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
@@ -1238,7 +1268,7 @@
                 <a class="essay-card" href="/essays/the-students-are-right/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for &ldquo;The Students Are Right&rdquo;" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 05</span> <span class="essay-card-sep">&middot;</span> <span>may 2026</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 05</span> <span class="essay-card-sep">&middot;</span> <span>may 2026</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
                     <h2 class="essay-card-title">&ldquo;The Students Are Right&rdquo;</h2>
                     <p class="essay-card-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1246,7 +1276,7 @@
                 <a class="essay-card" href="/essays/ship-it/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-cottonbro-4709285.png" alt="Lead photograph for Ship It" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 04</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 04</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
                     <h2 class="essay-card-title">Ship It</h2>
                     <p class="essay-card-excerpt">I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it &mdash; and adoption turned out to be the only honest metric.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1254,7 +1284,7 @@
                 <a class="essay-card" href="/essays/i-cried-at-work-i-was-also-right/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-pranavsinh232-5466185.png" alt="Lead photograph for I Cried at Work. I Was Also Right." loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 03</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 03</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
                     <h2 class="essay-card-title">I Cried at Work. I Was Also Right.</h2>
                     <p class="essay-card-excerpt">A product lead corrected me in front of the whole room over a point that wasn&rsquo;t even right. I cried in the bathroom &mdash; and you can, in fact, agree with a fact.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1262,7 +1292,7 @@
                 <a class="essay-card" href="/essays/americans-europeans-and-autism-oh-my/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-anna-shevchuk-11507617.png" alt="Lead photograph for Americans, Europeans, and Autism, Oh My!" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 02</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 02</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
                     <h2 class="essay-card-title">Americans, Europeans, and Autism, Oh My!</h2>
                     <p class="essay-card-excerpt">A colleague flagged my writing as AI-generated. It wasn&rsquo;t &mdash; I&rsquo;m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1270,7 +1300,7 @@
                 <a class="essay-card" href="/essays/you-might-be-special-but-youre-definitely-predictable/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-cottonbro-6153354.png" alt="Lead photograph for You Might Be Special, But You&rsquo;re Definitely Predictable" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 01</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 01</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
                     <h2 class="essay-card-title">You Might Be Special, But You&rsquo;re Definitely Predictable</h2>
                     <p class="essay-card-excerpt">I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren&rsquo;t magic &mdash; just pattern-matching at planetary scale, and a question about what we get back.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1291,21 +1321,20 @@
 
     <!-- Sticky chrome — mirrors the landing. Sits at fixed bottom corners
          so the brand envelope is consistent across surfaces. -->
-    <nav class="stickers" aria-label="Playlists">
-        <span class="sc sc-tl"></span>
-        <span class="sc sc-tr"></span>
-        <span class="sc sc-bl"></span>
-        <span class="sc sc-br"></span>
-        <div class="stickers-eyebrow">playlists</div>
-        <div class="stickers-row">
-            <a class="sticker sticker-build" data-archetype="logic" href="https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30" target="_blank" rel="noopener" aria-label="Logic playlist on Spotify">
-                <img src="/assets/stickers/build.png" alt="" class="sticker-img">
+    <nav class="archetypes" aria-label="Archetypes">
+        <span class="ac ac-tl"></span>
+        <span class="ac ac-tr"></span>
+        <span class="ac ac-bl"></span>
+        <span class="ac ac-br"></span>
+        <div class="archetypes-row">
+            <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
+                <img src="/assets/archetypes/logic.png" alt="" class="archetype-img">
             </a>
-            <a class="sticker sticker-nest" data-archetype="psyche" href="https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab" target="_blank" rel="noopener" aria-label="Psyche playlist on Spotify">
-                <img src="/assets/stickers/nest.png" alt="" class="sticker-img">
+            <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
+                <img src="/assets/archetypes/psyche.png" alt="" class="archetype-img">
             </a>
-            <a class="sticker sticker-slash" data-archetype="instinct" href="https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec" target="_blank" rel="noopener" aria-label="Instinct playlist on Spotify">
-                <img src="/assets/stickers/slash.png" alt="" class="sticker-img">
+            <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
+                <img src="/assets/archetypes/instinct.png" alt="" class="archetype-img">
             </a>
         </div>
     </nav>
@@ -1370,9 +1399,9 @@
             }
             mount.innerHTML = list.map(function(d, i) {
                 var num = (typeof d.number === 'number') ? d.number : (list.length - i);
-                var statusBit = (d.status && d.status !== 'draft')
-                    ? ' <span class="essay-card-sep">&middot;</span> <span class="essay-card-status" data-status="' + esc(d.status) + '">' + esc(d.status.replace('-', ' ')) + '</span>'
-                    : '';
+                var fmt = (window.formatDispatchVersion || function(s){ return { label: s, slug: s }; });
+                var ver = fmt(d.status || 'draft');
+                var statusBit = ' <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="' + esc(ver.slug || d.status) + '">' + esc(ver.label) + '</span>';
                 var excerpt = d.excerpt ? '<p class="essay-card-excerpt">' + esc(d.excerpt) + '</p>' : '';
                 var thumb = d.image ? '<div class="essay-card-thumb"><img src="' + esc(d.image) + '" alt="Lead photograph for ' + esc(d.title) + '" loading="lazy"></div>' : '';
                 return '<a class="essay-card" href="' + esc(d.url) + '">' +
@@ -1412,8 +1441,8 @@
             var badgeEl = document.querySelector('[data-frame-status]');
             var badgeTx = document.querySelector('[data-frame-status-text]');
             if (badgeEl && entry.status) {
-                // 'patch-2' -> 'PATCH 2', 'draft' -> 'DRAFT', 'finalized' -> 'FINALIZED'
-                if (badgeTx) badgeTx.textContent = entry.status.replace('-', ' ').toUpperCase();
+                var ver = (window.formatDispatchVersion || function(s){ return { label: s, short: s }; })(entry.status);
+                if (badgeTx) badgeTx.textContent = ver.label;
                 badgeEl.setAttribute('data-status', entry.status);
                 badgeEl.hidden = false;
             }
@@ -1647,7 +1676,7 @@
                 // footnote's own pip it lands on.
                 var endpoints = [
                     { x: x1, y: y1, delay: 0,   color: null },
-                    { x: x2, y: y2, delay: 460, color: palette ? palette.dot : null }
+                    { x: x2, y: y2, delay: 460, color: null }
                 ];
                 endpoints.forEach(function(p) {
                     var c = createSvg('circle', {
