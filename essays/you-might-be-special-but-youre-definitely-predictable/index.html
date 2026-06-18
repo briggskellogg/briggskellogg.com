@@ -898,27 +898,35 @@
            the only bottom element that scrolls with the content. */
         .archetypes {
             position: fixed;
-            bottom: 1.4rem;
-            right: 1.3rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
             z-index: 10;
-            padding: 0;
+            /* Invisible bleed so rotated cards are not clipped by the
+               viewport edge or body overflow-x. */
+            padding: 14px 10px 18px 48px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-end;
             background: none;
             border: none;
+            overflow: visible;
+            pointer-events: none;
         }
         .archetypes .ac { display: none; }
         .archetypes-row {
             display: flex;
             align-items: flex-end;
+            overflow: visible;
+            pointer-events: auto;
         }
         .archetype-card {
             position: relative;
             display: block;
-            width: 68px;
-            height: 104px;
+            width: 72px;
+            height: auto;
+            flex-shrink: 0;
             text-decoration: none;
+            transform-origin: bottom center;
             filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
                     drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
@@ -926,18 +934,17 @@
             will-change: transform;
         }
         .archetype-img {
-            width: 100%;
-            height: 100%;
             display: block;
-            object-fit: cover;
+            width: 100%;
+            height: auto;
             pointer-events: none;
             user-select: none;
         }
         .archetype-logic   { transform: rotate(-11deg); z-index: 1; }
-        .archetype-psyche  { transform: rotate(-3deg); margin-left: -26px; width: 74px; height: 112px; z-index: 2; }
-        .archetype-instinct { transform: rotate(9deg); margin-left: -24px; z-index: 3; }
+        .archetype-psyche  { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
+        .archetype-instinct { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
         .archetype-card:hover {
-            transform: rotate(0deg) scale(1.12) translateY(-8px);
+            transform: rotate(0deg) scale(1.1) translateY(-10px);
             filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3))
                     drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
             z-index: 11;
@@ -1118,10 +1125,10 @@
 
         /* Mobile overrides for the sticky chrome — same as landing. */
         @media (max-width: 600px) {
-            .archetypes { bottom: 0.85rem; right: 0.65rem; padding: 0; }
-            .archetype-card { width: 54px; height: 82px; }
-            .archetype-psyche { width: 58px; height: 88px; margin-left: -20px; }
-            .archetype-instinct { margin-left: -18px; }
+            .archetypes { bottom: 0.85rem; right: 0.75rem; padding: 10px 8px 14px 36px; }
+            .archetype-card { width: 58px; }
+            .archetype-psyche { width: 62px; margin-left: -22px; }
+            .archetype-instinct { margin-left: -20px; }
             .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
