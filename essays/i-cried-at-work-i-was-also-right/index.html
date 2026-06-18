@@ -898,10 +898,8 @@
             flex-shrink: 0;
             text-decoration: none;
             transform-origin: bottom center;
-            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
-                    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                        filter 0.35s ease;
+            background: none;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: transform;
         }
         .archetype-img {
@@ -910,15 +908,20 @@
             height: auto;
             pointer-events: none;
             user-select: none;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
+                    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+            transition: filter 0.35s ease;
         }
         .archetype-logic   { transform: rotate(-11deg); z-index: 1; }
         .archetype-psyche  { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
         .archetype-instinct { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
         .archetype-card:hover {
             transform: rotate(0deg) scale(1.1) translateY(-10px);
+            z-index: 11;
+        }
+        .archetype-card:hover .archetype-img {
             filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3))
                     drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
-            z-index: 11;
         }
         /* ---------- Easter egg ---------- */
 
