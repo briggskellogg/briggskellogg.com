@@ -404,6 +404,26 @@
         .essay-card .ec-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
         .essay-card .ec-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
         .essay-card:hover .ec { border-color: var(--border-80); }
+        /* Lead-photo thumbnail at the top of each directory card. Uniform
+           aspect ratio across dispatches; gently scales on hover with the
+           card. */
+        .essay-card-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 1.15rem;
+            overflow: hidden;
+            border: 1px solid var(--border-20);
+        }
+        .essay-card-thumb img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.92);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .essay-card:hover .essay-card-thumb img { transform: scale(1.03); }
         .essay-card-meta {
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.56rem;
@@ -801,7 +821,7 @@
             user-select: none;
             white-space: nowrap;
             /* Opaque page bg covers the dot grid behind the line. */
-            background-color: var(--bg);
+            background-color: transparent;
         }
         .rights-wrap { text-align: center; margin-top: 0.5rem; }
         .rights .rights-mark { margin-right: 0.6em; letter-spacing: 0; }
@@ -991,7 +1011,7 @@
             /* Opaque page bg covers the dot grid behind the box so the
                module reads as a discrete surface, not transparent chrome
                with the grid bleeding through. */
-            background-color: var(--bg);
+            background-color: transparent;
             border: 1px solid var(--border-12);
         }
         .stickers .sc {
@@ -1071,7 +1091,7 @@
                         height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
                         padding 0.7s cubic-bezier(0.22, 1, 0.36, 1);
             /* Opaque page bg covers the dot grid behind the egg. */
-            background-color: var(--bg);
+            background-color: transparent;
         }
         .egg-wrap .cc { position: absolute; width: 6px; height: 6px; }
         .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
@@ -1306,8 +1326,10 @@
                     ? ' <span class="essay-card-sep">&middot;</span> <span class="essay-card-status" data-status="' + esc(d.status) + '">' + esc(d.status.replace('-', ' ')) + '</span>'
                     : '';
                 var excerpt = d.excerpt ? '<p class="essay-card-excerpt">' + esc(d.excerpt) + '</p>' : '';
+                var thumb = d.image ? '<div class="essay-card-thumb"><img src="' + esc(d.image) + '" alt="Lead photograph for ' + esc(d.title) + '" loading="lazy"></div>' : '';
                 return '<a class="essay-card" href="' + esc(d.url) + '">' +
                     '<span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>' +
+                    thumb +
                     '<div class="essay-card-meta"><span class="essay-card-no">no. ' + pad2(num) + '</span> <span class="essay-card-sep">&middot;</span> <span>' + esc(d.date) + '</span>' + statusBit + '</div>' +
                     '<h2 class="essay-card-title">' + esc(d.title) + '</h2>' +
                     excerpt +

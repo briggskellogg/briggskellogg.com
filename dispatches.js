@@ -5,6 +5,8 @@
 //   title   — human-readable title (curly quotes ok)
 //   date    — initial publication month/year ("may 2026")
 //   url     — path on the site
+//   image   — root-relative lead photo, shown as the preview thumbnail on
+//             the homepage featured card + the essays directory cards
 //   status  — version state. One of:
 //               'draft'     — initial post, still being shaped
 //               'patch-N'   — incremental revision N (e.g. 'patch-1', 'patch-2')
@@ -18,6 +20,7 @@ window.DISPATCHES = [
         title: '\u201CThe Students Are Right\u201D',
         date: 'may 2026',
         url: '/essays/the-students-are-right',
+        image: '/pexels-tara-winstead-8849288.jpg',
         status: 'draft',
         // One-line standfirst used on the essays index + the homepage
         // featured card. Keep it to a sentence or two.
@@ -29,6 +32,7 @@ window.DISPATCHES = [
         title: 'Ship It',
         date: 'december 2025',
         url: '/essays/ship-it/',
+        image: '/pexels-cottonbro-4709285.png',
         status: 'draft',
         excerpt: 'I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it \u2014 and adoption turned out to be the only honest metric.'
     },
@@ -38,6 +42,7 @@ window.DISPATCHES = [
         title: 'I Cried at Work. I Was Also Right.',
         date: 'december 2025',
         url: '/essays/i-cried-at-work-i-was-also-right/',
+        image: '/pexels-pranavsinh232-5466185.png',
         status: 'draft',
         excerpt: 'A product lead corrected me in front of the whole room over a point that wasn\u2019t even right. I cried in the bathroom \u2014 and you can, in fact, agree with a fact.'
     },
@@ -47,6 +52,7 @@ window.DISPATCHES = [
         title: 'Americans, Europeans, and Autism, Oh My!',
         date: 'november 2025',
         url: '/essays/americans-europeans-and-autism-oh-my/',
+        image: '/pexels-anna-shevchuk-11507617.png',
         status: 'draft',
         excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
     },
@@ -56,6 +62,7 @@ window.DISPATCHES = [
         title: 'You Might Be Special, But You\u2019re Definitely Predictable',
         date: 'november 2025',
         url: '/essays/you-might-be-special-but-youre-definitely-predictable/',
+        image: '/pexels-cottonbro-6153354.png',
         status: 'draft',
         excerpt: 'I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren\u2019t magic \u2014 just pattern-matching at planetary scale, and a question about what we get back.'
     }
