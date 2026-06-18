@@ -14,13 +14,22 @@
 window.DISPATCHES = [
     {
         id: 'the-students-are-right',
-        number: 1,
+        number: 2,
         title: '\u201CThe Students Are Right\u201D',
         date: 'may 2026',
-        url: 'the-students-are-right.html',
+        url: '/essays/the-students-are-right',
         status: 'draft',
         // One-line standfirst used on the essays index + the homepage
         // featured card. Keep it to a sentence or two.
         excerpt: 'This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at \u2014 and the students are right.'
+    },
+    {
+        id: 'americans-europeans-and-autism',
+        number: 1,
+        title: 'Americans, Europeans, and Autism, Oh My!',
+        date: 'november 2025',
+        url: '/essays/americans-europeans-and-autism',
+        status: 'draft',
+        excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
     }
 ];
