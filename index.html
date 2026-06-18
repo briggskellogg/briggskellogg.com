@@ -307,22 +307,14 @@
             color: var(--ink-80);
         }
         .page {
-            /* Two columns: the main modal (.frame) on the left, the essays
-               panel on the right. The byline spans both at the foot. */
-            max-width: 1000px;
+            max-width: 460px;
             width: 100%;
-            display: grid;
-            grid-template-columns: minmax(0, 460px) minmax(0, 480px);
-            gap: 2.25rem;
-            align-items: start;
-            justify-content: center;
             text-align: center;
             position: relative;
             z-index: 1;
             opacity: 0;
             animation: emerge 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
         }
-        .page > .rights { grid-column: 1 / -1; justify-self: center; }
         @keyframes emerge {
             from {
                 opacity: 0;
@@ -697,34 +689,31 @@
            read as a proper box in the same vocabulary as the main frame,
            with the latest essay card nested inside. Content hydrates from
            dispatches.js so the newest essay always surfaces here. */
-        /* Essays panel — sits to the right of the main .frame as a matched
-           box (same faint connecting border + 2px corner brackets). Holds the
-           featured latest dispatch plus a compact list of the rest. */
-        .essays-panel {
+        .featured {
             position: relative;
-            padding: 2.25rem 1.9rem 2rem;
-            border: 1px solid var(--border-12);
+            margin-top: 1.75rem;
+            padding: 1.5rem 1.5rem 1.35rem;
+            border: 1px solid var(--border-50);
             background-color: var(--bg);
-            text-align: left;
+            text-align: center;
         }
-        .essays-panel .ffc {
+        .featured .ffc {
             position: absolute;
             width: 10px;
             height: 10px;
             pointer-events: none;
         }
-        .essays-panel .ffc-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--border-50);  border-left:  2px solid var(--border-50); }
-        .essays-panel .ffc-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--border-50);  border-right: 2px solid var(--border-50); }
-        .essays-panel .ffc-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--border-50); border-left:  2px solid var(--border-50); }
-        .essays-panel .ffc-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .featured .ffc-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--border-50);  border-left:  2px solid var(--border-50); }
+        .featured .ffc-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--border-50);  border-right: 2px solid var(--border-50); }
+        .featured .ffc-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--border-50); border-left:  2px solid var(--border-50); }
+        .featured .ffc-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
         .featured-eyebrow {
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.58rem;
-            letter-spacing: 0.28em;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--ink-50);
-            margin-bottom: 1.1rem;
-            padding-left: 0.1em;
+            color: var(--ink-20);
+            margin-bottom: 1rem;
         }
         .featured-card {
             position: relative;
@@ -799,42 +788,18 @@
         .featured-cta .arr { display: inline-block; padding-left: 0.3em; transition: transform 0.2s ease; }
         .featured-card:hover .featured-cta { color: var(--ink); }
         .featured-card:hover .featured-cta .arr { transform: translateX(3px); }
-        /* Compact list of the remaining dispatches, under the featured card. */
-        .essays-more {
-            margin-top: 1.4rem;
-            border-top: 1px solid var(--border-20);
-        }
-        .essays-row {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            padding: 0.85rem 0.15rem;
-            border-bottom: 1px solid var(--border-12);
-            transition: padding-left 0.2s ease;
-        }
-        .essays-row:last-child { border-bottom: none; }
-        .essays-row:hover { padding-left: 0.5rem; }
-        .essays-row-meta {
-            display: block;
+        .featured-all {
+            display: inline-block;
+            margin-top: 1rem;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.5rem;
+            font-size: 0.54rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--ink-50);
-            margin-bottom: 0.3rem;
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .essays-row-no { color: var(--ink); }
-        .essays-row-sep { color: var(--ink-20); margin: 0 0.15em; }
-        .essays-row-title {
-            display: block;
-            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
-            font-style: italic;
-            font-size: 1.02rem;
-            line-height: 1.25;
-            color: var(--ink);
-            transition: color 0.2s ease;
-        }
-        .essays-row:hover .essays-row-title { color: var(--logic); }
+        .featured-all:hover { color: var(--ink); transform: translateX(3px); }
         /* Corner-bracket mini-modal — logo + social links. 6px arms,
            1px/--border-20 stroke, no connecting border. */
         .mini-frame {
@@ -851,15 +816,6 @@
         .mini-frame .mc-tr { top: 0; right: 0; border-top: 1px solid var(--border-20); border-right: 1px solid var(--border-20); }
         .mini-frame .mc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-20); border-left: 1px solid var(--border-20); }
         .mini-frame .mc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-20); border-right: 1px solid var(--border-20); }
-        /* Below the two-column breakpoint, stack the frame and essays panel
-           into a single centered column (frame on top, essays beneath). */
-        @media (max-width: 900px) {
-            .page {
-                grid-template-columns: minmax(0, 460px);
-                gap: 1.85rem;
-                max-width: 460px;
-            }
-        }
         @media (max-width: 480px) {
             /* Mobile target: fit the entire landing on a standard iPhone
                viewport (390x844 / 430x932) with the URL bar showing —
@@ -1203,13 +1159,12 @@
             </div>
         </div>
 
-        <section class="essays-panel" id="essays" aria-label="Essays">
+        <section class="featured" aria-label="Latest essay">
             <span class="ffc ffc-tl"></span>
             <span class="ffc ffc-tr"></span>
             <span class="ffc ffc-bl"></span>
             <span class="ffc ffc-br"></span>
             <div class="featured-eyebrow">essays</div>
-            <!-- Most recent dispatch, hydrated from dispatches.js[0]. -->
             <a class="featured-card" id="featured-card" href="/essays/the-students-are-right/">
                 <div class="featured-thumb">
                     <img id="featured-img" src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for &ldquo;The Students Are Right&rdquo;" loading="lazy">
@@ -1223,27 +1178,7 @@
                 <p class="featured-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
                 <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
             </a>
-            <!-- The remaining dispatches, newest first. These are the canonical
-                 essay links now that the standalone /essays index is gone, so
-                 they live in static HTML. Keep in sync with dispatches.js. -->
-            <div class="essays-more">
-                <a class="essays-row" href="/essays/ship-it/">
-                    <span class="essays-row-meta"><span class="essays-row-no">no. 04</span> <span class="essays-row-sep">&middot;</span> december 2025</span>
-                    <span class="essays-row-title">Ship It</span>
-                </a>
-                <a class="essays-row" href="/essays/i-cried-at-work-i-was-also-right/">
-                    <span class="essays-row-meta"><span class="essays-row-no">no. 03</span> <span class="essays-row-sep">&middot;</span> december 2025</span>
-                    <span class="essays-row-title">I Cried at Work. I Was Also Right.</span>
-                </a>
-                <a class="essays-row" href="/essays/americans-europeans-and-autism-oh-my/">
-                    <span class="essays-row-meta"><span class="essays-row-no">no. 02</span> <span class="essays-row-sep">&middot;</span> november 2025</span>
-                    <span class="essays-row-title">Americans, Europeans, and Autism, Oh My!</span>
-                </a>
-                <a class="essays-row" href="/essays/you-might-be-special-but-youre-definitely-predictable/">
-                    <span class="essays-row-meta"><span class="essays-row-no">no. 01</span> <span class="essays-row-sep">&middot;</span> november 2025</span>
-                    <span class="essays-row-title">You Might Be Special, But You&rsquo;re Definitely Predictable</span>
-                </a>
-            </div>
+            <a class="featured-all" href="/essays/">all essays &rarr;</a>
         </section>
 
         <footer class="rights">

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ship It &mdash; Briggs Kellogg</title>
-    <meta name="description" content="A short essay by Briggs Kellogg on building an automated Slack briefing nobody asked for, treating colleagues like customers, and why adoption is the only honest metric.">
+    <title>Essays &mdash; Briggs Kellogg</title>
+    <meta name="description" content="Essays by Briggs Kellogg — short dispatches on technology, work, and what is owed to people, written from inside the industry.">
     <meta name="theme-color" content="#818960">
-    <meta property="og:title" content="Ship It &mdash; Briggs Kellogg">
-    <meta property="og:description" content="A short essay on building an internal tool nobody asked for, and why adoption is the only honest metric.">
+    <meta property="og:title" content="Essays &mdash; Briggs Kellogg">
+    <meta property="og:description" content="Short dispatches on technology, work, and what is owed to people, written from inside the industry.">
     <meta property="og:image" content="https://briggskellogg.com/logo.png">
-    <meta property="og:url" content="https://briggskellogg.com/essays/ship-it/">
-    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://briggskellogg.com/essays">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="apple-touch-icon" href="/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -371,6 +371,117 @@
             color: var(--ink-50);
         }
 
+        /* ---------- Essays index (listing) ---------- */
+        /* Narrower than the essay's two-column reading frame — a single
+           column of dispatch cards reads better at ~720px. */
+        .essays-index .page { max-width: 720px; }
+        .index-head { margin-bottom: 2.75rem; }
+        .index-head .essay-meta { text-transform: none; letter-spacing: 0.04em; font-size: 0.72rem; }
+        .essay-index {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+        .essay-card {
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 1.7rem 1.8rem 1.5rem;
+            background-color: var(--bg);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .essay-card:hover { transform: translateY(-2px); }
+        .essay-card .ec {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            transition: border-color 0.25s ease;
+        }
+        .essay-card .ec-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-card .ec-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .essay-card .ec-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-card .ec-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .essay-card:hover .ec { border-color: var(--border-80); }
+        /* Lead-photo thumbnail at the top of each directory card. Uniform
+           aspect ratio across dispatches; gently scales on hover with the
+           card. */
+        .essay-card-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            margin-bottom: 1.15rem;
+            overflow: hidden;
+            border: 1px solid var(--border-20);
+        }
+        .essay-card-thumb img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.92);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .essay-card:hover .essay-card-thumb img { transform: scale(1.03); }
+        .essay-card-meta {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.56rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 0.7rem;
+        }
+        .essay-card-no { color: var(--ink); }
+        .essay-card-sep { color: var(--ink-20); margin: 0 0.1em; }
+        .essay-card-status { color: var(--instinct); }
+        .essay-card-status[data-status^="patch"] { color: var(--logic); }
+        .essay-card-status[data-status="finalized"] { color: var(--psyche); }
+        .essay-card-title {
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: normal;
+            font-size: 1.5rem;
+            line-height: 1.25;
+            color: var(--ink);
+            margin-bottom: 0.55rem;
+            transition: color 0.2s ease;
+        }
+        .essay-card:hover .essay-card-title { color: var(--logic); }
+        .essay-card-excerpt {
+            font-family: 'Newsreader', 'IM Fell English', Georgia, serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--ink-80);
+            margin-bottom: 0.95rem;
+            max-width: 62ch;
+        }
+        .essay-card-cta {
+            display: inline-block;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.56rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            transition: color 0.2s ease;
+        }
+        .essay-card:hover .essay-card-cta { color: var(--ink); }
+        .essay-card-cta .arr { display: inline-block; padding-left: 0.3em; transition: transform 0.2s ease; }
+        .essay-card:hover .essay-card-cta .arr { transform: translateX(3px); }
+        .essay-index-empty {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+        }
+        @media (max-width: 720px) {
+            .essay-card { padding: 1.2rem 1.25rem 1.1rem; }
+            .essay-card-title { font-size: 1.25rem; }
+            .essay-card-excerpt { font-size: 0.9rem; }
+        }
+
         /* ---------- Two-column layout ---------- */
         .essay-layout {
             position: relative;
@@ -408,10 +519,8 @@
            the same orange box border as the rest of the chrome. */
         .essay-figure {
             position: relative;
-            width: fit-content;
-            max-width: 100%;
-            margin: 0 auto 2.75rem;
-            padding: 0.55rem 0.55rem 0.5rem;
+            margin: 0 0 2.75rem;
+            padding: 1.1rem 1.1rem 0.95rem;
             text-align: center;
         }
         /* Orange corner brackets wrap the plate + caption together. */
@@ -459,15 +568,31 @@
             text-decoration: none;
             padding: 0 0.2em;
             border-radius: 2px;
-            transition: background 0.18s ease;
+            transition: color 0.18s ease, background 0.18s ease;
         }
-        /* Footnote numbers never recolor — only a subtle neutral highlight
-           signals the active link. Archetype color lives on the footnote-side
-           dot + left rule, not the digits. */
         .fnref:hover a,
         .fnref:focus-within a,
         .fnref.linked a {
+            color: var(--ink);
             background: var(--ink-12);
+        }
+        .fnref[data-archetype="logic"].linked a,
+        .fnref[data-archetype="logic"]:hover a,
+        .fnref[data-archetype="logic"]:focus-within a {
+            color: var(--logic);
+            background: rgba(255, 226, 185, 0.15);
+        }
+        .fnref[data-archetype="instinct"].linked a,
+        .fnref[data-archetype="instinct"]:hover a,
+        .fnref[data-archetype="instinct"]:focus-within a {
+            color: var(--instinct);
+            background: rgba(173, 124, 132, 0.18);
+        }
+        .fnref[data-archetype="psyche"].linked a,
+        .fnref[data-archetype="psyche"]:hover a,
+        .fnref[data-archetype="psyche"]:focus-within a {
+            color: var(--psyche);
+            background: rgba(101, 141, 164, 0.18);
         }
 
         /* No explicit legend — the structure is hidden in the colors.
@@ -508,6 +633,7 @@
             line-height: 1.4;
             padding-top: 0.25em;
             letter-spacing: 0.05em;
+            transition: color 0.2s ease;
             white-space: nowrap;
         }
         .fn-content a {
@@ -523,11 +649,13 @@
             color: var(--ink);
             border-left-color: var(--ink-50);
         }
-        /* Left rule takes the archetype color on link; the marker number
-           itself stays ink (see .fn-marker). Only the dot + rule carry hue. */
+        .footnote.linked .fn-marker { color: var(--ink); }
         .footnote[data-archetype="logic"].linked    { border-left-color: var(--logic); }
+        .footnote[data-archetype="logic"].linked    .fn-marker { color: var(--logic); }
         .footnote[data-archetype="instinct"].linked { border-left-color: var(--instinct); }
+        .footnote[data-archetype="instinct"].linked .fn-marker { color: var(--instinct); }
         .footnote[data-archetype="psyche"].linked   { border-left-color: var(--psyche); }
+        .footnote[data-archetype="psyche"].linked   .fn-marker { color: var(--psyche); }
         .footnote[data-archetype] .fn-marker::before {
             content: '';
             display: inline-block;
@@ -549,6 +677,7 @@
             border-left-color: var(--ink-50);
             color: var(--ink);
         }
+        .footnote:target .fn-marker { color: var(--ink); }
 
         /* ---------- The wire overlay ----------
            The SVG sits underneath the body + notes (z-index 0) and the
@@ -1075,7 +1204,7 @@
         }
     </style>
 </head>
-<body data-essay-id="ship-it">
+<body class="essays-index">
     <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
          Natural PNG color at rest; a masked cream sheen sweeps across
          on hover (see .essay-home-mark::after). -->
@@ -1090,207 +1219,63 @@
             <div class="c c-bl"></div>
             <div class="c c-br"></div>
 
-            <!-- Version status — top-right of the frame, pulsing dot
-                 signals the piece is still alive. Populated by JS. -->
-            <div class="frame-status" data-frame-status hidden>
-                <span class="status-dot"></span>
-                <span class="frame-status-text" data-frame-status-text></span>
-            </div>
-
-            <header class="essay-head">
+            <header class="essay-head index-head">
                 <span class="hc hc-tl"></span>
                 <span class="hc hc-tr"></span>
                 <span class="hc hc-bl"></span>
                 <span class="hc hc-br"></span>
-                <!-- "no. 01 · essay" — number populated by JS. The
-                     version status lives in the top-right of the frame,
-                     not in this centered eyebrow. -->
-                <p class="essay-number" data-essay-meta>
-                    <span class="num">no. 04</span>
-                    <span class="sep">&middot;</span>
-                    <span>essay</span>
-                </p>
-                <h1 class="essay-title">Ship It</h1>
-                <p class="essay-meta">december 2025</p>
+                <p class="essay-number"><span>writing</span></p>
+                <h1 class="essay-title">Essays</h1>
+                <p class="essay-meta">Short dispatches from inside the machine.</p>
             </header>
 
-            <figure class="essay-figure">
-                <span class="fc fc-tl"></span>
-                <span class="fc fc-tr"></span>
-                <span class="fc fc-bl"></span>
-                <span class="fc fc-br"></span>
-                <img src="/pexels-cottonbro-4709285.png" alt="A young person in a dim room sipping from a blue mug while working at a desktop monitor filled with code." loading="lazy">
-                <figcaption>Photo by cottonbro studio</figcaption>
-            </figure>
-
-            <div class="essay-layout">
-                <svg class="essay-wires" aria-hidden="true"></svg>
-
-                <div class="essay-body">
-                    <p>The message wasn&rsquo;t from my boss. It was from someone in engineering I&rsquo;d never spoken to.</p>
-
-                    <p>Three words. Posted in a public channel at 7:43 AM on a Tuesday.</p>
-
-                    <p>&ldquo;I listen daily.&rdquo;</p>
-
-                    <p>I stared at it longer than I should have. I don&rsquo;t remember what I said back. Something casual, probably. Something that hid the fact that I&rsquo;d been refreshing the listener count more times that month than I will ever admit out loud.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup></p>
-
-                    <p>Here&rsquo;s what happened: I was drowning. Too many Slack channels. Too much context scattered everywhere. I kept showing up to meetings and realizing I&rsquo;d missed something important, and the shame of not knowing was starting to harden into something worse.</p>
-
-                    <p>I&rsquo;m not good at asking for help. I&rsquo;m better at building systems that make the asking unnecessary.</p>
-
-                    <p>So I built a thing. An automated podcast that turns our company&rsquo;s Slack into a ten-minute morning briefing. n8n workflow running at 4 AM. Gemini for analysis, Claude for the script, our own voice tech for the audio. By the time I pour my coffee, the briefing is waiting.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="instinct"><a href="#fn-2">2</a></sup></p>
-
-                    <p>I didn&rsquo;t tell anyone. I just started posting episodes in a channel and figured if people found it useful, they&rsquo;d listen. If they didn&rsquo;t, I&rsquo;d still have solved my own problem.</p>
-
-                    <p>Thirty percent of the company listens now. No announcement. No mandate. No one asked them to.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="psyche"><a href="#fn-3">3</a></sup></p>
-
-                    <p>I think about those three words a lot.</p>
-
-                    <div class="sep"></div>
-
-                    <p>Here&rsquo;s what I&rsquo;ve learned: internal tools die in a very specific way.</p>
-
-                    <p>They don&rsquo;t explode. They don&rsquo;t get formally killed. They just... stop. Someone builds something useful, gets busy with other work, and the thing that required their attention quietly rots. People notice it&rsquo;s stale. They stop checking. Eventually someone asks &ldquo;whatever happened to that thing?&rdquo; and the answer is a shrug.</p>
-
-                    <p>Cisco tried an internal radio channel years ago. Same basic idea&mdash;synthesize company information into audio. Good instinct. They abandoned it. Not because people didn&rsquo;t want it. Because someone had to show up every day and make it happen, and eventually that someone had other priorities.</p>
-
-                    <p>That&rsquo;s the trap. The idea isn&rsquo;t the hard part. The sustainability is.</p>
-
-                    <div class="sep"></div>
-
-                    <p>I think most internal initiatives fail because they&rsquo;re treated like favors.</p>
-
-                    <p>Someone builds a tool, shares it with the team, and waits for gratitude. When the gratitude doesn&rsquo;t come&mdash;or worse, when people start requesting features&mdash;the builder gets resentful. <em>I did this for free. I did this on top of my real job. Why are you asking for more?</em></p>
-
-                    <p>Your colleagues are the most hostile user base you will ever face.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4">4</a></sup></p>
-
-                    <p>They didn&rsquo;t opt in. They&rsquo;re already overloaded. They will route around friction instantly. They have zero obligation to use your thing just because you made it. They&rsquo;re not customers who chose you over a competitor. They&rsquo;re people who showed up to work and found your tool sitting in their path like a tollbooth they didn&rsquo;t ask to pass through.</p>
-
-                    <p>If you want internal adoption, you have to earn it the same way you&rsquo;d earn it externally. Clear value proposition. Consistent delivery. Zero cognitive load. The kind of experience where using the tool is easier than not using it.</p>
-
-                    <p>I treat my colleagues like customers. That&rsquo;s not a metaphor. That&rsquo;s the whole thing.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="instinct"><a href="#fn-5">5</a></sup></p>
-
-                    <div class="sep"></div>
-
-                    <p>The Weather Report works because I refused to make it optional.<sup class="fnref" id="fnref-6" data-fn="6" data-archetype="psyche"><a href="#fn-6">6</a></sup></p>
-
-                    <p>Not optional in the sense of mandatory&mdash;no one has to listen. Optional in the sense of <em>variable</em>. The episode ships every morning at the same time. The format is consistent. The voice is the same. The runtime is predictable. You know exactly what you&rsquo;re getting, which means you can build it into your routine without thinking.</p>
-
-                    <p>I automated everything I could. The data pull, the analysis, the script generation, the audio synthesis. The only manual step is me occasionally tweaking prompts when I notice the output drifting. Otherwise, it runs whether I&rsquo;m paying attention or not.</p>
-
-                    <p>That&rsquo;s what killed the Cisco version. It required a human to show up and care every single day. Mine requires a human to have cared <em>once</em>&mdash;when building the system&mdash;and then the system takes over.</p>
-
-                    <p>Automation changes which ideas are viable. The Weather Report isn&rsquo;t a better idea than what Cisco tried. It&rsquo;s the same idea with a different sustainability model. Same instinct, different infrastructure. Same dream, different bones.</p>
-
-                    <div class="sep"></div>
-
-                    <p>The part I didn&rsquo;t expect was what happens when something crosses from &ldquo;internal tool&rdquo; to &ldquo;thing people actually want.&rdquo;</p>
-
-                    <p>A few weeks in, a customer reached out asking if they could build their own version. Not because we&rsquo;d pitched it. Because someone on their side had heard about it from someone on our side and wanted to know if the capability existed.</p>
-
-                    <p>Then another customer asked. Then a third.</p>
-
-                    <p>I&rsquo;d accidentally built something people would pay for by refusing to half-ass something I&rsquo;d built for myself.</p>
-
-                    <p>That&rsquo;s the pattern. The best internal tools aren&rsquo;t designed to be products. They&rsquo;re designed to solve a real problem for a real person&mdash;usually the builder&mdash;and they become products when other people recognize themselves in the solution.</p>
-
-                    <p>The Weather Report started as a confession: <em>I can&rsquo;t keep up with Slack and it&rsquo;s making me worse at my job.</em> That&rsquo;s not a product pitch. That&rsquo;s embarrassing. But it turns out a lot of people have the same embarrassment, and some of them have budget.</p>
-
-                    <div class="sep"></div>
-
-                    <p>I don&rsquo;t know if we&rsquo;ll productize it. That&rsquo;s a different conversation with different stakeholders and different tradeoffs. What I know is this:</p>
-
-                    <p>Adoption is the only honest metric.</p>
-
-                    <p>Not engagement. Not satisfaction surveys. Not the number of people who said &ldquo;cool idea&rdquo; in the launch thread and never opened it again. Adoption. Repeated use. The thing people reach for without being asked because it makes their life better.</p>
-
-                    <p>Thirty percent adoption in a month, with zero marketing, tells me the problem is real. The customer requests tell me the solution travels. Everything else is stories we tell ourselves about why something should work.</p>
-
-                    <div class="sep"></div>
-
-                    <p>There&rsquo;s a version of this essay that&rsquo;s about strategy. About internal tooling philosophy, about infrastructure layers, about treating colleague experience with the same rigor as customer experience.</p>
-
-                    <p>But honestly? I didn&rsquo;t build The Weather Report because I had a thesis. I built it because I was overwhelmed and needed help. I built it because the alternative was admitting I couldn&rsquo;t keep up, and I&rsquo;m not very good at admitting that. I&rsquo;m not very good at asking for help. I&rsquo;m better at building systems that make the asking unnecessary.</p>
-
-                    <p>The philosophy came after. After it worked. After people started listening. After I had time to reverse-engineer why.</p>
-
-                    <p>That&rsquo;s how it usually goes. You build something because you need it. You keep building because it&rsquo;s working. And somewhere in the middle, you start telling a story about what you believe&mdash;but the belief came from the artifact, not the other way around.</p>
-
-                    <div class="sep"></div>
-
-                    <p>I&rsquo;m going to be honest about something. Part of why I built this wasn&rsquo;t the overwhelm. It was that I wanted to be special. Not useful&mdash;<em>special</em>. I wanted someone to notice I&rsquo;d made a thing nobody asked me to make. That&rsquo;s why I kept refreshing the count. I was waiting for proof that I mattered, and three words from a stranger in engineering handed it to me, and I felt it more than I&rsquo;d like to put in writing.</p>
-
-                    <p>But I shipped it. It&rsquo;s working. Thirty percent of the company wakes up to something I made.</p>
-
-                    <p>For now, that&rsquo;s enough.</p>
-
-                    <div class="sep"></div>
-
-                    <p>Here&rsquo;s what I believe:</p>
-
-                    <p>Internal tools fail because nobody treats caring as a system.</p>
-
-                    <p>And you&rsquo;re only special until you ship&mdash;after that, you&rsquo;re just useful.</p>
-
-                    <p>Useful is better. Useful survives. Useful compounds.</p>
-
-                    <p>Special is a story. Shipping is a fact.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="logic"><a href="#fn-7">7</a></sup></p>
-                </div>
-
-                <div class="essay-notes" aria-label="Footnotes">
-                    <aside id="fn-1" class="footnote" data-fn="1" data-archetype="logic" tabindex="-1">
-                        <a class="fn-marker" href="#fnref-1">1</a>
-                        <div class="fn-content">I just admitted it in the footnotes, which I&rsquo;ve decided don&rsquo;t count. The whole point of a footnote is that it&rsquo;s where you put the true thing in a smaller font.<a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
-                    </aside>
-
-                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="instinct" tabindex="-1">
-                        <a class="fn-marker" href="#fnref-2">2</a>
-                        <div class="fn-content">n8n is the unglamorous plumbing&mdash;a workflow tool that wires the pieces together and does what it&rsquo;s told. The entire operation hangs on a scheduled job that fires at 4 AM while I sleep. The least impressive part of the system is the part that makes it survive, which is true of most systems and most people.<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
-                    </aside>
-
-                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="psyche" tabindex="-1">
-                        <a class="fn-marker" href="#fnref-3">3</a>
-                        <div class="fn-content">Listens, not opens. I don&rsquo;t count the click; I count whether you come back tomorrow. A tool everyone opens once and a tool a third of the company returns to daily are different species wearing the same launch announcement. That difference is the rest of this essay.<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
-                    </aside>
-
-                    <aside id="fn-4" class="footnote" data-fn="4" data-archetype="logic" tabindex="-1">
-                        <a class="fn-marker" href="#fnref-4">4</a>
-                        <div class="fn-content">I say this with love, and as somebody&rsquo;s hostile user myself. We all are. The person who built the expense-report tool you refuse to learn is, at this very moment, having this exact thought about you.<a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
-                    </aside>
-
-                    <aside id="fn-5" class="footnote" data-fn="5" data-archetype="instinct" tabindex="-1">
-                        <a class="fn-marker" href="#fnref-5">5</a>
-                        <div class="fn-content">Which means I also let them churn. If someone stops listening, that&rsquo;s data about my product, not a flaw in their character. Internal tools that guilt people into staying aren&rsquo;t tools. They&rsquo;re taxes with a friendly Slack emoji.<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
-                    </aside>
-
-                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="psyche" tabindex="-1">
-                        <a class="fn-marker" href="#fnref-6">6</a>
-                        <div class="fn-content">The name is the design spec. The weather is ambient, recurring, useful, and never urgent enough to go hunting for on its own&mdash;you don&rsquo;t open an app to seek out the forecast, it&rsquo;s just there when you wake up. A briefing you have to remember to go get has already lost.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
-                    </aside>
-
-                    <aside id="fn-7" class="footnote" data-fn="7" data-archetype="logic" tabindex="-1">
-                        <a class="fn-marker" href="#fnref-7">7</a>
-                        <div class="fn-content">This is a note to myself, obviously. The whole essay is. You don&rsquo;t write &ldquo;useful survives&rdquo; unless some part of you is afraid you won&rsquo;t.<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
-                    </aside>
-                </div>
+            <!-- Essay links are rendered statically below so they are present
+                 in the HTML for crawlers, sharing, and no-JS readers. The
+                 script at the bottom re-renders from dispatches.js ONLY if this
+                 list is empty, so it stays a graceful fallback. When adding an
+                 essay, add a card here AND an entry in dispatches.js. -->
+            <div class="essay-index" id="essay-index">
+                <a class="essay-card" href="/essays/the-students-are-right/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for &ldquo;The Students Are Right&rdquo;" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 05</span> <span class="essay-card-sep">&middot;</span> <span>may 2026</span></div>
+                    <h2 class="essay-card-title">&ldquo;The Students Are Right&rdquo;</h2>
+                    <p class="essay-card-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/ship-it/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-cottonbro-4709285.png" alt="Lead photograph for Ship It" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 04</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span></div>
+                    <h2 class="essay-card-title">Ship It</h2>
+                    <p class="essay-card-excerpt">I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it &mdash; and adoption turned out to be the only honest metric.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/i-cried-at-work-i-was-also-right/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-pranavsinh232-5466185.png" alt="Lead photograph for I Cried at Work. I Was Also Right." loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 03</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span></div>
+                    <h2 class="essay-card-title">I Cried at Work. I Was Also Right.</h2>
+                    <p class="essay-card-excerpt">A product lead corrected me in front of the whole room over a point that wasn&rsquo;t even right. I cried in the bathroom &mdash; and you can, in fact, agree with a fact.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/americans-europeans-and-autism-oh-my/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-anna-shevchuk-11507617.png" alt="Lead photograph for Americans, Europeans, and Autism, Oh My!" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 02</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span></div>
+                    <h2 class="essay-card-title">Americans, Europeans, and Autism, Oh My!</h2>
+                    <p class="essay-card-excerpt">A colleague flagged my writing as AI-generated. It wasn&rsquo;t &mdash; I&rsquo;m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/you-might-be-special-but-youre-definitely-predictable/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-cottonbro-6153354.png" alt="Lead photograph for You Might Be Special, But You&rsquo;re Definitely Predictable" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 01</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span></div>
+                    <h2 class="essay-card-title">You Might Be Special, But You&rsquo;re Definitely Predictable</h2>
+                    <p class="essay-card-excerpt">I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren&rsquo;t magic &mdash; just pattern-matching at planetary scale, and a question about what we get back.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
             </div>
-
-            <nav class="essay-nav" aria-label="Other dispatches" id="essay-nav">
-                <span class="essay-nav-empty essay-nav-prev"><span class="essay-nav-label">&larr; older</span><span class="essay-nav-title">&mdash;</span></span>
-                <span class="essay-nav-empty essay-nav-next"><span class="essay-nav-label">newer &rarr;</span><span class="essay-nav-title">&mdash;</span></span>
-            </nav>
-
-            <footer class="essay-foot">
-                <a class="essay-alllink" href="/essays">&larr; all essays</a>
-                <form class="essay-subscribe" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post" target="popupwindow">
-                    <label class="subscribe-label" for="bd-email-essay">if you'd like the next one in your inbox</label>
-                    <div class="subscribe-row">
-                        <input id="bd-email-essay" type="email" name="email" placeholder="your email" autocomplete="email" required>
-                        <button type="submit" aria-label="Subscribe">subscribe &rarr;</button>
-                    </div>
-                </form>
-            </footer>
         </article>
         <div class="rights-wrap">
             <footer class="rights">
@@ -1362,6 +1347,45 @@
 
     <script src="/dispatches.js"></script>
     <script>
+        // ---------- Essays index (card list) ----------
+        // Renders every dispatch as a card from the shared manifest, so a
+        // new essay added to dispatches.js appears here automatically.
+        (function() {
+            var list = (window.DISPATCHES || []).slice();
+            var mount = document.getElementById('essay-index');
+            if (!mount) return;
+            // Links are pre-rendered statically above. Only render from the
+            // manifest when the static list is empty (graceful fallback), so
+            // the HTML links always remain the source of truth for crawlers.
+            if (mount.children.length) return;
+            function pad2(n) { return (n < 10 ? '0' : '') + n; }
+            function esc(s) {
+                var d = document.createElement('div');
+                d.textContent = (s == null ? '' : s);
+                return d.innerHTML;
+            }
+            if (!list.length) {
+                mount.innerHTML = '<p class="essay-index-empty">More soon.</p>';
+                return;
+            }
+            mount.innerHTML = list.map(function(d, i) {
+                var num = (typeof d.number === 'number') ? d.number : (list.length - i);
+                var statusBit = (d.status && d.status !== 'draft')
+                    ? ' <span class="essay-card-sep">&middot;</span> <span class="essay-card-status" data-status="' + esc(d.status) + '">' + esc(d.status.replace('-', ' ')) + '</span>'
+                    : '';
+                var excerpt = d.excerpt ? '<p class="essay-card-excerpt">' + esc(d.excerpt) + '</p>' : '';
+                var thumb = d.image ? '<div class="essay-card-thumb"><img src="' + esc(d.image) + '" alt="Lead photograph for ' + esc(d.title) + '" loading="lazy"></div>' : '';
+                return '<a class="essay-card" href="' + esc(d.url) + '">' +
+                    '<span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>' +
+                    thumb +
+                    '<div class="essay-card-meta"><span class="essay-card-no">no. ' + pad2(num) + '</span> <span class="essay-card-sep">&middot;</span> <span>' + esc(d.date) + '</span>' + statusBit + '</div>' +
+                    '<h2 class="essay-card-title">' + esc(d.title) + '</h2>' +
+                    excerpt +
+                    '<span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>' +
+                    '</a>';
+            }).join('');
+        })();
+
         // ---------- Dispatch number + status ----------
         // Reads the matching entry from window.DISPATCHES (loaded above) and
         // populates the "no. NN · dispatch · STATUS" line over the title.
@@ -1486,6 +1510,9 @@
             var body = document.querySelector('.essay-body');
             var notes = document.querySelector('.essay-notes');
             var svg = document.querySelector('.essay-wires');
+            // No-op on pages without the essay two-column layout (e.g. the
+            // essays index reuses this file's chrome but has no footnotes).
+            if (!layout || !body || !notes || !svg) return;
             var refs = Array.prototype.slice.call(document.querySelectorAll('.fnref'));
             var footnotes = Array.prototype.slice.call(document.querySelectorAll('.footnote'));
             var stackedMQ = window.matchMedia('(max-width: 880px)');
@@ -1598,26 +1625,10 @@
 
                 var x1 = refRightX;
                 var y1 = refMidY;
-                // Clamp the horizontal control handles so the curve always
-                // leaves the number and arrives at the footnote dot
-                // horizontally, and never overshoots past x2 (which would
-                // curl the wire in front of the footnote's left rule). The
-                // handle is a fraction of the horizontal gap, capped to a
-                // max, and collapsed to the midpoint when the gap is too
-                // narrow to fit two handles. Both control x's stay within
-                // [x1, x2], so the curve's x can never exceed the endpoint.
-                var dx = x2 - x1;
-                var handle = Math.max(24, Math.min(dx * 0.5, 90));
-                var c1x = x1 + handle;
-                var c2x = x2 - handle;
-                if (c2x < c1x) {
-                    var mid = x1 + dx * 0.5;
-                    c1x = mid;
-                    c2x = mid;
-                }
+                var xMid = x1 + (x2 - x1) * 0.5;
                 var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' C ' + c1x.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' ' + c2x.toFixed(1) + ' ' + y2.toFixed(1) +
+                        ' C ' + xMid.toFixed(1) + ' ' + y1.toFixed(1) +
+                        ' ' + xMid.toFixed(1) + ' ' + y2.toFixed(1) +
                         ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
 
                 // Neutral wire — no archetype stroke override.
