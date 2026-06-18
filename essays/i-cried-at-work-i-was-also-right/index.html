@@ -865,7 +865,7 @@
             z-index: 10;
             /* Invisible bleed so rotated cards are not clipped by the
                viewport edge or body overflow-x. */
-            padding: 14px 10px 18px 48px;
+            padding: 14px 18px 18px 48px;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -884,7 +884,7 @@
         .archetype-card {
             position: relative;
             display: block;
-            width: 72px;
+            width: 80px;
             height: auto;
             flex-shrink: 0;
             text-decoration: none;
@@ -904,8 +904,8 @@
             transition: filter 0.35s ease;
         }
         .archetype-instinct { transform: rotate(-11deg); z-index: 1; }
-        .archetype-logic    { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
-        .archetype-psyche   { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
+        .archetype-logic    { transform: rotate(-3deg); margin-left: -31px; width: 86px; z-index: 2; }
+        .archetype-psyche   { transform: rotate(9deg); margin-left: -29px; z-index: 3; }
         .archetype-card:hover {
             transform: rotate(0deg) scale(1.04) translateY(-4px);
             z-index: 11;
@@ -1052,10 +1052,10 @@
 
         /* Mobile overrides for the sticky chrome — same as landing. */
         @media (max-width: 600px) {
-            .archetypes { bottom: 0.85rem; right: 0.75rem; padding: 10px 8px 14px 36px; }
-            .archetype-card { width: 58px; }
-            .archetype-logic { width: 62px; margin-left: -22px; }
-            .archetype-psyche { margin-left: -20px; }
+            .archetypes { bottom: 0.85rem; right: 0.85rem; padding: 10px 14px 14px 36px; }
+            .archetype-card { width: 64px; }
+            .archetype-logic { width: 68px; margin-left: -24px; }
+            .archetype-psyche { margin-left: -22px; }
             .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
