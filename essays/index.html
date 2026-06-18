@@ -1229,9 +1229,53 @@
                 <p class="essay-meta">Short dispatches from inside the machine.</p>
             </header>
 
-            <!-- Cards injected from dispatches.js so new essays surface
-                 here automatically. -->
-            <div class="essay-index" id="essay-index"></div>
+            <!-- Essay links are rendered statically below so they are present
+                 in the HTML for crawlers, sharing, and no-JS readers. The
+                 script at the bottom re-renders from dispatches.js ONLY if this
+                 list is empty, so it stays a graceful fallback. When adding an
+                 essay, add a card here AND an entry in dispatches.js. -->
+            <div class="essay-index" id="essay-index">
+                <a class="essay-card" href="/essays/the-students-are-right/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for &ldquo;The Students Are Right&rdquo;" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 05</span> <span class="essay-card-sep">&middot;</span> <span>may 2026</span></div>
+                    <h2 class="essay-card-title">&ldquo;The Students Are Right&rdquo;</h2>
+                    <p class="essay-card-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/ship-it/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-cottonbro-4709285.png" alt="Lead photograph for Ship It" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 04</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span></div>
+                    <h2 class="essay-card-title">Ship It</h2>
+                    <p class="essay-card-excerpt">I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it &mdash; and adoption turned out to be the only honest metric.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/i-cried-at-work-i-was-also-right/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-pranavsinh232-5466185.png" alt="Lead photograph for I Cried at Work. I Was Also Right." loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 03</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span></div>
+                    <h2 class="essay-card-title">I Cried at Work. I Was Also Right.</h2>
+                    <p class="essay-card-excerpt">A product lead corrected me in front of the whole room over a point that wasn&rsquo;t even right. I cried in the bathroom &mdash; and you can, in fact, agree with a fact.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/americans-europeans-and-autism-oh-my/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-anna-shevchuk-11507617.png" alt="Lead photograph for Americans, Europeans, and Autism, Oh My!" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 02</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span></div>
+                    <h2 class="essay-card-title">Americans, Europeans, and Autism, Oh My!</h2>
+                    <p class="essay-card-excerpt">A colleague flagged my writing as AI-generated. It wasn&rsquo;t &mdash; I&rsquo;m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+                <a class="essay-card" href="/essays/you-might-be-special-but-youre-definitely-predictable/">
+                    <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
+                    <div class="essay-card-thumb"><img src="/pexels-cottonbro-6153354.png" alt="Lead photograph for You Might Be Special, But You&rsquo;re Definitely Predictable" loading="lazy"></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 01</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span></div>
+                    <h2 class="essay-card-title">You Might Be Special, But You&rsquo;re Definitely Predictable</h2>
+                    <p class="essay-card-excerpt">I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren&rsquo;t magic &mdash; just pattern-matching at planetary scale, and a question about what we get back.</p>
+                    <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
+                </a>
+            </div>
         </article>
         <div class="rights-wrap">
             <footer class="rights">
@@ -1310,6 +1354,10 @@
             var list = (window.DISPATCHES || []).slice();
             var mount = document.getElementById('essay-index');
             if (!mount) return;
+            // Links are pre-rendered statically above. Only render from the
+            // manifest when the static list is empty (graceful fallback), so
+            // the HTML links always remain the source of truth for crawlers.
+            if (mount.children.length) return;
             function pad2(n) { return (n < 10 ? '0' : '') + n; }
             function esc(s) {
                 var d = document.createElement('div');

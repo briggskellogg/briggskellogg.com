@@ -19,7 +19,7 @@ window.DISPATCHES = [
         number: 5,
         title: '\u201CThe Students Are Right\u201D',
         date: 'may 2026',
-        url: '/essays/the-students-are-right',
+        url: '/essays/the-students-are-right/',
         image: '/pexels-tara-winstead-8849288.jpg',
         status: 'draft',
         // One-line standfirst used on the essays index + the homepage

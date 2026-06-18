@@ -527,12 +527,15 @@
         /* Single-line framed rights footer. Same vocabulary used on the
            essay page (where it's inline, not fixed). */
         .rights {
-            position: fixed;
-            bottom: 1.4rem;
-            left: 50%;
-            transform: translateX(-50%);
-            margin: 0;
-            z-index: 10;
+            /* In-flow byline at the foot of the centered page column, sitting
+               just beneath the featured essays box. (Previously a fixed,
+               viewport-pinned line — but now that the homepage scrolls past
+               the frame into the essays box, a pinned line floated over that
+               box. Flowing it at the end reads cleanly and matches the essay
+               pages.) */
+            position: relative;
+            display: inline-block;
+            margin: 1.75rem auto 0;
             padding: 0.55rem 1.1rem;
             text-align: center;
             font-family: 'Courier New', Courier, monospace;
@@ -542,7 +545,6 @@
             color: var(--ink-50);
             user-select: none;
             white-space: nowrap;
-            /* Opaque page bg covers the dot grid behind the line. */
             background-color: transparent;
         }
         .rights .rights-mark { margin-right: 0.6em; letter-spacing: 0; }
@@ -719,23 +721,10 @@
             text-align: left;
             text-decoration: none;
             color: inherit;
-            padding: 1.4rem 1.5rem 1.25rem;
-            background-color: var(--bg);
+            padding: 0.25rem 0.25rem 0;
             transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .featured-card:hover { transform: translateY(-2px); }
-        .featured-card .fcc {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            pointer-events: none;
-            transition: border-color 0.25s ease;
-        }
-        .featured-card .fcc-tl { top: -1px; left: -1px;   border-top: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .featured-card .fcc-tr { top: -1px; right: -1px;  border-top: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .featured-card .fcc-bl { bottom: -1px; left: -1px;  border-bottom: 2px solid var(--border-50); border-left: 2px solid var(--border-50); }
-        .featured-card .fcc-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
-        .featured-card:hover .fcc { border-color: var(--border-80); }
         /* Lead-photo thumbnail at the top of the card. Fixed aspect ratio
            keeps every dispatch's preview uniform regardless of source
            dimensions; the image is a muted, contained crop that lifts on
@@ -1176,11 +1165,7 @@
             <span class="ffc ffc-bl"></span>
             <span class="ffc ffc-br"></span>
             <div class="featured-eyebrow">essays</div>
-            <a class="featured-card" id="featured-card" href="/essays/the-students-are-right">
-                <span class="fcc fcc-tl"></span>
-                <span class="fcc fcc-tr"></span>
-                <span class="fcc fcc-bl"></span>
-                <span class="fcc fcc-br"></span>
+            <a class="featured-card" id="featured-card" href="/essays/the-students-are-right/">
                 <div class="featured-thumb">
                     <img id="featured-img" src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for &ldquo;The Students Are Right&rdquo;" loading="lazy">
                 </div>
@@ -1193,17 +1178,17 @@
                 <p class="featured-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
                 <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
             </a>
-            <a class="featured-all" href="/essays">all essays &rarr;</a>
+            <a class="featured-all" href="/essays/">all essays &rarr;</a>
         </section>
 
+        <footer class="rights">
+            <span class="rc rc-tl"></span>
+            <span class="rc rc-tr"></span>
+            <span class="rc rc-bl"></span>
+            <span class="rc rc-br"></span>
+            <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
+        </footer>
     </main>
-    <footer class="rights">
-        <span class="rc rc-tl"></span>
-        <span class="rc rc-tr"></span>
-        <span class="rc rc-bl"></span>
-        <span class="rc rc-br"></span>
-        <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
-    </footer>
     <nav class="stickers" aria-label="Playlists">
         <span class="sc sc-tl"></span>
         <span class="sc sc-tr"></span>
@@ -1363,52 +1348,9 @@
             document.querySelector('.quote-next').addEventListener('click', function() { manual(current + 1); });
         })();
 
-        // Rights footer placement — fixed bottom-center on desktop, but
-        // moved inside main on mobile so it sits directly under the
-        // frame instead of drifting down toward the floating playlists
-        // in the bottom-right corner. Listens via matchMedia (more
-        // reliable across resize/orientation than raw resize events
-        // on iOS).
-        (function() {
-            var mq = window.matchMedia('(max-width: 480px)');
-
-            function place() {
-                var rights = document.querySelector('.rights');
-                var main   = document.querySelector('main.page');
-                var body   = document.body;
-                var stickers = document.querySelector('.stickers');
-                if (!rights || !main || !body) return;
-
-                if (mq.matches) {
-                    if (rights.parentNode !== main) main.appendChild(rights);
-                } else {
-                    if (rights.parentNode !== body) {
-                        if (stickers && stickers.parentNode === body) {
-                            body.insertBefore(rights, stickers);
-                        } else {
-                            body.appendChild(rights);
-                        }
-                    }
-                }
-            }
-
-            // Modern + legacy listener APIs for matchMedia (Safari < 14).
-            if (typeof mq.addEventListener === 'function') {
-                mq.addEventListener('change', place);
-            } else if (typeof mq.addListener === 'function') {
-                mq.addListener(place);
-            }
-            // Also re-run on raw resize as a belt-and-suspenders for
-            // edge cases (e.g. desktop browser dragging window across
-            // the breakpoint without the mq listener firing).
-            window.addEventListener('resize', place);
-
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', place);
-            } else {
-                place();
-            }
-        })();
+        // (Rights footer now flows in-page at the foot of the column on every
+        // breakpoint, directly under the essays box, so the old fixed-vs-inline
+        // placement toggle is no longer needed.)
 
         (function() {
             var wrap = document.querySelector('.egg-wrap');
