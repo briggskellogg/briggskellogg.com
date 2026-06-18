@@ -136,12 +136,12 @@
         .archetype-logic    { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
         .archetype-psyche   { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
         .archetype-card:hover {
-            transform: rotate(0deg) scale(1.1) translateY(-10px);
+            transform: rotate(0deg) scale(1.04) translateY(-4px);
             z-index: 11;
         }
         .archetype-card:hover .archetype-img {
-            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3))
-                    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.26))
+                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.14));
         }
 
         .version-badge {
@@ -154,62 +154,7 @@
             border: 1px solid var(--border-30);
             background: rgba(255, 226, 185, 0.06);
         }
-        .essay-playlist {
-            margin: 2rem 0 1.75rem;
-            text-align: center;
-        }
-        .essay-playlist-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-            color: inherit;
-            padding: 0.6rem 1.05rem 0.55rem 0.8rem;
-            border: 1px solid var(--border-12);
-            background: rgba(255, 226, 185, 0.04);
-            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                        border-color 0.2s ease,
-                        background 0.2s ease;
-        }
-        .essay-playlist-link::after {
-            content: '\2197';
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.62rem;
-            color: var(--ink-25);
-            margin-left: 0.15rem;
-            opacity: 0;
-            transform: translate(-3px, 2px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-        .essay-playlist-link:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-50);
-            background: rgba(255, 226, 185, 0.08);
-        }
-        .essay-playlist-link:hover::after {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
-        .essay-playlist-icon {
-            width: 40px;
-            height: 40px;
-            display: block;
-            flex-shrink: 0;
-            transform: rotate(-7deg);
-            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .essay-playlist-link:hover .essay-playlist-icon {
-            transform: rotate(5deg) scale(1.06);
-        }
-        .essay-playlist-copy {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.54rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--ink);
-        }
-        .essay-card-version {
+.essay-card-version {
             display: inline-block;
             margin-left: 0.35rem;
             padding: 0.12rem 0.4rem 0.08rem;
@@ -1491,7 +1436,7 @@
                 imgEl.setAttribute('src', d.image);
                 if (d.title) imgEl.setAttribute('alt', 'Lead photograph for ' + d.title);
             }
-            // Version badge — always shown (draft is v0 · living draft).
+            // Version badge — always shown (draft is v0 · draft).
             if (d.status) {
                 var meta = card.querySelector('.featured-meta');
                 if (meta) {

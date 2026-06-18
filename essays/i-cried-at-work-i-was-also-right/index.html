@@ -902,12 +902,12 @@
         .archetype-logic    { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
         .archetype-psyche   { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
         .archetype-card:hover {
-            transform: rotate(0deg) scale(1.1) translateY(-10px);
+            transform: rotate(0deg) scale(1.04) translateY(-4px);
             z-index: 11;
         }
         .archetype-card:hover .archetype-img {
-            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3))
-                    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.26))
+                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.14));
         }
         /* ---------- Easter egg ---------- */
 
@@ -920,61 +920,6 @@
             padding: 0.14rem 0.45rem 0.1rem;
             border: 1px solid var(--border-30);
             background: rgba(255, 226, 185, 0.06);
-        }
-        .essay-playlist {
-            margin: 0 0 2.25rem;
-            text-align: center;
-        }
-        .essay-playlist-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-            color: inherit;
-            padding: 0.6rem 1.05rem 0.55rem 0.8rem;
-            border: 1px solid var(--border-12);
-            background: rgba(255, 226, 185, 0.04);
-            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                        border-color 0.2s ease,
-                        background 0.2s ease;
-        }
-        .essay-playlist-link::after {
-            content: '\2197';
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.62rem;
-            color: var(--ink-25);
-            margin-left: 0.15rem;
-            opacity: 0;
-            transform: translate(-3px, 2px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-        .essay-playlist-link:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-50);
-            background: rgba(255, 226, 185, 0.08);
-        }
-        .essay-playlist-link:hover::after {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
-        .essay-playlist-icon {
-            width: 40px;
-            height: 40px;
-            display: block;
-            flex-shrink: 0;
-            transform: rotate(-7deg);
-            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .essay-playlist-link:hover .essay-playlist-icon {
-            transform: rotate(5deg) scale(1.06);
-        }
-        .essay-playlist-copy {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.54rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--ink);
         }
 .essay-card-version {
             display: inline-block;
@@ -1110,7 +1055,7 @@
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
             .egg-shell { width: 24px; height: 32px; }
-        }
+}
     </style>
 </head>
 <body data-essay-id="i-cried-at-work-i-was-also-right">
@@ -1151,13 +1096,6 @@
                 <h1 class="essay-title">I Cried at Work. I Was Also Right.</h1>
                 <p class="essay-meta">december 2025</p>
             </header>
-
-            <div class="essay-playlist" id="essay-playlist" hidden>
-                <a class="essay-playlist-link" id="essay-playlist-link" href="#" target="_blank" rel="noopener" aria-label="Recommended playlist on Spotify">
-                    <img class="essay-playlist-icon" id="essay-playlist-icon" src="" alt="">
-                    <span class="essay-playlist-copy">recommended playlist</span>
-                </a>
-            </div>
 
             <figure class="essay-figure">
                 <span class="fc fc-tl"></span>
@@ -1402,15 +1340,7 @@
                 if (versionSep) versionSep.hidden = false;
             }
 
-            var playlistWrap = document.getElementById('essay-playlist');
-            var playlistLink = document.getElementById('essay-playlist-link');
-            var playlistIcon = document.getElementById('essay-playlist-icon');
-            if (playlistWrap && entry.playlist) {
-                var icons = { logic: '/assets/stickers/build.png', psyche: '/assets/stickers/nest.png', instinct: '/assets/stickers/slash.png' };
-                if (playlistLink && entry.playlist.url) playlistLink.href = entry.playlist.url;
-                if (playlistIcon && entry.playlist.archetype) playlistIcon.src = icons[entry.playlist.archetype] || icons.logic;
-                playlistWrap.hidden = false;
-            }
+
         })();
 
         // ---------- Essay nav (prev/next dispatches) ----------

@@ -10,13 +10,15 @@
 //                  'draft'     — initial post, still being shaped (shown as v0)
 //                  'patch-N'   — incremental revision N (shown as vN)
 //                  'finalized' — locked, no further edits planned
-//   playlist — optional listening recommendation while reading:
+//   playlist — optional Spotify playlist while reading:
 //                  archetype — 'logic' | 'psyche' | 'instinct' (picks the icon)
 //                  url       — Spotify playlist link
+//   audio    — optional root-relative path to the essay audio version
+//                  (e.g. '/audio/the-students-are-right.mp3')
 //   excerpt  — one-line standfirst for index + homepage featured card
 window.formatDispatchVersion = function(status) {
     if (!status || status === 'draft') {
-        return { label: 'v0 · living draft', short: 'v0', slug: 'draft' };
+        return { label: 'v0 · draft', short: 'v0', slug: 'draft' };
     }
     if (status === 'finalized') {
         return { label: 'final · locked', short: 'final', slug: 'finalized' };
@@ -50,7 +52,7 @@ window.DISPATCHES = [
         date: 'december 2025',
         url: '/essays/ship-it/',
         image: '/pexels-cottonbro-4709285.png',
-        status: 'draft',
+        status: 'patch-1',
         playlist: {
             archetype: 'logic',
             url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
@@ -64,7 +66,7 @@ window.DISPATCHES = [
         date: 'december 2025',
         url: '/essays/i-cried-at-work-i-was-also-right/',
         image: '/pexels-pranavsinh232-5466185.png',
-        status: 'draft',
+        status: 'patch-1',
         playlist: {
             archetype: 'psyche',
             url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
@@ -78,7 +80,7 @@ window.DISPATCHES = [
         date: 'november 2025',
         url: '/essays/americans-europeans-and-autism-oh-my/',
         image: '/pexels-anna-shevchuk-11507617.png',
-        status: 'draft',
+        status: 'patch-2',
         playlist: {
             archetype: 'logic',
             url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'

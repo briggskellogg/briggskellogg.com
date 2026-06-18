@@ -1027,12 +1027,12 @@
         .archetype-logic    { transform: rotate(-3deg); margin-left: -28px; width: 78px; z-index: 2; }
         .archetype-psyche   { transform: rotate(9deg); margin-left: -26px; z-index: 3; }
         .archetype-card:hover {
-            transform: rotate(0deg) scale(1.1) translateY(-10px);
+            transform: rotate(0deg) scale(1.04) translateY(-4px);
             z-index: 11;
         }
         .archetype-card:hover .archetype-img {
-            filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.3))
-                    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.26))
+                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.14));
         }
         /* ---------- Easter egg ---------- */
 
@@ -1046,62 +1046,7 @@
             border: 1px solid var(--border-30);
             background: rgba(255, 226, 185, 0.06);
         }
-        .essay-playlist {
-            margin: 2rem 0 1.75rem;
-            text-align: center;
-        }
-        .essay-playlist-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            text-decoration: none;
-            color: inherit;
-            padding: 0.6rem 1.05rem 0.55rem 0.8rem;
-            border: 1px solid var(--border-12);
-            background: rgba(255, 226, 185, 0.04);
-            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                        border-color 0.2s ease,
-                        background 0.2s ease;
-        }
-        .essay-playlist-link::after {
-            content: '\2197';
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.62rem;
-            color: var(--ink-25);
-            margin-left: 0.15rem;
-            opacity: 0;
-            transform: translate(-3px, 2px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-        .essay-playlist-link:hover {
-            transform: translateY(-3px);
-            border-color: var(--border-50);
-            background: rgba(255, 226, 185, 0.08);
-        }
-        .essay-playlist-link:hover::after {
-            opacity: 1;
-            transform: translate(0, 0);
-        }
-        .essay-playlist-icon {
-            width: 40px;
-            height: 40px;
-            display: block;
-            flex-shrink: 0;
-            transform: rotate(-7deg);
-            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .essay-playlist-link:hover .essay-playlist-icon {
-            transform: rotate(5deg) scale(1.06);
-        }
-        .essay-playlist-copy {
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.54rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--ink);
-        }
-        .essay-card-version {
+.essay-card-version {
             display: inline-block;
             margin-left: 0.35rem;
             padding: 0.12rem 0.4rem 0.08rem;
@@ -1272,7 +1217,7 @@
                 <a class="essay-card" href="/essays/the-students-are-right/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for &ldquo;The Students Are Right&rdquo;" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 05</span> <span class="essay-card-sep">&middot;</span> <span>may 2026</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 05</span> <span class="essay-card-sep">&middot;</span> <span>may 2026</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · draft</span></div>
                     <h2 class="essay-card-title">&ldquo;The Students Are Right&rdquo;</h2>
                     <p class="essay-card-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1280,7 +1225,7 @@
                 <a class="essay-card" href="/essays/ship-it/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-cottonbro-4709285.png" alt="Lead photograph for Ship It" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 04</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 04</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="patch-1">v1 · revision</span></div>
                     <h2 class="essay-card-title">Ship It</h2>
                     <p class="essay-card-excerpt">I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it &mdash; and adoption turned out to be the only honest metric.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1288,7 +1233,7 @@
                 <a class="essay-card" href="/essays/i-cried-at-work-i-was-also-right/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-pranavsinh232-5466185.png" alt="Lead photograph for I Cried at Work. I Was Also Right." loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 03</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 03</span> <span class="essay-card-sep">&middot;</span> <span>december 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="patch-1">v1 · revision</span></div>
                     <h2 class="essay-card-title">I Cried at Work. I Was Also Right.</h2>
                     <p class="essay-card-excerpt">A product lead corrected me in front of the whole room over a point that wasn&rsquo;t even right. I cried in the bathroom &mdash; and you can, in fact, agree with a fact.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1296,7 +1241,7 @@
                 <a class="essay-card" href="/essays/americans-europeans-and-autism-oh-my/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-anna-shevchuk-11507617.png" alt="Lead photograph for Americans, Europeans, and Autism, Oh My!" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 02</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 02</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="patch-2">v2 · revision</span></div>
                     <h2 class="essay-card-title">Americans, Europeans, and Autism, Oh My!</h2>
                     <p class="essay-card-excerpt">A colleague flagged my writing as AI-generated. It wasn&rsquo;t &mdash; I&rsquo;m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1304,7 +1249,7 @@
                 <a class="essay-card" href="/essays/you-might-be-special-but-youre-definitely-predictable/">
                     <span class="ec ec-tl"></span><span class="ec ec-tr"></span><span class="ec ec-bl"></span><span class="ec ec-br"></span>
                     <div class="essay-card-thumb"><img src="/pexels-cottonbro-6153354.png" alt="Lead photograph for You Might Be Special, But You&rsquo;re Definitely Predictable" loading="lazy"></div>
-                    <div class="essay-card-meta"><span class="essay-card-no">no. 01</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · living draft</span></div>
+                    <div class="essay-card-meta"><span class="essay-card-no">no. 01</span> <span class="essay-card-sep">&middot;</span> <span>november 2025</span> <span class="essay-card-sep">&middot;</span> <span class="essay-card-version" data-status="draft">v0 · draft</span></div>
                     <h2 class="essay-card-title">You Might Be Special, But You&rsquo;re Definitely Predictable</h2>
                     <p class="essay-card-excerpt">I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren&rsquo;t magic &mdash; just pattern-matching at planetary scale, and a question about what we get back.</p>
                     <span class="essay-card-cta">read the essay <span class="arr">&rarr;</span></span>
