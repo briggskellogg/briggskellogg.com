@@ -6,6 +6,8 @@
 //   date     — initial publication month/year ("may 2026")
 //   url      — path on the site
 //   image    — root-relative lead photo for preview cards
+//   ogImage  — optional root-relative 1200×630 center-cropped image for link
+//                  previews (defaults to /assets/og/{id}.jpg when present)
 //   status   — version state. One of:
 //                  'draft'     — initial post, still being shaped (shown as v0)
 //                  'patch-N'   — incremental revision N (shown as vN)
