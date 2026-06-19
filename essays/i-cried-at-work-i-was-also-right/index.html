@@ -1370,9 +1370,10 @@
                 <span class="nc nc-bl"></span>
                 <span class="nc nc-br"></span>
                 <div class="newsletter-head">stay in the loop</div>
-                <form class="essay-subscribe" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post" target="popupwindow">
+                <form class="essay-subscribe" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/briggskellogg', 'popupwindow')">
                     <label class="subscribe-label" for="bd-email-essay">if you'd like the next one in your inbox</label>
                     <div class="subscribe-row">
+                        <input type="hidden" name="embed" value="1">
                         <input id="bd-email-essay" type="email" name="email" placeholder="your email" autocomplete="email" required>
                         <button type="submit" aria-label="Subscribe">subscribe &rarr;</button>
                     </div>
