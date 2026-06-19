@@ -397,7 +397,8 @@
             flex-shrink: 0;
             line-height: 0;
             text-decoration: none;
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        margin-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .essay-vibe:hover { transform: translateY(-6px) scale(1.05); }
         .essay-vibe-img {
@@ -1042,9 +1043,22 @@
         .archetype-instinct { transform: rotate(-11deg); z-index: 1; }
         .archetype-logic    { transform: rotate(-3deg); margin-left: -25px; width: 68px; z-index: 2; }
         .archetype-psyche   { transform: rotate(9deg); margin-left: -23px; z-index: 3; }
-        .archetype-card:hover {
-            transform: rotate(0deg) scale(1.04) translateY(-4px);
+        .archetypes-row:hover .archetype-instinct {
+            transform: rotate(-22deg) scale(1.04) translateX(-12px) translateY(-4px);
             z-index: 11;
+        }
+        .archetypes-row:hover .archetype-logic {
+            transform: rotate(-1deg) scale(1.04) translateY(-4px);
+            margin-left: -10px;
+            z-index: 11;
+        }
+        .archetypes-row:hover .archetype-psyche {
+            transform: rotate(22deg) scale(1.04) translateX(10px) translateY(-4px);
+            margin-left: -10px;
+            z-index: 11;
+        }
+        .archetypes-row:hover .archetype-card:hover {
+            z-index: 12;
         }
         .archetype-instinct:hover .archetype-img {
             filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
