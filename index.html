@@ -993,7 +993,7 @@
                    the iOS status bar; the content sits high in the
                    viewport rather than being centered by min-height.
                    Bottom padding clears the floating egg + playlists. */
-                padding: 0.9rem 1.8rem 3.6rem;
+                padding: 0.9rem 1.5rem 7.75rem;
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
@@ -1017,9 +1017,9 @@
                    inner content on every device. No forced min-height
                    or empty centering: the box grows because the
                    content inside grows, not the other way around. */
-                padding: clamp(0.65rem, 2vh, 1.8rem)
-                         clamp(1.1rem, 4vw, 2rem)
-                         clamp(0.75rem, 2.2vh, 1.8rem);
+                padding: clamp(0.85rem, 2vh, 1.8rem)
+                         clamp(1.25rem, 4.5vw, 2rem)
+                         clamp(0.9rem, 2.2vh, 1.8rem);
             }
             /* Fluid mobile sizing: every value below scales with vh
                so the BEK frame's contents grow gracefully from
@@ -1075,8 +1075,8 @@
                 left: auto;
                 bottom: auto;
                 display: inline-block;
-                margin: 0.85rem auto 0;
-                padding: 0.4rem 0.75rem;
+                margin: 0.85rem auto 4.5rem;
+                padding: 0.55rem 0.95rem;
                 font-size: 0.4rem;
                 letter-spacing: 0.18em;
                 white-space: nowrap;
@@ -1148,6 +1148,29 @@
             }
             .catalogue-id {
                 font-size: 0.45rem;
+            }
+            .featured {
+                padding: 1.35rem 1.25rem 1.2rem;
+            }
+            .featured-label {
+                padding: 0.55rem 1rem 0.48rem;
+            }
+        }
+        @media (max-width: 600px) {
+            body {
+                padding-bottom: 7.75rem;
+            }
+            .rights {
+                margin-bottom: 4.5rem;
+                padding: 0.55rem 0.95rem;
+            }
+            .featured {
+                padding: 1.35rem 1.25rem 1.2rem;
+            }
+            .frame {
+                padding: clamp(0.85rem, 2vh, 1.8rem)
+                         clamp(1.25rem, 4.5vw, 2rem)
+                         clamp(0.9rem, 2.2vh, 1.8rem);
             }
         }
     </style>
