@@ -13,7 +13,7 @@
 //                  'patch-N'   — incremental revision N (shown as vN)
 //                  'finalized' — locked, no further edits planned
 //   playlist — optional Spotify playlist while reading:
-//                  archetype — 'logic' | 'psyche' | 'instinct' (picks the icon)
+//                  archetype — 'logic' | 'psyche' | 'instinct' (picks the blob)
 //                  url       — Spotify playlist link
 //   audio    — optional root-relative path to the essay audio version
 //                  (e.g. '/audio/the-students-are-right.mp3')
