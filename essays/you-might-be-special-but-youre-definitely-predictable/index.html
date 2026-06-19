@@ -381,26 +381,28 @@
             font-size: 1.95rem;
             line-height: 1.25;
             color: var(--ink);
+        }
+        /* Title row — the title with its archetype vibe blob floating
+           alongside, linking to the essay's playlist. */
+        .essay-title-row {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            max-width: 100%;
             margin-bottom: 0.6rem;
         }
-        /* Vibe blob — manifested pillar pinned to the frame's top-left,
-           keyed to the essay's archetype, with a lowercase mono label. */
         .essay-vibe {
-            position: absolute;
-            top: 0.9rem;
-            left: 1.1rem;
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 3px;
+            display: inline-flex;
+            flex-shrink: 0;
+            line-height: 0;
             text-decoration: none;
             transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .essay-vibe:hover { transform: translateY(-6px) scale(1.05); }
         .essay-vibe-img {
-            width: 52px;
-            height: 52px;
+            width: 46px;
+            height: 46px;
             object-fit: contain;
             display: block;
             user-select: none;
@@ -565,7 +567,7 @@
             /* Marker column needs room for dot (5px) + gap (6px) + 2-digit
                number (~12px) = ~23px. 26px keeps comfortable buffer and
                aligns all markers uniformly regardless of digit count. */
-            grid-template-columns: 26px 1fr;
+            grid-template-columns: 34px 1fr;
             column-gap: 10px;
             font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
             font-size: 0.78rem;
@@ -580,14 +582,18 @@
         .footnote em { font-style: italic; color: var(--ink); }
         .fn-marker {
             font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-            font-size: 0.6rem;
+            font-size: 0.58rem;
             color: var(--ink-50);
             text-decoration: none;
             align-self: start;
-            line-height: 1.4;
-            padding-top: 0.25em;
+            line-height: 1;
             letter-spacing: 0.05em;
             white-space: nowrap;
+            display: inline-block;
+            padding: 0.22em 0.42em;
+            border: 1px solid var(--ink-25);
+            background: var(--ink-06);
+            transition: color 0.12s ease, border-color 0.12s ease, background 0.12s ease;
         }
         .fn-content a {
             color: var(--ink);
@@ -598,36 +604,16 @@
         }
         .fn-content a:hover { text-decoration-color: var(--ink); }
         .fn-back { display: none; }
-        .footnote.linked {
-            color: var(--ink);
-            border-left-color: var(--ink-50);
-        }
-        /* Footnote left rule + marker dot are archetype-coded. */
-        .footnote[data-archetype] .fn-marker::before {
-            content: '';
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            margin-right: 6px;
-            vertical-align: middle;
-            position: relative;
-            top: -1px;
-            opacity: 0.5;
-            transition: opacity 0.12s ease, transform 0.12s ease;
-            background: var(--ink-50);
-        }
-        .footnote[data-archetype="logic"]    .fn-marker::before { background: var(--logic); }
-        .footnote[data-archetype="instinct"] .fn-marker::before { background: var(--instinct); }
-        .footnote[data-archetype="psyche"]   .fn-marker::before { background: var(--psyche); }
-        .footnote.linked .fn-marker::before { opacity: 0.8; transform: scale(1.15); }
-        .footnote.linked[data-archetype="logic"]    { border-left-color: var(--logic); }
-        .footnote.linked[data-archetype="instinct"] { border-left-color: var(--instinct); }
-        .footnote.linked[data-archetype="psyche"]   { border-left-color: var(--psyche); }
-        .footnote:target {
-            border-left-color: var(--ink-50);
-            color: var(--ink);
-        }
+        .footnote.linked { color: var(--ink); }
+        /* The footnote number box, its wire and end dot are archetype-coded
+           (logic = gold, instinct = red, psyche = blue). */
+        .footnote[data-archetype="logic"]    .fn-marker { color: #C99B45; border-color: #C99B45; }
+        .footnote[data-archetype="instinct"] .fn-marker { color: #C2412E; border-color: #C2412E; }
+        .footnote[data-archetype="psyche"]   .fn-marker { color: #658DA4; border-color: #658DA4; }
+        .footnote.linked[data-archetype="logic"]    .fn-marker { background: rgba(201, 155, 69, 0.15); }
+        .footnote.linked[data-archetype="instinct"] .fn-marker { background: rgba(194, 65, 46, 0.13); }
+        .footnote.linked[data-archetype="psyche"]   .fn-marker { background: rgba(101, 141, 164, 0.15); }
+        .footnote:target { color: var(--ink); }
 
         /* ---------- The wire overlay ----------
            The SVG sits underneath the body + notes (z-index 0) and the
@@ -674,33 +660,63 @@
            has padding-bottom: 3.5rem, so giving .essay-foot the same
            top margin produces visually equal cushioning above and
            below the form. */
-        .essay-foot {
-            text-align: center;
-            margin-top: 3.5rem;
-        }
-        .essay-alllink {
-            display: inline-block;
-            margin-bottom: 1.6rem;
+        /* ---------- Back to all essays — frame top-left chrome ---------- */
+        .essay-top-back {
+            position: absolute;
+            top: 1.15rem;
+            left: 1.25rem;
+            z-index: 3;
             font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-            font-size: 0.6rem;
-            letter-spacing: 0.22em;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--ink-50);
             text-decoration: none;
-            transition: color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: color 0.2s ease;
         }
-        .essay-alllink:hover { color: var(--ink); transform: translateX(-3px); }
+        .essay-top-back .arr { display: inline-block; padding-right: 0.3em; transition: transform 0.2s ease; }
+        .essay-top-back:hover { color: var(--ink); }
+        .essay-top-back:hover .arr { transform: translateX(-3px); }
+
+        /* ---------- Newsletter — its own distinct framed module ---------- */
+        .essay-newsletter {
+            position: relative;
+            margin-top: 2.5rem;
+            padding: 1.7rem 1.5rem 1.6rem;
+            border: 1px solid var(--ink-12);
+            background: var(--ink-06);
+            text-align: center;
+        }
+        .essay-newsletter .nc { position: absolute; width: 8px; height: 8px; pointer-events: none; }
+        .essay-newsletter .nc-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-newsletter .nc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .essay-newsletter .nc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-newsletter .nc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .newsletter-head {
+            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-size: 0.62rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin-bottom: 1.3rem;
+        }
+        .newsletter-opts { display: flex; flex-direction: column; }
+        .newsletter-opts .essay-subscribe + .essay-subscribe {
+            margin-top: 1.3rem;
+            padding-top: 1.3rem;
+            border-top: 1px solid var(--ink-12);
+        }
         @media (max-width: 720px) {
-            .essay-foot { margin-top: 2rem; }
+            .essay-newsletter { margin-top: 2rem; padding: 1.4rem 1.1rem 1.3rem; }
         }
 
         /* ---------- Essay prev/next nav (other dispatches) ---------- */
         .essay-nav {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             padding-top: 1.4rem;
             border-top: 1px solid var(--ink-12);
             font-family: 'Courier Prime', 'Courier New', Courier, monospace;
@@ -717,7 +733,7 @@
             display: inline-flex;
             flex-direction: column;
             gap: 0.3em;
-            max-width: 45%;
+            max-width: 100%;
         }
         .essay-nav .essay-nav-label {
             font-size: 0.55rem;
@@ -732,8 +748,18 @@
             font-size: 0.85rem;
             color: var(--ink);
         }
-        .essay-nav a.essay-nav-prev { text-align: left; }
-        .essay-nav a.essay-nav-next { text-align: right; align-items: flex-end; }
+        .essay-nav-prev { grid-column: 1; justify-self: start; text-align: left; }
+        .essay-nav-next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
+        .essay-nav-all {
+            grid-column: 2;
+            justify-self: center;
+            text-align: center;
+            flex-direction: row;
+            white-space: nowrap;
+            letter-spacing: 0.22em;
+            color: var(--ink-50);
+        }
+        .essay-nav-all:hover { color: var(--ink); }
         .essay-nav a:hover .essay-nav-title { color: var(--ink); }
         .essay-nav a.essay-nav-prev:hover { transform: translateX(-3px); }
         .essay-nav a.essay-nav-next:hover { transform: translateX(3px); }
@@ -1012,23 +1038,23 @@
         .archetype-instinct:hover .archetype-img {
             filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
                     drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16))
-                    drop-shadow(0 0 12px rgba(173, 124, 132, 0.95))
-                    drop-shadow(0 0 28px rgba(173, 124, 132, 0.72))
-                    drop-shadow(0 0 52px rgba(173, 124, 132, 0.42));
+                    drop-shadow(0 0 12px rgba(173, 124, 132, 0.55))
+                    drop-shadow(0 0 28px rgba(173, 124, 132, 0.4))
+                    drop-shadow(0 0 52px rgba(173, 124, 132, 0.22));
         }
         .archetype-logic:hover .archetype-img {
             filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
                     drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16))
-                    drop-shadow(0 0 12px rgba(201, 155, 69, 0.92))
-                    drop-shadow(0 0 28px rgba(201, 155, 69, 0.68))
-                    drop-shadow(0 0 52px rgba(201, 155, 69, 0.38));
+                    drop-shadow(0 0 12px rgba(201, 155, 69, 0.5))
+                    drop-shadow(0 0 28px rgba(201, 155, 69, 0.36))
+                    drop-shadow(0 0 52px rgba(201, 155, 69, 0.2));
         }
         .archetype-psyche:hover .archetype-img {
             filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
                     drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16))
-                    drop-shadow(0 0 12px rgba(101, 141, 164, 0.98))
-                    drop-shadow(0 0 28px rgba(101, 141, 164, 0.74))
-                    drop-shadow(0 0 52px rgba(101, 141, 164, 0.44));
+                    drop-shadow(0 0 12px rgba(101, 141, 164, 0.58))
+                    drop-shadow(0 0 28px rgba(101, 141, 164, 0.42))
+                    drop-shadow(0 0 52px rgba(101, 141, 164, 0.24));
         }
         /* ---------- Easter egg ---------- */
 
@@ -1205,12 +1231,7 @@
                 <span class="frame-status-text" data-frame-status-text></span>
             </div>
 
-            <!-- Vibe blob — top-left of the frame, keyed to the essay's
-                 archetype (logic=build, psyche=nest, instinct=slash) and
-                 linking to its playlist. Populated by JS. -->
-            <a class="essay-vibe" id="essay-playlist-blob" href="#" target="_blank" rel="noopener noreferrer" hidden title="playlist">
-                <img class="essay-vibe-img" id="essay-playlist-blob-img" src="" alt="">
-            </a>
+            <a class="essay-top-back" href="/essays"><span class="arr">&larr;</span> all essays</a>
 
             <header class="essay-head">
                 <span class="hc hc-tl"></span>
@@ -1225,7 +1246,12 @@
                     <span class="sep">&middot;</span>
                     <span>essay</span>
                 </p>
-                <h1 class="essay-title">You Might Be Special, But You&rsquo;re Definitely Predictable</h1>
+                <div class="essay-title-row">
+                    <h1 class="essay-title">You Might Be Special, But You&rsquo;re Definitely Predictable</h1>
+                    <a class="essay-vibe" id="essay-playlist-blob" href="#" target="_blank" rel="noopener noreferrer" hidden title="playlist">
+                        <img class="essay-vibe-img" id="essay-playlist-blob-img" src="" alt="">
+                    </a>
+                </div>
                 <p class="essay-meta">november 2025</p>
             </header>
 
@@ -1533,21 +1559,37 @@
                 </div>
             </div>
 
-            <nav class="essay-nav" aria-label="Other dispatches" id="essay-nav">
+            <nav class="essay-nav" aria-label="Other essays" id="essay-nav">
                 <span class="essay-nav-empty essay-nav-prev"><span class="essay-nav-label">&larr; older</span><span class="essay-nav-title">&mdash;</span></span>
                 <span class="essay-nav-empty essay-nav-next"><span class="essay-nav-label">newer &rarr;</span><span class="essay-nav-title">&mdash;</span></span>
             </nav>
 
-            <footer class="essay-foot">
-                <a class="essay-alllink" href="/essays">&larr; all essays</a>
-                <form class="essay-subscribe" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post" target="popupwindow">
-                    <label class="subscribe-label" for="bd-email-essay">if you'd like the next one in your inbox</label>
-                    <div class="subscribe-row">
-                        <input id="bd-email-essay" type="email" name="email" placeholder="your email" autocomplete="email" required>
-                        <button type="submit" aria-label="Subscribe">subscribe &rarr;</button>
-                    </div>
-                </form>
-            </footer>
+            <section class="essay-newsletter" aria-label="Newsletter">
+                <span class="nc nc-tl"></span>
+                <span class="nc nc-tr"></span>
+                <span class="nc nc-bl"></span>
+                <span class="nc nc-br"></span>
+                <div class="newsletter-head">stay in the loop</div>
+                <div class="newsletter-opts">
+                    <form class="essay-subscribe" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post" target="popupwindow">
+                        <input type="hidden" name="metadata__interest" value="essay-revisions">
+                        <input type="hidden" name="metadata__essay" id="bd-essay-id" value="">
+                        <label class="subscribe-label" for="bd-email-rev">get notified when this essay is revised</label>
+                        <div class="subscribe-row">
+                            <input id="bd-email-rev" type="email" name="email" placeholder="your email" autocomplete="email" required>
+                            <button type="submit" aria-label="Subscribe to revisions">subscribe &rarr;</button>
+                        </div>
+                    </form>
+                    <form class="essay-subscribe" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post" target="popupwindow">
+                        <input type="hidden" name="metadata__interest" value="new-essays">
+                        <label class="subscribe-label" for="bd-email-new">get notified when a new essay drops</label>
+                        <div class="subscribe-row">
+                            <input id="bd-email-new" type="email" name="email" placeholder="your email" autocomplete="email" required>
+                            <button type="submit" aria-label="Subscribe to new essays">subscribe &rarr;</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </article>
         <div class="rights-wrap">
             <footer class="rights">
@@ -1665,6 +1707,8 @@
                 blobLink.setAttribute('title', kind + ' playlist');
                 blobLink.hidden = false;
             }
+            var revEssayInput = document.getElementById('bd-essay-id');
+            if (revEssayInput) { revEssayInput.value = id || (entry && entry.id) || ''; }
 
         })();
 
@@ -1826,9 +1870,9 @@
             // — so the gutter computation has been retired.
 
             var ARCHETYPE_WIRE = {
-                logic:    { stroke: 'rgba(42, 32, 24, 0.34)',  dot: '#2A2018' },
-                instinct: { stroke: 'rgba(173, 124, 132, 0.36)', dot: '#AD7C84' },
-                psyche:   { stroke: 'rgba(101, 141, 164, 0.36)', dot: '#658DA4' }
+                logic:    { stroke: 'rgba(201, 155, 69, 0.6)',  dot: '#C99B45' },
+                instinct: { stroke: 'rgba(194, 65, 46, 0.55)',  dot: '#C2412E' },
+                psyche:   { stroke: 'rgba(101, 141, 164, 0.6)', dot: '#658DA4' }
             };
 
             function drawWire(ref, note) {
@@ -1865,9 +1909,10 @@
                 // and aim at the pip's center.
                 var marker = note.querySelector('.fn-marker');
                 var dotRect = (marker || note).getBoundingClientRect();
-                var x2 = (dotRect.left - layoutRect.left) + 2.5;
+                // Connect the wire straight into the number box's left edge.
+                var x2 = (dotRect.left - layoutRect.left) - 1;
                 var y2 = (dotRect.top - layoutRect.top) +
-                         Math.min(dotRect.height / 2, 8);
+                         Math.min(dotRect.height / 2, 10);
 
                 var x1 = refRightX;
                 var y1 = refMidY;
@@ -1893,8 +1938,9 @@
                         ' ' + c2x.toFixed(1) + ' ' + y2.toFixed(1) +
                         ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
 
-                // Neutral wire — no archetype stroke override.
+                // Wire stroke takes the footnote's archetype color.
                 var path = createSvg('path', { d: d, 'class': 'wire-path' });
+                if (palette) path.style.stroke = palette.stroke;
                 svg.appendChild(path);
 
                 var len = path.getTotalLength();
