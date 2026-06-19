@@ -1213,11 +1213,32 @@
         .catalogue-id.revealed:hover { color: var(--ink); }
 
         /* Mobile overrides for the sticky chrome — same as landing. */
-        @media (max-width: 600px) {
-            .archetypes { bottom: 0.85rem; right: 2.15rem; padding: 10px 14px 12px 44px; }
-            .archetype-card { width: 52px; }
-            .archetype-logic { width: 55px; margin-left: -20px; }
-            .archetype-psyche { margin-left: -18px; }
+        @media (max-width: 720px) {
+            .archetypes {
+                bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
+                left: max(0.75rem, env(safe-area-inset-left, 0px));
+                right: max(0.75rem, env(safe-area-inset-right, 0px));
+                padding: 8px 0 10px;
+                align-items: flex-end;
+            }
+            .archetypes-row {
+                margin-left: auto;
+                max-width: 100%;
+            }
+            .archetype-card { width: 46px; }
+            .archetype-logic { width: 48px; margin-left: -14px; }
+            .archetype-psyche { margin-left: -14px; }
+            .archetype-instinct:hover {
+                transform: rotate(-14deg) scale(1.02) translateX(-2px) translateY(-2px);
+            }
+            .archetype-logic:hover {
+                transform: rotate(1deg) scale(1.02) translateY(-2px);
+                margin-left: -12px;
+            }
+            .archetype-psyche:hover {
+                transform: rotate(12deg) scale(1.02) translateX(-2px) translateY(-2px);
+                margin-left: -12px;
+            }
             .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
