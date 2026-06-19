@@ -373,7 +373,7 @@
         }
         .frame {
             border: 1px solid var(--border-12);
-            padding: 3rem 2.75rem 1.5rem;
+            padding: 2rem 2.75rem 1rem;
             position: relative;
             /* Opaque page bg covers the body's dot grid wherever the
                frame sits on top of it. Dots remain visible outside the
@@ -394,12 +394,12 @@
            breathes the BEK mask away from the brackets so the corners
            read as decoration, not a tight collar. */
         .logo {
-            margin-bottom: 2.2rem;
+            margin-bottom: 1.5rem;
             display: flex;
             justify-content: center;
         }
         .logo-frame {
-            padding: 0.7rem 1.3rem;
+            padding: 0.5rem 1.1rem;
         }
         .logo img {
             display: none;
@@ -622,10 +622,10 @@
         .links-wrap {
             display: flex;
             justify-content: center;
-            margin-top: 2.4rem;
+            margin-top: 1.6rem;
         }
         .links-frame {
-            padding: 0.6rem 1.1rem;
+            padding: 0.45rem 1rem;
         }
         .links-frame .links a { font-size: 0.62rem; }
         .links {
@@ -972,9 +972,9 @@
                    inner content on every device. No forced min-height
                    or empty centering: the box grows because the
                    content inside grows, not the other way around. */
-                padding: clamp(0.9rem, 2.6vh, 2.4rem)
+                padding: clamp(0.65rem, 2vh, 1.8rem)
                          clamp(1.1rem, 4vw, 2rem)
-                         clamp(1.1rem, 3vh, 2.6rem);
+                         clamp(0.75rem, 2.2vh, 1.8rem);
             }
             /* Fluid mobile sizing: every value below scales with vh
                so the BEK frame's contents grow gracefully from
@@ -984,11 +984,11 @@
                frame's padding is also vh-based, the box and its
                contents grow together — no oversized empty box. */
             .logo {
-                margin-bottom: clamp(0.55rem, 1.6vh, 1.3rem);
+                margin-bottom: clamp(0.4rem, 1.2vh, 1rem);
             }
             .logo-frame {
-                padding: clamp(0.4rem, 1.1vh, 0.85rem)
-                         clamp(0.85rem, 2.6vw, 1.5rem);
+                padding: clamp(0.3rem, 0.9vh, 0.65rem)
+                         clamp(0.75rem, 2.4vw, 1.3rem);
             }
             .logo img {
                 width: clamp(54px, 9.5vh, 86px);
@@ -1043,11 +1043,11 @@
             .archetype-logic { width: 55px; margin-left: -20px; }
             .archetype-psyche { margin-left: -18px; }
             .links-wrap {
-                margin-top: clamp(0.7rem, 1.7vh, 1.35rem);
+                margin-top: clamp(0.5rem, 1.2vh, 1rem);
             }
             .links-frame {
-                padding: clamp(0.5rem, 1.25vh, 0.95rem)
-                         clamp(0.85rem, 2.4vw, 1.4rem);
+                padding: clamp(0.35rem, 1vh, 0.75rem)
+                         clamp(0.75rem, 2.2vw, 1.2rem);
             }
             .links-sep {
                 padding: 0 0.4rem;
@@ -1304,13 +1304,13 @@
     <nav class="archetypes" aria-label="Archetypes">
 <div class="archetypes-row">
             <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
-                <img src="/assets/archetypes/instinct.png" alt="" class="archetype-img">
+                <img src="/assets/archetypes/instinct.png?v=2" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
-                <img src="/assets/archetypes/logic.png" alt="" class="archetype-img">
+                <img src="/assets/archetypes/logic.png?v=2" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
-                <img src="/assets/archetypes/psyche.png" alt="" class="archetype-img">
+                <img src="/assets/archetypes/psyche.png?v=2" alt="" class="archetype-img">
             </a>
         </div>
     </nav>
