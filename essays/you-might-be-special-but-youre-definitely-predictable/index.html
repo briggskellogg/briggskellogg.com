@@ -397,8 +397,8 @@
             flex-shrink: 0;
             line-height: 0;
             text-decoration: none;
-            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                        margin-left 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        margin-left 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .essay-vibe:hover { transform: translateY(-6px) scale(1.05); }
         .essay-vibe-img {
@@ -990,11 +990,11 @@
         .archetypes {
             position: fixed;
             bottom: 1.5rem;
-            right: 1.5rem;
+            right: 2.85rem;
             z-index: 10;
             /* Invisible bleed so rotated cards are not clipped by the
                viewport edge or body overflow-x. */
-            padding: 12px 16px 16px 40px;
+            padding: 12px 20px 16px 56px;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -1043,22 +1043,19 @@
         .archetype-instinct { transform: rotate(-11deg); z-index: 1; }
         .archetype-logic    { transform: rotate(-3deg); margin-left: -25px; width: 68px; z-index: 2; }
         .archetype-psyche   { transform: rotate(9deg); margin-left: -23px; z-index: 3; }
-        .archetypes-row:hover .archetype-instinct {
-            transform: rotate(-22deg) scale(1.04) translateX(-12px) translateY(-4px);
+        .archetype-instinct:hover {
+            transform: rotate(-16deg) scale(1.02) translateX(-4px) translateY(-2px);
             z-index: 11;
         }
-        .archetypes-row:hover .archetype-logic {
-            transform: rotate(-1deg) scale(1.04) translateY(-4px);
-            margin-left: -10px;
+        .archetype-logic:hover {
+            transform: rotate(1deg) scale(1.02) translateY(-2px);
+            margin-left: -22px;
             z-index: 11;
         }
-        .archetypes-row:hover .archetype-psyche {
-            transform: rotate(22deg) scale(1.04) translateX(10px) translateY(-4px);
-            margin-left: -10px;
+        .archetype-psyche:hover {
+            transform: rotate(14deg) scale(1.02) translateX(-5px) translateY(-2px);
+            margin-left: -20px;
             z-index: 11;
-        }
-        .archetypes-row:hover .archetype-card:hover {
-            z-index: 12;
         }
         .archetype-instinct:hover .archetype-img {
             filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
@@ -1219,7 +1216,7 @@
 
         /* Mobile overrides for the sticky chrome — same as landing. */
         @media (max-width: 600px) {
-            .archetypes { bottom: 0.85rem; right: 0.85rem; padding: 10px 12px 12px 32px; }
+            .archetypes { bottom: 0.85rem; right: 2.15rem; padding: 10px 14px 12px 44px; }
             .archetype-card { width: 52px; }
             .archetype-logic { width: 55px; margin-left: -20px; }
             .archetype-psyche { margin-left: -18px; }
