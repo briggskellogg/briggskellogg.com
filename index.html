@@ -839,8 +839,8 @@
         .featured-dot--logic    { background: var(--logic); }
         .featured-dot--psyche   { background: var(--psyche); }
         .featured-dot--instinct { background: var(--instinct); }
-        /* Bare status (version) — dot + label, sits at the foot of the card
-           next to the CTA (design-system StatusBadge bare). */
+        /* Version status — corner-bracket box at the foot of the card,
+           matching the essay frame badge and featured-label panel. */
         .featured-foot {
             display: flex;
             align-items: center;
@@ -849,6 +849,7 @@
             margin-top: 0.85rem;
         }
         .featured-status {
+            position: relative;
             display: inline-flex;
             align-items: center;
             gap: 0.7em;
@@ -860,15 +861,28 @@
             white-space: nowrap;
             flex-shrink: 0;
             user-select: none;
+            padding: 0.4rem 0.65rem 0.35rem;
+            border: 1px solid var(--ink-12);
+            background: var(--ink-06);
         }
-        .featured-status::before {
-            content: '';
+        .featured-status .fsc {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            pointer-events: none;
+        }
+        .featured-status .fsc-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .featured-status .fsc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .featured-status .fsc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .featured-status .fsc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .featured-status .status-dot {
             width: 5px;
             height: 5px;
             border-radius: 50%;
             background: currentColor;
             flex-shrink: 0;
         }
+        .featured-status[data-status="finalized"] { opacity: 0.9; }
         .featured-title {
             font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
             font-style: italic;
@@ -1287,10 +1301,17 @@
                 <p class="featured-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
                 <div class="featured-foot">
                     <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
-                    <span class="featured-status" id="featured-status" data-status="draft">v0 &middot; draft</span>
+                    <span class="featured-status" id="featured-status" data-status="draft">
+                        <span class="fsc fsc-tl"></span>
+                        <span class="fsc fsc-tr"></span>
+                        <span class="fsc fsc-bl"></span>
+                        <span class="fsc fsc-br"></span>
+                        <span class="status-dot"></span>
+                        <span class="featured-status-text">v0 &middot; draft</span>
+                    </span>
                 </div>
             </a>
-            <a class="featured-all" href="/essays/">read all essays &rarr;</a>
+            <a class="featured-all" href="/essays/">all essays &rarr;</a>
         </section>
 
         <footer class="rights">
@@ -1555,15 +1576,15 @@
                 var arch = (d.playlist && d.playlist.archetype) || 'logic';
                 dotEl.className = 'featured-dot featured-dot--' + arch;
             }
-            // Version — a bare status badge at the foot of the card, next to
-            // the CTA (design-system format). Not in the meta line.
+            // Version — corner-bracket badge at the foot of the card.
             if (d.status) {
                 var statusEl = document.getElementById('featured-status');
                 if (statusEl) {
                     var fmt = (window.formatDispatchVersion || function(s){ return { label: s, slug: s }; });
                     var ver = fmt(d.status);
                     statusEl.setAttribute('data-status', ver.slug || d.status);
-                    statusEl.textContent = ver.label;
+                    var statusTx = statusEl.querySelector('.featured-status-text');
+                    if (statusTx) statusTx.textContent = ver.label;
                 }
             }
         })();
