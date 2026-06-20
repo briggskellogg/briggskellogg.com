@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I Cried at Work. I Was Also Right. &mdash; Briggs Kellogg</title>
-    <meta name="description" content="A short essay by Briggs Kellogg on being publicly corrected in a meeting, crying in a bathroom stall, autism and composure, and why you can in fact agree with a fact.">
+    <title>Selection &mdash; Briggs Kellogg</title>
+    <meta name="description" content="An essay by Briggs Kellogg on hiring as a wager about which arm of a K-shaped economy a person will land on — and what meritocracy is really measuring.">
     <meta name="theme-color" content="#E9DFC9">
-    <meta property="og:title" content="I Cried at Work. I Was Also Right. &mdash; Briggs Kellogg">
-    <meta property="og:description" content="A short essay on a public correction, crying at work, and why you can in fact agree with a fact.">
-    <meta property="og:image" content="https://briggskellogg.com/assets/og/i-cried-at-work-i-was-also-right.jpg">
+    <meta property="og:title" content="Selection &mdash; Briggs Kellogg">
+    <meta property="og:description" content="What we are really deciding when we decide who to hire — a wager about futures in a K-shaped economy.">
+    <meta property="og:image" content="https://briggskellogg.com/assets/og/selection.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Lead photograph for this essay">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://briggskellogg.com/assets/og/i-cried-at-work-i-was-also-right.jpg">
-    <meta property="og:url" content="https://briggskellogg.com/essays/i-cried-at-work-i-was-also-right/">
+    <meta name="twitter:image" content="https://briggskellogg.com/assets/og/selection.jpg">
+    <meta property="og:url" content="https://briggskellogg.com/essays/selection/">
     <meta property="og:type" content="article">
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="apple-touch-icon" href="/logo.png">
@@ -468,6 +468,35 @@
             user-select: none;
         }
         .essay-body .sep::before { content: '\00B7 \00B7 \00B7'; }
+
+        /* Roman section heads — Selection only */
+        .essay-part {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin: 0.35rem 0 1.4rem;
+            padding-bottom: 0.55rem;
+            border-bottom: 1px solid var(--border-12);
+        }
+        .essay-body .sep + .essay-part {
+            margin-top: 0.15rem;
+        }
+        .essay-part-num {
+            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--logic-gold);
+            flex-shrink: 0;
+            min-width: 1.25rem;
+        }
+        .essay-part-title {
+            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.3;
+            color: var(--ink);
+        }
 
         /* ---------- Lead photograph ---------- */
         /* A single plate that opens the piece. Portrait crop, height-capped
@@ -960,6 +989,8 @@
             .essay-title { font-size: 1.5rem; }
             .essay-meta { font-size: 0.52rem; }
             .essay-subtitle { font-size: 0.92rem; line-height: 1.4; }
+            .essay-part { gap: 0.55rem; margin-bottom: 1.15rem; }
+            .essay-part-title { font-size: 1.05rem; }
             .essay-body { font-size: 0.95rem; line-height: 1.75; }
             .essay-body p { margin-bottom: 1rem; }
             .footnote { font-size: 0.82rem; }
@@ -1259,7 +1290,7 @@
 }
     </style>
 </head>
-<body data-essay-id="i-cried-at-work-i-was-also-right">
+<body data-essay-id="selection">
     <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
          Natural PNG color at rest; a masked cream sheen sweeps across
          on hover (see .essay-home-mark::after). -->
@@ -1296,18 +1327,18 @@
                      version status lives in the top-right of the frame,
                      not in this centered eyebrow. -->
                 <p class="essay-number" data-essay-meta>
-                    <span class="num">no. 03</span>
+                    <span class="num">no. 06</span>
                     <span class="sep">&middot;</span>
                     <span>essay</span>
                 </p>
                 <div class="essay-title-row">
-                    <h1 class="essay-title">I Cried at Work. I Was Also Right.</h1>
+                    <h1 class="essay-title">Selection</h1>
                     <a class="essay-vibe" id="essay-playlist-blob" href="#" target="_blank" rel="noopener noreferrer" hidden title="playlist">
                         <img class="essay-vibe-img" id="essay-playlist-blob-img" src="" alt="">
                     </a>
                 </div>
-                <p class="essay-subtitle" data-essay-subtitle>On being corrected in public, crying in private, and the fact that held anyway.</p>
-                <p class="essay-meta">december 2025</p>
+                <p class="essay-subtitle" data-essay-subtitle>What we are really deciding when we decide who to hire.</p>
+                <p class="essay-meta">june 2026</p>
             </header>
 
             <figure class="essay-figure">
@@ -1315,119 +1346,189 @@
                 <span class="fc fc-tr"></span>
                 <span class="fc fc-bl"></span>
                 <span class="fc fc-br"></span>
-                <img src="/pexels-pranavsinh232-5466185.png" alt="A black-and-white close-up of a man crying, one hand pressed to his forehead and the other to his cheek, a tear running down his face against a dark background." loading="lazy">
-                <figcaption>Photo by Pranavsinh Suratia</figcaption>
+                <img src="/pexels-cottonbro-8721341.png" alt="A person in a dim teal-lit room wearing a homemade VR headset with glowing red lenses, typing on a vintage keyboard on the floor, surrounded by cables and floppy disks." loading="lazy">
+                <figcaption>Photo by cottonbro studio</figcaption>
             </figure>
 
             <div class="essay-layout">
                 <svg class="essay-wires" aria-hidden="true"></svg>
 
-                <div class="essay-body">
-                    <p>Several years ago I worked at a company going through a turbulent stretch&mdash;both for them and for me. The economy was uncertain, my family situation demanded stability, and I&rsquo;d taken a leap of faith on a role I had plenty of reasons to turn down.</p>
+                                <div class="essay-body">
+                    <h2 class="essay-part"><span class="essay-part-num">I</span><span class="essay-part-title">The Word We Use</span></h2>
 
-                    <p>During the interview process, they told me directly: &ldquo;Are you fine with being yelled at here? Insulted personally? If not, this might not be the right place for you. You have to be tough&mdash;even if you&rsquo;re screamed at not only for unmet expectations, but for things about you personally.&rdquo;<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup></p>
+                    <p>The most honest moment in any hiring process is the debrief, and the most honest word in the debrief is <em>bet</em>.</p>
 
-                    <p>I said yes. I needed the job.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="instinct"><a href="#fn-2">2</a></sup></p>
+                    <p>Listen for it. It surfaces after the structured questions are exhausted and the scorecards are filled in, when the panel stops performing rigor and starts saying what it actually thinks. <em>I&rsquo;d bet on her.</em> <em>He&rsquo;s a bet, but a good one.</em> <em>I don&rsquo;t know if she can do the job today, but I&rsquo;d bet on where she&rsquo;s going.</em> We reach for the language of wagering because that is what the work has quietly become: not the staffing of a role but the pricing of a future.</p>
 
-                    <p>But the work went well, all things considered. My numbers were strong. Revenue was up. I was contributing to strategic meetings on a multi-week basis&mdash;not just contributing, but leading sessions to help our teams figure out the best path forward. I thought I was doing fine.</p>
+                    <p>This should be stranger than it feels. The official story of hiring is a measurement problem. There is a job, the job requires capabilities, the interview exists to find out whether the capabilities are present. Sort the qualified from the unqualified, match the person to the slot. On that account the right verb is <em>assess</em>. Nobody who has sat on a real panel uses it.</p>
 
-                    <p>Then came the meeting.</p>
+                    <p>Because nobody believes the job will stay still long enough to be measured against. The role will mutate within eighteen months. The tools will be replaced. The function may be automated, merged, or eliminated. So the question is no longer <em>can this person do the job.</em> It is <em>will this person still be worth betting on after the job is gone</em> &mdash; a guess about a person&rsquo;s whole trajectory through a changing world, not a reading of their present skill.</p>
 
-                    <div class="sep"></div>
+                    <p>And in an economy that is pulling apart, a guess about whether someone will stay valuable is a guess about which side of the divide they will spend their life on. The debrief never puts it that way. But that is the wager underneath it: not which seat to fill but which fate to underwrite &mdash; and then, by hiring or not hiring, helping the fate come true.</p>
 
-                    <p>If you know anything about me, my opinions are strong. But I&rsquo;m also willing to change them the moment someone offers logic more sound than mine&mdash;which happens often. I worry constantly about the balance between humility and egotism. I have many philosophical thoughts on this, most of them unresolved.</p>
-
-                    <p>But I&rsquo;ve developed a small practice: every week, I ask myself whether I admitted I was wrong at least once and changed my thinking or behavior based on that admission. If the answer is yes, I know I&rsquo;m doing okay. It&rsquo;s a silly way to put something in a box that&rsquo;s already in one&mdash;but it makes me see it inside the box.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="psyche"><a href="#fn-3">3</a></sup></p>
-
-                    <p>So I made a strong opinion in this meeting. I didn&rsquo;t soften it. I said what I saw: how a problem was eroding a segment of our business, how I thought we could solve it. Then I left the door open for rebuttals. I wanted discussion.</p>
-
-                    <p>In the room were about half a dozen colleagues, my boss&mdash;let&rsquo;s call him the product lead&mdash;and his boss, who oversaw the entire product organization.</p>
-
-                    <p>The product lead didn&rsquo;t like my take. He launched into a long explanation of why I was wrong, laying out what he called &ldquo;the facts.&rdquo; I nodded. I said things like &ldquo;mm-hmm&rdquo; and &ldquo;yeah, I agree&rdquo; as he spoke&mdash;not because I was performing, but because I was genuinely tracking his argument and rethinking my position in real time. This is just something I do. I don&rsquo;t think it&rsquo;s bespoke to my autism. We all have ways of engaging that are subconscious but communicate a general message: I hear you. I&rsquo;m with you. I&rsquo;m updating.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4">4</a></sup></p>
-
-                    <p>Then he stopped me.</p>
-
-                    <p>&ldquo;You don&rsquo;t agree with a fact,&rdquo; he said. &ldquo;You understand a fact.&rdquo;</p>
-
-                    <p>In front of everyone.</p>
+                    <p>The thought leads somewhere frightening, and I am implicated in it about as completely as a person can be. I work in AI. I sit on the panels. I say the word.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="psyche"><a href="#fn-1">1</a></sup></p>
 
                     <div class="sep"></div>
 
-                    <p>I was caught off guard. Not just by the correction, but by the venue. This wasn&rsquo;t a private word after the meeting. This was a public moment designed, whether consciously or not, to make me feel small.</p>
+                    <h2 class="essay-part"><span class="essay-part-num">II</span><span class="essay-part-title">The Line</span></h2>
 
-                    <p>And it worked.</p>
+                    <p>Start with the shape of the thing we are predicting about.</p>
 
-                    <p>I called my wife from the bathroom and cried. Not because of the correction itself, but because the moral, social, professional complexity of it all was too much to hold at once.</p>
+                    <p>For most of the postwar period the American economy grew like a rising tide &mdash; uneven, unfair in a hundred documented ways, but moving in one broad direction. That is no longer the shape. The shape now has a name that began as a description of the pandemic recovery and hardened into a description of the structure itself: the <em>K</em>. One arm rises. The other falls. They start together and pull apart, and the pulling apart is the whole story.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="logic"><a href="#fn-2">2</a></sup></p>
 
-                    <p>This feels bespoke to my autism, but I think many of us can relate. Autism has a way of illuminating the subconscious battles we all fight&mdash;turning them into physical manifestations that neurotypical people get to keep hidden. This is what happens when someone changes the rules mid-interaction. You can&rsquo;t process the move and perform composure at the same time. You have to pick one.</p>
+                    <p>The numbers are not subtle. The wealthiest one percent of American households now hold roughly a third of the country&rsquo;s wealth. The bottom half of the country owns something like one percent of the stock market, which means that when the market sets record after record, as it has, the gains land almost entirely on people who were already holding the assets.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="logic"><a href="#fn-3">3</a></sup> And labor&rsquo;s share of GDP &mdash; the slice of the whole economy paid out to workers as wages, stable for decades &mdash; recently fell to about the lowest level on record.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4">4</a></sup> The economy is booming and workers are taking the smallest cut of it ever measured. Both things are true because they are the same thing. That is the K.</p>
 
-                    <p>But if I&rsquo;m being honest, in the back of my head, one question kept surfacing: Are you threatened by me?<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="instinct"><a href="#fn-5">5</a></sup></p>
+                    <p>If the story stopped there it would only be inequality, which is old news, and which the country has historically tolerated on the theory that the bottom arm can climb to the top one. The American settlement was never equality of outcome but <em>mobility</em> &mdash; the promise that the line you were born on was not the line you would die on. As long as that held, your current position was a way-station and a bad starting hand was survivable, because the deck got reshuffled as you played.</p>
 
-                    <p>I don&rsquo;t say that with pride. I say it because it was the only explanation that fit. The correction wasn&rsquo;t pedagogical. It wasn&rsquo;t generous. It was a flex&mdash;delivered in front of the room, at my expense, over a semantic point that wasn&rsquo;t even correct.</p>
+                    <p>The promise has quietly failed. The cleanest measurement comes from a team led by the economist Raj Chetty, who asked a simple question: what fraction of children grow up to out-earn their parents? For children born in 1940, about ninety percent. For children born in the 1980s, about fifty. A coin flip. For sons measured against their fathers, the collapse is starker still &mdash; from nearly universal to around forty percent.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="logic"><a href="#fn-5">5</a></sup> The ladder didn&rsquo;t get harder to climb. It got removed, one rung per decade, and replaced with a coin.</p>
 
-                    <p>That was the moment I decided I was done. What happened next is a different story.</p>
+                    <p>And here is what turns it from sad to structural. Chetty&rsquo;s team ran the counterfactuals to find out <em>why</em> mobility died, and the answer was not slowing growth. Restore midcentury growth rates and you recover almost none of the lost mobility. What killed the climb was <em>distribution</em> &mdash; the fact that the growth, whatever its rate, now pools at the top of the K instead of spreading across it. Roughly seventy percent of the decline traces to where the growth goes, not to how much of it there is.<sup class="fnref" id="fnref-6" data-fn="6" data-archetype="logic"><a href="#fn-6">6</a></sup></p>
 
-                    <div class="sep"></div>
-
-                    <p>I did what I do&mdash;what we all do&mdash;in the days and weeks and months that followed. I replayed it. I thought about what I would have said. What I should have said.</p>
-
-                    <p>Here&rsquo;s the thing, you fucking nimrod: you absolutely agree with a fact.<sup class="fnref" id="fnref-6" data-fn="6" data-archetype="psyche"><a href="#fn-6">6</a></sup></p>
-
-                    <p>To agree doesn&rsquo;t only mean to share an opinion. It means to concur&mdash;to admit, to concede, to align your understanding with something external to yourself. A fact is a statement proven true by evidence. And while facts remain objectively true regardless of whether anyone accepts them, agreeing with a fact means actively choosing to incorporate it into how you see the situation. To change yourself in response to reality.</p>
-
-                    <p>People disagree with facts all the time&mdash;by rejecting them, taking them out of context, misinterpreting the data. Agreement isn&rsquo;t passive receipt. It&rsquo;s an act of alignment.</p>
-
-                    <p>So yes: you can agree with a fact. You can also, apparently, be publicly corrected for doing so by someone who didn&rsquo;t bother to check.</p>
+                    <p>Now apply that to hiring. There is no longer enough movement in the system for a person&rsquo;s position to be temporary. The thing that used to make a hiring decision survivable &mdash; for the candidate, and frankly for the conscience of the person doing the hiring &mdash; was mobility. Didn&rsquo;t get the offer, got sorted onto the lower arm? You&rsquo;d climb. The decision was a moment, not a sentence. As mobility dies, the decision stops reversing. Where you get sorted is, increasingly, where you stay. Hiring used to be triage. It is becoming assignment.</p>
 
                     <div class="sep"></div>
 
-                    <p>There&rsquo;s a kind of leader who corrects to clarify. And there&rsquo;s a kind who corrects to dominate. The difference isn&rsquo;t always obvious in the moment. But you feel it afterward. One leaves you sharper. The other leaves you smaller.</p>
+                    <h2 class="essay-part"><span class="essay-part-num">III</span><span class="essay-part-title">What We Are Actually Measuring</span></h2>
 
-                    <p>I have the blessing of working for the first kind now. And I&rsquo;ve tried to be the first kind myself. I don&rsquo;t always succeed. But I keep asking myself the question: Did I admit I was wrong this week? Did I change?</p>
+                    <p>So we are placing a wager about which arm of a diverging economy a person lands on, and the wager is increasingly permanent. Which raises the question the debrief never asks: when we place that bet, what are we actually reading? What is the signal we believe predicts the upper arm?</p>
 
-                    <p>If the answer is yes, I know I&rsquo;m still on the right side of the line.</p>
+                    <p>We tell ourselves we are reading skill. The most rigorous look anyone has taken at how elite firms hire says otherwise.</p>
+
+                    <p>The sociologist Lauren Rivera spent years inside the recruiting processes of top investment banks, law firms, and consultancies &mdash; the firms that function as on-ramps to the upper arm &mdash; interviewing the people who make the calls and watching a hiring committee work.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="logic"><a href="#fn-7">7</a></sup> What she found is that hiring at these firms is not primarily skill-sorting but <em>cultural matching</em>. Evaluators consistently favored candidates who resembled themselves &mdash; not in competence, but in leisure pursuits, self-presentation, the texture of their backgrounds, what her subjects called "play." They were looking, more or less openly, for people they would want as friends. And these concerns about similarity routinely <em>outweighed</em> concerns about raw productivity. The thing evaluators screened for most often was not ability but likeness.<sup class="fnref" id="fnref-8" data-fn="8" data-archetype="logic"><a href="#fn-8">8</a></sup></p>
+
+                    <p>Read that against the shape of the K and the machinery becomes visible. The traits that register as "high-potential," "polished," "good fit," "someone we&rsquo;d want in the room" are largely the traits of people already standing on the upper arm &mdash; the easy leisure, the frictionless polish, the fluency that comes from growing up among people who already won. A candidate from the lower arm, the one who believed the official story and poured everything into measurable achievement instead of squash and gap years and the right kind of small talk<sup class="fnref" id="fnref-9" data-fn="9" data-archetype="psyche"><a href="#fn-9">9</a></sup>, reads as narrow. As a grind. As, in the actual word Rivera&rsquo;s evaluators used about such people, a nerd.<sup class="fnref" id="fnref-10" data-fn="10" data-archetype="psyche"><a href="#fn-10">10</a></sup> We are not, mostly, choosing who can do the work; we are choosing who resembles the people who already did it &mdash; and calling the resemblance <em>merit</em>.</p>
+
+                    <p>This is the move the philosopher Michael Sandel has spent a career trying to make people see. A meritocracy, he argues, is less a system for rewarding ability than for <em>laundering</em> it &mdash; taking an inherited distribution of advantage and converting it into a story about desert, so the people on top can believe they earned the arm they were born on, and the people below can be told their position is a verdict on their worth.<sup class="fnref" id="fnref-11" data-fn="11" data-archetype="psyche"><a href="#fn-11">11</a></sup> The legal scholar Daniel Markovits puts it more bluntly: the whole apparatus is built, he writes, to "launder an otherwise offensive distribution of advantage."<sup class="fnref" id="fnref-12" data-fn="12" data-archetype="psyche"><a href="#fn-12">12</a></sup> The genius of the system is that it feels like fairness from the inside. The more perfectly meritocratic the selection appears, the more total the winners' conviction that they deserve the spoils &mdash; and the more crushing the losers' conviction that they deserve the lack.</p>
+
+                    <p>Now stack the three findings. Cultural-matching bias, in a high-mobility economy, was unjust but survivable: passed over for resembling the wrong people, you got another hand. In a dead-mobility, K-shaped economy it curdles into something worse &mdash; a hereditary sorting mechanism in the costume of merit. We screen for "fit" and "potential," signals soaked in who already made it, to decide who joins the people who already made it, in a system where that decision no longer reverses. And we experience the whole thing as fair.</p>
 
                     <div class="sep"></div>
 
-                    <p>Anyway. A few months back I saw he got promoted to chief product officer. Good for him.</p>
+                    <h2 class="essay-part"><span class="essay-part-num">IV</span><span class="essay-part-title">The Machine Hiring for the World the Machine Is Making</span></h2>
 
-                    <p>By all accounts the company is circling the drain now&mdash;every piece of insider information I hear says the same thing. But hey. At least he understood the facts.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="logic"><a href="#fn-7">7</a></sup></p>
+                    <p>That is the general condition. Mine is more specific, and it contains a recursion I can&rsquo;t stop seeing.</p>
+
+                    <p>I work in AI.<sup class="fnref" id="fnref-13" data-fn="13" data-archetype="instinct"><a href="#fn-13">13</a></sup> The technology I help bring to market is, by the open testimony of the people building it, one of the primary forces widening the same line. That isn&rsquo;t my inference; it&rsquo;s the stated position of the field&rsquo;s most prominent figures. The CEO of one of the leading labs has said publicly and repeatedly that AI could eliminate something like half of all entry-level white-collar jobs within a few years and push unemployment to ten or twenty percent. He didn&rsquo;t say it triumphantly. He said it as a warning &mdash; that the industry and the government were "sugar-coating" what&rsquo;s coming, and that the people producing the technology owe everyone the honesty of saying so.<sup class="fnref" id="fnref-14" data-fn="14" data-archetype="logic"><a href="#fn-14">14</a></sup></p>
+
+                    <p>The warning is no longer hypothetical. The first large-scale evidence is in, and it lands exactly where the theory said it would: on the bottom rung. A Stanford study working from the payroll records of millions of workers found that since generative AI went mainstream, workers aged twenty-two to twenty-five in the occupations most exposed to it have seen employment fall about thirteen percent relative to everyone else &mdash; while older workers in the very same jobs held steady or grew. For young software developers the drop ran to roughly a fifth off the recent peak. The researchers titled the paper, with grim precision, <em>Canaries in the Coal Mine.</em><sup class="fnref" id="fnref-15" data-fn="15" data-archetype="logic"><a href="#fn-15">15</a></sup> The supporting numbers rhyme: big-tech hiring of new graduates has fallen to around half its pre-pandemic level, and the unemployment rate for recent college graduates has drifted above the national rate &mdash; an inversion that is not supposed to happen.<sup class="fnref" id="fnref-16" data-fn="16" data-archetype="logic"><a href="#fn-16">16</a></sup> The entry-level economy, the on-ramp, the rung a person from the lower arm could use to climb onto the upper one, is being sawn off. The machine eats the bottom of the ladder first.</p>
+
+                    <p>Here is the recursion. The same companies building the machine that removes the bottom rung are, in their own hiring, running the most selective competition for the <em>top</em> rung any industry has ever run. We are pulling up the ladder and holding an exclusive contest for the remaining seats, and calling both of those things meritocracy. The people hired into AI right now are, almost literally, being selected as the people who will stand on the upper arm of the world the industry is building. That is what I can&rsquo;t un-see from inside the debrief. When I say <em>I&rsquo;d bet on her</em>, I&rsquo;m not staffing a job; I&rsquo;m helping draft the roster for the side of the divide that gets a future &mdash; a divide my own work widens. The interview has quietly become a draft, and the thing it drafts you into is which arm of the K you spend your life on.</p>
+
+                    <p>To be fair to the optimists &mdash; including the same lab leader, who has more recently leaned on an old argument: that cheaper cognition will create more demand for it,<sup class="fnref" id="fnref-17" data-fn="17" data-archetype="logic"><a href="#fn-17">17</a></sup> that the work eliminated will be exceeded by work created, that the lamplighters became electricians.<sup class="fnref" id="fnref-18" data-fn="18" data-archetype="instinct"><a href="#fn-18">18</a></sup> Maybe. The long-run history is on their side, and I am not predicting permanent mass unemployment; I think that is the wrong fear. But notice that their argument is about <em>aggregates</em> &mdash; whether there will be enough total work &mdash; while mine is about <em>distribution and selection</em>. You can create a great deal of new work and still have a K, if the new work pools on the upper arm and the selection onto that arm runs through "fit" and "potential" and pedigree. The lump-of-labor fallacy is a real fallacy. It is also not a reply to this essay. Even in the rosiest aggregate future, someone is still deciding who gets onto the arm where the new work lives &mdash; and doing it with a rubric that mostly rewards already being there.</p>
+
+                    <div class="sep"></div>
+
+                    <h2 class="essay-part"><span class="essay-part-num">V</span><span class="essay-part-title">A Sorting Machine That Knows What It Is</span></h2>
+
+                    <p>I am wary of how essays like this usually end, because I have written that ending before and been justly hit for it. The lazy landing is the sophisticated shrug: <em>the system is vast, the forces are structural, nobody is to blame, isn&rsquo;t it all terrible.</em> That is not an argument but an aesthetic of helplessness &mdash; a way of enjoying the diagnosis while ducking the bill.<sup class="fnref" id="fnref-19" data-fn="19" data-archetype="psyche"><a href="#fn-19">19</a></sup></p>
+
+                    <p>So, plainly: the problem is not that hiring sorts. Sorting is unavoidable. Someone gets the offer and someone doesn&rsquo;t; there is no version of a company, or a society, where every person is selected for every seat. A world without selection is not on the menu, and I am not nostalgic for one. The problem is sorting that <em>does not know what it is doing</em> &mdash; a selection machine that believes its own meritocratic story so completely it feels no obligation to the people it sorts out, because it has convinced itself it merely <em>discovered</em> their lesser worth rather than <em>assigned</em> it.</p>
+
+                    <p>The difference between those two machines is the whole game, and it is the same difference I have spent years circling in other contexts: a system that knows it is a system, versus one that thinks it is a mirror. A hiring process that understands itself as a neutral measurement of desert owes nothing to the people it rejects, because it believes it has simply read a fact off of them. A hiring process that understands what it actually is &mdash; an actuarial bet about which arm of a diverging economy a person will land on, placed with a rubric contaminated by who already landed where &mdash; owes a great deal. It owes humility, because the winners did not earn the arm they were born on; they were dealt it and then handed a story that let them mistake the deal for an achievement. It owes the people on the other arm something other than the verdict that they deserve it. And for those of us inside the companies doing the widening, it owes the refusal of a specific pleasure: we do not get to enjoy the flattery of <em>we only hire the best</em> while building the thing that makes "the best" a smaller and more hereditary club. The honest posture is to hold both halves at once and let them hurt &mdash; <em>I was selected, and selection is not the same as deserving, and the system that selected me is narrowing the gate behind me even as I praise it for its standards.</em></p>
+
+                    <p>Naming this does not fix it, and I won&rsquo;t pretend the naming is an action. It isn&rsquo;t. The line will keep diverging whether or not I&rsquo;ve described it well. But a sorting machine that knows it is a sorting machine is a different and less dangerous thing than one that thinks it is a mirror &mdash; because the first can be argued with, made to feel its obligations, asked to widen the gate it controls, and the second cannot, because it does not believe the gate is its doing. The first step toward a selection process that is accountable for what it selects is a selection process that admits what it is selecting. Which is futures. We are selecting futures and pretending we are measuring merit, and the pretending is the part that lets us off the hook.</p>
+
+                    <p>I have three children. The youngest is only now old enough to play. And I notice &mdash; with a discomfort I haven&rsquo;t resolved &mdash; that a great deal of what I am teaching them is, functionally, how to read as high-potential. How to present. How to be the kind of person a panel bets on. I tell myself this is preparation, and on my better days I believe it. But I know what the rubric rewards now, and I know which arm of the K it sorts toward, and on my worse days I cannot fully tell whether I am raising my children or training them to win an actuarial bet whose terms I find quietly monstrous. If we are no longer going to believe that anyone is watching from above and keeping the final score, then the only thing left to believe is that we are raising a better generation than the one that built the machine. I am trying to. But I would like, at minimum, to do it with the cover story switched off &mdash; to teach them to win the selection if they can, and never once mistake the winning for proof that they deserved to.</p>
+
+                    <p>That is the most I have. Not a solution. A switched-off cover story. The room is sorting, and the least we can do is stop telling ourselves it&rsquo;s a mirror &mdash; and say the colder, truer word for what the bet actually is.</p>
+
+                    <p>Selection.</p>
                 </div>
 
-                <div class="essay-notes" aria-label="Footnotes">
-                    <aside id="fn-1" class="footnote" data-fn="1" data-archetype="logic" tabindex="-1">
+                                <div class="essay-notes" aria-label="Footnotes">
+                    <aside id="fn-1" class="footnote" data-fn="1" data-archetype="psyche" tabindex="-1">
                         <a class="fn-marker" href="#fnref-1">1</a>
-                        <div class="fn-content">In hindsight, when an interviewer asks whether you&rsquo;re fine being personally insulted, that isn&rsquo;t a question about your resilience. It&rsquo;s the job description, read aloud, with a smile. I heard a test of toughness. It was a disclosure.<a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">A disclosure, in the spirit of saying where I&rsquo;m standing before I point at anyone. I&rsquo;m not an economist or a sociologist. I&rsquo;m a person who works the commercial side of the AI industry and sits, regularly, in the rooms where hiring gets decided. Everything here is written from inside the thing it describes, which is the only vantage I trust myself to write from &mdash; and, I&rsquo;d argue, the only one worth much. One coincidence I&rsquo;ll note and then drop: the single most important study in this essay comes out of the Kellogg School of Management. I share the name and not, I promise, the findings.<a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="instinct" tabindex="-1">
+                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-2">2</a>
-                        <div class="fn-content">Three kids and a mortgage turn &ldquo;I have standards about how I&rsquo;m treated&rdquo; into a luxury good. I couldn&rsquo;t afford it that year, so I bought toughness on credit and paid it back later, in installments, from a bathroom stall.<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">"K-shaped" sounds like something a pundit coined on a cable set during a bad quarter, and roughly speaking one did &mdash; the framing is usually traced to the analyst Peter Atwater around 2020. A letter is not a model, and I&rsquo;d hold the metaphor loosely if the thing it points at weren&rsquo;t so stubborn about reappearing in the actual distributional data no matter what you call it. See U.S. Bank, "The K-shaped economy in 2026" (<a href="https://www.usbank.com/corporate-and-commercial-banking/insights/economy/macro/k-shaped-economy.html" target="_blank" rel="noopener noreferrer">usbank.com</a>), and the New York Fed&rsquo;s Liberty Street Economics, "Explaining the K-Shaped Economy" (May 2026) (<a href="https://libertystreeteconomics.newyorkfed.org/2026/05/explaining-the-k-shaped-economy-whats-behind-the-divide/" target="_blank" rel="noopener noreferrer">newyorkfed.org</a>).<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="psyche" tabindex="-1">
+                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-3">3</a>
-                        <div class="fn-content">The practice has an obvious failure mode: you can start manufacturing small, painless wrongs to admit just to keep the streak alive, which is ego wearing humility&rsquo;s clothes. I don&rsquo;t have a clean fix. I just try to notice when the admission costs me nothing&mdash;those ones don&rsquo;t count.<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">If "the bottom half owns about one percent of the stock market" sounds too neat to be true, here&rsquo;s the texture that makes it true. When you hear that most households now own equities, that ownership is mostly small balances in retirement accounts; the wealthy hold large, concentrated positions in individual stocks. So a record-setting market isn&rsquo;t broad prosperity &mdash; it&rsquo;s a transfer event wearing the costume of good news, routing most of the gains to people who already had the assets. Figures from the Michigan Journal of Economics overview, "The K-Shaped Economy" (April 2026) (<a href="https://sites.lsa.umich.edu/mje/2026/04/13/the-k-shaped-economy-a-nations-diverging-fortune/" target="_blank" rel="noopener noreferrer">umich.edu</a>); "roughly a third" and "about one percent" are the conservative readings.<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
                     <aside id="fn-4" class="footnote" data-fn="4" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-4">4</a>
-                        <div class="fn-content">Linguists call this backchanneling&mdash;the &ldquo;mm-hmm,&rdquo; the nod, the small noises that tell a speaker you&rsquo;re still tracking them. It&rsquo;s one of the most basic load-bearing features of human conversation. Correcting someone for it is like scolding them for blinking while you talk.<a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">The obvious objection: wages are still rising in dollar terms, so who cares about a "share"? You should, because the share is the whole argument. You can take home a raise every year and still be handed a thinner and thinner slice of the thing you helped build &mdash; a bigger number off a smaller cut. The dollar figure is the part designed to soothe you. The share is the part that tells the truth. See CNBC, "Wealth inequality and the K-shaped economy are more striking than ever" (January 2026), on labor&rsquo;s share of GDP hitting its lowest in the 75-plus-year BLS series (<a href="https://www.cnbc.com/2026/01/30/wealth-inequality-k-shaped-economy-united-states-consumer-spending-trump.html" target="_blank" rel="noopener noreferrer">cnbc.com</a>).<a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-5" class="footnote" data-fn="5" data-archetype="instinct" tabindex="-1">
+                    <aside id="fn-5" class="footnote" data-fn="5" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-5">5</a>
-                        <div class="fn-content">I sat with this a long time before I let myself believe it, because believing it felt like the arrogant read. But sometimes the arrogant read is just the accurate one, and refusing it on principle is its own distortion. Not every uncomfortable thought about yourself is humility.<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">I put the starkest number in this essay inside a subordinate clause in the body, on purpose, because detonating it mid-paragraph felt cheap. So here is the detonation, with room to breathe: for sons measured against their own fathers, the share who out-earn them fell from nearly all of them to around forty percent. More than half the staircase, gone in two generations. I suspect that single fact explains more about the current political temperature than any tonnage of polling &mdash; which is the Sandel argument a few footnotes from now, arriving early. Source: Chetty, Grusky, Hell, Hendren, Manduca, and Narang, "The Fading American Dream," <em>Science</em> (2017) (<a href="https://www.science.org/doi/10.1126/science.aal4617" target="_blank" rel="noopener noreferrer">science.org</a>); the male figure via Stanford&rsquo;s SIEPR summary (<a href="https://siepr.stanford.edu/news/fading-american-dream" target="_blank" rel="noopener noreferrer">stanford.edu</a>).<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="psyche" tabindex="-1">
+                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-6">6</a>
-                        <div class="fn-content">For the record, I did not say this in the room. In the room I said &ldquo;mm-hmm.&rdquo; This is the version I have delivered roughly four hundred times since, flawlessly, exclusively to my steering wheel.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">If you read one of these notes, read this one. The same paper ran the counterfactuals: restore midcentury <em>growth rates</em> and you recover almost none of the lost mobility; restore the midcentury <em>distribution</em> of growth and you reverse more than seventy percent of it. Plainly &mdash; the climb didn&rsquo;t die because the pie stopped growing. It died because of who the growth goes to. The mechanism is distributional, not aggregate, which is the entire reason "but the economy is booming" is a non-answer rather than a rebuttal.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
                     <aside id="fn-7" class="footnote" data-fn="7" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-7">7</a>
-                        <div class="fn-content">Yes, this is petty. I considered cutting it. I decided that pretending I&rsquo;m above the satisfaction would be its own small fog, and I&rsquo;ve spent enough words being against fog that I&rsquo;d rather just admit I enjoyed typing it.<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">"A hundred and twenty interviews and one hiring committee &mdash; that&rsquo;s anecdote, not data." Two replies. First, the qualitative method is the point: surveys catch <em>what</em> firms decide, but only sitting in the room catches the <em>reasons evaluators give themselves</em> while deciding, which is where the laundering happens. Second, it isn&rsquo;t one room full of snobs &mdash; a British government commission separately found executives weighting candidates' accents and class signals over their actual qualifications. Same pattern, different country, blunter instrument. Lauren A. Rivera, <em>Pedigree: How Elite Students Get Elite Jobs</em> (Princeton, 2015), and "Hiring as Cultural Matching," <em>American Sociological Review</em> (2012) (<a href="https://journals.sagepub.com/doi/10.1177/0003122412463213" target="_blank" rel="noopener noreferrer">sagepub.com</a>).<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-8" class="footnote" data-fn="8" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-8">8</a>
+                        <div class="fn-content">Rivera&rsquo;s own framing is that hiring is not merely skills-sorting but a process of cultural matching, and &mdash; the load-bearing part &mdash; that evaluators' concern for shared culture frequently won out over concern for productivity itself. The honest limit: she studied elite <em>service</em> firms, and she&rsquo;s careful to say cultural fit matters less in roles that are highly technical or tightly structured. The counter is mine, not hers, and I think it&rsquo;s strong: as AI dissolves the codified, testable core of white-collar work, hiring drifts <em>toward</em> the fuzzy "fit and judgment" end &mdash; which is precisely the end where her findings do the most damage. The Kellogg summary of the study is here (<a href="https://www.kellogg.northwestern.edu/news/blog/2012/12/05/friends-in-high-places/" target="_blank" rel="noopener noreferrer">northwestern.edu</a>).<a class="fn-back" href="#fnref-8" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-9" class="footnote" data-fn="9" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-9">9</a>
+                        <div class="fn-content">The cruelest filter in the entire apparatus is the one no scorecard tracks: whether you can talk fluently about the right vacation, the right sport, the right show, in the right register. It is invisible to the people who pass it, because to them it isn&rsquo;t a skill &mdash; it&rsquo;s just who they are &mdash; which is exactly what makes it a class marker instead of a competency. You can&rsquo;t cram for it the night before. That isn&rsquo;t a flaw in the filter. That&rsquo;s the filter working as designed.<a class="fn-back" href="#fnref-9" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-10" class="footnote" data-fn="10" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-10">10</a>
+                        <div class="fn-content">I should admit I&rsquo;m writing from the losing side of this taxonomy. I was the kid who believed the grades were the game, who assumed effort was legible and that legibility would be rewarded. Reading Rivera was reading the precise mechanism by which that belief was a category error &mdash; the discovery that while I was optimizing the measurable thing, the actual contest was being scored on a rubric nobody handed me. The "nerd" coding of high-achieving, less-affluent students is documented across the <em>Pedigree</em> literature; see Scott H. Young&rsquo;s review (<a href="https://www.scotthyoung.com/blog/2022/05/10/pedigree-review/" target="_blank" rel="noopener noreferrer">scotthyoung.com</a>) and the JHU <em>Review of Higher Education</em> summary (<a href="https://muse.jhu.edu/article/640618/summary" target="_blank" rel="noopener noreferrer">jhu.edu</a>).<a class="fn-back" href="#fnref-10" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-11" class="footnote" data-fn="11" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-11">11</a>
+                        <div class="fn-content">Sandel gets accused &mdash; not without cause &mdash; of handing ammunition to resentment: that naming meritocracy&rsquo;s cruelty flatters the people who&rsquo;d cheerfully burn the institutions down, and that you can draw a clean line from this argument to Brexit and to Trump. The accusation is partly right. It is also not a reason to drop the analysis, because a true thing that comforts the wrong people is still a true thing, and the answer to a diagnosis being misused is better politics, not a quieter diagnosis. Michael J. Sandel, <em>The Tyranny of Merit</em> (Farrar, Straus and Giroux, 2020); see the <em>Noema</em> interview, "The Dark Side of Meritocracy" (<a href="https://www.noemamag.com/the-dark-side-of-meritocracy/" target="_blank" rel="noopener noreferrer">noemamag.com</a>).<a class="fn-back" href="#fnref-11" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-12" class="footnote" data-fn="12" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-12">12</a>
+                        <div class="fn-content">Worth knowing who&rsquo;s talking: Markovits is a Yale Law professor, which means the book is a dispatch from the deepest interior of the trap it describes &mdash; the call coming from inside the house. He maps his own gilded cage with the precision of a man who has counted the bars. I don&rsquo;t read that as hypocrisy; proximity is why it&rsquo;s any good. The laundering phrase quoted in the body is his. Daniel Markovits, <em>The Meritocracy Trap</em> (Penguin Press, 2019), via the MIT Press commentary on Sandel (<a href="https://direct.mit.edu/ajle/article/doi/10.1162/ajle_a_00001/107226/CAN-SANDEL-DETHRONE-MERITOCRACY-Comment-on-M" target="_blank" rel="noopener noreferrer">mit.edu</a>).<a class="fn-back" href="#fnref-12" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-13" class="footnote" data-fn="13" data-archetype="instinct" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-13">13</a>
+                        <div class="fn-content">The honest reader has already spotted the problem with this essay, so I&rsquo;ll say it before you have to. A polished, well-sourced, carefully sequenced piece of writing about how the system rewards polish and sequence is itself an artifact the system rewards. I&rsquo;m performing the exact legibility I&rsquo;m indicting; this footnote, with its tidy little turn, is me doing it again. I don&rsquo;t have a clean exit. The most I can offer is that a fish describing water is still telling you something true about water &mdash; even if the describing is, unavoidably, wet.<a class="fn-back" href="#fnref-13" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-14" class="footnote" data-fn="14" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-14">14</a>
+                        <div class="fn-content">The cynical read is available and I&rsquo;ll state it: a man selling the technology, warning about the technology, looks a lot like performing concern to be seen as the adult in the room. Maybe. But the warning costs him something real &mdash; it spooks the customers and invites the regulators &mdash; which is more than most of his peers are willing to spend, and costly signals are the ones worth weighing. Dario Amodei to Axios, "Behind the curtain: A white-collar bloodbath" (May 2025) (<a href="https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic" target="_blank" rel="noopener noreferrer">axios.com</a>): up to half of entry-level white-collar jobs within roughly five years, unemployment to 10&ndash;20%, and a pointed objection to the industry&rsquo;s habit of sugar-coating it. I cite him because he&rsquo;s the rare insider saying the quiet part at volume.<a class="fn-back" href="#fnref-14" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-15" class="footnote" data-fn="15" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-15">15</a>
+                        <div class="fn-content">The first objection any honest skeptic raises: couldn&rsquo;t this just be the post-2022 tech downturn rather than AI? The study&rsquo;s design tries to pull them apart &mdash; comparing AI-exposed against unexposed roles, controlling for firm-level shocks &mdash; and the tell is the <em>shape</em> of the damage: it lands on the young in exposed jobs specifically, while their older colleagues in the same jobs hold or grow. A plain recession doesn&rsquo;t usually carve along that exact line. Suggestive, not dispositive. Brynjolfsson, Chandar, and Chen, "Canaries in the Coal Mine?" (Stanford Digital Economy Lab, 2025) (<a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/" target="_blank" rel="noopener noreferrer">stanford.edu</a>): a ~13% relative employment decline for AI-exposed 22&ndash;25-year-olds, ~20% for young software developers off the late-2022 peak, with the adjustment showing in employment rather than pay.<a class="fn-back" href="#fnref-15" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-16" class="footnote" data-fn="16" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-16">16</a>
+                        <div class="fn-content">And the caveat the body doesn&rsquo;t have room for, because intellectual honesty is a footnote&rsquo;s job too: some of the entry-level slowdown predates serious AI adoption and has other parents &mdash; rate hikes, the post-pandemic over-hiring correction, plain offshoring. The Stanford design works to isolate the AI-attributable share, but attribution here is a live empirical fight, not a settled score, and anyone who tells you otherwise is selling something. New-grad hiring at roughly half pre-pandemic levels: SignalFire, via Axios (<a href="https://www.axios.com/2025/05/28/ai-jobs-white-collar-unemployment-anthropic" target="_blank" rel="noopener noreferrer">axios.com</a>). Recent-grad unemployment above the national rate: NY Fed data, via The Register (August 2025) (<a href="https://www.theregister.com/2025/08/26/ai_hurts_recent_college_grads_jobs/" target="_blank" rel="noopener noreferrer">theregister.com</a>).<a class="fn-back" href="#fnref-16" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-17" class="footnote" data-fn="17" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-17">17</a>
+                        <div class="fn-content">This is the Jevons-paradox move &mdash; the observation that making a resource cheaper often <em>increases</em> total demand for it rather than shrinking it (coal, famously; cognition, allegedly). Amodei himself has leaned harder on it lately; see Fortune, "Dario Amodei spent last year warning of an AI white-collar bloodbath. Now he&rsquo;s changing the narrative" (May 2026) (<a href="https://fortune.com/2026/05/05/dario-amodei-jevons-paradox-will-ai-wipe-out-white-collar-jobs/" target="_blank" rel="noopener noreferrer">fortune.com</a>). I take it seriously, which is the whole reason I pitched this essay at distribution and selection instead of at job counts: you can win the Jevons argument outright and still have a K.<a class="fn-back" href="#fnref-17" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-18" class="footnote" data-fn="18" data-archetype="instinct" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-18">18</a>
+                        <div class="fn-content">The lamplighter line is Sam Altman&rsquo;s &mdash; he&rsquo;s used it to argue that a gas-lamp worker dropped into the present would find the ambient prosperity unimaginable. It&rsquo;s a genuinely good line, and that&rsquo;s the trouble. In this entire debate the comforting analogy is always better-crafted than the discomforting data, because comfort is what gets written beautifully and passed around, while the data just sits in a working paper being correct. Someone has to keep pointing at the working paper. (Altman&rsquo;s "The Intelligence Age" manifesto; the lamplighter framing is also noted in the Axios piece above.)<a class="fn-back" href="#fnref-18" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-19" class="footnote" data-fn="19" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-19">19</a>
+                        <div class="fn-content">There is a whole genre &mdash; call it the LinkedIn jeremiad, or the Substack lament &mdash; that has discovered you can monetize the <em>description</em> of a problem more or less forever, provided you never once propose doing anything about it, because a solution would end the franchise. I have written squarely in that genre. This footnote is me noticing, with some discomfort, that the only thing separating this essay from it is the part of the ending where I try to owe something.<a class="fn-back" href="#fnref-19" aria-label="Back to text">&#8617;</a></div>
                     </aside>
                 </div>
             </div>

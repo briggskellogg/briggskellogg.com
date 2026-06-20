@@ -428,12 +428,22 @@
             color: var(--ink-50);
         }
 
+        .essay-subtitle {
+            font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.45;
+            color: var(--ink-50);
+            max-width: 30em;
+            margin: -0.1rem auto 0.55rem;
+        }
+
         /* ---------- Two-column layout ---------- */
         .essay-layout {
             position: relative;
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 280px;
-            gap: 56px;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 44px;
         }
         .essay-body {
             font-family: 'Newsreader', 'IM Fell English', Georgia, 'Times New Roman', serif;
@@ -540,14 +550,12 @@
             left: 0;
             right: 0;
             display: grid;
-            /* Marker column needs room for dot (5px) + gap (6px) + 2-digit
-               number (~12px) = ~23px. 26px keeps comfortable buffer and
-               aligns all markers uniformly regardless of digit count. */
-            grid-template-columns: 26px 1fr;
-            column-gap: 10px;
+            /* Marker column: dot (5px) + gap (6px) + 2-digit number (~14px). */
+            grid-template-columns: 30px 1fr;
+            column-gap: 12px;
             font-family: 'Newsreader', 'IM Fell English', Georgia, 'Times New Roman', serif;
-            font-size: 0.82rem;
-            line-height: 1.65;
+            font-size: 0.875rem;
+            line-height: 1.68;
             color: var(--ink-80);
             padding: 4px 0 4px 8px;
             border-left: 1px solid transparent;
@@ -911,7 +919,7 @@
                 margin-left: 0;
                 padding-left: 0;
                 border-left: none;
-                grid-template-columns: 28px 1fr;
+                grid-template-columns: 30px 1fr;
             }
             .footnote:last-child { margin-bottom: 0; }
             .fn-back {
@@ -951,6 +959,7 @@
             .frame-status .status-dot { width: 5px; height: 5px; }
             .essay-title { font-size: 1.5rem; }
             .essay-meta { font-size: 0.52rem; }
+            .essay-subtitle { font-size: 0.92rem; line-height: 1.4; }
             .essay-body { font-size: 0.95rem; line-height: 1.75; }
             .essay-body p { margin-bottom: 1rem; }
             .footnote { font-size: 0.82rem; }
@@ -1297,6 +1306,7 @@
                         <img class="essay-vibe-img" id="essay-playlist-blob-img" src="" alt="">
                     </a>
                 </div>
+                <p class="essay-subtitle" data-essay-subtitle>On building something nobody asked for, and letting adoption be the verdict.</p>
                 <p class="essay-meta">december 2025</p>
             </header>
 
@@ -1576,6 +1586,12 @@
             // Top-right frame badge: pulsing dot + status text.
             var badgeEl = document.querySelector('[data-frame-status]');
             var badgeTx = document.querySelector('[data-frame-status-text]');
+
+            var subEl = document.querySelector('[data-essay-subtitle]');
+            if (subEl && entry.subtitle) {
+                subEl.innerHTML = entry.subtitle;
+            }
+
             if (badgeEl && entry.status) {
                 var ver = (window.formatDispatchVersion || function(s){ return { label: s, short: s }; })(entry.status);
                 if (badgeTx) badgeTx.textContent = ver.label;

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essay editor — Briggs Kellogg</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --gold: #C99B45;
+        --cream: #FFE2B9;
+        --blue: #658DA4;
+        --rose: #AD7C84;
+        --bg: #15120E;
+        --bg2: #221E18;
+        --line: rgba(201,155,69,0.30);
+        --mut: rgba(255,226,185,0.55);
+    }
+    body {
+        background: var(--bg);
+        color: var(--cream);
+        font-family: 'Courier New', monospace;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    /* top bar */
+    .bar {
+        display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+        padding: 10px 14px;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+    }
+    .bar .grow { flex: 1; }
+    .bar label { color: var(--mut); letter-spacing: 0.1em; text-transform: uppercase; font-size: 10px; }
+    select, input[type=text], button {
+        font-family: 'Courier New', monospace;
+        font-size: 12px;
+        color: var(--cream);
+        background: rgba(255,226,185,0.05);
+        border: 1px solid var(--line);
+        padding: 7px 10px;
+    }
+    select { min-width: 240px; }
+    input[type=text] { width: 320px; }
+    .bar.meta label { white-space: nowrap; }
+    #mSlug { width: 210px; }
+    #mTitle { width: 300px; flex: 1; min-width: 180px; }
+    #mImage { width: 260px; }
+    #mStatus { min-width: 130px; }
+    input:disabled, select:disabled { opacity: 0.4; cursor: not-allowed; }
+    button { cursor: pointer; transition: background .15s, color .15s, border-color .15s; letter-spacing: 0.08em; text-transform: uppercase; }
+    button:hover { border-color: var(--gold); color: #fff; }
+    button.primary { background: var(--gold); color: var(--bg); border-color: var(--gold); font-weight: bold; }
+    button.primary:hover { background: var(--cream); }
+    button.danger:hover { border-color: #C2412E; color: #C2412E; }
+    .check { display: inline-flex; align-items: center; gap: 6px; color: var(--mut); }
+
+    /* main split */
+    .main { flex: 1; display: flex; min-height: 0; }
+    .preview { flex: 1; min-width: 0; background: #000; }
+    .preview iframe { width: 100%; height: 100%; border: 0; background: #E9DFC9; }
+    .panel {
+        width: 320px; flex-shrink: 0;
+        border-left: 1px solid var(--line);
+        background: var(--bg2);
+        display: flex; flex-direction: column;
+    }
+    .panel h2 {
+        font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--mut); padding: 12px 14px; border-bottom: 1px solid var(--line);
+        display: flex; justify-content: space-between; align-items: center;
+    }
+    .fnlist { overflow-y: auto; flex: 1; }
+    .fnrow {
+        padding: 10px 14px; border-bottom: 1px solid rgba(201,155,69,0.14);
+        display: flex; flex-direction: column; gap: 7px;
+    }
+    .fnrow .top { display: flex; align-items: center; gap: 8px; }
+    .fnnum {
+        width: 22px; height: 22px; flex-shrink: 0;
+        display: inline-flex; align-items: center; justify-content: center;
+        border: 1px solid var(--line); font-size: 11px;
+    }
+    .fnrow select { min-width: 0; flex: 1; padding: 5px 7px; }
+    .fnrow .preview-txt { font-size: 11px; color: var(--mut); line-height: 1.4; cursor: pointer; }
+    .fnrow .preview-txt:hover { color: var(--cream); }
+    .fnrow .rm { padding: 5px 8px; font-size: 10px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .dot.logic { background: var(--gold); }
+    .dot.instinct { background: #C2412E; }
+    .dot.psyche { background: var(--blue); }
+    .status { font-size: 11px; color: var(--mut); white-space: pre-wrap; max-width: 420px; }
+    .status.ok { color: #8FBF6F; }
+    .status.err { color: #C2412E; }
+    .hint { padding: 10px 14px; font-size: 10px; color: rgba(255,226,185,0.4); line-height: 1.5; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+    <div class="bar">
+        <label>essay</label>
+        <select id="essaySel"></select>
+        <button id="addFn">+ footnote</button>
+        <span class="grow"></span>
+        <span class="check"><input type="checkbox" id="push"> push</span>
+        <button class="primary" id="save">save &amp; commit</button>
+    </div>
+    <div class="bar meta" id="metabar">
+        <label>slug</label><input type="text" id="mSlug" class="m-slug" disabled>
+        <label>title</label><input type="text" id="mTitle" class="m-title" disabled>
+        <label>image</label><input type="text" id="mImage" class="m-image" list="imgList" disabled>
+        <datalist id="imgList"></datalist>
+        <label>version</label>
+        <select id="mStatus" disabled>
+            <option value="draft">v0 · draft</option>
+            <option value="patch-1">v1 · revision</option>
+            <option value="patch-2">v2 · revision</option>
+            <option value="patch-3">v3 · revision</option>
+            <option value="patch-4">v4 · revision</option>
+            <option value="patch-5">v5 · revision</option>
+            <option value="finalized">final · locked</option>
+        </select>
+    </div>
+    <div class="bar" style="border-top:none;padding-top:0;">
+        <span class="status" id="status">Pick an essay to begin.</span>
+    </div>
+    <div class="main">
+        <div class="preview"><iframe id="frame"></iframe></div>
+        <div class="panel">
+            <h2><span>Footnotes</span><span id="fncount">0</span></h2>
+            <div class="fnlist" id="fnlist"></div>
+            <div class="hint">
+                Click body text or a footnote to edit it inline.<br>
+                &ldquo;+ footnote&rdquo; inserts a marker at your cursor in the essay body.<br>
+                The archetype dropdown sets the footnote color (logic = gold, instinct = red, psyche = blue).<br>
+                Save rewrites only the essay body + footnotes, then commits.
+            </div>
+        </div>
+    </div>
+
+<script>
+const OVERRIDES = `
+    .essay-home-mark,.reading-light,.archetypes,.egg-wrap,.essay-wires { display:none!important; }
+    .essay-layout { display:block!important; }
+    .essay-notes { position:static!important; min-height:0!important; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--ink-12); }
+    .footnote { position:static!important; top:auto!important; left:0; right:0; margin:0 0 1.25rem 0!important; border-left:1px solid var(--ink-12); }
+    .fn-content .fn-back { display:none!important; }
+    [contenteditable] { cursor:text; }
+    [contenteditable]:focus { outline:2px solid var(--border-50); outline-offset:6px; }
+    .fnref { outline:1px dashed var(--border-30); outline-offset:1px; }
+    body { padding:2.5rem 2rem 4rem!important; }
+`;
+
+let state = { id:null, doc:null, footnotes:[], lastRange:null, uid:0, dirty:false };
+
+const $ = s => document.querySelector(s);
+const frame = $('#frame');
+
+function setStatus(msg, cls){ const el=$('#status'); el.textContent=msg; el.className='status'+(cls?(' '+cls):''); }
+
+async function loadList(){
+    const list = await (await fetch('/api/essays')).json();
+    const sel = $('#essaySel');
+    const keep = sel.value;
+    sel.innerHTML = '<option value="">— choose an essay —</option>' +
+        list.map(e => `<option value="${e.id}">${e.title.replace(/&[lr]dquo;/g,'"')} (${e.id})</option>`).join('');
+    if(keep) sel.value = keep;
+}
+
+async function loadImages(){
+    try {
+        const imgs = await (await fetch('/api/images')).json();
+        $('#imgList').innerHTML = imgs.map(s => `<option value="${s}">`).join('');
+    } catch(e) {}
+}
+
+function setMetaEnabled(on){
+    ['#mSlug','#mTitle','#mImage','#mStatus'].forEach(s => $(s).disabled = !on);
+}
+
+async function loadEssay(id){
+    if(!id){ return; }
+    if(state.dirty && !confirm('Discard unsaved changes?')) { $('#essaySel').value = state.id||''; return; }
+    setStatus('Loading…');
+    const data = await (await fetch('/api/essay?id='+encodeURIComponent(id))).json();
+    if(data.error){ setStatus('Error: '+data.error,'err'); return; }
+    state.id = id; state.footnotes=[]; state.uid=0; state.lastRange=null; state.dirty=false;
+
+    const srcdoc =
+        '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">' +
+        '<style>'+data.style+'</style>' +
+        '<style>'+OVERRIDES+'</style>' +
+        '</head><body><main class="page"><article class="frame">' +
+        '<div class="essay-layout">' +
+        '<div class="essay-body" contenteditable="true" spellcheck="true">'+data.bodyInner+'</div>' +
+        '<div class="essay-notes" aria-label="Footnotes">'+data.notesInner+'</div>' +
+        '</div></article></main></body></html>';
+
+    frame.onload = () => initDoc();
+    frame.srcdoc = srcdoc;
+
+    const meta = data.meta || {};
+    $('#mSlug').value = meta.slug || id;
+    $('#mTitle').value = meta.title || '';
+    $('#mImage').value = meta.image || '';
+    $('#mStatus').value = meta.status || 'draft';
+    setMetaEnabled(true);
+
+    setStatus('Loaded “'+data.title.replace(/&[lr]dquo;/g,'"')+'”.');
+}
+
+function initDoc(){
+    const doc = frame.contentDocument;
+    state.doc = doc;
+    const body = doc.querySelector('.essay-body');
+    const notesWrap = doc.querySelector('.essay-notes');
+
+    // build footnote model from asides, pairing with body markers by data-fn
+    state.footnotes = [];
+    doc.querySelectorAll('.essay-notes .footnote').forEach(aside => {
+        const uid = ++state.uid;
+        aside.dataset.uid = uid;
+        const fn = aside.dataset.fn;
+        const content = aside.querySelector('.fn-content');
+        content.setAttribute('contenteditable','true');
+        content.setAttribute('spellcheck','true');
+        const sup = doc.querySelector('.essay-body .fnref[data-fn="'+fn+'"]');
+        if(sup) sup.dataset.uid = uid;
+        state.footnotes.push({ uid, arch: aside.dataset.archetype||'logic', aside, content });
+    });
+
+    // track caret position inside the body
+    doc.addEventListener('selectionchange', () => {
+        const sel = doc.getSelection();
+        if(sel && sel.rangeCount){
+            const r = sel.getRangeAt(0);
+            if(body.contains(r.startContainer)) state.lastRange = r.cloneRange();
+        }
+    });
+    body.addEventListener('input', () => markDirty());
+    notesWrap.addEventListener('input', () => markDirty());
+
+    renumber();
+    renderPanel();
+}
+
+function markDirty(){ state.dirty = true; }
+
+function renumber(){
+    const doc = state.doc;
+    const markers = [...doc.querySelectorAll('.essay-body .fnref')];
+    const byUid = {}; state.footnotes.forEach(f => byUid[f.uid] = f);
+    const ordered = [];
+    markers.forEach(m => {
+        const f = byUid[m.dataset.uid];
+        if(f && ordered.indexOf(f) < 0) ordered.push(f);
+    });
+    // drop footnotes whose marker was deleted from the body
+    state.footnotes.forEach(f => { if(ordered.indexOf(f) < 0) f.aside.remove(); });
+    state.footnotes = ordered;
+
+    const notesWrap = doc.querySelector('.essay-notes');
+    state.footnotes.forEach((f, i) => {
+        const n = i + 1;
+        const sup = doc.querySelector('.essay-body .fnref[data-uid="'+f.uid+'"]');
+        if(sup){
+            sup.setAttribute('id','fnref-'+n);
+            sup.setAttribute('data-fn', n);
+            sup.setAttribute('data-archetype', f.arch);
+            sup.innerHTML = '<a href="#fn-'+n+'">'+n+'</a>';
+        }
+        f.aside.setAttribute('id','fn-'+n);
+        f.aside.setAttribute('data-fn', n);
+        f.aside.setAttribute('data-archetype', f.arch);
+        const marker = f.aside.querySelector('.fn-marker');
+        if(marker){ marker.setAttribute('href','#fnref-'+n); marker.textContent = n; }
+        const back = f.aside.querySelector('.fn-back');
+        if(back) back.setAttribute('href','#fnref-'+n);
+        notesWrap.appendChild(f.aside); // reorder to match
+    });
+}
+
+function renderPanel(){
+    const list = $('#fnlist');
+    $('#fncount').textContent = state.footnotes.length;
+    list.innerHTML = '';
+    state.footnotes.forEach((f, i) => {
+        const n = i + 1;
+        const row = document.createElement('div'); row.className = 'fnrow';
+        const txt = (f.content.textContent || '').replace(/↩/g,'').trim().slice(0, 90);
+        row.innerHTML =
+            '<div class="top">' +
+              '<span class="fnnum">'+n+'</span>' +
+              '<span class="dot '+f.arch+'"></span>' +
+              '<select data-uid="'+f.uid+'">' +
+                ['logic','instinct','psyche'].map(a => '<option value="'+a+'"'+(a===f.arch?' selected':'')+'>'+a+'</option>').join('') +
+              '</select>' +
+              '<button class="danger rm" data-uid="'+f.uid+'">remove</button>' +
+            '</div>' +
+            '<div class="preview-txt" data-uid="'+f.uid+'">'+(txt||'<em>empty footnote</em>')+'…</div>';
+        list.appendChild(row);
+    });
+    list.querySelectorAll('select').forEach(s => s.addEventListener('change', e => {
+        setArch(+e.target.dataset.uid, e.target.value);
+    }));
+    list.querySelectorAll('.rm').forEach(b => b.addEventListener('click', e => {
+        removeFootnote(+e.currentTarget.dataset.uid);
+    }));
+    list.querySelectorAll('.preview-txt').forEach(p => p.addEventListener('click', e => {
+        const f = state.footnotes.find(x => x.uid === +e.currentTarget.dataset.uid);
+        if(f){ f.aside.scrollIntoView({behavior:'smooth', block:'center'}); f.content.focus(); }
+    }));
+}
+
+function setArch(uid, arch){
+    const f = state.footnotes.find(x => x.uid === uid);
+    if(!f) return;
+    f.arch = arch;
+    f.aside.setAttribute('data-archetype', arch);
+    const sup = state.doc.querySelector('.essay-body .fnref[data-uid="'+uid+'"]');
+    if(sup) sup.setAttribute('data-archetype', arch);
+    markDirty(); renderPanel();
+}
+
+function addFootnote(){
+    if(!state.doc){ setStatus('Load an essay first.','err'); return; }
+    const doc = state.doc;
+    const body = doc.querySelector('.essay-body');
+    const uid = ++state.uid;
+    const sup = doc.createElement('sup');
+    sup.className = 'fnref';
+    sup.dataset.uid = uid;
+    sup.dataset.archetype = 'logic';
+    sup.innerHTML = '<a href="#fn-x">x</a>';
+
+    let range = state.lastRange;
+    if(range && body.contains(range.startContainer)){
+        range.collapse(false);
+        range.insertNode(sup);
+    } else {
+        const ps = body.querySelectorAll('p');
+        (ps[ps.length-1] || body).appendChild(sup);
+    }
+
+    const notesWrap = doc.querySelector('.essay-notes');
+    const aside = doc.createElement('aside');
+    aside.className = 'footnote';
+    aside.dataset.uid = uid;
+    aside.dataset.archetype = 'logic';
+    aside.setAttribute('tabindex','-1');
+    aside.innerHTML =
+        '<a class="fn-marker" href="#fnref-x">x</a>' +
+        '<div class="fn-content" contenteditable="true" spellcheck="true">New footnote.' +
+        '<a class="fn-back" href="#fnref-x" aria-label="Back to text">&#8617;</a></div>';
+    notesWrap.appendChild(aside);
+
+    state.footnotes.push({ uid, arch:'logic', aside, content: aside.querySelector('.fn-content') });
+    markDirty(); renumber(); renderPanel();
+    aside.scrollIntoView({block:'center'});
+    aside.querySelector('.fn-content').focus();
+}
+
+function removeFootnote(uid){
+    const doc = state.doc;
+    const sup = doc.querySelector('.essay-body .fnref[data-uid="'+uid+'"]');
+    if(sup) sup.remove();
+    const f = state.footnotes.find(x => x.uid === uid);
+    if(f) f.aside.remove();
+    state.footnotes = state.footnotes.filter(x => x.uid !== uid);
+    markDirty(); renumber(); renderPanel();
+}
+
+// ---- serialization ----
+// The source files use named HTML entities for typographic punctuation.
+// contenteditable hands back raw Unicode, so re-encode to keep the house
+// style and avoid rewriting every untouched paragraph.
+function encodeEntities(s){
+    return s
+        .replace(/\u2019/g,'&rsquo;')
+        .replace(/\u2018/g,'&lsquo;')
+        .replace(/\u201C/g,'&ldquo;')
+        .replace(/\u201D/g,'&rdquo;')
+        .replace(/\u2014/g,'&mdash;')
+        .replace(/\u2013/g,'&ndash;')
+        .replace(/\u2026/g,'&hellip;')
+        .replace(/\u00A0/g,'&nbsp;')
+        .replace(/\u00AD/g,'&shy;');
+}
+function cleanEl(el){
+    ['contenteditable','spellcheck','data-uid'].forEach(a => el.removeAttribute(a));
+    el.querySelectorAll('[contenteditable],[spellcheck],[data-uid]').forEach(n => {
+        n.removeAttribute('contenteditable'); n.removeAttribute('spellcheck'); n.removeAttribute('data-uid');
+    });
+}
+function serializeBody(){
+    const body = state.doc.querySelector('.essay-body');
+    const parts = [];
+    body.childNodes.forEach(node => {
+        if(node.nodeType === 1){
+            const c = node.cloneNode(true);
+            cleanEl(c);
+            parts.push('                    ' + encodeEntities(c.outerHTML));
+        }
+    });
+    return '\n' + parts.join('\n\n') + '\n                ';
+}
+function serializeNotes(){
+    const parts = [];
+    state.footnotes.forEach((f, i) => {
+        const n = i + 1;
+        const c = f.content.cloneNode(true);
+        const back = c.querySelector('.fn-back'); if(back) back.remove();
+        cleanEl(c);
+        const inner = encodeEntities(c.innerHTML.trim());
+        parts.push(
+'                    <aside id="fn-'+n+'" class="footnote" data-fn="'+n+'" data-archetype="'+f.arch+'" tabindex="-1">\n' +
+'                        <a class="fn-marker" href="#fnref-'+n+'">'+n+'</a>\n' +
+'                        <div class="fn-content">'+inner+'<a class="fn-back" href="#fnref-'+n+'" aria-label="Back to text">&#8617;</a></div>\n' +
+'                    </aside>'
+        );
+    });
+    return '\n' + parts.join('\n\n') + '\n                ';
+}
+
+async function save(){
+    if(!state.id){ setStatus('Load an essay first.','err'); return; }
+    renumber();
+    const payload = {
+        id: state.id,
+        bodyInner: serializeBody(),
+        notesInner: serializeNotes(),
+        meta: {
+            slug: $('#mSlug').value.trim(),
+            title: $('#mTitle').value,
+            image: $('#mImage').value.trim(),
+            status: $('#mStatus').value,
+        },
+        push: $('#push').checked,
+    };
+    setStatus('Saving…');
+    try {
+        const res = await (await fetch('/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)})).json();
+        if(res.error){ setStatus('Error: '+res.error,'err'); return; }
+        state.dirty = false;
+        if(res.newSlug && res.newSlug !== state.id){
+            state.id = res.newSlug;
+            await loadList();
+            $('#essaySel').value = res.newSlug;
+        }
+        let m = res.message ? ('Committed — '+res.message) : 'No changes to save.';
+        if(res.pushed) m += '  · pushed';
+        setStatus(m + (res.log ? '\n'+res.log : ''), res.error ? 'err' : 'ok');
+    } catch(e){ setStatus('Error: '+e,'err'); }
+}
+
+$('#essaySel').addEventListener('change', e => loadEssay(e.target.value));
+$('#addFn').addEventListener('click', addFootnote);
+$('#save').addEventListener('click', save);
+['#mSlug','#mTitle','#mImage','#mStatus'].forEach(s => $(s).addEventListener('input', markDirty));
+window.addEventListener('beforeunload', e => { if(state.dirty){ e.preventDefault(); e.returnValue=''; } });
+
+loadList();
+loadImages();
+</script>
+</body>
+</html>

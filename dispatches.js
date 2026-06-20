@@ -3,6 +3,7 @@
 //   id       — slug matched against <body data-essay-id="...">
 //   number   — 1-based dispatch number (used for "no. 01" display)
 //   title    — human-readable title (curly quotes ok)
+//   subtitle — optional italic deck line under the title on the essay page
 //   date     — initial publication month/year ("may 2026")
 //   url      — path on the site
 //   image    — root-relative lead photo for preview cards
@@ -34,9 +35,25 @@ window.formatDispatchVersion = function(status) {
 
 window.DISPATCHES = [
     {
+        id: 'selection',
+        number: 6,
+        title: 'Selection',
+        subtitle: 'What we are really deciding when we decide who to hire.',
+        date: 'june 2026',
+        url: '/essays/selection/',
+        image: '/pexels-cottonbro-8721341.png',
+        status: 'draft',
+        playlist: {
+            archetype: 'logic',
+            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
+        },
+        excerpt: 'The most honest word in any hiring debrief is \u201Cbet\u201D \u2014 a wager about which arm of a K-shaped economy a person will land on, dressed up as merit.'
+    },
+    {
         id: 'the-students-are-right',
         number: 5,
         title: '\u201CThe Students Are Right\u201D',
+        subtitle: 'On booing AI at commencement \u2014 and the honesty graduates are owed.',
         date: 'may 2026',
         url: '/essays/the-students-are-right/',
         image: '/pexels-tara-winstead-8849288.jpg',
@@ -51,6 +68,7 @@ window.DISPATCHES = [
         id: 'ship-it',
         number: 4,
         title: 'Ship It',
+        subtitle: 'On building something nobody asked for, and letting adoption be the verdict.',
         date: 'december 2025',
         url: '/essays/ship-it/',
         image: '/pexels-cottonbro-4709285.png',
@@ -65,6 +83,7 @@ window.DISPATCHES = [
         id: 'i-cried-at-work-i-was-also-right',
         number: 3,
         title: 'I Cried at Work. I Was Also Right.',
+        subtitle: 'On being corrected in public, crying in private, and the fact that held anyway.',
         date: 'december 2025',
         url: '/essays/i-cried-at-work-i-was-also-right/',
         image: '/pexels-pranavsinh232-5466185.png',
@@ -79,6 +98,7 @@ window.DISPATCHES = [
         id: 'americans-europeans-and-autism-oh-my',
         number: 2,
         title: 'Americans, Europeans, and Autism, Oh My!',
+        subtitle: 'On being flagged as AI for talking the way I talk \u2014 and why clarity is kindness.',
         date: 'november 2025',
         url: '/essays/americans-europeans-and-autism-oh-my/',
         image: '/pexels-anna-shevchuk-11507617.png',
@@ -93,6 +113,7 @@ window.DISPATCHES = [
         id: 'you-might-be-special-but-youre-definitely-predictable',
         number: 1,
         title: 'You Might Be Special, But You\u2019re Definitely Predictable',
+        subtitle: 'On targeted ads, pattern-matching at scale, and the bargain we keep making.',
         date: 'november 2025',
         url: '/essays/you-might-be-special-but-youre-definitely-predictable/',
         image: '/pexels-cottonbro-6153354.png',

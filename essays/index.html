@@ -416,10 +416,10 @@
         }
         .tl-node-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-25); }
         /* Each node is colored to its archetype (and thus its playlist). */
-        .tl-entry--logic    .tl-node { border-color: var(--logic); }
+        .tl-entry--logic    .tl-node { border-color: var(--logic-gold); }
         .tl-entry--psyche   .tl-node { border-color: var(--psyche); }
         .tl-entry--instinct .tl-node { border-color: var(--instinct); }
-        .tl-entry--logic    .tl-node-dot { background: var(--logic); }
+        .tl-entry--logic    .tl-node-dot { background: var(--logic-gold); }
         .tl-entry--psyche   .tl-node-dot { background: var(--psyche); }
         .tl-entry--instinct .tl-node-dot { background: var(--instinct); }
         .tl-no {
@@ -602,8 +602,8 @@
         .essay-layout {
             position: relative;
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 280px;
-            gap: 56px;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 44px;
         }
         .essay-body {
             font-family: 'Newsreader', 'IM Fell English', Georgia, 'Times New Roman', serif;
@@ -724,14 +724,12 @@
             left: 0;
             right: 0;
             display: grid;
-            /* Marker column needs room for dot (5px) + gap (6px) + 2-digit
-               number (~12px) = ~23px. 26px keeps comfortable buffer and
-               aligns all markers uniformly regardless of digit count. */
-            grid-template-columns: 26px 1fr;
-            column-gap: 10px;
+            /* Marker column: dot (5px) + gap (6px) + 2-digit number (~14px). */
+            grid-template-columns: 30px 1fr;
+            column-gap: 12px;
             font-family: 'Newsreader', 'IM Fell English', Georgia, 'Times New Roman', serif;
-            font-size: 0.82rem;
-            line-height: 1.65;
+            font-size: 0.875rem;
+            line-height: 1.68;
             color: var(--ink-80);
             padding: 4px 0 4px 8px;
             border-left: 1px solid transparent;
@@ -1056,7 +1054,7 @@
                 margin-left: 0;
                 padding-left: 0;
                 border-left: none;
-                grid-template-columns: 28px 1fr;
+                grid-template-columns: 30px 1fr;
             }
             .footnote:last-child { margin-bottom: 0; }
             .fn-back {
@@ -1415,7 +1413,6 @@
                 <span class="hc hc-tr"></span>
                 <span class="hc hc-bl"></span>
                 <span class="hc hc-br"></span>
-                <p class="essay-number"><span>the essays</span></p>
                 <h1 class="essay-title">Essays</h1>
                 <p class="essay-meta">Civic, humanistic notes from someone who works in AI for government &mdash; newest first.</p>
             </header>
@@ -1426,6 +1423,28 @@
                  list is empty, so it stays a graceful fallback. When adding an
                  essay, add a card here AND an entry in dispatches.js. -->
             <div class="essay-index" id="essay-index">
+                <div class="tl-entry tl-entry--logic">
+                    <div class="tl-spine">
+                        <span class="tl-line"></span>
+                        <span class="tl-node"><span class="tl-node-dot"></span></span>
+                        <div class="tl-no">no. 06</div>
+                        <div class="tl-date">june 2026</div>
+                    </div>
+                    <a class="tl-card" href="/essays/selection/">
+                        <div class="tl-card-inner">
+                            <span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>
+                            <div class="tl-thumb"><img src="/pexels-cottonbro-8721341.png" alt="Lead photograph for &ldquo;Selection&rdquo;" loading="lazy"></div>
+                            <div class="tl-card-body">
+                                <h2 class="tl-title">Selection</h2>
+                                <p class="tl-excerpt">The most honest word in any hiring debrief is &ldquo;bet&rdquo; &mdash; a wager about which arm of a K-shaped economy a person will land on, dressed up as merit.</p>
+                                <div class="tl-foot">
+                                    <span class="tl-read">read the essay <span class="arr">&rarr;</span></span>
+                                    <span class="tl-status" data-status="draft">v0 &middot; draft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
                 <div class="tl-entry tl-entry--psyche">
                     <div class="tl-spine">
                         <span class="tl-line"></span>
