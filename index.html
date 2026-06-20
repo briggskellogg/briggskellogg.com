@@ -71,15 +71,8 @@
                grows to fit when content is taller. */
             height: auto;
         }
-        body {
+        html {
             background-color: var(--bg);
-            /* Dot grid lives on the body — same approach as the essay
-               page — so the pattern naturally covers the entire surface
-               (top to bottom, edge to edge) without needing a 300vmax
-               pseudo-element on .frame that would either spawn giant
-               scrollbars (overflow:auto) or block mobile scrolling
-               (overflow:hidden). Boxes that need to read as discrete
-               surfaces paint over the grid with `background: var(--bg)`. */
             background-image: radial-gradient(
                 circle,
                 var(--dot-color) 1px,
@@ -87,6 +80,10 @@
             );
             background-size: 20px 20px;
             background-position: 0 0;
+            min-height: 100%;
+        }
+        body {
+            background: transparent;
             color: var(--ink);
             min-height: 100vh;
             display: flex;
@@ -1129,8 +1126,8 @@
                    corner of the screen on every device. */
                 position: fixed;
                 bottom: 0.55rem;
-                left: 0.55rem;
-                padding: 0.3rem 0.4rem;
+                left: 0.95rem;
+                padding: 0.35rem 0.45rem 0.35rem 0.55rem;
             }
             .egg-wrap .cc {
                 width: 5px;
@@ -1176,8 +1173,8 @@
             .archetypes {
                 bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
                 left: max(0.75rem, env(safe-area-inset-left, 0px));
-                right: max(0.75rem, env(safe-area-inset-right, 0px));
-                padding: 8px 0 10px;
+                right: max(1.15rem, env(safe-area-inset-right, 0px));
+                padding: 8px 12px 10px 0;
                 align-items: flex-end;
             }
             .archetypes-row {
@@ -1198,7 +1195,7 @@
                 transform: rotate(12deg) scale(1.02) translateX(-2px) translateY(-2px);
                 margin-left: -12px;
             }
-            .egg-wrap { bottom: 0.75rem; left: 0.75rem; padding: 0.4rem 0.5rem; }
+            .egg-wrap { bottom: 0.75rem; left: 1rem; padding: 0.45rem 0.55rem 0.45rem 0.65rem; }
             .egg-wrap .cc { width: 5px; height: 5px; }
             .easter-egg { width: 24px; height: 32px; }
             .egg-shell { width: 24px; height: 32px; }
