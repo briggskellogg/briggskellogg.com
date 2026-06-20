@@ -52,7 +52,7 @@ window.DISPATCHES = [
     {
         id: 'the-students-are-right',
         number: 5,
-        title: '\u201CThe Students Are Right\u201D',
+        title: 'The Students Are Right',
         subtitle: 'On booing AI at commencement \u2014 and the honesty graduates are owed.',
         date: 'may 2026',
         url: '/essays/the-students-are-right/',
