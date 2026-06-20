@@ -10,9 +10,11 @@
 //   ogImage  — optional root-relative 1200×630 center-cropped image for link
 //                  previews (defaults to /assets/og/{id}.jpg when present)
 //   status   — version state. One of:
-//                  'draft'     — initial post, still being shaped (shown as v0)
-//                  'patch-N'   — incremental revision N (shown as vN)
-//                  'finalized' — locked, no further edits planned
+//                  'draft'       — initial post, still being shaped (shown as v0 · draft)
+//                  'draft-vN'    — draft at revision N (shown as vN · draft)
+//                  'patch-N'     — incremental revision N (shown as vN · revision)
+//                  'final-vN'    — locked at revision N (shown as vN · final)
+//                  'finalized'   — locked, no version number (shown as final · locked)
 //   playlist — optional Spotify playlist while reading:
 //                  archetype — 'logic' | 'psyche' | 'instinct' (picks the blob)
 //                  url       — Spotify playlist link
@@ -25,6 +27,16 @@ window.formatDispatchVersion = function(status) {
     }
     if (status === 'finalized') {
         return { label: 'final · locked', short: 'final', slug: 'finalized' };
+    }
+    var finalMatch = status.match(/^final-v(\d+)$/);
+    if (finalMatch) {
+        var fn = finalMatch[1];
+        return { label: 'v' + fn + ' · final', short: 'v' + fn, slug: 'finalized' };
+    }
+    var draftMatch = status.match(/^draft-v(\d+)$/);
+    if (draftMatch) {
+        var dn = draftMatch[1];
+        return { label: 'v' + dn + ' · draft', short: 'v' + dn, slug: 'draft' };
     }
     if (status.indexOf('patch-') === 0) {
         var n = status.slice(6);
@@ -57,7 +69,7 @@ window.DISPATCHES = [
         date: 'may 2026',
         url: '/essays/the-students-are-right/',
         image: '/pexels-tara-winstead-8849288.jpg',
-        status: 'draft',
+        status: 'draft-v1',
         playlist: {
             archetype: 'psyche',
             url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
@@ -72,7 +84,7 @@ window.DISPATCHES = [
         date: 'december 2025',
         url: '/essays/ship-it/',
         image: '/pexels-cottonbro-4709285.png',
-        status: 'patch-1',
+        status: 'final-v1',
         playlist: {
             archetype: 'logic',
             url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
@@ -87,7 +99,7 @@ window.DISPATCHES = [
         date: 'december 2025',
         url: '/essays/i-cried-at-work-i-was-also-right/',
         image: '/pexels-pranavsinh232-5466185.png',
-        status: 'patch-1',
+        status: 'final-v2',
         playlist: {
             archetype: 'psyche',
             url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
@@ -102,7 +114,7 @@ window.DISPATCHES = [
         date: 'november 2025',
         url: '/essays/americans-europeans-and-autism-oh-my/',
         image: '/pexels-anna-shevchuk-11507617.png',
-        status: 'patch-2',
+        status: 'final-v3',
         playlist: {
             archetype: 'logic',
             url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
@@ -117,7 +129,7 @@ window.DISPATCHES = [
         date: 'november 2025',
         url: '/essays/you-might-be-special-but-youre-definitely-predictable/',
         image: '/pexels-cottonbro-6153354.png',
-        status: 'draft',
+        status: 'final-v0',
         playlist: {
             archetype: 'instinct',
             url: 'https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec'
