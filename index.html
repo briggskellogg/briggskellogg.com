@@ -53,6 +53,7 @@
             --ink-20:   rgba(255, 226, 185, 0.28);
             --ink-12:   rgba(255, 226, 185, 0.14);
             --ink-06:   rgba(255, 226, 185, 0.05);
+            --silver:   #B6BCC2;
 
             /* gold chrome ramp — logic embodied */
             --border:    #C99B45;
@@ -587,7 +588,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: currentColor;
+            background: var(--silver);
             flex-shrink: 0;
         }
         .status-dot::after {
@@ -595,7 +596,7 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            background: currentColor;
+            background: var(--silver);
             transform-origin: center;
             animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
@@ -604,7 +605,10 @@
             70%  { transform: scale(3);   opacity: 0; }
             100% { transform: scale(3);   opacity: 0; }
         }
-        /* Finalized pieces are settled — no pulse. */
+        /* Final — gold dot, no pulse; draft — silver pulse. */
+        [data-status="finalized"] .status-dot {
+            background: var(--logic-gold);
+        }
         [data-status="finalized"] .status-dot::after { display: none; }
         @media (prefers-reduced-motion: reduce) {
             .status-dot::after { animation: none; }
@@ -917,9 +921,6 @@
         .featured-status .status-dot {
             width: 5px;
             height: 5px;
-            border-radius: 50%;
-            background: currentColor;
-            flex-shrink: 0;
         }
         .featured-status[data-status="finalized"] { opacity: 0.9; }
         .featured-title {

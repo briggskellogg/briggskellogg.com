@@ -364,7 +364,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: currentColor;
+            background: var(--silver);
             flex-shrink: 0;
         }
         .status-dot::after {
@@ -372,7 +372,7 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            background: currentColor;
+            background: var(--silver);
             transform-origin: center;
             animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
@@ -380,6 +380,9 @@
             0%   { transform: scale(1);   opacity: 0.55; }
             70%  { transform: scale(2.4); opacity: 0; }
             100% { transform: scale(2.4); opacity: 0; }
+        }
+        [data-status="finalized"] .status-dot {
+            background: var(--logic-gold);
         }
         [data-status="finalized"] .status-dot::after { display: none; }
         @media (prefers-reduced-motion: reduce) {
@@ -1665,7 +1668,7 @@
             if (badgeEl && entry.status) {
                 var ver = (window.formatDispatchVersion || function(s){ return { label: s, short: s }; })(entry.status);
                 if (badgeTx) badgeTx.textContent = ver.label;
-                badgeEl.setAttribute('data-status', entry.status);
+                badgeEl.setAttribute('data-status', ver.slug || entry.status);
                 badgeEl.hidden = false;
             }
             var blobLink = document.getElementById('essay-playlist-blob');

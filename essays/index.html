@@ -343,7 +343,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: currentColor;
+            background: var(--silver);
             flex-shrink: 0;
         }
         .status-dot::after {
@@ -351,7 +351,7 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            background: currentColor;
+            background: var(--silver);
             transform-origin: center;
             animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
@@ -360,9 +360,13 @@
             70%  { transform: scale(2.4); opacity: 0; }
             100% { transform: scale(2.4); opacity: 0; }
         }
+        [data-status="finalized"] .status-dot {
+            background: var(--logic-gold);
+        }
         [data-status="finalized"] .status-dot::after { display: none; }
         @media (prefers-reduced-motion: reduce) {
             .status-dot::after { animation: none; }
+            .tl-status::before { animation: none; box-shadow: none; }
             .archetype-img { animation: none; }
         }
         .essay-title {
@@ -497,7 +501,24 @@
             color: var(--ink-50); display: inline-flex; align-items: center; gap: 0.45em;
             white-space: nowrap;
         }
-        .tl-status::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; opacity: 0.7; }
+        .tl-status::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--silver);
+            animation: tlStatusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes tlStatusPulse {
+            0%   { box-shadow: 0 0 0 0 rgba(182, 188, 194, 0.55); }
+            70%  { box-shadow: 0 0 0 5px rgba(182, 188, 194, 0); }
+            100% { box-shadow: 0 0 0 5px rgba(182, 188, 194, 0); }
+        }
+        .tl-status[data-status="finalized"]::before {
+            background: var(--logic-gold);
+            animation: none;
+            box-shadow: none;
+        }
         @media (max-width: 600px) {
             .tl-entry { grid-template-columns: 56px 1fr; column-gap: 14px; }
             .tl-spine { padding-right: 14px; padding-bottom: 38px; }
@@ -1716,7 +1737,7 @@
             if (badgeEl && entry.status) {
                 var ver = (window.formatDispatchVersion || function(s){ return { label: s, short: s }; })(entry.status);
                 if (badgeTx) badgeTx.textContent = ver.label;
-                badgeEl.setAttribute('data-status', entry.status);
+                badgeEl.setAttribute('data-status', ver.slug || entry.status);
                 badgeEl.hidden = false;
             }
         })();
