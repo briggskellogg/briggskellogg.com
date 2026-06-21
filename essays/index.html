@@ -38,7 +38,7 @@
         }
         :root {
             /* LIGHT · the READING face (essays). Warm parchment ground,
-               near-black ink, terracotta corner-bracket chrome. */
+               near-black ink, silver corner-bracket chrome (the writing metal). */
             --logic-black:   #15120E;
             --logic-gold:    #C99B45;
             --logic-cream:   #FFE2B9;
@@ -61,13 +61,13 @@
             --ink-06:   rgba(42, 32, 24, 0.05);
             --silver:   #B6BCC2;
 
-            --border:    #B25A30;
-            --border-80: rgba(178, 90, 48, 1.0);
-            --border-50: rgba(178, 90, 48, 0.60);
-            --border-25: rgba(178, 90, 48, 0.36);
-            --border-20: rgba(178, 90, 48, 0.28);
-            --border-12: rgba(178, 90, 48, 0.16);
-            --border-30: rgba(178, 90, 48, 0.42);
+            --border:    #717D85;
+            --border-80: rgba(113, 125, 133, 1.0);
+            --border-50: rgba(113, 125, 133, 0.60);
+            --border-25: rgba(113, 125, 133, 0.36);
+            --border-20: rgba(113, 125, 133, 0.28);
+            --border-12: rgba(113, 125, 133, 0.16);
+            --border-30: rgba(113, 125, 133, 0.42);
 
             --logic:    #15120E;
             --instinct: #AD7C84;
@@ -78,7 +78,7 @@
             --psyche-wire:   rgba(101, 141, 164, 0.40);
 
             --dot-color: rgba(42, 32, 24, 0.06);
-            --light-glow:    rgba(178, 90, 48, 0.8);
+            --light-glow:    rgba(113, 125, 133, 0.8);
         }
         html {
             background-color: var(--bg);
@@ -101,7 +101,7 @@
             /* Extra top padding clears the fixed BEK mark; extra bottom padding
                keeps the inline rights footer scrollable above the fixed
                playlists + egg modules. */
-            padding: 5.5rem 2rem 7rem;
+            padding: 5.5rem 2rem 10rem;
             position: relative;
             overflow-x: hidden;
         }
@@ -429,10 +429,10 @@
         }
         .tl-node-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-25); }
         /* Each node is colored to its archetype (and thus its playlist). */
-        .tl-entry--logic    .tl-node { border-color: var(--logic-gold); }
+        .tl-entry--logic    .tl-node { border-color: var(--logic); }
         .tl-entry--psyche   .tl-node { border-color: var(--psyche); }
         .tl-entry--instinct .tl-node { border-color: var(--instinct); }
-        .tl-entry--logic    .tl-node-dot { background: var(--logic-gold); }
+        .tl-entry--logic    .tl-node-dot { background: var(--logic); opacity: 0.85; }
         .tl-entry--psyche   .tl-node-dot { background: var(--psyche); }
         .tl-entry--instinct .tl-node-dot { background: var(--instinct); }
         .tl-no {
@@ -845,9 +845,8 @@
             opacity: 0.55;
         }
         @keyframes wire-pulse {
-            0%   { r: 1.5; opacity: 0; }
-            40%  { r: 2.5; opacity: 1; }
-            100% { r: 1.8; opacity: 1; }
+            0%   { opacity: 0; }
+            100% { opacity: 0.55; }
         }
         .essay-wires .wire-dot.pulse {
             animation: wire-pulse 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -995,10 +994,10 @@
             margin-left: -120px;
             background: radial-gradient(
                 circle closest-side at center,
-                rgba(178, 90, 48, 0.30) 0%,
-                rgba(178, 90, 48, 0.20) 18%,
-                rgba(178, 90, 48, 0.11) 38%,
-                rgba(178, 90, 48, 0.05) 62%,
+                rgba(113, 125, 133, 0.30) 0%,
+                rgba(113, 125, 133, 0.20) 18%,
+                rgba(113, 125, 133, 0.11) 38%,
+                rgba(113, 125, 133, 0.05) 62%,
                 transparent 82%
             );
             mix-blend-mode: multiply;
@@ -1457,7 +1456,7 @@
                     <div class="tl-spine">
                         <span class="tl-line"></span>
                         <span class="tl-node"><span class="tl-node-dot"></span></span>
-                        <div class="tl-no">no. 06</div>
+                        <div class="tl-no">no. 03</div>
                         <div class="tl-date">june 2026</div>
                     </div>
                     <a class="tl-card" href="/essays/selection/">
@@ -1479,7 +1478,7 @@
                     <div class="tl-spine">
                         <span class="tl-line"></span>
                         <span class="tl-node"><span class="tl-node-dot"></span></span>
-                        <div class="tl-no">no. 05</div>
+                        <div class="tl-no">no. 02</div>
                         <div class="tl-date">may 2026</div>
                     </div>
                     <a class="tl-card" href="/essays/the-students-are-right/">
@@ -1497,55 +1496,11 @@
                         </div>
                     </a>
                 </div>
-                <div class="tl-entry tl-entry--logic">
+                <div class="tl-entry tl-entry--instinct">
                     <div class="tl-spine">
                         <span class="tl-line"></span>
                         <span class="tl-node"><span class="tl-node-dot"></span></span>
-                        <div class="tl-no">no. 04</div>
-                        <div class="tl-date">december 2025</div>
-                    </div>
-                    <a class="tl-card" href="/essays/ship-it/">
-                        <div class="tl-card-inner">
-                            <span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>
-                            <div class="tl-thumb"><img src="/pexels-cottonbro-4709285.png" alt="Lead photograph for Ship It" loading="lazy"></div>
-                            <div class="tl-card-body">
-                                <h2 class="tl-title">Ship It</h2>
-                                <p class="tl-excerpt">I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it &mdash; and adoption turned out to be the only honest metric.</p>
-                                <div class="tl-foot">
-                                    <span class="tl-read">read the essay <span class="arr">&rarr;</span></span>
-                                    <span class="tl-status" data-status="finalized">v1 &middot; final</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="tl-entry tl-entry--psyche">
-                    <div class="tl-spine">
-                        <span class="tl-line"></span>
-                        <span class="tl-node"><span class="tl-node-dot"></span></span>
-                        <div class="tl-no">no. 03</div>
-                        <div class="tl-date">december 2025</div>
-                    </div>
-                    <a class="tl-card" href="/essays/i-cried-at-work-i-was-also-right/">
-                        <div class="tl-card-inner">
-                            <span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>
-                            <div class="tl-thumb"><img src="/pexels-pranavsinh232-5466185.png" alt="Lead photograph for I Cried at Work. I Was Also Right." loading="lazy"></div>
-                            <div class="tl-card-body">
-                                <h2 class="tl-title">I Cried at Work. I Was Also Right.</h2>
-                                <p class="tl-excerpt">A product lead corrected me in front of the whole room over a point that wasn&rsquo;t even right. I cried in the bathroom &mdash; and you can, in fact, agree with a fact.</p>
-                                <div class="tl-foot">
-                                    <span class="tl-read">read the essay <span class="arr">&rarr;</span></span>
-                                    <span class="tl-status" data-status="finalized">v2 &middot; final</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="tl-entry tl-entry--logic">
-                    <div class="tl-spine">
-                        <span class="tl-line"></span>
-                        <span class="tl-node"><span class="tl-node-dot"></span></span>
-                        <div class="tl-no">no. 02</div>
+                        <div class="tl-no">no. 01</div>
                         <div class="tl-date">november 2025</div>
                     </div>
                     <a class="tl-card" href="/essays/americans-europeans-and-autism-oh-my/">
@@ -1558,28 +1513,6 @@
                                 <div class="tl-foot">
                                     <span class="tl-read">read the essay <span class="arr">&rarr;</span></span>
                                     <span class="tl-status" data-status="finalized">v3 &middot; final</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="tl-entry tl-entry--instinct">
-                    <div class="tl-spine">
-                        <span class="tl-line"></span>
-                        <span class="tl-node"><span class="tl-node-dot"></span></span>
-                        <div class="tl-no">no. 01</div>
-                        <div class="tl-date">november 2025</div>
-                    </div>
-                    <a class="tl-card" href="/essays/you-might-be-special-but-youre-definitely-predictable/">
-                        <div class="tl-card-inner">
-                            <span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>
-                            <div class="tl-thumb"><img src="/pexels-cottonbro-6153354.png" alt="Lead photograph for You Might Be Special, But You&rsquo;re Definitely Predictable" loading="lazy"></div>
-                            <div class="tl-card-body">
-                                <h2 class="tl-title">You Might Be Special, But You&rsquo;re Definitely Predictable</h2>
-                                <p class="tl-excerpt">I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren&rsquo;t magic &mdash; just pattern-matching at planetary scale, and a question about what we get back.</p>
-                                <div class="tl-foot">
-                                    <span class="tl-read">read the essay <span class="arr">&rarr;</span></span>
-                                    <span class="tl-status" data-status="finalized">v0 &middot; final</span>
                                 </div>
                             </div>
                         </div>
@@ -1976,7 +1909,7 @@
                     var c = createSvg('circle', {
                         cx: p.x.toFixed(1),
                         cy: p.y.toFixed(1),
-                        r: 1.5,
+                        r: 2.5,
                         'class': 'wire-dot'
                     });
                     if (p.color) c.style.fill = p.color;

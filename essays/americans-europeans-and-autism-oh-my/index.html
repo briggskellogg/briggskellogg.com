@@ -38,7 +38,7 @@
         }
         :root {
             /* LIGHT · the READING face (essays). Warm parchment ground,
-               near-black ink, terracotta corner-bracket chrome. The
+               near-black ink, silver corner-bracket chrome (the writing metal). The
                serious literary surface. (Design system: data-theme="light".) */
 
             /* cosmology primaries (theme-independent accents) */
@@ -66,14 +66,14 @@
             --ink-06:   rgba(42, 32, 24, 0.05);
             --silver:   #B6BCC2;
 
-            /* terracotta chrome ramp — deepened for contrast on light */
-            --border:    #B25A30;
-            --border-80: rgba(178, 90, 48, 1.0);
-            --border-50: rgba(178, 90, 48, 0.60);
-            --border-25: rgba(178, 90, 48, 0.36);
-            --border-20: rgba(178, 90, 48, 0.28);
-            --border-12: rgba(178, 90, 48, 0.16);
-            --border-30: rgba(178, 90, 48, 0.42);
+            /* silver chrome ramp — deepened for contrast on parchment (writing metal) */
+            --border:    #717D85;
+            --border-80: rgba(113, 125, 133, 1.0);
+            --border-50: rgba(113, 125, 133, 0.60);
+            --border-25: rgba(113, 125, 133, 0.36);
+            --border-20: rgba(113, 125, 133, 0.28);
+            --border-12: rgba(113, 125, 133, 0.16);
+            --border-30: rgba(113, 125, 133, 0.42);
 
             /* archetype accents — the footnote-coding system. Logic reads
                as its black primary against parchment. */
@@ -88,8 +88,8 @@
 
             --dot-color: rgba(42, 32, 24, 0.06);
 
-            /* reading light — warm terracotta candlelight on parchment */
-            --light-glow:    rgba(178, 90, 48, 0.8);
+            /* reading light — cool silver moonlight on parchment */
+            --light-glow:    rgba(113, 125, 133, 0.8);
         }
         html {
             background-color: var(--bg);
@@ -112,7 +112,7 @@
             /* Extra top padding clears the fixed BEK mark; extra bottom padding
                keeps the inline rights footer scrollable above the fixed
                playlists + egg modules. */
-            padding: 5.5rem 2rem 7rem;
+            padding: 5.5rem 2rem 10rem;
             position: relative;
             overflow-x: hidden;
         }
@@ -616,13 +616,13 @@
             transition: opacity 0.12s ease, transform 0.12s ease;
             background: var(--ink-50);
         }
-        .footnote[data-archetype="logic"]    .fn-marker::before { background: #C99B45; }
-        .footnote[data-archetype="instinct"] .fn-marker::before { background: #C2412E; }
-        .footnote[data-archetype="psyche"]   .fn-marker::before { background: #658DA4; }
+        .footnote[data-archetype="logic"]    .fn-marker::before { background: var(--logic); }
+        .footnote[data-archetype="instinct"] .fn-marker::before { background: var(--instinct); }
+        .footnote[data-archetype="psyche"]   .fn-marker::before { background: var(--psyche); }
         .footnote.linked .fn-marker::before { opacity: 0.8; transform: scale(1.15); }
-        .footnote.linked[data-archetype="logic"]    { border-left-color: #C99B45; }
-        .footnote.linked[data-archetype="instinct"] { border-left-color: #C2412E; }
-        .footnote.linked[data-archetype="psyche"]   { border-left-color: #658DA4; }
+        .footnote.linked[data-archetype="logic"]    { border-left-color: var(--logic); }
+        .footnote.linked[data-archetype="instinct"] { border-left-color: var(--instinct); }
+        .footnote.linked[data-archetype="psyche"]   { border-left-color: var(--psyche); }
         .footnote:target {
             border-left-color: var(--ink-50);
             color: var(--ink);
@@ -658,9 +658,8 @@
             opacity: 0.55;
         }
         @keyframes wire-pulse {
-            0%   { r: 1.5; opacity: 0; }
-            40%  { r: 2.5; opacity: 1; }
-            100% { r: 1.8; opacity: 1; }
+            0%   { opacity: 0; }
+            100% { opacity: 0.55; }
         }
         .essay-wires .wire-dot.pulse {
             animation: wire-pulse 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -842,10 +841,10 @@
             margin-left: -120px;
             background: radial-gradient(
                 circle closest-side at center,
-                rgba(178, 90, 48, 0.30) 0%,
-                rgba(178, 90, 48, 0.20) 18%,
-                rgba(178, 90, 48, 0.11) 38%,
-                rgba(178, 90, 48, 0.05) 62%,
+                rgba(113, 125, 133, 0.30) 0%,
+                rgba(113, 125, 133, 0.20) 18%,
+                rgba(113, 125, 133, 0.11) 38%,
+                rgba(113, 125, 133, 0.05) 62%,
                 transparent 82%
             );
             mix-blend-mode: multiply;
@@ -1308,7 +1307,7 @@
                      version status lives in the top-right of the frame,
                      not in this centered eyebrow. -->
                 <p class="essay-number" data-essay-meta>
-                    <span class="num">no. 02</span>
+                    <span class="num">no. 01</span>
                     <span class="sep">&middot;</span>
                     <span>essay</span>
                 </p>
@@ -1763,9 +1762,17 @@
             // a shared bend X — each wire pivots at its own ref's right edge
             // — so the gutter computation has been retired.
 
+            function archetypeDotFill(archetype) {
+                var vars = getComputedStyle(document.documentElement);
+                if (archetype === 'logic') return vars.getPropertyValue('--logic').trim();
+                if (archetype === 'instinct') return vars.getPropertyValue('--instinct').trim();
+                if (archetype === 'psyche') return vars.getPropertyValue('--psyche').trim();
+                return null;
+            }
+
             var ARCHETYPE_WIRE = {
-                logic:    { stroke: 'rgba(42, 32, 24, 0.34)', dot: '#C99B45' },
-                instinct: { stroke: 'rgba(42, 32, 24, 0.34)', dot: '#C2412E' },
+                logic:    { stroke: 'rgba(42, 32, 24, 0.34)' },
+                instinct: { stroke: 'rgba(42, 32, 24, 0.34)', dot: '#AD7C84' },
                 psyche:   { stroke: 'rgba(42, 32, 24, 0.34)', dot: '#658DA4' }
             };
 
@@ -1847,13 +1854,13 @@
                 // footnote's own pip it lands on.
                 var endpoints = [
                     { x: x1, y: y1, delay: 0,   color: null },
-                    { x: x2, y: y2, delay: 240, color: (palette ? palette.dot : null) }
+                    { x: x2, y: y2, delay: 240, color: archetypeDotFill(archetype) }
                 ];
                 endpoints.forEach(function(p) {
                     var c = createSvg('circle', {
                         cx: p.x.toFixed(1),
                         cy: p.y.toFixed(1),
-                        r: 1.5,
+                        r: 2.5,
                         'class': 'wire-dot'
                     });
                     if (p.color) c.style.fill = p.color;

@@ -48,7 +48,7 @@ window.formatDispatchVersion = function(status) {
 window.DISPATCHES = [
     {
         id: 'selection',
-        number: 6,
+        number: 3,
         title: 'Selection',
         subtitle: 'What we are really deciding when we decide who to hire.',
         date: 'june 2026',
@@ -63,7 +63,7 @@ window.DISPATCHES = [
     },
     {
         id: 'the-students-are-right',
-        number: 5,
+        number: 2,
         title: 'The Students Are Right',
         subtitle: 'On booing AI at commencement \u2014 and the honesty graduates are owed.',
         date: 'may 2026',
@@ -77,38 +77,8 @@ window.DISPATCHES = [
         excerpt: 'This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at \u2014 and the students are right.'
     },
     {
-        id: 'ship-it',
-        number: 4,
-        title: 'Ship It',
-        subtitle: 'On building something nobody asked for, and letting adoption be the verdict.',
-        date: 'december 2025',
-        url: '/essays/ship-it/',
-        image: '/pexels-cottonbro-4709285.png',
-        status: 'final-v1',
-        playlist: {
-            archetype: 'logic',
-            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
-        },
-        excerpt: 'I built an automated Slack briefing nobody asked for. Thirty percent of the company now wakes up to it \u2014 and adoption turned out to be the only honest metric.'
-    },
-    {
-        id: 'i-cried-at-work-i-was-also-right',
-        number: 3,
-        title: 'I Cried at Work. I Was Also Right.',
-        subtitle: 'On being corrected in public, crying in private, and the fact that held anyway.',
-        date: 'december 2025',
-        url: '/essays/i-cried-at-work-i-was-also-right/',
-        image: '/pexels-pranavsinh232-5466185.png',
-        status: 'final-v2',
-        playlist: {
-            archetype: 'psyche',
-            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
-        },
-        excerpt: 'A product lead corrected me in front of the whole room over a point that wasn\u2019t even right. I cried in the bathroom \u2014 and you can, in fact, agree with a fact.'
-    },
-    {
         id: 'americans-europeans-and-autism-oh-my',
-        number: 2,
+        number: 1,
         title: 'Americans, Europeans, and Autism, Oh My!',
         subtitle: 'On being flagged as AI for talking the way I talk \u2014 and why clarity is kindness.',
         date: 'november 2025',
@@ -116,24 +86,9 @@ window.DISPATCHES = [
         image: '/pexels-anna-shevchuk-11507617.png',
         status: 'final-v3',
         playlist: {
-            archetype: 'logic',
-            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
-        },
-        excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
-    },
-    {
-        id: 'you-might-be-special-but-youre-definitely-predictable',
-        number: 1,
-        title: 'You Might Be Special, But You\u2019re Definitely Predictable',
-        subtitle: 'On targeted ads, pattern-matching at scale, and the bargain we keep making.',
-        date: 'november 2025',
-        url: '/essays/you-might-be-special-but-youre-definitely-predictable/',
-        image: '/pexels-cottonbro-6153354.png',
-        status: 'final-v0',
-        playlist: {
             archetype: 'instinct',
             url: 'https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec'
         },
-        excerpt: 'I searched for a phone case and Mous haunted my YouTube feed for a week. Targeted ads aren\u2019t magic \u2014 just pattern-matching at planetary scale, and a question about what we get back.'
+        excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
     }
 ];

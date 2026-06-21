@@ -614,18 +614,18 @@
             .status-dot::after { animation: none; }
         }
 
-        /* Single-line framed rights footer. Same vocabulary used on the
-           essay page (where it's inline, not fixed). */
+        /* Single-line framed rights footer. Wide viewports: pinned to bottom
+           center. Narrow viewports: flows beneath the essay modal in the
+           page column (matches essay pages). Lives outside .page so emerge's
+           transform doesn't trap fixed positioning on desktop. */
         .rights {
-            /* In-flow byline at the foot of the centered page column, sitting
-               just beneath the featured essays box. (Previously a fixed,
-               viewport-pinned line — but now that the homepage scrolls past
-               the frame into the essays box, a pinned line floated over that
-               box. Flowing it at the end reads cleanly and matches the essay
-               pages.) */
-            position: relative;
+            position: fixed;
+            left: 50%;
+            bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
+            transform: translateX(-50%);
+            z-index: 30;
             display: inline-block;
-            margin: 1.75rem auto 0;
+            margin: 0;
             padding: 0.55rem 1.1rem;
             text-align: center;
             font-family: 'Courier Prime', 'Courier New', Courier, monospace;
@@ -636,6 +636,18 @@
             user-select: none;
             white-space: nowrap;
             background-color: transparent;
+        }
+        @media (max-width: 1009px) {
+            .rights {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                transform: none;
+                margin: 0.85rem auto 0;
+            }
+            .featured {
+                margin-bottom: 0;
+            }
         }
         .rights .rights-mark { margin-right: 0.6em; letter-spacing: 0; }
         /* Slash separator between the byline and the rights notice — same
@@ -778,9 +790,21 @@
            with the latest essay card nested inside. Content hydrates from
            dispatches.js so the newest essay always surfaces here. */
         .featured {
+            /* The essay modal is the WRITING side of the gold/silver
+               duality — silver chrome against the black professional home,
+               paired with the gold "about" frame. Scoping the --border ramp
+               to silver re-skins every bracket, edge and divider below. */
+            --border:    #B6BCC2;
+            --border-80: rgba(182, 188, 194, 1.0);
+            --border-50: rgba(182, 188, 194, 0.62);
+            --border-30: rgba(182, 188, 194, 0.42);
+            --border-25: rgba(182, 188, 194, 0.36);
+            --border-20: rgba(182, 188, 194, 0.30);
+            --border-12: rgba(182, 188, 194, 0.16);
             position: relative;
             margin-top: 1.75rem;
-            padding: 1.5rem 1.5rem 1.35rem;
+            margin-bottom: 5.5rem;
+            padding: 1.5rem 1.5rem 1.85rem;
             border: 1px solid var(--border-20);
             background-color: var(--bg);
             text-align: center;
@@ -803,8 +827,6 @@
             padding-bottom: 1rem;
             border-bottom: 1px solid var(--border-20);
         }
-        /* Corner-bracket panel (design-system FrameBox panel): faint full
-           edge with L-shaped brackets at the four corners. */
         .featured-label {
             position: relative;
             display: inline-block;
@@ -812,10 +834,10 @@
             font-size: 0.68rem;
             letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: var(--ink);
+            color: var(--silver);
             padding: 0.5rem 1.2rem 0.44rem;
-            border: 1px solid var(--ink-12);
-            background: var(--ink-06);
+            border: 1px solid rgba(182, 188, 194, 0.42);
+            background: rgba(182, 188, 194, 0.08);
         }
         .featured-label .flc {
             position: absolute;
@@ -823,17 +845,17 @@
             height: 8px;
             pointer-events: none;
         }
-        .featured-label .flc-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
-        .featured-label .flc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
-        .featured-label .flc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
-        .featured-label .flc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .featured-label .flc-tl { top: -1px; left: -1px;   border-top: 1px solid rgba(182, 188, 194, 0.55); border-left: 1px solid rgba(182, 188, 194, 0.55); }
+        .featured-label .flc-tr { top: -1px; right: -1px;  border-top: 1px solid rgba(182, 188, 194, 0.55); border-right: 1px solid rgba(182, 188, 194, 0.55); }
+        .featured-label .flc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid rgba(182, 188, 194, 0.55); border-left: 1px solid rgba(182, 188, 194, 0.55); }
+        .featured-label .flc-br { bottom: -1px; right: -1px; border-bottom: 1px solid rgba(182, 188, 194, 0.55); border-right: 1px solid rgba(182, 188, 194, 0.55); }
         .featured-card {
             position: relative;
             display: block;
             text-align: left;
             text-decoration: none;
             color: inherit;
-            padding: 0.25rem 0.25rem 0;
+            padding: 0.25rem 0.25rem 0.45rem;
             transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .featured-card:hover { transform: translateY(-2px); }
@@ -845,7 +867,7 @@
             position: relative;
             width: 100%;
             aspect-ratio: 16 / 9;
-            margin-bottom: 1.05rem;
+            margin-bottom: 1.2rem;
             overflow: hidden;
             border: 1px solid var(--border-20);
         }
@@ -864,24 +886,30 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             color: var(--ink-50);
-            margin-bottom: 0.55rem;
+            margin-bottom: 0.75rem;
         }
         .featured-no { color: var(--ink); }
         .featured-meta .sep { color: var(--ink-20); margin: 0 0.1em; }
+        .featured-title-row {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: start;
+            column-gap: 0.55rem;
+            margin-bottom: 0.7rem;
+            font-size: 1.25rem;
+            line-height: 1.3;
+        }
         .featured-dot {
-            display: inline-block;
             width: 5px;
             height: 5px;
             border-radius: 50%;
-            margin-left: 0.5em;
-            vertical-align: middle;
-            position: relative;
-            top: -0.05em;
             background: var(--ink-50);
+            /* Center between cap-height and line-box center. */
+            margin-top: 0.38em;
         }
-        .featured-dot--logic    { background: var(--logic); }
-        .featured-dot--psyche   { background: var(--psyche); }
-        .featured-dot--instinct { background: var(--instinct); }
+        .featured-dot--logic    { background: var(--logic); opacity: 0.85; }
+        .featured-dot--psyche   { background: var(--psyche); opacity: 0.85; }
+        .featured-dot--instinct { background: var(--instinct); opacity: 0.85; }
         /* Version status — corner-bracket box at the foot of the card,
            matching the essay frame badge and featured-label panel. */
         .featured-foot {
@@ -889,7 +917,8 @@
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
-            margin-top: 0.85rem;
+            margin-top: 1.15rem;
+            padding-top: 0.15rem;
         }
         .featured-status {
             position: relative;
@@ -904,7 +933,7 @@
             white-space: nowrap;
             flex-shrink: 0;
             user-select: none;
-            padding: 0.4rem 0.65rem 0.35rem;
+            padding: 0.48rem 0.72rem 0.42rem;
             border: 1px solid var(--ink-12);
             background: var(--ink-06);
         }
@@ -927,10 +956,10 @@
             font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
             font-style: italic;
             font-weight: normal;
-            font-size: 1.25rem;
-            line-height: 1.3;
+            font-size: inherit;
+            line-height: inherit;
             color: var(--ink);
-            margin-bottom: 0.5rem;
+            margin: 0;
             transition: color 0.2s ease;
         }
         .featured-card:hover .featured-title { color: var(--logic); }
@@ -939,7 +968,7 @@
             font-size: 0.82rem;
             line-height: 1.55;
             color: var(--ink-50);
-            margin-bottom: 0.85rem;
+            margin-bottom: 1.05rem;
         }
         .featured-cta {
             font-family: 'Courier Prime', 'Courier New', Courier, monospace;
@@ -954,7 +983,7 @@
         .featured-card:hover .featured-cta .arr { transform: translateX(3px); }
         .featured-all {
             display: inline-block;
-            margin-top: 1rem;
+            margin-top: 1.35rem;
             font-family: 'Courier Prime', 'Courier New', Courier, monospace;
             font-size: 0.54rem;
             letter-spacing: 0.2em;
@@ -964,6 +993,134 @@
             transition: color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .featured-all:hover { color: var(--ink); transform: translateX(3px); }
+
+        /* ---------- Home panels — staggered desktop layout ---------- */
+        .home-panels {
+            position: relative;
+            overflow: visible;
+            width: 100%;
+        }
+        .home-link {
+            display: none;
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: visible;
+        }
+        .home-link-line {
+            fill: none;
+            stroke: var(--ink-50);
+            stroke-width: 1;
+            stroke-dasharray: 4 4;
+            stroke-linejoin: miter;
+            vector-effect: non-scaling-stroke;
+        }
+        .home-link-ring {
+            fill: var(--bg-raised);
+            stroke-width: 1;
+            vector-effect: non-scaling-stroke;
+        }
+        .home-link-ring--a {
+            stroke: var(--logic-gold);
+        }
+        .home-link-ring--b {
+            stroke: var(--silver);
+        }
+        .home-link-dot--a {
+            fill: var(--logic-gold);
+        }
+        .home-link-dot--b {
+            fill: var(--silver);
+        }
+        .frame,
+        .featured {
+            position: relative;
+            z-index: 1;
+            overflow: visible;
+        }
+
+        @media (min-width: 1010px) {
+            html,
+            html body {
+                height: 100dvh;
+                height: 100vh;
+                max-height: 100dvh;
+                max-height: 100vh;
+                overflow: hidden;
+            }
+            body {
+                align-items: center;
+                justify-content: flex-start;
+                min-height: 100dvh;
+                min-height: 100vh;
+                padding: 2rem max(2rem, env(safe-area-inset-right, 0px)) 2rem max(2rem, env(safe-area-inset-left, 0px));
+            }
+            .page {
+                max-width: 920px;
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                max-height: 100%;
+            }
+            .home-panels {
+                position: relative;
+                width: 100%;
+            }
+            .home-link {
+                display: block;
+            }
+            .frame {
+                width: 100%;
+                max-width: 460px;
+            }
+            .featured {
+                width: 100%;
+                max-width: 460px;
+                margin-left: auto;
+                margin-top: 1.75rem;
+                margin-bottom: 0;
+            }
+        }
+        @media (max-width: 1009px) {
+            html,
+            body {
+                height: auto;
+                max-height: none;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            body {
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                min-height: 100dvh;
+                min-height: 100vh;
+                padding-top: max(1.25rem, env(safe-area-inset-top, 0px));
+                padding-left: max(1.25rem, env(safe-area-inset-left, 0px));
+                padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+                /* Reserve scroll room below the stacked column so the
+                   fixed bottom-right archetype cards (full size in this
+                   range) and bottom-left egg never overlap the essay modal
+                   or the rights footer. */
+                padding-bottom: calc(11.5rem + env(safe-area-inset-bottom, 0px));
+            }
+            main.page {
+                width: 100%;
+                max-width: 460px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            /* Declared after the base .featured rule so it actually wins:
+               drop the legacy 5.5rem bottom margin in the stacked layout so
+               the rights footer sits tight beneath the essay modal. */
+            .featured {
+                margin-bottom: 0;
+            }
+        }
+
         /* Corner-bracket mini-modal — email contact. 6px arms,
            1px/--border-20 stroke, no connecting border. */
         .mini-frame {
@@ -996,29 +1153,22 @@
                    space sits symmetrically above + below the stack
                    rather than dumping at the bottom. */
             body {
-                /* Top-anchored mobile layout. Generous side buffer so
-                   the central frame stays narrow + breathes from the
-                   screen edges. Top padding is just enough to clear
-                   the iOS status bar; the content sits high in the
-                   viewport rather than being centered by min-height.
-                   Bottom padding clears the floating egg + playlists. */
-                padding: 0.9rem 1.5rem 6.75rem;
+                /* Symmetric edge padding; vertical centering is handled in JS
+                   using the space above the fixed egg + archetype chrome. */
+                padding: max(1.25rem, env(safe-area-inset-top, 0px))
+                         max(1.5rem, env(safe-area-inset-right, 0px))
+                         max(1.25rem, env(safe-area-inset-bottom, 0px))
+                         max(1.5rem, env(safe-area-inset-left, 0px));
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                /* No min-height: 100vh on mobile — the body sizes to
-                   its content. Combined with the in-flow rights (now
-                   right under main rather than parked at body bottom),
-                   this stops the rights line from drifting down into
-                   the playlists' bottom-right zone. */
-                min-height: 0;
+                min-height: 100dvh;
+                min-height: 100vh;
             }
             main.page {
-                /* Content-sized, top-anchored. No flex grow + no
-                   internal centering, so the frame sits at the top of
-                   main and the rights line falls naturally just below
-                   it, well above the floating playlists. */
                 width: 100%;
+                margin-left: auto;
+                margin-right: auto;
             }
             .frame {
                 /* Fluid frame — padding scales with viewport height so
@@ -1075,21 +1225,9 @@
                 gap: 0.22rem;
             }
             .rights {
-                /* Sits inline below main, just under the frame,
-                   well above the floating playlists. position: relative
-                   (not static) so the absolute .rc corner brackets
-                   anchor to .rights itself instead of jumping to body. */
-                position: relative;
-                transform: none;
-                left: auto;
-                bottom: auto;
-                display: inline-block;
-                margin: 0.85rem auto 3rem;
                 padding: 0.55rem 0.95rem;
                 font-size: 0.4rem;
                 letter-spacing: 0.18em;
-                white-space: nowrap;
-                align-self: center;
             }
             .rights .rc { width: 5px; height: 5px; }
             .links-wrap {
@@ -1162,13 +1300,6 @@
             }
         }
         @media (max-width: 600px) {
-            body {
-                padding-bottom: 6.75rem;
-            }
-            .rights {
-                margin-bottom: 3rem;
-                padding: 0.55rem 0.95rem;
-            }
             .featured {
                 padding: 1.35rem 1.25rem 1.2rem;
             }
@@ -1180,6 +1311,12 @@
         }
         /* Mobile overrides for the sticky chrome. */
         @media (max-width: 720px) {
+            body {
+                /* Cards + egg shrink here, so less bottom clearance is
+                   needed than the wide-stacked range — but still enough
+                   to keep the footer clear of the fixed corner chrome. */
+                padding-bottom: calc(8.5rem + env(safe-area-inset-bottom, 0px));
+            }
             .archetypes {
                 bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
                 left: max(0.75rem, env(safe-area-inset-left, 0px));
@@ -1214,7 +1351,15 @@
 </head>
 <body>
     <main class="page">
-        <div class="frame">
+        <div class="home-panels">
+            <svg class="home-link" aria-hidden="true">
+                <polyline class="home-link-line"></polyline>
+                <circle class="home-link-ring home-link-ring--a" r="4.5"></circle>
+                <circle class="home-link-dot home-link-dot--a" r="2.5"></circle>
+                <circle class="home-link-ring home-link-ring--b" r="4.5"></circle>
+                <circle class="home-link-dot home-link-dot--b" r="2.5"></circle>
+            </svg>
+            <div class="frame">
             <div class="c c-tl"></div>
             <div class="c c-tr"></div>
             <div class="c c-bl"></div>
@@ -1383,12 +1528,14 @@
                     <img id="featured-img" src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for The Students Are Right" loading="lazy">
                 </div>
                 <div class="featured-meta">
-                    <span class="featured-no">no. 05</span>
+                    <span class="featured-no">no. 03</span>
                     <span class="sep">&middot;</span>
                     <span class="featured-date">may 2026</span>
-                    <span class="featured-dot featured-dot--psyche" id="featured-dot" aria-hidden="true"></span>
                 </div>
-                <h2 class="featured-title">The Students Are Right</h2>
+                <div class="featured-title-row">
+                    <span class="featured-dot featured-dot--psyche" id="featured-dot" aria-hidden="true"></span>
+                    <h2 class="featured-title">The Students Are Right</h2>
+                </div>
                 <p class="featured-excerpt">This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at &mdash; and the students are right.</p>
                 <div class="featured-foot">
                     <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
@@ -1404,15 +1551,15 @@
             </a>
             <a class="featured-all" href="/essays/">all essays &rarr;</a>
         </section>
-
-        <footer class="rights">
-            <span class="rc rc-tl"></span>
-            <span class="rc rc-tr"></span>
-            <span class="rc rc-bl"></span>
-            <span class="rc rc-br"></span>
-            <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
-        </footer>
+        </div>
     </main>
+    <footer class="rights">
+        <span class="rc rc-tl"></span>
+        <span class="rc rc-tr"></span>
+        <span class="rc rc-bl"></span>
+        <span class="rc rc-br"></span>
+        <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
+    </footer>
     <nav class="archetypes" aria-label="Archetypes">
 <div class="archetypes-row">
             <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
@@ -1475,6 +1622,8 @@
 
             function updateHeight() {
                 carousel.style.height = slides[current].scrollHeight + 'px';
+                if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
+                if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
             }
 
             // Quick backspace through the previous name. Uniform 30ms
@@ -1570,9 +1719,251 @@
             document.querySelector('.quote-next').addEventListener('click', function() { manual(current + 1); });
         })();
 
-        // (Rights footer now flows in-page at the foot of the column on every
-        // breakpoint, directly under the essays box, so the old fixed-vs-inline
-        // placement toggle is no longer needed.)
+        (function() {
+            var panels = document.querySelector('.home-panels');
+            var svg = document.querySelector('.home-link');
+            if (!panels || !svg) return;
+            var line = svg.querySelector('.home-link-line');
+            var ringA = svg.querySelector('.home-link-ring--a');
+            var ringB = svg.querySelector('.home-link-ring--b');
+            var dotA = svg.querySelector('.home-link-dot--a');
+            var dotB = svg.querySelector('.home-link-dot--b');
+            var mq = window.matchMedia('(min-width: 1010px)');
+            var STAGGER_LIFT = 300;
+            var STAGGER_LIFT_MIN = 120;
+            var LIFT_COLLAPSE = 48;
+            var main = document.querySelector('main.page');
+
+            function applyStaggerTransforms(frame, featured, shift, lift) {
+                featured.style.marginBottom = (-lift + LIFT_COLLAPSE) + 'px';
+                frame.style.transform = 'translateX(' + (-shift) + 'px)';
+                featured.style.transform = 'translate(' + shift + 'px, ' + (-lift) + 'px)';
+            }
+
+            function measureStaggerUnit(frame, featured) {
+                var fr = frame.getBoundingClientRect();
+                var fe = featured.getBoundingClientRect();
+                return {
+                    top: Math.min(fr.top, fe.top),
+                    bottom: Math.max(fr.bottom, fe.bottom),
+                    height: Math.max(fr.bottom, fe.bottom) - Math.min(fr.top, fe.top),
+                    left: Math.min(fr.left, fe.left),
+                    right: Math.max(fr.right, fe.right)
+                };
+            }
+
+            function getViewportInsets() {
+                var bodyStyle = getComputedStyle(document.body);
+                return {
+                    top: parseFloat(bodyStyle.paddingTop) || 0,
+                    bottom: parseFloat(bodyStyle.paddingBottom) || 0,
+                    left: parseFloat(bodyStyle.paddingLeft) || 0,
+                    right: parseFloat(bodyStyle.paddingRight) || 0
+                };
+            }
+
+            function getAvailVerticalBounds(insets, desktop) {
+                var top = insets.top;
+                var bottom = window.innerHeight - insets.bottom;
+                var rights = document.querySelector('.rights');
+                if (desktop && rights) {
+                    bottom = Math.min(bottom, rights.getBoundingClientRect().top - 16);
+                }
+                if (!desktop) {
+                    var archetypes = document.querySelector('.archetypes');
+                    var egg = document.querySelector('.egg-wrap');
+                    if (archetypes) {
+                        bottom = Math.min(bottom, archetypes.getBoundingClientRect().top - 16);
+                    }
+                    if (egg) {
+                        bottom = Math.min(bottom, egg.getBoundingClientRect().top - 16);
+                    }
+                }
+                return { top: top, bottom: bottom };
+            }
+
+            function layoutHomeStagger() {
+                var frame = panels.querySelector('.frame');
+                var featured = panels.querySelector('.featured');
+                if (!frame || !featured) return;
+
+                panels.style.transform = '';
+                if (main) main.style.marginTop = '';
+                frame.style.transform = '';
+                featured.style.transform = '';
+                featured.style.marginBottom = '';
+
+                if (!mq.matches) {
+                    if (document.documentElement) {
+                        document.documentElement.style.overflowY = '';
+                    }
+                    layoutStackCenter(frame, featured);
+                    return;
+                }
+
+                if (document.documentElement) {
+                    document.documentElement.style.overflowY = 'hidden';
+                }
+
+                void panels.offsetHeight;
+
+                var verticalGap = featured.offsetTop - frame.offsetTop - frame.offsetHeight;
+                if (verticalGap < 0) verticalGap = 28;
+
+                var horizontalGap = featured.offsetLeft - (frame.offsetLeft + frame.offsetWidth);
+                var shift = (verticalGap - horizontalGap) / 2;
+
+                var insets = getViewportInsets();
+                var vBounds = getAvailVerticalBounds(insets, true);
+                var availHeight = vBounds.bottom - vBounds.top;
+                var lift = STAGGER_LIFT;
+                var unit;
+
+                applyStaggerTransforms(frame, featured, shift, lift);
+                void panels.offsetHeight;
+                unit = measureStaggerUnit(frame, featured);
+
+                while (unit.height > availHeight && lift > STAGGER_LIFT_MIN) {
+                    lift -= 12;
+                    applyStaggerTransforms(frame, featured, shift, lift);
+                    void panels.offsetHeight;
+                    unit = measureStaggerUnit(frame, featured);
+                }
+
+                var offsetX = (window.innerWidth / 2) - ((unit.left + unit.right) / 2);
+                var offsetY;
+                if (unit.height <= availHeight) {
+                    offsetY = ((vBounds.top + vBounds.bottom) / 2) - ((unit.top + unit.bottom) / 2);
+                    if (unit.top + offsetY < vBounds.top) offsetY = vBounds.top - unit.top;
+                    if (unit.bottom + offsetY > vBounds.bottom) offsetY = vBounds.bottom - unit.bottom;
+                } else {
+                    offsetY = vBounds.top - unit.top;
+                }
+
+                var archetypes = document.querySelector('.archetypes');
+                if (archetypes) {
+                    var ar = archetypes.getBoundingClientRect();
+                    var overlapPad = 18;
+                    var projectedBottom = unit.bottom + offsetY;
+                    var projectedRight = unit.right + offsetX;
+                    if (projectedRight + overlapPad > ar.left && projectedBottom + overlapPad > ar.top) {
+                        offsetY -= (projectedBottom + overlapPad) - ar.top;
+                    }
+                }
+
+                var edgePad = 16;
+                if (unit.left + offsetX < edgePad) offsetX += edgePad - (unit.left + offsetX);
+                if (unit.right + offsetX > window.innerWidth - edgePad) {
+                    offsetX -= (unit.right + offsetX) - (window.innerWidth - edgePad);
+                }
+                panels.style.transform = 'translate(' + offsetX + 'px, ' + offsetY + 'px)';
+            }
+
+            function layoutStackCenter(frame, featured) {
+                if (!main) return;
+                var rights = document.querySelector('.rights');
+                var insets = getViewportInsets();
+                var vBounds = getAvailVerticalBounds(insets, false);
+                var top = main.getBoundingClientRect().top;
+                var bottom = rights
+                    ? rights.getBoundingClientRect().bottom
+                    : featured.getBoundingClientRect().bottom;
+                var contentHeight = bottom - top;
+                var availHeight = vBounds.bottom - vBounds.top;
+                if (contentHeight > availHeight) return;
+                main.style.marginTop = (vBounds.top + (availHeight - contentHeight) / 2 - top) + 'px';
+            }
+
+            function updateHomeLink() {
+                if (!mq.matches || !line || !ringA || !ringB || !dotA || !dotB) return;
+                var frame = panels.querySelector('.frame');
+                var featured = panels.querySelector('.featured');
+                if (!frame || !featured) return;
+
+                var pr = panels.getBoundingClientRect();
+                var fr = frame.getBoundingClientRect();
+                var fe = featured.getBoundingClientRect();
+                var w = pr.width;
+                var h = pr.height;
+                if (w < 1 || h < 1) return;
+
+                var dotR = 4.5;
+                var gap = 3;
+
+                svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+                svg.setAttribute('width', w);
+                svg.setAttribute('height', h);
+
+                var x1 = fr.right - pr.left + dotR + gap;
+                var y1 = fr.top - pr.top + (fr.height / 2);
+                var x2 = fe.left - pr.left + (fe.width / 2);
+                var y2 = fe.top - pr.top - dotR - gap;
+
+                line.setAttribute('points', x1 + ',' + y1 + ' ' + x2 + ',' + y1 + ' ' + x2 + ',' + y2);
+                [ringA, dotA].forEach(function(el) {
+                    el.setAttribute('cx', x1);
+                    el.setAttribute('cy', y1);
+                });
+                [ringB, dotB].forEach(function(el) {
+                    el.setAttribute('cx', x2);
+                    el.setAttribute('cy', y2);
+                });
+            }
+
+            function syncHomeLayout() {
+                layoutHomeStagger();
+                updateHomeLink();
+                if (window.preventArchetypeOverlap) window.preventArchetypeOverlap();
+            }
+
+            window.updateHomeLink = syncHomeLayout;
+            window.addEventListener('resize', syncHomeLayout);
+            window.addEventListener('load', syncHomeLayout);
+            if (typeof mq.addEventListener === 'function') {
+                mq.addEventListener('change', syncHomeLayout);
+            } else if (typeof mq.addListener === 'function') {
+                mq.addListener(syncHomeLayout);
+            }
+            var frameEl = panels.querySelector('.frame');
+            var featuredEl = panels.querySelector('.featured');
+            var carouselEl = panels.querySelector('.quotes-carousel');
+            var rightsEl = document.querySelector('.rights');
+            if (window.ResizeObserver && frameEl) {
+                var linkRo = new ResizeObserver(function() { syncHomeLayout(); });
+                linkRo.observe(frameEl);
+                if (featuredEl) linkRo.observe(featuredEl);
+                if (carouselEl) linkRo.observe(carouselEl);
+                if (rightsEl) linkRo.observe(rightsEl);
+            }
+            requestAnimationFrame(syncHomeLayout);
+        })();
+
+        (function() {
+            var featured = document.querySelector('.featured');
+            var archetypes = document.querySelector('.archetypes');
+            if (!featured || !archetypes) return;
+
+            function preventArchetypeOverlap() {
+                if (window.matchMedia('(min-width: 1010px)').matches) return;
+                /* Stacked: the bottom-right cards are cleared by the body's
+                   bottom scroll-room padding, so the essay modal needs no
+                   extra margin. Clearing it keeps the rights footer tight
+                   beneath the modal. */
+                featured.style.marginBottom = '';
+            }
+
+            window.preventArchetypeOverlap = preventArchetypeOverlap;
+            window.addEventListener('resize', preventArchetypeOverlap);
+            window.addEventListener('load', preventArchetypeOverlap);
+            if (window.ResizeObserver) {
+                var overlapRo = new ResizeObserver(function() { preventArchetypeOverlap(); });
+                overlapRo.observe(featured);
+                overlapRo.observe(archetypes);
+            }
+            requestAnimationFrame(preventArchetypeOverlap);
+        })();
+
+        // (Rights footer is fixed to the bottom center of the viewport.)
 
         (function() {
             var wrap = document.querySelector('.egg-wrap');
@@ -1681,6 +2072,8 @@
                     if (statusTx) statusTx.textContent = ver.label;
                 }
             }
+            if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
+            if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
         })();
     </script>
 
