@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="subscribe-endpoint" content="https://briggskellogg-subscribe.briggskellogg.workers.dev">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google tag (gtag.js) -->
@@ -1066,6 +1068,15 @@
             background: var(--ink-12);
         }
 
+        .subscribe-status {
+            margin-top: 0.85rem;
+            font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+            font-size: 0.88rem;
+            line-height: 1.45;
+            color: var(--ink-50);
+        }
+        .subscribe-status.is-error { color: var(--instinct-ember); }
+
         /* ---------- Collapse to single column ---------- */
         @media (max-width: 880px) {
             .page { max-width: 720px; }
@@ -2054,5 +2065,6 @@
         })();
     </script>
 
+    <script src="/assets/subscribe.js?v=1"></script>
 </body>
 </html>

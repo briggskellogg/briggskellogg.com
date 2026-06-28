@@ -6,3 +6,6 @@ logo-gold-backup.png
 # canonical assets. Keep on disk locally in case we revisit, but don't ship
 # 5.5 MB of unused payload to the live site.
 assets/stickers/*.lottie.json
+
+worker/node_modules/
+tools/__pycache__/

@@ -1,0 +1,12 @@
+name = "briggskellogg-subscribe"
+main = "subscribe.js"
+compatibility_date = "2024-01-01"
+
+# Deploy with: cd worker && npx wrangler secret put BUTTONDOWN_API_KEY && npx wrangler deploy
+# Then set the workers.dev URL in each page's subscribe-endpoint meta tag.
+#
+# Optional custom-domain routes (requires Cloudflare DNS for briggskellogg.com):
+# routes = [
+#   { pattern = "briggskellogg.com/api/subscribe", zone_name = "briggskellogg.com" },
+#   { pattern = "www.briggskellogg.com/api/subscribe", zone_name = "briggskellogg.com" },
+# ]
