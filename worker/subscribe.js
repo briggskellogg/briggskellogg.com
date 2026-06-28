@@ -71,6 +71,7 @@ export default {
 
     const subscriberBody = {
       email_address: email,
+      type: "regular",
       tags: ["website", source],
     };
     if (clientIp) {
@@ -117,7 +118,7 @@ export default {
       return json(
         {
           ok: true,
-          message: "Check your inbox for a confirmation link to finish subscribing.",
+          message: "You're subscribed — the next essay will land in your inbox.",
         },
         200,
         origin
@@ -128,7 +129,7 @@ export default {
       return json(
         {
           ok: true,
-          message: "You're already on the list — check your inbox for the confirmation link if you haven't clicked it yet.",
+          message: "You're already subscribed.",
         },
         200,
         origin

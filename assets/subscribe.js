@@ -47,7 +47,7 @@
               form.reset();
               showStatus(
                 form,
-                data.message || "Check your inbox for a confirmation link.",
+                data.message || "You're subscribed — the next essay will land in your inbox.",
                 false
               );
               return;
