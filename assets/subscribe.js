@@ -2,7 +2,21 @@
   var meta = document.querySelector('meta[name="subscribe-endpoint"]');
   var ENDPOINT = meta && meta.content ? meta.content.trim() : "";
 
-  function showStatus(form, message, isError) {
+  var CONFIRM_COPY = {
+    success: {
+      kicker: "not spam · dispatch",
+      headline: "The next essay goes straight to you.",
+      detail:
+        "I write slowly and send rarely. When something lands in your inbox, it earned the trip.",
+    },
+    repeat: {
+      kicker: "already on the list",
+      headline: "You're in the queue.",
+      detail: "Nothing else to do. I'll write when there's something worth sending.",
+    },
+  };
+
+  function showStatus(form, options) {
     var status = form.querySelector("[data-subscribe-status]");
     if (!status) {
       status = document.createElement("p");
@@ -10,9 +24,28 @@
       status.setAttribute("data-subscribe-status", "");
       form.appendChild(status);
     }
+
     status.hidden = false;
-    status.textContent = message;
-    status.classList.toggle("is-error", !!isError);
+    status.classList.remove("is-error", "is-success", "is-repeat");
+
+    if (options.kind === "success" || options.kind === "repeat") {
+      var copy = CONFIRM_COPY[options.kind];
+      status.classList.add(options.kind === "repeat" ? "is-repeat" : "is-success");
+      status.innerHTML =
+        '<span class="subscribe-confirm-kicker">' +
+        copy.kicker +
+        "</span>" +
+        '<span class="subscribe-confirm-head">' +
+        copy.headline +
+        "</span>" +
+        '<span class="subscribe-confirm-detail">' +
+        copy.detail +
+        "</span>";
+      return;
+    }
+
+    status.textContent = options.message || "Something went wrong. Please try again.";
+    status.classList.add("is-error");
   }
 
   function wireForm(form) {
@@ -45,18 +78,18 @@
           }).then(function (data) {
             if (resp.ok && data.ok) {
               form.reset();
-              showStatus(
-                form,
-                data.message || "You're subscribed — the next essay will land in your inbox.",
-                false
-              );
+              var kind = data.repeat ? "repeat" : "success";
+              showStatus(form, { kind: kind });
               return;
             }
-            showStatus(form, data.error || "Something went wrong. Please try again.", true);
+            showStatus(form, {
+              kind: "error",
+              message: data.error || "Something went wrong. Please try again.",
+            });
           });
         })
         .catch(function () {
-          showStatus(form, "Network error — please try again.", true);
+          showStatus(form, { kind: "error", message: "Network error — please try again." });
         })
         .finally(function () {
           if (button) {

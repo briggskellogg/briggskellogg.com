@@ -1075,6 +1075,43 @@
             line-height: 1.45;
             color: var(--ink-50);
         }
+        .subscribe-status.is-success,
+        .subscribe-status.is-repeat {
+            margin-top: 1rem;
+            padding-top: 0.95rem;
+            border-top: 1px solid var(--ink-12);
+            display: grid;
+            gap: 0.35rem;
+            justify-items: center;
+            text-align: center;
+        }
+        .subscribe-status .subscribe-confirm-kicker {
+            display: block;
+            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-size: 0.52rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--logic-gold);
+        }
+        .subscribe-status.is-repeat .subscribe-confirm-kicker {
+            color: var(--ink-50);
+        }
+        .subscribe-status .subscribe-confirm-head {
+            display: block;
+            font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+            font-size: 0.98rem;
+            line-height: 1.35;
+            color: var(--ink);
+        }
+        .subscribe-status .subscribe-confirm-detail {
+            display: block;
+            max-width: 26em;
+            font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            font-style: italic;
+            color: var(--ink-50);
+        }
         .subscribe-status.is-error { color: var(--instinct-ember); }
 
         /* ---------- Collapse to single column ---------- */
@@ -2065,6 +2102,6 @@
         })();
     </script>
 
-    <script src="/assets/subscribe.js?v=1"></script>
+    <script src="/assets/subscribe.js?v=2"></script>
 </body>
 </html>

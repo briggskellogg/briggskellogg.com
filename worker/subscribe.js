@@ -118,7 +118,7 @@ export default {
       return json(
         {
           ok: true,
-          message: "You're subscribed — the next essay will land in your inbox.",
+          repeat: false,
         },
         200,
         origin
@@ -129,7 +129,7 @@ export default {
       return json(
         {
           ok: true,
-          message: "You're already subscribed.",
+          repeat: true,
         },
         200,
         origin
