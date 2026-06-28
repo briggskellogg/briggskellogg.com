@@ -442,16 +442,6 @@
             color: var(--ink-50);
         }
 
-        .essay-subtitle {
-            font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
-            font-style: italic;
-            font-size: 1.05rem;
-            line-height: 1.45;
-            color: var(--ink-50);
-            max-width: 30em;
-            margin: -0.1rem auto 0.55rem;
-        }
-
         /* ---------- Two-column layout ---------- */
         .essay-layout {
             position: relative;
@@ -950,15 +940,6 @@
             line-height: 1.35;
             color: var(--ink);
         }
-        .subscribe-status .subscribe-confirm-detail {
-            display: block;
-            max-width: 26em;
-            font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
-            font-size: 0.82rem;
-            line-height: 1.5;
-            font-style: italic;
-            color: var(--ink-50);
-        }
         .subscribe-status.is-error { color: var(--instinct-ember); }
 
         /* ---------- Collapse to single column ---------- */
@@ -1018,7 +999,6 @@
             .frame-status .status-dot { width: 5px; height: 5px; }
             .essay-title { font-size: 1.5rem; }
             .essay-meta { font-size: 0.52rem; }
-            .essay-subtitle { font-size: 0.92rem; line-height: 1.4; }
             .essay-body { font-size: 0.95rem; line-height: 1.75; }
             .essay-body p { margin-bottom: 1rem; }
             .footnote { font-size: 0.82rem; }
@@ -1365,7 +1345,6 @@
                         <img class="essay-vibe-img" id="essay-playlist-blob-img" src="" alt="">
                     </a>
                 </div>
-                <p class="essay-subtitle" data-essay-subtitle>On being flagged as AI for talking the way I talk &mdash; and why clarity is kindness.</p>
                 <p class="essay-meta">november 2025</p>
             </header>
 
@@ -1621,10 +1600,6 @@
             var badgeEl = document.querySelector('[data-frame-status]');
             var badgeTx = document.querySelector('[data-frame-status-text]');
 
-            var subEl = document.querySelector('[data-essay-subtitle]');
-            if (subEl && entry.subtitle) {
-                subEl.innerHTML = entry.subtitle;
-            }
 
             if (badgeEl && entry.status) {
                 var ver = (window.formatDispatchVersion || function(s){ return { label: s, short: s }; })(entry.status);
@@ -2054,6 +2029,6 @@
         })();
     </script>
 
-    <script src="/assets/subscribe.js?v=2"></script>
+    <script src="/assets/subscribe.js?v=3"></script>
 </body>
 </html>

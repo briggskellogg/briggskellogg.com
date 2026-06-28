@@ -3,7 +3,6 @@
 //   id       — slug matched against <body data-essay-id="...">
 //   number   — 1-based dispatch number (used for "no. 01" display)
 //   title    — human-readable title (curly quotes ok)
-//   subtitle — optional italic deck line under the title on the essay page
 //   date     — initial publication month/year ("may 2026")
 //   url      — path on the site
 //   image    — root-relative lead photo for preview cards
@@ -50,7 +49,6 @@ window.DISPATCHES = [
         id: 'selection',
         number: 3,
         title: 'Selection',
-        subtitle: 'What we are really deciding when we decide who to hire.',
         date: 'june 2026',
         url: '/essays/selection/',
         image: '/pexels-cottonbro-8721341.png',
@@ -65,7 +63,6 @@ window.DISPATCHES = [
         id: 'the-students-are-right',
         number: 2,
         title: 'The Students Are Right',
-        subtitle: 'On booing AI at commencement \u2014 and the honesty graduates are owed.',
         date: 'may 2026',
         url: '/essays/the-students-are-right/',
         image: '/pexels-tara-winstead-8849288.jpg',
@@ -80,7 +77,6 @@ window.DISPATCHES = [
         id: 'americans-europeans-and-autism-oh-my',
         number: 1,
         title: 'Americans, Europeans, and Autism, Oh My!',
-        subtitle: 'On being flagged as AI for talking the way I talk \u2014 and why clarity is kindness.',
         date: 'november 2025',
         url: '/essays/americans-europeans-and-autism-oh-my/',
         image: '/pexels-anna-shevchuk-11507617.png',

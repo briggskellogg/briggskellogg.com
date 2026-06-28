@@ -4,15 +4,12 @@
 
   var CONFIRM_COPY = {
     success: {
-      kicker: "not spam · dispatch",
-      headline: "The next essay goes straight to you.",
-      detail:
-        "I write slowly and send rarely. When something lands in your inbox, it earned the trip.",
+      kicker: "confirmed",
+      headline: "You're on the list.",
     },
     repeat: {
-      kicker: "already on the list",
-      headline: "You're in the queue.",
-      detail: "Nothing else to do. I'll write when there's something worth sending.",
+      kicker: "already subscribed",
+      headline: "Nothing to do.",
     },
   };
 
@@ -37,9 +34,6 @@
         "</span>" +
         '<span class="subscribe-confirm-head">' +
         copy.headline +
-        "</span>" +
-        '<span class="subscribe-confirm-detail">' +
-        copy.detail +
         "</span>";
       return;
     }
