@@ -16,7 +16,7 @@
 
     <title>Americans, Europeans, and Autism, Oh My! &mdash; Briggs Kellogg</title>
     <meta name="description" content="A short essay by Briggs Kellogg on autistic directness, American professional communication norms, and why clarity is kindness.">
-    <meta name="theme-color" content="#E9DFC9">
+    <meta name="theme-color" content="#F4F0E4">
     <meta property="og:title" content="Americans, Europeans, and Autism, Oh My! &mdash; Briggs Kellogg">
     <meta property="og:description" content="A short essay on autistic directness, American professional communication norms, and why clarity is kindness.">
     <meta property="og:image" content="https://briggskellogg.com/assets/og/americans-europeans-and-autism-oh-my.jpg">
@@ -31,7 +31,7 @@
     <link rel="apple-touch-icon" href="/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/design-system.css?v=1">
     <style>
         * {
             margin: 0;
@@ -55,8 +55,8 @@
             --purple:   #6E5B7B;
 
             /* applied surface = warm parchment */
-            --bg:        #E9DFC9;
-            --bg-raised: #F3ECDB;
+            --bg:        #F4F0E4;
+            --bg-raised: #FAF8F2;
 
             /* near-black warm-brown ink ramp on parchment */
             --ink:      #2A2018;
@@ -69,13 +69,13 @@
             --silver:   #B6BCC2;
 
             /* silver chrome ramp — deepened for contrast on parchment (writing metal) */
-            --border:    #717D85;
-            --border-80: rgba(113, 125, 133, 1.0);
-            --border-50: rgba(113, 125, 133, 0.60);
-            --border-25: rgba(113, 125, 133, 0.36);
-            --border-20: rgba(113, 125, 133, 0.28);
-            --border-12: rgba(113, 125, 133, 0.16);
-            --border-30: rgba(113, 125, 133, 0.42);
+            --border:    #9DA3AB;
+            --border-80: rgba(157, 163, 171, 1.0);
+            --border-50: rgba(157, 163, 171, 0.60);
+            --border-25: rgba(157, 163, 171, 0.36);
+            --border-20: rgba(157, 163, 171, 0.28);
+            --border-12: rgba(157, 163, 171, 0.16);
+            --border-30: rgba(157, 163, 171, 0.42);
 
             /* archetype accents — the footnote-coding system. Logic reads
                as its black primary against parchment. */
@@ -91,7 +91,7 @@
             --dot-color: rgba(42, 32, 24, 0.06);
 
             /* reading light — cool silver moonlight on parchment */
-            --light-glow:    rgba(113, 125, 133, 0.8);
+            --light-glow:    rgba(157, 163, 171, 0.8);
         }
         html {
             background-color: var(--bg);
@@ -307,7 +307,7 @@
            status both come from dispatches.js so editing the manifest
            updates the rendered page automatically. */
         .essay-number {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.58rem;
             letter-spacing: 0.32em;
             text-transform: uppercase;
@@ -340,7 +340,7 @@
                dot by ~2.4x) clears the text by a comfortable margin
                instead of brushing the first letter. */
             gap: 1em;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.5rem;
             letter-spacing: 0.26em;
             text-transform: uppercase;
@@ -393,7 +393,7 @@
             .archetype-img { animation: none; }
         }
         .essay-title {
-            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-family: var(--font-display);
             font-style: italic;
             font-weight: normal;
             font-size: 1.95rem;
@@ -435,7 +435,7 @@
             50%      { transform: translateY(-7px) rotate(-1.5deg); }
         }
         .essay-meta {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.6rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -450,7 +450,7 @@
             gap: 44px;
         }
         .essay-body {
-            font-family: 'Newsreader', 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-family: var(--font-body);
             font-size: 1.075rem;
             line-height: 1.7;
             color: var(--ink-80);
@@ -465,7 +465,7 @@
         .essay-body .sep {
             text-align: center;
             color: var(--ink-20);
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.7rem;
             letter-spacing: 0.5em;
             margin: 1.5rem 0;
@@ -508,7 +508,7 @@
         }
         .essay-figure figcaption {
             margin-top: 0.8rem;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.55rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
@@ -517,7 +517,7 @@
 
         /* ---------- Footnote references in body ---------- */
         .fnref {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.62em;
             vertical-align: super;
             line-height: 0;
@@ -557,7 +557,7 @@
             /* Marker column: dot (5px) + gap (6px) + 2-digit number (~14px). */
             grid-template-columns: 30px 1fr;
             column-gap: 12px;
-            font-family: 'Newsreader', 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-family: var(--font-body);
             font-size: 0.875rem;
             line-height: 1.68;
             color: var(--ink-80);
@@ -569,7 +569,7 @@
         }
         .footnote em { font-style: italic; color: var(--ink); }
         .fn-marker {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.6rem;
             color: var(--ink-50);
             text-decoration: none;
@@ -670,7 +670,7 @@
             top: 1.15rem;
             left: 1.25rem;
             z-index: 3;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.55rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -698,7 +698,7 @@
         .essay-newsletter .nc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
         .essay-newsletter .nc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
         .newsletter-head {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.62rem;
             letter-spacing: 0.24em;
             text-transform: uppercase;
@@ -718,7 +718,7 @@
             margin-top: 2.5rem;
             padding-top: 1.4rem;
             border-top: 1px solid var(--ink-12);
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.6rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -740,7 +740,7 @@
             color: var(--ink-25);
         }
         .essay-nav .essay-nav-title {
-            font-family: 'IM Fell English', Georgia, serif;
+            font-family: var(--font-display);
             font-style: italic;
             text-transform: none;
             letter-spacing: 0.01em;
@@ -788,7 +788,7 @@
             margin: 2.25rem auto 0;
             padding: 0.55rem 1.1rem;
             text-align: center;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.5rem;
             letter-spacing: 0.24em;
             text-transform: uppercase;
@@ -834,10 +834,10 @@
             margin-left: -120px;
             background: radial-gradient(
                 circle closest-side at center,
-                rgba(113, 125, 133, 0.30) 0%,
-                rgba(113, 125, 133, 0.20) 18%,
-                rgba(113, 125, 133, 0.11) 38%,
-                rgba(113, 125, 133, 0.05) 62%,
+                rgba(157, 163, 171, 0.30) 0%,
+                rgba(157, 163, 171, 0.20) 18%,
+                rgba(157, 163, 171, 0.11) 38%,
+                rgba(157, 163, 171, 0.05) 62%,
                 transparent 82%
             );
             mix-blend-mode: multiply;
@@ -866,7 +866,7 @@
         }
         .essay-subscribe .subscribe-label {
             display: block;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.58rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -880,7 +880,7 @@
         }
         .essay-subscribe .subscribe-row:focus-within { border-color: var(--border-50); }
         .essay-subscribe input[type="email"] {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.72rem;
             background: transparent;
             border: none;
@@ -891,7 +891,7 @@
         }
         .essay-subscribe input[type="email"]::placeholder { color: var(--ink-20); }
         .essay-subscribe button {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.75rem;
             background: transparent;
             border: none;
@@ -908,60 +908,38 @@
 
         .subscribe-status {
             margin-top: 0.85rem;
-            font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+            font-family: var(--font-body);
             font-size: 0.82rem;
             line-height: 1.45;
             color: var(--instinct-ember);
         }
 
-        .essay-newsletter.is-confirmed {
-            margin-bottom: 2.4rem;
+        .essay-subscribe.is-confirmed .subscribe-label {
+            color: var(--ink-25);
         }
-        .subscribe-confirmed {
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translate(-50%, calc(100% - 1px));
-            padding: 0.52rem 1.15rem 0.58rem;
-            background: var(--bg);
-            border: 1px solid var(--ink-12);
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
-            font-size: 0.52rem;
-            letter-spacing: 0.24em;
-            text-transform: lowercase;
-            color: var(--ink-50);
-            opacity: 0;
+        .essay-subscribe.is-confirmed .subscribe-row {
+            border-color: var(--ink-12);
+        }
+        .essay-subscribe.is-confirmed .subscribe-row:focus-within {
+            border-color: var(--ink-12);
+        }
+        .essay-subscribe.is-confirmed input[type="email"] {
+            color: var(--ink-25);
+            cursor: not-allowed;
+        }
+        .essay-subscribe.is-confirmed input[type="email"]::placeholder {
+            color: var(--ink-12);
+        }
+        .essay-subscribe.is-confirmed button,
+        .essay-subscribe.is-confirmed button:disabled {
+            color: var(--ink-25);
+            background: var(--ink-06);
+            cursor: default;
             pointer-events: none;
         }
-        .subscribe-confirmed.is-visible {
-            animation: subscribeConfirmedIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        .subscribe-confirmed .sc {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            pointer-events: none;
-        }
-        .subscribe-confirmed .sc-tl { top: -1px; left: -1px; border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
-        .subscribe-confirmed .sc-tr { top: -1px; right: -1px; border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
-        .subscribe-confirmed .sc-bl { bottom: -1px; left: -1px; border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
-        .subscribe-confirmed .sc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
-        @keyframes subscribeConfirmedIn {
-            from {
-                opacity: 0;
-                transform: translate(-50%, calc(100% + 6px));
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, calc(100% - 1px));
-            }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .subscribe-confirmed.is-visible {
-                animation: none;
-                opacity: 1;
-                transform: translate(-50%, calc(100% - 1px));
-            }
+        .essay-subscribe.is-confirmed button:hover {
+            color: var(--ink-25);
+            background: var(--ink-06);
         }
 
         /* ---------- Collapse to single column ---------- */
@@ -986,7 +964,7 @@
             .footnote:last-child { margin-bottom: 0; }
             .fn-back {
                 display: inline-block;
-                font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+                font-family: var(--font-mono);
                 font-size: 0.7rem;
                 color: var(--ink-50);
                 text-decoration: none;
@@ -1112,7 +1090,7 @@
             left: 50%;
             bottom: calc(100% + 0.45rem);
             transform: translateX(-50%);
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.5rem;
             letter-spacing: 0.12em;
             text-transform: lowercase;
@@ -1153,7 +1131,7 @@
         /* ---------- Easter egg ---------- */
 
         .version-badge {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.52rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
@@ -1268,7 +1246,7 @@
         }
         .egg-split .egg-shell { animation: eggBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
         .catalogue-id {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.6rem;
             letter-spacing: 0.12em;
             color: var(--ink-50);
@@ -1375,7 +1353,7 @@
                 <span class="fc fc-tr"></span>
                 <span class="fc fc-bl"></span>
                 <span class="fc fc-br"></span>
-                <img src="/pexels-anna-shevchuk-11507617.png" alt="Two people sitting close together on a wooden pallet at the shoreline, talking as they look out at a calm sea at dusk." loading="lazy">
+                <img src="/pexels-anna-shevchuk-11507617.png" alt="Two people sitting close together on a wooden pallet at the shoreline, talking as they look out at a calm sea at dusk." fetchpriority="high" decoding="async">
                 <figcaption>Photo by Anna Shevchuk</figcaption>
             </figure>
 
@@ -1546,15 +1524,15 @@
 <div class="archetypes-row">
             <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
                 <span class="archetype-label" aria-hidden="true">github</span>
-                <img src="/assets/archetypes/instinct.png?v=2" alt="" class="archetype-img">
+                <img src="/assets/archetypes/instinct.webp?v=4" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
                 <span class="archetype-label" aria-hidden="true">linkedin</span>
-                <img src="/assets/archetypes/logic.png?v=2" alt="" class="archetype-img">
+                <img src="/assets/archetypes/logic.webp?v=4" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
                 <span class="archetype-label" aria-hidden="true">x</span>
-                <img src="/assets/archetypes/psyche.png?v=2" alt="" class="archetype-img">
+                <img src="/assets/archetypes/psyche.webp?v=4" alt="" class="archetype-img">
             </a>
         </div>
     </nav>
@@ -1593,464 +1571,11 @@
             6ceuj503oo9sd<br>
             ...-w4-s2-v16</a>
     </div>
+    <script src="/dispatches.js?v=4"></script>
+    <script src="/assets/dispatch-ui.js?v=1" defer></script>
+    <script src="/assets/site-chrome.js?v=1" defer></script>
+    <script src="/assets/footnotes.js?v=1" defer></script>
+    <script src="/assets/subscribe.js?v=7"></script>
 
-    <script src="/dispatches.js?v=3"></script>
-    <script>
-        // ---------- Dispatch number + status ----------
-        // Reads the matching entry from window.DISPATCHES (loaded above) and
-        // populates the "no. NN · dispatch · STATUS" line over the title.
-        // Status values supported: 'draft', 'patch-N', 'finalized'.
-        // Editing dispatches.js updates the rendered page automatically —
-        // no need to touch this file when bumping a draft to patch-1, etc.
-        (function() {
-            var list = (window.DISPATCHES || []);
-            var id = document.body.dataset.essayId;
-            if (!id) return;
-            var entry = null;
-            for (var i = 0; i < list.length; i++) {
-                if (list[i].id === id) { entry = list[i]; break; }
-            }
-            if (!entry) return;
-
-            var numEl = document.querySelector('.essay-number .num');
-            if (numEl && typeof entry.number === 'number') {
-                var n = entry.number;
-                numEl.textContent = 'no. ' + (n < 10 ? '0' + n : n);
-            }
-
-            // Top-right frame badge: pulsing dot + status text.
-            var badgeEl = document.querySelector('[data-frame-status]');
-            var badgeTx = document.querySelector('[data-frame-status-text]');
-
-
-            if (badgeEl && entry.status) {
-                var ver = (window.formatDispatchVersion || function(s){ return { label: s, short: s }; })(entry.status);
-                if (badgeTx) badgeTx.textContent = ver.label;
-                badgeEl.setAttribute('data-status', ver.slug || entry.status);
-                badgeEl.hidden = false;
-            }
-            var blobLink = document.getElementById('essay-playlist-blob');
-            var blobImg = document.getElementById('essay-playlist-blob-img');
-            var blobFiles = {
-                logic: '/assets/blobs/build-logic-blob.png',
-                psyche: '/assets/blobs/nest-psyche-blob.png',
-                instinct: '/assets/blobs/slash-instinct-blob.png'
-            };
-            var blobKinds = { logic: 'build', psyche: 'nest', instinct: 'slash' };
-            if (blobLink && entry.playlist && entry.playlist.url) {
-                var arch = entry.playlist.archetype || 'logic';
-                var kind = blobKinds[arch] || 'build';
-                blobLink.href = entry.playlist.url;
-                if (blobImg) {
-                    blobImg.src = blobFiles[arch] || blobFiles.logic;
-                    blobImg.alt = kind + ' playlist';
-                }
-                blobLink.setAttribute('aria-label', kind + ' playlist');
-                blobLink.setAttribute('title', kind + ' playlist');
-                blobLink.hidden = false;
-            }
-        })();
-
-        // ---------- Essay nav (prev/next dispatches) ----------
-        (function() {
-            var list = (window.DISPATCHES || []).slice();
-            var nav = document.getElementById('essay-nav');
-            if (!nav) return;
-            function collapse() { nav.classList.add('is-empty'); }
-            if (!list.length) { collapse(); return; }
-            var id = document.body.dataset.essayId;
-            var idx = -1;
-            for (var i = 0; i < list.length; i++) {
-                if (list[i].id === id) { idx = i; break; }
-            }
-            if (idx < 0) { collapse(); return; }
-            // Array is most-recent first, so:
-            // older  -> idx + 1
-            // newer  -> idx - 1
-            var older = list[idx + 1] || null;
-            var newer = list[idx - 1] || null;
-
-            var prevSlot = nav.querySelector('.essay-nav-prev');
-            var nextSlot = nav.querySelector('.essay-nav-next');
-
-            function renderSlot(slot, dispatch, labelText) {
-                if (dispatch) {
-                    var a = document.createElement('a');
-                    a.className = slot.className.replace('essay-nav-empty', '');
-                    a.href = dispatch.url;
-                    a.innerHTML = '<span class="essay-nav-label">' + labelText + '</span>' +
-                                  '<span class="essay-nav-title">' + dispatch.title + '</span>';
-                    slot.parentNode.replaceChild(a, slot);
-                }
-            }
-            renderSlot(prevSlot, older, '&larr; older');
-            renderSlot(nextSlot, newer, 'newer &rarr;');
-
-            // If neither slot turned into a real link, collapse the
-            // whole nav row (border + spacing) so the essay ends with
-            // the subscribe form, not an empty horizontal rule.
-            if (!nav.querySelector('a')) {
-                nav.classList.add('is-empty');
-            }
-        })();
-
-        // ---------- Reading light (cursor follower) ----------
-        (function() {
-            var light = document.querySelector('.reading-light');
-            if (!light) return;
-            if (window.matchMedia('(hover: none)').matches) return;
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-            var targetX = window.innerWidth / 2;
-            var targetY = window.innerHeight / 2;
-            var currentX = targetX;
-            var currentY = targetY;
-            var rafId = null;
-            var active = false;
-
-            function step() {
-                currentX += (targetX - currentX) * 0.22;
-                currentY += (targetY - currentY) * 0.22;
-                light.style.setProperty('--mx', currentX + 'px');
-                light.style.setProperty('--my', currentY + 'px');
-                if (Math.abs(targetX - currentX) > 0.4 || Math.abs(targetY - currentY) > 0.4) {
-                    rafId = requestAnimationFrame(step);
-                } else {
-                    rafId = null;
-                }
-            }
-
-            document.addEventListener('mousemove', function(e) {
-                targetX = e.clientX;
-                targetY = e.clientY;
-                if (!active) {
-                    light.classList.add('active');
-                    active = true;
-                }
-                if (!rafId) rafId = requestAnimationFrame(step);
-            }, { passive: true });
-
-            document.addEventListener('mouseleave', function() {
-                light.classList.remove('active');
-                active = false;
-            });
-        })();
-
-        (function() {
-            var SVG_NS = 'http://www.w3.org/2000/svg';
-            var layout = document.querySelector('.essay-layout');
-            var body = document.querySelector('.essay-body');
-            var notes = document.querySelector('.essay-notes');
-            var svg = document.querySelector('.essay-wires');
-            var refs = Array.prototype.slice.call(document.querySelectorAll('.fnref'));
-            var footnotes = Array.prototype.slice.call(document.querySelectorAll('.footnote'));
-            var stackedMQ = window.matchMedia('(max-width: 880px)');
-            var clearTimer = null;
-
-            function isStacked() {
-                return stackedMQ.matches;
-            }
-
-            function snap20(v) {
-                return Math.round(v / 20) * 20;
-            }
-
-            function layoutFootnotes() {
-                if (isStacked()) {
-                    notes.style.minHeight = '';
-                    footnotes.forEach(function(f) { f.style.top = ''; });
-                    sizeSvg();
-                    return;
-                }
-                var containerRect = notes.getBoundingClientRect();
-                var items = refs.map(function(ref) {
-                    var fnId = ref.dataset.fn;
-                    var note = document.getElementById('fn-' + fnId);
-                    if (!note) return null;
-                    var refRect = ref.getBoundingClientRect();
-                    var targetY = Math.max(0, Math.round(refRect.top - containerRect.top - 4));
-                    return { note: note, targetY: targetY };
-                }).filter(Boolean);
-
-                items.sort(function(a, b) { return a.targetY - b.targetY; });
-
-                var lastBottom = 0;
-                var gap = 16;
-                items.forEach(function(item) {
-                    var y = Math.max(item.targetY, lastBottom + gap);
-                    item.note.style.top = y + 'px';
-                    lastBottom = y + item.note.offsetHeight;
-                });
-                notes.style.minHeight = lastBottom + 'px';
-                sizeSvg();
-            }
-
-            function sizeSvg() {
-                var w = layout.clientWidth;
-                var h = layout.clientHeight;
-                svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-                svg.setAttribute('width', w);
-                svg.setAttribute('height', h);
-            }
-
-            function clearWires() {
-                while (svg.firstChild) svg.removeChild(svg.firstChild);
-            }
-
-            function createSvg(tag, attrs) {
-                var el = document.createElementNS(SVG_NS, tag);
-                Object.keys(attrs).forEach(function(k) { el.setAttribute(k, attrs[k]); });
-                return el;
-            }
-
-            // The shared gutter X used to live here (so every wire bent at
-            // the same column rail). The down-then-right elbow doesn't need
-            // a shared bend X — each wire pivots at its own ref's right edge
-            // — so the gutter computation has been retired.
-
-            function archetypeDotFill(archetype) {
-                var vars = getComputedStyle(document.documentElement);
-                if (archetype === 'logic') return vars.getPropertyValue('--logic').trim();
-                if (archetype === 'instinct') return vars.getPropertyValue('--instinct').trim();
-                if (archetype === 'psyche') return vars.getPropertyValue('--psyche').trim();
-                return null;
-            }
-
-            var ARCHETYPE_WIRE = {
-                logic:    { stroke: 'rgba(42, 32, 24, 0.34)' },
-                instinct: { stroke: 'rgba(42, 32, 24, 0.34)', dot: '#AD7C84' },
-                psyche:   { stroke: 'rgba(42, 32, 24, 0.34)', dot: '#658DA4' }
-            };
-
-            function drawWire(ref, note) {
-                sizeSvg();
-                clearWires();
-                if (isStacked()) return;
-                var archetype = ref.getAttribute('data-archetype');
-                var palette = ARCHETYPE_WIRE[archetype] || null;
-
-                var layoutRect = layout.getBoundingClientRect();
-                var refRect = ref.getBoundingClientRect();
-                var noteRect = note.getBoundingClientRect();
-
-                // WIRE SHAPE — one consistent, natural curve for every
-                // footnote regardless of whether the note sits above, level
-                // with, or below its number. The wire emerges horizontally
-                // from the number's right edge and arrives horizontally at
-                // the footnote's marker dot, easing through a single cubic
-                // Bezier whose control points share the start/end Y values
-                // (so both tangents are horizontal). No bottom-drop variant
-                // — a vertical drop out of the digit read as an odd elbow.
-                //
-                // The endpoint lands on the *actual* archetype dot at the
-                // start of the footnote (the colored pip before the number),
-                // so the wire visibly plugs into it. The connecting wire
-                // itself stays neutral (ink, not archetype) — only the
-                // footnote-side dot + the footnote's left rule carry color.
-
-                var refMidY    = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
-                var refRightX  = (refRect.right - layoutRect.left) + 1;
-
-                // Target the marker dot: it's the 5px pip at the very start
-                // of the footnote's marker column. Measure the marker box
-                // and aim at the pip's center.
-                var marker = note.querySelector('.fn-marker');
-                var dotRect = (marker || note).getBoundingClientRect();
-                var x2 = (dotRect.left - layoutRect.left) + 2.5;
-                var y2 = (dotRect.top - layoutRect.top) +
-                         Math.min(dotRect.height / 2, 8);
-
-                var x1 = refRightX;
-                var y1 = refMidY;
-                // Clamp the horizontal control handles so the curve always
-                // leaves the number and arrives at the footnote dot
-                // horizontally, and never overshoots past x2 (which would
-                // curl the wire in front of the footnote's left rule). The
-                // handle is a fraction of the horizontal gap, capped to a
-                // max, and collapsed to the midpoint when the gap is too
-                // narrow to fit two handles. Both control x's stay within
-                // [x1, x2], so the curve's x can never exceed the endpoint.
-                var dx = x2 - x1;
-                var handle = Math.max(24, Math.min(dx * 0.5, 90));
-                var c1x = x1 + handle;
-                var c2x = x2 - handle;
-                if (c2x < c1x) {
-                    var mid = x1 + dx * 0.5;
-                    c1x = mid;
-                    c2x = mid;
-                }
-                var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' C ' + c1x.toFixed(1) + ' ' + y1.toFixed(1) +
-                        ' ' + c2x.toFixed(1) + ' ' + y2.toFixed(1) +
-                        ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
-
-                // Neutral wire — endpoint dot carries archetype color.
-                var path = createSvg('path', { d: d, 'class': 'wire-path' });
-                svg.appendChild(path);
-
-                var len = path.getTotalLength();
-                path.style.strokeDasharray = len;
-                path.style.strokeDashoffset = len;
-                path.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1)';
-                path.getBoundingClientRect();
-                path.style.strokeDashoffset = 0;
-
-                // Body-side endpoint stays neutral; footnote-side endpoint
-                // takes the archetype color so it reads as one dot with the
-                // footnote's own pip it lands on.
-                var endpoints = [
-                    { x: x1, y: y1, delay: 0,   color: null },
-                    { x: x2, y: y2, delay: 240, color: archetypeDotFill(archetype) }
-                ];
-                endpoints.forEach(function(p) {
-                    var c = createSvg('circle', {
-                        cx: p.x.toFixed(1),
-                        cy: p.y.toFixed(1),
-                        r: 2.5,
-                        'class': 'wire-dot'
-                    });
-                    if (p.color) c.style.fill = p.color;
-                    c.style.opacity = 0;
-                    svg.appendChild(c);
-                    setTimeout(function() {
-                        c.classList.add('pulse');
-                    }, p.delay);
-                });
-            }
-
-            function activate(fnId) {
-                if (isStacked()) return;
-                if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
-                var ref = document.querySelector('.fnref[data-fn="' + fnId + '"]');
-                var note = document.getElementById('fn-' + fnId);
-                if (!ref || !note) return;
-                refs.forEach(function(r) { r.classList.remove('linked'); });
-                footnotes.forEach(function(f) { f.classList.remove('linked'); });
-                ref.classList.add('linked');
-                note.classList.add('linked');
-                drawWire(ref, note);
-            }
-
-            function deactivate() {
-                if (isStacked()) return;
-                if (clearTimer) clearTimeout(clearTimer);
-                clearTimer = setTimeout(function() {
-                    refs.forEach(function(r) { r.classList.remove('linked'); });
-                    footnotes.forEach(function(f) { f.classList.remove('linked'); });
-                    clearWires();
-                    clearTimer = null;
-                }, 90);
-            }
-
-            function setupHover() {
-                refs.concat(footnotes).forEach(function(el) {
-                    var fnId = el.dataset.fn;
-                    el.addEventListener('mouseenter', function() { activate(fnId); });
-                    el.addEventListener('mouseleave', deactivate);
-                    el.addEventListener('focusin', function() { activate(fnId); });
-                    el.addEventListener('focusout', deactivate);
-                });
-            }
-
-            var resizeTimer = null;
-            function onResize() {
-                if (resizeTimer) clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(function() {
-                    layoutFootnotes();
-                    clearWires();
-                }, 80);
-            }
-
-            function init() {
-                layoutFootnotes();
-                clearWires();
-                setupHover();
-                window.addEventListener('resize', onResize);
-                if (stackedMQ.addEventListener) {
-                    stackedMQ.addEventListener('change', onResize);
-                } else if (stackedMQ.addListener) {
-                    stackedMQ.addListener(onResize);
-                }
-            }
-
-            if (document.readyState === 'complete') {
-                init();
-            } else {
-                window.addEventListener('load', init);
-            }
-            // Re-layout once webfonts are loaded (font metrics shift positions)
-            if (document.fonts && document.fonts.ready) {
-                document.fonts.ready.then(function() {
-                    layoutFootnotes();
-                    clearWires();
-                });
-            }
-        })();
-
-        // ---------- Easter egg (matches the landing) ----------
-        (function() {
-            var wrap = document.querySelector('.egg-wrap');
-            var egg = document.querySelector('.easter-egg');
-            var shell = document.querySelector('.egg-shell');
-            var cracks = document.querySelectorAll('.crack');
-            var catalogueId = document.querySelector('.catalogue-id');
-            if (!wrap || !egg || !shell || !catalogueId) return;
-            var taps = 0;
-            var shakeClasses = ['egg-shake-1', 'egg-shake-2', 'egg-shake-3'];
-
-            egg.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (taps >= 3) return;
-                taps++;
-
-                shakeClasses.forEach(function(c) { shell.classList.remove(c); });
-                void shell.offsetWidth;
-                shell.classList.add(shakeClasses[taps - 1]);
-
-                for (var i = 0; i < taps; i++) {
-                    cracks[i].classList.add('visible');
-                }
-
-                if (taps >= 3) {
-                    var startW = wrap.offsetWidth;
-                    var startH = wrap.offsetHeight;
-                    wrap.style.width = startW + 'px';
-                    wrap.style.height = startH + 'px';
-                    wrap.style.overflow = 'hidden';
-
-                    setTimeout(function() {
-                        shell.classList.add('egg-split');
-
-                        setTimeout(function() {
-                            egg.style.position = 'absolute';
-                            egg.style.visibility = 'hidden';
-                            catalogueId.classList.add('measured');
-
-                            void wrap.offsetWidth;
-                            var targetW = catalogueId.offsetWidth + parseFloat(getComputedStyle(wrap).paddingLeft) * 2;
-                            var targetH = catalogueId.offsetHeight + parseFloat(getComputedStyle(wrap).paddingTop) * 2;
-
-                            requestAnimationFrame(function() {
-                                wrap.style.width = targetW + 'px';
-                                wrap.style.height = targetH + 'px';
-
-                                setTimeout(function() {
-                                    egg.style.display = 'none';
-                                    catalogueId.classList.add('revealed');
-                                    wrap.style.overflow = '';
-                                    setTimeout(function() {
-                                        wrap.style.width = '';
-                                        wrap.style.height = '';
-                                    }, 100);
-                                }, 700);
-                            });
-                        }, 600);
-                    }, 500);
-                }
-            });
-        })();
-    </script>
-
-    <script src="/assets/subscribe.js?v=4"></script>
 </body>
 </html>

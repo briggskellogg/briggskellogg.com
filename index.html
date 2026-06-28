@@ -17,7 +17,7 @@
     <link rel="apple-touch-icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/design-system.css?v=1">
     <style>
         * {
             margin: 0;
@@ -197,7 +197,7 @@
             left: 50%;
             bottom: calc(100% + 0.45rem);
             transform: translateX(-50%);
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.5rem;
             letter-spacing: 0.12em;
             text-transform: lowercase;
@@ -237,7 +237,7 @@
         }
 
         .version-badge {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.52rem;
             letter-spacing: 0.16em;
             text-transform: uppercase;
@@ -368,7 +368,7 @@
             animation: eggBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
         .catalogue-id {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.6rem;
             letter-spacing: 0.12em;
             color: var(--ink-50);
@@ -512,7 +512,7 @@
             pointer-events: auto;
         }
         .quote {
-            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-family: var(--font-display);
             font-style: italic;
             font-size: 1.02rem;
             line-height: 1.95;
@@ -522,7 +522,7 @@
             text-align: left;
         }
         .attribution {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.63rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
@@ -552,7 +552,7 @@
             background: none;
             border: none;
             color: var(--ink-20);
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.75rem;
             cursor: pointer;
             padding: 0.2rem 0.4rem;
@@ -628,7 +628,7 @@
             margin: 0;
             padding: 0.55rem 1.1rem;
             text-align: center;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.5rem;
             letter-spacing: 0.24em;
             text-transform: uppercase;
@@ -690,7 +690,7 @@
             gap: 0;
         }
         .links a {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.68rem;
             letter-spacing: 0.1em;
             text-transform: lowercase;
@@ -702,7 +702,7 @@
             color: var(--ink);
         }
         .links-sep {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.68rem;
             color: var(--ink-20);
             padding: 0 1rem;
@@ -713,7 +713,7 @@
             padding-top: 0;
         }
         .recs-heading {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.58rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
@@ -727,7 +727,7 @@
             margin-bottom: 0;
         }
         .recs-label {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.55rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -764,7 +764,7 @@
             gap: 0.3rem 0;
         }
         .recs-items a {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.58rem;
             letter-spacing: 0.06em;
             text-transform: lowercase;
@@ -776,7 +776,7 @@
             color: var(--ink);
         }
         .recs-sep {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.58rem;
             color: var(--ink-20);
             padding: 0 0.6rem;
@@ -830,7 +830,7 @@
         .featured-label {
             position: relative;
             display: inline-block;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.68rem;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -881,7 +881,7 @@
         }
         .featured-card:hover .featured-thumb img { transform: scale(1.03); }
         .featured-meta {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.54rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -925,7 +925,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.7em;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.5rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
@@ -953,7 +953,7 @@
         }
         .featured-status[data-status="finalized"] { opacity: 0.9; }
         .featured-title {
-            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-family: var(--font-display);
             font-style: italic;
             font-weight: normal;
             font-size: inherit;
@@ -964,14 +964,14 @@
         }
         .featured-card:hover .featured-title { color: var(--logic); }
         .featured-excerpt {
-            font-family: 'IM Fell English', Georgia, 'Times New Roman', serif;
+            font-family: var(--font-display);
             font-size: 0.82rem;
             line-height: 1.55;
             color: var(--ink-50);
             margin-bottom: 1.05rem;
         }
         .featured-cta {
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.54rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -984,7 +984,7 @@
         .featured-all {
             display: inline-block;
             margin-top: 1.35rem;
-            font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+            font-family: var(--font-mono);
             font-size: 0.54rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -1525,7 +1525,7 @@
             </header>
             <a class="featured-card" id="featured-card" href="/essays/the-students-are-right/">
                 <div class="featured-thumb">
-                    <img id="featured-img" src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for The Students Are Right" loading="lazy">
+                    <img id="featured-img" src="/pexels-tara-winstead-8849288.jpg" alt="Lead photograph for The Students Are Right" fetchpriority="high" decoding="async">
                 </div>
                 <div class="featured-meta">
                     <span class="featured-no">no. 03</span>
@@ -1564,15 +1564,15 @@
 <div class="archetypes-row">
             <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
                 <span class="archetype-label" aria-hidden="true">github</span>
-                <img src="/assets/archetypes/instinct.png?v=2" alt="" class="archetype-img">
+                <img src="/assets/archetypes/instinct.webp?v=4" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
                 <span class="archetype-label" aria-hidden="true">linkedin</span>
-                <img src="/assets/archetypes/logic.png?v=2" alt="" class="archetype-img">
+                <img src="/assets/archetypes/logic.webp?v=4" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
                 <span class="archetype-label" aria-hidden="true">x</span>
-                <img src="/assets/archetypes/psyche.png?v=2" alt="" class="archetype-img">
+                <img src="/assets/archetypes/psyche.webp?v=4" alt="" class="archetype-img">
             </a>
         </div>
     </nav>
@@ -1611,471 +1611,9 @@
             6ceuj503oo9sd<br>
             ...-w4-s2-v16</a>
     </div>
-    <script>
-        (function() {
-            var carousel = document.querySelector('.quotes-carousel');
-            var slides = document.querySelectorAll('.quote-slide');
-            var dots = document.querySelectorAll('.quote-dot');
-            var nameEl = document.querySelector('.attribution-name');
-            var current = 0;
-            var typeTimer = null;
-
-            function updateHeight() {
-                carousel.style.height = slides[current].scrollHeight + 'px';
-                if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
-                if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
-            }
-
-            // Quick backspace through the previous name. Uniform 30ms
-            // matches the original interval-based feel.
-            function typeOut(cb) {
-                var text = nameEl.textContent;
-                if (!text.length) { cb(); return; }
-                nameEl.classList.add('typing');
-                clearTimeout(typeTimer);
-                function tick() {
-                    text = text.slice(0, -1);
-                    nameEl.textContent = text;
-                    if (!text.length) {
-                        nameEl.classList.remove('typing');
-                        cb();
-                        return;
-                    }
-                    typeTimer = setTimeout(tick, 30);
-                }
-                typeTimer = setTimeout(tick, 30);
-            }
-
-            // Quick type-in at the original 40ms/char cadence.
-            function typeIn(str) {
-                var i = 0;
-                nameEl.classList.add('typing');
-                clearTimeout(typeTimer);
-                function tick() {
-                    i++;
-                    nameEl.textContent = str.slice(0, i);
-                    if (i >= str.length) {
-                        nameEl.classList.remove('typing');
-                        return;
-                    }
-                    typeTimer = setTimeout(tick, 40);
-                }
-                typeTimer = setTimeout(tick, 40);
-            }
-
-            function show(idx) {
-                slides[current].classList.remove('active');
-                dots[current].classList.remove('active');
-                current = (idx + slides.length) % slides.length;
-                slides[current].classList.add('active');
-                dots[current].classList.add('active');
-                updateHeight();
-                typeOut(function() {
-                    setTimeout(function() { typeIn(slides[current].dataset.attr); }, 150);
-                });
-            }
-
-            function manual(idx) {
-                clearTimeout(auto);
-                show(idx);
-                scheduleNext();
-            }
-
-            // Recursive setTimeout so each cycle can pick its own
-            // delay (and so manual prev/next can cleanly reschedule).
-            // Centered on ~7.5s with ±3s of jitter — varied enough to
-            // feel like an attentive reader rather than a metronome.
-            // Walks the HTML order sequentially: the curated cycle
-            // already alternates length and tone, so simple `current +
-            // 1` produces a well-paced rotation without shuffling.
-            function scheduleNext() {
-                var delay = 4500 + Math.random() * 6000;
-                auto = setTimeout(function() {
-                    show(current + 1);
-                    scheduleNext();
-                }, delay);
-            }
-
-            // Page-load picks a random starting slide so visitors don't
-            // always greet the same opener — but the rotation that
-            // follows walks the curated cycle in order from there.
-            (function randomizeStart() {
-                var start = Math.floor(Math.random() * slides.length);
-                if (start === 0) return;
-                slides[0].classList.remove('active');
-                dots[0].classList.remove('active');
-                slides[start].classList.add('active');
-                dots[start].classList.add('active');
-                nameEl.textContent = slides[start].dataset.attr;
-                current = start;
-            })();
-
-            updateHeight();
-            window.addEventListener('resize', updateHeight);
-            var auto;
-            scheduleNext();
-
-            document.querySelector('.quote-prev').addEventListener('click', function() { manual(current - 1); });
-            document.querySelector('.quote-next').addEventListener('click', function() { manual(current + 1); });
-        })();
-
-        (function() {
-            var panels = document.querySelector('.home-panels');
-            var svg = document.querySelector('.home-link');
-            if (!panels || !svg) return;
-            var line = svg.querySelector('.home-link-line');
-            var ringA = svg.querySelector('.home-link-ring--a');
-            var ringB = svg.querySelector('.home-link-ring--b');
-            var dotA = svg.querySelector('.home-link-dot--a');
-            var dotB = svg.querySelector('.home-link-dot--b');
-            var mq = window.matchMedia('(min-width: 1010px)');
-            var STAGGER_LIFT = 300;
-            var STAGGER_LIFT_MIN = 120;
-            var LIFT_COLLAPSE = 48;
-            var main = document.querySelector('main.page');
-
-            function applyStaggerTransforms(frame, featured, shift, lift) {
-                featured.style.marginBottom = (-lift + LIFT_COLLAPSE) + 'px';
-                frame.style.transform = 'translateX(' + (-shift) + 'px)';
-                featured.style.transform = 'translate(' + shift + 'px, ' + (-lift) + 'px)';
-            }
-
-            function measureStaggerUnit(frame, featured) {
-                var fr = frame.getBoundingClientRect();
-                var fe = featured.getBoundingClientRect();
-                return {
-                    top: Math.min(fr.top, fe.top),
-                    bottom: Math.max(fr.bottom, fe.bottom),
-                    height: Math.max(fr.bottom, fe.bottom) - Math.min(fr.top, fe.top),
-                    left: Math.min(fr.left, fe.left),
-                    right: Math.max(fr.right, fe.right)
-                };
-            }
-
-            function getViewportInsets() {
-                var bodyStyle = getComputedStyle(document.body);
-                return {
-                    top: parseFloat(bodyStyle.paddingTop) || 0,
-                    bottom: parseFloat(bodyStyle.paddingBottom) || 0,
-                    left: parseFloat(bodyStyle.paddingLeft) || 0,
-                    right: parseFloat(bodyStyle.paddingRight) || 0
-                };
-            }
-
-            function getAvailVerticalBounds(insets, desktop) {
-                var top = insets.top;
-                var bottom = window.innerHeight - insets.bottom;
-                var rights = document.querySelector('.rights');
-                if (desktop && rights) {
-                    bottom = Math.min(bottom, rights.getBoundingClientRect().top - 16);
-                }
-                if (!desktop) {
-                    var archetypes = document.querySelector('.archetypes');
-                    var egg = document.querySelector('.egg-wrap');
-                    if (archetypes) {
-                        bottom = Math.min(bottom, archetypes.getBoundingClientRect().top - 16);
-                    }
-                    if (egg) {
-                        bottom = Math.min(bottom, egg.getBoundingClientRect().top - 16);
-                    }
-                }
-                return { top: top, bottom: bottom };
-            }
-
-            function layoutHomeStagger() {
-                var frame = panels.querySelector('.frame');
-                var featured = panels.querySelector('.featured');
-                if (!frame || !featured) return;
-
-                panels.style.transform = '';
-                if (main) main.style.marginTop = '';
-                frame.style.transform = '';
-                featured.style.transform = '';
-                featured.style.marginBottom = '';
-
-                if (!mq.matches) {
-                    if (document.documentElement) {
-                        document.documentElement.style.overflowY = '';
-                    }
-                    layoutStackCenter(frame, featured);
-                    return;
-                }
-
-                if (document.documentElement) {
-                    document.documentElement.style.overflowY = 'hidden';
-                }
-
-                void panels.offsetHeight;
-
-                var verticalGap = featured.offsetTop - frame.offsetTop - frame.offsetHeight;
-                if (verticalGap < 0) verticalGap = 28;
-
-                var horizontalGap = featured.offsetLeft - (frame.offsetLeft + frame.offsetWidth);
-                var shift = (verticalGap - horizontalGap) / 2;
-
-                var insets = getViewportInsets();
-                var vBounds = getAvailVerticalBounds(insets, true);
-                var availHeight = vBounds.bottom - vBounds.top;
-                var lift = STAGGER_LIFT;
-                var unit;
-
-                applyStaggerTransforms(frame, featured, shift, lift);
-                void panels.offsetHeight;
-                unit = measureStaggerUnit(frame, featured);
-
-                while (unit.height > availHeight && lift > STAGGER_LIFT_MIN) {
-                    lift -= 12;
-                    applyStaggerTransforms(frame, featured, shift, lift);
-                    void panels.offsetHeight;
-                    unit = measureStaggerUnit(frame, featured);
-                }
-
-                var offsetX = (window.innerWidth / 2) - ((unit.left + unit.right) / 2);
-                var offsetY;
-                if (unit.height <= availHeight) {
-                    offsetY = ((vBounds.top + vBounds.bottom) / 2) - ((unit.top + unit.bottom) / 2);
-                    if (unit.top + offsetY < vBounds.top) offsetY = vBounds.top - unit.top;
-                    if (unit.bottom + offsetY > vBounds.bottom) offsetY = vBounds.bottom - unit.bottom;
-                } else {
-                    offsetY = vBounds.top - unit.top;
-                }
-
-                var archetypes = document.querySelector('.archetypes');
-                if (archetypes) {
-                    var ar = archetypes.getBoundingClientRect();
-                    var overlapPad = 18;
-                    var projectedBottom = unit.bottom + offsetY;
-                    var projectedRight = unit.right + offsetX;
-                    if (projectedRight + overlapPad > ar.left && projectedBottom + overlapPad > ar.top) {
-                        offsetY -= (projectedBottom + overlapPad) - ar.top;
-                    }
-                }
-
-                var edgePad = 16;
-                if (unit.left + offsetX < edgePad) offsetX += edgePad - (unit.left + offsetX);
-                if (unit.right + offsetX > window.innerWidth - edgePad) {
-                    offsetX -= (unit.right + offsetX) - (window.innerWidth - edgePad);
-                }
-                panels.style.transform = 'translate(' + offsetX + 'px, ' + offsetY + 'px)';
-            }
-
-            function layoutStackCenter(frame, featured) {
-                if (!main) return;
-                var rights = document.querySelector('.rights');
-                var insets = getViewportInsets();
-                var vBounds = getAvailVerticalBounds(insets, false);
-                var top = main.getBoundingClientRect().top;
-                var bottom = rights
-                    ? rights.getBoundingClientRect().bottom
-                    : featured.getBoundingClientRect().bottom;
-                var contentHeight = bottom - top;
-                var availHeight = vBounds.bottom - vBounds.top;
-                if (contentHeight > availHeight) return;
-                main.style.marginTop = (vBounds.top + (availHeight - contentHeight) / 2 - top) + 'px';
-            }
-
-            function updateHomeLink() {
-                if (!mq.matches || !line || !ringA || !ringB || !dotA || !dotB) return;
-                var frame = panels.querySelector('.frame');
-                var featured = panels.querySelector('.featured');
-                if (!frame || !featured) return;
-
-                var pr = panels.getBoundingClientRect();
-                var fr = frame.getBoundingClientRect();
-                var fe = featured.getBoundingClientRect();
-                var w = pr.width;
-                var h = pr.height;
-                if (w < 1 || h < 1) return;
-
-                var dotR = 4.5;
-                var gap = 3;
-
-                svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-                svg.setAttribute('width', w);
-                svg.setAttribute('height', h);
-
-                var x1 = fr.right - pr.left + dotR + gap;
-                var y1 = fr.top - pr.top + (fr.height / 2);
-                var x2 = fe.left - pr.left + (fe.width / 2);
-                var y2 = fe.top - pr.top - dotR - gap;
-
-                line.setAttribute('points', x1 + ',' + y1 + ' ' + x2 + ',' + y1 + ' ' + x2 + ',' + y2);
-                [ringA, dotA].forEach(function(el) {
-                    el.setAttribute('cx', x1);
-                    el.setAttribute('cy', y1);
-                });
-                [ringB, dotB].forEach(function(el) {
-                    el.setAttribute('cx', x2);
-                    el.setAttribute('cy', y2);
-                });
-            }
-
-            function syncHomeLayout() {
-                layoutHomeStagger();
-                updateHomeLink();
-                if (window.preventArchetypeOverlap) window.preventArchetypeOverlap();
-            }
-
-            window.updateHomeLink = syncHomeLayout;
-            window.addEventListener('resize', syncHomeLayout);
-            window.addEventListener('load', syncHomeLayout);
-            if (typeof mq.addEventListener === 'function') {
-                mq.addEventListener('change', syncHomeLayout);
-            } else if (typeof mq.addListener === 'function') {
-                mq.addListener(syncHomeLayout);
-            }
-            var frameEl = panels.querySelector('.frame');
-            var featuredEl = panels.querySelector('.featured');
-            var carouselEl = panels.querySelector('.quotes-carousel');
-            var rightsEl = document.querySelector('.rights');
-            if (window.ResizeObserver && frameEl) {
-                var linkRo = new ResizeObserver(function() { syncHomeLayout(); });
-                linkRo.observe(frameEl);
-                if (featuredEl) linkRo.observe(featuredEl);
-                if (carouselEl) linkRo.observe(carouselEl);
-                if (rightsEl) linkRo.observe(rightsEl);
-            }
-            requestAnimationFrame(syncHomeLayout);
-        })();
-
-        (function() {
-            var featured = document.querySelector('.featured');
-            var archetypes = document.querySelector('.archetypes');
-            if (!featured || !archetypes) return;
-
-            function preventArchetypeOverlap() {
-                if (window.matchMedia('(min-width: 1010px)').matches) return;
-                /* Stacked: the bottom-right cards are cleared by the body's
-                   bottom scroll-room padding, so the essay modal needs no
-                   extra margin. Clearing it keeps the rights footer tight
-                   beneath the modal. */
-                featured.style.marginBottom = '';
-            }
-
-            window.preventArchetypeOverlap = preventArchetypeOverlap;
-            window.addEventListener('resize', preventArchetypeOverlap);
-            window.addEventListener('load', preventArchetypeOverlap);
-            if (window.ResizeObserver) {
-                var overlapRo = new ResizeObserver(function() { preventArchetypeOverlap(); });
-                overlapRo.observe(featured);
-                overlapRo.observe(archetypes);
-            }
-            requestAnimationFrame(preventArchetypeOverlap);
-        })();
-
-        // (Rights footer is fixed to the bottom center of the viewport.)
-
-        (function() {
-            var wrap = document.querySelector('.egg-wrap');
-            var egg = document.querySelector('.easter-egg');
-            var shell = document.querySelector('.egg-shell');
-            var cracks = document.querySelectorAll('.crack');
-            var catalogueId = document.querySelector('.catalogue-id');
-            var taps = 0;
-            var shakeClasses = ['egg-shake-1', 'egg-shake-2', 'egg-shake-3'];
-
-            egg.addEventListener('click', function(e) {
-                e.preventDefault();
-                if (taps >= 3) return;
-                taps++;
-
-                shakeClasses.forEach(function(c) { shell.classList.remove(c); });
-                void shell.offsetWidth;
-                shell.classList.add(shakeClasses[taps - 1]);
-
-                for (var i = 0; i < taps; i++) {
-                    cracks[i].classList.add('visible');
-                }
-
-                if (taps >= 3) {
-                    var startW = wrap.offsetWidth;
-                    var startH = wrap.offsetHeight;
-                    wrap.style.width = startW + 'px';
-                    wrap.style.height = startH + 'px';
-                    wrap.style.overflow = 'hidden';
-
-                    setTimeout(function() {
-                        shell.classList.add('egg-split');
-
-                        setTimeout(function() {
-                            egg.style.position = 'absolute';
-                            egg.style.visibility = 'hidden';
-                            catalogueId.classList.add('measured');
-
-                            void wrap.offsetWidth;
-                            var targetW = catalogueId.offsetWidth + parseFloat(getComputedStyle(wrap).paddingLeft) * 2;
-                            var targetH = catalogueId.offsetHeight + parseFloat(getComputedStyle(wrap).paddingTop) * 2;
-
-                            requestAnimationFrame(function() {
-                                wrap.style.width = targetW + 'px';
-                                wrap.style.height = targetH + 'px';
-
-                                setTimeout(function() {
-                                    egg.style.display = 'none';
-                                    catalogueId.classList.add('revealed');
-                                    wrap.style.overflow = '';
-                                    setTimeout(function() {
-                                        wrap.style.width = '';
-                                        wrap.style.height = '';
-                                    }, 100);
-                                }, 700);
-                            });
-                        }, 600);
-                    }, 500);
-                }
-            });
-        })();
-    </script>
-
-    <script src="dispatches.js?v=3"></script>
-    <script>
-        // ---------- Featured essay (hydrate from manifest) ----------
-        // Fills the featured card with the most recent dispatch so the
-        // homepage always points at the newest essay. Falls back silently
-        // to the hard-coded markup if the manifest is missing.
-        (function() {
-            var list = (window.DISPATCHES || []);
-            if (!list.length) return;
-            var d = list[0];
-            var card = document.getElementById('featured-card');
-            if (!card) return;
-            function pad2(n) { return (n < 10 ? '0' : '') + n; }
-            if (d.url) card.setAttribute('href', d.url);
-            var noEl = card.querySelector('.featured-no');
-            if (noEl && typeof d.number === 'number') noEl.textContent = 'no. ' + pad2(d.number);
-            var dateEl = card.querySelector('.featured-date');
-            if (dateEl && d.date) dateEl.textContent = d.date;
-            var titleEl = card.querySelector('.featured-title');
-            if (titleEl && d.title) titleEl.textContent = d.title;
-            var exEl = card.querySelector('.featured-excerpt');
-            if (exEl && d.excerpt) exEl.textContent = d.excerpt;
-            var imgEl = card.querySelector('#featured-img');
-            if (imgEl && d.image) {
-                imgEl.setAttribute('src', d.image);
-                if (d.title) imgEl.setAttribute('alt', 'Lead photograph for ' + d.title);
-            }
-            // Archetype dot in the meta line, keyed to the dispatch's
-            // playlist archetype (same color as its suggested playlist).
-            var dotEl = document.getElementById('featured-dot');
-            if (dotEl) {
-                var arch = (d.playlist && d.playlist.archetype) || 'logic';
-                dotEl.className = 'featured-dot featured-dot--' + arch;
-            }
-            // Version — corner-bracket badge at the foot of the card.
-            if (d.status) {
-                var statusEl = document.getElementById('featured-status');
-                if (statusEl) {
-                    var fmt = (window.formatDispatchVersion || function(s){ return { label: s, slug: s }; });
-                    var ver = fmt(d.status);
-                    statusEl.setAttribute('data-status', ver.slug || d.status);
-                    var statusTx = statusEl.querySelector('.featured-status-text');
-                    if (statusTx) statusTx.textContent = ver.label;
-                }
-            }
-            if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
-            if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
-        })();
-    </script>
-
+    <script src="/assets/home.js?v=1" defer></script>
+    <script src="/assets/site-chrome.js?v=1" defer></script>
+    <script src="/dispatches.js?v=4"></script>
+    <script src="/assets/dispatch-ui.js?v=1" defer></script>
 </body>
 </html>
