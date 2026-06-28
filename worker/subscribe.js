@@ -67,6 +67,7 @@ export default {
       request.headers.get("CF-Connecting-IP") ||
       request.headers.get("X-Forwarded-For")?.split(",")[0]?.trim() ||
       "";
+    const referrer = String(request.headers.get("Referer") || "").slice(0, 512);
 
     const subscriberBody = {
       email_address: email,
@@ -75,23 +76,41 @@ export default {
     if (clientIp) {
       subscriberBody.ip_address = clientIp;
     }
+    if (referrer) {
+      subscriberBody.referrer_url = referrer;
+    }
 
-    const response = await fetch("https://api.buttondown.com/v1/subscribers", {
-      method: "POST",
-      headers: {
+    async function createSubscriber(bypassFirewall) {
+      const headers = {
         Authorization: "Token " + env.BUTTONDOWN_API_KEY,
         "Content-Type": "application/json",
         Accept: "application/json",
         "X-Buttondown-Collision-Behavior": "overwrite",
-      },
-      body: JSON.stringify(subscriberBody),
-    });
+      };
+      if (bypassFirewall) {
+        headers["X-Buttondown-Bypass-Firewall"] = "true";
+      }
 
-    let data = {};
-    try {
-      data = await response.json();
-    } catch (_) {
-      data = {};
+      const response = await fetch("https://api.buttondown.com/v1/subscribers", {
+        method: "POST",
+        headers,
+        body: JSON.stringify(subscriberBody),
+      });
+
+      let data = {};
+      try {
+        data = await response.json();
+      } catch (_) {
+        data = {};
+      }
+
+      return { response, data };
+    }
+
+    let { response, data } = await createSubscriber(false);
+
+    if (data.code === "subscriber_blocked") {
+      ({ response, data } = await createSubscriber(true));
     }
 
     if (response.ok) {
@@ -120,7 +139,7 @@ export default {
       return json(
         {
           error:
-            "Buttondown's firewall blocked this signup. Try again in a few minutes, or email me@briggskellogg.com and I'll add you manually.",
+            "Signup was blocked — email me@briggskellogg.com and I'll add you manually.",
         },
         403,
         origin
