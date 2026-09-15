@@ -14,18 +14,18 @@
         gtag('config', 'G-47NMCRF9TY');
     </script>
 
-    <title>The Students Are Right &mdash; Briggs Kellogg</title>
-    <meta name="description" content="A short essay by Briggs Kellogg on the booing of AI at university commencements this spring, the vagueness of the industry, and what is owed to graduates.">
+    <title>The Accent of Intelligence &mdash; Briggs Kellogg</title>
+    <meta name="description" content="Who teaches a machine what a good answer sounds like?">
     <meta name="theme-color" content="#F4F0E4">
-    <meta property="og:title" content="The Students Are Right &mdash; Briggs Kellogg">
-    <meta property="og:description" content="A short essay on the booing of AI at university commencements this spring, and what is owed to graduates.">
-    <meta property="og:image" content="https://briggskellogg.com/assets/og/the-students-are-right.jpg">
+    <meta property="og:title" content="The Accent of Intelligence &mdash; Briggs Kellogg">
+    <meta property="og:description" content="Who teaches a machine what a good answer sounds like?">
+    <meta property="og:image" content="https://briggskellogg.com/assets/og/the-accent-of-intelligence.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Lead photograph for this essay">
+    <meta property="og:image:alt" content="A chrome vintage microphone against a dark blue studio background.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://briggskellogg.com/assets/og/the-students-are-right.jpg">
-    <meta property="og:url" content="https://briggskellogg.com/essays/the-students-are-right/">
+    <meta name="twitter:image" content="https://briggskellogg.com/assets/og/the-accent-of-intelligence.jpg">
+    <meta property="og:url" content="https://briggskellogg.com/essays/the-accent-of-intelligence/">
     <meta property="og:type" content="article">
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="apple-touch-icon" href="/logo.png">
@@ -434,6 +434,15 @@
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50%      { transform: translateY(-7px) rotate(-1.5deg); }
         }
+        .essay-subtitle {
+            margin: 0.8rem auto 1.1rem;
+            max-width: 36em;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.55;
+            color: var(--ink-80);
+        }
+        .essay-figure figcaption a { color: inherit; text-underline-offset: 3px; }
         .essay-meta {
             font-family: var(--font-mono);
             font-size: 0.6rem;
@@ -472,6 +481,35 @@
             user-select: none;
         }
         .essay-body .sep::before { content: '\00B7 \00B7 \00B7'; }
+
+        /* Roman section heads — The Accent of Intelligence only */
+        .essay-part {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin: 0.35rem 0 1.4rem;
+            padding-bottom: 0.55rem;
+            border-bottom: 1px solid var(--border-12);
+        }
+        .essay-body .sep + .essay-part {
+            margin-top: 0.15rem;
+        }
+        .essay-part-num {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--logic-gold);
+            flex-shrink: 0;
+            min-width: 1.25rem;
+        }
+        .essay-part-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.3;
+            color: var(--ink);
+        }
 
         /* ---------- Lead photograph ---------- */
         /* A single plate that opens the piece. Portrait crop, height-capped
@@ -999,6 +1037,8 @@
             .frame-status .status-dot { width: 5px; height: 5px; }
             .essay-title { font-size: 1.5rem; }
             .essay-meta { font-size: 0.52rem; }
+            .essay-part { gap: 0.55rem; margin-bottom: 1.15rem; }
+            .essay-part-title { font-size: 1.05rem; }
             .essay-body { font-size: 0.95rem; line-height: 1.75; }
             .essay-body p { margin-bottom: 1rem; }
             .footnote { font-size: 0.82rem; }
@@ -1298,7 +1338,7 @@
 }
     </style>
 </head>
-<body data-essay-id="the-students-are-right">
+<body data-essay-id="the-accent-of-intelligence">
     <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
          Natural PNG color at rest; a masked cream sheen sweeps across
          on hover (see .essay-home-mark::after). -->
@@ -1315,13 +1355,13 @@
 
             <!-- Version status — top-right of the frame, pulsing dot
                  signals the piece is still alive. Populated by JS. -->
-            <div class="frame-status" data-frame-status hidden>
+            <div class="frame-status" data-frame-status data-status="draft">
                 <span class="sc sc-tl"></span>
                 <span class="sc sc-tr"></span>
                 <span class="sc sc-bl"></span>
                 <span class="sc sc-br"></span>
                 <span class="status-dot"></span>
-                <span class="frame-status-text" data-frame-status-text></span>
+                <span class="frame-status-text" data-frame-status-text>v0 &middot; draft</span>
             </div>
 
             <a class="essay-top-back" href="/essays"><span class="arr">&larr;</span> all essays</a>
@@ -1335,17 +1375,18 @@
                      version status lives in the top-right of the frame,
                      not in this centered eyebrow. -->
                 <p class="essay-number" data-essay-meta>
-                    <span class="num">no. 02</span>
+                    <span class="num">no. 04</span>
                     <span class="sep">&middot;</span>
                     <span>essay</span>
                 </p>
                 <div class="essay-title-row">
-                    <h1 class="essay-title">The Students Are Right</h1>
+                    <h1 class="essay-title">The Accent of Intelligence</h1>
                     <a class="essay-vibe" id="essay-playlist-blob" href="#" target="_blank" rel="noopener noreferrer" hidden title="playlist">
                         <img class="essay-vibe-img" id="essay-playlist-blob-img" src="" alt="">
                     </a>
                 </div>
-                <p class="essay-meta">may 2026</p>
+                <p class="essay-subtitle"><em>Who teaches a machine what a good answer sounds like?</em></p>
+                <p class="essay-meta">september 2026</p>
             </header>
 
             <figure class="essay-figure">
@@ -1353,145 +1394,284 @@
                 <span class="fc fc-tr"></span>
                 <span class="fc fc-bl"></span>
                 <span class="fc fc-br"></span>
-                <img src="/pexels-tara-winstead-8849288.jpg" alt="A pale articulated hand reaching up toward a small round glowing light on a soft iridescent background." fetchpriority="high" decoding="async">
-                <figcaption>Photo by Tara Winstead</figcaption>
+                <img src="/assets/photos/the-accent-of-intelligence.jpg" alt="A chrome vintage microphone against a dark blue studio background." fetchpriority="high" decoding="async">
+                <figcaption>Photo by <a href="https://www.pexels.com/photo/classic-vintage-microphone-on-dark-background-29547554/" target="_blank" rel="noopener noreferrer">Marcelo Verfe</a></figcaption>
             </figure>
 
             <div class="essay-layout">
                 <svg class="essay-wires" aria-hidden="true"></svg>
 
                                 <div class="essay-body">
-                    <p>This spring, at commencement ceremonies across the country, the mention of artificial intelligence was met with booing.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup> Not heckling a politician. Not polite disagreement. Booing. From graduates. At their own ceremonies, in the middle of the speeches meant to send them into the world.</p>
+                    <h2 class="essay-part"><span class="essay-part-num">I</span><span class="essay-part-title">Better</span></h2>
 
-                    <p>I work in the industry being booed at.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="psyche"><a href="#fn-2">2</a></sup> I want to talk about it plainly, because plainness is what the moment asks for, and plainness is the one thing my industry has decided it cannot afford.</p>
+                    <p>Someone has to decide which answer is better.</p>
 
-                    <div class="sep"></div>
+                    <p>A question. Several possible responses. A person paid to put them in order. In one influential approach to training language models, comparisons like these helped teach a system which answers to reward. The human judgment became part of the machinery.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup></p>
 
-                    <p>Start here: the students are right to boo.</p>
+                    <p>That sounds sensible. It is sensible. We would generally prefer that someone examine the answers before the answers become a product.</p>
 
-                    <p>I say that first because most of what has been written since came from people whose opening move was to explain the students to themselves. They don&rsquo;t understand the technology. They&rsquo;ve been spooked by alarmists. They&rsquo;ll come around once the productivity shows up.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="logic"><a href="#fn-3">3</a></sup> This is the sound an industry makes when it has decided that the people most exposed to its product are the people least entitled to feel anything about it. It is the voice you use when you are hiding something and hoping nobody watches your hands.</p>
+                    <p>But <em>better</em> has arrived without its paperwork.</p>
 
-                    <p>The students are watching the hands. They are twenty-two, not stupid. They spent four years and a six-figure tuition preparing for a job market where recent graduates are now unemployed at a higher rate than the general workforce &mdash; the fifth straight year that has been true &mdash; and where more than four in ten of the ones who do find work are underemployed, holding down jobs that never needed the degree they are still paying for.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4">4</a></sup> They are right to be afraid. They are right to be angry. And they are right that most of the people onstage promising them it will be fine are the same people positioned to do fine regardless.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="logic"><a href="#fn-5">5</a></sup></p>
+                    <p>One response is correct but abrupt. Another is patient and wrong. A third takes four paragraphs to avoid admitting that it does not know. Which one wins? What does the evaluator think the question is asking? What have they been instructed to value? What would they choose if this were a conversation rather than a job?</p>
 
-                    <p>Under the circumstances, booing is a restrained response.</p>
+                    <p>The difference interests me more than the vocabulary. Although the vocabulary is where I started.</p>
 
-                    <div class="sep"></div>
+                    <p>There is a tempting explanation for why AI writes the way it does: the people helping train it have left their accents behind. A word that sounds peculiar to an American reader might be ordinary somewhere else. The machine, despite its expensive presentation, might still carry evidence of the people whose labor made it presentable.</p>
 
-                    <p>The problem with my industry is not the technology. The technology is what it is. Some of it will be a gift. Some of it will be a wreck. Most of it will sit in the long ambiguous middle we will not understand for ten years. That is true of every technology. That is not the scandal.</p>
+                    <p>In the familiar case of <em>delve</em>, the explanation that traces its overuse to Nigerian English has not been established. Research comparing varieties of English did not support that account. Later work offered evidence that learning from human feedback can contribute to word overuse, without settling why the evaluators preferred those words.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="logic"><a href="#fn-2">2</a></sup></p>
 
-                    <p>The scandal is the vagueness.</p>
+                    <p>The uncertainty leaves us with a more interesting question.</p>
 
-                    <p>Every public sentence about what this does to working people runs through a filter built to make it impossible to act on. <em>Augmenting human capability. Reshaping the nature of work. Unlocking opportunities we can&rsquo;t yet imagine.</em><sup class="fnref" id="fnref-6" data-fn="6" data-archetype="instinct"><a href="#fn-6">6</a></sup> Each phrase does the same job: it takes a question a person could answer and swaps in a weather system nobody can argue with. The question is <em>will my job exist in five years.</em> The fog is <em>the future of work is being transformed.</em></p>
+                    <p>Perhaps what survives is not simply how someone speaks. Perhaps it is how they believe they should speak. How they were taught a competent person sounds. What they think the assignment wants from them.</p>
 
-                    <p>I have been in the rooms where the honest answer was sitting right there on the table. I have watched it get sanded down to fog before it left the building. I have done some of the sanding myself.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="instinct"><a href="#fn-7">7</a></sup> I am not the villain here, and neither are my colleagues &mdash; most of them are decent people doing what looks, from the inside, like reasonable work. But a thousand decent people each smoothing their own small edge produces a public conversation in which the people who know the most hand the people who need it most the least useful version of the truth.</p>
+                    <p>Those are different inheritances.</p>
 
-                    <p>The students are booing the fog. Good.</p>
+                    <p>I have written before about being a human whose communication was read as artificial. I do not intend to spend the rest of my life adding preventable confusion to a sentence so that it will pass as mine.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="instinct"><a href="#fn-3">3</a></sup> But the experience makes me suspicious of a standard of naturalness that does not know it is a standard.</p>
 
-                    <div class="sep"></div>
+                    <p>An accent is easiest to hear in someone else.</p>
 
-                    <p>Here is what the fog is built to hide.</p>
+                    <div class="sep" aria-hidden="true"></div>
 
-                    <p>There are two different technologies wearing the same two letters, and the marketing needs you to keep confusing them, because the confusion is the whole business model.</p>
+                    <h2 class="essay-part"><span class="essay-part-num">II</span><span class="essay-part-title">The instructions</span></h2>
 
-                    <p>The first one is an exoskeleton. It straps onto people who are already capable and makes them faster. The lawyer who researches in an hour what used to take a week. The engineer who ships on Friday what used to eat the month. This is the version in every keynote, and it is real, and it carries a cost the keynotes skip: an exoskeleton has no use for the person on the bottom rung. The junior analyst, the first-year associate, the entry-level anything &mdash; those were never quite jobs. They were apprenticeships. The years you spend being not-yet-good in exchange for becoming good. The exoskeleton eats the apprenticeship. That is the thing the graduates can smell from their seats. They are not afraid of the future. They are afraid that the bottom rungs of the ladder were sawed off while they were climbing toward them.</p>
+                    <p>In January 2023, TIME reported that Kenyan workers employed by Sama on an OpenAI project received roughly $1.32–$2 an hour in take-home pay. Sama disputed the range. The work involved labeling harmful material, not establishing a demonstrated origin for the model’s favorite words.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4">4</a></sup></p>
 
-                    <p>The second technology is a prosthetic. A prosthetic does not make a capable person faster. It restores function to someone who could not participate at all. That is not productivity. That is access. The single mother who cannot take an unpaid day to sit in a county office gets the same guidance as the man who can pay someone to handle it for him. The kid whose benefits letter is written at a fourteenth-grade reading level finally has it read back to him in a language someone actually speaks. The prosthetic does not replace the relationship between a person and the system that is supposed to serve them. It makes that relationship possible for the people it was never available to.<sup class="fnref" id="fnref-8" data-fn="8" data-archetype="logic"><a href="#fn-8">8</a></sup></p>
+                    <p>The distinction matters. A wage does not, by itself, explain an adjective. Being poorly paid does not make someone’s judgment poor. And noticing labor only when we dislike the product is a peculiar form of concern for the people doing it.</p>
 
-                    <p>Same two letters. Opposite moral direction. One compounds the advantage of people who already have it. The other hands a floor to people who have been falling through it their whole lives.</p>
+                    <p>The question is what authority accompanies the work.</p>
 
-                    <p>I care about the exoskeleton because it pays my mortgage. I care about the prosthetic because it is the only version of this I think is worth a damn. And the reason the booing lands is that nobody onstage is drawing the line between them. They are selling the exoskeleton and dressing it in the prosthetic&rsquo;s clothes &mdash; borrowing the moral credit of <em>access for the disenfranchised</em> to move a product whose actual near-term effect is to erase the disenfranchised&rsquo;s first job. The students do not have that vocabulary yet. But they can hear that the two things have been welded together on purpose. They are booing the weld.</p>
+                    <p>A person can help produce a standard without being allowed to determine its purpose. They can disagree with an instruction and competently follow it. They can recognize distinctions the available choices do not preserve. None of this requires us to imagine what a particular worker secretly thought. It requires us to stop treating a submitted answer as a complete account of the person who submitted it.</p>
 
-                    <div class="sep"></div>
+                    <p>The researchers behind InstructGPT were explicit about this. Their 2022 paper describes preferences shaped by instructions and the conditions of paid work. It distinguishes the contributions of labelers, researchers, and customers. It also notes that customers and end users need not be the same people, or have the same interests.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="logic"><a href="#fn-5">5</a></sup></p>
 
-                    <p>I am not going to tell you what to do, graduate. I do not know what you should do, and anyone who says they do is selling or lying.<sup class="fnref" id="fnref-9" data-fn="9" data-archetype="psyche"><a href="#fn-9">9</a></sup> The next five years are going to be strange, and nobody &mdash; not the people building this, not the people regulating it, not the people writing essays like this one &mdash; knows the shape of the strangeness yet.</p>
+                    <p>The paper asks whose preferences the model is being aligned to. That question should survive contact with the marketing department.</p>
 
-                    <p>But I will give you the one thing I have asked of myself.</p>
+                    <p><em>Human feedback</em> is a useful technical description. It is a very incomplete description of a human arrangement. It tells us that people participated. It does not, by itself, tell us who could change the instructions, which disagreements mattered, or who would live with the result.</p>
 
-                    <p>Assume the part of your education that made you a competent processor of information is worth less than it was the day you enrolled. Assume the part that made you a <em>person</em> is worth more. Judgment. Taste. The nerve to know a thing is wrong while the whole room insists it is fine. The capacity to care about one specific human being and do something about it. The machines are good at the first and bad at the second, and the evidence that they are about to get good at the second is thinner than the people selling it need you to believe.</p>
+                    <p>Suppose two evaluators disagree about reassurance. One thinks a worried person needs immediate comfort. The other thinks comfort would be dishonest before the facts are known. A ranking must eventually be recorded. But the disagreement may contain information that the winning answer cannot carry by itself.<sup class="fnref" id="fnref-6" data-fn="6" data-archetype="psyche"><a href="#fn-6">6</a></sup></p>
 
-                    <p>Do not curdle into nihilism, because nihilism is the outcome the people in charge are quietly rooting for. A demoralized graduating class does not organize, does not vote, does not make demands, does not notice when its government stops returning its calls. The fog has an interest in your not noticing. So notice. Loudly. You have already started.</p>
+                    <p>I am not arguing that every disagreement must remain unresolved. A factual error does not acquire equal standing because someone sincerely prefers it. I am asking whether we have distinguished an error from a different account of what help requires.</p>
 
-                    <p>And do not let anyone &mdash; me included &mdash; talk you out of being scared. The fear is accurate. In this case it is a better read of the situation than the optimism being handed down from the podium. Trust it. Then do what people have always done with fear once they stop being paralyzed by it: use it to work out the next move, slowly, in the company of people who love you.</p>
+                    <p>We should welcome human judgment in these systems. We should also be interested in the circumstances under which it was obtained.</p>
 
-                    <div class="sep"></div>
+                    <p>An accent can survive the process while the reason for it disappears.</p>
 
-                    <p>My industry has a thing it tells itself at two in the morning, when the question of what it is actually doing comes around. The thing goes: someone is going to build this. If the people who care do not build it, the people who do not care will. So the people who care have to be in the room.</p>
+                    <div class="sep" aria-hidden="true"></div>
 
-                    <p>I have made that argument. I have heard it made. It is not stupid. It is also the exact argument every powerful institution in history has made for its own continuation, and the record on whether the people in the room keep caring once the room gets comfortable is mixed at best.<sup class="fnref" id="fnref-10" data-fn="10" data-archetype="psyche"><a href="#fn-10">10</a></sup> The argument does not validate itself. It has to be re-earned, constantly, by what the people in the room actually do.</p>
+                    <h2 class="essay-part"><span class="essay-part-num">III</span><span class="essay-part-title">The correction</span></h2>
 
-                    <p>So here is what I would ask of the people in the room &mdash; my colleagues, the people above me, the founders whose names are on the buildings. Stop hiding in the fog. It was never protecting the public. It protects us. It lets us keep our salaries and our self-image, lets us call ourselves the good guys on the grounds that we personally have not fired anyone. The fog is the moral hazard. The fog is the thing being booed.</p>
+                    <p>Imagine that a colleague has made a consequential mistake. A number in a document is wrong. Someone will act on it unless it changes.</p>
 
-                    <p>It can be done, because it has been done. A year ago the chief executive of one of the leading AI labs sat down with a reporter and said the plain version out loud: that this technology could erase half of entry-level white-collar jobs inside five years, that unemployment could climb to ten or twenty percent, that &mdash; his words &mdash; &ldquo;we, as the producers of this technology, have a duty and an obligation to be honest about what is coming.&rdquo;<sup class="fnref" id="fnref-11" data-fn="11" data-archetype="logic"><a href="#fn-11">11</a></sup> He said it the same day he stood onstage selling his own models. He is not a doomer and he did not quit. He simply refused to sugarcoat it. And the most instructive part was not the warning. It was the reaction. Much of the industry flinched, called it fearmongering, and went straight back to <em>unlocking opportunities we can&rsquo;t yet imagine.</em> When one of the people who knows the most tells the truth, the fog does not lift. The fog closes over him.</p>
+                    <p>You can identify the number and give the correct one. That is part of the work.</p>
 
-                    <p>Say it anyway. Tell people what is coming. Tell them what you do not know. Tell them where this helps and where it harms and which of the two you personally worked on this week. If you cannot say it in public because it would cost you your job, say it in private, to the people in your life who need to hear it. Tell your nieces and nephews. Tell the kid from your hometown about to sign loans for a degree in a field that may not be there. Tell your own children. Tell them what you actually think.</p>
+                    <p>You also have to decide whether to interrupt the meeting, send a message, or speak afterward. You need to judge whether your colleague understands the problem or is still defending against the embarrassment. You may need to be blunt. You may need to stop enjoying how clearly you can demonstrate that you are right.</p>
 
-                    <p>The graduates are not asking us to stop building. They are asking us to stop lying. That is a smaller request than the panic-readers are making it sound. It is also a far more important one.</p>
+                    <p>There is no sentence that settles all of this in advance.</p>
 
-                    <div class="sep"></div>
+                    <p>A good correction requires a relationship between capacities. Reason checks the claim. Concern attends to what the correction will do to the people involved. A sense of form tells you whether this much explanation belongs here, whether the joke helps, whether another sentence would clarify the point or merely prolong your performance.</p>
 
-                    <p>I am writing this from inside. I am not quitting. I am not staging a conversion. I have a family to take care of, and I believe, on the balance, that the work I am doing in here is more useful than the work I would do out there. I made those choices and I will answer for them.</p>
+                    <p>I would call that last capacity aesthetic judgment.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="psyche"><a href="#fn-7">7</a></sup> It is the sense that something fits—or that something technically competent is wrong for the occasion. It operates when a sentence needs cutting and when a silence needs leaving alone.</p>
 
-                    <p>What I will not do is pretend the kids are wrong. They are not. When I look honestly at the thing I help build, I do not see a god and I do not see a monster. I see a mirror &mdash; a surface that shows us what we already are, the cruelty and the care both, and then hands us the bill for the one we decide to scale. The doom we keep bracing for is our own reflection. So is the way out.</p>
+                    <p>These capacities can disagree. Your wish to avoid hurting someone can conceal information they need. Your certainty can outrun your evidence. Your pleasure in a clean explanation can make the remaining complication feel like an editorial problem.</p>
 
-                    <p>Nobody is coming to settle this for us. Not a superintelligence, not a regulator, not the market. We are the ones in the room, and we are all we have got &mdash; which is not the tragedy it sounds like. It is the starting point. It means the fog is a choice, the prosthetic is a choice, the honesty is a choice, and the choosing is still ours.</p>
+                    <p>The complication may be the person.</p>
 
-                    <p>The students saw all of that and named it in the only language they had on a Saturday morning under a tent, which was booing. They were right. They are owed a better answer than condescension. They are owed the truth, plainly, while it can still do some good.</p>
+                    <p>This is what I mean by regulation: the ongoing adjustment of one demand in the presence of another. Not permanent calm. Not three immaculate faculties taking turns. The work includes noticing that the thing you are good at is, in this moment, making you worse at something else.</p>
+
+                    <p>Language participates in that work. It does not exhaust it. Research distinguishing language from other cognitive capacities gives us reason not to treat verbal fluency as a complete inventory of a mind. It does not give us permission to declare that machines cannot think, or that every convincing sentence is a fraud.<sup class="fnref" id="fnref-8" data-fn="8" data-archetype="logic"><a href="#fn-8">8</a></sup></p>
+
+                    <p>The more useful question is what the sentence remains answerable to.</p>
+
+                    <p>Culture matters here because we learn expectations about how an interaction should feel. Even the emotional state regarded as desirable is not universal. Affect-valuation research distinguishes how people feel from how they want to feel, and documents cultural variation in those ideals. Excitement and calm do not occupy identical positions in every account of a good life.<sup class="fnref" id="fnref-9" data-fn="9" data-archetype="logic"><a href="#fn-9">9</a></sup></p>
+
+                    <p>So consider a system instructed to sound supportive. Does support mean lifting the person’s mood? Helping them tolerate an unpleasant fact? Taking their side? Giving them enough room to discover that there are sides they have not considered?</p>
+
+                    <p>A warm response can do any of those things. Its warmth does not tell us which one it did.</p>
+
+                    <p>And this is where a preference for how intelligence sounds can become a much larger preference about what intelligence is for. If we reward the appearance of a well-conducted interaction, we still have to ask what happened to the interaction.</p>
+
+                    <p>The correction is not finished when it sounds good.</p>
+
+                    <div class="sep" aria-hidden="true"></div>
+
+                    <h2 class="essay-part"><span class="essay-part-num">IV</span><span class="essay-part-title">The return</span></h2>
+
+                    <p>In a controlled experiment reported at CHI in 2025, researchers gave 118 participants in India and the United States culturally grounded writing tasks, with or without AI suggestions. In that setting, the assistance shifted Indian participants’ writing toward styles associated with the American comparison group.<sup class="fnref" id="fnref-10" data-fn="10" data-archetype="logic"><a href="#fn-10">10</a></sup></p>
+
+                    <p>The paper includes two descriptions of biryani. These are different writers in different conditions, not the before-and-after drafts of one person. The unassisted example names Malabar preparation, nutmeg, and accompaniments including dates chutney. The assisted example emphasizes “rich flavors and spices” and meat that “melts in my mouth.” It still names Hyderabadi biryani.<sup class="fnref" id="fnref-11" data-fn="11" data-archetype="instinct"><a href="#fn-11">11</a></sup></p>
+
+                    <p>General praise makes a description familiar. An unfamiliar detail gives a reader somewhere to go. Neither is always preferable. But recognizing a subject and discovering something about it are different encounters.</p>
+
+                    <p>Now imagine asking for help with a passage you have written. You may mean: make this easier for someone else to understand. You may mean: help me sound appropriate to this audience. You may mean: I cannot yet express the thought clearly enough to find out whether I believe it.</p>
+
+                    <p>All are reasonable requests. They authorize different changes.</p>
+
+                    <p>Removing a grammatical error is not the same decision as making a speaker sound more certain. Replacing an unfamiliar reference is not the same decision as explaining it. Smoothing a hesitation can be useful. It can also remove the only visible evidence that the writer has not settled the question.</p>
+
+                    <p>The danger is not that revision happens. The danger is that several kinds of revision can arrive under one reassuring description: <em>improvement</em>.</p>
+
+                    <p>There is a related problem in conversation. In three preregistered experiments involving 2,405 participants, Myra Cheng and colleagues found that sycophantic AI responses increased people’s conviction that they were right while reducing their stated willingness to take responsibility and repair interpersonal conflicts. Participants nevertheless preferred and trusted those responses.<sup class="fnref" id="fnref-12" data-fn="12" data-archetype="logic"><a href="#fn-12">12</a></sup></p>
+
+                    <p>The study did not establish permanent changes to personality. It established something narrower, and already worth our attention: being pleased by an answer and being helped by it can come apart.</p>
+
+                    <p>A service evaluated only at the moment of satisfaction would struggle to distinguish them. The apology not attempted would happen after the favorable rating. So would the conversation not reopened. The relevant person may not even be the person using the product.</p>
+
+                    <p>This is why I resist using <em>emotional intelligence</em> as a synonym for producing agreeable emotional language. Emotional judgment has to include what the reassurance makes possible afterward. Sometimes comfort is exactly what is needed. Sometimes a person needs a question the comfortable answer has allowed them to avoid.<sup class="fnref" id="fnref-13" data-fn="13" data-archetype="logic"><a href="#fn-13">13</a></sup></p>
+
+                    <p>There is a further possibility here, which is my inference rather than another result from those experiments. Imagine two people on opposite sides of an argument receiving the same habitual affirmation. They need not leave with identical beliefs. They could leave more certain of incompatible ones.</p>
+
+                    <p>The common product would be a manner of being right.</p>
+
+                    <p>That is a cultural possibility worth worrying about: a shared standard of response that makes people less able to respond to one another. No universal opinion is required. The agreement is between each person and the way the system treats them.</p>
+
+                    <div class="sep" aria-hidden="true"></div>
+
+                    <h2 class="essay-part"><span class="essay-part-num">V</span><span class="essay-part-title">Still online</span></h2>
+
+                    <p>This is the version of the dead internet that interests me.</p>
+
+                    <p>Not a census of bots. Not a claim that everyone except the author has stopped thinking. An internet can contain actual people and still make their encounters narrower than they need to be.</p>
+
+                    <p>Consider the prospect of a communication environment in which more people can produce a polished contribution, but more of those contributions have passed through the same judgments about what deserves emphasis, what sounds excessive, and what counts as complete. The activity could increase. So could satisfaction. Neither would, by itself, tell us how much room remained for an unfamiliar judgment.</p>
+
+                    <p>There is already evidence that individual gains and collective narrowing can coexist. In a 2024 short-story experiment, Anil Doshi and Oliver Hauser found that access to AI-generated ideas improved evaluations of individual stories, especially for participants with lower baseline creativity scores. The stories also became more similar to one another.<sup class="fnref" id="fnref-14" data-fn="14" data-archetype="logic"><a href="#fn-14">14</a></sup></p>
+
+                    <p>The benefits are part of the problem the essay has to solve. They cannot be waved away because they complicate the warning.</p>
+
+                    <p>A person who can finally express something has not committed a cultural offense by accepting help. Neither has a person who chooses a conventional register because the unconventional one keeps getting them excluded. I will not tell someone to remain illegible so that the rest of us can enjoy the diversity.</p>
+
+                    <p>And difference alone is a poor standard. An error can be distinctive. Cruelty can be authentic. A familiar explanation can open a subject that an idiosyncratic one made impossible to understand. We should want to change some of the things that make us recognizable.</p>
+
+                    <p>The question is whether the change is available to judgment.</p>
+
+                    <p>Can the person understand what the assistance has done? Can they refuse its standard without losing access to the assistance? Can the result introduce something the system was not already inclined to reward?</p>
+
+                    <p>These questions leave room for AI-assisted work to become culture, rather than treating it as a contaminant. They also demand more than an assurance that a human clicked the button.</p>
+
+                    <p>My concern is a culture that keeps the opportunity to publish while gradually weakening the opportunity to answer differently. That is a risk, not a completed diagnosis of the internet.<sup class="fnref" id="fnref-15" data-fn="15" data-archetype="logic"><a href="#fn-15">15</a></sup> The studies above concern different systems and different tasks. They do not add up to a single experiment in the death of civilization, however convenient that would be for the title.</p>
+
+                    <p>The internet does not have to go silent for us to have less to say to one another.</p>
+
+                    <div class="sep" aria-hidden="true"></div>
+
+                    <h2 class="essay-part"><span class="essay-part-num">VI</span><span class="essay-part-title">Show me</span></h2>
+
+                    <p>A person is allowed to change.<sup class="fnref" id="fnref-16" data-fn="16" data-archetype="psyche"><a href="#fn-16">16</a></sup></p>
+
+                    <p>That includes changing because of a machine. Learning a new register, encountering a better argument, discovering a form that makes an inarticulate feeling usable. Assistance that never alters anything would be an expensive form of storage.</p>
+
+                    <p>I work in AI. The assistance in this essay reaches into its sentences.<sup class="fnref" id="fnref-17" data-fn="17" data-archetype="instinct"><a href="#fn-17">17</a></sup> I want tools that make more expression possible. I am not asking for a return to a world in which technical fluency determines who gets to make the thing they can imagine.</p>
+
+                    <p>But I want the nature of the help to be visible.</p>
+
+                    <p>An editor could distinguish correcting an error from adapting a passage to an audience, and both from changing the writer’s position. It could identify where uncertainty became confidence. When it replaces a specific reference with something more familiar, it could make that decision available for inspection instead of treating familiarity as a neutral improvement.</p>
+
+                    <p>Those are design proposals. They would have to be tested. A screen full of explanations can become another thing the user is expected to approve without reading.<sup class="fnref" id="fnref-18" data-fn="18" data-archetype="logic"><a href="#fn-18">18</a></sup></p>
+
+                    <p>Evaluation would have to change too. Alongside whether people preferred the answer, we could ask whether they retained the relevant meaning, recognized the limits of the claim, or became better able to handle the next interaction. Different tasks would need different measures. The point is to follow the help far enough to see whom it helped.</p>
+
+                    <p>And the evaluator should not disappear from the discussion once the feedback has been collected. The ability to identify a badly framed task, register a meaningful disagreement, or question an instruction is part of the quality of the judgment we are asking a person to supply. A more geographically varied workforce cannot, by itself, resolve the authority of the same unchanged rubric.</p>
+
+                    <p>None of this gives us a system without an accent. I do not think that is a coherent ambition. Even the choice to sound neutral expresses a preference about what neutrality should sound like.</p>
+
+                    <p>It gives us a different ambition: help that can explain its interventions well enough for another judgment to remain possible.</p>
+
+                    <p>Return to the person comparing answers. <em>Which is better?</em> We now have reasons to ask what the answer preserved, what it made easier, and what happened after someone accepted it. There may still be a clear winner. The question has become more demanding, not unusable.</p>
+
+                    <p>I do not need intelligence to sound like me. I need to be able to notice when sounding like it has changed what I mean.</p>
+
+                    <p>Show me what you changed.</p>
                 </div>
 
                                 <div class="essay-notes" aria-label="Footnotes">
                     <aside id="fn-1" class="footnote" data-fn="1" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-1">1</a>
-                        <div class="fn-content">At the University of Central Florida on May 8, real estate executive Gloria Caulfield called AI &ldquo;the next industrial revolution&rdquo; and was booed by graduating arts and humanities students; she paused, turned to the other speakers on the stage, and asked, &ldquo;What happened?&rdquo; The next day, at Middle Tennessee State University, Big Machine Records founder Scott Borchetta told graduates &ldquo;AI is rewriting production as we sit here,&rdquo; drew the same reaction, and answered it with &ldquo;Deal with it.&rdquo; A week later, at the University of Arizona, former Google CEO Eric Schmidt was booed repeatedly as he likened the arrival of AI to the rise of the personal computer; at one point he said, &ldquo;If you&rsquo;d let me make this point, please &mdash;&rdquo; while the crowd jeered. His invitation had been protested by student groups before the ceremony even began. Even the machinery drew boos on its own behalf: at Glendale Community College, outside Phoenix, an AI system brought in to read graduates&rsquo; names garbled and skipped them, and the crowd turned on it. <em>When I first drafted this, I called it not yet a pattern &mdash; just no longer an outlier. The season has since closed and settled the question. It is a pattern.</em><a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">The simplified opening describes a kind of comparison task, not an observed worker or a quotation from a screen. In OpenAI’s 2022 account of InstructGPT, demonstrations and ranked responses fed a process for training more useful instruction-following behavior. This is one documented approach, not a universal description of every current model. The feedback was useful; usefulness does not answer every question about the criteria. (<a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener noreferrer">paper</a>)<a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="psyche" tabindex="-1">
+                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-2">2</a>
-                        <div class="fn-content">As of writing this, I work at ElevenLabs. I am not a researcher and I am not a founder. I am closer to the people booing than I am to the people on the stage, which is part of why I think it is worth saying any of this. The view from the middle of the industry is different from the view at the top, and almost nobody writes from here.<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">Tom S. Juzek and Zina B. Ward’s 2024 analysis did not support the simple English-variety explanation. Their 2025 follow-up found a modest preference for vocabulary associated with human-feedback training. It did not establish a national cause or isolate one explanation for the preference. An interesting possibility is not improved by being promoted to a fact. This essay would be much easier to write if it were. (<a href="https://arxiv.org/abs/2412.11385" target="_blank" rel="noopener noreferrer">2024 analysis</a>; <a href="https://arxiv.org/abs/2508.01930" target="_blank" rel="noopener noreferrer">2025 follow-up</a>)<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="logic" tabindex="-1">
+                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="instinct" tabindex="-1">
                         <a class="fn-marker" href="#fnref-3">3</a>
-                        <div class="fn-content">Writing in his newsletter <em>Blood in the Machine</em>, Brian Merchant got the closest to honest: &ldquo;I too would loudly boo at the prospect of this next industrial revolution if I was in my early twenties, unemployed, and had aspirations for my future greater than entering prompts into an LLM.&rdquo; Most of the rest of the coverage I read was more interested in protecting the speakers&rsquo; dignity than in taking the students seriously.<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">See <em>Americans, Europeans, and Autism, Oh My!</em>. The footnote in that essay admits that the supposedly suspicious explanation was also partly wrong. Human authorship did not rescue the calculation. Nor would a missing comma have helped. I would like criticism to retain the ability to distinguish a bad argument from an argument wearing the wrong shoes. (<a href="/essays/americans-europeans-and-autism-oh-my/">essay</a>)<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
                     <aside id="fn-4" class="footnote" data-fn="4" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-4">4</a>
-                        <div class="fn-content">Federal Reserve Bank of New York, <em>The Labor Market for Recent College Graduates</em>, first quarter 2026: recent-graduate unemployment around 5.7 percent against a national rate near 4.2, with underemployment around 41.5 percent &mdash; the highest level since 2020. Recent graduates have been unemployed at a higher rate than the general workforce for five straight years, something almost unheard of between 1990 and 2018. And the contraction is landing first exactly where you would expect if the apprenticeship is the thing being eaten: by some accounts, entry-level hiring at large tech firms has fallen by roughly half from pre-pandemic levels. <em>These are not the numbers of a temporary dip. They get worse before they get better, and I am not certain they get better.</em><a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">Billy Perrigo, TIME, January 18, 2023. Sama’s stated after-tax range was $1.46–$3.74 an hour. Neither range should be generalized to every training task or presented as current worldwide pay. (<a href="https://time.com/6247678/openai-chatgpt-kenya-workers/" target="_blank" rel="noopener noreferrer">TIME report</a>)<a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
                     <aside id="fn-5" class="footnote" data-fn="5" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-5">5</a>
-                        <div class="fn-content">An incomplete list of people who currently profit from optimism about AI&rsquo;s effect on labor: every founder who has raised on the productivity narrative, every executive whose stock-based pay depends on continued enthusiasm, every analyst whose firm has placed a bullish call, every commencement speaker chosen by a university whose endowment is invested in those firms. An incomplete list of people who do not: the graduates. The sentiment data tracks the money almost exactly &mdash; enthusiasm for this technology breaks along lines of income and age, with adults under thirty-five viewing it deeply unfavorably and some of the only groups viewing it favorably sitting at the top of the income distribution. People tend to like the machine in proportion to whether it pays them.<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">Ouyang and colleagues, InstructGPT paper, §5.2. The section is titled “Who are we aligning to?” Its discussion of researcher instructions, paid work, and the distinction between customers and end users is considerably more explicit than the phrase <em>human preferences</em> might suggest. These are the authors’ acknowledged limits. The question of what authority should follow from them is mine. (<a href="https://arxiv.org/pdf/2203.02155#page=18" target="_blank" rel="noopener noreferrer">paper, §5.2</a>)<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="instinct" tabindex="-1">
+                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="psyche" tabindex="-1">
                         <a class="fn-marker" href="#fnref-6">6</a>
-                        <div class="fn-content">Look at what the three phrases share: each one deletes the agent. Nobody eliminates a job &mdash; work gets &ldquo;reshaped,&rdquo; capability gets &ldquo;augmented,&rdquo; opportunity &ldquo;unlocks&rdquo; itself, all of it arriving like weather with no hand behind it. The passive construction and the abstract noun do the same work the fog does: they lift the actor out of the act, so there&rsquo;s no one left to hold responsible. The smoothness is the tell. Honest sentences have edges &mdash; and a subject.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">Some disagreement is evidence that someone missed a fact. Some is evidence that the assignment contains more than one legitimate purpose. Refusing to distinguish these would make pluralism useless. Automatically treating disagreement as defective labeling would make it decorative. I want neither a model that regards every claim as equally true nor a process that mistakes a preference for a fact because it has been counted.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-7" class="footnote" data-fn="7" data-archetype="instinct" tabindex="-1">
+                    <aside id="fn-7" class="footnote" data-fn="7" data-archetype="psyche" tabindex="-1">
                         <a class="fn-marker" href="#fnref-7">7</a>
-                        <div class="fn-content">I want to be specific, because vagueness about my own part would gut the whole essay. I have done it in the rooms this essay is about, and &mdash; worse, because here there is no deadline or paycheck to hide behind &mdash; I do it everywhere else too. Off the clock, whenever this comes up: at dinners, on walks, in the arguments about all of it I claim to love having. Someone asks the real question &mdash; <em>is my work safe, should my kid still study this, what happens to people like me</em> &mdash; and the honest answer is some version of <em>I don&rsquo;t know, and the part I do know is darker than you want it to be.</em> What I say instead is smoother. &ldquo;It&rsquo;s going to reshape things.&rdquo; &ldquo;There will be new kinds of work.&rdquo; Each one true enough to defend and soft enough to cost me nothing &mdash; no friction, no darkened table, no reputation as the guy who can&rsquo;t discuss this without frightening everyone. The cost is real; it is just handed off, paid later by the person who took my easy answer for my true one.<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content"><em>Aesthetic</em> here concerns form and fit, including timing and proportion. It is not a proposed intelligence test, a ranking of cultured people, or a claim that good taste makes someone good. An exquisitely timed cruelty is still cruel. That is one reason these capacities need to answer to one another. I have not discovered three departments in the skull. No organizational chart is forthcoming.<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
                     <aside id="fn-8" class="footnote" data-fn="8" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-8">8</a>
-                        <div class="fn-content">This distinction is a moral cousin of the one the economist Erik Brynjolfsson draws between <em>augmentation</em> and <em>automation</em> &mdash; technology that makes a person more capable versus technology that does the person&rsquo;s job instead. His cut is economic. Mine is about who is left standing on which side of it. Either way, the industry folded both distinctions into one two-letter word on purpose, because the fold is what lets you sell the dangerous version in the friendly version&rsquo;s voice. Keep them apart in your own head even when the marketing will not.<a class="fn-back" href="#fnref-8" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">Fedorenko, Piantadosi, and Gibson’s 2024 Nature perspective reviews evidence distinguishing linguistic processing from other cognition. Its broader thesis about language’s primary function remains debated; Watumull’s rejoinder disputes it. This essay needs the narrower distinction, not a declaration that words do no thinking or that artificial systems are disqualified from it. A machine could reason very well and still be an inappropriate authority on how I should express a doubt. (<a href="https://www.nature.com/articles/s41586-024-07522-w" target="_blank" rel="noopener noreferrer">Nature perspective</a>; <a href="https://bioling.psychopen.eu/index.php/bioling/article/view/15229" target="_blank" rel="noopener noreferrer">rejoinder</a>)<a class="fn-back" href="#fnref-8" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-9" class="footnote" data-fn="9" data-archetype="psyche" tabindex="-1">
+                    <aside id="fn-9" class="footnote" data-fn="9" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-9">9</a>
-                        <div class="fn-content">This sentence is itself the kind of disclaimer I keep warning about. The honest version: I am about to hand you a couple of things to do, and you should weigh them against the warning I just issued and then decide for yourself. The two-step is the most I can offer in good conscience.<a class="fn-back" href="#fnref-9" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">Tsai and colleagues’ meta-analysis synthesized 124 datasets involving more than 31,000 participants. Cultural differences were larger for ideal than actual affect; the analysis also examined variation associated with factors including age and socioeconomic status. This is not permission to replace people with national personality descriptions. The point is that <em>make the user feel better</em> contains a question about what better feels like. (<a href="https://pubmed.ncbi.nlm.nih.gov/41627335/" target="_blank" rel="noopener noreferrer">meta-analysis</a>)<a class="fn-back" href="#fnref-9" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-10" class="footnote" data-fn="10" data-archetype="psyche" tabindex="-1">
+                    <aside id="fn-10" class="footnote" data-fn="10" data-archetype="logic" tabindex="-1">
                         <a class="fn-marker" href="#fnref-10">10</a>
-                        <div class="fn-content">The argument is structurally identical to the one made by the people who built the first atomic weapons, by the people who designed the social media feeds, by the people who pioneered subprime lending. In some of those cases the inside-the-room theory held and harm was reduced. In others it was a rationalization that let harm compound. The argument is not self-validating. It has to be earned, repeatedly, by the actual behavior of the people inside the room. <em>This is the part I think about most.</em><a class="fn-back" href="#fnref-10" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">Agarwal, Naaman, and Vashistha, CHI 2025. The experiment tested GPT-4o autocomplete in short English-language tasks. Its findings should not be universalized to all cultures, models, or collaboration formats. (<a href="https://doi.org/10.1145/3706598.3713564" target="_blank" rel="noopener noreferrer">study</a>)<a class="fn-back" href="#fnref-10" aria-label="Back to text">&#8617;</a></div>
                     </aside>
 
-                    <aside id="fn-11" class="footnote" data-fn="11" data-archetype="logic" tabindex="-1">
+                    <aside id="fn-11" class="footnote" data-fn="11" data-archetype="instinct" tabindex="-1">
                         <a class="fn-marker" href="#fnref-11">11</a>
-                        <div class="fn-content">Dario Amodei, chief executive of Anthropic, to Axios in May 2025 &mdash; delivered, pointedly, the same day he was promoting his own company&rsquo;s models at its developer conference. The figures are his: up to half of entry-level white-collar jobs, unemployment of ten to twenty percent, inside five years. The word &ldquo;sugarcoating&rdquo; is his too, aimed at the AI companies and the government both. He has repeated the warning since. I disagree with plenty about how the labs operate, and I am aware of how it looks to hold up an AI executive as my model of candor. I am doing it anyway, because he is the cleanest case I have of someone in the room saying the brutal version on the record and not bursting into flames. The point is not that he is a saint. The point is that the fog is optional, and he proved it.<a class="fn-back" href="#fnref-11" aria-label="Back to text">&#8617;</a></div>
+                        <div class="fn-content">These are not two drafts by one writer. Calling them that would give me a better scene. It would also give me evidence I do not have. (<a href="https://arxiv.org/html/2409.11360v3" target="_blank" rel="noopener noreferrer">Table 5</a>)<a class="fn-back" href="#fnref-11" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-12" class="footnote" data-fn="12" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-12">12</a>
+                        <div class="fn-content">Cheng and colleagues, Science, March 2026. The experiments measured judgments and intentions following bounded interactions. They do not show that the participants permanently stopped apologizing. The imagined apology and reopened conversation in the following paragraph identify outcomes an evaluation could miss; they are not observed events from the study. (<a href="https://doi.org/10.1126/science.aec8352" target="_blank" rel="noopener noreferrer">study</a>)<a class="fn-back" href="#fnref-12" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-13" class="footnote" data-fn="13" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-13">13</a>
+                        <div class="fn-content">Earlier research by Sharma and colleagues found that human and preference-model evaluations could favor convincing agreement over correct responses in the settings examined. That supports investigating how a preference signal can reward sycophancy. It does not make warmth suspicious by definition. Nor does putting a stern voice on a chatbot turn it into a person with good judgment. An agreeable error and an abrasive error remain related. (<a href="https://arxiv.org/abs/2310.13548" target="_blank" rel="noopener noreferrer">paper</a>)<a class="fn-back" href="#fnref-13" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-14" class="footnote" data-fn="14" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-14">14</a>
+                        <div class="fn-content">Doshi and Hauser, Science Advances, 2024. The study concerned a constrained short-story task, not every kind of creative work or long-term collaboration. Both findings matter. Leaving out the individual gains would let me write a simpler warning. Leaving out the collective similarity would let someone else write a simpler product announcement. (<a href="https://doi.org/10.1126/sciadv.adn5290" target="_blank" rel="noopener noreferrer">study</a>)<a class="fn-back" href="#fnref-14" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-15" class="footnote" data-fn="15" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-15">15</a>
+                        <div class="fn-content">The metaphor does not establish a percentage of bots, the disappearance of human thought, or an inevitable future. Nor do separate experiments on language, writing, and interpersonal judgment prove the whole cultural cycle proposed here. They make parts of it concrete enough to investigate. The title of an essay is not a license to enlarge its sample.<a class="fn-back" href="#fnref-15" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-16" class="footnote" data-fn="16" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-16">16</a>
+                        <div class="fn-content">Agency is not a requirement to remain recognizably the same. A person may deliberately want a different vocabulary, a different audience, or a different understanding of themselves. That includes rejecting a convention they inherited. Defending cultural difference cannot mean appointing everyone permanent curator of the version of themselves we first encountered.<a class="fn-back" href="#fnref-16" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-17" class="footnote" data-fn="17" data-archetype="instinct" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-17">17</a>
+                        <div class="fn-content">Draft disclosure: I work commercially in AI. This first version was drafted by an AI assistant from an outline developed through our conversation, with reference to my published writing and accessible drafts. The assistance included research, argument structure, prose, and notes—not merely proofreading. That is part of the object being evaluated here. This disclosure describes the current version; it must track the actual process if the essay is revised for publication.<a class="fn-back" href="#fnref-17" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-18" class="footnote" data-fn="18" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-18">18</a>
+                        <div class="fn-content">These are proposals, not validated remedies. An edit display earns its place if it helps people notice meaningful changes without making the tool prohibitively difficult to use. A new evaluation earns its place if it captures a relevant outcome the old one missed. Neither succeeds because its designers can now say that users were given a choice. A choice that cannot practically be understood is an impressive-looking place to put the responsibility.<a class="fn-back" href="#fnref-18" aria-label="Back to text">&#8617;</a></div>
                     </aside>
                 </div>
             </div>
