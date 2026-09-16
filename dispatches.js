@@ -58,7 +58,7 @@ window.DISPATCHES = [
             archetype: 'logic',
             url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
         },
-        excerpt: 'What a machine learns from the world that pays for it.'
+        excerpt: 'Who taught us what better sounds like?'
     },
     {
         id: 'selection',
