@@ -51,8 +51,8 @@ window.DISPATCHES = [
         title: 'The Accent of Intelligence',
         date: 'september 2026',
         url: '/essays/the-accent-of-intelligence/',
-        image: '/assets/photos/the-accent-of-intelligence.jpg',
-        ogImage: '/assets/og/the-accent-of-intelligence.jpg',
+        image: '/assets/photos/the-accent-of-intelligence.jpg?v=2',
+        ogImage: '/assets/og/the-accent-of-intelligence.jpg?v=2',
         status: 'draft',
         playlist: {
             archetype: 'logic',
