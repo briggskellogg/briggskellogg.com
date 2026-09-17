@@ -583,6 +583,56 @@
             background: var(--ink-50);
             transform: scale(1.4);
         }
+        /* A small gold orrery: a full orbit marks the next thought. */
+        .quote-nav { gap: 0.65rem; flex-wrap: wrap; }
+        .quote-nav button:focus-visible {
+            outline: 1px solid var(--logic-gold);
+            outline-offset: 4px;
+        }
+        .quote-nav .quote-clock {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0;
+            min-height: 44px;
+            color: var(--logic-gold);
+            margin-left: 0.2rem;
+        }
+        .quote-clock svg { width: 38px; height: 38px; overflow: visible; }
+        .quote-clock-track { fill: none; stroke: currentColor; opacity: 0.2; stroke-width: 0.7; }
+        .quote-clock-arc {
+            fill: none; stroke: currentColor; stroke-width: 1.1;
+            stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100;
+            transform: rotate(-90deg); transform-origin: 24px 24px;
+        }
+        .quote-clock-orbit { transform-origin: 24px 24px; }
+        .quote-clock-orbit path { fill: currentColor; }
+        .quote-clock-glyph {
+            font-family: Georgia, serif; font-size: 32px; fill: currentColor;
+            text-anchor: middle; transform-origin: 24px 24px;
+        }
+        .quote-clock-pause { opacity: 0; stroke: currentColor; stroke-width: 1.6; }
+        .quote-clock-label {
+            font-family: var(--font-mono); font-size: 0.5rem;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            min-width: 7.7em; text-align: left; color: var(--ink-50);
+            font-variant-numeric: tabular-nums;
+        }
+        .quote-clock.is-paused .quote-clock-glyph { opacity: 0; }
+        .quote-clock.is-paused .quote-clock-pause { opacity: 1; }
+        .quote-clock.is-soon .quote-clock-orbit {
+            filter: drop-shadow(0 0 3px var(--logic-gold));
+        }
+        .quote-clock.is-turning .quote-clock-glyph { animation: quote-turn 850ms ease; }
+        @keyframes quote-turn {
+            0% { transform: rotate(0); opacity: 1; }
+            45% { transform: rotate(180deg) scale(0.7); opacity: 0.2; }
+            100% { transform: rotate(360deg); opacity: 1; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .quote-slide, .quotes-carousel { transition: none; }
+            .quote-clock.is-turning .quote-clock-glyph { animation: none; }
+        }
         .status-dot {
             position: relative;
             width: 6px;
@@ -636,6 +686,13 @@
             user-select: none;
             white-space: nowrap;
             background-color: transparent;
+        }
+        @media (min-width: 1010px) and (max-height: 900px) {
+            html, html body { height: auto; max-height: none; overflow-y: auto; }
+            body { display: block; padding-bottom: 12rem; }
+            .page { max-height: none; }
+            .home-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+            .featured { margin-top: 100px; }
         }
         @media (max-width: 1009px) {
             .rights {
@@ -1462,6 +1519,16 @@
                     <div class="quote-dot"></div>
                 </div>
                 <button class="quote-next" aria-label="Next quote">&rarr;</button>
+                <button class="quote-clock" type="button" aria-label="Pause automatic quotes" aria-pressed="false">
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                        <circle class="quote-clock-track" cx="24" cy="24" r="19"/>
+                        <circle class="quote-clock-arc" cx="24" cy="24" r="19" pathLength="100"/>
+                        <g class="quote-clock-orbit"><path d="M24 1 L26.5 5 L24 9 L21.5 5 Z"/></g>
+                        <text class="quote-clock-glyph" x="24" y="36">&#8221;</text>
+                        <path class="quote-clock-pause" d="M21 19v10 M27 19v10"/>
+                    </svg>
+                    <span class="quote-clock-label" aria-hidden="true">next quote</span>
+                </button>
             </div>
             <div class="recs">
                 <div class="recs-heading">recommendations</div>
@@ -1525,7 +1592,7 @@
             </header>
             <a class="featured-card" id="featured-card" href="/essays/the-accent-of-intelligence/">
                 <div class="featured-thumb">
-                    <img id="featured-img" src="/assets/photos/the-accent-of-intelligence.jpg?v=2" alt="Lead photograph for The Accent of Intelligence" fetchpriority="high" decoding="async">
+                    <img id="featured-img" src="/assets/og/the-accent-of-intelligence.jpg?v=3" alt="Lead photograph for Inherited Stories, Smuggled Intent" fetchpriority="high" decoding="async">
                 </div>
                 <div class="featured-meta">
                     <span class="featured-no">no. 04</span>
@@ -1534,9 +1601,9 @@
                 </div>
                 <div class="featured-title-row">
                     <span class="featured-dot featured-dot--logic" id="featured-dot" aria-hidden="true"></span>
-                    <h2 class="featured-title">The Accent of Intelligence</h2>
+                    <h2 class="featured-title">Inherited Stories, Smuggled Intent</h2>
                 </div>
-                <p class="featured-excerpt">Who taught us what better sounds like?</p>
+                <p class="featured-excerpt">Regulation is not satisfaction.</p>
                 <div class="featured-foot">
                     <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
                     <span class="featured-status" id="featured-status" data-status="draft">
@@ -1611,9 +1678,9 @@
             6ceuj503oo9sd<br>
             ...-w4-s2-v16</a>
     </div>
-    <script src="/assets/home.js?v=1" defer></script>
+    <script src="/assets/home.js?v=2" defer></script>
     <script src="/assets/site-chrome.js?v=1" defer></script>
-    <script src="/dispatches.js?v=6"></script>
+    <script src="/dispatches.js?v=7"></script>
     <script src="/assets/dispatch-ui.js?v=1" defer></script>
 </body>
 </html>

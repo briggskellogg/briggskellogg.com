@@ -48,17 +48,17 @@ window.DISPATCHES = [
     {
         id: 'the-accent-of-intelligence',
         number: 4,
-        title: 'The Accent of Intelligence',
+        title: 'Inherited Stories, Smuggled Intent',
         date: 'september 2026',
         url: '/essays/the-accent-of-intelligence/',
-        image: '/assets/photos/the-accent-of-intelligence.jpg?v=2',
-        ogImage: '/assets/og/the-accent-of-intelligence.jpg?v=2',
+        image: '/assets/og/the-accent-of-intelligence.jpg?v=3',
+        ogImage: '/assets/og/the-accent-of-intelligence.jpg?v=3',
         status: 'draft',
         playlist: {
             archetype: 'logic',
             url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
         },
-        excerpt: 'Who taught us what better sounds like?'
+        excerpt: 'Regulation is not satisfaction.'
     },
     {
         id: 'selection',

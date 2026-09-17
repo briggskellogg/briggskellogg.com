@@ -7,11 +7,26 @@
         var slides = document.querySelectorAll('.quote-slide');
         var dots = document.querySelectorAll('.quote-dot');
         var nameEl = document.querySelector('.attribution-name');
-        if (!carousel || !slides.length || !dots.length || !nameEl) return;
+        var clock = document.querySelector('.quote-clock');
+        var nav = document.querySelector('.quote-nav');
+        if (!carousel || !slides.length || !dots.length || !nameEl || !clock) return;
 
-        var current = 0;
+        var arc = clock.querySelector('.quote-clock-arc');
+        var orbit = clock.querySelector('.quote-clock-orbit');
+        var label = clock.querySelector('.quote-clock-label');
+        var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var current = Math.floor(Math.random() * slides.length);
+        var duration = 0;
+        var elapsed = 0;
+        var lastTime = null;
         var typeTimer = null;
-        var auto;
+        var turnTimer = null;
+        var frame = null;
+        var paused = reducedMotion.matches;
+        var hovering = false;
+        var selecting = false;
+        var focused = false;
+        var inView = true;
 
         function updateHeight() {
             carousel.style.height = slides[current].scrollHeight + 'px';
@@ -19,85 +34,124 @@
             if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
         }
 
-        function typeOut(cb) {
-            var text = nameEl.textContent;
-            if (!text.length) { cb(); return; }
-            nameEl.classList.add('typing');
-            clearTimeout(typeTimer);
-            function tick() {
-                text = text.slice(0, -1);
-                nameEl.textContent = text;
-                if (!text.length) {
-                    nameEl.classList.remove('typing');
-                    cb();
-                    return;
-                }
-                typeTimer = setTimeout(tick, 30);
-            }
-            typeTimer = setTimeout(tick, 30);
+        function readingTime(slide) {
+            var words = slide.querySelector('.quote').textContent.trim().split(/\s+/).length;
+            // 150 words/minute, plus time to settle and consider the quotation.
+            return Math.max(14000, 5000 + words * 400);
         }
 
-        function typeIn(str) {
-            var i = 0;
-            nameEl.classList.add('typing');
-            clearTimeout(typeTimer);
-            function tick() {
-                i++;
-                nameEl.textContent = str.slice(0, i);
-                if (i >= str.length) {
-                    nameEl.classList.remove('typing');
-                    return;
-                }
-                typeTimer = setTimeout(tick, 40);
-            }
-            typeTimer = setTimeout(tick, 40);
+        function isPaused() {
+            return paused || hovering || selecting || focused || document.hidden || !inView;
         }
 
-        function show(idx) {
-            slides[current].classList.remove('active');
-            dots[current].classList.remove('active');
+        function paint() {
+            var progress = Math.min(1, elapsed / duration);
+            var stopped = isPaused();
+            arc.style.strokeDashoffset = String(100 * (1 - progress));
+            orbit.style.transform = 'rotate(' + progress * 360 + 'deg)';
+            clock.classList.toggle('is-paused', stopped);
+            clock.classList.toggle('is-soon', !stopped && duration - elapsed <= 3000);
+            clock.setAttribute('aria-label', paused ? 'Resume automatic quotes' : 'Pause automatic quotes');
+            clock.setAttribute('aria-pressed', String(paused));
+            clock.title = paused ? 'Resume automatic quotes' : 'Pause automatic quotes';
+            var text = stopped ? (paused ? 'on pause' : 'take your time') : 'next in ' + Math.ceil((duration - elapsed) / 1000) + 's';
+            if (label.textContent !== text) label.textContent = text;
+        }
+
+        function tick(now) {
+            frame = null;
+            if (!isPaused()) {
+                if (lastTime !== null) elapsed += now - lastTime;
+                if (elapsed >= duration) show(current + 1, true);
+                lastTime = now;
+            } else lastTime = null;
+            paint();
+            if (!isPaused()) frame = requestAnimationFrame(tick);
+        }
+
+        function syncPlayback() {
+            lastTime = null;
+            if (frame !== null) cancelAnimationFrame(frame);
+            frame = null;
+            paint();
+            if (!isPaused()) frame = requestAnimationFrame(tick);
+        }
+
+        function show(idx, animate) {
+            clearTimeout(typeTimer);
+            clearTimeout(turnTimer);
             current = (idx + slides.length) % slides.length;
-            slides[current].classList.add('active');
-            dots[current].classList.add('active');
-            updateHeight();
-            typeOut(function() {
-                setTimeout(function() { typeIn(slides[current].dataset.attr); }, 150);
+            slides.forEach(function(slide, i) {
+                slide.classList.toggle('active', i === current);
+                slide.setAttribute('aria-hidden', String(i !== current));
+                dots[i].classList.toggle('active', i === current);
             });
+            duration = readingTime(slides[current]);
+            elapsed = 0;
+            lastTime = null;
+            carousel.dataset.readingSeconds = String(duration / 1000);
+            nameEl.classList.remove('typing');
+            clock.classList.remove('is-turning');
+            var attribution = slides[current].dataset.attr;
+            if (animate && !reducedMotion.matches) {
+                // One cancellable chain prevents stale attribution after rapid clicks.
+                nameEl.textContent = '';
+                nameEl.classList.add('typing');
+                var letter = 0;
+                function type() {
+                    nameEl.textContent = attribution.slice(0, ++letter);
+                    if (letter < attribution.length) typeTimer = setTimeout(type, 40);
+                    else nameEl.classList.remove('typing');
+                }
+                typeTimer = setTimeout(type, 200);
+                void clock.offsetWidth;
+                clock.classList.add('is-turning');
+                turnTimer = setTimeout(function() { clock.classList.remove('is-turning'); }, 850);
+            } else nameEl.textContent = attribution;
+            updateHeight();
+            paint();
         }
-
-        function manual(idx) {
-            clearTimeout(auto);
-            show(idx);
-            scheduleNext();
-        }
-
-        function scheduleNext() {
-            var delay = 4500 + Math.random() * 6000;
-            auto = setTimeout(function() {
-                show(current + 1);
-                scheduleNext();
-            }, delay);
-        }
-
-        (function randomizeStart() {
-            var start = Math.floor(Math.random() * slides.length);
-            if (start === 0) return;
-            slides[0].classList.remove('active');
-            dots[0].classList.remove('active');
-            slides[start].classList.add('active');
-            dots[start].classList.add('active');
-            nameEl.textContent = slides[start].dataset.attr;
-            current = start;
-        })();
-
-        updateHeight();
-        window.addEventListener('resize', updateHeight);
-        scheduleNext();
 
         var prev = document.querySelector('.quote-prev');
         var next = document.querySelector('.quote-next');
-        if (prev) prev.addEventListener('click', function() { manual(current - 1); });
-        if (next) next.addEventListener('click', function() { manual(current + 1); });
+        function manual(step) {
+            show(current + step, true);
+            syncPlayback();
+        }
+        if (prev) prev.addEventListener('click', function() { manual(-1); });
+        if (next) next.addEventListener('click', function() { manual(1); });
+        clock.addEventListener('click', function() { paused = !paused; syncPlayback(); });
+        carousel.addEventListener('mouseenter', function() { hovering = true; syncPlayback(); });
+        carousel.addEventListener('mouseleave', function() { hovering = false; syncPlayback(); });
+        nav.addEventListener('focusin', function(event) {
+            focused = !clock.contains(event.target) && event.target.matches(':focus-visible');
+            syncPlayback();
+        });
+        nav.addEventListener('focusout', function(event) {
+            focused = !!event.relatedTarget && nav.contains(event.relatedTarget) &&
+                !clock.contains(event.relatedTarget) && event.relatedTarget.matches(':focus-visible');
+            syncPlayback();
+        });
+        document.addEventListener('selectionchange', function() {
+            var selection = window.getSelection();
+            selecting = !!selection && !selection.isCollapsed &&
+                (carousel.contains(selection.anchorNode) || carousel.contains(selection.focusNode));
+            syncPlayback();
+        });
+        document.addEventListener('visibilitychange', syncPlayback);
+        reducedMotion.addEventListener('change', function(event) {
+            if (event.matches) { paused = true; syncPlayback(); }
+        });
+        if (window.IntersectionObserver) {
+            new IntersectionObserver(function(entries) {
+                inView = entries[0].isIntersecting;
+                syncPlayback();
+            }).observe(carousel);
+        }
+        window.addEventListener('resize', updateHeight);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateHeight);
+        show(current, false);
+        syncPlayback();
     })();
 
     // ---------- Home stagger layout + connector wire ----------
@@ -174,6 +228,12 @@
             frame.style.transform = '';
             featured.style.transform = '';
             featured.style.marginBottom = '';
+
+            // On short desktop windows, keep the quote reachable and allow scrolling.
+            if (mq.matches && window.innerHeight <= 900) {
+                if (document.documentElement) document.documentElement.style.overflowY = 'auto';
+                return;
+            }
 
             if (!mq.matches) {
                 if (document.documentElement) document.documentElement.style.overflowY = '';
