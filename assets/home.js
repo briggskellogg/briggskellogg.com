@@ -12,15 +12,12 @@
         if (!carousel || !slides.length || !dots.length || !nameEl || !clock) return;
 
         var arc = clock.querySelector('.quote-clock-arc');
-        var orbit = clock.querySelector('.quote-clock-orbit');
-        var label = clock.querySelector('.quote-clock-label');
         var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         var current = Math.floor(Math.random() * slides.length);
         var duration = 0;
         var elapsed = 0;
         var lastTime = null;
         var typeTimer = null;
-        var turnTimer = null;
         var frame = null;
         var paused = reducedMotion.matches;
         var hovering = false;
@@ -46,16 +43,10 @@
 
         function paint() {
             var progress = Math.min(1, elapsed / duration);
-            var stopped = isPaused();
             arc.style.strokeDashoffset = String(100 * (1 - progress));
-            orbit.style.transform = 'rotate(' + progress * 360 + 'deg)';
-            clock.classList.toggle('is-paused', stopped);
-            clock.classList.toggle('is-soon', !stopped && duration - elapsed <= 3000);
             clock.setAttribute('aria-label', paused ? 'Resume automatic quotes' : 'Pause automatic quotes');
             clock.setAttribute('aria-pressed', String(paused));
             clock.title = paused ? 'Resume automatic quotes' : 'Pause automatic quotes';
-            var text = stopped ? (paused ? 'on pause' : 'take your time') : 'next in ' + Math.ceil((duration - elapsed) / 1000) + 's';
-            if (label.textContent !== text) label.textContent = text;
         }
 
         function tick(now) {
@@ -79,7 +70,6 @@
 
         function show(idx, animate) {
             clearTimeout(typeTimer);
-            clearTimeout(turnTimer);
             current = (idx + slides.length) % slides.length;
             slides.forEach(function(slide, i) {
                 slide.classList.toggle('active', i === current);
@@ -91,7 +81,6 @@
             lastTime = null;
             carousel.dataset.readingSeconds = String(duration / 1000);
             nameEl.classList.remove('typing');
-            clock.classList.remove('is-turning');
             var attribution = slides[current].dataset.attr;
             if (animate && !reducedMotion.matches) {
                 // One cancellable chain prevents stale attribution after rapid clicks.
@@ -104,9 +93,6 @@
                     else nameEl.classList.remove('typing');
                 }
                 typeTimer = setTimeout(type, 200);
-                void clock.offsetWidth;
-                clock.classList.add('is-turning');
-                turnTimer = setTimeout(function() { clock.classList.remove('is-turning'); }, 850);
             } else nameEl.textContent = attribution;
             updateHeight();
             paint();
