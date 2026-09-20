@@ -81,7 +81,7 @@
 .reading-theme-toggle {
  position:fixed;
  top:31px;
- left:82px;
+ left:90px;
  z-index:11;
  display:inline-flex;
  align-items:center;
@@ -133,7 +133,7 @@ body[data-essay-id] .reading-theme-toggle { position:absolute; }
 .reading-theme-toggle:hover .reading-theme-corner,
 .reading-theme-toggle:focus-visible .reading-theme-corner { border-color:var(--logic-gold); opacity:1; }
 @media(max-width:600px) {
- .reading-theme-toggle { top:19px; left:58px; min-width:54px; height:24px; padding:0 7px; font-size:7px; }
+ .reading-theme-toggle { top:19px; left:64px; min-width:54px; height:24px; padding:0 7px; font-size:7px; }
 }
 @media(prefers-reduced-motion:reduce) {
  .reading-theme-orbit { transition:border-color .2s ease; }
