@@ -142,7 +142,10 @@
         nav.className = 'essay-jump';
         nav.setAttribute('aria-label', 'Essay contents');
         nav.innerHTML = '<span class="essay-jump-track">' + links.map(function(link, index) {
-            return '<a class="' + (link.numeral ? '' : 'essay-jump-intro') + '" href="' + esc(link.href) + '">' + (link.numeral ? '<span class="essay-jump-numeral">' + esc(link.numeral) + '</span>' : '') + '<span class="essay-jump-title">' + esc(link.title) + '</span><span class="essay-jump-arrow" aria-hidden="true">↘</span></a>' +
+            var section = link.numeral
+                ? '<a href="' + esc(link.href) + '"><span class="essay-jump-numeral">' + esc(link.numeral) + '</span><span class="essay-jump-title">' + esc(link.title) + '</span></a>'
+                : '<span class="essay-jump-intro"><span class="essay-jump-title">' + esc(link.title) + '</span></span>';
+            return section +
                 '<span class="essay-jump-connector" aria-label="approximately ' + link.minutes + ' minutes"><span class="essay-jump-time">~' + link.minutes + ' min</span></span>';
         }).join('') + '<span class="essay-jump-end">end</span></span>';
         figure.insertAdjacentElement('afterend', nav);
