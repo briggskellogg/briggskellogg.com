@@ -594,3 +594,21 @@ body[data-essay-id] .essay-title-row { padding-top:34px; }
  .essay-layout { gap:40px; }
  .essay-notes::before { display:block; left:-20px; background:repeating-linear-gradient(to bottom,var(--ink-25) 0 1px,transparent 1px 6px); opacity:.5; mask-image:linear-gradient(to bottom,transparent,#000 64px,#000 calc(100% - 64px),transparent); }
 }
+
+/* Match the upper panel's top clearance to the lower panel's footer clearance. */
+body.home { --panel-edge:clamp(24px,4vh,56px); padding-top:var(--panel-edge); }
+.home .site-footer { flex:none; margin:0 auto; padding-top:var(--panel-edge); }
+@media(min-width:1010px) {
+ .home .page { flex:1 0 auto; display:flex; flex-direction:column; }
+ .home .home-panels { flex:1; }
+ .home .featured { align-self:end; }
+}
+.social-toggle, .social-toggle img { width:64px; height:64px; }
+.social-links { bottom:80px; }
+.reading-subscribe { right:max(104px,calc(env(safe-area-inset-right) + 88px)); }
+@media(max-width:600px) {
+ .reading-subscribe { right:96px; width:min(244px,calc(100vw - 112px)); }
+}
+/* Keep the connector legible, with the same soft endpoints. */
+.essay-wires { color:var(--ink-50); }
+.essay-wires .wire-path { stroke-width:1; }

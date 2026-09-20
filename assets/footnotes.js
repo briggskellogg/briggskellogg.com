@@ -119,7 +119,7 @@
             id: 'note-wire-fade', gradientUnits: 'userSpaceOnUse',
             x1: x1, y1: y1, x2: x2, y2: y2
         });
-        [[0, 0], [0.25, 0.7], [0.75, 0.7], [1, 0]].forEach(function(stop) {
+        [[0, 0], [0.18, 1], [0.82, 1], [1, 0]].forEach(function(stop) {
             gradient.appendChild(createSvg('stop', {
                 offset: stop[0], 'stop-color': 'currentColor', 'stop-opacity': stop[1]
             }));
