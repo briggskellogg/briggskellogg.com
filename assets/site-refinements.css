@@ -1591,3 +1591,20 @@ body[data-essay-id] .frame > .c,
 body[data-essay-id] .essay-figure .fc { border-color:var(--logic-gold); }
 body[data-essay-id] .essay-head .hc { border-color:var(--border-50); }
 body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
+
+/* Gold corner marks identify the email action while its dark surface stays
+   still; hover changes only the subscribe label and arrow to silver. */
+.reading-subscribe .subscribe-row::after {
+ background-image:
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold));
+}
+.reading-subscribe button:not(:disabled):hover,
+.reading-subscribe button:not(:disabled):focus-visible,
+.essays-index .reading-subscribe button:not(:disabled):hover,
+.essays-index .reading-subscribe button:not(:disabled):focus-visible {
+ background:var(--ink);
+ color:var(--silver);
+}
