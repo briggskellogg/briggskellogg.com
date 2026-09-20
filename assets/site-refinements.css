@@ -1493,3 +1493,21 @@ body[data-essay-id] .essay-subtitle em { color:var(--ink-50); opacity:.82; }
 @media(prefers-reduced-motion:reduce) {
  .subscribe-loading i { animation:none; opacity:.7; }
 }
+
+/* September 20, v41: after removing the heading, the recommendation corner
+   frame hugs its three groups with equal breathing room above and below. */
+.home .recs {
+ margin-top:1.15rem;
+ padding-top:.78rem;
+ padding-bottom:.78rem;
+}
+.home .recs-group { margin-bottom:.82rem; }
+.home .recs-group:last-child { margin-bottom:0; }
+@media(max-width:480px) {
+ .home .recs {
+  margin-top:clamp(.55rem,1.3vh,.9rem);
+  padding-top:clamp(.55rem,1.1vh,.7rem);
+  padding-bottom:clamp(.55rem,1.1vh,.7rem);
+ }
+ .home .recs-group { margin-bottom:clamp(.38rem,.8vh,.6rem); }
+}
