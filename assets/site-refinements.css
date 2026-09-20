@@ -913,3 +913,54 @@ body[data-essay-id] .essay-soundtrack { left:24px; top:46px; }
  border-color:var(--border-50);
  background:var(--ink-12);
 }
+
+/* September 20 polish: corner marks sit astride their outlines. */
+.home-updated time { margin-left:.25em; }
+
+.home-invitation { position:absolute; }
+.contact-corner,
+.recs-corner { position:absolute; width:8px; height:8px; pointer-events:none; }
+.contact-corner-tl,
+.recs-corner-tl { top:-1px; left:-1px; border-top:1px solid var(--border-50); border-left:1px solid var(--border-50); }
+.contact-corner-tr,
+.recs-corner-tr { top:-1px; right:-1px; border-top:1px solid var(--border-50); border-right:1px solid var(--border-50); }
+.contact-corner-bl,
+.recs-corner-bl { bottom:-1px; left:-1px; border-bottom:1px solid var(--border-50); border-left:1px solid var(--border-50); }
+.contact-corner-br,
+.recs-corner-br { bottom:-1px; right:-1px; border-bottom:1px solid var(--border-50); border-right:1px solid var(--border-50); }
+
+.home .recs { position:relative; }
+.home .recs-corner { width:10px; height:10px; }
+
+.home .featured-all .all-corner-tl { top:-1px; left:-1px; }
+.home .featured-all .all-corner-tr { top:-1px; right:-1px; }
+.home .featured-all .all-corner-bl { bottom:-1px; left:-1px; }
+.home .featured-all .all-corner-br { bottom:-1px; right:-1px; }
+
+/* The archive heading returns to the site's editorial display face. */
+.essays-index .index-head .essay-title {
+ font-family:var(--font-display);
+ font-size:3.4rem;
+ font-style:italic;
+ font-weight:400;
+ line-height:1;
+ letter-spacing:-.035em;
+ text-transform:none;
+}
+
+/* Article-version corners sit inside their compact badge outline. */
+.essay-revision .frame-status .sc-tl { top:0; left:0; }
+.essay-revision .frame-status .sc-tr { top:0; right:0; }
+.essay-revision .frame-status .sc-bl { bottom:0; left:0; }
+.essay-revision .frame-status .sc-br { bottom:0; right:0; }
+
+/* Only the archive signup is a complete call-to-action panel. */
+.essays-index .reading-subscribe {
+ border:1px solid var(--border-25);
+ background-color:var(--bg-raised);
+}
+
+@media(max-width:600px) {
+ .home-invitation { position:relative; }
+ .essays-index .index-head .essay-title { font-size:2.8rem; }
+}
