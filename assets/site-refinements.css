@@ -454,7 +454,7 @@ body[data-essay-id] .essay-title-row { padding-top:34px; }
 /* Restore the staggered pair, with a clear route between their edges. */
 @media(min-width:1010px) {
  .home .home-panels { align-items:start; }
- .home .featured { margin-top:clamp(140px,18vh,190px); }
+ .home .featured { margin-top:clamp(200px,24vh,250px); }
  .home-invitation { position:absolute; grid-column:auto; grid-row:auto; margin:0; width:220px; }
 }
 
@@ -485,4 +485,49 @@ body[data-essay-id] .essay-title-row { padding-top:34px; }
 @media(max-width:600px) {
  .essay-revision .frame-status { font-size:8px; padding:6px 8px; gap:8px; }
  .essay-revision .essay-id-tag { padding-right:8px; }
+}
+
+/* Balance the lower panel against the footer, keeping the original interior type. */
+.home .recs-items { row-gap:7px; line-height:1.8; }
+.home .recs-label { margin-bottom:8px; }
+@media(min-width:1010px) {
+ .home .site-footer { padding-top:max(8px,calc(clamp(24px,4vh,56px) - 16px)); }
+}
+
+/* Shared catalogue typography, with publication details kept together. */
+.essay-id-tag { padding:0; border:0; font-family:var(--font-mono); font-size:9px; line-height:1.5; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-80); }
+.essay-dates { flex-direction:row; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; }
+.essay-dates .essay-id-tag { font-size:9px; }
+.date-separator { color:var(--ink-25); font-size:10px; }
+.essay-dates .date-item span { font-size:9px; }
+.essay-dates .date-item time { font-size:10px; }
+.tl-date { display:flex; flex-direction:row; align-items:center; justify-content:flex-end; gap:8px; }
+.tl-revision { position:relative; display:inline-flex; padding:5px 3px; cursor:help; flex:none; }
+.revision-dot { display:block; width:4px; height:4px; border-radius:50%; background:var(--ink-50); }
+.revision-tooltip { position:absolute; right:0; bottom:calc(100% + 7px); z-index:10; width:max-content; max-width:200px; padding:7px 9px; border:1px solid var(--border-25); background:var(--bg-raised); color:var(--ink-80); font-family:var(--font-mono); font-size:9px; line-height:1.5; letter-spacing:0; opacity:0; visibility:hidden; pointer-events:none; }
+.tl-revision:hover .revision-tooltip, .tl-revision:focus .revision-tooltip { opacity:1; visibility:visible; }
+.tl-revision:focus-visible { outline:1px solid var(--border-50); outline-offset:2px; }
+.essays-index .index-head { display:block; padding:0 0 24px; margin:0 0 36px; border-bottom:1px solid var(--border-25); }
+.essays-index .index-head::before, .essays-index .index-head::after { display:none; }
+.essays-index .index-head .essay-title { font-family:var(--font-mono); font-size:.72rem; font-style:normal; font-weight:400; line-height:1.5; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-50); }
+
+/* A restrained edge response replaces saturated hover color. */
+.tl-card:hover .tl-thumb, .tl-card:focus-visible .tl-thumb, .home .featured-card:hover .featured-thumb, .home .featured-card:focus-visible .featured-thumb { border-color:color-mix(in srgb,var(--photo-accent) 40%,var(--border-25)); box-shadow:none; }
+.tl-card:hover .tl-thumb img, .home .featured-card:hover .featured-thumb img { filter:brightness(1.02) saturate(.96); }
+
+/* Move the note as a unit; the longer hook ends beside the blob's upper right. */
+.soundtrack-note { left:-30px; bottom:calc(100% - 29px); transform:rotate(-6deg); align-items:flex-start; }
+.soundtrack-note svg { width:90px; height:44px; margin-top:-3px; margin-left:0; }
+
+/* A quieter field, with its color confined to a small edge accent. */
+.reading-subscribe { width:244px; border:1px solid var(--border-25); border-radius:5px; background:var(--bg-raised); box-shadow:0 4px 20px #00000010; }
+.reading-subscribe::before { inset:auto; top:-1px; right:12px; width:68px; height:1px; border-radius:0; opacity:.7; background:linear-gradient(90deg,var(--psyche-blue),var(--instinct-rose),var(--logic-gold)); }
+.reading-subscribe:focus-within { border-color:var(--border-50); }
+.reading-subscribe:focus-within::before { opacity:1; }
+.reading-subscribe .subscribe-label { font-size:9px; letter-spacing:.02em; }
+@media(max-width:600px) {
+ .tl-date { justify-content:flex-start; }
+ .revision-tooltip { right:auto; left:0; }
+ .soundtrack-note { left:-33px; }
+ .soundtrack-note svg { width:90px; }
 }

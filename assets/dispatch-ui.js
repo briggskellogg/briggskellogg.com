@@ -15,6 +15,21 @@
         return (window.formatDispatchVersion || function(s) { return { label: s, slug: s }; })(status);
     }
 
+    function updatedDate(value) {
+        // Parse components directly: calendar dates must not shift with timezone.
+        var parts = (value || '').split('-');
+        var months = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+        if (parts.length !== 3) return value || '';
+        return Number(parts[2]) + ' ' + months[Number(parts[1]) - 1] + ' ' + parts[0];
+    }
+
+    function revisionMarker(d) {
+        // A version marker, never an unread badge or device-dependent read state.
+        if (!d.updated || !/(?:-v|patch-)[1-9]\d*/.test(d.status || '')) return '';
+        var date = esc(updatedDate(d.updated));
+        return '<span class="tl-revision" tabindex="0" aria-label="Revised; updated ' + date + '"><span class="revision-dot" aria-hidden="true"></span><span class="revision-tooltip" aria-hidden="true">updated ' + date + '</span></span>';
+    }
+
     // ---------- Essays index (card list) ----------
     (function() {
         var list = (window.DISPATCHES || []).slice();
@@ -36,8 +51,8 @@
                 '<div class="tl-spine">' +
                     '<span class="tl-line"></span>' +
                     '<span class="tl-node"><span class="tl-node-dot"></span></span>' +
-                    '<div class="tl-no"><span class="essay-id-tag">No. ' + num + '</span></div>' +
-                    '<div class="tl-date" aria-label="Publication history"><time class="tl-published" datetime="' + esc(d.published || '') + '" aria-label="Published ' + esc(d.date) + '">' + esc(d.date) + '</time></div>' +
+                    '<div class="tl-no"><span class="essay-id-tag">NO. ' + pad2(num) + '</span></div>' +
+                    '<div class="tl-date" aria-label="Publication history"><time class="tl-published" datetime="' + esc(d.published || '') + '" aria-label="Published ' + esc(d.date) + '">' + esc(d.date) + '</time>' + revisionMarker(d) + '</div>' +
                 '</div>' +
                 '<a class="tl-card" href="' + esc(d.url) + '">' +
                     '<div class="tl-card-inner">' +
@@ -131,7 +146,7 @@
         var noEl = card.querySelector('.featured-no');
         if (noEl && typeof d.number === 'number') noEl.textContent = 'no. ' + pad2(d.number);
         var dateEl = card.querySelector('.featured-date');
-        if (dateEl && d.date) dateEl.textContent = d.date;
+        if (dateEl && (d.updated || d.date)) dateEl.textContent = d.updated ? 'updated ' + updatedDate(d.updated) : d.date;
         var titleEl = card.querySelector('.featured-title');
         if (titleEl && d.title) titleEl.textContent = d.title;
         var exEl = card.querySelector('.featured-excerpt');
