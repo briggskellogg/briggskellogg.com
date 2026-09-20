@@ -17,7 +17,8 @@
         var duration = 0;
         var elapsed = 0;
         var lastTime = null;
-        var typeTimer = null;
+        var transitionTimer = null;
+        var transitionToken = 0;
         var frame = null;
         var paused = reducedMotion.matches;
         var hovering = false;
@@ -57,22 +58,15 @@
             nameEl.href = slide.dataset.url;
             nameEl.setAttribute('aria-label', attribution + ' — official site (opens in a new tab)');
             nameEl.classList.toggle('has-subtitle', split >= 0);
-            function render(count) {
-                titleEl.textContent = title.slice(0, count);
-                subtitleEl.textContent = subtitle.slice(0, Math.max(0, count - title.length));
-            }
-            nameEl.classList.remove('typing');
+            titleEl.textContent = title;
+            subtitleEl.textContent = subtitle;
+            nameEl.classList.remove('typing', 'is-entering');
             if (animate && !reducedMotion.matches) {
-                render(0);
-                nameEl.classList.add('typing');
-                var letter = 0;
-                function type() {
-                    render(++letter);
-                    if (letter < attribution.length) typeTimer = setTimeout(type, 40);
-                    else { nameEl.classList.remove('typing'); updateHeight(); }
-                }
-                typeTimer = setTimeout(type, 200);
-            } else render(attribution.length);
+                nameEl.classList.add('is-entering');
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() { nameEl.classList.remove('is-entering'); });
+                });
+            }
         }
 
         function isPaused() {
@@ -107,19 +101,52 @@
         }
 
         function show(idx, animate) {
-            clearTimeout(typeTimer);
-            current = (idx + slides.length) % slides.length;
+            clearTimeout(transitionTimer);
+            var previous = current;
+            var next = (idx + slides.length) % slides.length;
+            var token = ++transitionToken;
+            current = next;
             slides.forEach(function(slide, i) {
-                slide.classList.toggle('active', i === current);
-                slide.setAttribute('aria-hidden', String(i !== current));
+                slide.classList.remove('is-leaving', 'is-entering');
                 dots[i].classList.toggle('active', i === current);
             });
             duration = readingTime(slides[current]);
             elapsed = 0;
             lastTime = null;
             carousel.dataset.readingSeconds = String(duration / 1000);
-            setAttribution(slides[current], animate);
-            updateHeight();
+            if (!animate || reducedMotion.matches || previous === current) {
+                slides.forEach(function(slide, i) {
+                    slide.classList.toggle('active', i === current);
+                    slide.setAttribute('aria-hidden', String(i !== current));
+                });
+                setAttribution(slides[current], false);
+                updateHeight();
+                paint();
+                return;
+            }
+
+            var outgoing = slides[previous];
+            var incoming = slides[current];
+            outgoing.classList.add('active', 'is-leaving');
+            incoming.setAttribute('aria-hidden', 'true');
+
+            // Let the old quote clear before the frame changes height. This
+            // avoids clipping a taller outgoing quote or briefly drawing two
+            // equal-height quotes on top of one another.
+            transitionTimer = setTimeout(function() {
+                if (token !== transitionToken) return;
+                outgoing.classList.remove('active', 'is-leaving');
+                outgoing.setAttribute('aria-hidden', 'true');
+                incoming.classList.add('active', 'is-entering');
+                incoming.setAttribute('aria-hidden', 'false');
+                setAttribution(incoming, true);
+                updateHeight();
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        if (token === transitionToken) incoming.classList.remove('is-entering');
+                    });
+                });
+            }, 180);
             paint();
         }
 

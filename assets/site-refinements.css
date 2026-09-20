@@ -1643,3 +1643,51 @@ body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
  background:var(--bg);
  color:var(--ink);
 }
+
+/* The quote change is sequential: the old line clears, the frame eases to
+   its new height, then the new line settles in. This removes the shimmer that
+   came from two quotes crossfading on the same baseline during a shrink. */
+.home .quotes-carousel {
+ transition:height .62s cubic-bezier(.22,1,.36,1);
+}
+.home .quote-slide {
+ transform:translateY(3px);
+ transition:opacity .28s ease,transform .5s cubic-bezier(.22,1,.36,1);
+ will-change:opacity,transform;
+}
+.home .quote-slide.active { transform:translateY(0); }
+.home .quote-slide.is-leaving {
+ opacity:0;
+ transform:translateY(-2px);
+}
+.home .quote-slide.is-entering {
+ opacity:0;
+ transform:translateY(3px);
+}
+.home .attribution-name {
+ transition:opacity .28s ease,transform .45s cubic-bezier(.22,1,.36,1),color .2s ease;
+}
+.home .attribution-name.is-entering {
+ opacity:0;
+ transform:translateY(2px);
+}
+
+/* Match the archive's full-photo previews. The card keeps its width while
+   its vertical dimension follows the source image instead of cropping it. */
+.home .featured-thumb { aspect-ratio:auto; }
+.home .featured-thumb img {
+ height:auto;
+ object-fit:contain;
+}
+
+@media(prefers-reduced-motion:reduce) {
+ .home .quotes-carousel,
+ .home .quote-slide,
+ .home .attribution-name { transition:none; }
+}
+
+/* The recommendations frame has one measurable inset at both ends. */
+.home .recs {
+ padding-top:13px;
+ padding-bottom:13px;
+}
