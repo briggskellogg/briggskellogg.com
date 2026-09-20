@@ -314,3 +314,8 @@ body[data-essay-id] .site-footer, .essays-index .site-footer { padding-top:64px;
 .home .featured-status { background:none; border-color:transparent; color:var(--ink-50); opacity:.72; letter-spacing:.14em; }
 .home .featured-status .fsc { display:none; }
 .home .featured-status .status-dot { width:3px; height:3px; opacity:.6; }
+
+/* A handwritten invitation keeps the listening links playful and light. */
+.listening-label { font-family:'Caveat',cursive; font-size:23px; font-weight:400; line-height:1.2; color:var(--ink-80); transform:rotate(-1deg); transform-origin:left center; -webkit-font-smoothing:antialiased; }
+.listening-hint { margin-top:8px; }
+.listening-blob span { font-family:'Caveat',cursive; font-size:17px; font-weight:400; line-height:1; }
