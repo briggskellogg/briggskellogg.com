@@ -612,3 +612,38 @@ body.home { --panel-edge:clamp(24px,4vh,56px); padding-top:var(--panel-edge); }
 /* Keep the connector legible, with the same soft endpoints. */
 .essay-wires { color:var(--ink-50); }
 .essay-wires .wire-path { stroke-width:1; }
+
+/* One destination in each corner: social on home, signup on reading pages. */
+.home .social-toggle img { transition:transform .4s ease,filter .4s ease; }
+.home .social-toggle:hover img, .home .social-toggle:focus-visible img { transform:rotate(-7deg); filter:drop-shadow(0 0 7px color-mix(in srgb,var(--ink-50) 35%,transparent)); }
+.reading-subscribe { right:max(24px,env(safe-area-inset-right)); width:310px; max-width:calc(100vw - 32px); padding:14px; border-color:var(--border-50); box-shadow:0 6px 24px #0002; }
+.reading-subscribe .subscribe-label { display:block; margin:0 0 11px; font-size:11px; line-height:1.4; color:var(--ink); letter-spacing:0; }
+.reading-subscribe .subscribe-row { gap:8px; align-items:stretch; border:0; }
+.reading-subscribe input[type="email"] { padding:9px 10px; border:1px solid var(--ink-20); border-radius:3px; background:var(--bg); font-size:13px; }
+.reading-subscribe input[type="email"]:focus { outline:1px solid var(--ink-50); outline-offset:1px; }
+.reading-subscribe button { flex:0 0 100px; min-height:42px; padding:0 10px; border:1px solid transparent; border-radius:3px; background:var(--ink); color:var(--bg); font-size:10px; line-height:1.4; letter-spacing:0; cursor:pointer; transition:background .2s,color .2s; }
+.reading-subscribe button:hover { background:var(--logic-gold); color:#15120e; }
+.reading-subscribe button:focus-visible { outline:1px solid var(--ink); outline-offset:3px; }
+.reading-subscribe button:disabled { cursor:default; opacity:.65; }
+.reading-subscribe .essay-subscribe.is-confirmed button { background:var(--ink-12); color:var(--ink); }
+/* The same small version signature as the cards, with editing history on demand. */
+.essay-revision { position:absolute; top:18px; right:20px; z-index:5; display:block; margin:0; }
+.essay-revision .frame-status { display:inline-flex; align-items:center; gap:.45em; padding:0; border:0; background:none; font-family:var(--font-mono); font-size:8px; line-height:1.5; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-50); cursor:help; }
+.essay-revision .frame-status:focus-visible { outline:1px solid var(--border-50); outline-offset:5px; }
+.essay-revision .status-dot { display:block; width:5px; height:5px; border-radius:50%; background:var(--logic-gold); animation:none; box-shadow:none; }
+.essay-revision .revision-updated { position:absolute; right:0; top:100%; width:max-content; max-width:calc(100vw - 72px); margin:0; padding:10px 0 4px; border:0; background:var(--bg); font-family:var(--font-mono); font-size:8px; line-height:1.5; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-50); opacity:0; visibility:hidden; transition:opacity .2s; }
+.essay-revision:hover .revision-updated, .essay-revision:focus-within .revision-updated { opacity:1; visibility:visible; }
+.home .featured-meta { font-family:var(--font-mono); font-size:10px; line-height:1.6; letter-spacing:0; text-transform:none; align-items:baseline; gap:8px; }
+.home .featured-no { letter-spacing:.12em; text-transform:uppercase; }
+.home .featured-date { display:inline-flex; flex-wrap:wrap; gap:7px; align-items:baseline; }
+.home .featured-date time { color:var(--ink); }
+@media(max-width:600px) {
+ .reading-subscribe { right:max(16px,env(safe-area-inset-right)); }
+ .reading-subscribe input[type="email"] { font-size:16px; }
+ .essay-revision { top:16px; right:16px; }
+ .home .featured-meta { font-size:9px; gap:7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .home .social-toggle:hover img, .home .social-toggle:focus-visible img { transform:none; }
+ .home .social-toggle img, .essay-revision .revision-updated { transition:none; }
+}
