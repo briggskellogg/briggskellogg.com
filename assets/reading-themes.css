@@ -27,3 +27,114 @@
  .reading-subscribe { box-shadow:0 4px 24px #0003; }
  ::selection { background:rgba(201,155,69,.28); color:var(--ink); }
 }
+
+/* A reader's explicit choice wins over the system preference. */
+:root[data-reading-theme="light"] {
+ color-scheme:light;
+ --bg:#F4F0E4;
+ --bg-raised:#FAF8F2;
+ --ink:#2A2018;
+ --ink-80:rgba(42,32,24,.92);
+ --ink-50:rgba(42,32,24,.56);
+ --ink-25:rgba(42,32,24,.34);
+ --ink-20:rgba(42,32,24,.26);
+ --ink-12:rgba(42,32,24,.14);
+ --ink-06:rgba(42,32,24,.05);
+ --border:#9DA3AB;
+ --border-80:rgba(157,163,171,1);
+ --border-50:rgba(157,163,171,.6);
+ --border-30:rgba(157,163,171,.42);
+ --border-25:rgba(157,163,171,.36);
+ --border-20:rgba(157,163,171,.28);
+ --border-12:rgba(157,163,171,.16);
+ --logic:#15120E;
+ --logic-wire:rgba(42,32,24,.34);
+ --dot-color:rgba(42,32,24,.06);
+}
+:root[data-reading-theme="dark"] {
+ color-scheme:dark;
+ --bg:#15120E;
+ --bg-raised:#1C1915;
+ --ink:#FFE2B9;
+ --ink-80:rgba(255,226,185,.88);
+ --ink-50:rgba(255,226,185,.60);
+ --ink-25:rgba(255,226,185,.36);
+ --ink-20:rgba(255,226,185,.25);
+ --ink-12:rgba(255,226,185,.13);
+ --ink-06:rgba(255,226,185,.05);
+ --border:#B6BCC2;
+ --border-80:rgba(182,188,194,.8);
+ --border-50:rgba(182,188,194,.5);
+ --border-30:rgba(182,188,194,.3);
+ --border-25:rgba(182,188,194,.25);
+ --border-20:rgba(182,188,194,.2);
+ --border-12:rgba(182,188,194,.12);
+ --logic:var(--logic-gold);
+ --logic-wire:rgba(201,155,69,.4);
+ --dot-color:rgba(255,226,185,.045);
+ --link-writing:var(--psyche-blue);
+}
+:root[data-reading-theme="dark"] .reading-subscribe { box-shadow:0 4px 24px #0003; }
+
+/* Small orbital switch beside the BEK mark. The four corners reuse the
+   site's quiet control language without turning this into another panel. */
+.reading-theme-toggle {
+ position:fixed;
+ top:31px;
+ left:82px;
+ z-index:11;
+ display:inline-flex;
+ align-items:center;
+ gap:7px;
+ min-width:58px;
+ height:26px;
+ padding:0 8px;
+ border:0;
+ background:transparent;
+ color:var(--ink-50);
+ font-family:var(--font-mono),monospace;
+ font-size:8px;
+ line-height:1;
+ letter-spacing:.12em;
+ text-transform:uppercase;
+ transition:color .2s ease;
+ -webkit-tap-highlight-color:transparent;
+}
+body[data-essay-id] .reading-theme-toggle { position:absolute; }
+.reading-theme-toggle:hover,
+.reading-theme-toggle:focus-visible { color:var(--ink); outline:none; }
+.reading-theme-orbit {
+ position:relative;
+ width:13px;
+ height:13px;
+ flex:0 0 13px;
+ border:1px solid var(--border-80);
+ border-radius:50%;
+ overflow:hidden;
+ transform:rotate(-20deg);
+ transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .2s ease;
+}
+.reading-theme-orbit::after {
+ content:'';
+ position:absolute;
+ inset:-1px 48% -1px -1px;
+ background:var(--logic-gold);
+}
+:root[data-reading-theme="dark"] .reading-theme-orbit { transform:rotate(160deg); }
+.reading-theme-toggle:hover .reading-theme-orbit,
+.reading-theme-toggle:focus-visible .reading-theme-orbit { border-color:var(--logic-gold); transform:rotate(25deg); }
+:root[data-reading-theme="dark"] .reading-theme-toggle:hover .reading-theme-orbit,
+:root[data-reading-theme="dark"] .reading-theme-toggle:focus-visible .reading-theme-orbit { transform:rotate(205deg); }
+.reading-theme-corner { position:absolute; width:4px; height:4px; opacity:.72; transition:border-color .2s ease,opacity .2s ease; }
+.reading-theme-corner--tl { top:0; left:0; border-top:1px solid var(--border-80); border-left:1px solid var(--border-80); }
+.reading-theme-corner--tr { top:0; right:0; border-top:1px solid var(--border-80); border-right:1px solid var(--border-80); }
+.reading-theme-corner--bl { bottom:0; left:0; border-bottom:1px solid var(--border-80); border-left:1px solid var(--border-80); }
+.reading-theme-corner--br { right:0; bottom:0; border-right:1px solid var(--border-80); border-bottom:1px solid var(--border-80); }
+.reading-theme-toggle:hover .reading-theme-corner,
+.reading-theme-toggle:focus-visible .reading-theme-corner { border-color:var(--logic-gold); opacity:1; }
+@media(max-width:600px) {
+ .reading-theme-toggle { top:19px; left:58px; min-width:54px; height:24px; padding:0 7px; font-size:7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .reading-theme-orbit { transition:border-color .2s ease; }
+}
