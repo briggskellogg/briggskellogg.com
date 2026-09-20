@@ -1355,7 +1355,7 @@
             .egg-shell { width: 24px; height: 32px; }
         }
     </style>
-    <link rel="stylesheet" href="/assets/site-refinements.css?v=8">
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=9">
 </head>
 <body class="home">
     <main class="page">
@@ -1384,76 +1384,20 @@
                 </div>
             </div>
             <div class="quotes-carousel">
-                <!-- Curated cycle order: each adjacent pair contrasts in
-                     length (long/medium/short) and tone (heavy / witty /
-                     poetic / philosophical) so the rotation feels
-                     well-paced rather than monotone. Page-load picks a
-                     random starting slide, then auto-rotation walks the
-                     cycle sequentially from there. -->
-                <div class="quote-slide active" data-attr="Marty Supreme">
-                    <p class="quote">
-                        "I have a purpose [&hellip;] If you think that's some kind
-                        of blessing, it's not. It puts me at a huge life disadvantage.
-                        It means I have an obligation to see a very specific thing
-                        through. And with obligation comes sacrifice."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Spirited Away">
-                    <p class="quote">
-                        "Once you do something, you never forget. Even if you
-                        can't remember."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Silence">
-                    <p class="quote">
-                        "I pray but I'm lost. Am I just praying to silence?"
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="The Royal Tenenbaums">
-                    <p class="quote">
-                        "I don't think you're an asshole, Royal. I just think
-                        you're kind of a son of a bitch."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Call Me by Your Name">
-                    <p class="quote">
-                        "We rip out so much of ourselves to be cured of things
-                        faster that we go bankrupt by the age of thirty and have
-                        less to offer each time we start with someone new, but
-                        to make yourself feel nothing so as not to feel anything
-                        &mdash; what a waste."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Dan in Real Life">
-                    <p class="quote">
-                        "Instead of telling our young people to plan ahead, we
-                        should tell them to plan to be surprised."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Dune">
-                    <p class="quote">
-                        "May thy knife chip and shatter."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="After Yang">
-                    <p class="quote">
-                        "The ancient Chinese philosopher Lao Tzu once said: what
-                        the caterpillar calls &lsquo;the end&rsquo; the rest of
-                        the world calls a butterfly."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Good Will Hunting">
-                    <p class="quote">
-                        "Sometimes I wish I had never met you, because then I
-                        could go to sleep at night not knowing there was someone
-                        like you out there."
-                    </p>
-                </div>
-                <div class="quote-slide" data-attr="Ad Astra">
-                    <p class="quote">
-                        "Now we know. We're all we've got."
-                    </p>
-                </div>
+                <!-- User-selected sequence; playback proceeds in this order. -->
+                <div class="quote-slide active" data-attr="Marty Supreme"><p class="quote">“I have a purpose […] It means I have an obligation to see a very specific thing through. And with obligation comes sacrifice.”</p></div>
+                <div class="quote-slide" data-attr="Spirited Away"><p class="quote">“Once you do something, you never forget. Even if you can’t remember.”</p></div>
+                <div class="quote-slide" data-attr="Call Me by Your Name"><p class="quote">“We rip out so much of ourselves to be cured of things faster […] but to make yourself feel nothing—what a waste.”</p></div>
+                <div class="quote-slide" data-attr="Ad Astra"><p class="quote">“Now we know. We’re all we’ve got.”</p></div>
+                <div class="quote-slide" data-attr="House of Cards"><p class="quote">“Decisions based on emotion aren’t decisions at all. They’re instincts. Which can be of value. The rational and the irrational complement each other.”</p></div>
+                <div class="quote-slide" data-attr="Fury"><p class="quote">“Ideals are peaceful. History is violent.”</p></div>
+                <div class="quote-slide" data-attr="Lady Bird"><p class="quote">“Don’t you think maybe [those two] are the same thing… love and attention?”</p></div>
+                <div class="quote-slide" data-attr="Capote"><p class="quote">“It’s the hardest when someone has a notion about you and it’s impossible to convince them otherwise.”</p></div>
+                <div class="quote-slide" data-attr="Little Women"><p class="quote">“I think you’ll find someone and love them. And you will live and die for them because that’s your way, and you will.”</p></div>
+                <div class="quote-slide" data-attr="The Legend of Zelda: Ocarina of Time"><p class="quote">“Time passes, people move. Like a river’s flow, it never ends. A childish mind will turn to noble ambition.”</p></div>
+                <div class="quote-slide" data-attr="The Grand Budapest Hotel"><p class="quote">“There are still faint glimmers of civilization left in this barbaric slaughterhouse that was once known as humanity.”</p></div>
+                <div class="quote-slide" data-attr="Jojo Rabbit"><p class="quote">“Dancing is for people who are free. It’s an escape from all this.”</p></div>
+                <div class="quote-slide" data-attr="Hollow Knight: Silksong"><p class="quote">“Your choice is your own… You won’t be judged by me. I’ve seen enough sacrifice. I’ve no love for the act.”</p></div>
             </div>
             <p class="attribution">&mdash;&thinsp;<span class="attribution-name">Marty Supreme</span></p>
             <div class="quote-nav">
@@ -1461,6 +1405,9 @@
                 <div class="quote-position">
                 <div class="quote-dots">
                     <div class="quote-dot active"></div>
+                    <div class="quote-dot"></div>
+                    <div class="quote-dot"></div>
+                    <div class="quote-dot"></div>
                     <div class="quote-dot"></div>
                     <div class="quote-dot"></div>
                     <div class="quote-dot"></div>
@@ -1520,7 +1467,7 @@
                 </div>
             </div>
             <!-- Update this content date when the quotes or recommendations change. -->
-            <p class="home-updated" aria-label="Quotes and recommendations last updated May 26, 2026">last updated <time datetime="2026-05-26">26 may 2026</time></p>
+            <p class="home-updated" aria-label="Quotes and recommendations last updated September 20, 2026">last updated <time datetime="2026-09-20">20 sep 2026</time></p>
         </div>
 
         <section class="featured" aria-label="Featured essay">
