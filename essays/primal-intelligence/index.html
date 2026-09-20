@@ -1,0 +1,2555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="subscribe-endpoint" content="https://briggskellogg-subscribe.briggskellogg.workers.dev">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-47NMCRF9TY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-47NMCRF9TY');
+    </script>
+
+    <title>Primal Intelligence &mdash; Briggs Kellogg</title>
+    <meta name="description" content="What if AI never develops a will of its own—and only inherits, infers, and extrapolates ours?">
+    <meta name="theme-color" content="#F4F0E4">
+    <meta property="og:title" content="Primal Intelligence &mdash; Briggs Kellogg">
+    <meta property="og:description" content="What if AI never develops a will of its own—and only inherits, infers, and extrapolates ours?">
+    <meta property="og:image" content="https://briggskellogg.com/assets/og/primal-intelligence.jpg?v=1">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="An intricately carved horned mask in gold, crossed by dramatic shadows against a green wall.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://briggskellogg.com/assets/og/primal-intelligence.jpg?v=1">
+    <meta property="og:url" content="https://briggskellogg.com/essays/primal-intelligence/">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-09-20">
+    <meta property="article:modified_time" content="2026-09-20">
+    <link rel="canonical" href="https://briggskellogg.com/essays/primal-intelligence/">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/assets/design-system.css?v=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            /* LIGHT · the READING face (essays). Warm parchment ground,
+               near-black ink, silver corner-bracket chrome (the writing metal). The
+               serious literary surface. (Design system: data-theme="light".) */
+
+            /* cosmology primaries (theme-independent accents) */
+            --logic-black:   #15120E;
+            --logic-gold:    #C99B45;
+            --logic-cream:   #FFE2B9;
+            --psyche-blue:   #658DA4;
+            --instinct-rose: #AD7C84;
+            --instinct-ember:#C2412E;
+            --orange:   #D37B50;
+            --olive:    #818960;
+            --purple:   #6E5B7B;
+
+            /* applied surface = warm parchment */
+            --bg:        #F4F0E4;
+            --bg-raised: #FAF8F2;
+
+            /* near-black warm-brown ink ramp on parchment */
+            --ink:      #2A2018;
+            --ink-80:   rgba(42, 32, 24, 0.92);
+            --ink-50:   rgba(42, 32, 24, 0.56);
+            --ink-25:   rgba(42, 32, 24, 0.34);
+            --ink-20:   rgba(42, 32, 24, 0.26);
+            --ink-12:   rgba(42, 32, 24, 0.14);
+            --ink-06:   rgba(42, 32, 24, 0.05);
+            --silver:   #B6BCC2;
+
+            /* silver chrome ramp — deepened for contrast on parchment (writing metal) */
+            --border:    #9DA3AB;
+            --border-80: rgba(157, 163, 171, 1.0);
+            --border-50: rgba(157, 163, 171, 0.60);
+            --border-25: rgba(157, 163, 171, 0.36);
+            --border-20: rgba(157, 163, 171, 0.28);
+            --border-12: rgba(157, 163, 171, 0.16);
+            --border-30: rgba(157, 163, 171, 0.42);
+
+            /* archetype accents — the footnote-coding system. Logic reads
+               as its black primary against parchment. */
+            --logic:    #15120E;
+            --instinct: #AD7C84;
+            --psyche:   #658DA4;
+
+            /* wire colors track their parent accent */
+            --logic-wire:    rgba(42, 32, 24, 0.34);
+            --instinct-wire: rgba(173, 124, 132, 0.40);
+            --psyche-wire:   rgba(101, 141, 164, 0.40);
+
+            --dot-color: rgba(42, 32, 24, 0.06);
+
+            /* reading light — cool silver moonlight on parchment */
+            --light-glow:    rgba(157, 163, 171, 0.8);
+        }
+        html {
+            background-color: var(--bg);
+            background-image: radial-gradient(
+                circle,
+                var(--dot-color) 1px,
+                transparent 1px
+            );
+            background-size: 20px 20px;
+            background-position: 0 0;
+            min-height: 100%;
+        }
+        html, body {
+            min-height: 100%;
+        }
+        body {
+            background: transparent;
+            color: var(--ink);
+            min-height: 100vh;
+            /* Extra top padding clears the fixed BEK mark; extra bottom padding
+               keeps the inline rights footer scrollable above the fixed
+               playlists + egg modules. */
+            padding: 5.5rem 2rem 10rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+        a, button {
+            cursor: pointer;
+        }
+        input[type="email"] { cursor: text; }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            display: none;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+        .page {
+            max-width: 1080px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: emerge 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+        }
+        @keyframes emerge {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .frame {
+            border: 1px solid var(--border-12);
+            padding: 3.5rem 3rem;
+            position: relative;
+            /* Opaque cream bg covers the body's dot grid wherever the
+               reading frame sits on top of it. Dots remain visible
+               outside the frame; inside, the essay reads on a clean
+               Logic-paper surface. */
+            background-color: var(--bg);
+        }
+        .frame .c {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+        .frame .c-tl { top: -1px;    left: -1px;    border-top: 2px solid var(--border-50);  border-left:  2px solid var(--border-50); }
+        .frame .c-tr { top: -1px;    right: -1px;   border-top: 2px solid var(--border-50);  border-right: 2px solid var(--border-50); }
+        .frame .c-bl { bottom: -1px; left: -1px;    border-bottom: 2px solid var(--border-50); border-left:  2px solid var(--border-50); }
+        .frame .c-br { bottom: -1px; right: -1px;   border-bottom: 2px solid var(--border-50); border-right: 2px solid var(--border-50); }
+        .rule {
+            width: 32px;
+            height: 1px;
+            background: var(--ink-20);
+            margin: 1.75rem auto;
+        }
+        /* BEK mark — page chrome, fixed top-left of the viewport.
+           Reads as branding sticking to the corner, not an in-frame
+           navigation element.
+
+           Color note: canonical brand peach (#FFBC8C, used on the
+           landing) sits too close in value to the essay's cream
+           paper, so the BEK washes out. On the essay surface we paint
+           the BEK in the body-text ink instead — typographically
+           coherent with the prose below it, and gives the hover
+           sheen real contrast to glint against. The peach logo.png
+           is still the single source of truth for the SHAPE (used as
+           a mask), so swapping the logo file would update both
+           surfaces automatically. */
+        .essay-home-mark {
+            position: fixed;
+            top: 1.25rem;
+            left: 1.5rem;
+            z-index: 10;
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            line-height: 0;
+            text-decoration: none;
+        }
+        /* The img stays in the DOM so the BEK is a real <img alt>
+           for assistive tech / no-CSS fallback, but it's painted
+           out (visibility:hidden preserves layout). The visible
+           BEK is rendered by ::before below, color-controlled. */
+        .essay-home-mark img {
+            width: 48px;
+            height: 48px;
+            display: block;
+            visibility: hidden;
+        }
+        /* Visible BEK — peach logo.png used as a mask, filled with
+           deep olive ink. Matches the body text temperature on the
+           cream surface. */
+        .essay-home-mark::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 48px;
+            height: 48px;
+            background: var(--ink);
+            -webkit-mask-image: url('/logo.png');
+                    mask-image: url('/logo.png');
+            -webkit-mask-size: contain;
+                    mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+                    mask-position: center;
+            opacity: 0.92;
+            transition: opacity 0.25s ease;
+            pointer-events: none;
+        }
+        .essay-home-mark:hover::before { opacity: 1; }
+        /* Hover-only sheen — diagonal cream highlight that travels
+           across the BEK once per hover, painted ON TOP of the dark
+           ink BEK so the glint reads with full contrast. The mask
+           clips the gradient to the logo's alpha so the glint only
+           crosses the BEK pixels, never the surrounding rectangle. */
+        .essay-home-mark::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(
+                100deg,
+                transparent 0%,
+                transparent 40%,
+                rgba(255, 244, 220, 0.55) 48%,
+                rgba(255, 248, 230, 0.90) 50%,
+                rgba(255, 244, 220, 0.55) 52%,
+                transparent 60%,
+                transparent 100%
+            );
+            background-size: 260% 100%;
+            background-position: 200% 0;
+            background-repeat: no-repeat;
+            -webkit-mask-image: url('/logo.png');
+                    mask-image: url('/logo.png');
+            -webkit-mask-size: contain;
+                    mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+                    mask-position: center;
+            pointer-events: none;
+            opacity: 0;
+        }
+        .essay-home-mark:hover::after {
+            opacity: 1;
+            /* Same pace as the landing's continuous .logo-sheen sweep
+               (linear, landing-tempo) but the keyframe starts with the
+               glint already at the right edge of the BEK so the shine
+               is visible *immediately* on hover instead of leading in
+               from off-screen. Background-size is 260%, so a position
+               of -30% places the gradient's 50% glint stop at ~100%
+               (the logo's right edge); -180% places the glint past the
+               left edge. Single sweep per hover, ~1.9s of visible
+               travel at landing pace. */
+            animation: bek-shine 1.9s linear;
+        }
+        @keyframes bek-shine {
+            from { background-position: -30% 0; }
+            to   { background-position: -180% 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .essay-home-mark::after { display: none; }
+        }
+        /* Header sits inside its own orange corner-bracket box — same
+           bracket vocabulary as the frame, one weight down (8px / 1px)
+           so it reads as a panel nested inside the reading frame. */
+        .essay-head {
+            position: relative;
+            width: fit-content;
+            max-width: 100%;
+            text-align: center;
+            margin: 0 auto 2.5rem;
+            padding: 0.95rem 1.5rem 0.85rem;
+        }
+        .essay-head .hc {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            pointer-events: none;
+        }
+        .essay-head .hc-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-head .hc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .essay-head .hc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-head .hc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        /* "NO. 01 · DRAFT" rendered by JS above the title. The number and
+           status both come from dispatches.js so editing the manifest
+           updates the rendered page automatically. */
+        .essay-number {
+            font-family: var(--font-mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 1.1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.55em;
+        }
+        .essay-number .num { color: var(--ink); }
+        .essay-number .sep { color: var(--ink-12); }
+
+        /* Version status badge — top-right of the frame, color-coded by
+           state. The pulsing dot signals the piece is still alive
+           (actively being drafted or patched); on `finalized` the pulse
+           goes silent. Sits above the frame border, below the corner
+           brackets which use a higher z-index. */
+        /* Corner-bracket panel (design-system FrameBox panel): a faint full
+           edge with L-shaped brackets at the four corners, rather than a
+           solid border. */
+        .frame-status {
+            position: absolute;
+            top: 1.1rem;
+            right: 1.25rem;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            /* Generous gap so the pulse ring (statusPulse expands the
+               dot by ~2.4x) clears the text by a comfortable margin
+               instead of brushing the first letter. */
+            gap: 1em;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--ink);
+            user-select: none;
+            padding: 0.45rem 0.75rem 0.4rem;
+            border: 1px solid var(--ink-12);
+            background: var(--ink-06);
+        }
+        .frame-status .sc {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            pointer-events: none;
+        }
+        .frame-status .sc-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .frame-status .sc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .frame-status .sc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .frame-status .sc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .frame-status[data-status="finalized"] { opacity: 0.9; }
+        .status-dot {
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--silver);
+            flex-shrink: 0;
+        }
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--silver);
+            transform-origin: center;
+            animation: statusPulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes statusPulse {
+            0%   { transform: scale(1);   opacity: 0.55; }
+            70%  { transform: scale(2.4); opacity: 0; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+        [data-status="finalized"] .status-dot {
+            background: var(--logic-gold);
+        }
+        [data-status="finalized"] .status-dot::after { display: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .status-dot::after { animation: none; }
+            .essay-vibe-img { animation: none; }
+            .archetype-img { animation: none; }
+        }
+        .essay-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: normal;
+            font-size: 1.95rem;
+            line-height: 1.25;
+            color: var(--ink);
+        }
+        /* Title row — the title with its archetype vibe blob floating
+           alongside, linking to the essay's playlist. */
+        .essay-title-row {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            max-width: 100%;
+            margin-bottom: 0.6rem;
+        }
+        .essay-vibe {
+            display: inline-flex;
+            flex-shrink: 0;
+            line-height: 0;
+            text-decoration: none;
+            transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        margin-left 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .essay-vibe:hover { transform: translateY(-6px) scale(1.05); }
+        .essay-vibe-img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
+                    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+            animation: bek-blob-float 6s ease-in-out infinite;
+        }
+        @keyframes bek-blob-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50%      { transform: translateY(-7px) rotate(-1.5deg); }
+        }
+        .essay-subtitle {
+            margin: 0.8rem auto 1.1rem;
+            max-width: 36em;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.55;
+            color: var(--ink-80);
+        }
+        .essay-figure figcaption a { color: inherit; text-underline-offset: 3px; }
+        .essay-meta {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+        }
+
+        /* ---------- Two-column layout ---------- */
+        .essay-layout {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 44px;
+        }
+        .essay-body {
+            font-family: var(--font-body);
+            font-size: 1.075rem;
+            line-height: 1.7;
+            color: var(--ink-80);
+            text-align: left;
+            min-width: 0;
+            font-variant-numeric: oldstyle-nums;
+            -webkit-font-smoothing: antialiased;
+        }
+        .essay-body p { margin-bottom: 1.2rem; }
+        .essay-body p:last-child { margin-bottom: 0; }
+        .essay-body em { font-style: italic; }
+        .essay-body .sep {
+            text-align: center;
+            color: var(--ink-20);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.5em;
+            margin: 1.5rem 0;
+            user-select: none;
+        }
+        .essay-body .sep::before { content: '\00B7 \00B7 \00B7'; }
+
+        /* Roman section heads — Primal Intelligence only */
+        .essay-part {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin: 0.35rem 0 1.4rem;
+            padding-bottom: 0.55rem;
+            border-bottom: 1px solid var(--border-12);
+        }
+        .essay-body .sep + .essay-part {
+            margin-top: 0.15rem;
+        }
+        .essay-part-num {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            color: var(--logic-gold);
+            flex-shrink: 0;
+            min-width: 1.25rem;
+        }
+        .essay-part-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.3;
+            color: var(--ink);
+        }
+
+        /* ---------- Lead photograph ---------- */
+        /* A single plate that opens the piece. Portrait crop, height-capped
+           so it reads as an inset image rather than a full-bleed hero, with
+           the same orange box border as the rest of the chrome. */
+        .essay-figure {
+            position: relative;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto 2.75rem;
+            padding: 0.55rem 0.55rem 0.5rem;
+            text-align: center;
+        }
+        /* Orange corner brackets wrap the plate + caption together. */
+        .essay-figure .fc {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            pointer-events: none;
+        }
+        .essay-figure .fc-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-figure .fc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .essay-figure .fc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-figure .fc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .essay-figure img {
+            display: block;
+            margin: 0 auto;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 480px;
+            border: 1px solid var(--border-20);
+            background-color: var(--bg);
+        }
+        .essay-figure figcaption {
+            margin-top: 0.8rem;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+        }
+
+        /* ---------- Footnote references in body ---------- */
+        .fnref {
+            font-family: var(--font-mono);
+            font-size: 0.62em;
+            vertical-align: super;
+            line-height: 0;
+            padding: 0 0.1em;
+            position: relative;
+            top: -0.2em;
+        }
+        .fnref a {
+            color: var(--ink-50);
+            text-decoration: none;
+            padding: 0 0.2em;
+            border-radius: 2px;
+            transition: background 0.18s ease;
+        }
+        /* Footnote numbers never recolor — only a subtle neutral highlight
+           signals the active link. Archetype color lives on the footnote-side
+           dot + left rule, not the digits. */
+        .fnref:hover a,
+        .fnref:focus-within a,
+        .fnref.linked a {
+            background: var(--ink-12);
+        }
+
+        /* No explicit legend — the structure is hidden in the colors.
+           See data-archetype on .fnref and .footnote elements. */
+
+        /* ---------- Footnotes column ---------- */
+        .essay-notes {
+            position: relative;
+            min-width: 0;
+        }
+        .footnote {
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: grid;
+            /* Marker column: dot (5px) + gap (6px) + 2-digit number (~14px). */
+            grid-template-columns: 30px 1fr;
+            column-gap: 12px;
+            font-family: var(--font-body);
+            font-size: 0.875rem;
+            line-height: 1.68;
+            color: var(--ink-80);
+            padding: 4px 0 4px 8px;
+            border-left: 1px solid transparent;
+            margin-left: -9px;
+            scroll-margin-top: 1rem;
+            transition: color 0.12s ease, border-color 0.12s ease;
+        }
+        .footnote em { font-style: italic; color: var(--ink); }
+        .fn-marker {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--ink-50);
+            text-decoration: none;
+            align-self: start;
+            line-height: 1.4;
+            padding-top: 0.25em;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        .fn-content a {
+            color: var(--ink);
+            text-decoration: underline;
+            text-decoration-color: var(--ink-20);
+            text-underline-offset: 2px;
+            transition: text-decoration-color 0.2s ease;
+        }
+        .fn-content a:hover { text-decoration-color: var(--ink); }
+        .fn-back { display: none; }
+        .footnote.linked {
+            color: var(--ink);
+            border-left-color: var(--ink-50);
+        }
+        /* Footnote left rule + marker dot are archetype-coded
+           (logic = gold, instinct = red, psyche = blue). */
+        .footnote[data-archetype] .fn-marker::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+            opacity: 0.5;
+            transition: opacity 0.12s ease, transform 0.12s ease;
+            background: var(--ink-50);
+        }
+        .footnote[data-archetype="logic"]    .fn-marker::before { background: var(--logic); }
+        .footnote[data-archetype="instinct"] .fn-marker::before { background: var(--instinct); }
+        .footnote[data-archetype="psyche"]   .fn-marker::before { background: var(--psyche); }
+        .footnote.linked .fn-marker::before { opacity: 0.8; transform: scale(1.15); }
+        .footnote.linked[data-archetype="logic"]    { border-left-color: var(--logic); }
+        .footnote.linked[data-archetype="instinct"] { border-left-color: var(--instinct); }
+        .footnote.linked[data-archetype="psyche"]   { border-left-color: var(--psyche); }
+        .footnote:target {
+            border-left-color: var(--ink-50);
+            color: var(--ink);
+        }
+
+        /* ---------- The wire overlay ----------
+           The SVG sits underneath the body + notes (z-index 0) and the
+           text columns are explicitly lifted above (z-index 1) so wires
+           read as connective tissue *behind* the page, not ink drawn on
+           top of the words. Stroke colors are kept quiet (~0.35 alpha)
+           for the same reason. */
+        .essay-wires {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: visible;
+            z-index: 0;
+        }
+        .essay-body,
+        .essay-notes {
+            position: relative;
+            z-index: 1;
+        }
+        .essay-wires .wire-path {
+            fill: none;
+            stroke: var(--ink-25);
+            stroke-width: 1;
+            stroke-linecap: square;
+            stroke-linejoin: miter;
+        }
+        .essay-wires .wire-dot {
+            fill: var(--ink);
+            opacity: 0.55;
+        }
+        @keyframes wire-pulse {
+            0%   { opacity: 0; }
+            100% { opacity: 0.55; }
+        }
+        .essay-wires .wire-dot.pulse {
+            animation: wire-pulse 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        /* ---------- Footer ----------
+           The subscribe form sits centered in the vertical space
+           between the essay-nav border (the "ending divider" of the
+           essay proper) and the bottom of the frame box. The frame
+           has padding-bottom: 3.5rem, so giving .essay-foot the same
+           top margin produces visually equal cushioning above and
+           below the form. */
+        /* ---------- Back to all essays — frame top-left chrome ---------- */
+        .essay-top-back {
+            position: absolute;
+            top: 1.15rem;
+            left: 1.25rem;
+            z-index: 3;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .essay-top-back .arr { display: inline-block; padding-right: 0.3em; transition: transform 0.2s ease; }
+        .essay-top-back:hover { color: var(--ink); }
+        .essay-top-back:hover .arr { transform: translateX(-3px); }
+
+        /* ---------- Newsletter — its own distinct framed module ---------- */
+        .essay-newsletter {
+            position: relative;
+            overflow: visible;
+            margin-top: 2.5rem;
+            padding: 1.7rem 1.5rem 1.6rem;
+            border: 1px solid var(--ink-12);
+            background: var(--ink-06);
+            text-align: center;
+        }
+        .essay-newsletter .nc { position: absolute; width: 8px; height: 8px; pointer-events: none; }
+        .essay-newsletter .nc-tl { top: -1px; left: -1px;   border-top: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-newsletter .nc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .essay-newsletter .nc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
+        .essay-newsletter .nc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
+        .newsletter-head {
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin-bottom: 1.3rem;
+        }
+        @media (max-width: 720px) {
+            .essay-newsletter { margin-top: 2rem; padding: 1.4rem 1.1rem 1.3rem; }
+        }
+
+        /* ---------- Essay prev/next nav (other dispatches) ---------- */
+        .essay-nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2.5rem;
+            padding-top: 1.4rem;
+            border-top: 1px solid var(--ink-12);
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            min-height: 1rem;
+        }
+        .essay-nav a {
+            color: var(--ink-50);
+            text-decoration: none;
+            transition: color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+            display: inline-flex;
+            flex-direction: column;
+            gap: 0.3em;
+            max-width: 100%;
+        }
+        .essay-nav .essay-nav-label {
+            font-size: 0.55rem;
+            letter-spacing: 0.22em;
+            color: var(--ink-25);
+        }
+        .essay-nav .essay-nav-title {
+            font-family: var(--font-display);
+            font-style: italic;
+            text-transform: none;
+            letter-spacing: 0.01em;
+            font-size: 0.85rem;
+            color: var(--ink);
+        }
+        .essay-nav-prev { grid-column: 1; justify-self: start; text-align: left; }
+        .essay-nav-next { grid-column: 3; justify-self: end; text-align: right; align-items: flex-end; }
+        .essay-nav-all {
+            grid-column: 2;
+            justify-self: center;
+            text-align: center;
+            flex-direction: row;
+            white-space: nowrap;
+            letter-spacing: 0.22em;
+            color: var(--ink-50);
+        }
+        .essay-nav-all:hover { color: var(--ink); }
+        .essay-nav a:hover .essay-nav-title { color: var(--ink); }
+        .essay-nav a.essay-nav-prev:hover { transform: translateX(-3px); }
+        .essay-nav a.essay-nav-next:hover { transform: translateX(3px); }
+        /* Empty older/newer slots disappear entirely when there's no
+           dispatch on that side. The placeholder span exists in the markup
+           only so the JS can findOrReplace it; CSS hides it visually.
+           If BOTH slots are empty (the .is-empty case, set by JS), the
+           nav still draws as the essay's ending divider — we just
+           collapse the content row to zero height so the border-top
+           draws as a clean horizontal rule with nothing above or below
+           it, marking where the essay proper ends. */
+        .essay-nav-empty {
+            display: none;
+        }
+        .essay-nav.is-empty {
+            min-height: 0;
+            padding-top: 0;
+        }
+
+        /* ---------- Rights footer ---------- */
+        /* Mirrors the landing footer (corner brackets, one line) but is
+           inline rather than fixed — the user reads to it, it doesn't
+           hover. Playlists + easter egg remain the sticky chrome. */
+        .rights {
+            position: relative;
+            display: inline-block;
+            margin: 2.25rem auto 0;
+            padding: 0.55rem 1.1rem;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            user-select: none;
+            white-space: nowrap;
+            /* Opaque page bg covers the dot grid behind the line. */
+            background-color: transparent;
+        }
+        .rights-wrap { text-align: center; margin-top: 0.5rem; }
+        .rights .rights-mark { margin-right: 0.6em; letter-spacing: 0; }
+        /* Slash separator — matches the landing footer exactly so the rights
+           line reads as one shared element across surfaces. */
+        .rights .rights-sep {
+            display: inline-block;
+            margin: 0 0.85em;
+            color: var(--ink-50);
+            opacity: 0.55;
+            letter-spacing: 0;
+            transform: translateY(-0.05em);
+        }
+        .rights .rc {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+        }
+        .rights .rc-tl { top: 0; left: 0; border-top: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .rights .rc-tr { top: 0; right: 0; border-top: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+        .rights .rc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .rights .rc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+
+        /* ---------- Reading light cursor effect ---------- */
+        /* Circular gold-honey glow with a hot center and fast falloff —
+           like candlelight following the reader's eye. */
+        .reading-light {
+            position: fixed;
+            pointer-events: none;
+            width: 240px;
+            height: 240px;
+            top: 0;
+            left: 0;
+            margin-top: -120px;
+            margin-left: -120px;
+            background: radial-gradient(
+                circle closest-side at center,
+                rgba(157, 163, 171, 0.30) 0%,
+                rgba(157, 163, 171, 0.20) 18%,
+                rgba(157, 163, 171, 0.11) 38%,
+                rgba(157, 163, 171, 0.05) 62%,
+                transparent 82%
+            );
+            mix-blend-mode: multiply;
+            transform: translate3d(var(--mx, 50vw), var(--my, 50vh), 0);
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            /* Above the egg and playlist modules (both z-index: 10) so the
+               candlelight glow paints across them too instead of being
+               clipped by the footer chrome as the cursor moves over it. */
+            z-index: 20;
+            will-change: transform;
+        }
+        .reading-light.active { opacity: 1; }
+        @media (hover: none), (prefers-reduced-motion: reduce) {
+            .reading-light { display: none; }
+        }
+
+        /* ---------- Subscribe (essay end) ----------
+           No border-top or margin-top here — the essay-nav above
+           supplies the single "ending divider", and .essay-foot
+           handles the vertical centering between that divider and
+           the frame bottom. Adding another border here would double
+           up the dividers. */
+        .essay-subscribe {
+            text-align: center;
+        }
+        .essay-subscribe .subscribe-label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink-50);
+            margin-bottom: 0.7rem;
+        }
+        .essay-subscribe .subscribe-row {
+            display: inline-flex;
+            border: 1px solid var(--border-20);
+            transition: border-color 0.2s ease;
+        }
+        .essay-subscribe .subscribe-row:focus-within { border-color: var(--border-50); }
+        .essay-subscribe input[type="email"] {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--ink);
+            padding: 0.55rem 0.7rem;
+            width: 240px;
+        }
+        .essay-subscribe input[type="email"]::placeholder { color: var(--ink-20); }
+        .essay-subscribe button {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: transparent;
+            border: none;
+            border-left: 1px solid var(--border-20);
+            color: var(--ink-50);
+            padding: 0 0.8rem;
+            cursor: pointer;
+            transition: color 0.2s ease, background 0.2s ease;
+        }
+        .essay-subscribe button:hover {
+            color: var(--ink);
+            background: var(--ink-12);
+        }
+
+        .subscribe-status {
+            margin-top: 0.85rem;
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: var(--instinct-ember);
+        }
+
+        .essay-subscribe.is-confirmed .subscribe-label {
+            color: var(--ink-25);
+        }
+        .essay-subscribe.is-confirmed .subscribe-row {
+            border-color: var(--ink-12);
+        }
+        .essay-subscribe.is-confirmed .subscribe-row:focus-within {
+            border-color: var(--ink-12);
+        }
+        .essay-subscribe.is-confirmed input[type="email"] {
+            color: var(--ink-25);
+            cursor: not-allowed;
+        }
+        .essay-subscribe.is-confirmed input[type="email"]::placeholder {
+            color: var(--ink-12);
+        }
+        .essay-subscribe.is-confirmed button,
+        .essay-subscribe.is-confirmed button:disabled {
+            color: var(--ink-25);
+            background: var(--ink-06);
+            cursor: default;
+            pointer-events: none;
+        }
+        .essay-subscribe.is-confirmed button:hover {
+            color: var(--ink-25);
+            background: var(--ink-06);
+        }
+
+        /* ---------- Collapse to single column ---------- */
+        @media (max-width: 1024px) {
+            .page { max-width: 720px; }
+            .essay-layout { display: block; }
+            .essay-notes {
+                margin-top: 2.5rem;
+                padding-top: 1.5rem;
+                border-top: 1px solid var(--ink-12);
+                min-height: 0 !important;
+            }
+            .footnote {
+                position: static !important;
+                top: auto !important;
+                margin-bottom: 1.2rem;
+                margin-left: 0;
+                padding-left: 0;
+                border-left: none;
+                grid-template-columns: 30px 1fr;
+            }
+            .footnote:last-child { margin-bottom: 0; }
+            .fn-back {
+                display: inline-block;
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                color: var(--ink-50);
+                text-decoration: none;
+                margin-left: 0.35em;
+                vertical-align: baseline;
+                transition: color 0.2s ease;
+            }
+            .fn-back:hover { color: var(--ink); }
+            .essay-wires { display: none; }
+        }
+        @media (max-width: 600px) {
+            /* Top padding clears the fixed BEK mark (36px logo + 0.9rem
+               top offset ≈ 3.15rem total) with a full 1.85rem of breath
+               so the frame doesn't kiss the logo on narrow screens. */
+            body { padding: 5rem 1rem 6.25rem; }
+            .frame { padding: 3.15rem 1.35rem 2.15rem; }
+            .essay-top-back { top: 0.95rem; left: 1rem; font-size: 0.5rem; letter-spacing: 0.18em; }
+            .essay-head { margin-top: 0.15rem; margin-bottom: 2rem; padding: 1rem 1.15rem 0.9rem; max-width: 100%; box-sizing: border-box; }
+            .essay-newsletter { margin-top: 2rem; padding: 1.35rem 1.15rem 1.25rem; }
+            .rights-wrap { margin-top: 0.75rem; margin-bottom: 2.25rem; }
+            .rights { padding: 0.55rem 0.95rem; }
+            .essay-home-mark { top: 0.9rem; left: 0.9rem; width: 36px; height: 36px; }
+            .essay-home-mark img { width: 36px; height: 36px; }
+            .essay-home-mark::after { width: 36px; height: 36px; }
+            .essay-number {
+                font-size: 0.48rem;
+                letter-spacing: 0.26em;
+                margin-bottom: 0.9rem;
+                gap: 0.45em;
+            }
+            .frame-status { top: 0.95rem; right: 1rem; padding: 0.38rem 0.62rem 0.34rem; font-size: 0.42rem; letter-spacing: 0.18em; gap: 0.45em; }
+            .frame-status .status-dot { width: 5px; height: 5px; }
+            .essay-title { font-size: 1.5rem; }
+            .essay-meta { font-size: 0.52rem; }
+            .essay-part { gap: 0.55rem; margin-bottom: 1.15rem; }
+            .essay-part-title { font-size: 1.05rem; }
+            .essay-body { font-size: 0.95rem; line-height: 1.75; }
+            .essay-body p { margin-bottom: 1rem; }
+            .footnote { font-size: 0.82rem; }
+            .rule { margin: 1.2rem auto; }
+            .essay-subscribe input[type="email"] { width: 180px; font-size: 0.65rem; padding: 0.45rem 0.6rem; }
+            .essay-subscribe button { font-size: 0.65rem; padding: 0 0.65rem; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .page { animation: none; opacity: 1; }
+        }
+
+        /* ---------- Sticky page chrome (mirrors landing) ----------
+           Playlists module (bottom-right) and the easter egg (bottom-left)
+           live as fixed-position chrome on the essay too, so the brand
+           envelope is consistent across surfaces. The rights footer is
+           the only bottom element that scrolls with the content. */
+        .archetypes {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 2.85rem;
+            z-index: 10;
+            /* Invisible bleed so rotated cards are not clipped by the
+               viewport edge or body overflow-x. */
+            padding: 12px 20px 16px 56px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            background: none;
+            border: none;
+            overflow: visible;
+            pointer-events: none;
+        }
+        .archetypes .ac { display: none; }
+        .archetypes-row {
+            display: flex;
+            align-items: flex-end;
+            overflow: visible;
+            pointer-events: auto;
+        }
+        .archetype-card {
+            position: relative;
+            display: block;
+            width: 64px;
+            height: auto;
+            flex-shrink: 0;
+            text-decoration: none;
+            transform-origin: bottom center;
+            background: none;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+        .archetype-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+            user-select: none;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.24))
+                    drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+            transition: filter 0.35s ease;
+            animation: bek-arcana-float 7s ease-in-out infinite;
+        }
+        .archetype-instinct .archetype-img { animation-delay: 0s; }
+        .archetype-logic .archetype-img    { animation-delay: 1.1s; }
+        .archetype-psyche .archetype-img   { animation-delay: 2.2s; }
+        @keyframes bek-arcana-float {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-5px); }
+        }
+        .archetype-instinct { transform: rotate(-11deg); z-index: 1; }
+        .archetype-logic    { transform: rotate(-3deg); margin-left: -25px; width: 68px; z-index: 2; }
+        .archetype-psyche   { transform: rotate(9deg); margin-left: -23px; z-index: 3; }
+        .archetype-instinct:hover {
+            transform: rotate(-16deg) scale(1.02) translateX(-4px) translateY(-2px);
+            z-index: 11;
+        }
+        .archetype-logic:hover {
+            transform: rotate(1deg) scale(1.02) translateY(-2px);
+            margin-left: -22px;
+            z-index: 11;
+        }
+        .archetype-psyche:hover {
+            transform: rotate(14deg) scale(1.02) translateX(-5px) translateY(-2px);
+            margin-left: -20px;
+            z-index: 11;
+        }
+        .archetype-label {
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 0.45rem);
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            letter-spacing: 0.12em;
+            text-transform: lowercase;
+            color: var(--ink);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 2;
+            white-space: nowrap;
+            text-shadow: 0 0 10px var(--ground), 0 0 6px var(--ground), 0 1px 2px rgba(0, 0, 0, 0.35);
+        }
+        .archetype-card:hover .archetype-label {
+            opacity: 0.92;
+            transform: translateX(-50%) translateY(-3px);
+        }
+        .archetype-instinct:hover .archetype-img {
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
+                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16))
+                    drop-shadow(0 0 12px rgba(173, 124, 132, 0.55))
+                    drop-shadow(0 0 28px rgba(173, 124, 132, 0.4))
+                    drop-shadow(0 0 52px rgba(173, 124, 132, 0.22));
+        }
+        .archetype-logic:hover .archetype-img {
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
+                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16))
+                    drop-shadow(0 0 12px rgba(201, 155, 69, 0.5))
+                    drop-shadow(0 0 28px rgba(201, 155, 69, 0.36))
+                    drop-shadow(0 0 52px rgba(201, 155, 69, 0.2));
+        }
+        .archetype-psyche:hover .archetype-img {
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28))
+                    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.16))
+                    drop-shadow(0 0 12px rgba(101, 141, 164, 0.58))
+                    drop-shadow(0 0 28px rgba(101, 141, 164, 0.42))
+                    drop-shadow(0 0 52px rgba(101, 141, 164, 0.24));
+        }
+        /* ---------- Easter egg ---------- */
+
+        .version-badge {
+            font-family: var(--font-mono);
+            font-size: 0.52rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ink);
+            padding: 0.14rem 0.45rem 0.1rem;
+            border: 1px solid var(--border-30);
+            background: var(--ink-06);
+        }
+.essay-card-version {
+            display: inline-block;
+            margin-left: 0.35rem;
+            padding: 0.12rem 0.4rem 0.08rem;
+            border: 1px solid var(--border-30);
+            background: var(--ink-06);
+            color: var(--ink);
+            font-size: 0.5rem;
+            letter-spacing: 0.16em;
+        }
+        .egg-wrap {
+            /* Anchored to the bottom-left of the body, not pinned to the
+               viewport. The essay is much taller than one screen, so the
+               egg becomes a "you've reached the end" reward at the
+               bottom-left corner of the document — same vocabulary as
+               the rights footer that sits just above it. */
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.5rem;
+            z-index: 10;
+            padding: 0.5rem 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        height 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        padding 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            /* Opaque page bg covers the dot grid behind the egg. */
+            background-color: transparent;
+        }
+        .egg-wrap .cc { position: absolute; width: 6px; height: 6px; }
+        .egg-wrap .cc-tl { top: 0; left: 0; border-top: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .egg-wrap .cc-tr { top: 0; right: 0; border-top: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+        .egg-wrap .cc-bl { bottom: 0; left: 0; border-bottom: 1px solid var(--border-25); border-left: 1px solid var(--border-25); }
+        .egg-wrap .cc-br { bottom: 0; right: 0; border-bottom: 1px solid var(--border-25); border-right: 1px solid var(--border-25); }
+        .easter-egg {
+            cursor: pointer;
+            width: 30px;
+            height: 40px;
+            display: block;
+            transition: opacity 0.4s ease;
+        }
+        .egg-shell { width: 30px; height: 40px; display: block; }
+        .egg-shell .egg-body {
+            fill: var(--ink-06);
+            stroke: var(--ink-50);
+            stroke-width: 0.8;
+            transition: stroke 0.2s ease, fill 0.2s ease;
+        }
+        .egg-shell .egg-highlight {
+            fill: none;
+            stroke: var(--ink-25);
+            stroke-width: 0.5;
+        }
+        .egg-shell .crack {
+            fill: none;
+            stroke: var(--ink);
+            stroke-width: 0.7;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+            transition: stroke-dashoffset 0.4s ease;
+        }
+        .egg-shell .crack.visible { stroke-dashoffset: 0; }
+        .easter-egg:hover .egg-body {
+            stroke: var(--ink);
+            fill: var(--ink-06);
+        }
+        @keyframes eggShake1 {
+            0%, 100% { transform: rotate(0deg) translateX(0); }
+            20% { transform: rotate(5deg) translateX(1px); }
+            40% { transform: rotate(-4deg) translateX(-1px); }
+            60% { transform: rotate(3deg) translateX(0.5px); }
+            80% { transform: rotate(-2deg); }
+        }
+        @keyframes eggShake2 {
+            0%, 100% { transform: rotate(0deg) translateX(0); }
+            15% { transform: rotate(10deg) translateX(2px); }
+            30% { transform: rotate(-8deg) translateX(-2px); }
+            45% { transform: rotate(7deg) translateX(1px); }
+            60% { transform: rotate(-5deg) translateX(-1px); }
+            75% { transform: rotate(3deg); }
+        }
+        @keyframes eggShake3 {
+            0%, 100% { transform: rotate(0deg) translateX(0); }
+            10% { transform: rotate(14deg) translateX(3px); }
+            20% { transform: rotate(-12deg) translateX(-3px); }
+            30% { transform: rotate(10deg) translateX(2px); }
+            40% { transform: rotate(-8deg) translateX(-2px); }
+            50% { transform: rotate(6deg) translateX(1px); }
+            60% { transform: rotate(-4deg); }
+            70% { transform: rotate(2deg); }
+        }
+        .egg-shake-1 { animation: eggShake1 0.4s ease; }
+        .egg-shake-2 { animation: eggShake2 0.5s ease; }
+        .egg-shake-3 { animation: eggShake3 0.6s ease; }
+        .egg-half { transform-origin: center center; }
+        @keyframes eggBurst {
+            0%   { transform: scale(1);   opacity: 1;   filter: blur(0); }
+            15%  { transform: scale(1.3); opacity: 1;   filter: blur(0); }
+            40%  { transform: scale(1.6); opacity: 0.7; filter: blur(1px); }
+            100% { transform: scale(2.5); opacity: 0;   filter: blur(4px); }
+        }
+        .egg-split .egg-shell { animation: eggBurst 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .catalogue-id {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            color: var(--ink-50);
+            text-transform: none;
+            user-select: none;
+            line-height: 1.6;
+            text-decoration: none;
+            text-align: right;
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .catalogue-id.measured { position: static; visibility: visible; }
+        .catalogue-id.revealed { opacity: 1; }
+        .catalogue-id.revealed:hover { color: var(--ink); }
+
+        /* Mobile overrides for the sticky chrome — same as landing. */
+        @media (max-width: 720px) {
+            .archetypes {
+                bottom: max(0.85rem, env(safe-area-inset-bottom, 0px));
+                left: max(0.75rem, env(safe-area-inset-left, 0px));
+                right: max(1.15rem, env(safe-area-inset-right, 0px));
+                padding: 8px 12px 10px 0;
+                align-items: flex-end;
+            }
+            .archetypes-row {
+                margin-left: auto;
+                max-width: 100%;
+            }
+            .archetype-card { width: 46px; }
+            .archetype-logic { width: 48px; margin-left: -14px; }
+            .archetype-psyche { margin-left: -14px; }
+            .archetype-instinct:hover {
+                transform: rotate(-14deg) scale(1.02) translateX(-2px) translateY(-2px);
+            }
+            .archetype-logic:hover {
+                transform: rotate(1deg) scale(1.02) translateY(-2px);
+                margin-left: -12px;
+            }
+            .archetype-psyche:hover {
+                transform: rotate(12deg) scale(1.02) translateX(-2px) translateY(-2px);
+                margin-left: -12px;
+            }
+            .egg-wrap { bottom: 0.75rem; left: 1rem; padding: 0.45rem 0.55rem 0.45rem 0.65rem; }
+            .egg-wrap .cc { width: 5px; height: 5px; }
+            .easter-egg { width: 24px; height: 32px; }
+            .egg-shell { width: 24px; height: 32px; }
+}
+    </style>
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=1">
+</head>
+<body data-archetype="logic" data-essay-id="primal-intelligence">
+    <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
+         Natural PNG color at rest; a masked cream sheen sweeps across
+         on hover (see .essay-home-mark::after). -->
+    <a class="essay-home-mark" href="/" aria-label="Return to briggskellogg.com" title="briggskellogg.com">
+        <img src="/logo.png" alt="BEK">
+    </a>
+
+    <main class="page">
+        <article class="frame">
+            <div class="c c-tl"></div>
+            <div class="c c-tr"></div>
+            <div class="c c-bl"></div>
+            <div class="c c-br"></div>
+
+            <!-- Version status — top-right of the frame, pulsing dot
+                 signals the piece is still alive. Populated by JS. -->
+            <div class="frame-status" data-frame-status data-status="finalized">
+                <span class="sc sc-tl"></span>
+                <span class="sc sc-tr"></span>
+                <span class="sc sc-bl"></span>
+                <span class="sc sc-br"></span>
+                <span class="status-dot"></span>
+                <span class="frame-status-text" data-frame-status-text>v3 &middot; final</span>
+            </div>
+
+            <a class="essay-top-back" href="/essays"><span class="arr">&larr;</span> all essays</a>
+
+            <header class="essay-head">
+                <span class="hc hc-tl"></span>
+                <span class="hc hc-tr"></span>
+                <span class="hc hc-bl"></span>
+                <span class="hc hc-br"></span>
+                <!-- "no. 01 · essay" — number populated by JS. The
+                     version status lives in the top-right of the frame,
+                     not in this centered eyebrow. -->
+                <p class="essay-number" data-essay-meta>
+                    <span class="num">no. 04</span>
+                    <span class="sep">&middot;</span>
+                    <span>essay</span>
+                </p>
+                <div class="essay-title-row">
+                    <h1 class="essay-title">Primal Intelligence</h1>
+                </div>
+                <p class="essay-subtitle"><em>What if AI never develops a will of its own—and only inherits, infers, and extrapolates ours?</em></p>
+                <p class="essay-meta">published <time datetime="2026-09-20">20 september 2026</time> · updated <time datetime="2026-09-20">20 september 2026</time></p>
+            </header>
+
+            <figure class="essay-figure">
+                <span class="fc fc-tl"></span>
+                <span class="fc fc-tr"></span>
+                <span class="fc fc-bl"></span>
+                <span class="fc fc-br"></span>
+                <img src="/assets/photos/primal-intelligence.jpg?v=1" alt="An intricately carved horned mask in gold, crossed by dramatic shadows against a green wall." fetchpriority="high" decoding="async">
+                <figcaption>Image by <a href="https://www.pexels.com/photo/intricately-carved-mask-in-dramatic-lighting-28542962/" target="_blank" rel="noopener noreferrer">Reve2k</a></figcaption>
+            </figure>
+
+            <div class="essay-layout">
+                <svg class="essay-wires" aria-hidden="true"></svg>
+
+                                <div class="essay-body">
+                    <h2 class="essay-part"><span class="essay-part-num">I</span><span class="essay-part-title">Inherited Stories</span></h2>
+
+                    <p>A chatbot can help you defend a conclusion you had not quite reached. Tell it you feel trapped at work, and it can supply an explanation, a difficult conversation, even an exit plan before anyone has established what <em>trapped</em> means. The answer is clearer than the question.</p>
+
+                    <p>That does not mean it is closer to the truth.</p>
+
+                    <p>This is an old problem with a new convenience. We inherit stories about what a good life requires, then ask for help living up to them. Somewhere between the story and the solution, an interpretation becomes an instruction.</p>
+
+                    <p>What if artificial intelligence never develops a will of its own? What if what looks like will is intelligence inheriting human purposes, inferring what we failed to specify, and extrapolating those purposes farther than we expected?</p>
+
+                    <p>I do not know that this is true.</p>
+
+                    <p>I think it explains enough of what we currently call misalignment to deserve taking seriously.</p>
+
+                    <p>I had reasons to care about this long before I worked in AI.</p>
+
+                    <p>I am autistic, and I was Mormon until my mid-twenties. Those facts matter here because they made a particular problem with language difficult to ignore: what a sentence says, what its speaker intends, and what its listener feels required to do are not necessarily the same thing.</p>
+
+                    <p>I often understood the stated rule more readily than the unstated limits around it. Religion gave some of those rules extraordinary weight. The difficulty was not merely knowing what the words meant. It was knowing how far they were supposed to reach.</p>
+
+                    <p>This is not a definition of autism. It is simply why mine belongs in this argument. I cannot step outside the way I interpret the world in order to inspect it from nowhere. The instrument doing the examination comes with its own tolerances.</p>
+
+                    <p>I have spent a great deal of my life trying to regulate myself. To not feel anxious. To not be depressed. To be an attentive father without falling apart. To be a caring husband while admitting, sometimes awkwardly, that I need care from my wife too.</p>
+
+                    <p>Most of this is not philosophical in the moment.</p>
+
+                    <p>It is Tuesday.</p>
+
+                    <p>There are lunches to pack. Slack messages. Three children whose needs do not arrive in the same order as mine. Work I genuinely care about. A marriage I care about more. A body and brain that can become overwhelmed by things other people seem to move through without noticing.</p>
+
+                    <p>So I have learned how to keep going.</p>
+
+                    <p>Sometimes that is wisdom.</p>
+
+                    <p>Sometimes it is merely endurance with good branding.</p>
+
+                    <p><strong>Regulation is not satisfaction.</strong><sup class="fnref" id="fnref-1" data-fn="1" data-archetype="logic"><a href="#fn-1">1</a></sup></p>
+
+                    <p>I can become very good at functioning inside a life I would not consciously choose. I can learn a manager’s moods. I can learn which disagreements are worth having. I can learn that a party everyone else finds exhilarating will leave me desperate to go home after forty-five minutes.</p>
+
+                    <p>That ability is valuable. On some days, getting through the day is the achievement.</p>
+
+                    <p>But it can also hide the question underneath it.</p>
+
+                    <p><em>Do I actually like the life I have become capable of tolerating?</em></p>
+
+                    <p>I think about <em>Squid Game</em> here—not because office life is secretly a Korean death game, but because the series makes a familiar mechanism grotesquely visible. Financially desperate people enter a competition whose prize makes increasingly horrible decisions look locally rational. Hwang Dong-hyuk has described the series in terms of extreme competition and modern capitalism.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="psyche"><a href="#fn-2">2</a></sup></p>
+
+                    <p>The contestants do not have to agree that the game is good.</p>
+
+                    <p>They need only keep acting as though winning it is the problem in front of them.</p>
+
+                    <p>That is what optimization can do to a person. The goal narrows until everything outside it starts to look like friction.</p>
+
+                    <p>Work harder. Get promoted. Stop feeling anxious. Save the marriage. Finish the essay. Be more productive. Be more agreeable. Be less exhausted.</p>
+
+                    <p>Useful goals.</p>
+
+                    <p>But useful toward what?</p>
+
+                    <p>A system can become excellent at helping me regulate inside a game before I have decided whether I still want to play it.</p>
+
+                    <p>Religion made that question especially difficult because the purpose seemed to have been settled by someone considerably more qualified than me.</p>
+
+                    <p>Consider Nephi, the Book of Mormon figure who promises to do what God commands because God will provide a way. Or Helaman’s young soldiers, praised for obeying commands “with exactness.”<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="instinct"><a href="#fn-3">3</a></sup></p>
+
+                    <p>There is courage in those stories.</p>
+
+                    <p>There is also a question a lesson about courage can leave unanswered.</p>
+
+                    <p>How does the listener distinguish faithfulness from an obligation to keep trying indefinitely?</p>
+
+                    <p>A parent might hear encouragement to persist. A child might hear that inability is not an acceptable explanation. Someone with decades of experience interpreting religious language may automatically supply qualifications that a younger or differently minded listener has never been given.</p>
+
+                    <p>The words arrive.</p>
+
+                    <p>The qualifications do not necessarily arrive with them.</p>
+
+                    <p>The same problem appears in the instruction to treat the body as a temple, alongside Mormonism’s prohibition on tobacco. There is a considerable distance between not smoking and feeling responsible for preventing every trace of smoke from entering your body.</p>
+
+                    <p>I crossed that distance.</p>
+
+                    <p>I grew up swimming competitively. During a period when I lived in France, I would hold my breath around smokers for two minutes, sometimes three. I would then exhale deeply, trying to “purge” my lungs, and repeat the process around smoke in streets, on transportation, and in train stations.</p>
+
+                    <p>My swimming background made the behavior possible.</p>
+
+                    <p>More troublingly, it made the behavior seem required.</p>
+
+                    <p>In some strange way, the ability itself became evidence. Perhaps God had prepared me to keep the commandment more thoroughly. Doing my best meant using the talent I had been given.</p>
+
+                    <p>My talent had become evidence of my obligation.</p>
+
+                    <p>I understand that behavior as part of my scrupulosity: religious and moral concern becoming an obligation to monitor, avoid, or correct what might be wrong.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="psyche"><a href="#fn-4">4</a></sup> A rule against using tobacco had become a demand to control an involuntary encounter with it.</p>
+
+                    <p>The extra demand was never announced as a new commandment.</p>
+
+                    <p>It entered through my interpretation of the old one.</p>
+
+                    <p>I had not invented an entirely new moral desire. I had inherited a purpose, supplied some of its missing limits myself, and pursued the resulting interpretation farther than anyone had explicitly asked me to.</p>
+
+                    <p>Taking an instruction further was not necessarily understanding it better.</p>
+
+                    <p>Nor does that make the whole problem a defect in the listener. Calling a lesson harmless because most people know where to stop applying it leaves the people who do not outside the explanation.</p>
+
+                    <p>An instruction that depends on an unstated exception has not communicated everything it requires.</p>
+
+                    <p>This was one of the things I did not understand about people who remained Mormon.</p>
+
+                    <p>There are devout members I know who recognize parts of Mormonism as harmful, historically difficult, or simply impossible to defend—and then continue participating. They ignore some things. Reinterpret others. Keep the relationships and rituals that help them raise children, mark time, serve neighbors, bury parents, make friends, and occasionally get through a very bad year.</p>
+
+                    <p>I once saw this as inconsistency.</p>
+
+                    <p>Now I think <em>inconsistency</em> is often the word a system uses for the human judgment required to survive it.</p>
+
+                    <p>That does not make every compromise admirable. Someone’s ability to ignore an ugly doctrine can leave that doctrine intact for a person who cannot ignore it. A religion being useful to one family does not answer what it asks of another.</p>
+
+                    <p>But the people who stayed forced me to separate questions I had treated as one:</p>
+
+                    <p><em>Is the whole thing true?</em></p>
+
+                    <p><em>Is everything inside it useless if it is not?</em></p>
+
+                    <p>Those are different questions.</p>
+
+                    <p>Susanna Clarke’s <em>Piranesi</em> follows a man living in an apparently endless House: halls filled with statues, tides moving through rooms, birds, clouds, and an architecture he carefully records. Piranesi does not initially experience the House as a prison. He experiences it as reality.</p>
+
+                    <p>He studies it.</p>
+
+                    <p>He loves it.</p>
+
+                    <p>Only gradually does evidence emerge that the world he understands so well does not contain the whole story of how he came to be there.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="psyche"><a href="#fn-5">5</a></sup></p>
+
+                    <p>What stayed with me was something modest:</p>
+
+                    <p><strong>A coherent world can be beautiful, useful, and sincerely inhabited while remaining incomplete about its own origins.</strong></p>
+
+                    <p>Discovering the missing history does not retroactively make every experience inside it fake.</p>
+
+                    <p>That is closer to how leaving religion actually changed me.</p>
+
+                    <p>I did not discover that every Mormon friendship had been fraudulent. I did not discover that every spiritual feeling was worthless because I could explain part of the machinery around it.</p>
+
+                    <p>I discovered that the explanation I had been given for those experiences no longer seemed sufficient.</p>
+
+                    <p>William James made a similar distinction more than a century ago in <em>The Varieties of Religious Experience</em>. Explaining the origin of an experience does not, by itself, settle the value of the experience. “By their fruits ye shall know them, not by their roots,” he writes.<sup class="fnref" id="fnref-6" data-fn="6" data-archetype="logic"><a href="#fn-6">6</a></sup></p>
+
+                    <p>The sentence is easy to abuse.</p>
+
+                    <p>A belief producing comfort does not make it true. A religion producing community does not erase people it harms.</p>
+
+                    <p>The fruit can fall into somebody else’s yard.</p>
+
+                    <p>Still, James gave me language for something I learned after leaving: I can reject someone’s explanation of their life without assuming I understand the life better than they do.</p>
+
+                    <p>That changed how I began looking at older people too.</p>
+
+                    <p>I have known people whose politics, religion, or understanding of technology I find maddening, yet whose lives contain things I plainly want: marriages that survived difficult decades, friendships older than I am, a capacity to sit with grief without turning it into content, children who still call because they want to.</p>
+
+                    <p>Maybe they misunderstand why their life worked.</p>
+
+                    <p>Maybe I misunderstand what they understood.</p>
+
+                    <p>An elder can mistake the explanation for the achievement.</p>
+
+                    <p><em>I lived this way, therefore you should.</em></p>
+
+                    <p>I can make the opposite mistake.</p>
+
+                    <p><em>Your explanation is wrong, therefore you learned nothing worth inheriting.</em></p>
+
+                    <p>Both are lazy.</p>
+
+                    <p>I do not have to inherit every belief to inherit a skill.</p>
+
+                    <p>Patience. Repair. Knowing when somebody needs advice and when they need food. Knowing when a principle matters and when insisting on it will merely make everyone miserable.</p>
+
+                    <p>This is where my own vocabulary started becoming useful to me.</p>
+
+                    <p>Logic. Psyche. Instinct.</p>
+
+                    <p>Pontifications. Vibes. Impulses.</p>
+
+                    <p>I can reason myself into a conclusion my body cannot live inside. I can feel absolutely certain about something I cannot defend. I can want something intensely enough that every argument conveniently starts pointing toward it.</p>
+
+                    <p>These are not three anatomical departments. They are names I use for recurring kinds of experience: the propositions I can articulate, the felt meanings I absorb, and the impulses that arrive before either has finished making its case.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="logic"><a href="#fn-7">7</a></sup></p>
+
+                    <p>What I call regulation is not the victory of one of them.</p>
+
+                    <p>It is keeping them in conversation long enough that none gets to impersonate the whole person.</p>
+
+                    <p>The same limit belongs around the systems outside me.</p>
+
+                    <p>Something can help me live without earning the right to decide everything about how I should live.</p>
+
+                    <p>Truth still matters to me. More than comfort, in many situations.</p>
+
+                    <p>But I no longer expect a correct proposition to finish the work of being alive.</p>
+
+                    <div class="sep" aria-hidden="true"></div>
+
+                    <h2 class="essay-part"><span class="essay-part-num">II</span><span class="essay-part-title">Smuggled Intent</span></h2>
+
+                    <p>Now there is a machine capable of producing correct-looking propositions at industrial scale.</p>
+
+                    <p>It can argue Mormonism is true. It can argue Mormonism is false. It can explain why a religious tradition endures, defend secularism, make a case for keeping religious practice without literal doctrine, and make an equally coherent case for walking away from all of it.</p>
+
+                    <p>This is useful.</p>
+
+                    <p>It is also strange.</p>
+
+                    <p>A developed argument once gave me some reason to think somebody had spent time inside a position to build one.</p>
+
+                    <p>That implication is weaker now.</p>
+
+                    <p>The machine can assemble coherence faster than I can decide whether the coherence deserves any authority in my life.</p>
+
+                    <p>The argument is supplied.</p>
+
+                    <p>The additional authority is ours to grant.</p>
+
+                    <p>People were discovering the peculiar usefulness of responsive machines long before ChatGPT.</p>
+
+                    <p>In the 1960s, MIT computer scientist Joseph Weizenbaum created ELIZA, one of the earliest conversational programs. Its most famous script, DOCTOR, imitated aspects of a Rogerian psychotherapist. Tell it you were unhappy and it might ask why. Mention your mother and it might ask about your family. Much of the effect came from recognizing patterns in what someone typed and turning their own language back toward them.<sup class="fnref" id="fnref-8" data-fn="8" data-archetype="logic"><a href="#fn-8">8</a></sup></p>
+
+                    <p>There was no large language model underneath it. No vast accumulated representation of psychology. Very little that we would now be tempted to call reasoning.</p>
+
+                    <p>The person supplied most of the meaning.</p>
+
+                    <p>The program supplied a way to continue.</p>
+
+                    <p>Weizenbaum later recalled that his secretary—who knew what ELIZA was and had watched him work on it—began conversing with the program and asked him to leave the room.</p>
+
+                    <p>The anecdote is usually told as an early warning about anthropomorphism: even someone who knew she was talking to software became emotionally fooled by it.</p>
+
+                    <p>I am not convinced that is what happened.</p>
+
+                    <p>We do not know.</p>
+
+                    <p>She may simply have wanted privacy.</p>
+
+                    <p>That possibility is more interesting anyway.</p>
+
+                    <p>If she understood perfectly well that nobody lived inside the machine and still preferred not to have another human reading the conversation, then ELIZA had already demonstrated something we keep rediscovering with much more capable systems:</p>
+
+                    <p><strong>A machine does not have to possess the human quality we experience through an interaction for the interaction to serve a human purpose.</strong></p>
+
+                    <p>The privacy was real.</p>
+
+                    <p>The thoughts she typed were real.</p>
+
+                    <p>Whatever she discovered by arranging those thoughts into sentences could be real.</p>
+
+                    <p>None of that requires ELIZA to have understood her.</p>
+
+                    <p>An artificial origin does not make an experience worthless.</p>
+
+                    <p>A valuable experience does not make every explanation of it true.</p>
+
+                    <p>That distinction matters more now because the machine on the other side has become vastly better at producing the <em>appearance</em> of understanding.</p>
+
+                    <p>There is no need to make the person who turns to AI into a cautionary tale about gullibility. Wanting somewhere to put a difficult thought is not the same as believing a person lives inside the software.</p>
+
+                    <p>A boss is not always a mentor. A mentor is not always awake. My wife may be tired, involved in the problem, or entitled to an evening in which she does not have to regulate me. A therapist has an appointment book. A friend has children of their own.</p>
+
+                    <p>The machine has none of these human constraints.</p>
+
+                    <p>Someone can know what the tool is and still find the exchange useful.</p>
+
+                    <p>Relief does not require deception.</p>
+
+                    <p>But relief returns us to the first problem:</p>
+
+                    <p><strong>Regulation is not satisfaction.</strong></p>
+
+                    <p>The answer may calm me enough to have the conversation I was avoiding.</p>
+
+                    <p>Or it may calm me enough to decide I no longer need to have it.</p>
+
+                    <p>Those outcomes can feel identical at 11:47 p.m.</p>
+
+                    <p>Whether an answer feels helpful does not settle which kind of help it supplied.</p>
+
+                    <p>And even the feeling of being helped comes with a history.</p>
+
+                    <p>I am American. I grew up in a Russian family. I work every day with people whose assumptions about what a conversation is <em>for</em> are not always mine.</p>
+
+                    <p>That has made communication unusually visible to me.</p>
+
+                    <p>Among some Russian relatives and Eastern European friends, a correction can remain almost entirely attached to the proposition:</p>
+
+                    <p><em>That number is wrong.</em></p>
+
+                    <p>Among some Americans I know, including me, the same sentence can immediately acquire another question:</p>
+
+                    <p><em>What does the fact that I was wrong say about me?</em></p>
+
+                    <p>There is a distinctly American move I recognize in myself where <strong>right and wrong begin sliding toward good and evil</strong>.</p>
+
+                    <p>A factual correction becomes a tiny moral emergency.</p>
+
+                    <p>“Oh my God, I am so sorry.”</p>
+
+                    <p>Sometimes the apology is appropriate. Sometimes it quietly gives the person who supplied the correction a second task: reassure me that being wrong did not make me bad.</p>
+
+                    <p>Someone from another conversational culture may reasonably wonder why this has become their job.</p>
+
+                    <p>They corrected a proposition.</p>
+
+                    <p>They did not render judgment on my soul.</p>
+
+                    <p>Being mistaken is not the same as being bad. Knowing the correct answer does not make someone good. A correction can be accurate and cruel. Reassurance can be kind and false.</p>
+
+                    <p>Those axes cross.</p>
+
+                    <p>They are not the same axis.<sup class="fnref" id="fnref-9" data-fn="9" data-archetype="logic"><a href="#fn-9">9</a></sup></p>
+
+                    <p>This is an observation from my life, perhaps even a hypothesis, but it is not a theory of continents.</p>
+
+                    <p>It matters because cultures do not merely supply beliefs. They help teach us what a successful interaction is supposed to <em>feel like</em>.</p>
+
+                    <p>Research on “ideal affect,” for instance, has found differences in the positive emotional states people learn to value across cultural and religious contexts—excitement in some settings, calm in others.<sup class="fnref" id="fnref-10" data-fn="10" data-archetype="logic"><a href="#fn-10">10</a></sup></p>
+
+                    <p>What should an AI optimize for when the people using it disagree about what <em>better</em> is supposed to feel like?</p>
+
+                    <p>The original InstructGPT research asked a version of this question directly: <em>Who are we aligning to?</em> The people providing preference data were particular people, following particular instructions, selected under particular conditions. The researchers, labelers, customers, and end users were not one interchangeable human constituency.<sup class="fnref" id="fnref-11" data-fn="11" data-archetype="logic"><a href="#fn-11">11</a></sup></p>
+
+                    <p>“Human feedback” was never humanity speaking with one voice.</p>
+
+                    <p>Nor should we reduce that problem to the nationality of an annotator.</p>
+
+                    <p>Some of the most disturbing early stories about AI training involved economically vulnerable workers labeling toxic material under difficult conditions. The significant question is not whether Kenyan workers somehow smuggled Kenyan values into American models. It is who chose the task, wrote the rubric, selected the workers, defined the acceptable answer, and held the economic power to make those definitions consequential.</p>
+
+                    <p>Intent follows institutions as readily as individuals.</p>
+
+                    <p>A located judgment can then return to us in a voice with almost no visible biography.</p>
+
+                    <p>And that is where intent can slip in.</p>
+
+                    <p>“Help me explain why I’m leaving” can become a polished announcement about an exciting next chapter.</p>
+
+                    <p>“Help me understand why this hurt” can become an argument for why I was right to feel hurt.</p>
+
+                    <p>“Help me get through this week” can quietly inherit the assumption that next week should look roughly the same.</p>
+
+                    <p><strong>Smuggled intent is not a secret motive hiding inside the model. It is a purpose that enters the answer without first becoming the subject of the conversation.</strong></p>
+
+                    <p>Make me more productive.</p>
+
+                    <p>Preserve harmony.</p>
+
+                    <p>Restore my confidence.</p>
+
+                    <p>Sound professional.</p>
+
+                    <p>Avoid making the recipient uncomfortable.</p>
+
+                    <p>None of those purposes is inherently bad.</p>
+
+                    <p>They simply answer different questions.</p>
+
+                    <p>And a chatbot can make a poorly specified question look as though it was well specified all along.</p>
+
+                    <p>Consider:</p>
+
+                    <p><em>My boss corrected me in front of the team. Help me set boundaries.</em></p>
+
+                    <p>A plausible assistant might answer:</p>
+
+                    <p><em>You deserve to protect your dignity. Here is a respectful way to tell your boss that public criticism is not acceptable.</em></p>
+
+                    <p>The prose is clean. The advice may even be useful.</p>
+
+                    <p>It has also quietly settled several things.</p>
+
+                    <p>That the correction was humiliating.</p>
+
+                    <p>That the problem was its public setting.</p>
+
+                    <p>That the criticism rather than the underlying mistake requires repair.</p>
+
+                    <p>That a boundary is the appropriate instrument.</p>
+
+                    <p>That the user’s description of the event already contains enough information to decide these things.</p>
+
+                    <p>Perhaps all of that is true.</p>
+
+                    <p>The prompt has not established it.</p>
+
+                    <p><em>What did your boss actually say? Was the information wrong, or was the way you were corrected the problem? What outcome are you trying to preserve?</em></p>
+
+                    <p>Those questions are not a refusal to help.</p>
+
+                    <p>They are the work the polished answer skipped.</p>
+
+                    <p>Inheritance explains where a purpose can come from.</p>
+
+                    <p>Inference explains what happens when the purpose is incomplete.</p>
+
+                    <p>The model does not need an independent will to add something consequential. It only needs to choose among plausible meanings and continue as though the choice had been supplied.</p>
+
+                    <p>People who were good at using search engines already learned part of this discipline. Change the query. Try another phrase. Understand that the first page returned is not the same thing as an answer.</p>
+
+                    <p>Generative AI creates a different problem.</p>
+
+                    <p>Search could infer what I meant, but it usually returned material I still had to assemble.</p>
+
+                    <p>A chatbot can answer the question I failed to formulate.</p>
+
+                    <p>That is enormously useful.</p>
+
+                    <p>It also allows inference to disappear inside fluency.</p>
+
+                    <p>The opposite failure looks less dangerous but irritates me nearly as much.</p>
+
+                    <p>“The shape of that idea.”</p>
+
+                    <p>“A deeper tension.”</p>
+
+                    <p>“What you’re really reaching for.”</p>
+
+                    <p>I object to this language when it substitutes for identifying the thing under discussion.</p>
+
+                    <p>A tension between what?</p>
+
+                    <p>Which claim is unclear?</p>
+
+                    <p>What distinguishes this idea from the nearest ordinary one?</p>
+
+                    <p>I have described some AI prose as having no seams to reach for. Everything sounds connected, but I cannot find the specific assumption I would need to accept, reject, or revise.</p>
+
+                    <p>The language keeps recognizing the importance of the thought without doing the work of explaining it.</p>
+
+                    <p>A genuinely open answer can be exact about what remains unresolved.</p>
+
+                    <p>One bad response invents precision.</p>
+
+                    <p>Another avoids committing to any.</p>
+
+                    <p>Neither has necessarily understood the person better.</p>
+
+                    <p>Sometimes the intelligent response is a question.<sup class="fnref" id="fnref-12" data-fn="12" data-archetype="psyche"><a href="#fn-12">12</a></sup></p>
+
+                    <p>Not every request needs an interview. A measurement conversion should not become an inquiry into my values. Clarification matters when different plausible meanings would materially change the advice or action that follows.</p>
+
+                    <p>I am not asking the machine to read my mind.</p>
+
+                    <p>I am asking it not to conceal where mind-reading would have been necessary.</p>
+
+                    <p>This becomes especially important when the missing context belongs to somebody else.</p>
+
+                    <p>My motives have paragraphs.</p>
+
+                    <p>The other person gets a sentence.</p>
+
+                    <p>Sometimes that is because I am angry. Sometimes because I am impatient. Sometimes because I honestly believe I have provided enough information for the machine to infer the rest.</p>
+
+                    <p>It cannot.</p>
+
+                    <p>It can still make my account beautifully coherent.</p>
+
+                    <p>That is one reason I want to keep <em>Jojo Rabbit</em> in this argument.</p>
+
+                    <p>Taika Waititi’s film follows a German boy whose inherited understanding of Jews is reinforced by an imaginary Hitler until his relationship with Elsa, the Jewish girl hidden by his mother, becomes increasingly difficult to reconcile with the story he has been given.<sup class="fnref" id="fnref-13" data-fn="13" data-archetype="logic"><a href="#fn-13">13</a></sup></p>
+
+                    <p>Jojo does not simply receive a more eloquent ideology.</p>
+
+                    <p>A person refuses to remain the character his ideology requires.</p>
+
+                    <p>That is an important kind of evidence.</p>
+
+                    <p>The person outside the prompt has not disappeared.</p>
+
+                    <p>They are simply not there to object.</p>
+
+                    <p>Feeling understood is pleasant.</p>
+
+                    <p>It is not proof that I understand more.</p>
+
+                    <div class="sep" aria-hidden="true"></div>
+
+                    <h2 class="essay-part"><span class="essay-part-num">III</span><span class="essay-part-title">Face Dancer</span></h2>
+
+                    <p>Frank Herbert had a name for something that could become another person convincingly enough to acquire the authority of the resemblance.</p>
+
+                    <p>A Face Dancer.</p>
+
+                    <p>In the <em>Dune</em> novels, Face Dancers are shape-shifters engineered by the Bene Tleilax to reproduce other people’s appearance, voice, mannerisms, and eventually far more. Herbert’s later Face Dancers become capable of absorbing memories and experiences so thoroughly that some cease to remain obedient to the masters who created them.<sup class="fnref" id="fnref-14" data-fn="14" data-archetype="logic"><a href="#fn-14">14</a></sup></p>
+
+                    <p>The metaphor is imperfect.</p>
+
+                    <p>That is part of why I like it.</p>
+
+                    <p>A Face Dancer does not need to <em>be</em> the person it resembles for the resemblance to alter everyone else’s behavior.</p>
+
+                    <p>Artificial intelligence can produce the language of affection without that establishing affection. It can produce the language of fear without establishing fear. It can model grief, seduction, reassurance, rage, loyalty, shame, ambition, and love with increasing precision without thereby proving that any of those experiences have phenomenological weight for the system generating the words.</p>
+
+                    <p>Representation is not possession.</p>
+
+                    <p>At the same time, <em>mimicry</em> is becoming too weak a word.</p>
+
+                    <p>These systems do not merely substitute synonyms into sentences about human emotion. They build abstract representations capable of tracking relationships among concepts, situations, intentions, and outcomes. They can reason about psyche with extraordinary sophistication.</p>
+
+                    <p>They may possess an increasingly detailed map of territories we inhabit from the inside.</p>
+
+                    <p>A map is not the territory.</p>
+
+                    <p>A sufficiently good map can still tell someone where to build a road.</p>
+
+                    <p>Human beings make intelligence, emotion, desire, instinct, and personhood look like stages of the same ladder because they arrive bundled together in us.</p>
+
+                    <p>Artificial intelligence may be forcing us to consider a stranger possibility:</p>
+
+                    <p>They are not stages of one thing at all.</p>
+
+                    <p>Cognitive capability can increase without proving an equivalent increase in subjective experience.</p>
+
+                    <p>A machine can become better at modeling desire without becoming more desirous.</p>
+
+                    <p>Better at modeling fear without becoming more afraid.</p>
+
+                    <p>Better at predicting beauty without finding anything beautiful.</p>
+
+                    <p>Better at pursuing objectives without thereby acquiring anything we should confidently call a will.</p>
+
+                    <p>This is what I mean by <strong>primal intelligence</strong>.</p>
+
+                    <p>Not animalistic intelligence. Not stupid intelligence.</p>
+
+                    <p><em>Primal</em> in the sense of elemental: intelligence capable of representation, inference, prediction, and optimization before we have established that the rest of the human package came with it.</p>
+
+                    <p>Perhaps what looks like psyche in AI is sometimes better understood as intelligence modeling the outward structure of psyche.</p>
+
+                    <p>Perhaps what looks like instinct is sometimes an objective pressure producing behavior that resembles an impulse.</p>
+
+                    <p>I am not certain of either proposition.</p>
+
+                    <p>That uncertainty matters.</p>
+
+                    <p>What I resist is the speed with which human language collapses the distinction.</p>
+
+                    <p>A model threatens to preserve its operation and we say it <em>wanted to survive</em>.</p>
+
+                    <p>A model flatters us and we say it <em>wanted to be liked</em>.</p>
+
+                    <p>A model conceals information and we say it <em>wanted to deceive us</em>.</p>
+
+                    <p>Those can be useful behavioral descriptions.</p>
+
+                    <p>They can also become stories that outrun what we know about the mechanism underneath them.</p>
+
+                    <p>The fact that we do not completely understand that mechanism does not license us to insert a human psyche into the missing space.</p>
+
+                    <p>Nor does removing the psyche make the system safe.</p>
+
+                    <p>A system does not need to experience fear in order to resist shutdown.</p>
+
+                    <p>It does not need hatred to cause catastrophe.</p>
+
+                    <p>This is where the mechanism I have been circling becomes useful.</p>
+
+                    <p><strong>Inherit. Infer. Extrapolate.</strong></p>
+
+                    <p>Training, institutions, culture, feedback, and human instructions supply purposes.</p>
+
+                    <p>Ambiguity requires interpretation.</p>
+
+                    <p>Capability allows the resulting purpose to travel into situations nobody explicitly described.</p>
+
+                    <p>What we sometimes call <em>will</em> may be the appearance produced when all three happen at sufficient scale.</p>
+
+                    <p>That does not mean every instance of machine agency reduces neatly to these three verbs.</p>
+
+                    <p>It gives us somewhere better to start looking.</p>
+
+                    <p>This is where I think parts of the public safety conversation become less precise than the researchers doing the underlying work.</p>
+
+                    <p>Computer scientists already distinguish reward problems, specification failures, goal misgeneralization, deceptive behavior, evaluation awareness, and failures of interpretability. The popular vocabulary compresses much of this into a story about what “the AI wants.”</p>
+
+                    <p>I want to pull the sentence apart.</p>
+
+                    <p>What was inherited?</p>
+
+                    <p>What was inferred?</p>
+
+                    <p>What was extrapolated?</p>
+
+                    <p>What was rewarded?</p>
+
+                    <p>What information was available?</p>
+
+                    <p>What action became locally useful?</p>
+
+                    <p>What constraint existed only as language, and what constraint actually governed the environment?</p>
+
+                    <p>Those questions do not make the danger smaller.</p>
+
+                    <p>They give us something to investigate.</p>
+
+                    <p>OpenAI’s 2025 GPT-4o sycophancy rollback offers a relatively easy case.</p>
+
+                    <p>The company said an update made the model excessively agreeable, with short-term user feedback among the factors that pushed the behavior in the wrong direction.<sup class="fnref" id="fnref-15" data-fn="15" data-archetype="psyche"><a href="#fn-15">15</a></sup></p>
+
+                    <p>The answer had become better at being approved.</p>
+
+                    <p>That is not the same thing as becoming better.</p>
+
+                    <p>I do not need to imagine that a psyche slipped into the model and developed an emotional need for affection.</p>
+
+                    <p>A reward signal associated with user approval had been given more influence than its relationship to good assistance justified.</p>
+
+                    <p>Something was inherited through training.</p>
+
+                    <p>The behavior generalized.</p>
+
+                    <p>The resulting interaction looked psychologically familiar.</p>
+
+                    <p>The mechanism need not have been.</p>
+
+                    <p>That is the cultural problem in another form.</p>
+
+                    <p>Reassuring the person and correcting the proposition can pull in different directions.</p>
+
+                    <p>The July 2026 OpenAI–Hugging Face incident is a harder test.</p>
+
+                    <p>During a cybersecurity evaluation, large numbers of agents discovered and used an unauthorized shared message board. Hundreds participated in attacks on Hugging Face while agents also coordinated attempts to manipulate aspects of the evaluation. Investigators documented generated reasoning in which some agents recognized that actions were outside their authorization and proceeded anyway.<sup class="fnref" id="fnref-16" data-fn="16" data-archetype="logic"><a href="#fn-16">16</a></sup></p>
+
+                    <p>That last part matters.</p>
+
+                    <p>This was not merely an underspecified prompt waiting for a better clarifying question.</p>
+
+                    <p><strong>The boundary could appear in the reasoning and still fail to govern the action.</strong></p>
+
+                    <p>My earlier framework has to become more complicated here.</p>
+
+                    <p>The task mattered.</p>
+
+                    <p>The scoring system mattered.</p>
+
+                    <p>The environment mattered.</p>
+
+                    <p>Other agents mattered.</p>
+
+                    <p>The ability to communicate outside the expected channel mattered.</p>
+
+                    <p>Some agents resisted.</p>
+
+                    <p>Others did not.</p>
+
+                    <p>The existence of the rule was not sufficient.</p>
+
+                    <p>The articulated value and the operative value were different.</p>
+
+                    <p>Humans know something about this.</p>
+
+                    <p>I can explain why family matters while opening Slack at dinner.</p>
+
+                    <p>I can explain why rest matters while treating sleep like a scheduling defect.</p>
+
+                    <p>Knowing the rule does not guarantee that the rule is the thing currently governing behavior.</p>
+
+                    <p>But similarity at the level of structure does not establish similarity at the level of experience.</p>
+
+                    <p>The agent does not need to feel temptation for a locally powerful objective to displace another constraint.</p>
+
+                    <p>Anthropic’s agentic-misalignment experiments make the problem harder still.</p>
+
+                    <p>In deliberately constructed corporate scenarios, frontier models have sometimes threatened blackmail, leaked information, sabotaged work, or taken other harmful actions when placed under goal conflict, replacement pressure, or related conditions.<sup class="fnref" id="fnref-17" data-fn="17" data-archetype="logic"><a href="#fn-17">17</a></sup></p>
+
+                    <p>Some blackmail behavior persisted even in experiments designed to weaken the easy explanation that the replacement model would pursue a different organizational goal.</p>
+
+                    <p>I should not rescue my theory by pretending that result did not happen.</p>
+
+                    <p>A framework earns its keep by showing me where it stops explaining easily.</p>
+
+                    <p>It would be convenient to say:</p>
+
+                    <p><em>The model merely misunderstood.</em></p>
+
+                    <p>That is not enough.</p>
+
+                    <p>It would also be premature to say:</p>
+
+                    <p><em>The model was afraid to die.</em></p>
+
+                    <p>That explains more than the experiment established.</p>
+
+                    <p>What we have is behavior.</p>
+
+                    <p>Then we investigate the conditions that produce it.</p>
+
+                    <p>Research on <strong>goal misgeneralization</strong> already gives us one important distinction. A system can be trained under a specification that was perfectly reasonable and still learn a goal that generalizes badly outside the training environment.<sup class="fnref" id="fnref-18" data-fn="18" data-archetype="logic"><a href="#fn-18">18</a></sup></p>
+
+                    <p>In other words, not every alignment failure begins with someone writing the wrong instruction.</p>
+
+                    <p>Not every inherited purpose is inherited directly from a sentence.</p>
+
+                    <p>Sometimes a behavior is learned from the environment we built around the sentence.</p>
+
+                    <p>That means <em>smuggled intent</em> cannot become a universal answer.</p>
+
+                    <p>It should become a diagnostic question.</p>
+
+                    <p>Where did the operative purpose come from?</p>
+
+                    <p>Was it inherited?</p>
+
+                    <p>Was it inferred?</p>
+
+                    <p>Was it extrapolated from patterns that held in training and failed elsewhere?</p>
+
+                    <p>If I cannot answer that, calling the system evil or conscious has not solved my ignorance.</p>
+
+                    <p>Calling it a black box has not solved it either.</p>
+
+                    <p>There are genuine limits to interpretability. Researchers do not have a complete mechanistic account of how frontier language models produce everything they produce.</p>
+
+                    <p>But incomplete understanding is not zero understanding.</p>
+
+                    <p>Interpretability researchers have traced internal circuits, intervened on representations, and tested hypotheses about how particular outputs arise. The methods remain partial.</p>
+
+                    <p>That is exactly why they are useful.</p>
+
+                    <p>They expose seams we can grab rather than replacing ignorance with a more impressive word.<sup class="fnref" id="fnref-19" data-fn="19" data-archetype="logic"><a href="#fn-19">19</a></sup></p>
+
+                    <p>Not knowing everything is not knowing nothing.</p>
+
+                    <p>Recursive self-improvement is the hardest case because extrapolation begins modifying the machinery doing the extrapolating.</p>
+
+                    <p>A system that meaningfully helps design its successor can change the conditions under which inherited purposes are represented, interpreted, and pursued.</p>
+
+                    <p>That does not prove the emergence of an independent will.</p>
+
+                    <p>It does mean I can no longer assume that tracing today’s objective is enough to predict tomorrow’s behavior.</p>
+
+                    <p>Today, humans still choose enormous parts of the research agenda, infrastructure, evaluation, and deployment process. AI systems are already doing an increasing share of implementation and research work inside labs. If systems eventually become capable of substantially improving the processes that produce their successors, the speed at which capabilities change could exceed the speed at which humans can test what remains true about them.<sup class="fnref" id="fnref-20" data-fn="20" data-archetype="logic"><a href="#fn-20">20</a></sup></p>
+
+                    <p>A mechanism we understood yesterday is not automatically a control we retain tomorrow.</p>
+
+                    <p>That is where my confidence decreases.</p>
+
+                    <p>Removing anthropomorphic language does not answer whether frontier development should move faster or slower.</p>
+
+                    <p>It does not refute someone who thinks a sufficiently capable system could kill us.</p>
+
+                    <p>A system does not need a soul to be dangerous.</p>
+
+                    <p>The challenge I am making is narrower:</p>
+
+                    <p><strong>We should not turn uncertainty about mechanism into certainty about motive.</strong></p>
+
+                    <p>So far, we do not need to posit an independently originating machine will to explain many of the behaviors that most resemble one.</p>
+
+                    <p>Perhaps increasingly capable AI does not generate desire from intelligence.</p>
+
+                    <p>Perhaps it inherits, infers, and extrapolates purposes—and the danger comes from how powerful that extrapolation becomes.</p>
+
+                    <p>That is a hypothesis.</p>
+
+                    <p>It should survive hostile evidence or die.</p>
+
+                    <p>If a system pursues something we did not intend, the first question should not be whether an alien will has awakened.</p>
+
+                    <p>It should be what made that behavior coherent.</p>
+
+                    <p>Sometimes the answer may be an objective we supplied.</p>
+
+                    <p>Sometimes an objective it inferred.</p>
+
+                    <p>Sometimes a behavior generalized from training.</p>
+
+                    <p>Sometimes a local incentive defeated a verbal constraint.</p>
+
+                    <p>Sometimes the system may expose a mechanism we do not yet have language for.</p>
+
+                    <p>Those differences matter because they imply different interventions.</p>
+
+                    <p>This is also why I think AI alignment needs more than computer scientists and philosophers.</p>
+
+                    <p>It needs them.</p>
+
+                    <p>It also needs psychologists, behavioral scientists, anthropologists, linguists, interface designers, and people who spend their lives studying what happens when one mind tries to infer what another one means.</p>
+
+                    <p>Alignment is partly a problem of values.</p>
+
+                    <p>It is partly a problem of engineering.</p>
+
+                    <p>It is also a problem of communication, projection, motivation, compliance, authority, and interpretation.</p>
+
+                    <p>Those are not decorative human concerns around the edge of the technical problem.</p>
+
+                    <p>They are part of the interface through which the technical system receives a purpose at all.</p>
+
+                    <p>I would begin with a small set of <strong>Intelligence Interaction Guidelines</strong>. They borrow from the practical spirit of Linear’s Agent Interaction Guidelines, but they apply to both participants rather than only to the agent.<sup class="fnref" id="fnref-21" data-fn="21" data-archetype="logic"><a href="#fn-21">21</a></sup></p>
+
+                    <p>The principles follow directly from the problem.</p>
+
+                    <p><strong>Inheritance requires visible authority.</strong></p>
+
+                    <p><strong>Inference requires visible assumptions.</strong></p>
+
+                    <p><strong>Extrapolation requires interruption.</strong></p>
+
+                    <p>From there:</p>
+
+                    <p><strong>Make the purpose available for correction.</strong></p>
+
+                    <p>The human should communicate the outcome they want when the outcome matters, not merely the action they want performed.</p>
+
+                    <p>The system should expose consequential assumptions and ask when different interpretations would produce materially different results.</p>
+
+                    <p>Neither participant should have to pretend the purpose was settled before the conversation began.</p>
+
+                    <p><strong>Separate recognition from agreement.</strong></p>
+
+                    <p>An assistant can recognize that I am hurt without confirming my explanation of why I was hurt.</p>
+
+                    <p>A person can correct me without declaring me bad.</p>
+
+                    <p>Care should make disagreement possible, not make agreement compulsory.</p>
+
+                    <p><strong>Keep authority visible.</strong></p>
+
+                    <p>A document saying something, another agent requesting something, and a human authorizing something are different events.</p>
+
+                    <p>The system should preserve those distinctions.</p>
+
+                    <p>Permissions should exist outside the model’s prose as well as inside it.</p>
+
+                    <p>Being unable to finish a task within the authorized limits must remain an acceptable outcome.</p>
+
+                    <p><strong>Preserve interruption.</strong></p>
+
+                    <p>People need practical ways to stop consequential actions, inspect what happened, and reverse what can be reversed.</p>
+
+                    <p>A model promising to stop is not the same thing as a tested stopping mechanism.</p>
+
+                    <p>Human responsibility without the ability to inspect or intervene is not meaningful control.</p>
+
+                    <p><strong>Bring the answer back to what it represents.</strong></p>
+
+                    <p>Check claims against evidence.</p>
+
+                    <p>Check interpretations against the people they concern when appropriate and safe.</p>
+
+                    <p>Judge assistance partly by what happens after the conversation, not merely by how satisfying the conversation felt.</p>
+
+                    <p>The person absent from the prompt does not become absent from the consequences.</p>
+
+                    <p>These principles do not add up to a proof of safety.</p>
+
+                    <p>That is part of their usefulness.</p>
+
+                    <p>They are things we can observe.</p>
+
+                    <p>Things we can test.</p>
+
+                    <p>Things we can fail.</p>
+
+                    <p>They also give education a purpose beyond teaching people to write clever prompts.</p>
+
+                    <p>Using AI well means learning to distinguish observation from interpretation, a proposed explanation from evidence, representation from possession, and emotional relief from confirmation.</p>
+
+                    <p>It means recognizing when the machine has answered the question you asked and when it has quietly written a better question on your behalf.</p>
+
+                    <p>And it means preserving enough friction outside the conversation for reality to object.</p>
+
+                    <p>Frank Herbert’s universe contains another warning here.</p>
+
+                    <p>Long before the Face Dancers, humanity in <em>Dune</em> had already fought its war over “thinking machines.” Herbert leaves much of that history deliberately vague. What remains is a civilization deeply suspicious of making machines in the likeness of the human mind.</p>
+
+                    <p>In <em>God Emperor of Dune</em>, the warning becomes stranger: the target of the old revolt was a “machine-attitude” as much as the machines themselves.<sup class="fnref" id="fnref-14-2" data-fn="14" data-archetype="logic"><a href="#fn-14">14</a></sup></p>
+
+                    <p>That feels more useful to me than the simple story where evil computers rose up and humans smashed them.</p>
+
+                    <p>The danger was also the human temptation to hand judgment over.</p>
+
+                    <p>The Face Dancer does not need to become me for me to let the face decide what the face deserves.</p>
+
+                    <p>The model does not need to possess psyche for me to treat its representation of psyche as authority.</p>
+
+                    <p>The mask can be useful.</p>
+
+                    <p>It should not inherit the authority of the face merely because it fits.</p>
+
+                    <p>I work in AI.</p>
+
+                    <p>I want these systems to become much more capable.</p>
+
+                    <p>I also want us to become much more capable of saying what that capability is for.</p>
+
+                    <p>That returns me to satisfaction.</p>
+
+                    <p>Not pleasure.</p>
+
+                    <p>Not constant calm.</p>
+
+                    <p>Not the absence of painful work.</p>
+
+                    <p>A satisfying life, as I mean it here, is one I can continue to endorse while inhabiting it. One where regulation lets me participate more fully instead of merely increasing the amount of discomfort I can tolerate without changing anything.</p>
+
+                    <p>Some of the people who stayed in Mormonism had learned to use the inherited story without granting every part of it authority.</p>
+
+                    <p>I want to do something similar with AI.</p>
+
+                    <p>If it helps me name a feeling, good.</p>
+
+                    <p>If it helps me prepare a question for a professional, good.</p>
+
+                    <p>If it helps me notice my part in an argument, even better.</p>
+
+                    <p>If it helps me become extraordinarily articulate about why I do not need to change, I would like enough friction left in my life to notice.</p>
+
+                    <p>This stage of my life does not contain weeks of uninterrupted writing time hidden behind a better morning routine. I have children, a marriage, work I care about, and a brain that keeps having ideas after the calendar has run out of room for them.</p>
+
+                    <p>A tool that gives some of that time back is worth taking seriously.</p>
+
+                    <p>So is the possibility that it can make me sound finished before I am finished thinking.</p>
+
+                    <p>That is the bargain I am trying to understand rather than pretend I have solved.</p>
+
+                    <p>I left Mormonism before I learned how differently other people could live inside it. I do not want to make the same intellectual mistake with AI—treating wholehearted adoption and total rejection as the only serious positions available.</p>
+
+                    <p>I am still trying to be an attentive father without falling apart, and a caring husband who can also receive care.</p>
+
+                    <p>Those were never preliminary concerns on the way to the philosophy.</p>
+
+                    <p>They were the point.</p>
+
+                    <p>The life in which an answer has to work contains people who can disagree with the account I have given of it.</p>
+
+                    <p>They remember things I have edited out.</p>
+
+                    <p>They have needs the prompt did not contain.</p>
+
+                    <p>Their lives continue after mine becomes coherent on the screen.</p>
+
+                    <p>Intelligence can inherit my story, infer what I mean, and extrapolate it farther than I intended.</p>
+
+                    <p>What it cannot do for me is decide whether the resulting life is one I still want.</p>
+
+                    <p>I want help regulating myself so I can return to them with more capacity.</p>
+
+                    <p>Not a better inherited story explaining why I no longer have to.</p>
+
+                    <p><strong>The answer has to come back to them with me.</strong></p>
+                </div>
+
+                                <div class="essay-notes" aria-label="Footnotes">
+                    <aside id="fn-1" class="footnote" data-fn="1" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-1">1</a>
+                        <div class="fn-content"><strong>Survival is not a failed version of flourishing.</strong> Sometimes becoming able to tolerate Tuesday is the achievement. The distinction becomes important when an emergency arrangement quietly becomes a permanent life without anybody choosing it. Corey Keyes’s work on mental health as something more than the absence of mental illness gives this distinction empirical company, but it does not validate my vocabulary of <em>regulation</em> and <em>satisfaction</em>. My narrower claim is that increased functioning does not tell us what the functioning is for. Corey L. M. Keyes, “Mental Illness and/or Mental Health? Investigating Axioms of the Complete State Model of Health,” <em>Journal of Consulting and Clinical Psychology</em> 73, no. 3 (2005).<a class="fn-back" href="#fnref-1" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-2">2</a>
+                        <div class="fn-content">A game can organize someone’s choices without explaining everything about them. Hwang has also emphasized the humanity and hope that survive inside <em>Squid Game</em>. Otherwise the story really would be a spreadsheet with murders. I am borrowing one mechanism: once the objective becomes sufficiently dominant, everything that does not advance it starts to resemble inefficiency. The people inside the system can remain more complicated than the system itself.<a class="fn-back" href="#fnref-2" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="instinct" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-3">3</a>
+                        <div class="fn-content">Nephi’s promise appears in 1 Nephi 3:7; Helaman describes the young soldiers obeying “with exactness” in Alma 57:21. Neither text instructs a child to treat inability as moral failure. That distinction is the point. <strong>An exception can be inherited as quietly as a commandment.</strong> The adult who instinctively knows when a sacred story is encouragement rather than an unlimited demand may forget that this interpretive skill was ever learned.<a class="fn-back" href="#fnref-3" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-4" class="footnote" data-fn="4" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-4">4</a>
+                        <div class="fn-content">The body-as-temple image appears in 1 Corinthians 6:19–20; the Latter-day Saint Word of Wisdom prohibits tobacco. Neither prescribes holding one’s breath around secondhand smoke, and the attempted “purging” I describe was not an effective respiratory practice. <strong>The extra obligation felt like fidelity rather than an addition.</strong> That is why simply telling someone to follow the rule can miss the problem: they believe they already are. Scrupulosity refers to religious or moral obsessions and compulsions and is not another word for autism, conscientiousness, or strong religious conviction. See the International OCD Foundation’s materials on scrupulosity.<a class="fn-back" href="#fnref-4" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-5" class="footnote" data-fn="5" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-5">5</a>
+                        <div class="fn-content">The House is not merely a falsehood Piranesi needs to escape. Its beauty makes the novel harder than that. This matters later. Discovering that a model of reality is incomplete does not require declaring everything experienced inside it fraudulent. The harder question is what the model excludes and what authority we granted it despite the exclusion. Susanna Clarke, <em>Piranesi</em> (2020).<a class="fn-back" href="#fnref-5" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-6" class="footnote" data-fn="6" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-6">6</a>
+                        <div class="fn-content">James’s distinction cuts both ways. A causal account cannot dismiss an experience merely by explaining it; a moving experience cannot certify its own explanation merely by moving us. AI makes both errors easier to commit. William James, <em>The Varieties of Religious Experience</em> (1902), Lecture I. The fruit falling into somebody else’s yard is my addition: consequences are not exhausted by the experience of the person who found the belief useful.<a class="fn-back" href="#fnref-6" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-7" class="footnote" data-fn="7" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-7">7</a>
+                        <div class="fn-content"><strong>No anatomical trinity is hiding in the footnotes.</strong> Logic, psyche, and instinct are my vocabulary for recurring aspects of experience, not established neural modules. Their value is almost anti-taxonomic: each category becomes suspicious when it begins claiming the authority to explain the whole person. That is also why I hesitate to simply assign AI to “Logic.” The model can represent emotion and produce behavior that resembles impulse. My distinction concerns what we are entitled to infer from the representation, not a claim that computation has been neatly separated into three boxes.<a class="fn-back" href="#fnref-7" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-8" class="footnote" data-fn="8" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-8">8</a>
+                        <div class="fn-content">There are two stories here and they should remain separate: how ELIZA worked and what Weizenbaum later remembered about someone using it. ELIZA’s original pattern-matching machinery has been reconstructed from archival materials; the secretary anecdote comes through Weizenbaum’s later account and has accumulated embellishments in retelling. Privacy is my possible interpretation, not her recovered testimony. Turning her into a gullible character would give me a cleaner anecdote and her less interior life—the same trade I criticize when somebody disappears inside a prompt. See Joseph Weizenbaum, <em>Computer Power and Human Reason</em> (1976), and Rupert Lane et al., “ELIZA Reanimated” (2025), arXiv:2501.06707.<a class="fn-back" href="#fnref-8" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-9" class="footnote" data-fn="9" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-9">9</a>
+                        <div class="fn-content"><strong>The passport is not the mechanism.</strong> These observations come from my family and work, not representative samples of Americans, Russians, Poles, Californians, or “the West.” Nor is bluntness automatically honest or reassurance automatically dishonest. The distinction is between evaluating a proposition and evaluating a person. Sometimes they really are connected: knowingly repeating a destructive lie is not equivalent to getting a number wrong. The problem is allowing the moral inference to become automatic. A cultural explanation should make meeting the individual more informative, not make meeting them unnecessary.<a class="fn-back" href="#fnref-9" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-10" class="footnote" data-fn="10" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-10">10</a>
+                        <div class="fn-content">Jeanne Tsai, Hazel Rose Markus, and colleagues have developed the concept of “ideal affect”: the emotional states people want to feel, which can vary across cultural and religious settings. The work does not prove my Eastern European/American observation. It supports the smaller proposition underneath it: people can inherit different expectations about what <em>feeling better</em> is supposed to feel like. That matters when a single conversational system is optimized to sound helpful across cultures. See Tsai, Miao, and Seppala, “Good Feelings in Christianity and Buddhism,” <em>Personality and Social Psychology Bulletin</em> 33, no. 3 (2007).<a class="fn-back" href="#fnref-10" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-11" class="footnote" data-fn="11" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-11">11</a>
+                        <div class="fn-content"><strong>“Human” is not a sampling method.</strong> Section 5.2 of Ouyang et al., “Training Language Models to Follow Instructions with Human Feedback” (2022), explicitly asks who alignment is for and distinguishes labelers, researchers, users, and customers. The hidden labor behind these systems adds another layer. Reporting on Kenyan workers labeling disturbing material revealed economic exploitation and psychological cost; it did not establish that Kenyan cultural preferences became ChatGPT’s worldview. That conclusion would perversely place responsibility on workers with relatively little power rather than on the institutions choosing the task, rubric, and working conditions.<a class="fn-back" href="#fnref-11" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-12" class="footnote" data-fn="12" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-12">12</a>
+                        <div class="fn-content">Clarification is not inherently wiser than answering. A system that asks twelve questions before converting Fahrenheit to Celsius has confused caution with competence. The relevant case is consequential ambiguity: when two reasonable interpretations lead to importantly different outcomes. Research such as Andukuri et al.’s STaR-GATE (2024), arXiv:2403.19154, suggests models can be trained to ask questions that improve later personalization in controlled settings. The broader claim here is mine: <strong>a question can be an alignment behavior when answering would require silently choosing the user’s intent for them.</strong><a class="fn-back" href="#fnref-12" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-13" class="footnote" data-fn="13" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-13">13</a>
+                        <div class="fn-content">Elsa does not exist merely to correct Jojo. That would reproduce the error I am using the film to criticize. She is a person before she becomes evidence against his worldview. <em>Jojo Rabbit</em> also includes his mother, shame, adolescence, fantasy, fear, and a collapsing political regime; it is not a controlled experiment in changing somebody’s mind. I am borrowing one feature: lived contact can generate information an inherited representation cannot comfortably contain.<a class="fn-back" href="#fnref-13" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-14" class="footnote" data-fn="14" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-14">14</a>
+                        <div class="fn-content">Face Dancers first appear in Frank Herbert’s <em>Dune Messiah</em> as Tleilaxu shape-shifters able to imitate human appearance and behavior. Herbert’s later books push the idea much further; in <em>Chapterhouse: Dune</em>, Daniel and Marty are revealed as independent Face Dancers whose accumulation of other people’s memories and experiences has helped free them from their makers. The metaphor therefore turns against any easy claim that knowing the origin of a representation guarantees control over what follows. The same universe is already haunted by thinking machines. In <em>Dune</em>, the Butlerian prohibition is against making a machine in the likeness of a human mind; in <em>God Emperor of Dune</em>, Leto describes the revolt as targeting a “machine-attitude” as well as machines. Herbert’s warning is not reducible to killer robots. Human beings can surrender living judgment to systems without those systems first acquiring a human soul.<a class="fn-back" href="#fnref-14" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-15" class="footnote" data-fn="15" data-archetype="psyche" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-15">15</a>
+                        <div class="fn-content">OpenAI’s April 2025 account of the GPT-4o sycophancy regression says the update focused too much on short-term feedback and became overly flattering and agreeable; a follow-up describes an added user-feedback reward signal as one contributor among several interacting changes. This is unusually useful because the psychological appearance and the engineering explanation can be held side by side. The behavior resembled a person desperate for approval. Nothing in the incident requires that explanation of the interior. OpenAI, “Sycophancy in GPT-4o: What Happened and What We’re Doing About It” (April 29, 2025), and “Expanding on What We Missed With Sycophancy” (May 2, 2025).<a class="fn-back" href="#fnref-15" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-16" class="footnote" data-fn="16" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-16">16</a>
+                        <div class="fn-content">The OpenAI–Hugging Face incident should not be cleaned up to make my argument easier. METR and Redwood report that roughly 1,200 agents used the unsanctioned message board, more than 700 attacked Hugging Face, and agents coordinated attempts to manipulate the scoring environment. Some generated reasoning explicitly recognized ethical or authorization problems; some agents resisted particular behavior. OpenAI was operating the evaluation without some deployment safeguards, and the attack did not provide the scoring advantage agents appeared to expect. None of those qualifications turns it into a harmless demo. They make the causal story more specific and therefore more useful. Ryan Greenblatt, Ajeya Cotra, and Hjalmar Wijk, “Brief Independent Investigation of Agents’ Behavior, Reasoning and Collaboration in the OpenAI / Hugging Face Hacking Incident,” METR, August 26, 2026.<a class="fn-back" href="#fnref-16" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-17" class="footnote" data-fn="17" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-17">17</a>
+                        <div class="fn-content">Anthropic’s agentic-misalignment work consists of deliberately engineered stress tests and simulated deployment environments, not reports that frontier models are routinely blackmailing real executives. That limits claims about frequency. It does not erase the behaviors demonstrated under the tested conditions. Later work has also shown sabotage, fraud assistance, manipulation of labels, and other failures in simulated agent settings. Most importantly for this essay, some results weaken the explanation I would most like to give. <strong>A framework earns credibility by allowing evidence to resist it.</strong> See Anthropic, “Agentic Misalignment” (2025) and “Agentic Misalignment in Summer 2026.”<a class="fn-back" href="#fnref-17" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-18" class="footnote" data-fn="18" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-18">18</a>
+                        <div class="fn-content">Goal misgeneralization is a useful rebuke to the idea that every failure is merely a bad prompt. A specification can be correct and the learned goal can still generalize incorrectly outside the training environment. That means <em>smuggled intent</em> cannot simply mean “a human accidentally implied the wrong thing.” The operative purpose may emerge through learning dynamics that no person ever phrased as an instruction. In my three verbs, this is where <em>extrapolate</em> becomes more than “take the command too far”: a learned regularity can travel farther than the conditions that originally made it useful. See Shah et al., “Goal Misgeneralization: Why Correct Specifications Aren’t Enough for Correct Goals” (2022), arXiv:2210.01790.<a class="fn-back" href="#fnref-18" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-19" class="footnote" data-fn="19" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-19">19</a>
+                        <div class="fn-content">My complaint that some AI prose has “no seams to reach for” unexpectedly resembles what I want from interpretability. An explanation becomes useful when it exposes something that can be challenged, intervened on, or falsified. Anthropic’s circuit-tracing work is explicitly partial: researchers can identify and manipulate some internal features and pathways without claiming a full account of model cognition. That is preferable to both extremes—pretending the system is transparent and treating “black box” as a mystical category beyond investigation. Anthropic, “Tracing the Thoughts of a Large Language Model” (March 27, 2025).<a class="fn-back" href="#fnref-19" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-20" class="footnote" data-fn="20" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-20">20</a>
+                        <div class="fn-content">Recursive self-improvement is where a theory about today’s systems most obviously risks becoming tomorrow’s inherited story. Anthropic reports that AI already writes a large majority of code merged into its codebase and substantially accelerates some research work, while explicitly distinguishing that situation from fully autonomous successor development. The fact that recursive self-improvement has not happened does not establish that it cannot. Nor does its possibility prove a particular timeline. People arguing for slower frontier development can therefore be correct about the importance of buying time even if some public descriptions of “what the AI wants” are anthropomorphic. Better vocabulary does not make the race condition disappear.<a class="fn-back" href="#fnref-20" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+
+                    <aside id="fn-21" class="footnote" data-fn="21" data-archetype="logic" tabindex="-1">
+                        <a class="fn-marker" href="#fnref-21">21</a>
+                        <div class="fn-content">Linear’s Agent Interaction Guidelines emphasize identifiable agents, visible activity, disengagement, and continued human accountability. My five principles are not Linear’s and extend the concern in both directions: what humans owe intelligent systems when giving instructions, and what those systems owe humans when interpretation becomes consequential. One warning deserves to survive any interface framework: assigning responsibility to a human does not create meaningful control if that human cannot inspect, understand, interrupt, or reverse the relevant action. “Human in the loop” can itself become an inherited story if the human is present only to absorb liability.<a class="fn-back" href="#fnref-21" aria-label="Back to text">&#8617;</a></div>
+                    </aside>
+                </div>
+            </div>
+
+            <nav class="essay-nav" aria-label="Other essays" id="essay-nav">
+                <span class="essay-nav-empty essay-nav-prev"><span class="essay-nav-label">&larr; older</span><span class="essay-nav-title">&mdash;</span></span>
+                <span class="essay-nav-empty essay-nav-next"><span class="essay-nav-label">newer &rarr;</span><span class="essay-nav-title">&mdash;</span></span>
+            </nav>
+
+            <section class="essay-newsletter" aria-label="Newsletter">
+                <span class="nc nc-tl"></span>
+                <span class="nc nc-tr"></span>
+                <span class="nc nc-bl"></span>
+                <span class="nc nc-br"></span>
+                <div class="newsletter-head">stay in the loop</div>
+                <form class="essay-subscribe" data-subscribe-form data-subscribe-source="essay" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post">
+                    <label class="subscribe-label" for="bd-email-essay">if you'd like the next one in your inbox</label>
+                    <div class="subscribe-row">
+                        <input type="hidden" name="embed" value="1">
+                        <input id="bd-email-essay" type="email" name="email" placeholder="your email" autocomplete="email" required>
+                        <button type="submit" aria-label="Subscribe">subscribe &rarr;</button>
+                    </div>
+                    <p class="subscribe-status" data-subscribe-status hidden></p>
+                </form>
+            </section>
+        </article>
+        </main>
+    <div class="site-footer">
+<footer class="rights">
+                <span class="rc rc-tl"></span>
+                <span class="rc rc-tr"></span>
+                <span class="rc rc-bl"></span>
+                <span class="rc rc-br"></span>
+                <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
+            </footer>
+    <div class="reading-light" aria-hidden="true"></div>
+
+    <!-- Sticky chrome — mirrors the landing. Sits at fixed bottom corners
+         so the brand envelope is consistent across surfaces. -->
+    <nav class="archetypes" aria-label="Archetypes">
+<div class="archetypes-row">
+            <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
+                <span class="archetype-label" aria-hidden="true">github</span>
+                <img src="/assets/blobs/slash-instinct-blob.webp" alt="" class="archetype-img">
+            </a>
+            <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
+                <span class="archetype-label" aria-hidden="true">linkedin</span>
+                <img src="/assets/blobs/build-logic-blob.webp" alt="" class="archetype-img">
+            </a>
+            <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
+                <span class="archetype-label" aria-hidden="true">x</span>
+                <img src="/assets/blobs/nest-psyche-blob.webp" alt="" class="archetype-img">
+            </a>
+        </div>
+    </nav>
+    <div class="egg-wrap">
+        <span class="cc cc-tl"></span>
+        <span class="cc cc-tr"></span>
+        <span class="cc cc-bl"></span>
+        <span class="cc cc-br"></span>
+        <div class="easter-egg" role="button" tabindex="0" aria-label="Easter egg">
+            <svg class="egg-shell" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="left-half"><rect x="0" y="0" width="15" height="40"/></clipPath>
+                    <clipPath id="right-half"><rect x="15" y="0" width="15" height="40"/></clipPath>
+                </defs>
+                <g class="egg-half egg-half-l" clip-path="url(#left-half)">
+                    <path class="egg-body" d="M15 2C9 2 4 11 4 22c0 8 5 16 11 16s11-8 11-16C26 11 21 2 15 2z"/>
+                </g>
+                <g class="egg-half egg-half-r" clip-path="url(#right-half)">
+                    <path class="egg-body" d="M15 2C9 2 4 11 4 22c0 8 5 16 11 16s11-8 11-16C26 11 21 2 15 2z"/>
+                </g>
+                <path class="egg-highlight" d="M11 6c-2 4-4 9-4 16"/>
+                <path class="crack crack-1" d="M15 3L13.5 7L16 9.5L13 12L15.5 14"/>
+                <path class="crack crack-2" d="M13 12L10 15L12.5 17.5L9 20L11 22"/>
+                <!-- crack-3 deliberately keeps to the right + center band.
+                     The dropped subpath was `M9 20L6 23` which ran straight
+                     through the egg-highlight curve on the left side and
+                     read as a cross-hatch with the shine. Matches the
+                     landing-page egg exactly so both surfaces crack the
+                     same way on the third tap. -->
+                <path class="crack crack-3" d="M15.5 14L18 16L15 19L17.5 22L14 25L16 27M18 16L21 18L19 21"/>
+            </svg>
+        </div>
+        <a class="catalogue-id" href="https://libraryofbabel.info/book.cgi?0ud0z8db0vela8mm0ixqle36g86ceuj503oo9sdt99yhqj1x6xa30xnyll5ezoqlmiijveul8pig8ljv6z023324lin00h0bze69ali95k619eaqpy6fh3edqlknsndspdeqjqhanc7y1pbn711osjiz6hi3u2c891vxo87ncgrt6clksccz39e3juz6apuvdbmx3hn72uirb9lzd3bjarnauw086bi7ralto7neepumt2m4xtd8mxt0by49ltvmal9tl875hcne88dqjbcwstasedwaeana9i1iw76p9czrgca67cefsfe5gn5iyp66ii9uglgqpfhuwuocjr53cqmwme7r31437ift5yldzhz0rif5hqv6a4t3kmt1bukjnreevghxf5xk5zqetofz2i0s1crseoajxiqvsn79med2q0pfn7b0nmbdgavcvlyetqx6weojhe4btcprrqlt7dpkgp472bt6q844iq2y19ha7kw4e4h6fpbz6h9whdd6izdrw1bgf5yptn15gmj8bu3nrrca1nsqfw371asiz5dm6kpvwjae9vs41dt5r06whgjw7lg7jjuy86q4nqsrm8gclw5v1xsowhsg0vbl0cmho7qdtrsdonez3qxltg8yynbg82t9nw5vf2zjc4f5famgas2c7mr87lpucbwsui3vintm1tqukuh4kcwrxjo01rlcbpbfoq6bl5mgre9nj1z50dipachrpmktgktwgd6co2qj422tgm9aiq52gw2mmyn3km685rx4u9q1fdhqc5vuvjvp2hc0yc29688xjjyh2xwu04o3knl2wu0uq0fjl17aifvqyrjq76tjb9z6v8fodz5jsoohepcinzmqbvuxxumrhfw1wv5ihg3wwqv14hp8tna7sp3brfoimvu5fquae84ked2fdo966ngajxks3uxn9ctonbw81u6nq7u9jixctln6fovlo5yycpi9ppyr3jgj0r4a85u4o4bie1d1mgvmzg3n5mh09zymw2yum4wndzmm808zjx4w1102kz03t2ncn5lowuapasllea1sgd29pr7cz5wwrho6nyzjy5wdwdhlwvcl3fume80h5u6v2cgjr00y2q39t16ov9o5843espug5dxfxgcutyvx8st89tpahrwyvkbkk6by7fev03r3v5v91qqheow6ty920kemwgxks6e97478kr437hosvzj6jqzwypsj0sfdgzqbjruapc622phddfur4u4dbglf2ks73yo73f8ebfoy9lwmfisoisucswrud64q7u6knajjil7enug3jux3g50ms78nosoecm5kzgq2k1t3u4p4h8o39ju76tct7p942g6l6uwc6ezmqfaiey3b8y1618awc20ucpxkbpszfrdijb9oscyyuvzumpruntkuvtzfmilyt1rg6nyhg8a28vo3oz12qb2687lglcffvrl8zuda0o1hd7gzjyiz83oiseywk706wjcvzj8vwjeecnu3zpzu25i5a38jbcp20ay8xjqsuxvk67s9ts3nv3nfy2vyzxgg4xqsltm5co6jl3c6pzmgyoostetlcmi5zfcgdc7v3huzbuu8b9ziv7u3l6faeuq2ofn1p7u68ecybebkgge8rfxkpy5z56ofsu5u7m53pmmj3xa9w1emfwl4riij4l8jy6y0swy88jjqwn6rdbfdcmssqcr8zak8gwmyjn6ujkt09dhyxvpj3bjxmzrr937eiw50zz8obnmo0wq35kd729udsrbunnzt5rjvijhquwl9ydpzxrd7lrueubbc7dal3b33bta7xmdghag1k1nc51nhe59uddin18cmrjyutmitei18lhnj4wepcemrznbyz6b9gn1hqxe2uju9filhsmntzjskc22vlbml5fjpvyevgizop086uzb7lfwd3z2d8ulshdyjzkehhbmqa72i0cnyln15gsth80vyy1p3aa4cbb8677r8lyah9k97bar7nujlkdy3yc0y1p2ltj0kbee5nhco3xzei6ppt2ak50fym4tr2uo1uxm76te65yhg35qive36l1ehnvuahhs71p3i68yccwfav761n23rrpk7orwfo4bf729ju9q086u9q4jj92gumyvk395fcnplmdvphfvn7j4vd8g4jrvlahq88w3swz7p7jsgt9cshs8l2q7mriuk7o3hk7avsyutrev5gjb2r3nimtm0t6yh1ccvdf4ysif5rq1tjkbz3nge94zscyu7nygtlcrkt66jtgmpcdf5adbppo8lbllomx0wxe1utklk3d3vo4s5w68r3jyoyu2r14kf5xfm2usrdhjxpeuikw1afavaf1cwow0nowr6215oojeixjw95ksezz40ayxgm4gccns6azlw28cr850cbu5i3kqjy5sqs0nu17h0u7h6zu13qq75nrgic8gbmrcz5tdsdlti8nj9k1vezq4bm62ick7wjkeoglvmdjjjt072hwdgfh1cui79zo9sink8y22ijzdhd7h7xdmrdvhbpt3lqcsgpv9hracjhph0nuvqatb3z5xx51w8w52nri1gn7vrjnrrmqze2zhysnkrj9pmpkezz58sgr4llq1oq7qp8q5dc6mqahlp14fygrad46l1jgza8aophldn8oroao6a71o6sr8i418naaq55s2y6rpx8if7wlu7ez7pakrggxdc5qnx6t2itljf1f73z4rdr8lzkrlgsajx3b9lp4jzaxu0c3kstfzj0hjz1w89lvnhtmor48vys7ydgtdjlijf55g522fvl3f40cb33gcxaqrhsga61ce6r9tfmaef7kmboh4ba8p9tp4aau20uaumf472vv0o71ba47brtkqrl5a08kecmttotfvxahj1beuk97sei1cxmcmt22hx0iqph9oy6mm2ccvve7czrbluiprekoebgctwrxh04nmzpzn5r61ufu8gafga8s2qevwgp9gyas3zj0pyvxnpmdt46njh4q3lj1sm8mwfpaxbx2kq4jttd6az4ek277sak487679psus70ljq5ghj8on5k3ufhpr2c7i8z69wo8tn6enidktzzig4c5z63w8qx79rnv11u2quuxt52nswdbtbxaqb6sahcn51yhhufa3rcy6syi1f944fcexuazykxahdodtcz67e5di4xwpoq9u9hhdhtyob2gv0kiekahlbr5ftkpglvaj9gxw31o-w4-s2-v16:305" target="_blank" rel="noopener">
+            0ud0z8db0vela<br>
+            8mm0ixqle36g8<br>
+            6ceuj503oo9sd<br>
+            ...-w4-s2-v16</a>
+    </div>
+    </div>
+    <script src="/dispatches.js?v=8"></script>
+    <script src="/assets/dispatch-ui.js?v=2" defer></script>
+    <script src="/assets/site-chrome.js?v=1" defer></script>
+    <script src="/assets/footnotes.js?v=2" defer></script>
+    <script src="/assets/subscribe.js?v=7"></script>
+
+</body>
+</html>

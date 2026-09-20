@@ -13,8 +13,8 @@
     </script>
 
     <title>Briggs Kellogg</title>
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="apple-touch-icon" href="/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/design-system.css?v=1">
@@ -1384,8 +1384,9 @@
             .egg-shell { width: 24px; height: 32px; }
         }
     </style>
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=1">
 </head>
-<body>
+<body class="home">
     <main class="page">
         <div class="home-panels">
             <svg class="home-link" aria-hidden="true">
@@ -1395,6 +1396,7 @@
                 <circle class="home-link-ring home-link-ring--b" r="4.5"></circle>
                 <circle class="home-link-dot home-link-dot--b" r="2.5"></circle>
             </svg>
+            <a class="home-invitation" href="mailto:me@briggskellogg.com?subject=About%20your%20essay">want to talk? <span>email me about an essay I wrote...</span></a>
             <div class="frame">
             <div class="c c-tl"></div>
             <div class="c c-tr"></div>
@@ -1406,8 +1408,8 @@
                     <span class="mc mc-tr"></span>
                     <span class="mc mc-bl"></span>
                     <span class="mc mc-br"></span>
-                    <img src="logo.png" alt="BEK">
-                    <div class="logo-sheen"></div>
+                    <img src="/logo.png" alt="BEK">
+
                 </div>
             </div>
             <div class="quotes-carousel">
@@ -1498,13 +1500,7 @@
                     <div class="quote-dot"></div>
                 </div>
                 <button class="quote-next" aria-label="Next quote">&rarr;</button>
-                <button class="quote-clock" type="button" aria-label="Pause automatic quotes" aria-pressed="false">
-                    <svg viewBox="0 0 48 48" aria-hidden="true">
-                        <circle class="quote-clock-track" cx="24" cy="24" r="19"/>
-                        <circle class="quote-clock-arc" cx="24" cy="24" r="19" pathLength="100"/>
-                        <path class="quote-clock-glyph" d="M17 18h5v6c0 3-1.4 5-4.2 6l-.7-1.5c1.7-.8 2.6-2 2.7-3.5H17z M26 18h5v6c0 3-1.4 5-4.2 6l-.7-1.5c1.7-.8 2.6-2 2.7-3.5H26z"/>
-                    </svg>
-                </button>
+                <button class="quote-progress" type="button" aria-label="Pause automatic quotes" aria-pressed="false"><span class="quote-progress-track" aria-hidden="true"><span class="quote-progress-fill"></span></span></button>
             </div>
             <div class="recs">
                 <div class="recs-heading">recommendations</div>
@@ -1566,9 +1562,9 @@
                     latest essay
                 </span>
             </header>
-            <a class="featured-card" id="featured-card" href="/essays/the-accent-of-intelligence/">
+            <a class="featured-card" id="featured-card" href="/essays/primal-intelligence/">
                 <div class="featured-thumb">
-                    <img id="featured-img" src="/assets/og/the-accent-of-intelligence.jpg?v=3" alt="Lead photograph for Inherited Stories, Smuggled Intent" fetchpriority="high" decoding="async">
+                    <img id="featured-img" src="/assets/photos/primal-intelligence.jpg?v=1" alt="Lead photograph for Primal Intelligence" fetchpriority="high" decoding="async">
                 </div>
                 <div class="featured-meta">
                     <span class="featured-no">no. 04</span>
@@ -1577,18 +1573,18 @@
                 </div>
                 <div class="featured-title-row">
                     <span class="featured-dot featured-dot--logic" id="featured-dot" aria-hidden="true"></span>
-                    <h2 class="featured-title">Inherited Stories, Smuggled Intent</h2>
+                    <h2 class="featured-title">Primal Intelligence</h2>
                 </div>
-                <p class="featured-excerpt">Regulation is not satisfaction.</p>
+                <p class="featured-excerpt">What if AI never develops a will of its own—and only inherits, infers, and extrapolates ours?</p>
                 <div class="featured-foot">
                     <span class="featured-cta">read the essay <span class="arr">&rarr;</span></span>
-                    <span class="featured-status" id="featured-status" data-status="draft">
+                    <span class="featured-status" id="featured-status" data-status="finalized">
                         <span class="fsc fsc-tl"></span>
                         <span class="fsc fsc-tr"></span>
                         <span class="fsc fsc-bl"></span>
                         <span class="fsc fsc-br"></span>
                         <span class="status-dot"></span>
-                        <span class="featured-status-text">v0 &middot; draft</span>
+                        <span class="featured-status-text">v3 &middot; final</span>
                     </span>
                 </div>
             </a>
@@ -1596,6 +1592,7 @@
         </section>
         </div>
     </main>
+    <div class="site-footer">
     <footer class="rights">
         <span class="rc rc-tl"></span>
         <span class="rc rc-tr"></span>
@@ -1607,15 +1604,15 @@
 <div class="archetypes-row">
             <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
                 <span class="archetype-label" aria-hidden="true">github</span>
-                <img src="/assets/archetypes/instinct.webp?v=4" alt="" class="archetype-img">
+                <img src="/assets/blobs/slash-instinct-blob.webp" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
                 <span class="archetype-label" aria-hidden="true">linkedin</span>
-                <img src="/assets/archetypes/logic.webp?v=4" alt="" class="archetype-img">
+                <img src="/assets/blobs/build-logic-blob.webp" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
                 <span class="archetype-label" aria-hidden="true">x</span>
-                <img src="/assets/archetypes/psyche.webp?v=4" alt="" class="archetype-img">
+                <img src="/assets/blobs/nest-psyche-blob.webp" alt="" class="archetype-img">
             </a>
         </div>
     </nav>
@@ -1654,9 +1651,10 @@
             6ceuj503oo9sd<br>
             ...-w4-s2-v16</a>
     </div>
-    <script src="/assets/home.js?v=3" defer></script>
+    </div>
+    <script src="/assets/home.js?v=4" defer></script>
     <script src="/assets/site-chrome.js?v=1" defer></script>
-    <script src="/dispatches.js?v=7"></script>
-    <script src="/assets/dispatch-ui.js?v=1" defer></script>
+    <script src="/dispatches.js?v=8"></script>
+    <script src="/assets/dispatch-ui.js?v=2" defer></script>
 </body>
 </html>

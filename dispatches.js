@@ -46,25 +46,29 @@ window.formatDispatchVersion = function(status) {
 
 window.DISPATCHES = [
     {
-        id: 'the-accent-of-intelligence',
+        id: 'primal-intelligence',
         number: 4,
-        title: 'Inherited Stories, Smuggled Intent',
-        date: 'september 2026',
-        url: '/essays/the-accent-of-intelligence/',
-        image: '/assets/og/the-accent-of-intelligence.jpg?v=3',
-        ogImage: '/assets/og/the-accent-of-intelligence.jpg?v=3',
-        status: 'draft',
+        title: 'Primal Intelligence',
+        date: '20 september 2026',
+        published: '2026-09-20',
+        updated: '2026-09-20',
+        url: '/essays/primal-intelligence/',
+        image: '/assets/photos/primal-intelligence.jpg?v=1',
+        ogImage: '/assets/og/primal-intelligence.jpg?v=1',
+        status: 'final-v3',
         playlist: {
             archetype: 'logic',
             url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
         },
-        excerpt: 'Regulation is not satisfaction.'
+        excerpt: 'What if AI never develops a will of its own—and only inherits, infers, and extrapolates ours?'
     },
     {
         id: 'selection',
         number: 3,
         title: 'Selection',
         date: 'june 2026',
+        published: '2026-06',
+        updated: '2026-06-28',
         url: '/essays/selection/',
         image: '/pexels-cottonbro-8721341.png',
         status: 'draft',
@@ -79,6 +83,8 @@ window.DISPATCHES = [
         number: 2,
         title: 'The Students Are Right',
         date: 'may 2026',
+        published: '2026-05',
+        updated: '2026-06-28',
         url: '/essays/the-students-are-right/',
         image: '/pexels-tara-winstead-8849288.jpg',
         status: 'draft-v1',
@@ -93,6 +99,8 @@ window.DISPATCHES = [
         number: 1,
         title: 'Americans, Europeans, and Autism, Oh My!',
         date: 'november 2025',
+        published: '2025-11',
+        updated: '2026-06-28',
         url: '/essays/americans-europeans-and-autism-oh-my/',
         image: '/pexels-anna-shevchuk-11507617.png',
         status: 'final-v3',

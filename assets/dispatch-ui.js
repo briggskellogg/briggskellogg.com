@@ -1,13 +1,6 @@
 (function() {
     'use strict';
 
-    var BLOB_FILES = {
-        logic: '/assets/blobs/build-logic-blob.webp',
-        psyche: '/assets/blobs/nest-psyche-blob.webp',
-        instinct: '/assets/blobs/slash-instinct-blob.webp'
-    };
-    var BLOB_KINDS = { logic: 'build', psyche: 'nest', instinct: 'slash' };
-
     function pad2(n) { return (n < 10 ? '0' : '') + n; }
 
     function esc(s) {
@@ -42,7 +35,7 @@
                     '<span class="tl-line"></span>' +
                     '<span class="tl-node"><span class="tl-node-dot"></span></span>' +
                     '<div class="tl-no">no. ' + pad2(num) + '</div>' +
-                    '<div class="tl-date">' + esc(d.date) + '</div>' +
+                    '<div class="tl-date"><span>published</span><time datetime="' + esc(d.published || '') + '">' + esc(d.date) + '</time><span>last updated</span><time datetime="' + esc(d.updated || '') + '">' + esc(d.updated || d.date) + '</time></div>' +
                 '</div>' +
                 '<a class="tl-card" href="' + esc(d.url) + '">' +
                     '<div class="tl-card-inner">' +
@@ -62,7 +55,7 @@
         }).join('');
     })();
 
-    // ---------- Dispatch number + status + playlist blob ----------
+    // ---------- Dispatch number + status + title color ----------
     (function() {
         var list = (window.DISPATCHES || []);
         var id = document.body.dataset.essayId;
@@ -87,20 +80,7 @@
             badgeEl.hidden = false;
         }
 
-        var blobLink = document.getElementById('essay-playlist-blob');
-        var blobImg = document.getElementById('essay-playlist-blob-img');
-        if (blobLink && entry.playlist && entry.playlist.url) {
-            var arch = entry.playlist.archetype || 'logic';
-            var kind = BLOB_KINDS[arch] || 'build';
-            blobLink.href = entry.playlist.url;
-            if (blobImg) {
-                blobImg.src = BLOB_FILES[arch] || BLOB_FILES.logic;
-                blobImg.alt = kind + ' playlist';
-            }
-            blobLink.setAttribute('aria-label', kind + ' playlist');
-            blobLink.setAttribute('title', kind + ' playlist');
-            blobLink.hidden = false;
-        }
+        document.body.dataset.archetype = (entry.playlist && entry.playlist.archetype) || 'logic';
     })();
 
     // ---------- Essay nav (prev/next dispatches) ----------

@@ -11,7 +11,7 @@
     var footnotes = Array.prototype.slice.call(document.querySelectorAll('.footnote'));
     if (!refs.length || !footnotes.length) return;
 
-    var stackedMQ = window.matchMedia('(max-width: 880px)');
+    var stackedMQ = window.matchMedia('(max-width: 1024px)');
     var clearTimer = null;
     var relayoutTimer = null;
 
@@ -35,8 +35,11 @@
             return;
         }
         var containerRect = notes.getBoundingClientRect();
+        var placed = new Set();
         var items = refs.map(function(ref) {
             var fnId = ref.dataset.fn;
+            if (placed.has(fnId)) return null;
+            placed.add(fnId);
             var note = document.getElementById('fn-' + fnId);
             if (!note) return null;
             var refRect = ref.getBoundingClientRect();
@@ -135,10 +138,12 @@
         });
     }
 
-    function activate(fnId) {
+    var activeRefs = Object.create(null);
+
+    function activate(fnId, origin) {
         if (isStacked()) return;
         if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
-        var ref = document.querySelector('.fnref[data-fn="' + fnId + '"]');
+        var ref = (origin && origin.classList.contains('fnref') ? origin : activeRefs[fnId]) || document.querySelector('.fnref[data-fn="' + fnId + '"]');
         var note = document.getElementById('fn-' + fnId);
         if (!ref || !note) return;
         refs.forEach(function(r) { r.classList.remove('linked'); });
@@ -160,11 +165,20 @@
     }
 
     function setupHover() {
+        refs.forEach(function(ref) {
+            ref.addEventListener('click', function() {
+                activeRefs[ref.dataset.fn] = ref;
+                var note = document.getElementById('fn-' + ref.dataset.fn);
+                if (note) note.querySelectorAll('.fn-marker, .fn-back').forEach(function(back) {
+                    back.setAttribute('href', '#' + ref.id);
+                });
+            });
+        });
         refs.concat(footnotes).forEach(function(el) {
             var fnId = el.dataset.fn;
-            el.addEventListener('mouseenter', function() { activate(fnId); });
+            el.addEventListener('mouseenter', function() { activate(fnId, el); });
             el.addEventListener('mouseleave', deactivate);
-            el.addEventListener('focusin', function() { activate(fnId); });
+            el.addEventListener('focusin', function() { activate(fnId, el); });
             el.addEventListener('focusout', deactivate);
         });
     }

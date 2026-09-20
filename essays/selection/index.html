@@ -972,7 +972,7 @@
         }
 
         /* ---------- Collapse to single column ---------- */
-        @media (max-width: 880px) {
+        @media (max-width: 1024px) {
             .page { max-width: 720px; }
             .essay-layout { display: block; }
             .essay-notes {
@@ -1328,8 +1328,9 @@
             .egg-shell { width: 24px; height: 32px; }
 }
     </style>
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=1">
 </head>
-<body data-essay-id="selection">
+<body data-archetype="logic" data-essay-id="selection">
     <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
          Natural PNG color at rest; a masked cream sheen sweeps across
          on hover (see .essay-home-mark::after). -->
@@ -1372,9 +1373,6 @@
                 </p>
                 <div class="essay-title-row">
                     <h1 class="essay-title">Selection</h1>
-                    <a class="essay-vibe" id="essay-playlist-blob" href="#" target="_blank" rel="noopener noreferrer" hidden title="playlist">
-                        <img class="essay-vibe-img" id="essay-playlist-blob-img" src="" alt="">
-                    </a>
                 </div>
                 <p class="essay-meta">june 2026</p>
             </header>
@@ -1385,7 +1383,7 @@
                 <span class="fc fc-bl"></span>
                 <span class="fc fc-br"></span>
                 <img src="/pexels-cottonbro-8721341.png" alt="A person in a dim teal-lit room wearing a homemade VR headset with glowing red lenses, typing on a vintage keyboard on the floor, surrounded by cables and floppy disks." fetchpriority="high" decoding="async">
-                <figcaption>Photo by cottonbro studio</figcaption>
+                <figcaption>Image by cottonbro studio</figcaption>
             </figure>
 
             <div class="essay-layout">
@@ -1593,16 +1591,15 @@
                 </form>
             </section>
         </article>
-        <div class="rights-wrap">
-            <footer class="rights">
+        </main>
+    <div class="site-footer">
+<footer class="rights">
                 <span class="rc rc-tl"></span>
                 <span class="rc rc-tr"></span>
                 <span class="rc rc-bl"></span>
                 <span class="rc rc-br"></span>
                 <span class="rights-mark">&copy;</span>2026 briggs kellogg<span class="rights-sep">/</span>all rights reserved
             </footer>
-        </div>
-    </main>
     <div class="reading-light" aria-hidden="true"></div>
 
     <!-- Sticky chrome — mirrors the landing. Sits at fixed bottom corners
@@ -1611,15 +1608,15 @@
 <div class="archetypes-row">
             <a class="archetype-card archetype-instinct" href="https://github.com/briggskellogg" target="_blank" rel="noopener" aria-label="Instinct — GitHub">
                 <span class="archetype-label" aria-hidden="true">github</span>
-                <img src="/assets/archetypes/instinct.webp?v=4" alt="" class="archetype-img">
+                <img src="/assets/blobs/slash-instinct-blob.webp" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-logic" href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener" aria-label="Logic — LinkedIn">
                 <span class="archetype-label" aria-hidden="true">linkedin</span>
-                <img src="/assets/archetypes/logic.webp?v=4" alt="" class="archetype-img">
+                <img src="/assets/blobs/build-logic-blob.webp" alt="" class="archetype-img">
             </a>
             <a class="archetype-card archetype-psyche" href="https://x.com/briggskellogg" target="_blank" rel="noopener" aria-label="Psyche — X">
                 <span class="archetype-label" aria-hidden="true">x</span>
-                <img src="/assets/archetypes/psyche.webp?v=4" alt="" class="archetype-img">
+                <img src="/assets/blobs/nest-psyche-blob.webp" alt="" class="archetype-img">
             </a>
         </div>
     </nav>
@@ -1658,10 +1655,11 @@
             6ceuj503oo9sd<br>
             ...-w4-s2-v16</a>
     </div>
-    <script src="/dispatches.js?v=7"></script>
-    <script src="/assets/dispatch-ui.js?v=1" defer></script>
+    </div>
+    <script src="/dispatches.js?v=8"></script>
+    <script src="/assets/dispatch-ui.js?v=2" defer></script>
     <script src="/assets/site-chrome.js?v=1" defer></script>
-    <script src="/assets/footnotes.js?v=1" defer></script>
+    <script src="/assets/footnotes.js?v=2" defer></script>
     <script src="/assets/subscribe.js?v=7"></script>
 
 </body>
