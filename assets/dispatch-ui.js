@@ -107,6 +107,53 @@
         document.body.dataset.archetype = (entry.playlist && entry.playlist.archetype) || 'logic';
     })();
 
+    // ---------- Essay reading map ----------
+    // Long essays expose their real section titles. Essays without formal
+    // parts still get three useful landmarks so the page reads as finite.
+    (function() {
+        var body = document.querySelector('.essay-body');
+        var figure = document.querySelector('.essay-figure');
+        var notes = document.querySelector('.essay-notes');
+        if (!body || !figure || !notes) return;
+
+        body.id = body.id || 'essay-start';
+        notes.id = notes.id || 'essay-notes';
+
+        var parts = Array.prototype.slice.call(body.querySelectorAll('.essay-part'));
+        var links = [{ href: '#' + body.id, label: 'start' }];
+
+        if (parts.length) {
+            parts.forEach(function(part, index) {
+                part.id = part.id || 'essay-part-' + (index + 1);
+                var numeral = part.querySelector('.essay-part-num');
+                var title = part.querySelector('.essay-part-title');
+                links.push({
+                    href: '#' + part.id,
+                    label: ((numeral ? numeral.textContent.trim() + ' ' : '') + (title ? title.textContent.trim() : 'part ' + (index + 1)))
+                });
+            });
+        } else {
+            var paragraphs = Array.prototype.slice.call(body.querySelectorAll(':scope > p'));
+            var middle = paragraphs[Math.floor(paragraphs.length / 2)];
+            if (middle) {
+                middle.id = middle.id || 'essay-middle';
+                links.push({ href: '#' + middle.id, label: 'middle' });
+            }
+        }
+
+        links.push({ href: '#' + notes.id, label: 'notes' });
+
+        var nav = document.createElement('nav');
+        nav.className = 'essay-jump';
+        nav.setAttribute('aria-label', 'Jump through this essay');
+        nav.innerHTML = '<span class="essay-jump-label">reading map</span>' +
+            '<span class="essay-jump-track">' + links.map(function(link, index) {
+                return '<a href="' + esc(link.href) + '"><span class="essay-jump-node" aria-hidden="true"></span><span>' + esc(link.label) + '</span></a>' +
+                    (index < links.length - 1 ? '<span class="essay-jump-line" aria-hidden="true"></span>' : '');
+            }).join('') + '</span>';
+        figure.insertAdjacentElement('afterend', nav);
+    })();
+
     // ---------- Essay nav (prev/next dispatches) ----------
     (function() {
         var list = (window.DISPATCHES || []).slice();
