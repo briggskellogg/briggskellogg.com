@@ -1608,3 +1608,26 @@ body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
  stroke-linecap:round;
  stroke-linejoin:round;
 }
+
+/* Archive color is informational at the node and title. Card chrome stays
+   silver across every archetype; interaction promotes only the corners to
+   the shared gold selection cue. */
+.essays-index .tl-card-inner,
+.essays-index .tl-thumb,
+.essays-index .tl-card:hover .tl-thumb,
+.essays-index .tl-card:focus-visible .tl-thumb {
+ border-color:var(--border-20);
+ box-shadow:none;
+}
+.essays-index .tl-card .pc { border-color:var(--border-50); }
+.essays-index .tl-card:hover .pc,
+.essays-index .tl-card:focus-visible .pc { border-color:var(--logic-gold); }
+.essays-index .tl-entry--logic .tl-title,
+.essays-index .tl-entry--logic .tl-card:hover .tl-title,
+.essays-index .tl-entry--logic .tl-card:focus-visible .tl-title { color:var(--logic); }
+.essays-index .tl-entry--psyche .tl-title,
+.essays-index .tl-entry--psyche .tl-card:hover .tl-title,
+.essays-index .tl-entry--psyche .tl-card:focus-visible .tl-title { color:var(--psyche); }
+.essays-index .tl-entry--instinct .tl-title,
+.essays-index .tl-entry--instinct .tl-card:hover .tl-title,
+.essays-index .tl-entry--instinct .tl-card:focus-visible .tl-title { color:var(--instinct); }
