@@ -214,14 +214,14 @@ body[data-essay-id], body.essays-index { padding-bottom:max(20px,env(safe-area-i
 }
 
 /* The signature is one precise, shared glyph in the text and margin. */
-.note-symbol { display:block; width:13px; height:13px; fill:var(--note-accent); fill-opacity:0; stroke:var(--note-accent); stroke-width:1.3; stroke-linecap:round; stroke-linejoin:round; overflow:visible; transition:fill-opacity .22s ease,stroke-width .22s ease,transform .22s ease; }
+.note-symbol { display:block; width:13px; height:13px; fill:var(--note-accent); fill-opacity:0; stroke:var(--note-accent); stroke-width:1; stroke-linecap:round; stroke-linejoin:round; overflow:visible; transition:fill-opacity .22s ease,stroke-width .22s ease,transform .22s ease; }
 .fnref { display:inline-block; font-size:0; line-height:0; vertical-align:super; top:0; margin:0 1px 0 2px; padding:0; }
 .fnref a, .fnref:hover a, .fnref.linked a, .fnref:focus-within a { display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; padding:0; margin:-4px 0; color:var(--note-accent); text-decoration:none; background:none; }
 .fnref a::before, .footnote[data-archetype] .fn-marker::before, .note-key span::before { content:none; display:none; }
-.fnref .note-symbol { width:11px; height:11px; }
-.fnref a:hover .note-symbol, .fnref.linked .note-symbol, .fnref a:focus-visible .note-symbol, .fn-marker:hover .note-symbol, .fn-marker:focus-visible .note-symbol { fill-opacity:.2; stroke-width:1.8; transform:translateY(-1px); }
+.fnref .note-symbol { width:13px; height:13px; }
+.fnref a:hover .note-symbol, .fnref.linked .note-symbol, .fnref a:focus-visible .note-symbol, .fn-marker:hover .note-symbol, .fn-marker:focus-visible .note-symbol { fill-opacity:.24; stroke-width:1; transform:none; }
 .fnref a:focus-visible, .fn-marker:focus-visible { outline:none; }
-.fnref a:focus-visible .note-symbol, .fn-marker:focus-visible .note-symbol { stroke-width:2.2; fill-opacity:.35; }
+.fnref a:focus-visible .note-symbol, .fn-marker:focus-visible .note-symbol { stroke-width:1.5; fill-opacity:.3; }
 .essay-layout { grid-template-columns:minmax(0,1fr) 360px; gap:64px; }
 .essay-notes { padding-left:0; border-left:0; }
 .essay-notes::before { content:''; position:absolute; top:0; bottom:0; left:-32px; width:1px; background:repeating-linear-gradient(to bottom,var(--border-25) 0 1px,transparent 1px 6px); pointer-events:none; }
@@ -230,7 +230,7 @@ body[data-essay-id], body.essays-index { padding-bottom:max(20px,env(safe-area-i
 .fn-content { max-width:44ch; }
 .fn-content strong { font-weight:500; }
 .fn-content p { margin-bottom:1.25em; }
-.footnote.linked .fn-marker .note-symbol, .footnote:target .fn-marker .note-symbol { fill-opacity:.2; stroke-width:1.8; }
+.footnote.linked .fn-marker .note-symbol, .footnote:target .fn-marker .note-symbol { fill-opacity:.24; stroke-width:1; }
 .note-key { gap:18px; align-items:center; padding:0 0 20px; }
 .note-key span { display:inline-flex; align-items:center; gap:7px; }
 .note-key .note-symbol { width:10px; height:10px; }
@@ -298,3 +298,11 @@ body[data-essay-id] .site-footer, .essays-index .site-footer { padding-top:64px;
  .tl-title-blob { width:28px; height:28px; flex-basis:28px; }
 }
 @media(prefers-reduced-motion:reduce) { .listening-blob-img, .essay-vibe { transition:none; } }
+
+/* Quiet notes gain presence through interaction, without a category legend. */
+.essay-notes::before { display:none; }
+.footnote { opacity:.62; padding-bottom:24px; border-bottom:1px solid var(--ink-12); transition:opacity .25s ease; }
+.footnote:hover, .footnote:focus-within, .footnote.linked, .footnote:target { opacity:1; }
+.footnote:hover .note-symbol, .footnote:focus-within .note-symbol { fill-opacity:.24; }
+.home-updated { color:var(--ink-25); }
+@media(prefers-reduced-motion:reduce) { .footnote { transition:none; } }
