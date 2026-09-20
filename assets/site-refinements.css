@@ -879,3 +879,37 @@ body[data-essay-id] .essay-soundtrack { left:24px; top:46px; }
  .reading-subscribe button { flex-basis:100px; }
  .essays-index .tl-no { justify-content:flex-start; }
 }
+
+/* The contact note interrupts the connector while preserving the page's
+   dotted field. A fixed-position copy of the grid aligns with the canvas. */
+.home-invitation {
+ padding:8px;
+ background-color:var(--bg);
+ background-image:radial-gradient(circle,var(--dot-color) 1px,transparent 1px);
+ background-size:20px 20px;
+ background-position:0 0;
+ background-attachment:fixed;
+ text-shadow:none;
+}
+
+/* Restore the featured essay as the second modal in the paired composition. */
+.home .featured {
+ border:1px solid var(--border-20);
+ background-color:var(--bg);
+}
+.home .featured > .ffc { display:block; }
+
+/* All Essays remains a complete button, with the four stronger corner marks
+   sitting over its quiet full outline. */
+.home .featured-all {
+ min-width:140px;
+ min-height:40px;
+ padding:10px 20px;
+ border:1px solid var(--border-25);
+ background:var(--ink-06);
+}
+.home .featured-all:hover,
+.home .featured-all:focus-visible {
+ border-color:var(--border-50);
+ background:var(--ink-12);
+}
