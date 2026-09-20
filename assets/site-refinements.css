@@ -647,3 +647,8 @@ body.home { --panel-edge:clamp(24px,4vh,56px); padding-top:var(--panel-edge); }
  .home .social-toggle:hover img, .home .social-toggle:focus-visible img { transform:none; }
  .home .social-toggle img, .essay-revision .revision-updated { transition:none; }
 }
+
+/* Give the staggered homepage pair a more generous outer margin. */
+@media(min-width:1010px) {
+ body.home { --panel-edge:clamp(48px,calc(25vh - 145px),150px); }
+}
