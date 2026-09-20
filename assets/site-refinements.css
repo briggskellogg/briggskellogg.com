@@ -1585,8 +1585,9 @@ body[data-essay-id] .soundtrack-note svg {
 }
 
 /* The selected essay carries the same gold frame cue as an archive card on
-   hover: title corners and the photograph's edge/corners, without tinting the
-   prose or photograph itself. */
-body[data-essay-id] .essay-head .hc,
+   hover at the outer reading frame and photograph corners. The title corners
+   and photograph edge retain their quieter silver hierarchy. */
+body[data-essay-id] .frame > .c,
 body[data-essay-id] .essay-figure .fc { border-color:var(--logic-gold); }
-body[data-essay-id] .essay-figure img { border-color:var(--logic-gold); }
+body[data-essay-id] .essay-head .hc { border-color:var(--border-50); }
+body[data-essay-id] .essay-figure img { border-color:var(--border-20); }

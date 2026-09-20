@@ -52,7 +52,7 @@ window.DISPATCHES = [
         date: 'September 2026',
         published: '2026-09-20',
         updated: '2026-09-20',
-        url: '/essays/primal-intelligence/?v=44',
+        url: '/essays/primal-intelligence/?v=45',
         image: '/assets/photos/primal-intelligence.jpg?v=1',
         ogImage: '/assets/og/primal-intelligence.jpg?v=1',
         status: 'final-v3',
@@ -69,7 +69,7 @@ window.DISPATCHES = [
         date: 'June 2026',
         published: '2026-06',
         updated: '2026-06-28',
-        url: '/essays/selection/?v=44',
+        url: '/essays/selection/?v=45',
         image: '/pexels-cottonbro-8721341.png',
         status: 'draft',
         playlist: {
@@ -85,7 +85,7 @@ window.DISPATCHES = [
         date: 'May 2026',
         published: '2026-05',
         updated: '2026-06-28',
-        url: '/essays/the-students-are-right/?v=44',
+        url: '/essays/the-students-are-right/?v=45',
         image: '/pexels-tara-winstead-8849288.jpg',
         status: 'draft-v1',
         playlist: {
@@ -101,7 +101,7 @@ window.DISPATCHES = [
         date: 'November 2025',
         published: '2025-11',
         updated: '2026-06-28',
-        url: '/essays/americans-europeans-and-autism-oh-my/?v=44',
+        url: '/essays/americans-europeans-and-autism-oh-my/?v=45',
         image: '/pexels-anna-shevchuk-11507617.png',
         status: 'final-v3',
         playlist: {
