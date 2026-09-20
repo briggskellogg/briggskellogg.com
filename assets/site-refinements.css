@@ -2004,13 +2004,13 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  transition:color .2s ease;
 }
 .essay-jump a .essay-jump-title {
- font-family:'Caveat',cursive;
- font-size:15px;
+ font-family:var(--font-display);
+ font-size:1rem;
+ font-style:italic;
  font-weight:500;
- letter-spacing:0;
+ letter-spacing:.01em;
  line-height:1;
  text-transform:none;
- transform:rotate(-1deg);
 }
 .essay-jump-connector {
  display:flex;
@@ -2083,5 +2083,5 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
   margin:0 8px;
  }
  .essay-jump-time { font-size:14px; }
- .essay-jump a .essay-jump-title { font-size:14px; }
+ .essay-jump a .essay-jump-title { font-size:.95rem; }
 }
