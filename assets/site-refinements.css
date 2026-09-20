@@ -1981,7 +1981,7 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  transition:color .2s ease;
 }
 .essay-jump a:hover,
-.essay-jump a:focus-visible { color:var(--ink-50); }
+.essay-jump a:focus-visible { color:var(--ink); }
 .essay-jump-numeral {
  color:var(--ink-50);
  transition:color .2s ease;
@@ -1990,12 +1990,28 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
 .essay-jump a:focus-visible .essay-jump-numeral {
  color:var(--logic-gold);
 }
-.essay-jump-title { color:inherit; }
+.essay-jump-title {
+ color:inherit;
+ transition:color .2s ease;
+}
+.essay-jump-arrow {
+ display:inline-block;
+ color:var(--ink-25);
+ font-size:.62rem;
+ line-height:1;
+ transform:translate(0,-1px);
+ transition:color .2s ease,transform .2s ease;
+}
+.essay-jump a:hover .essay-jump-arrow,
+.essay-jump a:focus-visible .essay-jump-arrow {
+ color:var(--logic-gold);
+ transform:translate(2px,1px);
+}
 .essay-jump-connector {
  display:flex;
  align-items:center;
- flex:1 0 122px;
- min-width:122px;
+ flex:1 0 106px;
+ min-width:106px;
  margin:0 12px;
  color:var(--ink-50);
 }
@@ -2030,6 +2046,9 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  color:var(--ink-50);
  white-space:nowrap;
 }
+.essay-jump-intro .essay-jump-title,
+.essay-jump-end { text-transform:lowercase; }
+.essay-part--introduction { margin-top:0; }
 .essay-part,
 .essay-notes { scroll-margin-top:28px; }
 @media(max-width:700px) {
