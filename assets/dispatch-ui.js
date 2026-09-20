@@ -36,8 +36,8 @@
                 '<div class="tl-spine">' +
                     '<span class="tl-line"></span>' +
                     '<span class="tl-node"><span class="tl-node-dot"></span></span>' +
-                    '<div class="tl-no">Essay ' + pad2(num) + '</div>' +
-                    '<div class="tl-date" aria-label="Publication history"><time class="tl-published" datetime="' + esc(d.published || '') + '" aria-label="Published ' + esc(d.date) + '">' + esc(d.date) + '</time><span class="tl-updated">updated <time datetime="' + esc(d.updated || '') + '">' + esc(d.updated || d.date) + '</time></span></div>' +
+                    '<div class="tl-no"><span class="essay-id-tag">No. ' + num + '</span></div>' +
+                    '<div class="tl-date" aria-label="Publication history"><time class="tl-published" datetime="' + esc(d.published || '') + '" aria-label="Published ' + esc(d.date) + '">' + esc(d.date) + '</time></div>' +
                 '</div>' +
                 '<a class="tl-card" href="' + esc(d.url) + '">' +
                     '<div class="tl-card-inner">' +
@@ -154,7 +154,7 @@
                 var ver = fmtStatus(d.status);
                 statusEl.setAttribute('data-status', ver.slug || d.status);
                 var statusTx = statusEl.querySelector('.featured-status-text');
-                if (statusTx) statusTx.textContent = ver.label;
+                if (statusTx) statusTx.textContent = ver.label.replace(/^v(\d+) · final$/, 'Final · v$1');
             }
         }
         if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);

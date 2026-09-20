@@ -24,6 +24,6 @@
   --dot-color:rgba(255,226,185,.045);
   --link-writing:var(--psyche-blue);
  }
- .reading-subscribe { background:var(--bg-raised); box-shadow:0 4px 24px #0003; }
+ .reading-subscribe { box-shadow:0 4px 24px #0003; }
  ::selection { background:rgba(201,155,69,.28); color:var(--ink); }
 }

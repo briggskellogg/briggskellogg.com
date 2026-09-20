@@ -373,3 +373,72 @@ body[data-essay-id] .essay-number { margin-bottom:34px; font-size:10px; line-hei
  .reading-subscribe input[type="email"] { font-size:16px; }
  body[data-essay-id], body.essays-index { padding-bottom:112px; }
 }
+
+/* Balance the two original panels around the available window. */
+body.home { padding-top:clamp(24px,4vh,56px); }
+.home .page { margin:auto; }
+.home .site-footer { padding-top:32px; }
+@media(min-width:1010px) {
+ .home .page { max-width:1020px; }
+ .home .home-panels { grid-template-columns:repeat(2,minmax(0,460px)); gap:0 clamp(32px,6vw,100px); align-items:center; justify-content:center; }
+ .home .frame { grid-column:1; grid-row:1; }
+ .home .featured { grid-column:2; grid-row:1; margin:0; }
+ .home-invitation { position:relative; grid-column:1 / -1; grid-row:2; inset:auto; margin:32px auto 18px; width:220px; }
+}
+@media(max-width:1009px) {
+ .home .page { max-width:460px; }
+ .home .home-panels { grid-template-columns:minmax(0,1fr); }
+ .home .featured { grid-column:1; grid-row:3; margin:0; }
+ .home-invitation { grid-column:1; grid-row:2; margin:40px auto; }
+}
+
+/* Status belongs to the editing history, separate from publication. */
+.home .featured-status { padding:0; border:0; background:none; color:var(--ink-80); opacity:1; font-size:9px; letter-spacing:.04em; text-transform:none; }
+.essay-revision { position:absolute; top:18px; right:20px; display:flex; flex-direction:column; align-items:flex-end; gap:5px; font-family:var(--font-mono); }
+.essay-revision .frame-status { position:static; inset:auto; transform:none; margin:0; padding:0; border:0; background:none; color:var(--ink-80); font-size:10px; letter-spacing:.04em; }
+.essay-revision .sc, .essay-revision .status-dot { display:none; }
+.revision-updated { margin:0; font-size:8px; line-height:1.4; color:var(--ink-50); }
+body[data-essay-id] .essay-head { margin-top:24px; }
+body[data-essay-id] .essay-title-row { padding-top:34px; }
+.essay-soundtrack { flex-basis:60px; width:60px; justify-content:center; }
+.soundtrack-note { display:flex; flex-direction:column; align-items:center; position:absolute; left:0; bottom:calc(100% + 2px); width:60px; font-size:17px; line-height:1; transform:rotate(-6deg); }
+.soundtrack-note svg { position:static; width:26px; height:20px; margin:0; transform:none; }
+.fnref { margin-left:3px; }
+
+/* Hover changes light and color, never the geometry of the reading UI. */
+.tl-card:hover, .essay-card:hover, .home .featured-card:hover, .essay-nav a.essay-nav-prev:hover, .essay-nav a.essay-nav-next:hover, .essay-vibe:hover, .essay-vibe:focus-visible { transform:none; }
+.tl-card:hover .tl-thumb img, .essay-card:hover .essay-card-thumb img, .home .featured-card:hover .featured-thumb img { transform:none; }
+.tl-thumb img, .featured-thumb img { transition:filter .35s ease; }
+.tl-card:hover .tl-thumb img, .home .featured-card:hover .featured-thumb img { filter:brightness(1.06) saturate(1.04); }
+.tl-card:hover .tl-read .arr, .home .featured-card:hover .featured-cta .arr { transform:none; }
+.site-footer .archetypes-row .archetype-instinct:hover, .site-footer .archetypes-row:hover .archetype-instinct, .site-footer .archetype-instinct:focus-visible { transform:translateY(5px) rotate(-15deg); }
+.site-footer .archetypes-row .archetype-logic:hover, .site-footer .archetype-logic:focus-visible { transform:translateY(-2px); }
+.site-footer .archetypes-row .archetype-psyche:hover, .site-footer .archetypes-row:hover .archetype-psyche, .site-footer .archetype-psyche:focus-visible { transform:translateY(5px) rotate(15deg); }
+.site-footer .archetype-card:hover .archetype-label { transform:translateX(-50%); }
+
+/* A quiet three-color edge gives the email field a little personality. */
+.reading-subscribe { isolation:isolate; border:1px solid transparent; border-radius:13px 13px 5px 13px; background:linear-gradient(var(--bg-raised),var(--bg-raised)) padding-box,linear-gradient(115deg,var(--psyche-blue),var(--instinct-rose) 52%,var(--logic-gold)) border-box; box-shadow:0 4px 22px #0000000a; }
+.reading-subscribe::before { content:''; position:absolute; inset:0; z-index:-1; border-radius:inherit; pointer-events:none; opacity:.13; background:radial-gradient(ellipse at 0 0,var(--psyche-blue),transparent 65%),radial-gradient(ellipse at 100% 100%,var(--logic-gold),transparent 55%),radial-gradient(ellipse at 60% 0,var(--instinct-rose),transparent 60%); }
+.reading-subscribe:focus-within::before { opacity:.22; }
+.reading-subscribe .subscribe-row { border-bottom:0; }
+@media(max-width:600px) {
+ .essay-revision { top:16px; right:16px; }
+ .essay-revision .frame-status { font-size:9px; }
+ .revision-updated { font-size:7px; }
+ .essay-soundtrack { flex-basis:50px; width:50px; }
+ .soundtrack-note { left:-5px; }
+}
+
+/* A centered title with a fine ornament, and one consistent catalogue tag. */
+.essays-index .index-head { display:flex; align-items:center; justify-content:center; gap:20px; margin:0 0 48px; text-align:center; }
+.essays-index .index-head::before, .essays-index .index-head::after { content:''; height:1px; width:clamp(24px,5vw,60px); background:linear-gradient(to right,transparent,var(--border-50)); }
+.essays-index .index-head::after { background:linear-gradient(to left,transparent,var(--border-50)); }
+.essay-id-tag { display:inline-block; padding:4px 7px; border:1px solid var(--border-25); font-family:var(--font-mono); font-size:9px; font-weight:400; line-height:1.2; letter-spacing:.03em; color:var(--ink-50); white-space:nowrap; }
+.tl-no { margin-bottom:10px; }
+.essay-location { position:absolute; top:18px; left:20px; display:flex; align-items:center; gap:12px; }
+.essay-location .essay-top-back { position:static; margin:0; padding:0; }
+@media(max-width:600px) {
+ .essays-index .index-head { margin:0 0 36px; gap:16px; }
+ .essay-location { top:16px; left:16px; gap:10px; }
+ .essay-id-tag { font-size:8px; padding:4px 6px; }
+}

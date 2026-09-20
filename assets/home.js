@@ -150,7 +150,7 @@
             var a = panels.querySelector('.frame').getBoundingClientRect();
             var b = panels.querySelector('.featured').getBoundingClientRect();
             var label = panels.querySelector('.home-invitation');
-            var narrow = window.matchMedia('(max-width: 1120px)').matches;
+            var narrow = window.matchMedia('(max-width: 1009px)').matches;
             var x1, y1, x2, y2, points;
             if (narrow) {
                 x1 = x2 = pr.width / 2;
@@ -158,14 +158,15 @@
                 y2 = b.top - pr.top - 8;
                 points = x1+','+y1+' '+x2+','+y2;
             } else {
-                x1 = a.right - pr.left + 8;
-                y1 = 100;
-                x2 = b.left - pr.left + b.width / 2;
-                y2 = b.top - pr.top - 8;
-                points = x1+','+y1+' '+x2+','+y1+' '+x2+','+y2;
-                label.style.right = (b.width / 2 - 110)+'px';
+                x1 = a.right - pr.left - 30;
+                y1 = a.bottom - pr.top + 8;
+                x2 = b.left - pr.left + 30;
+                y2 = b.bottom - pr.top + 8;
+                var labelRect = label.getBoundingClientRect();
+                var bridgeY = labelRect.top - pr.top + labelRect.height / 2;
+                points = x1+','+y1+' '+x1+','+bridgeY+' '+x2+','+bridgeY+' '+x2+','+y2;
             }
-            if (narrow) label.style.right = '';
+            label.style.right = '';
             svg.setAttribute('viewBox','0 0 '+pr.width+' '+pr.height);
             svg.querySelector('.home-link-line').setAttribute('points',points);
             ['ring','dot'].forEach(function(kind) {

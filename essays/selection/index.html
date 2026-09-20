@@ -1330,8 +1330,8 @@
             .egg-shell { width: 24px; height: 32px; }
 }
     </style>
-    <link rel="stylesheet" href="/assets/site-refinements.css?v=11">
-    <link rel="stylesheet" href="/assets/reading-themes.css?v=1">
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=12">
+    <link rel="stylesheet" href="/assets/reading-themes.css?v=2">
 </head>
 <body data-archetype="logic" data-essay-id="selection">
     <!-- BEK mark — fixed top-left chrome. Returns to briggskellogg.com.
@@ -1348,33 +1348,28 @@
             <div class="c c-bl"></div>
             <div class="c c-br"></div>
 
-            <!-- Version status — top-right of the frame, pulsing dot
-                 signals the piece is still alive. Populated by JS. -->
-            <div class="frame-status" data-frame-status hidden>
+            <!-- Revision details are separate from the publication date. -->
+            <div class="essay-revision" aria-label="Revision history"><div class="frame-status" data-frame-status hidden>
                 <span class="sc sc-tl"></span>
                 <span class="sc sc-tr"></span>
                 <span class="sc sc-bl"></span>
                 <span class="sc sc-br"></span>
                 <span class="status-dot"></span>
                 <span class="frame-status-text" data-frame-status-text></span>
-            </div>
+            </div><p class="revision-updated">Updated <time datetime="2026-06-28">28 june 2026</time></p></div>
 
-            <a class="essay-top-back" href="/essays"><span class="arr">&larr;</span> all essays</a>
+            <div class="essay-location"><a class="essay-top-back" href="/essays"><span class="arr">&larr;</span> all essays</a><span class="essay-id-tag">No. 3</span></div>
 
             <header class="essay-head">
                 <span class="hc hc-tl"></span>
                 <span class="hc hc-tr"></span>
                 <span class="hc hc-bl"></span>
                 <span class="hc hc-br"></span>
-                <!-- "no. 01 · essay" — number populated by JS. The
-                     version status lives in the top-right of the frame,
-                     not in this centered eyebrow. -->
-                <p class="essay-number" data-essay-meta><span class="num">Essay 03</span></p>
                 <div class="essay-title-row">
-                    <span class="essay-soundtrack"><span class="soundtrack-note" aria-hidden="true">soundtrack<svg viewBox="0 0 40 28"><path d="M6 3C30 0 34 11 24 24M23 16l1 8 8-3"/></svg></span><a class="essay-vibe" href="https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30" target="_blank" rel="noopener" aria-label="Listen to the logic playlist while reading" title="Recommended listening · logic"><img class="essay-vibe-img" src="/assets/blobs/build-logic-blob.webp" alt="" width="46" height="46"></a></span>
+                    <span class="essay-soundtrack"><span class="soundtrack-note" aria-hidden="true">soundtrack<svg viewBox="0 0 40 28"><path d="M9 2C4 9 8 15 20 17M15 12l5 5-7 1"/></svg></span><a class="essay-vibe" href="https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30" target="_blank" rel="noopener" aria-label="Listen to the logic playlist while reading" title="Recommended listening · logic"><img class="essay-vibe-img" src="/assets/blobs/build-logic-blob.webp" alt="" width="46" height="46"></a></span>
                     <h1 class="essay-title">Selection</h1>
                 </div>
-                <div class="essay-dates" aria-label="Publication history"><div class="date-item"><span>Published</span><time datetime="2026-06">june 2026</time></div><div class="date-item"><span>Updated</span><time datetime="2026-06-28">28 june 2026</time></div></div>
+                <div class="essay-dates" aria-label="Publication history"><div class="date-item"><span>Published</span><time datetime="2026-06">june 2026</time></div></div>
             </header>
 
             <figure class="essay-figure">
@@ -1638,7 +1633,7 @@
         </form>
     </aside>
     <script src="/dispatches.js?v=8"></script>
-    <script src="/assets/dispatch-ui.js?v=5" defer></script>
+    <script src="/assets/dispatch-ui.js?v=6" defer></script>
     <script src="/assets/site-chrome.js?v=2" defer></script>
     <script src="/assets/footnotes.js?v=4" defer></script>
     <script src="/assets/subscribe.js?v=8"></script>
