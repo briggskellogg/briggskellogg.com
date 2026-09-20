@@ -450,3 +450,39 @@ body[data-essay-id] .essay-title-row { padding-top:34px; }
 .home .attribution-title { font-weight:400; }
 .home .has-subtitle .attribution-title { font-weight:600; color:var(--ink-80); }
 .home .attribution-subtitle { font-weight:400; letter-spacing:.08em; }
+
+/* Restore the staggered pair, with a clear route between their edges. */
+@media(min-width:1010px) {
+ .home .home-panels { align-items:start; }
+ .home .featured { margin-top:clamp(140px,18vh,190px); }
+ .home-invitation { position:absolute; grid-column:auto; grid-row:auto; margin:0; width:220px; }
+}
+
+/* The archive's unboxed version treatment also belongs on its homepage card. */
+.home .featured-status { display:inline-flex; align-items:center; gap:.45em; padding:0; border:0; background:none; font-family:var(--font-mono); font-size:.5rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-50); opacity:1; }
+.home .featured-status .status-dot { display:block; width:5px; height:5px; opacity:1; background:var(--logic-gold); animation:none; box-shadow:none; }
+.essay-revision .frame-status { position:relative; display:inline-flex; align-items:center; gap:9px; padding:7px 9px; border:1px solid var(--border-25); background:var(--ink-06); font-size:9px; line-height:1.3; letter-spacing:.06em; }
+.essay-revision .sc { display:block; }
+.essay-revision .essay-id-tag { border:0; border-right:1px solid var(--border-25); padding:0 9px 0 0; font-size:inherit; line-height:inherit; text-transform:none; }
+.essay-revision { gap:7px; }
+.tl-date .tl-published { font-size:10px; color:var(--ink-50); }
+
+/* Emphasize the photograph's edge without changing size or position. */
+.tl-thumb, .home .featured-thumb { transition:border-color .3s ease,box-shadow .3s ease; }
+.tl-entry--instinct { --photo-accent:var(--instinct-rose); }
+.tl-entry--psyche { --photo-accent:var(--psyche-blue); }
+.tl-entry--logic, .home .featured { --photo-accent:var(--logic-gold); }
+.tl-card:hover .tl-thumb, .tl-card:focus-visible .tl-thumb, .home .featured-card:hover .featured-thumb, .home .featured-card:focus-visible .featured-thumb { border-color:var(--photo-accent); box-shadow:0 0 0 1px color-mix(in srgb,var(--photo-accent) 25%,transparent); }
+.soundtrack-note { transform:translate(-10px,6px) rotate(-6deg); }
+
+/* A compact mono field with a quiet, squared-off three-color edge. */
+.reading-subscribe { border-radius:2px; padding:10px 12px 8px; }
+.reading-subscribe::before { opacity:.08; }
+.reading-subscribe .subscribe-label { font-family:var(--font-mono); font-size:8px; letter-spacing:.04em; text-transform:lowercase; color:var(--ink-50); }
+.reading-subscribe input[type="email"], .reading-subscribe button { font-family:var(--font-mono); }
+.reading-subscribe input[type="email"] { letter-spacing:-.02em; }
+.reading-subscribe input[type="email"]::placeholder { color:var(--ink-50); }
+@media(max-width:600px) {
+ .essay-revision .frame-status { font-size:8px; padding:6px 8px; gap:8px; }
+ .essay-revision .essay-id-tag { padding-right:8px; }
+}

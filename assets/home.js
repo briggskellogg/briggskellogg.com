@@ -39,12 +39,12 @@
             var pauses = (text.match(/[,;:—–]/g) || []).length;
             var ellipses = (text.match(/…|\.{3}/g) || []).length;
             var longWords = words.filter(function(word) { return word.length >= 9; }).length;
-            // A deliberately gentle 120 words/minute, plus 7 seconds to settle
-            // and reflect. Punctuation, dense words, and credits get extra time.
-            // This is a pacing heuristic, not a measurement of the reader.
-            var milliseconds = 7000 + words.length * 500 + attributionWords * 250 +
-                sentenceBreaks * 600 + pauses * 250 + ellipses * 800 + longWords * 120;
-            return Math.max(16000, Math.ceil(milliseconds / 1000) * 1000);
+            // Quick, length-sensitive pacing: about one third of the earlier
+            // dwell time. Pause on interaction so a reader can linger.
+            // This is a display heuristic, not a measurement of the reader.
+            var milliseconds = 2000 + words.length * 170 + attributionWords * 80 +
+                sentenceBreaks * 200 + pauses * 80 + ellipses * 270 + longWords * 40;
+            return Math.max(5000, Math.ceil(milliseconds / 500) * 500);
         }
 
         function setAttribution(slide, animate) {
@@ -182,21 +182,23 @@
             var label = panels.querySelector('.home-invitation');
             var narrow = window.matchMedia('(max-width: 1009px)').matches;
             var x1, y1, x2, y2, points;
+            label.style.left = '';
+            label.style.top = '';
+            label.style.right = '';
             if (narrow) {
                 x1 = x2 = pr.width / 2;
                 y1 = a.bottom - pr.top + 8;
                 y2 = b.top - pr.top - 8;
                 points = x1+','+y1+' '+x2+','+y2;
             } else {
-                x1 = a.right - pr.left - 30;
-                y1 = a.bottom - pr.top + 8;
-                x2 = b.left - pr.left + 30;
-                y2 = b.bottom - pr.top + 8;
-                var labelRect = label.getBoundingClientRect();
-                var bridgeY = labelRect.top - pr.top + labelRect.height / 2;
-                points = x1+','+y1+' '+x1+','+bridgeY+' '+x2+','+bridgeY+' '+x2+','+y2;
+                x1 = a.right - pr.left + 8;
+                y1 = a.top - pr.top + 80;
+                x2 = b.left - pr.left + b.width / 2;
+                y2 = b.top - pr.top - 8;
+                points = x1+','+y1+' '+x2+','+y1+' '+x2+','+y2;
+                label.style.left = ((x1 + x2) / 2 - label.offsetWidth / 2) + 'px';
+                label.style.top = (y1 - label.offsetHeight / 2) + 'px';
             }
-            label.style.right = '';
             svg.setAttribute('viewBox','0 0 '+pr.width+' '+pr.height);
             svg.querySelector('.home-link-line').setAttribute('points',points);
             ['ring','dot'].forEach(function(kind) {

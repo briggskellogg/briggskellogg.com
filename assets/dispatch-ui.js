@@ -154,7 +154,7 @@
                 var ver = fmtStatus(d.status);
                 statusEl.setAttribute('data-status', ver.slug || d.status);
                 var statusTx = statusEl.querySelector('.featured-status-text');
-                if (statusTx) statusTx.textContent = ver.label.replace(/^v(\d+) · final$/, 'Final · v$1');
+                if (statusTx) statusTx.textContent = ver.label;
             }
         }
         if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
