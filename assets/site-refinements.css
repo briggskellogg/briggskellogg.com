@@ -100,3 +100,6 @@ body.home { min-height:100svh; display:flex; align-items:stretch; justify-conten
 
 /* Keep connector dimensions bounded during a responsive relayout. */
 .essay-wires { width:100%; height:100%; }
+
+.home-updated { margin:20px 0 0; text-align:center; font-family:var(--font-mono); font-size:10px; font-weight:400; line-height:1.6; letter-spacing:.06em; color:var(--ink-50); }
+.home-updated time { margin-left:.65em; white-space:nowrap; }
