@@ -35,7 +35,7 @@
                     '<span class="tl-line"></span>' +
                     '<span class="tl-node"><span class="tl-node-dot"></span></span>' +
                     '<div class="tl-no">no. ' + pad2(num) + '</div>' +
-                    '<div class="tl-date"><span>published</span><time datetime="' + esc(d.published || '') + '">' + esc(d.date) + '</time><span>last updated</span><time datetime="' + esc(d.updated || '') + '">' + esc(d.updated || d.date) + '</time></div>' +
+                    '<div class="tl-date" aria-label="Publication history"><div class="date-item"><span>published</span><time datetime="' + esc(d.published || '') + '">' + esc(d.date) + '</time></div><div class="date-item"><span>last updated</span><time datetime="' + esc(d.updated || '') + '">' + esc(d.updated || d.date) + '</time></div></div>' +
                 '</div>' +
                 '<a class="tl-card" href="' + esc(d.url) + '">' +
                     '<div class="tl-card-inner">' +

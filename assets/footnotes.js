@@ -49,7 +49,8 @@
 
         items.sort(function(a, b) { return a.targetY - b.targetY; });
 
-        var lastBottom = 0;
+        var key = notes.querySelector('.note-key');
+        var lastBottom = key ? key.offsetHeight + 20 : 0;
         var gap = 16;
         items.forEach(function(item) {
             var y = Math.max(item.targetY, lastBottom + gap);
@@ -86,11 +87,11 @@
         var layoutRect = layout.getBoundingClientRect();
         var refRect = ref.getBoundingClientRect();
         var refMidY = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
-        var refRightX = (refRect.right - layoutRect.left) + 1;
+        var refRightX = (refRect.right - layoutRect.left) + 10;
 
         var marker = note.querySelector('.fn-marker');
         var dotRect = (marker || note).getBoundingClientRect();
-        var x2 = (dotRect.left - layoutRect.left) + 2.5;
+        var x2 = (dotRect.left - layoutRect.left) - 8;
         var y2 = (dotRect.top - layoutRect.top) + Math.min(dotRect.height / 2, 8);
 
         var x1 = refRightX;
@@ -115,27 +116,10 @@
         var len = path.getTotalLength();
         path.style.strokeDasharray = len;
         path.style.strokeDashoffset = len;
-        path.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.22, 1, 0.36, 1)';
+        path.style.transition = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'none' : 'stroke-dashoffset 0.3s ease';
         path.getBoundingClientRect();
         path.style.strokeDashoffset = 0;
 
-        var archetype = ref.getAttribute('data-archetype');
-        var endpoints = [
-            { x: x1, y: y1, delay: 0, color: null },
-            { x: x2, y: y2, delay: 240, color: archetypeDotFill(archetype) }
-        ];
-        endpoints.forEach(function(p) {
-            var c = createSvg('circle', {
-                cx: p.x.toFixed(1),
-                cy: p.y.toFixed(1),
-                r: 2.5,
-                'class': 'wire-dot'
-            });
-            if (p.color) c.style.fill = p.color;
-            c.style.opacity = 0;
-            svg.appendChild(c);
-            setTimeout(function() { c.classList.add('pulse'); }, p.delay);
-        });
     }
 
     var activeRefs = Object.create(null);
