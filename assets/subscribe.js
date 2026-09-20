@@ -20,8 +20,8 @@
     var button = form.querySelector('button[type="submit"]');
     if (button) {
       button.disabled = true;
-      button.innerHTML = '<span>check your inbox</span><span aria-hidden="true">✓</span>';
-      button.setAttribute("aria-label", "Subscription confirmed. Check your inbox.");
+      button.innerHTML = '<span>confirmation sent</span><span aria-hidden="true">✓</span>';
+      button.setAttribute("aria-label", "Subscription confirmation sent.");
     }
   }
 
@@ -76,7 +76,8 @@
       if (button) {
         button.disabled = true;
         button.dataset.prevLabel = button.textContent;
-        button.textContent = "…";
+        button.innerHTML = '<span class="subscribe-loading" aria-hidden="true"><i></i><i></i><i></i></span>';
+        button.setAttribute("aria-label", "Sending subscription request");
       }
 
       var source = form.getAttribute("data-subscribe-source") || "essay";

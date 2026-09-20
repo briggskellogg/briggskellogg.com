@@ -1454,3 +1454,42 @@ body[data-essay-id] .essay-subtitle em { color:var(--ink-50); opacity:.82; }
 @media(prefers-reduced-motion:reduce) {
  .archive-playlist { transition:none; }
 }
+
+/* September 20, v40: archive photography keeps its full composition; cards
+   grow vertically around each source image while retaining one width. */
+.essays-index .tl-thumb {
+ aspect-ratio:auto;
+ overflow:hidden;
+}
+.essays-index .tl-thumb img {
+ width:100%;
+ height:auto;
+ object-fit:contain;
+}
+.essays-index .tl-card:hover .pc,
+.essays-index .tl-card:focus-visible .pc { border-color:var(--photo-accent); }
+
+/* A quiet three-beat send state, replaced in place by confirmation. */
+.subscribe-loading {
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
+ gap:4px;
+}
+.subscribe-loading i {
+ display:block;
+ width:3px;
+ height:3px;
+ border-radius:50%;
+ background:currentColor;
+ animation:subscribe-dot 1s ease-in-out infinite;
+}
+.subscribe-loading i:nth-child(2) { animation-delay:.14s; }
+.subscribe-loading i:nth-child(3) { animation-delay:.28s; }
+@keyframes subscribe-dot {
+ 0%,60%,100% { opacity:.28; transform:translateY(0); }
+ 30% { opacity:1; transform:translateY(-2px); }
+}
+@media(prefers-reduced-motion:reduce) {
+ .subscribe-loading i { animation:none; opacity:.7; }
+}
