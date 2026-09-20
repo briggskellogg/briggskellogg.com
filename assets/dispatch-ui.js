@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
+    function blob(arch) { return '/assets/blobs/' + ({instinct:'slash-instinct',logic:'build-logic',psyche:'nest-psyche'}[arch] || 'build-logic') + '-blob.webp'; }
+
     function pad2(n) { return (n < 10 ? '0' : '') + n; }
 
     function esc(s) {
@@ -35,14 +37,14 @@
                     '<span class="tl-line"></span>' +
                     '<span class="tl-node"><span class="tl-node-dot"></span></span>' +
                     '<div class="tl-no">no. ' + pad2(num) + '</div>' +
-                    '<div class="tl-date" aria-label="Publication history"><div class="date-item"><span>published</span><time datetime="' + esc(d.published || '') + '">' + esc(d.date) + '</time></div><div class="date-item"><span>last updated</span><time datetime="' + esc(d.updated || '') + '">' + esc(d.updated || d.date) + '</time></div></div>' +
+                    '<div class="tl-date" aria-label="Publication history"><time class="tl-published" datetime="' + esc(d.published || '') + '" aria-label="Published ' + esc(d.date) + '">' + esc(d.date) + '</time><span class="tl-updated">updated <time datetime="' + esc(d.updated || '') + '">' + esc(d.updated || d.date) + '</time></span></div>' +
                 '</div>' +
                 '<a class="tl-card" href="' + esc(d.url) + '">' +
                     '<div class="tl-card-inner">' +
                         '<span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>' +
                         thumb +
                         '<div class="tl-card-body">' +
-                            '<h2 class="tl-title">' + esc(d.title) + '</h2>' +
+                            '<div class="tl-title-row"><img class="tl-title-blob" src="' + blob(arch) + '" alt="" width="32" height="32"><h2 class="tl-title">' + esc(d.title) + '</h2></div>' +
                             excerpt +
                             '<div class="tl-foot">' +
                                 '<span class="tl-read">read the essay <span class="arr">&rarr;</span></span>' +

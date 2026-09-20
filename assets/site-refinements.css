@@ -270,3 +270,31 @@ body[data-essay-id], body.essays-index { padding-bottom:max(20px,env(safe-area-i
  .essays-index .index-head { margin:0 0 32px 18px; }
  .essays-index .index-head .essay-title { font-size:2.2rem; }
 }
+
+/* Listening belongs beside the archive, with the same mark on every title. */
+.essays-index .index-head { margin-bottom:24px; }
+.reading-listening { margin:0 0 40px 172px; }
+.listening-label, .listening-hint { font-family:var(--font-mono); font-weight:400; line-height:1.6; }
+.listening-label { margin:0; font-size:10px; color:var(--ink-80); }
+.listening-hint { margin:3px 0 16px; font-size:9px; color:var(--ink-50); }
+.listening-blobs { display:flex; align-items:start; gap:14px; width:fit-content; }
+.listening-blob { display:flex; flex-direction:column; align-items:center; gap:7px; width:58px; text-decoration:none; color:var(--ink-50); font-family:var(--font-mono); font-size:9px; }
+.listening-blob-img { display:block; width:54px; height:54px; object-fit:contain; transition:transform .4s cubic-bezier(.2,.8,.2,1); }
+.listening-blob--instinct img { transform:rotate(-8deg); }
+.listening-blob--psyche img { transform:rotate(8deg); }
+.listening-blob:hover img, .listening-blob:focus-visible img { transform:translateY(-6px) rotate(0) scale(1.08); }
+.listening-blob:hover, .listening-blob:focus-visible { color:var(--ink); }
+.tl-title-row { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.tl-title-row .tl-title { margin:0; color:var(--ink); }
+.tl-title-blob { width:32px; height:32px; flex:0 0 32px; object-fit:contain; }
+body[data-essay-id] .essay-title-row { display:flex; justify-content:center; align-items:center; gap:14px; }
+body[data-essay-id] .essay-title { color:var(--ink); margin-bottom:0; }
+.essay-vibe-img { animation:none; filter:drop-shadow(0 2px 3px #0002); }
+body[data-essay-id] .site-footer, .essays-index .site-footer { padding-top:64px; gap:0; }
+@media(max-width:600px) {
+ .reading-listening { margin:0 0 32px 18px; }
+ body[data-essay-id] .essay-title-row { gap:10px; }
+ .essay-vibe-img { width:38px; height:38px; }
+ .tl-title-blob { width:28px; height:28px; flex-basis:28px; }
+}
+@media(prefers-reduced-motion:reduce) { .listening-blob-img, .essay-vibe { transition:none; } }
