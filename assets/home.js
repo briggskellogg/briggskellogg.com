@@ -191,6 +191,8 @@
                 y1 = a.bottom - pr.top + 8;
                 y2 = b.top - pr.top - 8;
                 points = x1+','+y1+' '+x2+','+y2;
+                label.style.left = (x1 - label.offsetWidth / 2) + 'px';
+                label.style.top = ((y1 + y2) / 2 - label.offsetHeight / 2) + 'px';
             } else {
                 x1 = a.right - pr.left + 8;
                 var logo = panels.querySelector('.logo img').getBoundingClientRect();

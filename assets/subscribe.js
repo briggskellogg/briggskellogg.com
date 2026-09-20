@@ -14,16 +14,14 @@
     }
 
     form.classList.add("is-confirmed");
-    if (status) { status.hidden = false; status.textContent = "You’re on the list. Thank you."; }
-
     var input = form.querySelector('input[type="email"]');
     if (input) input.disabled = true;
 
     var button = form.querySelector('button[type="submit"]');
     if (button) {
       button.disabled = true;
-      button.textContent = "✓";
-      button.setAttribute("aria-label", "Subscription confirmed");
+      button.innerHTML = '<span>check your inbox</span><span aria-hidden="true">✓</span>';
+      button.setAttribute("aria-label", "Subscription confirmed. Check your inbox.");
     }
   }
 
