@@ -178,7 +178,8 @@
         function draw() {
             var pr = panels.getBoundingClientRect();
             var a = panels.querySelector('.frame').getBoundingClientRect();
-            var b = panels.querySelector('.featured').getBoundingClientRect();
+            var featuredModal = panels.querySelector('.featured-modal') || panels.querySelector('.featured');
+            var b = featuredModal.getBoundingClientRect();
             var label = panels.querySelector('.home-invitation');
             var narrow = window.matchMedia('(max-width: 1009px)').matches;
             var x1, y1, x2, y2, points;
@@ -197,8 +198,8 @@
                 x2 = b.left - pr.left + b.width / 2;
                 y2 = b.top - pr.top - 8;
                 points = x1+','+y1+' '+x2+','+y1+' '+x2+','+y2;
-                label.style.left = (a.left - pr.left + 24) + 'px';
-                label.style.top = (a.bottom - pr.top + 8) + 'px';
+                label.style.left = ((x1 + x2) / 2 - label.offsetWidth / 2) + 'px';
+                label.style.top = (y1 - label.offsetHeight / 2) + 'px';
             }
             svg.setAttribute('viewBox','0 0 '+pr.width+' '+pr.height);
             svg.querySelector('.home-link-line').setAttribute('points',points);

@@ -181,11 +181,6 @@
                 if (statusTx) statusTx.textContent = ver.label;
             }
         }
-        var updatedEl = document.querySelector('.featured-updated');
-        if (updatedEl && d.updated) {
-            updatedEl.setAttribute('aria-label', 'Featured essay last updated ' + updatedDate(d.updated));
-            updatedEl.innerHTML = 'last updated <time datetime="' + esc(d.updated) + '">' + esc(updatedDate(d.updated)) + '</time>';
-        }
         if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
         if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
     })();

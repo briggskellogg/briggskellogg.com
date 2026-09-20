@@ -1152,5 +1152,94 @@ body[data-essay-id] .essay-subtitle {
  .reading-subscribe,
  .essays-index .reading-subscribe { width:min(356px,calc(100vw - 24px)); max-width:none; }
  .reading-subscribe input[type="email"] { padding-right:108px; }
- .reading-subscribe button { width:96px; }
+.reading-subscribe button { width:96px; }
+}
+
+/* September 20 correction: the contact note belongs on the connector. */
+.home-invitation {
+ padding:8px;
+ background-color:var(--bg);
+ background-image:radial-gradient(circle,var(--dot-color) 1px,transparent 1px);
+ background-size:20px 20px;
+ background-position:0 0;
+ background-attachment:fixed;
+ text-shadow:none;
+}
+.contact-arrow { display:none; }
+@media(min-width:1010px) {
+ .home .home-panels { padding-bottom:0; }
+}
+@media(max-width:700px) {
+ .home-invitation { margin:48px auto; }
+}
+
+/* The featured modal ends with the essay; the archive route sits below it. */
+.home .featured {
+ padding:0;
+ border:0;
+ background:transparent;
+}
+.home .featured-modal {
+ position:relative;
+ padding:1.5rem 1.5rem 1.85rem;
+ border:1px solid var(--border-20);
+ background-color:var(--bg);
+}
+.home .featured-modal > .ffc { display:block; }
+.home .featured-all { margin-top:14px; }
+
+/* Archive update captions borrow the page color outside the card edge. */
+.tl-card-updated { background:var(--bg); }
+
+/* Lift the soundtrack mark while preserving the centered title group. */
+body[data-essay-id] .essay-soundtrack { transform:translateY(-6px); }
+
+/* The corners now belong to the sharp email-entry box itself. */
+.reading-subscribe,
+.essays-index .reading-subscribe {
+ padding:0;
+ background-image:none;
+}
+.reading-subscribe .subscribe-row::after {
+ content:'';
+ position:absolute;
+ z-index:3;
+ inset:0;
+ pointer-events:none;
+ background-image:
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50));
+ background-repeat:no-repeat;
+ background-size:10px 1px,1px 10px,10px 1px,1px 10px,10px 1px,1px 10px,10px 1px,1px 10px;
+ background-position:left top,left top,right top,right top,left bottom,left bottom,right bottom,right bottom;
+}
+.reading-subscribe input[type="email"],
+.reading-subscribe button { border-radius:0; }
+
+/* Brand marks fan out from the social orb when it opens. */
+.social-links a svg {
+ width:15px;
+ height:15px;
+ display:block;
+ fill:currentColor;
+}
+.social-links:not([hidden]) a:nth-child(1) { animation:social-fan-github .44s cubic-bezier(.18,.82,.2,1) both; }
+.social-links:not([hidden]) a:nth-child(2) { animation:social-fan-linkedin .5s .045s cubic-bezier(.18,.82,.2,1) both; }
+.social-links:not([hidden]) a:nth-child(3) { animation:social-fan-x .56s .09s cubic-bezier(.18,.82,.2,1) both; }
+@keyframes social-fan-github {
+ from { opacity:0; transform:translate(72px,0) scale(.22) rotate(18deg); }
+ to { opacity:1; transform:none; }
+}
+@keyframes social-fan-linkedin {
+ from { opacity:0; transform:translate(78px,48px) scale(.22) rotate(28deg); }
+ to { opacity:1; transform:none; }
+}
+@keyframes social-fan-x {
+ from { opacity:0; transform:translate(50px,87px) scale(.22) rotate(38deg); }
+ to { opacity:1; transform:none; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .social-links:not([hidden]) a { animation:none; }
 }
