@@ -71,9 +71,26 @@
     if (!dock) return;
     var toggle = dock.querySelector('.social-toggle');
     var links = dock.querySelector('.social-links');
+    var closeTimer = null;
     function setOpen(open, returnFocus) {
         toggle.setAttribute('aria-expanded', String(open));
-        links.hidden = !open;
+        clearTimeout(closeTimer);
+        if (open) {
+            links.classList.remove('is-closing');
+            links.hidden = false;
+        } else if (!links.hidden) {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                links.hidden = true;
+                links.classList.remove('is-closing');
+                if (returnFocus) toggle.focus();
+                return;
+            }
+            links.classList.add('is-closing');
+            closeTimer = setTimeout(function() {
+                links.hidden = true;
+                links.classList.remove('is-closing');
+            }, 420);
+        }
         if (returnFocus) toggle.focus();
     }
     toggle.addEventListener('click', function() {

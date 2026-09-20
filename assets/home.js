@@ -188,17 +188,17 @@
             label.style.right = '';
             if (narrow) {
                 x1 = x2 = pr.width / 2;
-                y1 = a.bottom - pr.top + 8;
-                y2 = b.top - pr.top - 8;
+                y1 = a.bottom - pr.top + 18;
+                y2 = b.top - pr.top - 18;
                 points = x1+','+y1+' '+x2+','+y2;
                 label.style.left = (x1 - label.offsetWidth / 2) + 'px';
                 label.style.top = ((y1 + y2) / 2 - label.offsetHeight / 2) + 'px';
             } else {
-                x1 = a.right - pr.left + 8;
+                x1 = a.right - pr.left + 18;
                 var logo = panels.querySelector('.logo img').getBoundingClientRect();
                 y1 = logo.top + logo.height / 2 - pr.top;
                 x2 = b.left - pr.left + b.width / 2;
-                y2 = b.top - pr.top - 8;
+                y2 = b.top - pr.top - 18;
                 points = x1+','+y1+' '+x2+','+y1+' '+x2+','+y2;
                 label.style.left = ((x1 + x2) / 2 - label.offsetWidth / 2) + 'px';
                 label.style.top = (y1 - label.offsetHeight / 2) + 'px';

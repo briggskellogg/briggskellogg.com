@@ -1342,3 +1342,66 @@ body[data-essay-id] .essay-soundtrack { transform:translateY(-6px); }
  height:14px;
  padding:6px 0;
 }
+
+/* September 20, v38: one quiet vocabulary for the home composition. */
+.home .frame,
+.home .featured-modal { border-color:var(--border-25); }
+.home .featured .ffc { width:9px; height:9px; transition:border-color .2s ease; }
+.home .featured .ffc-tl { border-top-width:1px; border-left-width:1px; }
+.home .featured .ffc-tr { border-top-width:1px; border-right-width:1px; }
+.home .featured .ffc-bl { border-bottom-width:1px; border-left-width:1px; }
+.home .featured .ffc-br { border-bottom-width:1px; border-right-width:1px; }
+.home .recs-heading { display:none; }
+.home .recs { padding-top:1.05rem; }
+.home-invitation .invitation-arrow {
+ display:inline-block;
+ margin-left:.2em;
+ font-family:var(--font-mono);
+ font-size:.68em;
+ transform:translateY(-.08em) rotate(7deg);
+ transition:transform .2s ease,color .2s ease;
+}
+.home-invitation:hover .invitation-arrow,
+.home-invitation:focus-visible .invitation-arrow { transform:translate(.18em,-.2em) rotate(7deg); color:var(--logic-gold); }
+
+/* Restore the timer beneath the arrow-and-dot control row. */
+.home .quote-nav { margin-top:1rem; }
+.home .quote-nav .quote-progress {
+ top:calc(100% + 1px);
+ bottom:auto;
+ height:18px;
+ padding:8px 0;
+}
+
+/* Featured hover illuminates only the image edge, route, and frame corners. */
+.home .featured-card:hover .featured-title,
+.home .featured-card:focus-visible .featured-title { color:var(--logic-gold); }
+.home .featured-card:hover .featured-thumb img,
+.home .featured-card:focus-visible .featured-thumb img { filter:brightness(1.025) saturate(1.04); }
+.home .featured-card:hover .featured-cta,
+.home .featured-card:focus-visible .featured-cta { color:var(--logic-gold); }
+.home .featured-modal:has(.featured-card:hover) .ffc,
+.home .featured-modal:has(.featured-card:focus-visible) .ffc { border-color:var(--logic-gold); }
+
+/* Give the mobile route enough room for visible line on both sides of its note. */
+@media(max-width:1009px) {
+ .home .home-panels { grid-template-rows:auto 190px auto; }
+}
+
+/* The social marks retrace the same arc when the orb closes. */
+.social-links.is-closing a:nth-child(1) { animation:social-fold-github .34s .06s cubic-bezier(.5,0,.8,.2) both; }
+.social-links.is-closing a:nth-child(2) { animation:social-fold-linkedin .36s .03s cubic-bezier(.5,0,.8,.2) both; }
+.social-links.is-closing a:nth-child(3) { animation:social-fold-x .38s cubic-bezier(.5,0,.8,.2) both; }
+@keyframes social-fold-github {
+ to { opacity:0; transform:translate(78px,10px) scale(.25) rotate(18deg); }
+}
+@keyframes social-fold-linkedin {
+ to { opacity:0; transform:translate(62px,46px) scale(.25) rotate(28deg); }
+}
+@keyframes social-fold-x {
+ to { opacity:0; transform:translate(22px,72px) scale(.25) rotate(38deg); }
+}
+
+/* Subtitles support the title without competing with it. */
+body[data-essay-id] .essay-subtitle,
+body[data-essay-id] .essay-subtitle em { color:var(--ink-50); opacity:.82; }
