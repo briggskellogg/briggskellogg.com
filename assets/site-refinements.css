@@ -2003,6 +2003,15 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  font-weight:500;
  transition:color .2s ease;
 }
+.essay-jump a .essay-jump-title {
+ font-family:'Caveat',cursive;
+ font-size:15px;
+ font-weight:500;
+ letter-spacing:0;
+ line-height:1;
+ text-transform:none;
+ transform:rotate(-1deg);
+}
 .essay-jump-connector {
  display:flex;
  align-items:center;
@@ -2045,11 +2054,11 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
 }
 .essay-jump-intro .essay-jump-title,
 .essay-jump-end {
- font-family:var(--font-display);
- font-size:1rem;
- font-style:italic;
+ font-family:var(--font-mono);
+ font-size:.54rem;
+ font-style:normal;
  font-weight:500;
- letter-spacing:.02em;
+ letter-spacing:.12em;
  line-height:1;
  text-transform:lowercase;
 }
@@ -2074,4 +2083,5 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
   margin:0 8px;
  }
  .essay-jump-time { font-size:14px; }
+ .essay-jump a .essay-jump-title { font-size:14px; }
 }
