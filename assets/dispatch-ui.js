@@ -107,50 +107,42 @@
         document.body.dataset.archetype = (entry.playlist && entry.playlist.archetype) || 'logic';
     })();
 
-    // ---------- Essay reading map ----------
-    // Long essays expose their real section titles. Essays without formal
-    // parts still get three useful landmarks so the page reads as finite.
+    // ---------- Essay contents ----------
+    // Only essays with authored parts receive navigation. Reading times are
+    // calculated per part at a calm long-form pace of roughly 225 words/min.
     (function() {
         var body = document.querySelector('.essay-body');
         var figure = document.querySelector('.essay-figure');
-        var notes = document.querySelector('.essay-notes');
-        if (!body || !figure || !notes) return;
-
-        body.id = body.id || 'essay-start';
-        notes.id = notes.id || 'essay-notes';
+        if (!body || !figure) return;
 
         var parts = Array.prototype.slice.call(body.querySelectorAll('.essay-part'));
-        var links = [{ href: '#' + body.id, label: 'start' }];
+        if (!parts.length) return;
 
-        if (parts.length) {
-            parts.forEach(function(part, index) {
-                part.id = part.id || 'essay-part-' + (index + 1);
-                var numeral = part.querySelector('.essay-part-num');
-                var title = part.querySelector('.essay-part-title');
-                links.push({
-                    href: '#' + part.id,
-                    label: ((numeral ? numeral.textContent.trim() + ' ' : '') + (title ? title.textContent.trim() : 'part ' + (index + 1)))
-                });
-            });
-        } else {
-            var paragraphs = Array.prototype.slice.call(body.querySelectorAll(':scope > p'));
-            var middle = paragraphs[Math.floor(paragraphs.length / 2)];
-            if (middle) {
-                middle.id = middle.id || 'essay-middle';
-                links.push({ href: '#' + middle.id, label: 'middle' });
+        var links = parts.map(function(part, index) {
+            part.id = part.id || 'essay-part-' + (index + 1);
+            var numeral = part.querySelector('.essay-part-num');
+            var title = part.querySelector('.essay-part-title');
+            var words = 0;
+            var node = part.nextElementSibling;
+            while (node && !node.classList.contains('essay-part')) {
+                words += (node.textContent.trim().match(/\S+/g) || []).length;
+                node = node.nextElementSibling;
             }
-        }
-
-        links.push({ href: '#' + notes.id, label: 'notes' });
+            return {
+                href: '#' + part.id,
+                numeral: numeral ? numeral.textContent.trim() : String(index + 1),
+                title: title ? title.textContent.trim() : 'Part ' + (index + 1),
+                minutes: Math.max(1, Math.ceil(words / 225))
+            };
+        });
 
         var nav = document.createElement('nav');
         nav.className = 'essay-jump';
-        nav.setAttribute('aria-label', 'Jump through this essay');
-        nav.innerHTML = '<span class="essay-jump-label">reading map</span>' +
-            '<span class="essay-jump-track">' + links.map(function(link, index) {
-                return '<a href="' + esc(link.href) + '"><span class="essay-jump-node" aria-hidden="true"></span><span>' + esc(link.label) + '</span></a>' +
-                    (index < links.length - 1 ? '<span class="essay-jump-line" aria-hidden="true"></span>' : '');
-            }).join('') + '</span>';
+        nav.setAttribute('aria-label', 'Essay contents');
+        nav.innerHTML = '<span class="essay-jump-track">' + links.map(function(link, index) {
+            return '<a href="' + esc(link.href) + '"><span class="essay-jump-numeral">' + esc(link.numeral) + '</span><span class="essay-jump-title">' + esc(link.title) + '</span><span class="essay-jump-time">~' + link.minutes + ' min</span></a>' +
+                (index < links.length - 1 ? '<span class="essay-jump-connector" aria-hidden="true"></span>' : '');
+        }).join('') + '</span>';
         figure.insertAdjacentElement('afterend', nav);
     })();
 

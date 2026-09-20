@@ -1886,14 +1886,14 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
   column-gap:24px;
  }
  .essays-index .tl-spine {
-  text-align:left;
-  padding-right:0;
+  text-align:right;
+  padding-right:12px;
   padding-bottom:39px;
  }
  .essays-index .tl-no,
  .essays-index .tl-date {
-  text-align:left;
-  justify-content:flex-start;
+  text-align:right;
+  justify-content:flex-end;
  }
  .essays-index .tl-card { padding-bottom:39px; }
 }
@@ -1948,14 +1948,11 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  background:radial-gradient(circle at center,var(--essay-status-accent,var(--silver)) 0 1px,transparent 1.2px);
 }
 
-/* A compact map beneath the image makes the essay's length and structure
-   visible before the reader enters the long body. */
+/* A quiet contents rail beneath the image exposes the essay's authored parts.
+   Handwritten time estimates sit inside dotted connectors that taper away. */
 .essay-jump {
- display:flex;
- align-items:center;
- gap:18px;
  margin:22px auto 34px;
- padding:0 2px;
+ padding:0;
  max-width:100%;
  font-family:var(--font-mono);
  font-size:.5rem;
@@ -1963,25 +1960,20 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  text-transform:uppercase;
  color:var(--ink-50);
 }
-.essay-jump-label {
- flex:none;
- color:var(--ink-50);
- white-space:nowrap;
-}
 .essay-jump-track {
  display:flex;
  align-items:center;
- min-width:0;
  width:100%;
+ min-width:0;
  overflow-x:auto;
  scrollbar-width:none;
- padding:5px 0;
+ padding:7px 2px 9px;
 }
 .essay-jump-track::-webkit-scrollbar { display:none; }
 .essay-jump a {
  display:inline-flex;
  align-items:center;
- gap:7px;
+ gap:6px;
  flex:none;
  color:var(--ink-50);
  text-decoration:none;
@@ -1990,39 +1982,46 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
 }
 .essay-jump a:hover,
 .essay-jump a:focus-visible { color:var(--ink); }
-.essay-jump-node {
- box-sizing:border-box;
- width:6px;
- height:6px;
- border:1px solid var(--border-50);
- border-radius:50%;
- transition:border-color .2s ease,background .2s ease;
+.essay-jump-numeral {
+ color:var(--ink-50);
+ transition:color .2s ease;
 }
-.essay-jump a:hover .essay-jump-node,
-.essay-jump a:focus-visible .essay-jump-node {
- border-color:var(--logic-gold);
- background:var(--logic-gold);
+.essay-jump a:hover .essay-jump-numeral,
+.essay-jump a:focus-visible .essay-jump-numeral {
+ color:var(--logic-gold);
 }
-.essay-jump-line {
- flex:1 0 24px;
- min-width:24px;
+.essay-jump-title { color:inherit; }
+.essay-jump-time {
+ margin-left:3px;
+ color:var(--ink-50);
+ font-family:'Caveat',cursive;
+ font-size:14px;
+ font-weight:400;
+ line-height:1;
+ letter-spacing:0;
+ text-transform:none;
+ transform:rotate(-2deg) translateY(-1px);
+}
+.essay-jump-connector {
+ flex:1 0 92px;
+ min-width:92px;
  height:1px;
- margin:0 10px;
- background:repeating-linear-gradient(90deg,var(--border-25) 0 2px,transparent 2px 7px);
+ margin:0 12px;
+ background:repeating-linear-gradient(90deg,var(--border-50) 0 2px,transparent 2px 7px);
+ -webkit-mask-image:linear-gradient(90deg,transparent,#000 28%,#000 72%,transparent);
+ mask-image:linear-gradient(90deg,transparent,#000 28%,#000 72%,transparent);
 }
 .essay-part,
-.essay-body > p[id="essay-middle"],
 .essay-notes { scroll-margin-top:28px; }
 @media(max-width:700px) {
  .essay-jump {
-  display:block;
   margin:18px 0 28px;
  }
- .essay-jump-label {
-  display:block;
-  margin-bottom:8px;
-  font-size:.46rem;
+ .essay-jump-track { padding-bottom:10px; }
+ .essay-jump-connector {
+  flex-basis:78px;
+  min-width:78px;
+  margin:0 8px;
+  font-size:13px;
  }
- .essay-jump-track { padding-bottom:8px; }
- .essay-jump-line { flex-basis:18px; min-width:18px; margin:0 7px; }
 }
