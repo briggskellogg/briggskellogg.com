@@ -1299,7 +1299,7 @@
             .egg-shell { width: 24px; height: 32px; }
 }
     </style>
-    <link rel="stylesheet" href="/assets/site-refinements.css?v=15">
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=17">
     <link rel="stylesheet" href="/assets/reading-themes.css?v=2">
 </head>
 <body data-archetype="psyche" data-essay-id="the-students-are-right">
@@ -1317,15 +1317,7 @@
             <div class="c c-bl"></div>
             <div class="c c-br"></div>
 
-            <!-- Revision details are separate from the publication date. -->
-            <div class="essay-revision" aria-label="Revision history"><div class="frame-status" data-frame-status hidden>
-                <span class="sc sc-tl"></span>
-                <span class="sc sc-tr"></span>
-                <span class="sc sc-bl"></span>
-                <span class="sc sc-br"></span>
-                <span class="status-dot"></span>
-                <span class="frame-status-text" data-frame-status-text></span>
-            </div><p class="revision-updated">Updated <time datetime="2026-06-28">28 june 2026</time></p></div>
+
 
             <div class="essay-location"><a class="essay-top-back" href="/essays"><span class="arr">&larr;</span> all essays</a></div>
 
@@ -1339,6 +1331,14 @@
                     <h1 class="essay-title">The Students Are Right</h1>
                 </div>
                 <div class="essay-dates" aria-label="Publication history"><span class="essay-id-tag">NO. 02</span><span class="date-separator" aria-hidden="true">·</span><div class="date-item"><span>Published</span><time datetime="2026-05">may 2026</time></div></div>
+                <div class="essay-revision" aria-label="Revision history"><div class="frame-status" data-frame-status hidden>
+                <span class="sc sc-tl"></span>
+                <span class="sc sc-tr"></span>
+                <span class="sc sc-bl"></span>
+                <span class="sc sc-br"></span>
+                <span class="status-dot"></span>
+                <span class="frame-status-text" data-frame-status-text></span>
+            </div><p class="revision-updated">Updated <time datetime="2026-06-28">28 june 2026</time></p></div>
             </header>
 
             <figure class="essay-figure">
@@ -1490,8 +1490,8 @@
             </div>
 
             <nav class="essay-nav" aria-label="Other essays" id="essay-nav">
-                <span class="essay-nav-empty essay-nav-prev"><span class="essay-nav-label">&larr; older</span><span class="essay-nav-title">&mdash;</span></span>
-                <span class="essay-nav-empty essay-nav-next"><span class="essay-nav-label">newer &rarr;</span><span class="essay-nav-title">&mdash;</span></span>
+                <span class="essay-nav-empty essay-nav-prev"><span class="essay-nav-label"><span class="arr" aria-hidden="true">&larr;</span> older</span><span class="essay-nav-title">&mdash;</span></span>
+                <span class="essay-nav-empty essay-nav-next"><span class="essay-nav-label">newer <span class="arr" aria-hidden="true">&rarr;</span></span><span class="essay-nav-title">&mdash;</span></span>
             </nav>
         </article>
         </main>
@@ -1547,6 +1547,7 @@
     </div>
 
     <aside class="reading-subscribe" aria-label="Get new essays by email">
+        <svg class="email-orbit" aria-hidden="true"><defs><linearGradient id="email-orbit-paint" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#658DA4"/><stop offset="50%" stop-color="#AD7C84"/><stop offset="100%" stop-color="#C99B45"/></linearGradient></defs><rect width="100%" height="100%" rx="5" pathLength="100"/></svg>
         <form class="essay-subscribe" data-subscribe-form data-subscribe-source="essay" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post">
             <label class="subscribe-label" for="reading-email">essays to your inbox</label>
             <div class="subscribe-row">
@@ -1557,10 +1558,18 @@
             <p class="subscribe-status" data-subscribe-status role="status" aria-live="polite" hidden></p>
         </form>
     </aside>
+    <div class="social-dock">
+        <nav class="social-links" id="social-links" aria-label="Social profiles" hidden>
+            <a href="https://github.com/briggskellogg" target="_blank" rel="noopener">github <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener">linkedin <span aria-hidden="true">↗</span></a>
+            <a href="https://x.com/briggskellogg" target="_blank" rel="noopener">twitter <span aria-hidden="true">↗</span></a>
+        </nav>
+        <button class="social-toggle" type="button" aria-label="Social links" aria-expanded="false" aria-controls="social-links"><img src="/assets/blobs/social-orbit.png" alt="" width="48" height="48"></button>
+    </div>
     <script src="/dispatches.js?v=8"></script>
-    <script src="/assets/dispatch-ui.js?v=8" defer></script>
-    <script src="/assets/site-chrome.js?v=2" defer></script>
-    <script src="/assets/footnotes.js?v=4" defer></script>
+    <script src="/assets/dispatch-ui.js?v=9" defer></script>
+    <script src="/assets/site-chrome.js?v=3" defer></script>
+    <script src="/assets/footnotes.js?v=5" defer></script>
     <script src="/assets/subscribe.js?v=8"></script>
 
 </body>

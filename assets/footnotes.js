@@ -94,9 +94,13 @@
         var x2 = (dotRect.left - layoutRect.left) - 8;
         var y2 = (dotRect.top - layoutRect.top) + dotRect.height / 2;
 
-        var x1 = refRightX;
+        // Only draw in the gutter: a reference can occur halfway through a
+        // sentence, and a wire from the glyph would cross the following text.
+        var bodyRect = layout.querySelector('.essay-body').getBoundingClientRect();
+        var x1 = Math.max(refRightX, bodyRect.right - layoutRect.left + 6);
         var y1 = refMidY;
         var dx = x2 - x1;
+        if (dx < 6) return;
         var handle = Math.max(24, Math.min(dx * 0.5, 90));
         var c1x = x1 + handle;
         var c2x = x2 - handle;
@@ -110,7 +114,20 @@
                 ' ' + c2x.toFixed(1) + ' ' + y2.toFixed(1) +
                 ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
 
+        var defs = createSvg('defs', {});
+        var gradient = createSvg('linearGradient', {
+            id: 'note-wire-fade', gradientUnits: 'userSpaceOnUse',
+            x1: x1, y1: y1, x2: x2, y2: y2
+        });
+        [[0, 0], [0.25, 0.7], [0.75, 0.7], [1, 0]].forEach(function(stop) {
+            gradient.appendChild(createSvg('stop', {
+                offset: stop[0], 'stop-color': 'currentColor', 'stop-opacity': stop[1]
+            }));
+        });
+        defs.appendChild(gradient);
+        svg.appendChild(defs);
         var path = createSvg('path', { d: d, 'class': 'wire-path' });
+        path.style.stroke = 'url(#note-wire-fade)';
         svg.appendChild(path);
 
         var len = path.getTotalLength();

@@ -64,3 +64,30 @@
         });
     })();
 })();
+
+// One shared social destination; links remain ordinary keyboard-accessible links.
+(function() {
+    var dock = document.querySelector('.social-dock');
+    if (!dock) return;
+    var toggle = dock.querySelector('.social-toggle');
+    var links = dock.querySelector('.social-links');
+    function setOpen(open, returnFocus) {
+        toggle.setAttribute('aria-expanded', String(open));
+        links.hidden = !open;
+        if (returnFocus) toggle.focus();
+    }
+    toggle.addEventListener('click', function() {
+        var open = toggle.getAttribute('aria-expanded') !== 'true';
+        setOpen(open, false);
+        if (open) links.querySelector('a').focus();
+    });
+    document.addEventListener('pointerdown', function(event) {
+        if (!dock.contains(event.target)) setOpen(false, false);
+    });
+    dock.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') { event.preventDefault(); setOpen(false, true); }
+    });
+    dock.addEventListener('focusout', function(event) {
+        if (!dock.contains(event.relatedTarget)) setOpen(false, false);
+    });
+})();

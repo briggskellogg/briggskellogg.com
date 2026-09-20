@@ -1461,7 +1461,7 @@
             .egg-shell { width: 24px; height: 32px; }
         }
     </style>
-    <link rel="stylesheet" href="/assets/site-refinements.css?v=15">
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=17">
     <link rel="stylesheet" href="/assets/reading-themes.css?v=2">
 </head>
 <body class="essays-index">
@@ -1633,6 +1633,7 @@
         </div>
 
     <aside class="reading-subscribe" aria-label="Get new essays by email">
+        <svg class="email-orbit" aria-hidden="true"><defs><linearGradient id="email-orbit-paint" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#658DA4"/><stop offset="50%" stop-color="#AD7C84"/><stop offset="100%" stop-color="#C99B45"/></linearGradient></defs><rect width="100%" height="100%" rx="5" pathLength="100"/></svg>
         <form class="essay-subscribe" data-subscribe-form data-subscribe-source="archive" action="https://buttondown.com/api/emails/embed-subscribe/briggskellogg" method="post">
             <label class="subscribe-label" for="reading-email">essays to your inbox</label>
             <div class="subscribe-row">
@@ -1643,9 +1644,17 @@
             <p class="subscribe-status" data-subscribe-status role="status" aria-live="polite" hidden></p>
         </form>
     </aside>
+    <div class="social-dock">
+        <nav class="social-links" id="social-links" aria-label="Social profiles" hidden>
+            <a href="https://github.com/briggskellogg" target="_blank" rel="noopener">github <span aria-hidden="true">↗</span></a>
+            <a href="https://www.linkedin.com/in/8r1995/" target="_blank" rel="noopener">linkedin <span aria-hidden="true">↗</span></a>
+            <a href="https://x.com/briggskellogg" target="_blank" rel="noopener">twitter <span aria-hidden="true">↗</span></a>
+        </nav>
+        <button class="social-toggle" type="button" aria-label="Social links" aria-expanded="false" aria-controls="social-links"><img src="/assets/blobs/social-orbit.png" alt="" width="48" height="48"></button>
+    </div>
     <script src="/dispatches.js?v=8"></script>
-    <script src="/assets/dispatch-ui.js?v=8" defer></script>
-    <script src="/assets/site-chrome.js?v=2" defer></script>
+    <script src="/assets/dispatch-ui.js?v=9" defer></script>
+    <script src="/assets/site-chrome.js?v=3" defer></script>
     <script src="/assets/subscribe.js?v=8" defer></script>
 </body>
 </html>

@@ -531,3 +531,66 @@ body[data-essay-id] .essay-title-row { padding-top:34px; }
  .soundtrack-note { left:-33px; }
  .soundtrack-note svg { width:90px; }
 }
+
+/* One baseline for catalogue number and publication; a secondary revision line. */
+.essay-dates { align-items:baseline; font-family:var(--font-mono); font-size:10px; line-height:1.6; }
+.essay-dates .essay-id-tag, .essay-dates .date-item, .essay-dates .date-item span, .essay-dates .date-item time, .essay-dates .date-separator { font-size:inherit; line-height:inherit; }
+.essay-dates .essay-id-tag { letter-spacing:.12em; }
+.essay-dates .date-item { display:inline-flex; flex-direction:row; align-items:baseline; gap:7px; }
+.essay-dates .date-item span { margin:0; }
+.essay-revision { position:static; display:flex; flex-direction:row; flex-wrap:wrap; align-items:baseline; justify-content:center; gap:9px; margin:10px auto 0; font-size:8px; line-height:1.5; }
+.essay-revision .frame-status { position:static; display:inline; border:0; background:none; padding:0; margin:0; font-size:inherit; line-height:inherit; letter-spacing:.06em; color:var(--ink-50); text-transform:lowercase; opacity:1; }
+.essay-revision .sc, .essay-revision .status-dot { display:none; }
+.essay-revision .revision-updated { padding-left:9px; border-left:1px solid var(--border-25); font-size:inherit; line-height:inherit; color:var(--ink-50); text-transform:lowercase; }
+
+/* Body symbols share the notes' quiet resting state. */
+.fnref .note-symbol { opacity:.62; transition:opacity .2s ease,fill-opacity .2s ease; }
+.fnref:hover .note-symbol, .fnref:focus-within .note-symbol, .fnref.linked .note-symbol, .fnref:target .note-symbol { opacity:1; }
+.essay-nav .arr { display:inline-block; transition:transform .2s ease,color .2s ease; }
+.essay-nav a:hover .essay-nav-label, .essay-nav a:focus-visible .essay-nav-label { color:var(--ink); }
+.essay-nav-prev:hover .arr, .essay-nav-prev:focus-visible .arr { transform:translateX(-3px); }
+.essay-nav-next:hover .arr, .essay-nav-next:focus-visible .arr { transform:translateX(3px); }
+.essay-vibe-img { transition:transform .4s ease,filter .4s ease; }
+.essay-vibe:hover .essay-vibe-img, .essay-vibe:focus-visible .essay-vibe-img { transform:rotate(-7deg); filter:drop-shadow(0 0 7px color-mix(in srgb,var(--ink-50) 35%,transparent)); }
+
+/* A slow, short thread of color travels along the email field's border. */
+.reading-subscribe { right:max(88px,calc(env(safe-area-inset-right) + 72px)); }
+.reading-subscribe::before { display:none; }
+.email-orbit { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+.email-orbit rect { fill:none; stroke:url(#email-orbit-paint); stroke-width:1; stroke-opacity:.55; stroke-dasharray:12 88; animation:email-outline 18s linear infinite; }
+@keyframes email-outline { to { stroke-dashoffset:-100; } }
+
+/* A single illustrated social button replaces the homepage's three-link fan. */
+.home .page { margin:0 auto; }
+.home .site-footer { padding-top:36px; }
+.social-dock { position:fixed; z-index:40; right:max(24px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); }
+.social-toggle { display:grid; place-items:center; width:48px; height:48px; border:0; padding:0; background:none; border-radius:50%; cursor:pointer; }
+.social-toggle img { display:block; width:48px; height:48px; object-fit:contain; filter:drop-shadow(0 2px 5px #0002); transition:filter .25s ease; }
+.social-toggle:hover img, .social-toggle[aria-expanded="true"] img { filter:drop-shadow(0 0 6px #c99b4555); }
+.social-toggle:focus-visible { outline:1px solid var(--ink-50); outline-offset:5px; }
+.social-links { position:absolute; right:0; bottom:64px; width:148px; padding:6px; border:1px solid var(--border-25); border-radius:5px; background:var(--bg-raised); box-shadow:0 8px 24px #0002; }
+.social-links[hidden] { display:none; }
+.social-links a { display:flex; align-items:center; justify-content:space-between; padding:10px; font-family:var(--font-mono); font-size:11px; line-height:1.5; letter-spacing:.02em; color:var(--ink-80); text-decoration:none; border-radius:2px; }
+.social-links a:hover, .social-links a:focus-visible { background:var(--ink-06); color:var(--ink); outline:none; }
+.social-links a:focus-visible { box-shadow:inset 0 0 0 1px var(--border-50); }
+.social-links a span { color:var(--ink-50); }
+@media(max-width:600px) {
+ .reading-subscribe { right:80px; width:min(244px,calc(100vw - 96px)); }
+ .social-dock { right:max(16px,env(safe-area-inset-right)); bottom:max(16px,env(safe-area-inset-bottom)); }
+ .essay-dates { font-size:9px; column-gap:7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .email-orbit rect { animation:none; stroke-dasharray:none; stroke-opacity:.25; }
+ .essay-vibe:hover .essay-vibe-img, .essay-vibe:focus-visible .essay-vibe-img, .essay-nav a:hover .arr, .essay-nav a:focus-visible .arr { transform:none; }
+ .fnref .note-symbol, .essay-vibe-img, .essay-nav .arr { transition:none; }
+}
+
+.essay-wires { color:var(--ink-25); }
+
+/* Soft divisions make room for the prose without adding another frame. */
+.home .featured-head { position:relative; border-bottom-color:transparent; }
+.home .featured-head::after { content:''; position:absolute; left:12%; right:12%; bottom:-1px; height:1px; background:linear-gradient(90deg,transparent,var(--border-20) 35%,var(--border-20) 65%,transparent); opacity:.65; pointer-events:none; }
+@media(min-width:1025px) {
+ .essay-layout { gap:40px; }
+ .essay-notes::before { display:block; left:-20px; background:repeating-linear-gradient(to bottom,var(--ink-25) 0 1px,transparent 1px 6px); opacity:.5; mask-image:linear-gradient(to bottom,transparent,#000 64px,#000 calc(100% - 64px),transparent); }
+}

@@ -129,8 +129,8 @@
                 slot.parentNode.replaceChild(a, slot);
             }
         }
-        renderSlot(prevSlot, older, '&larr; older');
-        renderSlot(nextSlot, newer, 'newer &rarr;');
+        renderSlot(prevSlot, older, '<span class="arr" aria-hidden="true">&larr;</span> older');
+        renderSlot(nextSlot, newer, 'newer <span class="arr" aria-hidden="true">&rarr;</span>');
         if (!nav.querySelector('a')) collapse();
     })();
 
