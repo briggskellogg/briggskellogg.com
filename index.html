@@ -583,35 +583,6 @@
             background: var(--ink-50);
             transform: scale(1.4);
         }
-        /* A quiet reading ring; the quotation stays still as time passes. */
-        .quote-nav { gap: 0.65rem; flex-wrap: wrap; }
-        .quote-nav button:focus-visible {
-            outline: 1px solid var(--logic-gold);
-            outline-offset: 4px;
-        }
-        .quote-nav .quote-clock {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            width: 44px;
-            height: 44px;
-            color: var(--logic-gold);
-            margin-left: 0.2rem;
-        }
-        .quote-clock svg { width: 32px; height: 32px; }
-        .quote-clock-track { fill: none; stroke: currentColor; opacity: 0.18; stroke-width: 0.8; }
-        .quote-clock-arc {
-            fill: none; stroke: currentColor; stroke-width: 1;
-            opacity: 0.7; transition: opacity 0.25s ease;
-            stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100;
-            transform: rotate(-90deg); transform-origin: 24px 24px;
-        }
-        .quote-clock-glyph { fill: currentColor; opacity: 0.65; }
-        .quote-clock[aria-pressed="true"] .quote-clock-arc { opacity: 0.3; }
-        @media (prefers-reduced-motion: reduce) {
-            .quote-slide, .quotes-carousel, .quote-clock-arc { transition: none; }
-        }
         .status-dot {
             position: relative;
             width: 6px;
@@ -1384,7 +1355,7 @@
             .egg-shell { width: 24px; height: 32px; }
         }
     </style>
-    <link rel="stylesheet" href="/assets/site-refinements.css?v=4">
+    <link rel="stylesheet" href="/assets/site-refinements.css?v=5">
 </head>
 <body class="home">
     <main class="page">
@@ -1487,6 +1458,7 @@
             <p class="attribution">&mdash;&thinsp;<span class="attribution-name">Marty Supreme</span></p>
             <div class="quote-nav">
                 <button class="quote-prev" aria-label="Previous quote">&larr;</button>
+                <div class="quote-position">
                 <div class="quote-dots">
                     <div class="quote-dot active"></div>
                     <div class="quote-dot"></div>
@@ -1499,8 +1471,9 @@
                     <div class="quote-dot"></div>
                     <div class="quote-dot"></div>
                 </div>
-                <button class="quote-next" aria-label="Next quote">&rarr;</button>
                 <button class="quote-progress" type="button" aria-label="Pause automatic quotes" aria-pressed="false"><span class="quote-progress-track" aria-hidden="true"><span class="quote-progress-fill"></span></span></button>
+                </div>
+                <button class="quote-next" aria-label="Next quote">&rarr;</button>
             </div>
             <div class="recs">
                 <div class="recs-heading">recommendations</div>
@@ -1655,7 +1628,7 @@
             ...-w4-s2-v16</a>
     </div>
     </div>
-    <script src="/assets/home.js?v=6" defer></script>
+    <script src="/assets/home.js?v=7" defer></script>
     <script src="/assets/site-chrome.js?v=2" defer></script>
     <script src="/dispatches.js?v=8"></script>
     <script src="/assets/dispatch-ui.js?v=3" defer></script>

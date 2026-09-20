@@ -51,7 +51,7 @@
 
         var key = notes.querySelector('.note-key');
         var lastBottom = key ? key.offsetHeight + 20 : 0;
-        var gap = 16;
+        var gap = 32;
         items.forEach(function(item) {
             var y = Math.max(item.targetY, lastBottom + gap);
             item.note.style.top = y + 'px';
@@ -85,14 +85,14 @@
         if (isStacked()) return;
 
         var layoutRect = layout.getBoundingClientRect();
-        var refRect = ref.getBoundingClientRect();
+        var refRect = ref.querySelector('.note-symbol').getBoundingClientRect();
         var refMidY = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
         var refRightX = (refRect.right - layoutRect.left) + 10;
 
-        var marker = note.querySelector('.fn-marker');
+        var marker = note.querySelector('.fn-marker .note-symbol');
         var dotRect = (marker || note).getBoundingClientRect();
         var x2 = (dotRect.left - layoutRect.left) - 8;
-        var y2 = (dotRect.top - layoutRect.top) + Math.min(dotRect.height / 2, 8);
+        var y2 = (dotRect.top - layoutRect.top) + dotRect.height / 2;
 
         var x1 = refRightX;
         var y1 = refMidY;
@@ -125,7 +125,6 @@
     var activeRefs = Object.create(null);
 
     function activate(fnId, origin) {
-        if (isStacked()) return;
         if (clearTimer) { clearTimeout(clearTimer); clearTimer = null; }
         var ref = (origin && origin.classList.contains('fnref') ? origin : activeRefs[fnId]) || document.querySelector('.fnref[data-fn="' + fnId + '"]');
         var note = document.getElementById('fn-' + fnId);
@@ -138,7 +137,6 @@
     }
 
     function deactivate() {
-        if (isStacked()) return;
         if (clearTimer) clearTimeout(clearTimer);
         clearTimer = setTimeout(function() {
             refs.forEach(function(r) { r.classList.remove('linked'); });

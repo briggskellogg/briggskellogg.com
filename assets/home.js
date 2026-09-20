@@ -150,7 +150,7 @@
             var a = panels.querySelector('.frame').getBoundingClientRect();
             var b = panels.querySelector('.featured').getBoundingClientRect();
             var label = panels.querySelector('.home-invitation');
-            var narrow = window.matchMedia('(max-width: 1009px)').matches;
+            var narrow = window.matchMedia('(max-width: 1120px)').matches;
             var x1, y1, x2, y2, points;
             if (narrow) {
                 x1 = x2 = pr.width / 2;
