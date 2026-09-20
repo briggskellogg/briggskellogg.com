@@ -131,7 +131,7 @@
             return {
                 href: '#' + part.id,
                 numeral: numeral ? numeral.textContent.trim() : String(index + 1),
-                title: title ? title.textContent.trim() : 'Part ' + (index + 1),
+                title: title ? title.textContent.trim().replace(/^Face Dancer$/, 'Face Dancers') : 'Part ' + (index + 1),
                 minutes: Math.max(1, Math.ceil(words / 225))
             };
         });
@@ -140,9 +140,9 @@
         nav.className = 'essay-jump';
         nav.setAttribute('aria-label', 'Essay contents');
         nav.innerHTML = '<span class="essay-jump-track">' + links.map(function(link, index) {
-            return '<a href="' + esc(link.href) + '"><span class="essay-jump-numeral">' + esc(link.numeral) + '</span><span class="essay-jump-title">' + esc(link.title) + '</span><span class="essay-jump-time">~' + link.minutes + ' min</span></a>' +
-                (index < links.length - 1 ? '<span class="essay-jump-connector" aria-hidden="true"></span>' : '');
-        }).join('') + '</span>';
+            return '<a href="' + esc(link.href) + '"><span class="essay-jump-numeral">' + esc(link.numeral) + '</span><span class="essay-jump-title">' + esc(link.title) + '</span></a>' +
+                '<span class="essay-jump-connector" aria-label="approximately ' + link.minutes + ' minutes"><span class="essay-jump-time">~' + link.minutes + ' min</span></span>';
+        }).join('') + '<span class="essay-jump-end">end</span></span>';
         figure.insertAdjacentElement('afterend', nav);
     })();
 

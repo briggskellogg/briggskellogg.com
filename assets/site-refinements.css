@@ -1981,7 +1981,7 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  transition:color .2s ease;
 }
 .essay-jump a:hover,
-.essay-jump a:focus-visible { color:var(--ink); }
+.essay-jump a:focus-visible { color:var(--ink-50); }
 .essay-jump-numeral {
  color:var(--ink-50);
  transition:color .2s ease;
@@ -1991,25 +1991,44 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  color:var(--logic-gold);
 }
 .essay-jump-title { color:inherit; }
-.essay-jump-time {
- margin-left:3px;
+.essay-jump-connector {
+ display:flex;
+ align-items:center;
+ flex:1 0 122px;
+ min-width:122px;
+ margin:0 12px;
  color:var(--ink-50);
+}
+.essay-jump-connector::before,
+.essay-jump-connector::after {
+ content:'';
+ flex:1;
+ height:1px;
+ background:repeating-linear-gradient(90deg,var(--border-50) 0 2px,transparent 2px 7px);
+}
+.essay-jump-connector::before {
+ -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 35%,transparent 100%);
+ mask-image:linear-gradient(90deg,#000 0%,#000 35%,transparent 100%);
+}
+.essay-jump-connector::after {
+ -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 65%,#000 100%);
+ mask-image:linear-gradient(90deg,transparent 0%,#000 65%,#000 100%);
+}
+.essay-jump-time {
+ margin:0 7px;
  font-family:'Caveat',cursive;
  font-size:14px;
  font-weight:400;
  line-height:1;
  letter-spacing:0;
  text-transform:none;
+ white-space:nowrap;
  transform:rotate(-2deg) translateY(-1px);
 }
-.essay-jump-connector {
- flex:1 0 92px;
- min-width:92px;
- height:1px;
- margin:0 12px;
- background:repeating-linear-gradient(90deg,var(--border-50) 0 2px,transparent 2px 7px);
- -webkit-mask-image:linear-gradient(90deg,transparent,#000 28%,#000 72%,transparent);
- mask-image:linear-gradient(90deg,transparent,#000 28%,#000 72%,transparent);
+.essay-jump-end {
+ flex:none;
+ color:var(--ink-50);
+ white-space:nowrap;
 }
 .essay-part,
 .essay-notes { scroll-margin-top:28px; }
@@ -2019,9 +2038,9 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  }
  .essay-jump-track { padding-bottom:10px; }
  .essay-jump-connector {
-  flex-basis:78px;
-  min-width:78px;
+  flex-basis:104px;
+  min-width:104px;
   margin:0 8px;
-  font-size:13px;
  }
+ .essay-jump-time { font-size:13px; }
 }
