@@ -1,0 +1,29 @@
+/* Reading surfaces follow system appearance, including live preference changes. */
+:root { color-scheme:light; }
+@media screen and (prefers-color-scheme:dark) {
+ :root {
+  color-scheme:dark;
+  --bg:#15120E;
+  --bg-raised:#1C1915;
+  --ink:#FFE2B9;
+  --ink-80:rgba(255,226,185,.88);
+  --ink-50:rgba(255,226,185,.60);
+  --ink-25:rgba(255,226,185,.36);
+  --ink-20:rgba(255,226,185,.25);
+  --ink-12:rgba(255,226,185,.13);
+  --ink-06:rgba(255,226,185,.05);
+  --border:#B6BCC2;
+  --border-80:rgba(182,188,194,.8);
+  --border-50:rgba(182,188,194,.5);
+  --border-30:rgba(182,188,194,.3);
+  --border-25:rgba(182,188,194,.25);
+  --border-20:rgba(182,188,194,.2);
+  --border-12:rgba(182,188,194,.12);
+  --logic:var(--logic-gold);
+  --logic-wire:rgba(201,155,69,.4);
+  --dot-color:rgba(255,226,185,.045);
+  --link-writing:var(--psyche-blue);
+ }
+ .reading-subscribe { background:var(--bg-raised); box-shadow:0 4px 24px #0003; }
+ ::selection { background:rgba(201,155,69,.28); color:var(--ink); }
+}
