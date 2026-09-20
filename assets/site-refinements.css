@@ -27,7 +27,7 @@ body[data-archetype="instinct"] .essay-title, .tl-entry--instinct .tl-title { co
 
 /* The homepage uses intrinsic flow; viewport height never hides content. */
 html:has(body.home), html body.home { height:auto; max-height:none; overflow-y:auto; }
-body.home { min-height:100svh; display:flex; align-items:stretch; justify-content:center; padding:clamp(24px,5vw,72px) max(20px,env(safe-area-inset-right)) 20px max(20px,env(safe-area-inset-left)); }
+body.home { min-height:100svh; display:flex; align-items:stretch; justify-content:center; padding:32px max(32px,env(safe-area-inset-right)) 20px max(32px,env(safe-area-inset-left)); }
 .home .page { width:100%; max-width:948px; margin:0 auto; max-height:none; transform:none; }
 .home .home-panels { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px; align-items:start; transform:none; }
 .home .frame, .home .featured { width:100%; max-width:none; min-width:0; margin:0; transform:none; }
@@ -64,7 +64,7 @@ body.home { min-height:100svh; display:flex; align-items:stretch; justify-conten
 .home-invitation span { display:block; }
 .home-invitation:hover { color:var(--logic-gold); }
 .home .site-footer { margin-top:44px; }
-@media(max-width:900px) {
+@media(max-width:1009px) {
  .home .page { max-width:460px; }
  .home .home-panels { grid-template-columns:minmax(0,1fr); gap:0; }
  .home .frame { grid-column:1; grid-row:1; }
@@ -77,7 +77,7 @@ body.home { min-height:100svh; display:flex; align-items:stretch; justify-conten
  .site-footer .archetypes { grid-column:2; grid-row:1; }
 }
 @media(max-width:480px) {
- body.home { padding:24px 16px 20px; }
+ body.home { padding:20px max(24px,env(safe-area-inset-right)) 20px max(24px,env(safe-area-inset-left)); }
  .home .frame { padding:clamp(.85rem,2vh,1.8rem) clamp(1.25rem,4.5vw,2rem) clamp(.9rem,2.2vh,1.8rem); }
  .home .featured { padding:1.5rem; }
  .home .logo img { width:clamp(54px,9.5vh,86px); height:clamp(54px,9.5vh,86px); }
@@ -179,7 +179,7 @@ body[data-essay-id], body.essays-index { padding-bottom:2rem; }
  .footnote { padding-left:0; margin:0 0 24px; }
  .note-key { margin-bottom:24px; }
 }
-@media(max-width:900px) {
+@media(max-width:1009px) {
  .site-footer { grid-template-columns:1fr auto; gap:16px; }
  .site-footer .rights { grid-column:1; grid-row:1; }
  .site-footer .archetypes { grid-column:2; grid-row:1; }
