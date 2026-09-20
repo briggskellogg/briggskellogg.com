@@ -1406,55 +1406,15 @@ body[data-essay-id] .essay-soundtrack { transform:translateY(-6px); }
 body[data-essay-id] .essay-subtitle,
 body[data-essay-id] .essay-subtitle em { color:var(--ink-50); opacity:.82; }
 
-/* September 20, v39: the archive frame carries the three reading playlists
-   as a compact fan, while yielding sooner to the first essay. */
+/* September 20, v39: compact archive heading. */
 .essays-index .index-head {
  padding:15px 22px 14px;
  margin-bottom:24px;
 }
 .essays-index .index-head .essay-title { margin-bottom:11px; }
-.archive-playlists {
- position:absolute;
- z-index:3;
- top:20px;
- right:24px;
- display:flex;
- align-items:flex-end;
- width:max-content;
- isolation:isolate;
-}
-.archive-playlist {
- position:relative;
- display:block;
- width:52px;
- height:52px;
- margin-left:-21px;
- transform-origin:50% 78%;
- transition:transform .42s cubic-bezier(.2,.8,.2,1),filter .3s ease;
-}
-.archive-playlist:first-child { margin-left:0; }
-.archive-playlist img { display:block; width:100%; height:100%; object-fit:contain; }
-.archive-playlist--instinct { z-index:1; transform:translateY(7px) rotate(-14deg); }
-.archive-playlist--logic { z-index:2; width:54px; height:54px; transform:rotate(-2deg); }
-.archive-playlist--psyche { z-index:3; transform:translateY(7px) rotate(13deg); }
-@media(hover:hover) {
- .archive-playlists .archive-playlist--instinct:hover,
- .archive-playlists .archive-playlist--instinct:focus-visible { z-index:5; transform:translateY(4px) rotate(-11deg) scale(1.035); filter:drop-shadow(0 4px 6px #0002); }
- .archive-playlists .archive-playlist--logic:hover,
- .archive-playlists .archive-playlist--logic:focus-visible { z-index:5; transform:translateY(-3px) rotate(0) scale(1.035); filter:drop-shadow(0 4px 6px #0002); }
- .archive-playlists .archive-playlist--psyche:hover,
- .archive-playlists .archive-playlist--psyche:focus-visible { z-index:5; transform:translateY(4px) rotate(10deg) scale(1.035); filter:drop-shadow(0 4px 6px #0002); }
-}
-.archive-playlist:focus-visible { outline:1px solid var(--border-50); outline-offset:3px; border-radius:50%; }
 @media(max-width:600px) {
  .essays-index .index-head { padding:13px 18px 12px; margin-bottom:22px; }
  .essays-index .index-head .essay-title { margin-bottom:9px; }
- .archive-playlists { top:15px; right:16px; }
- .archive-playlist { width:40px; height:40px; margin-left:-17px; }
- .archive-playlist--logic { width:42px; height:42px; }
-}
-@media(prefers-reduced-motion:reduce) {
- .archive-playlist { transition:none; }
 }
 
 /* September 20, v40: archive photography keeps its full composition; cards
@@ -1607,4 +1567,20 @@ body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
 .essays-index .reading-subscribe button:not(:disabled):focus-visible {
  background:var(--ink);
  color:var(--silver);
+}
+
+/* The archive frame hugs its contents more closely once the playlist fan is
+   removed. Gold corners give the Essays title the selected-section cue. */
+.essays-index .frame {
+ padding-top:2rem;
+ padding-bottom:2rem;
+}
+.essays-index .index-head { margin-bottom:18px; }
+.essays-index .index-head .hc { border-color:var(--logic-gold); }
+@media(max-width:600px) {
+ .essays-index .frame {
+  padding-top:1.5rem;
+  padding-bottom:1.5rem;
+ }
+ .essays-index .index-head { margin-bottom:16px; }
 }
