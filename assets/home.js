@@ -13,7 +13,7 @@
 
         var arc = clock.querySelector('.quote-progress-fill');
         var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-        var current = Math.floor(Math.random() * slides.length);
+        var current = 0;
         var duration = 0;
         var elapsed = 0;
         var lastTime = null;
@@ -32,9 +32,47 @@
         }
 
         function readingTime(slide) {
-            var words = slide.querySelector('.quote').textContent.trim().split(/\s+/).length;
-            // 150 words/minute, plus time to settle and consider the quotation.
-            return Math.max(14000, 5000 + words * 400);
+            var text = slide.querySelector('.quote').textContent.trim();
+            var words = text.match(/[\p{L}\p{N}]+(?:[’'-][\p{L}\p{N}]+)*/gu) || [];
+            var attributionWords = (slide.dataset.attr.match(/\S+/g) || []).length;
+            var sentenceBreaks = (text.match(/[.!?]+/g) || []).length;
+            var pauses = (text.match(/[,;:—–]/g) || []).length;
+            var ellipses = (text.match(/…|\.{3}/g) || []).length;
+            var longWords = words.filter(function(word) { return word.length >= 9; }).length;
+            // A deliberately gentle 120 words/minute, plus 7 seconds to settle
+            // and reflect. Punctuation, dense words, and credits get extra time.
+            // This is a pacing heuristic, not a measurement of the reader.
+            var milliseconds = 7000 + words.length * 500 + attributionWords * 250 +
+                sentenceBreaks * 600 + pauses * 250 + ellipses * 800 + longWords * 120;
+            return Math.max(16000, Math.ceil(milliseconds / 1000) * 1000);
+        }
+
+        function setAttribution(slide, animate) {
+            var attribution = slide.dataset.attr;
+            var split = attribution.indexOf(': ');
+            var title = split < 0 ? attribution : attribution.slice(0, split);
+            var subtitle = split < 0 ? '' : attribution.slice(split);
+            var titleEl = nameEl.querySelector('.attribution-title');
+            var subtitleEl = nameEl.querySelector('.attribution-subtitle');
+            nameEl.href = slide.dataset.url;
+            nameEl.setAttribute('aria-label', attribution + ' — official site (opens in a new tab)');
+            nameEl.classList.toggle('has-subtitle', split >= 0);
+            function render(count) {
+                titleEl.textContent = title.slice(0, count);
+                subtitleEl.textContent = subtitle.slice(0, Math.max(0, count - title.length));
+            }
+            nameEl.classList.remove('typing');
+            if (animate && !reducedMotion.matches) {
+                render(0);
+                nameEl.classList.add('typing');
+                var letter = 0;
+                function type() {
+                    render(++letter);
+                    if (letter < attribution.length) typeTimer = setTimeout(type, 40);
+                    else { nameEl.classList.remove('typing'); updateHeight(); }
+                }
+                typeTimer = setTimeout(type, 200);
+            } else render(attribution.length);
         }
 
         function isPaused() {
@@ -80,20 +118,7 @@
             elapsed = 0;
             lastTime = null;
             carousel.dataset.readingSeconds = String(duration / 1000);
-            nameEl.classList.remove('typing');
-            var attribution = slides[current].dataset.attr;
-            if (animate && !reducedMotion.matches) {
-                // One cancellable chain prevents stale attribution after rapid clicks.
-                nameEl.textContent = '';
-                nameEl.classList.add('typing');
-                var letter = 0;
-                function type() {
-                    nameEl.textContent = attribution.slice(0, ++letter);
-                    if (letter < attribution.length) typeTimer = setTimeout(type, 40);
-                    else nameEl.classList.remove('typing');
-                }
-                typeTimer = setTimeout(type, 200);
-            } else nameEl.textContent = attribution;
+            setAttribution(slides[current], animate);
             updateHeight();
             paint();
         }
@@ -107,16 +132,21 @@
         if (prev) prev.addEventListener('click', function() { manual(-1); });
         if (next) next.addEventListener('click', function() { manual(1); });
         clock.addEventListener('click', function() { paused = !paused; syncPlayback(); });
-        carousel.addEventListener('mouseenter', function() { hovering = true; syncPlayback(); });
-        carousel.addEventListener('mouseleave', function() { hovering = false; syncPlayback(); });
-        nav.addEventListener('focusin', function(event) {
-            focused = !clock.contains(event.target) && event.target.matches(':focus-visible');
-            syncPlayback();
-        });
-        nav.addEventListener('focusout', function(event) {
-            focused = !!event.relatedTarget && nav.contains(event.relatedTarget) &&
-                !clock.contains(event.relatedTarget) && event.relatedTarget.matches(':focus-visible');
-            syncPlayback();
+        // Keep the quote and its link stable while someone reads or follows it.
+        var quoteRegions = [carousel, nameEl.closest('.attribution'), nav];
+        quoteRegions.forEach(function(region) {
+            region.addEventListener('mouseenter', function() { hovering = true; syncPlayback(); });
+            region.addEventListener('mouseleave', function() { hovering = false; syncPlayback(); });
+            region.addEventListener('focusin', function(event) {
+                focused = !clock.contains(event.target) && event.target.matches(':focus-visible');
+                syncPlayback();
+            });
+            region.addEventListener('focusout', function(event) {
+                focused = !!event.relatedTarget && quoteRegions.some(function(region) {
+                    return region.contains(event.relatedTarget);
+                }) && !clock.contains(event.relatedTarget) && event.relatedTarget.matches(':focus-visible');
+                syncPlayback();
+            });
         });
         document.addEventListener('selectionchange', function() {
             var selection = window.getSelection();
