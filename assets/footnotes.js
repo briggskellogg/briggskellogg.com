@@ -129,12 +129,13 @@
         path.style.stroke = 'url(#note-wire-fade)';
         svg.appendChild(path);
 
-        var len = path.getTotalLength();
-        path.style.strokeDasharray = len;
-        path.style.strokeDashoffset = len;
-        path.style.transition = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'none' : 'stroke-dashoffset 0.3s ease';
+        // Keep the curve itself stationary. Animating a one-pixel dash along
+        // a cubic path forces repeated subpixel rasterization and can make the
+        // connector appear to shimmer on high-density displays.
+        path.style.opacity = 0;
+        path.style.transition = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'none' : 'opacity 0.14s ease-out';
         path.getBoundingClientRect();
-        path.style.strokeDashoffset = 0;
+        path.style.opacity = 1;
 
     }
 

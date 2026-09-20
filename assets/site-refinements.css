@@ -1584,3 +1584,12 @@ body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
  }
  .essays-index .index-head { margin-bottom:16px; }
 }
+
+/* Keep footnote curves optically still and let the browser anti-alias the
+   one-pixel stroke as geometry rather than as an animated dash. */
+.essay-wires .wire-path {
+ vector-effect:non-scaling-stroke;
+ shape-rendering:geometricPrecision;
+ stroke-linecap:round;
+ stroke-linejoin:round;
+}
