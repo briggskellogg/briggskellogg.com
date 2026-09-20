@@ -1552,9 +1552,24 @@ body[data-essay-id] .essay-figure .fc { border-color:var(--logic-gold); }
 body[data-essay-id] .essay-head .hc { border-color:var(--border-50); }
 body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
 
-/* Gold corner marks identify the email action while its dark surface stays
-   still; hover changes only the subscribe label and arrow to silver. */
+/* The email action rests in silver. Hovering its transparent button promotes
+   the outer corner marks to gold while the label and arrow become silver. */
 .reading-subscribe .subscribe-row::after {
+ background-image:
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50));
+ transition:background-image .2s ease;
+}
+.reading-subscribe button,
+.essays-index .reading-subscribe button {
+ background:transparent;
+ color:var(--ink-80);
+ border-left:1px solid var(--ink-20);
+}
+.reading-subscribe .subscribe-row:has(button:not(:disabled):hover)::after,
+.reading-subscribe .subscribe-row:has(button:not(:disabled):focus-visible)::after {
  background-image:
   linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
   linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
@@ -1565,7 +1580,7 @@ body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
 .reading-subscribe button:not(:disabled):focus-visible,
 .essays-index .reading-subscribe button:not(:disabled):hover,
 .essays-index .reading-subscribe button:not(:disabled):focus-visible {
- background:var(--ink);
+ background:transparent;
  color:var(--silver);
 }
 
