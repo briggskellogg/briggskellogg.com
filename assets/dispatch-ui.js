@@ -166,8 +166,10 @@
             imgEl.setAttribute('fetchpriority', 'high');
         }
         var dotEl = document.getElementById('featured-dot');
+        var arch = (d.playlist && d.playlist.archetype) || 'logic';
+        var featured = card.closest('.featured');
+        if (featured) featured.dataset.archetype = arch;
         if (dotEl) {
-            var arch = (d.playlist && d.playlist.archetype) || 'logic';
             dotEl.className = 'featured-dot featured-dot--' + arch;
         }
         if (d.status) {

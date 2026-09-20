@@ -1691,3 +1691,187 @@ body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
  padding-top:13px;
  padding-bottom:13px;
 }
+
+/* One CTA vocabulary across the site: quiet at rest, fully legible on hover,
+   with motion confined to the directional arrow. */
+.essay-top-back,
+.home .featured-all,
+.home .featured-cta,
+.essays-index .tl-read,
+.reading-subscribe button,
+.essays-index .reading-subscribe button {
+ color:var(--ink-50);
+ transition:color .2s ease;
+}
+.essay-top-back:hover,
+.essay-top-back:focus-visible,
+.home .featured-all:hover,
+.home .featured-all:focus-visible,
+.home .featured-card:hover .featured-cta,
+.home .featured-card:focus-visible .featured-cta,
+.essays-index .tl-card:hover .tl-read,
+.essays-index .tl-card:focus-visible .tl-read,
+.reading-subscribe button:not(:disabled):hover,
+.reading-subscribe button:not(:disabled):focus-visible,
+.essays-index .reading-subscribe button:not(:disabled):hover,
+.essays-index .reading-subscribe button:not(:disabled):focus-visible {
+ color:var(--ink);
+}
+.home .featured-card:hover .featured-cta .arr,
+.home .featured-card:focus-visible .featured-cta .arr,
+.essays-index .tl-card:hover .tl-read .arr,
+.essays-index .tl-card:focus-visible .tl-read .arr,
+.reading-subscribe button:not(:disabled):hover .arr,
+.reading-subscribe button:not(:disabled):focus-visible .arr {
+ transform:translateX(3px);
+}
+
+/* The catalogue label floats above the archive frame as a separate object. */
+.essays-index .page { overflow:visible; }
+.essays-index .index-head {
+ position:relative;
+ z-index:2;
+ margin:0 auto 28px;
+}
+.essays-index .frame { margin-top:0; }
+
+/* Revision state uses only four corner marks. State chooses silver or gold;
+   the essay archetype chooses the dot. */
+body[data-archetype="logic"] { --essay-status-accent:var(--logic-gold); }
+body[data-archetype="psyche"] { --essay-status-accent:var(--psyche-blue); }
+body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
+.essay-revision .frame-status {
+ --version-state:var(--silver);
+ position:relative;
+ padding:7px 10px;
+ border:0;
+ background:transparent;
+ color:var(--version-state);
+}
+.essay-revision .frame-status[data-status="finalized"] {
+ --version-state:var(--logic-gold);
+ opacity:1;
+}
+.essay-revision .frame-status .sc {
+ display:block;
+ width:7px;
+ height:7px;
+ border-color:var(--version-state);
+ opacity:.9;
+}
+.essay-revision .status-dot {
+ display:block;
+ box-sizing:border-box;
+ width:6px;
+ height:6px;
+ border:0;
+ background:var(--essay-status-accent,var(--silver));
+}
+.essay-revision .status-dot::after {
+ display:block;
+ border-radius:50%;
+ background:var(--essay-status-accent,var(--silver));
+ animation:version-archetype-pulse 2.8s ease-out infinite;
+}
+.essay-revision [data-status="finalized"] .status-dot {
+ border:1px solid var(--essay-status-accent,var(--silver));
+ background:transparent;
+}
+.essay-revision [data-status="finalized"] .status-dot::after { display:none; }
+
+/* The same archetype/state dot language appears in the archive and feature. */
+.essays-index .tl-entry--logic { --essay-status-accent:var(--logic-gold); }
+.essays-index .tl-entry--psyche { --essay-status-accent:var(--psyche-blue); }
+.essays-index .tl-entry--instinct { --essay-status-accent:var(--instinct-rose); }
+.essays-index .tl-status::before,
+.home .featured-status .status-dot {
+ box-sizing:border-box;
+ border:0;
+ background:var(--essay-status-accent,var(--silver));
+}
+.essays-index .tl-status:not([data-status="finalized"])::before,
+.home .featured-status:not([data-status="finalized"]) .status-dot {
+ animation:version-archetype-pulse 2.8s ease-out infinite;
+}
+.essays-index .tl-status[data-status="finalized"]::before,
+.home .featured-status[data-status="finalized"] .status-dot {
+ border:1px solid var(--essay-status-accent,var(--silver));
+ background:transparent;
+ animation:none;
+ box-shadow:none;
+}
+.home .featured[data-archetype="logic"] { --essay-status-accent:var(--logic-gold); }
+.home .featured[data-archetype="psyche"] { --essay-status-accent:var(--psyche-blue); }
+.home .featured[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
+@keyframes version-archetype-pulse {
+ 0%,100% { opacity:.58; box-shadow:0 0 0 0 color-mix(in srgb,var(--essay-status-accent,var(--silver)) 0%,transparent); }
+ 50% { opacity:1; box-shadow:0 0 0 3px color-mix(in srgb,var(--essay-status-accent,var(--silver)) 18%,transparent); }
+}
+
+/* Dotted threads grow from the social orb to the three fanned marks. */
+.social-connectors {
+ position:absolute;
+ right:0;
+ bottom:0;
+ width:154px;
+ height:132px;
+ overflow:visible;
+ pointer-events:none;
+ opacity:0;
+}
+.social-connector {
+ fill:none;
+ stroke:color-mix(in srgb,var(--ink) 46%,transparent);
+ stroke-width:1;
+ stroke-linecap:round;
+ stroke-dasharray:2 5;
+ vector-effect:non-scaling-stroke;
+}
+.social-dock:has(.social-toggle[aria-expanded="true"]) .social-connectors { opacity:1; }
+.social-dock:has(.social-toggle[aria-expanded="true"]) .social-connector--github { animation:social-thread-open .42s cubic-bezier(.18,.82,.2,1) both; }
+.social-dock:has(.social-toggle[aria-expanded="true"]) .social-connector--linkedin { animation:social-thread-open .48s .04s cubic-bezier(.18,.82,.2,1) both; }
+.social-dock:has(.social-toggle[aria-expanded="true"]) .social-connector--x { animation:social-thread-open .54s .08s cubic-bezier(.18,.82,.2,1) both; }
+.social-dock:has(.social-links.is-closing) .social-connectors { opacity:1; }
+.social-dock:has(.social-links.is-closing) .social-connector { animation:social-thread-close .34s ease-in both; }
+@keyframes social-thread-open {
+ from { stroke-dashoffset:38; opacity:0; }
+ to { stroke-dashoffset:0; opacity:1; }
+}
+@keyframes social-thread-close {
+ from { stroke-dashoffset:0; opacity:1; }
+ to { stroke-dashoffset:38; opacity:0; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .essay-revision .status-dot::after,
+ .essays-index .tl-status:not([data-status="finalized"])::before,
+ .home .featured-status:not([data-status="finalized"]) .status-dot,
+ .social-connector { animation:none; }
+}
+
+/* Archive cards now use the same 29px border-to-image inset as the featured
+   homepage card. A wider catalogue frame preserves generous image and prose
+   widths after that padding is added. */
+@media(min-width:701px) {
+ .essays-index .page { max-width:840px; }
+}
+.essays-index .tl-card-inner { padding:28px; }
+@media(max-width:600px) {
+ .essays-index .tl-card-inner { padding:28px; }
+}
+
+/* Confirmation keeps the same surface. Saturated copy and persistent gold
+   corners carry success without introducing a new button fill. */
+.reading-subscribe .essay-subscribe.is-confirmed button,
+.essays-index .reading-subscribe .essay-subscribe.is-confirmed button {
+ background:transparent;
+ color:var(--ink);
+ opacity:1;
+}
+.reading-subscribe .essay-subscribe.is-confirmed .subscribe-row::after,
+.essays-index .reading-subscribe .essay-subscribe.is-confirmed .subscribe-row::after {
+ background-image:
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold)),
+  linear-gradient(var(--logic-gold),var(--logic-gold)),linear-gradient(var(--logic-gold),var(--logic-gold));
+}
