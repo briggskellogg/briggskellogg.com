@@ -319,3 +319,57 @@ body[data-essay-id] .site-footer, .essays-index .site-footer { padding-top:64px;
 .listening-label { font-family:'Caveat',cursive; font-size:23px; font-weight:400; line-height:1.2; color:var(--ink-80); transform:rotate(-1deg); transform-origin:left center; -webkit-font-smoothing:antialiased; }
 .listening-hint { margin-top:8px; }
 .listening-blob span { font-family:'Caveat',cursive; font-size:17px; font-weight:400; line-height:1; }
+
+/* One archive title and a clear date hierarchy, without listening chrome. */
+.essays-index .index-head { margin:0 0 48px; padding:0; }
+.essays-index .index-head .essay-title { font-size:3.4rem; font-style:normal; font-weight:400; line-height:1; letter-spacing:-.04em; }
+.tl-no { font-size:9px; letter-spacing:.08em; color:var(--ink-50); text-transform:none; }
+.tl-date { margin-top:8px; gap:6px; text-transform:none; }
+.tl-date .tl-published { font-size:12px; color:var(--ink); }
+.tl-date .tl-updated { font-size:9px; }
+body[data-essay-id] .essay-number { margin-bottom:34px; font-size:10px; line-height:1.4; letter-spacing:.08em; text-transform:none; color:var(--ink-50); }
+.essay-dates { display:flex; flex-direction:column; gap:7px; border:0; background:none; margin:20px auto 0; text-transform:none; text-align:center; }
+.essay-dates .date-item { display:block; padding:0; border:0; }
+.essay-dates .date-item span { font-size:10px; letter-spacing:0; color:var(--ink-50); margin-right:8px; }
+.essay-dates .date-item time { font-size:11px; letter-spacing:0; color:var(--ink-80); }
+.essay-dates .date-item + .date-item span, .essay-dates .date-item + .date-item time { font-size:9px; color:var(--ink-50); }
+.essay-soundtrack { position:relative; display:inline-flex; flex:0 0 46px; width:46px; }
+.soundtrack-note { position:absolute; bottom:calc(100% + 5px); left:-9px; width:88px; font-family:'Caveat',cursive; font-size:19px; font-weight:400; line-height:1; color:var(--ink-50); transform:rotate(-9deg); pointer-events:none; }
+.soundtrack-note svg { position:absolute; width:28px; height:23px; top:12px; left:-10px; fill:none; stroke:currentColor; stroke-width:1; stroke-linecap:round; stroke-linejoin:round; transform:rotate(-15deg); }
+
+/* Small superscript marks sit close to the phrase they qualify. */
+.fnref { font-size:.65em; top:-.08em; margin:0 0 0 1px; }
+.fnref a, .fnref:hover a, .fnref.linked a, .fnref:focus-within a { width:11px; height:14px; margin:-3px 0; }
+.note-symbol { stroke-width:.95; }
+
+/* Homepage labels keep their role without competing with the title. */
+.home .featured-all { width:fit-content; min-width:140px; min-height:40px; margin:24px auto 0; padding:10px 20px; background:none; border:1px solid var(--border-25); letter-spacing:.1em; }
+.home .featured-all:hover { background:var(--ink-06); border-color:var(--border-50); }
+.home .featured-label { opacity:.6; }
+.home .featured-title-row { display:flex; align-items:center; flex-wrap:wrap; justify-content:flex-start; gap:10px; }
+.home .featured-title { margin:0; }
+.home .featured-status { padding:4px 7px; opacity:1; color:var(--ink-50); border:1px solid var(--border-25); background:var(--ink-06); font-size:8px; line-height:1.4; letter-spacing:.08em; }
+.home .featured-status .status-dot { display:none; }
+
+/* A single field stays at hand; the reading column keeps its full width. */
+.reading-subscribe { position:fixed; z-index:30; right:max(24px,env(safe-area-inset-right)); bottom:max(20px,env(safe-area-inset-bottom)); width:260px; max-width:calc(100vw - 32px); padding:10px 12px 8px; background:var(--bg); border:1px solid var(--ink-12); border-radius:3px; box-shadow:0 4px 20px #00000008; }
+.reading-subscribe .essay-subscribe { margin:0; text-align:left; }
+.reading-subscribe .subscribe-label { margin:0 0 5px; font-size:9px; line-height:1.3; letter-spacing:.025em; text-transform:none; color:var(--ink-50); }
+.reading-subscribe .subscribe-row { display:flex; width:100%; border:0; border-bottom:1px solid var(--ink-12); }
+.reading-subscribe .subscribe-row:focus-within { border-color:var(--ink-50); }
+.reading-subscribe input[type="email"] { width:100%; min-width:0; flex:1; font-size:12px; line-height:1.3; padding:8px 0; }
+.reading-subscribe input[type="email"]::placeholder { color:var(--ink-50); }
+.reading-subscribe button { flex:0 0 36px; min-height:36px; border:0; padding:0; font-size:18px; color:var(--ink-80); }
+.reading-subscribe button:hover { background:var(--ink-06); }
+.reading-subscribe .subscribe-status { margin:7px 0 0; font-family:var(--font-mono); font-size:10px; line-height:1.5; color:var(--ink-80); }
+.reading-subscribe .subscribe-status.is-error { color:var(--ink); }
+.reading-subscribe .is-confirmed button { color:var(--ink-80); background:none; }
+@media(max-width:600px) {
+ .essays-index .index-head { margin:0 0 36px 18px; }
+ .essays-index .index-head .essay-title { font-size:2.8rem; }
+ .essay-soundtrack { flex-basis:38px; width:38px; }
+ .soundtrack-note { font-size:17px; left:-4px; }
+ .reading-subscribe { right:16px; bottom:max(16px,env(safe-area-inset-bottom)); width:252px; }
+ .reading-subscribe input[type="email"] { font-size:16px; }
+ body[data-essay-id], body.essays-index { padding-bottom:112px; }
+}

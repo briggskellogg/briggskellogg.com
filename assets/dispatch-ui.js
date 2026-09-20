@@ -36,7 +36,7 @@
                 '<div class="tl-spine">' +
                     '<span class="tl-line"></span>' +
                     '<span class="tl-node"><span class="tl-node-dot"></span></span>' +
-                    '<div class="tl-no">no. ' + pad2(num) + '</div>' +
+                    '<div class="tl-no">Essay ' + pad2(num) + '</div>' +
                     '<div class="tl-date" aria-label="Publication history"><time class="tl-published" datetime="' + esc(d.published || '') + '" aria-label="Published ' + esc(d.date) + '">' + esc(d.date) + '</time><span class="tl-updated">updated <time datetime="' + esc(d.updated || '') + '">' + esc(d.updated || d.date) + '</time></span></div>' +
                 '</div>' +
                 '<a class="tl-card" href="' + esc(d.url) + '">' +
@@ -44,7 +44,7 @@
                         '<span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>' +
                         thumb +
                         '<div class="tl-card-body">' +
-                            '<div class="tl-title-row"><img class="tl-title-blob" src="' + blob(arch) + '" alt="" width="32" height="32"><h2 class="tl-title">' + esc(d.title) + '</h2></div>' +
+                            '<h2 class="tl-title">' + esc(d.title) + '</h2>' +
                             excerpt +
                             '<div class="tl-foot">' +
                                 '<span class="tl-read">read the essay <span class="arr">&rarr;</span></span>' +
@@ -70,7 +70,7 @@
 
         var numEl = document.querySelector('.essay-number .num');
         if (numEl && typeof entry.number === 'number') {
-            numEl.textContent = 'no. ' + pad2(entry.number);
+            numEl.textContent = 'Essay ' + pad2(entry.number);
         }
 
         var badgeEl = document.querySelector('[data-frame-status]');

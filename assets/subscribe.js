@@ -3,7 +3,7 @@
   var ENDPOINT = meta && meta.content ? meta.content.trim() : "";
 
   function showConfirmed(form) {
-    var section = form.closest(".essay-newsletter");
+    var section = form.closest(".essay-newsletter, .reading-subscribe");
     if (!section) return;
 
     var status = form.querySelector("[data-subscribe-status]");
@@ -14,6 +14,7 @@
     }
 
     form.classList.add("is-confirmed");
+    if (status) { status.hidden = false; status.textContent = "You’re on the list. Thank you."; }
 
     var input = form.querySelector('input[type="email"]');
     if (input) input.disabled = true;
@@ -21,7 +22,7 @@
     var button = form.querySelector('button[type="submit"]');
     if (button) {
       button.disabled = true;
-      button.textContent = "confirmed";
+      button.textContent = "✓";
       button.setAttribute("aria-label", "Subscription confirmed");
     }
   }
@@ -67,7 +68,7 @@
       if (button) {
         button.disabled = true;
         button.dataset.prevLabel = button.textContent;
-        button.textContent = "sending…";
+        button.textContent = "…";
       }
 
       var source = form.getAttribute("data-subscribe-source") || "essay";
