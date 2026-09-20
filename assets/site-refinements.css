@@ -1511,3 +1511,25 @@ body[data-essay-id] .essay-subtitle em { color:var(--ink-50); opacity:.82; }
  }
  .home .recs-group { margin-bottom:clamp(.38rem,.8vh,.6rem); }
 }
+
+/* September 20, v42: silver identifies reading and recommendation details;
+   gold is reserved for the archive button's interactive corner marks. */
+.home .featured-card:hover .featured-cta,
+.home .featured-card:focus-visible .featured-cta { color:var(--silver); }
+.home .recs-corner { border-color:var(--silver); opacity:.62; }
+.home .featured-all,
+.home .featured-all:hover,
+.home .featured-all:focus-visible {
+ border-color:var(--border-25);
+ background:transparent;
+ transform:none;
+}
+.home .featured-all { transition:color .2s ease; }
+.home .featured-all .all-corner { transition:border-color .2s ease; }
+.home .featured-all .arr { display:inline-block; margin-left:.28em; transition:transform .2s ease,color .2s ease; }
+.home .featured-all:hover,
+.home .featured-all:focus-visible { color:var(--silver); }
+.home .featured-all:hover .all-corner,
+.home .featured-all:focus-visible .all-corner { border-color:var(--logic-gold); }
+.home .featured-all:hover .arr,
+.home .featured-all:focus-visible .arr { color:var(--silver); transform:translateX(3px); }
