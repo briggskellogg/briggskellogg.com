@@ -192,7 +192,8 @@
                 points = x1+','+y1+' '+x2+','+y2;
             } else {
                 x1 = a.right - pr.left + 8;
-                y1 = a.top - pr.top + 80;
+                var logo = panels.querySelector('.logo img').getBoundingClientRect();
+                y1 = logo.top + logo.height / 2 - pr.top;
                 x2 = b.left - pr.left + b.width / 2;
                 y2 = b.top - pr.top - 8;
                 points = x1+','+y1+' '+x2+','+y1+' '+x2+','+y2;

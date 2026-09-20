@@ -86,32 +86,35 @@
 
         var layoutRect = layout.getBoundingClientRect();
         var refRect = ref.querySelector('.note-symbol').getBoundingClientRect();
-        var refMidY = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
-        var refRightX = (refRect.right - layoutRect.left) + 10;
 
         var marker = note.querySelector('.fn-marker .note-symbol');
         var dotRect = (marker || note).getBoundingClientRect();
         var x2 = (dotRect.left - layoutRect.left) - 8;
         var y2 = (dotRect.top - layoutRect.top) + dotRect.height / 2;
 
-        // Only draw in the gutter: a reference can occur halfway through a
-        // sentence, and a wire from the glyph would cross the following text.
+        // Travel in the interline space, then curve through the gutter.
+        // Starting at a symbol's midpoint can cross the following capital letter.
         var bodyRect = layout.querySelector('.essay-body').getBoundingClientRect();
-        var x1 = Math.max(refRightX, bodyRect.right - layoutRect.left + 6);
-        var y1 = refMidY;
+        var paragraph = ref.closest('p, li, blockquote, h2, h3') || ref.parentElement;
+        var range = document.createRange();
+        range.selectNodeContents(paragraph);
+        var lineTop = null;
+        Array.prototype.forEach.call(range.getClientRects(), function(rect) {
+            if (rect.height > refRect.height && rect.top <= refRect.bottom && rect.bottom >= refRect.top) {
+                if (lineTop === null || rect.top < lineTop) lineTop = rect.top;
+            }
+        });
+        var laneY = (lineTop === null ? refRect.top - 2 : lineTop - 4) - layoutRect.top;
+        var x1 = refRect.right - layoutRect.left + 4;
+        var y1 = laneY;
+        var gutterX = Math.max(x1, bodyRect.right - layoutRect.left + 6);
         var dx = x2 - x1;
         if (dx < 6) return;
-        var handle = Math.max(24, Math.min(dx * 0.5, 90));
-        var c1x = x1 + handle;
-        var c2x = x2 - handle;
-        if (c2x < c1x) {
-            var mid = x1 + dx * 0.5;
-            c1x = mid;
-            c2x = mid;
-        }
+        var mid = gutterX + (x2 - gutterX) / 2;
         var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                ' C ' + c1x.toFixed(1) + ' ' + y1.toFixed(1) +
-                ' ' + c2x.toFixed(1) + ' ' + y2.toFixed(1) +
+                ' L ' + gutterX.toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' C ' + mid.toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' ' + mid.toFixed(1) + ' ' + y2.toFixed(1) +
                 ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
 
         var defs = createSvg('defs', {});
@@ -119,7 +122,7 @@
             id: 'note-wire-fade', gradientUnits: 'userSpaceOnUse',
             x1: x1, y1: y1, x2: x2, y2: y2
         });
-        [[0, 0], [0.18, 1], [0.82, 1], [1, 0]].forEach(function(stop) {
+        [[0, 0.25], [Math.min(0.18, 8 / dx), 1], [Math.max(0.82, 1 - 8 / dx), 1], [1, 0.25]].forEach(function(stop) {
             gradient.appendChild(createSvg('stop', {
                 offset: stop[0], 'stop-color': 'currentColor', 'stop-opacity': stop[1]
             }));
