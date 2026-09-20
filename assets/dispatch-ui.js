@@ -18,27 +18,23 @@
     function updatedDate(value) {
         // Parse components directly: calendar dates must not shift with timezone.
         var parts = (value || '').split('-');
-        var months = ['january','february','march','april','may','june','july','august','september','october','november','december'];
+        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
         if (parts.length === 2) return months[Number(parts[1]) - 1] + ' ' + parts[0];
         if (parts.length !== 3) return value || '';
-        return Number(parts[2]) + ' ' + months[Number(parts[1]) - 1] + ' ' + parts[0];
+        return months[Number(parts[1]) - 1] + ' ' + parts[0];
     }
 
     // Archive metadata follows essay publication and revision dates, never site styling changes.
     (function() {
         var count = document.querySelector('[data-essay-count]');
-        var updated = document.querySelector('[data-index-updated]');
+        var since = document.querySelector('[data-index-since]');
         var list = window.DISPATCHES || [];
-        if (!count || !updated || !list.length) return;
-        count.textContent = list.length + (list.length === 1 ? ' essay' : ' essays');
-        var dates = [];
-        list.forEach(function(d) {
-            if (d.published) dates.push(d.published);
-            if (d.updated && /(?:-v|patch-)[1-9]\d*/.test(d.status || '')) dates.push(d.updated);
-        });
+        if (!count || !since || !list.length) return;
+        count.textContent = list.length + (list.length === 1 ? ' ESSAY' : ' ESSAYS');
+        var dates = list.map(function(d) { return d.published; }).filter(Boolean);
         dates.sort();
-        var latest = dates[dates.length - 1];
-        if (latest) { updated.dateTime = latest; updated.textContent = updatedDate(latest); }
+        var earliest = dates[0];
+        if (earliest) { since.dateTime = earliest; since.textContent = updatedDate(earliest).toUpperCase(); }
     })();
 
     // ---------- Essays index (card list) ----------

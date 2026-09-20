@@ -53,6 +53,16 @@
   }
 
   function wireForm(form) {
+    var field = form.querySelector('input[type="email"]');
+    var row = form.querySelector('.subscribe-row');
+    function syncFieldState() {
+      if (!row || !row.classList) return;
+      if (field && field.value) row.classList.add('has-value');
+      else row.classList.remove('has-value');
+    }
+    if (field && field.addEventListener) field.addEventListener('input', syncFieldState);
+    syncFieldState();
+
     form.addEventListener("submit", function (event) {
       if (!ENDPOINT) return;
 

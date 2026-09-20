@@ -716,3 +716,166 @@ body[data-essay-id] .essay-subtitle em { font-family:var(--font-mono); font-size
  .reading-subscribe input[type="email"], .reading-subscribe button { font-size:16px !important; }
  .reading-subscribe button { flex-basis:112px; }
 }
+
+/* September 20 revision: return to the original reading mechanics and quiet chrome. */
+
+/* Part numerals use their natural width so the title always begins the same
+   distance after the final Roman-numeral stroke. */
+.essay-part { display:flex; align-items:baseline; gap:.55rem; }
+.essay-part-num { min-width:0; width:auto; flex:0 0 auto; }
+
+/* Keep the soundtrack annotation in the title frame without letting it
+   crowd long titles. Symmetric title padding preserves true centering. */
+body[data-essay-id] .essay-title-row {
+ box-sizing:border-box;
+ width:100%;
+ padding:40px 92px 0;
+}
+body[data-essay-id] .essay-soundtrack { left:24px; top:46px; }
+
+/* The version date sits below the badge with a real gap, so its backdrop can
+   never erase the badge's lower edge. */
+.essay-revision .revision-updated {
+ top:calc(100% + 7px);
+ padding:5px 7px;
+ background:var(--bg-raised);
+ border:1px solid var(--border-12);
+ pointer-events:none;
+}
+
+/* A corner-marked utility rather than a second floating panel. */
+.reading-subscribe {
+ width:296px;
+ padding:10px;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
+ background-color:transparent;
+ background-image:
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50));
+ background-repeat:no-repeat;
+ background-size:10px 1px,1px 10px,10px 1px,1px 10px,10px 1px,1px 10px,10px 1px,1px 10px;
+ background-position:left top,left top,right top,right top,left bottom,left bottom,right bottom,right bottom;
+}
+.reading-subscribe input[type="email"],
+.reading-subscribe button { font-family:var(--font-mono); font-size:10px !important; }
+.reading-subscribe .subscribe-row { position:relative; }
+.reading-subscribe input[type="email"]::placeholder { color:transparent; }
+.reading-subscribe .subscribe-row::before {
+ content:'email@…';
+ position:absolute;
+ z-index:1;
+ left:11px;
+ top:50%;
+ transform:translateY(-50%);
+ font-family:var(--font-mono);
+ font-size:10px;
+ color:var(--ink-50);
+ pointer-events:none;
+}
+.reading-subscribe .subscribe-row:focus-within::before,
+.reading-subscribe .subscribe-row.has-value::before { opacity:0; }
+.reading-subscribe button { flex-basis:100px; }
+
+/* Archive typography stays in the same mono vocabulary as labels and notes. */
+.home .featured-label,
+.home .recs-label,
+.footnote,
+.fn-content { font-family:var(--font-mono); }
+.essays-index .index-head .essay-title {
+ text-transform:uppercase;
+ letter-spacing:.1em;
+}
+.essays-index .tl-title,
+.essays-index .tl-card:hover .tl-title,
+.essays-index .tl-card:focus-visible .tl-title { color:var(--ink); }
+.index-history { text-transform:uppercase; letter-spacing:.08em; }
+
+/* The homepage's two routes use corner marks without extra panel borders. */
+.home .featured { border:0; background:transparent; }
+.home .featured > .ffc { display:none; }
+.home .featured-label { border:0; background:transparent; }
+.home .featured-all {
+ position:relative;
+ margin-top:28px;
+ border:0;
+ background:transparent;
+ transform:none;
+}
+.home .featured-all::before { display:none; }
+.home .featured-all:hover { border-color:transparent; background:var(--ink-06); transform:none; }
+.all-corner { position:absolute; width:7px; height:7px; pointer-events:none; }
+.all-corner-tl { top:0; left:0; border-top:1px solid var(--border-50); border-left:1px solid var(--border-50); }
+.all-corner-tr { top:0; right:0; border-top:1px solid var(--border-50); border-right:1px solid var(--border-50); }
+.all-corner-bl { bottom:0; left:0; border-bottom:1px solid var(--border-50); border-left:1px solid var(--border-50); }
+.all-corner-br { bottom:0; right:0; border-bottom:1px solid var(--border-50); border-right:1px solid var(--border-50); }
+.home-invitation {
+ background:transparent;
+ padding:0;
+ text-shadow:0 1px var(--bg),1px 0 var(--bg),0 -1px var(--bg),-1px 0 var(--bg);
+}
+
+/* The social choices fan out from the blob as independent links—there is no
+   popup panel competing with the page. */
+.social-links {
+ right:0;
+ bottom:0;
+ width:238px;
+ height:160px;
+ padding:0;
+ border:0;
+ border-radius:0;
+ background:transparent;
+ box-shadow:none;
+ pointer-events:none;
+}
+.social-links a {
+ position:absolute;
+ width:max-content;
+ min-width:72px;
+ justify-content:space-between;
+ gap:10px;
+ padding:7px 9px;
+ border:1px solid var(--border-25);
+ background:var(--bg-raised);
+ box-shadow:0 3px 12px #0001;
+ pointer-events:auto;
+}
+.social-links a:nth-child(1) { right:76px; bottom:3px; }
+.social-links a:nth-child(2) { right:62px; bottom:53px; }
+.social-links a:nth-child(3) { right:14px; bottom:103px; }
+
+/* Quote navigation reads as one centered instrument. Credits use one weight;
+   a quieter second tone separates a work from its subtitle. */
+.home .quote-nav { width:100%; justify-content:center; }
+.home .quote-position { flex:0 0 auto; }
+.home .attribution { display:flex; align-items:center; gap:.45em; }
+.home .attribution-dash { display:inline-flex; align-items:center; line-height:1; transform:translateY(-.03em); }
+.home .attribution-title,
+.home .has-subtitle .attribution-title { font-weight:400; color:var(--ink-80); }
+.home .attribution-subtitle { font-weight:400; color:var(--ink-50); letter-spacing:.08em; }
+
+/* Timeline labels and nodes share one visual center at the top of each card. */
+.essays-index .tl-node { top:2px; }
+.essays-index .tl-no {
+ display:flex;
+ align-items:center;
+ justify-content:flex-end;
+ min-height:14px;
+ margin-bottom:0;
+ line-height:1.4;
+}
+.essays-index .tl-date { margin-top:6px; }
+
+@media(max-width:600px) {
+ body[data-essay-id] .essay-head { width:100%; max-width:none; }
+ body[data-essay-id] .essay-title-row { padding:40px 64px 0; }
+ body[data-essay-id] .essay-soundtrack { left:18px; top:45px; width:46px; flex-basis:46px; }
+ body[data-essay-id] .essay-vibe-img { width:30px; height:30px; }
+ .reading-subscribe input[type="email"], .reading-subscribe button { font-size:10px !important; }
+ .reading-subscribe button { flex-basis:100px; }
+ .essays-index .tl-no { justify-content:flex-start; }
+}

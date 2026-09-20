@@ -86,42 +86,31 @@
 
         var layoutRect = layout.getBoundingClientRect();
         var refRect = ref.querySelector('.note-symbol').getBoundingClientRect();
+        var refMidY = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
+        var refRightX = (refRect.right - layoutRect.left) + 10;
 
         var marker = note.querySelector('.fn-marker .note-symbol');
         var dotRect = (marker || note).getBoundingClientRect();
         var x2 = (dotRect.left - layoutRect.left) - 8;
         var y2 = (dotRect.top - layoutRect.top) + dotRect.height / 2;
 
-        // Travel in the interline space, then curve through the gutter.
-        // Starting at a symbol's midpoint can cross the following capital letter.
-        var bodyRect = layout.querySelector('.essay-body').getBoundingClientRect();
-        var paragraph = ref.closest('p, li, blockquote, h2, h3') || ref.parentElement;
-        var range = document.createRange();
-        range.selectNodeContents(paragraph);
-        var lineTop = null;
-        Array.prototype.forEach.call(range.getClientRects(), function(rect) {
-            if (rect.height > refRect.height && rect.top <= refRect.bottom && rect.bottom >= refRect.top) {
-                if (lineTop === null || rect.top < lineTop) lineTop = rect.top;
-            }
-        });
-        var laneY = (lineTop === null ? refRect.top - 2 : lineTop - 4) - layoutRect.top;
-        var x1 = refRect.right - layoutRect.left + 4;
-        var y1 = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
+        // The original connector was one continuous cubic curve from the
+        // body marker to the centre of the matching note marker.
+        var x1 = refRightX;
+        var y1 = refMidY;
         var dx = x2 - x1;
         if (dx < 6) return;
-        var gutterX = Math.min(x2 - 8, Math.max(x1 + 26, bodyRect.right - layoutRect.left + 6));
-        var entryX = Math.min(gutterX, x1 + 22);
-        var horizontalHandle = Math.max(10, (gutterX - entryX) * 0.45);
-        var gutterHandle = Math.max(6, Math.min((x2 - gutterX) * 0.5, 18));
+        var handle = Math.max(24, Math.min(dx * 0.5, 90));
+        var c1x = x1 + handle;
+        var c2x = x2 - handle;
+        if (c2x < c1x) {
+            var mid = x1 + dx * 0.5;
+            c1x = mid;
+            c2x = mid;
+        }
         var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                ' C ' + (x1 + 8).toFixed(1) + ' ' + y1.toFixed(1) +
-                ' ' + (x1 + 8).toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' ' + entryX.toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' C ' + (entryX + horizontalHandle).toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' ' + (gutterX - horizontalHandle).toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' ' + gutterX.toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' C ' + (gutterX + gutterHandle).toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' ' + (x2 - gutterHandle).toFixed(1) + ' ' + y2.toFixed(1) +
+                ' C ' + c1x.toFixed(1) + ' ' + y1.toFixed(1) +
+                ' ' + c2x.toFixed(1) + ' ' + y2.toFixed(1) +
                 ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
 
         var defs = createSvg('defs', {});
