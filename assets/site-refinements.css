@@ -687,3 +687,32 @@ body[data-essay-id] .essay-title { min-width:0; }
 @media(prefers-reduced-motion:reduce) {
  .tl-status:not([data-status="finalized"])::before { animation:none; box-shadow:none; }
 }
+
+/* Keep the essay title and its listening annotation inside one centered frame. */
+body[data-essay-id] .essay-head { box-sizing:border-box; min-width:min(100%,330px); margin-left:auto; margin-right:auto; }
+body[data-essay-id] .essay-title-row { position:relative; display:block; padding:40px 0 0; }
+body[data-essay-id] .essay-soundtrack { position:absolute; left:34px; top:40px; margin:0; }
+body[data-essay-id] .essay-title { margin-left:auto; margin-right:auto; text-align:center; }
+body[data-essay-id] .essay-subtitle,
+body[data-essay-id] .essay-subtitle em { font-family:var(--font-mono); font-size:11px; font-style:normal; line-height:1.8; letter-spacing:-.01em; }
+
+/* A compact developer-style signup: the controls retain their working area. */
+.reading-subscribe { width:296px; padding:6px; border:1px solid var(--border-25); border-radius:3px; background:var(--bg-raised); box-shadow:none; }
+.reading-subscribe::before, .email-orbit { display:none; }
+.reading-subscribe .subscribe-row { gap:8px; }
+.reading-subscribe input[type="email"], .reading-subscribe button { font-family:var(--font-mono); font-size:13.3333px !important; }
+.reading-subscribe input[type="email"] { min-height:42px; }
+
+/* The version remains a small framed object; its date appears on request. */
+.essay-revision .frame-status { gap:7px; padding:7px 9px; border:1px solid var(--border-25); background:var(--ink-06); }
+.essay-revision .sc { display:block; }
+
+/* The divider introduces the archive route rather than separating the label. */
+.home .featured-head::after { display:none; }
+.home .featured-all { position:relative; margin-top:44px; }
+.home .featured-all::before { content:''; position:absolute; left:50%; top:-22px; width:260px; max-width:calc(100vw - 96px); height:1px; transform:translateX(-50%); background:linear-gradient(90deg,transparent,var(--border-20) 35%,var(--border-20) 65%,transparent); opacity:.65; pointer-events:none; }
+@media(max-width:600px) {
+ body[data-essay-id] .essay-soundtrack { left:30px; }
+ .reading-subscribe input[type="email"], .reading-subscribe button { font-size:16px !important; }
+ .reading-subscribe button { flex-basis:112px; }
+}

@@ -106,15 +106,22 @@
         });
         var laneY = (lineTop === null ? refRect.top - 2 : lineTop - 4) - layoutRect.top;
         var x1 = refRect.right - layoutRect.left + 4;
-        var y1 = laneY;
-        var gutterX = Math.max(x1, bodyRect.right - layoutRect.left + 6);
+        var y1 = ((refRect.top + refRect.bottom) / 2) - layoutRect.top;
         var dx = x2 - x1;
         if (dx < 6) return;
-        var mid = gutterX + (x2 - gutterX) / 2;
+        var gutterX = Math.min(x2 - 8, Math.max(x1 + 26, bodyRect.right - layoutRect.left + 6));
+        var entryX = Math.min(gutterX, x1 + 22);
+        var horizontalHandle = Math.max(10, (gutterX - entryX) * 0.45);
+        var gutterHandle = Math.max(6, Math.min((x2 - gutterX) * 0.5, 18));
         var d = 'M ' + x1.toFixed(1) + ' ' + y1.toFixed(1) +
-                ' L ' + gutterX.toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' C ' + mid.toFixed(1) + ' ' + laneY.toFixed(1) +
-                ' ' + mid.toFixed(1) + ' ' + y2.toFixed(1) +
+                ' C ' + (x1 + 8).toFixed(1) + ' ' + y1.toFixed(1) +
+                ' ' + (x1 + 8).toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' ' + entryX.toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' C ' + (entryX + horizontalHandle).toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' ' + (gutterX - horizontalHandle).toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' ' + gutterX.toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' C ' + (gutterX + gutterHandle).toFixed(1) + ' ' + laneY.toFixed(1) +
+                ' ' + (x2 - gutterHandle).toFixed(1) + ' ' + y2.toFixed(1) +
                 ' ' + x2.toFixed(1) + ' ' + y2.toFixed(1);
 
         var defs = createSvg('defs', {});
