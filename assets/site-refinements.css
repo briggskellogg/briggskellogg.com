@@ -1535,3 +1535,58 @@ body[data-essay-id] .essay-subtitle em { color:var(--ink-50); opacity:.82; }
 .home .featured-all:focus-visible .all-corner { border-color:var(--logic-gold); }
 .home .featured-all:hover .arr,
 .home .featured-all:focus-visible .arr { color:var(--silver); transform:translateX(3px); }
+
+/* September 20, v44: mirror the complete soundtrack annotation to the title's
+   right, and keep the subscribe control quiet while its arrow supplies motion. */
+body[data-essay-id] .essay-title-row::after {
+ grid-column:1;
+ grid-row:1;
+}
+body[data-essay-id] .essay-title {
+ grid-column:2;
+ grid-row:1;
+}
+body[data-essay-id] .essay-soundtrack {
+ grid-column:3;
+ grid-row:1;
+ margin:10px auto 0 0;
+}
+body[data-essay-id] .soundtrack-note {
+ left:auto;
+ right:-30px;
+ align-items:flex-end;
+ transform:rotate(6deg);
+}
+body[data-essay-id] .soundtrack-note svg {
+ margin-left:0;
+ margin-right:0;
+ transform:scaleX(-1);
+ transform-origin:center;
+}
+.reading-subscribe button .arr {
+ display:inline-block;
+ margin-left:.25em;
+ transition:transform .2s ease;
+}
+.reading-subscribe button:not(:disabled):hover,
+.reading-subscribe button:not(:disabled):focus-visible,
+.essays-index .reading-subscribe button:not(:disabled):hover,
+.essays-index .reading-subscribe button:not(:disabled):focus-visible {
+ background:var(--ink);
+ color:var(--logic-gold);
+}
+.reading-subscribe button:not(:disabled):hover .arr,
+.reading-subscribe button:not(:disabled):focus-visible .arr {
+ transform:translateX(3px);
+}
+@media(max-width:700px) {
+ body[data-essay-id] .essay-soundtrack { margin-top:8px; }
+ body[data-essay-id] .soundtrack-note { right:-18px; }
+}
+
+/* The selected essay carries the same gold frame cue as an archive card on
+   hover: title corners and the photograph's edge/corners, without tinting the
+   prose or photograph itself. */
+body[data-essay-id] .essay-head .hc,
+body[data-essay-id] .essay-figure .fc { border-color:var(--logic-gold); }
+body[data-essay-id] .essay-figure img { border-color:var(--logic-gold); }
