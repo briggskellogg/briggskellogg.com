@@ -54,6 +54,7 @@
                 ? '<div class="tl-thumb"><img src="' + esc(d.image) + '" alt="Lead photograph for ' + esc(d.title) + '" loading="lazy" decoding="async"></div>'
                 : '';
             var excerpt = d.excerpt ? '<p class="tl-excerpt">' + esc(d.excerpt) + '</p>' : '';
+            var updated = d.updated ? '<p class="tl-card-updated">last updated <time datetime="' + esc(d.updated) + '">' + esc(updatedDate(d.updated)) + '</time></p>' : '';
             return '<div class="tl-entry tl-entry--' + esc(arch) + last + '">' +
                 '<div class="tl-spine">' +
                     '<span class="tl-line"></span>' +
@@ -73,6 +74,7 @@
                                 '<span class="tl-status" data-status="' + esc(ver.slug || d.status) + '">' + esc(ver.label) + '</span>' +
                             '</div>' +
                         '</div>' +
+                        updated +
                     '</div>' +
                 '</a>' +
             '</div>';
@@ -178,6 +180,11 @@
                 var statusTx = statusEl.querySelector('.featured-status-text');
                 if (statusTx) statusTx.textContent = ver.label;
             }
+        }
+        var updatedEl = document.querySelector('.featured-updated');
+        if (updatedEl && d.updated) {
+            updatedEl.setAttribute('aria-label', 'Featured essay last updated ' + updatedDate(d.updated));
+            updatedEl.innerHTML = 'last updated <time datetime="' + esc(d.updated) + '">' + esc(updatedDate(d.updated)) + '</time>';
         }
         if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
         if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);

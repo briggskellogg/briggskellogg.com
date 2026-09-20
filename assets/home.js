@@ -197,8 +197,8 @@
                 x2 = b.left - pr.left + b.width / 2;
                 y2 = b.top - pr.top - 8;
                 points = x1+','+y1+' '+x2+','+y1+' '+x2+','+y2;
-                label.style.left = ((x1 + x2) / 2 - label.offsetWidth / 2) + 'px';
-                label.style.top = (y1 - label.offsetHeight / 2) + 'px';
+                label.style.left = (a.left - pr.left + 24) + 'px';
+                label.style.top = (a.bottom - pr.top + 8) + 'px';
             }
             svg.setAttribute('viewBox','0 0 '+pr.width+' '+pr.height);
             svg.querySelector('.home-link-line').setAttribute('points',points);

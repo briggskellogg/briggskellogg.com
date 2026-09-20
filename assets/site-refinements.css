@@ -964,3 +964,193 @@ body[data-essay-id] .essay-soundtrack { left:24px; top:46px; }
  .home-invitation { position:relative; }
  .essays-index .index-head .essay-title { font-size:2.8rem; }
 }
+
+/* September 20 composition pass: keep article identity compact and centered. */
+body[data-essay-id] .essay-title-row {
+ display:grid;
+ grid-template-columns:76px fit-content(720px) 76px;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ width:100%;
+ padding:40px 18px 0;
+}
+body[data-essay-id] .essay-title-row::after { content:''; grid-column:3; }
+body[data-essay-id] .essay-soundtrack {
+ position:relative;
+ grid-column:1;
+ align-self:center;
+ left:auto;
+ top:auto;
+ width:60px;
+ margin:10px 0 0 auto;
+}
+body[data-essay-id] .essay-title { grid-column:2; width:100%; }
+body[data-essay-id] .essay-subtitle {
+ width:min(100% - 40px,680px);
+ margin-left:auto;
+ margin-right:auto;
+}
+.essay-revision .revision-updated {
+ padding:6px 0 0;
+ border:0;
+ background:transparent;
+}
+
+/* Give the archive title and its quieter history separate lines. */
+.essays-index .index-head .essay-title { margin:0 0 22px; }
+.index-history { color:var(--ink-50); font-weight:400; }
+.index-history [data-essay-count] { color:var(--ink); font-weight:600; }
+.index-history time { color:var(--ink-50); font-weight:400; }
+
+/* The contact note is its own handwritten annotation below the BEK panel. */
+.home-invitation {
+ padding:0;
+ background:none;
+ background-image:none;
+ background-attachment:initial;
+ text-shadow:none;
+}
+.contact-corner { display:none; }
+.contact-arrow {
+ position:absolute;
+ left:calc(100% - 14px);
+ top:12px;
+ width:336px;
+ height:120px;
+ overflow:visible;
+ fill:none;
+ stroke:currentColor;
+ stroke-width:1.1;
+ stroke-linecap:round;
+ stroke-linejoin:round;
+ opacity:.72;
+ pointer-events:none;
+}
+.home .quotes-carousel { min-height:90px; }
+@media(min-width:1010px) {
+ .home .home-panels { padding-bottom:78px; }
+}
+
+/* The archive route belongs immediately below the featured essay card. */
+.home .featured-all { margin-top:14px; }
+
+.featured-updated,
+.tl-card-updated {
+ position:absolute;
+ z-index:3;
+ right:18px;
+ bottom:-6px;
+ margin:0;
+ padding:0 7px;
+ background:var(--bg);
+ font-family:var(--font-mono);
+ font-size:8px;
+ font-weight:400;
+ line-height:12px;
+ letter-spacing:.045em;
+ color:var(--ink-25);
+ white-space:nowrap;
+ pointer-events:none;
+}
+.featured-updated time,
+.tl-card-updated time { margin-left:.25em; color:inherit; }
+.tl-card-updated { background:var(--bg-raised); }
+
+/* Social destinations orbit the artwork as three quiet, circular marks. */
+.social-links {
+ right:0;
+ bottom:0;
+ width:154px;
+ height:132px;
+}
+.social-links a {
+ display:grid;
+ place-items:center;
+ width:34px;
+ min-width:34px;
+ height:34px;
+ padding:0;
+ border:1px solid var(--border-25);
+ border-radius:50%;
+ background:color-mix(in srgb,var(--bg-raised) 86%,transparent);
+ box-shadow:none;
+ font-size:9px;
+ line-height:1;
+ letter-spacing:.04em;
+ text-transform:lowercase;
+ color:var(--ink-50);
+ backdrop-filter:blur(5px);
+ transition:border-color .2s,color .2s,background .2s;
+}
+.social-links a:hover,
+.social-links a:focus-visible {
+ border-color:var(--border-50);
+ background:var(--bg-raised);
+ color:var(--ink);
+ box-shadow:none;
+}
+.social-links a:nth-child(1) { right:68px; bottom:2px; }
+.social-links a:nth-child(2) { right:76px; bottom:49px; }
+.social-links a:nth-child(3) { right:42px; bottom:88px; }
+
+@media(max-width:700px) {
+ body[data-essay-id] .essay-title-row {
+  grid-template-columns:52px minmax(0,1fr) 52px;
+  gap:6px;
+  padding:52px 8px 0;
+ }
+ body[data-essay-id] .essay-soundtrack { width:46px; margin-top:8px; }
+ body[data-essay-id] .essay-subtitle { width:min(100% - 28px,560px); }
+ .home-invitation { margin:34px auto 58px; }
+ .contact-arrow { left:50%; top:calc(100% + 2px); transform:rotate(76deg); }
+}
+
+/* One wider email field: the action sits inside it and four marks replace
+   the surrounding panel. */
+.reading-subscribe,
+.essays-index .reading-subscribe {
+ width:356px;
+ max-width:calc(100vw - 32px);
+ padding:8px;
+ border:0;
+ border-radius:0;
+ background-color:transparent;
+ background-image:
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50)),
+  linear-gradient(var(--border-50),var(--border-50)),linear-gradient(var(--border-50),var(--border-50));
+ background-repeat:no-repeat;
+ background-size:10px 1px,1px 10px,10px 1px,1px 10px,10px 1px,1px 10px,10px 1px,1px 10px;
+ background-position:left top,left top,right top,right top,left bottom,left bottom,right bottom,right bottom;
+ box-shadow:none;
+}
+.reading-subscribe .subscribe-row { position:relative; display:block; width:100%; }
+.reading-subscribe input[type="email"] {
+ display:block;
+ width:100%;
+ min-height:46px;
+ padding:9px 118px 9px 11px;
+ border:1px solid var(--ink-20);
+ border-radius:3px;
+ background:var(--bg);
+}
+.reading-subscribe button {
+ position:absolute;
+ z-index:2;
+ top:4px;
+ right:4px;
+ bottom:4px;
+ width:106px;
+ min-height:0;
+ padding:0 9px;
+}
+.reading-subscribe .subscribe-row::before { left:12px; }
+
+@media(max-width:460px) {
+ .reading-subscribe,
+ .essays-index .reading-subscribe { width:min(356px,calc(100vw - 24px)); max-width:none; }
+ .reading-subscribe input[type="email"] { padding-right:108px; }
+ .reading-subscribe button { width:96px; }
+}
