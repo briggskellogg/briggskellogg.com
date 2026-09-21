@@ -9,6 +9,7 @@ body[data-essay-id] .essay-jump {
  margin:0 auto 36px;
  padding:22px 22px 22px 40px;
  box-sizing:border-box;
+ border:1px solid color-mix(in srgb,var(--logic-gold) 45%,transparent);
 }
 body[data-essay-id] .contents-heading {
  margin:0 0 22px;
@@ -94,7 +95,7 @@ body[data-essay-id] .contents-corner {
  width:8px;
  height:8px;
  pointer-events:none;
- border-color:var(--border-50);
+ border-color:var(--logic-gold);
  border-style:solid;
  border-width:0;
 }
