@@ -2100,3 +2100,10 @@ body[data-essay-id] .essay-image-frame { position:relative; padding:.55rem; }
 /* Bring the upper title ornaments closer without shifting the title or artwork. */
 body[data-essay-id] .essay-head .hc-tl,
 body[data-essay-id] .essay-head .hc-tr { top:19px; }
+
+/* Inactive subscription actions have no hover treatment. */
+.reading-subscribe .essay-subscribe:not(.is-confirmed) button:disabled,
+.reading-subscribe .essay-subscribe:not(.is-confirmed) button:disabled:hover {
+ background:transparent; color:var(--ink-80); cursor:default;
+}
+.reading-subscribe button:disabled .arr { transform:none; }

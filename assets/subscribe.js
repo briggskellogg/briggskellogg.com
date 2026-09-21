@@ -9,12 +9,12 @@
     var row = form.querySelector('.subscribe-row');
     if (!ENDPOINT || !field || !button || !row) return;
 
-    // The unenhanced form retains native validation; the enhanced control
-    // reports problems within its own field instead of a browser popover.
+    // Invalid addresses and failed requests quietly disable the action.
     form.noValidate = true;
     var originalButton = button.innerHTML;
     var originalLabel = button.getAttribute('aria-label') || 'Subscribe';
     var pending = false;
+    var failed = false;
     var requestId = 0;
     var status = form.querySelector('[data-subscribe-status]');
     if (!status) {
@@ -34,14 +34,15 @@
 
     function syncFieldState() {
       row.classList.toggle('has-value', Boolean(field.value));
+      button.disabled = pending || failed || form.classList.contains('is-confirmed') || !field.value.trim() || !field.validity.valid;
     }
 
     function restoreButton() {
-      button.disabled = false;
       button.innerHTML = originalButton;
       button.setAttribute('aria-label', originalLabel);
       form.removeAttribute('aria-busy');
       pending = false;
+      syncFieldState();
     }
 
     function clearError() {
@@ -52,15 +53,11 @@
       status.classList.remove('is-error');
     }
 
-    function showError(message, invalid) {
+    function showError() {
+      failed = true;
       restoreButton();
-      form.classList.add('has-error');
+      clearError();
       field.disabled = false;
-      if (invalid) field.setAttribute('aria-invalid', 'true');
-      else field.removeAttribute('aria-invalid');
-      status.classList.add('is-error');
-      status.hidden = false;
-      status.textContent = message;
     }
 
     function showConfirmed() {
@@ -77,6 +74,7 @@
     }
 
     function fieldChanged() {
+      failed = false;
       // An old response must not overwrite feedback for a newly entered email.
       if (pending) {
         requestId += 1;
@@ -91,15 +89,14 @@
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
-      if (pending || form.classList.contains('is-confirmed')) return;
+      if (pending || failed || form.classList.contains('is-confirmed')) return;
       clearError();
 
       var email = field.value.trim();
       field.value = email;
       syncFieldState();
       if (!email || !field.validity.valid) {
-        showError(email ? 'enter a valid email address' : 'enter your email address', true);
-        field.focus();
+        syncFieldState();
         return;
       }
 
@@ -120,16 +117,12 @@
           if (attempt !== requestId) return;
           if (response.ok && data.ok) {
             showConfirmed();
-          } else if (response.status === 400 || response.status === 422) {
-            showError('check your email address', true);
-          } else if (response.status === 429) {
-            showError('please wait a moment · retry', false);
           } else {
-            showError('couldn’t send · try again', false);
+            showError();
           }
         });
       }).catch(function () {
-        if (attempt === requestId) showError('connection failed · try again', false);
+        if (attempt === requestId) showError();
       });
     });
   }
