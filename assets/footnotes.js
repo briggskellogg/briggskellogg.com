@@ -51,6 +51,8 @@
 
         var key = notes.querySelector('.note-key');
         var lastBottom = key ? key.offsetHeight + 20 : 0;
+        var contents = notes.querySelector('.essay-jump');
+        if (contents) lastBottom = Math.max(lastBottom, contents.offsetTop + contents.offsetHeight);
         var gap = 32;
         items.forEach(function(item) {
             var y = Math.max(item.targetY, lastBottom + gap);
@@ -228,5 +230,7 @@
         ro.observe(layout);
         var body = document.querySelector('.essay-body');
         if (body) ro.observe(body);
+        var contents = document.querySelector('.essay-jump');
+        if (contents) ro.observe(contents);
     }
 })();

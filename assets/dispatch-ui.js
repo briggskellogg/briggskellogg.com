@@ -148,17 +148,24 @@
                 ? '<a class="essay-jump-row" href="' + esc(link.href) + '"><span class="essay-jump-numeral">' + esc(link.numeral) + '</span>' + title + time + '</a>'
                 : '<span class="essay-jump-row essay-jump-intro">' + title + time + '</span>';
         }).join('') + '</div>';
-        var heading = document.querySelector('.essay-head');
-        if (heading && heading.parentElement === figure.parentElement) {
-            var opening = document.createElement('div');
-            opening.className = 'essay-frontmatter';
-            heading.before(opening);
-            opening.appendChild(heading);
-            opening.appendChild(figure);
-            opening.appendChild(nav);
-        } else {
-            figure.insertAdjacentElement('afterend', nav);
+        ['tl','tr','bl','br'].forEach(function(corner) {
+            var mark = document.createElement('span');
+            mark.className = 'contents-corner contents-corner-' + corner;
+            mark.setAttribute('aria-hidden', 'true');
+            nav.appendChild(mark);
+        });
+        var notes = document.querySelector('.essay-notes');
+        var layout = document.querySelector('.essay-layout');
+        var stacked = window.matchMedia('(max-width: 1024px)');
+        function placeContents() {
+            if (notes && layout && !stacked.matches) notes.prepend(nav);
+            else if (layout) layout.before(nav);
+            else figure.insertAdjacentElement('afterend', nav);
         }
+        placeContents();
+        if (stacked.addEventListener) stacked.addEventListener('change', placeContents);
+        else stacked.addListener(placeContents);
+
     })();
 
     // ---------- Essay nav (prev/next dispatches) ----------
