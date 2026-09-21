@@ -120,4 +120,4 @@ body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
 @media(min-width:701px) {
  body[data-essay-id] .essay-head { padding-left:40px; padding-right:40px; }
 }
-body[data-essay-id] .soundtrack-note { right:-16px; }
+body[data-essay-id] .soundtrack-note { right:-28px; }
