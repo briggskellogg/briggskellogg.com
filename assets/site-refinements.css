@@ -2119,3 +2119,12 @@ body[data-essay-id] .essay-head .hc-tr { top:19px; }
 .reading-subscribe button:not(:disabled):hover::before,
 .reading-subscribe button:not(:disabled):focus-visible::before { border-color:var(--logic-gold); }
 .social-connector--linkedin { stroke-dasharray:2 3.5; }
+
+/* Photographer credits use the caption palette in every link state. */
+body[data-essay-id] .essay-figure figcaption a,
+body[data-essay-id] .essay-figure figcaption a:visited {
+ color:inherit;
+ text-decoration:underline;
+ text-underline-offset:3px;
+ text-decoration-thickness:1px;
+}
