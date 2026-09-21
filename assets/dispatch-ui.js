@@ -141,13 +141,13 @@
         var nav = document.createElement('nav');
         nav.className = 'essay-jump';
         nav.setAttribute('aria-label', 'Essay contents');
-        nav.innerHTML = '<span class="essay-jump-track">' + links.map(function(link, index) {
-            var section = link.numeral
-                ? '<a href="' + esc(link.href) + '"><span class="essay-jump-numeral">' + esc(link.numeral) + '</span><span class="essay-jump-title">' + esc(link.title) + '</span></a>'
-                : '<span class="essay-jump-intro"><span class="essay-jump-title">' + esc(link.title) + '</span></span>';
-            return section +
-                '<span class="essay-jump-connector" aria-label="approximately ' + link.minutes + ' minutes"><span class="essay-jump-time">~' + link.minutes + ' min</span></span>';
-        }).join('') + '<span class="essay-jump-end">end</span></span>';
+        nav.innerHTML = '<div class="essay-jump-track">' + links.map(function(link) {
+            var time = '<span class="essay-jump-time" aria-label="approximately ' + link.minutes + ' minutes">~' + link.minutes + ' min</span>';
+            var title = '<span class="essay-jump-title">' + esc(link.title) + '</span>';
+            return link.numeral
+                ? '<a class="essay-jump-row" href="' + esc(link.href) + '"><span class="essay-jump-numeral">' + esc(link.numeral) + '</span>' + title + time + '</a>'
+                : '<span class="essay-jump-row essay-jump-intro">' + title + time + '</span>';
+        }).join('') + '</div>';
         var heading = document.querySelector('.essay-head');
         if (heading && heading.parentElement === figure.parentElement) {
             var opening = document.createElement('div');

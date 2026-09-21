@@ -1,72 +1,88 @@
-/* The contents follow the opening plate vertically. Symmetric side columns
-   keep the title and photograph centered within the reading frame. */
+/* A quiet contents rail beside the opening title and photograph. */
+body[data-essay-id] .essay-head {
+ max-width:min(100%,470px);
+}
 .essay-frontmatter .essay-jump {
  position:relative;
- width:260px;
+ width:280px;
  max-width:100%;
  margin:0 auto 36px;
+ padding-left:20px;
+ box-sizing:border-box;
 }
 .essay-frontmatter .essay-jump-track {
  display:flex;
  flex-direction:column;
  align-items:stretch;
+ gap:26px;
  overflow:visible;
  padding:0;
 }
-.essay-frontmatter .essay-jump a {
+.essay-frontmatter .essay-jump-row {
+ position:relative;
  display:grid;
- grid-template-columns:24px minmax(0,1fr);
+ grid-template-columns:20px minmax(0,1fr) max-content;
  align-items:baseline;
- gap:8px;
+ gap:6px;
  white-space:normal;
+}
+.essay-frontmatter .essay-jump-row::before {
+ content:'';
+ position:absolute;
+ left:-20px;
+ top:7px;
+ width:5px;
+ height:5px;
+ border:1px solid var(--border-50);
+ border-radius:50%;
+ background:var(--bg);
+ z-index:1;
+ transition:border-color .2s ease,background-color .2s ease;
+}
+.essay-frontmatter .essay-jump-row:not(:last-child)::after {
+ content:'';
+ position:absolute;
+ left:-17px;
+ top:10px;
+ width:1px;
+ height:calc(100% + 26px);
+ background:var(--border-25);
+}
+.essay-frontmatter .essay-jump a:hover::before,
+.essay-frontmatter .essay-jump a:focus-visible::before {
+ border-color:var(--logic-gold);
+ background:var(--logic-gold);
 }
 .essay-frontmatter .essay-jump-numeral {
  min-width:0;
- width:24px;
+ width:auto;
  height:auto;
  transform:none;
 }
 .essay-frontmatter .essay-jump a .essay-jump-title {
  font-size:17px;
- line-height:1.25;
+ line-height:1.3;
 }
-.essay-frontmatter .essay-jump-intro,
-.essay-frontmatter .essay-jump-end { padding-left:32px; }
-.essay-frontmatter .essay-jump-connector {
- display:flex;
- flex-direction:column;
- align-items:center;
- flex:none;
- width:24px;
- min-width:0;
- height:60px;
- margin:8px 0;
+.essay-frontmatter .essay-jump-intro .essay-jump-title {
+ grid-column:1 / 3;
+ line-height:22px;
 }
-.essay-frontmatter .essay-jump-connector::before,
-.essay-frontmatter .essay-jump-connector::after {
- width:1px;
- height:auto;
- min-height:8px;
- background:repeating-linear-gradient(180deg,var(--border-50) 0 2px,transparent 2px 7px);
+.essay-frontmatter .essay-jump-time {
+ margin:0 0 0 5px;
+ font-size:14px;
+ line-height:1;
+ color:var(--ink-50);
+ transform:none;
 }
-.essay-frontmatter .essay-jump-connector::before {
- -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 25%,transparent 100%);
- mask-image:linear-gradient(180deg,#000 0%,#000 25%,transparent 100%);
-}
-.essay-frontmatter .essay-jump-connector::after {
- -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 75%,#000 100%);
- mask-image:linear-gradient(180deg,transparent 0%,#000 75%,#000 100%);
-}
-.essay-frontmatter .essay-jump-time { margin:5px 0; font-size:14px; line-height:1; }
 .essay-frontmatter .essay-jump a:focus-visible {
  outline:1px solid var(--border-50);
  outline-offset:5px;
 }
-@media(min-width:1200px) {
+@media(min-width:1000px) {
  .essay-frontmatter {
   display:grid;
-  grid-template-columns:144px minmax(0,1fr) 144px;
-  column-gap:16px;
+  grid-template-columns:260px minmax(0,1fr);
+  column-gap:32px;
  }
  .essay-frontmatter > .essay-head { grid-column:2; grid-row:1; }
  .essay-frontmatter > .essay-figure { grid-column:2; grid-row:2; }
@@ -75,10 +91,6 @@
   grid-row:1 / span 2;
   align-self:start;
   width:100%;
-  margin:32px 0 36px;
+  margin:40px 0 36px;
  }
-}
-@media(max-width:1199px) {
- .essay-frontmatter .essay-jump { width:240px; }
- .essay-frontmatter .essay-jump-connector { height:42px; margin:7px 0; }
 }
