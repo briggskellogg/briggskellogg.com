@@ -2095,3 +2095,7 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
 /* Frame the photograph itself, keeping its credit outside equal insets. */
 body[data-essay-id] .essay-figure { padding:0; }
 body[data-essay-id] .essay-image-frame { position:relative; padding:.55rem; }
+
+/* Bring the upper title ornaments closer without shifting the title or artwork. */
+body[data-essay-id] .essay-head .hc-tl,
+body[data-essay-id] .essay-head .hc-tr { top:19px; }
