@@ -2091,3 +2091,7 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  .essay-jump-time { font-size:14px; }
  .essay-jump a .essay-jump-title { font-size:.95rem; }
 }
+
+/* Frame the photograph itself, keeping its credit outside equal insets. */
+body[data-essay-id] .essay-figure { padding:0; }
+body[data-essay-id] .essay-image-frame { position:relative; padding:.55rem; }
