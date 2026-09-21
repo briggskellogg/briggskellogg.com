@@ -1,6 +1,6 @@
 /* Contents occupy the top of the notes column, above the first note. */
 body[data-essay-id] .essay-head {
- max-width:min(100%,470px);
+ max-width:min(100%,900px);
 }
 body[data-essay-id] .essay-jump {
  position:relative;
@@ -105,4 +105,14 @@ body[data-essay-id] .contents-corner-bl { bottom:-1px; left:-1px; border-bottom-
 body[data-essay-id] .contents-corner-br { bottom:-1px; right:-1px; border-bottom-width:1px; border-right-width:1px; }
 @media(min-width:1025px) {
  body[data-essay-id] .essay-notes > .essay-jump { margin:0; max-width:none; }
+}
+
+/* Single-line titles, with a moderate independent reading width for subtitles. */
+body[data-essay-id] .essay-title-row { grid-template-columns:60px minmax(0,1fr) 60px; }
+body[data-essay-id] .essay-title { white-space:nowrap; min-width:0; }
+body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
+@media(max-width:700px) {
+ body[data-essay-id] .essay-title-row { display:block; padding:100px 0 0; }
+ body[data-essay-id] .essay-soundtrack { position:absolute; right:10px; top:40px; margin:0; }
+ body[data-essay-id] .essay-subtitle { max-width:34em; }
 }

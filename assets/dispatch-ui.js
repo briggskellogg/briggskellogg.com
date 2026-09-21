@@ -246,3 +246,23 @@
         if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
     })();
 })();
+
+/* Measure the title after fonts load so even long names stay on one line. */
+(function () {
+ var head = document.querySelector('body[data-essay-id] .essay-head');
+ if (!head) return;
+ var title = head.querySelector('.essay-title');
+ function fitTitle() {
+  title.style.fontSize = '';
+  var base = parseFloat(getComputedStyle(title).fontSize);
+  var range = document.createRange();
+  range.selectNodeContents(title);
+  var natural = range.getBoundingClientRect().width;
+  head.style.width = Math.min(900, Math.max(520, natural + 240)) + 'px';
+  var available = title.clientWidth;
+  if (natural > available) title.style.fontSize = (base * available / natural) + 'px';
+ }
+ fitTitle();
+ if (document.fonts) document.fonts.ready.then(fitTitle);
+ window.addEventListener('resize', fitTitle);
+})();
