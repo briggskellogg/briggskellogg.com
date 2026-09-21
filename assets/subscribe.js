@@ -16,6 +16,7 @@
     var pending = false;
     var failed = false;
     var requestId = 0;
+    var controller = null;
     var status = form.querySelector('[data-subscribe-status]');
     if (!status) {
       status = document.createElement('p');
@@ -32,9 +33,13 @@
     if (describedBy.indexOf(status.id) === -1) describedBy.push(status.id);
     field.setAttribute('aria-describedby', describedBy.join(' '));
 
+    function validEmail() {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim()) && field.validity.valid;
+    }
+
     function syncFieldState() {
       row.classList.toggle('has-value', Boolean(field.value));
-      button.disabled = pending || failed || form.classList.contains('is-confirmed') || !field.value.trim() || !field.validity.valid;
+      button.disabled = pending || failed || form.classList.contains('is-confirmed') || !validEmail();
     }
 
     function restoreButton() {
@@ -60,17 +65,18 @@
       field.disabled = false;
     }
 
-    function showConfirmed() {
+    function showConfirmed(outcome) {
       clearError();
       pending = false;
       form.removeAttribute('aria-busy');
       form.classList.add('is-confirmed');
       field.disabled = true;
       button.disabled = true;
-      button.innerHTML = '<span>confirmation sent</span><span aria-hidden="true">✓</span>';
-      button.setAttribute('aria-label', 'Subscription confirmation sent. Check your inbox.');
+      var needsConfirmation = outcome === 'confirmation_sent';
+      button.innerHTML = '<span>' + (needsConfirmation ? 'confirmation sent' : 'subscribed') + '</span><span aria-hidden="true">✓</span>';
+      button.setAttribute('aria-label', needsConfirmation ? 'Subscription confirmation sent. Check your inbox.' : 'Subscribed to new essays.');
       status.hidden = false;
-      status.textContent = 'Confirmation sent. Check your inbox to confirm your subscription.';
+      status.textContent = needsConfirmation ? 'Confirmation sent. Check your inbox to confirm your subscription.' : 'You are subscribed to new essays.';
     }
 
     function fieldChanged() {
@@ -78,6 +84,7 @@
       // An old response must not overwrite feedback for a newly entered email.
       if (pending) {
         requestId += 1;
+        if (controller) controller.abort();
         restoreButton();
       }
       clearError();
@@ -95,7 +102,7 @@
       var email = field.value.trim();
       field.value = email;
       syncFieldState();
-      if (!email || !field.validity.valid) {
+      if (!validEmail()) {
         syncFieldState();
         return;
       }
@@ -108,21 +115,28 @@
       button.setAttribute('aria-label', 'Sending subscription request');
       var source = form.getAttribute('data-subscribe-source') || 'essay';
 
+      controller = new AbortController();
+      var thisController = controller;
+      var timeout = setTimeout(function () { thisController.abort(); }, 15000);
       fetch(ENDPOINT, {
+        signal: thisController.signal,
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, source: source })
       }).then(function (response) {
         return response.json().catch(function () { return {}; }).then(function (data) {
           if (attempt !== requestId) return;
-          if (response.ok && data.ok) {
-            showConfirmed();
+          if (response.ok && data.ok && (!data.outcome || data.outcome === 'subscribed' || data.outcome === 'confirmation_sent')) {
+            showConfirmed(data.outcome || 'subscribed');
           } else {
             showError();
           }
         });
       }).catch(function () {
         if (attempt === requestId) showError();
+      }).finally(function () {
+        clearTimeout(timeout);
+        if (controller === thisController) controller = null;
       });
     });
   }

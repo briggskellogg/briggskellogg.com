@@ -769,7 +769,7 @@ body[data-essay-id] .essay-soundtrack { left:24px; top:46px; }
 .reading-subscribe .subscribe-row { position:relative; }
 .reading-subscribe input[type="email"]::placeholder { color:transparent; }
 .reading-subscribe .subscribe-row::before {
- content:'email@…';
+ content:'email address';
  position:absolute;
  z-index:1;
  left:11px;
