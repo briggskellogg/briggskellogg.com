@@ -1908,11 +1908,12 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  .essays-index .tl-card { padding-bottom:39px; }
 }
 
-/* Archive interaction matches the featured essay: the photograph keeps its
-   geometry and gains a fine gold edge while the outer corners turn gold. */
+/* Picture borders highlight silver; outer card corners keep their gold cue. */
 .essays-index .tl-card:hover .tl-thumb,
-.essays-index .tl-card:focus-visible .tl-thumb {
- border-color:var(--logic-gold);
+.essays-index .tl-card:focus-visible .tl-thumb,
+.home .featured-card:hover .featured-thumb,
+.home .featured-card:focus-visible .featured-thumb {
+ border-color:var(--silver);
  box-shadow:none;
 }
 
