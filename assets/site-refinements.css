@@ -2107,3 +2107,15 @@ body[data-essay-id] .essay-head .hc-tr { top:19px; }
  background:transparent; color:var(--ink-80); cursor:not-allowed;
 }
 .reading-subscribe button:disabled .arr { transform:none; }
+
+/* A small bracket separates the action using the site's corner vocabulary. */
+.reading-subscribe button,
+.essays-index .reading-subscribe button { border-left:0; }
+.reading-subscribe button::before {
+ content:''; position:absolute; left:0; top:50%; width:4px; height:18px;
+ transform:translateY(-50%); border:1px solid var(--border-50); border-right:0;
+ pointer-events:none; transition:border-color .2s ease;
+}
+.reading-subscribe button:not(:disabled):hover::before,
+.reading-subscribe button:not(:disabled):focus-visible::before { border-color:var(--logic-gold); }
+.social-connector--linkedin { stroke-dasharray:2 3.5; }

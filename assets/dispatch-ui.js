@@ -254,13 +254,15 @@
  var title = head.querySelector('.essay-title');
  function fitTitle() {
   title.style.fontSize = '';
+  head.style.removeProperty('--title-measure');
   var base = parseFloat(getComputedStyle(title).fontSize);
   var range = document.createRange();
   range.selectNodeContents(title);
   var natural = range.getBoundingClientRect().width;
-  head.style.width = Math.min(900, Math.max(520, natural + 240)) + 'px';
+  head.style.width = Math.min(900, Math.max(520, natural + 284)) + 'px';
   var available = title.clientWidth;
   if (natural > available) title.style.fontSize = (base * available / natural) + 'px';
+  head.style.setProperty('--title-measure', Math.min(natural, available) + 'px');
  }
  fitTitle();
  if (document.fonts) document.fonts.ready.then(fitTitle);
