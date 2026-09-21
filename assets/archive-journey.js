@@ -46,9 +46,16 @@
             // Measure the unanimated entry so reveals cannot move the curve.
             var bottom = entries[index].getBoundingClientRect().bottom - origin.top;
             var bridge = (bottom + to.y) / 2;
+            // Use the same 16px soft elbow as the homepage connector.
+            // Bound it to the available space when the archive narrows.
+            var direction = Math.sign(to.x - from.x);
+            var radius = Math.max(0, Math.min(16, Math.abs(to.x - from.x) / 2,
+                bridge - from.y - 9, to.y - 9 - bridge));
             path.setAttribute('d', 'M ' + from.x + ' ' + (from.y + 9) +
-                ' L ' + from.x + ' ' + (bridge - 18) +
-                ' C ' + from.x + ' ' + (bridge + 18) + ' ' + to.x + ' ' + (bridge - 18) + ' ' + to.x + ' ' + (bridge + 18) +
+                ' L ' + from.x + ' ' + (bridge - radius) +
+                ' Q ' + from.x + ' ' + bridge + ' ' + (from.x + direction * radius) + ' ' + bridge +
+                ' L ' + (to.x - direction * radius) + ' ' + bridge +
+                ' Q ' + to.x + ' ' + bridge + ' ' + to.x + ' ' + (bridge + radius) +
                 ' L ' + to.x + ' ' + (to.y - 9));
         });
     }

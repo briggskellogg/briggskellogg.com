@@ -202,6 +202,13 @@
         var panels = document.querySelector('.home-panels');
         var svg = panels && panels.querySelector('.home-link');
         if (!svg) return;
+        var line = svg.querySelector('.home-link-line');
+        if (line.tagName.toLowerCase() !== 'path') {
+            var path = document.createElementNS(svg.namespaceURI, 'path');
+            path.setAttribute('class', line.getAttribute('class'));
+            line.replaceWith(path);
+            line = path;
+        }
         function draw() {
             var pr = panels.getBoundingClientRect();
             var a = panels.querySelector('.frame').getBoundingClientRect();
@@ -209,7 +216,7 @@
             var b = featuredModal.getBoundingClientRect();
             var label = panels.querySelector('.home-invitation');
             var narrow = window.matchMedia('(max-width: 1009px)').matches;
-            var x1, y1, x2, y2, points;
+            var x1, y1, x2, y2, route;
             label.style.left = '';
             label.style.top = '';
             label.style.right = '';
@@ -217,7 +224,7 @@
                 x1 = x2 = pr.width / 2;
                 y1 = a.bottom - pr.top + 18;
                 y2 = b.top - pr.top - 18;
-                points = x1+','+y1+' '+x2+','+y2;
+                route = 'M '+x1+' '+y1+' L '+x2+' '+y2;
                 label.style.left = (x1 - label.offsetWidth / 2) + 'px';
                 label.style.top = ((y1 + y2) / 2 - label.offsetHeight / 2) + 'px';
             } else {
@@ -226,12 +233,18 @@
                 y1 = logo.top + logo.height / 2 - pr.top;
                 x2 = b.left - pr.left + b.width / 2;
                 y2 = b.top - pr.top - 18;
-                points = x1+','+y1+' '+x2+','+y1+' '+x2+','+y2;
+                // Match the archive's restrained 16px rounded bends.
+                var radius = Math.min(16, Math.abs(x2 - x1), Math.abs(y2 - y1));
+                var dx = Math.sign(x2 - x1);
+                var dy = Math.sign(y2 - y1);
+                route = 'M '+x1+' '+y1+' L '+(x2 - dx * radius)+' '+y1+
+                    ' Q '+x2+' '+y1+' '+x2+' '+(y1 + dy * radius)+
+                    ' L '+x2+' '+y2;
                 label.style.left = ((x1 + x2) / 2 - label.offsetWidth / 2) + 'px';
                 label.style.top = (y1 - label.offsetHeight / 2) + 'px';
             }
             svg.setAttribute('viewBox','0 0 '+pr.width+' '+pr.height);
-            svg.querySelector('.home-link-line').setAttribute('points',points);
+            line.setAttribute('d', route);
             ['ring','dot'].forEach(function(kind) {
                 var start=svg.querySelector('.home-link-'+kind+'--a');
                 var end=svg.querySelector('.home-link-'+kind+'--b');

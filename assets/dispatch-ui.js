@@ -61,7 +61,7 @@
                     '<div class="tl-no"><span class="essay-id-tag">NO. ' + pad2(num) + '</span></div>' +
                     '<div class="tl-date" aria-label="Publication history"><time class="tl-published" datetime="' + esc(d.published || '') + '" aria-label="Published ' + esc(d.date) + '">' + esc(d.date) + '</time>' + '</div>' +
                 '</div>' +
-                '<a class="tl-card" href="' + esc(d.url) + '">' +
+                '<a class="tl-card" href="' + esc(d.url) + '" aria-label="Read ' + esc(d.title) + '">' +
                     '<div class="tl-card-inner">' +
                         '<span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>' +
                         thumb +
@@ -148,7 +148,17 @@
             return section +
                 '<span class="essay-jump-connector" aria-label="approximately ' + link.minutes + ' minutes"><span class="essay-jump-time">~' + link.minutes + ' min</span></span>';
         }).join('') + '<span class="essay-jump-end">end</span></span>';
-        figure.insertAdjacentElement('afterend', nav);
+        var heading = document.querySelector('.essay-head');
+        if (heading && heading.parentElement === figure.parentElement) {
+            var opening = document.createElement('div');
+            opening.className = 'essay-frontmatter';
+            heading.before(opening);
+            opening.appendChild(heading);
+            opening.appendChild(figure);
+            opening.appendChild(nav);
+        } else {
+            figure.insertAdjacentElement('afterend', nav);
+        }
     })();
 
     // ---------- Essay nav (prev/next dispatches) ----------

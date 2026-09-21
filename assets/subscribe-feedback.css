@@ -1,0 +1,42 @@
+/* Keep validation within the existing field, with room to correct and retry. */
+.reading-subscribe .subscribe-row .subscribe-status {
+ position:absolute;
+ z-index:2;
+ left:12px;
+ right:118px;
+ bottom:5px;
+ margin:0;
+ padding:0;
+ border:0;
+ background:none;
+ font:9px/1.2 var(--font-mono);
+ letter-spacing:0;
+ text-align:left;
+ text-transform:none;
+ color:var(--ink-80);
+ pointer-events:none;
+ white-space:nowrap;
+}
+.reading-subscribe .subscribe-row .subscribe-status[hidden] { display:none; }
+.reading-subscribe .essay-subscribe.has-error input[type="email"] {
+ padding-top:2px;
+ padding-bottom:16px;
+}
+.reading-subscribe .essay-subscribe.is-confirmed .subscribe-status {
+ display:block;
+ width:1px;
+ height:1px;
+ overflow:hidden;
+ clip-path:inset(50%);
+ white-space:nowrap;
+}
+.reading-subscribe input[type="email"]:is(:autofill, :-webkit-autofill) {
+ -webkit-box-shadow:0 0 0 1000px var(--bg) inset !important;
+ box-shadow:0 0 0 1000px var(--bg) inset !important;
+ -webkit-text-fill-color:var(--ink) !important;
+ caret-color:var(--ink);
+}
+.reading-subscribe .subscribe-row:has(input:is(:autofill, :-webkit-autofill))::before { opacity:0; }
+@media(max-width:460px) {
+ .reading-subscribe .subscribe-row .subscribe-status { right:108px; }
+}
