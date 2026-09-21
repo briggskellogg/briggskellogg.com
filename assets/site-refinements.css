@@ -404,6 +404,10 @@ body[data-essay-id] .essay-title-row { padding-top:34px; }
 .soundtrack-note { display:flex; flex-direction:column; align-items:center; position:absolute; left:0; bottom:calc(100% + 2px); width:60px; font-size:17px; line-height:1; transform:rotate(-6deg); }
 .soundtrack-note svg { position:static; width:26px; height:20px; margin:0; transform:none; }
 .fnref { margin-left:3px; }
+/* Inset circle/square silhouettes need optical attachment to the prior word.
+   Transfer the space to the right so line wrapping and triangle spacing stay put. */
+.fnref[data-archetype="logic"],
+.fnref[data-archetype="psyche"] { margin-left:1.5px; margin-right:1.5px; }
 
 /* Hover changes light and color, never the geometry of the reading UI. */
 .tl-card:hover, .essay-card:hover, .home .featured-card:hover, .essay-nav a.essay-nav-prev:hover, .essay-nav a.essay-nav-next:hover, .essay-vibe:hover, .essay-vibe:focus-visible { transform:none; }
@@ -915,6 +919,7 @@ body[data-essay-id] .essay-soundtrack { left:24px; top:46px; }
 }
 
 /* September 20 polish: corner marks sit astride their outlines. */
+.home-updated { text-transform:uppercase; }
 .home-updated time { margin-left:.25em; }
 
 .home-invitation { position:absolute; }
