@@ -141,7 +141,7 @@
         var nav = document.createElement('nav');
         nav.className = 'essay-jump';
         nav.setAttribute('aria-label', 'Essay contents');
-        nav.innerHTML = '<div class="essay-jump-track">' + links.map(function(link) {
+        nav.innerHTML = '<h2 class="contents-heading">table of contents</h2><div class="essay-jump-track">' + links.filter(function(link) { return Boolean(link.numeral); }).map(function(link) {
             var time = '<span class="essay-jump-time" aria-label="approximately ' + link.minutes + ' minutes">~' + link.minutes + ' min</span>';
             var title = '<span class="essay-jump-title">' + esc(link.title) + '</span>';
             return link.numeral

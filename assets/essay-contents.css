@@ -10,6 +10,13 @@ body[data-essay-id] .essay-jump {
  padding:22px 22px 22px 40px;
  box-sizing:border-box;
 }
+body[data-essay-id] .contents-heading {
+ margin:0 0 22px;
+ color:var(--ink-50);
+ font:400 9px/1.4 var(--font-mono);
+ letter-spacing:.1em;
+ text-transform:uppercase;
+}
 body[data-essay-id] .essay-jump-track {
  display:flex;
  flex-direction:column;
@@ -21,16 +28,16 @@ body[data-essay-id] .essay-jump-track {
 body[data-essay-id] .essay-jump-row {
  position:relative;
  display:grid;
- grid-template-columns:20px minmax(0,1fr) max-content;
+ grid-template-columns:max-content minmax(0,1fr) max-content;
  align-items:baseline;
- gap:6px;
+ gap:8px;
  white-space:normal;
 }
 body[data-essay-id] .essay-jump-row::before {
  content:'';
  position:absolute;
  left:-20px;
- top:7px;
+ top:7.55px;
  width:5px;
  height:5px;
  border:1px solid var(--border-50);
@@ -43,7 +50,7 @@ body[data-essay-id] .essay-jump-row:not(:last-child)::after {
  content:'';
  position:absolute;
  left:-17px;
- top:10px;
+ top:11.05px;
  width:1px;
  height:calc(100% + 26px);
  background:var(--border-25);
@@ -54,6 +61,9 @@ body[data-essay-id] .essay-jump a:focus-visible::before {
  background:var(--logic-gold);
 }
 body[data-essay-id] .essay-jump-numeral {
+ display:block;
+ align-self:start;
+ line-height:22.1px;
  min-width:0;
  width:auto;
  height:auto;

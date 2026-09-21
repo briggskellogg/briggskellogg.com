@@ -1566,7 +1566,7 @@ body[data-essay-id] .essay-figure img { border-color:var(--border-20); }
 .essays-index .reading-subscribe button {
  background:transparent;
  color:var(--ink-80);
- border-left:1px solid var(--ink-20);
+ border-left:1px dotted var(--ink-20);
 }
 .reading-subscribe .subscribe-row:has(button:not(:disabled):hover)::after,
 .reading-subscribe .subscribe-row:has(button:not(:disabled):focus-visible)::after {
@@ -1819,6 +1819,9 @@ body[data-archetype="instinct"] { --essay-status-accent:var(--instinct-rose); }
  pointer-events:none;
  opacity:0;
 }
+/* Keep the short diagonal visible over the orb's transparent image corner. */
+.social-connectors--foreground { z-index:1; }
+.social-dock .social-links { z-index:2; }
 .social-connector {
  fill:none;
  stroke:color-mix(in srgb,var(--ink) 46%,transparent);
