@@ -1,4 +1,8 @@
 /* Contents occupy the top of the notes column, above the first note. */
+html[data-essay-scrolling] {
+ scroll-behavior:auto !important;
+ overflow-anchor:none;
+}
 body[data-essay-id] .essay-head {
  max-width:min(100%,900px);
 }
