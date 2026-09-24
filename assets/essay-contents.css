@@ -124,4 +124,18 @@ body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
 @media(min-width:701px) {
  body[data-essay-id] .essay-head { padding-left:40px; padding-right:40px; }
 }
-body[data-essay-id] .soundtrack-note { right:-28px; }
+/* Keep the mirrored arrow just outside the artwork's upper-left edge.
+   Anchor to the image size, not the wider soundtrack wrapper, so the gap
+   survives the phone breakpoint and leaves room for the hover twist. */
+body[data-essay-id] .essay-soundtrack { --soundtrack-size:46px; }
+body[data-essay-id] .essay-vibe-img {
+ width:var(--soundtrack-size);
+ height:var(--soundtrack-size);
+}
+body[data-essay-id] .soundtrack-note {
+ left:calc(50% - var(--soundtrack-size) / 2 + 10px);
+ right:auto;
+}
+@media(max-width:600px) {
+ body[data-essay-id] .essay-soundtrack { --soundtrack-size:30px; }
+}
