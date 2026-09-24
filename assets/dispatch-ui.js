@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    function blob(arch) { return '/assets/blobs/' + ({instinct:'slash-instinct',logic:'build-logic',psyche:'nest-psyche'}[arch] || 'build-logic') + '-cell-shaded.webp'; }
+    function blob(arch) { return '/assets/blobs/' + ({instinct:'slash-instinct',logic:'build-logic',psyche:'nest-psyche'}[arch] || 'build-logic') + '-charm.webp'; }
 
     function pad2(n) { return (n < 10 ? '0' : '') + n; }
 
