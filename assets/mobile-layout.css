@@ -8,6 +8,11 @@
  }
  body.essays-index,
  body[data-essay-id] { padding-bottom:calc(100px + env(safe-area-inset-bottom)); }
+}
+
+/* Enlarge the controls together with the phone layout, rather than squeezing
+   mobile typography into the compact desktop field at tablet window widths. */
+@media (max-width:700px), (max-width:1024px) and (pointer:coarse) {
  .reading-subscribe .subscribe-row { min-height:50px; }
  .reading-subscribe input[type="email"],
  .reading-subscribe button,
@@ -37,6 +42,12 @@
  }
  .reading-subscribe .essay-subscribe.is-confirmed input[type="email"] { padding-right:182px; }
  .reading-subscribe .subscribe-row .subscribe-status { right:132px; }
+}
+
+/* Touch tablets keep a 16px input without crowding the email and action. */
+@media (min-width:701px) and (max-width:1024px) and (pointer:coarse) {
+ .reading-subscribe,
+ .essays-index .reading-subscribe { width:420px; max-width:calc(100vw - 48px); }
 }
 
 @media (max-width:700px) {

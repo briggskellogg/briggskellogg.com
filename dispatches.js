@@ -52,8 +52,9 @@ window.DISPATCHES = [
         date: 'September 2026',
         published: '2026-09-20',
         updated: '2026-09-20',
-        url: '/essays/primal-intelligence/?v=83',
+        url: '/essays/primal-intelligence/?v=84',
         image: '/assets/photos/primal-intelligence.jpg?v=1',
+        imageAlt: 'An intricately carved horned mask in gold, crossed by dramatic shadows against a green wall.',
         ogImage: '/assets/og/primal-intelligence.jpg?v=1',
         status: 'final-v3',
         playlist: {
@@ -69,8 +70,9 @@ window.DISPATCHES = [
         date: 'June 2026',
         published: '2026-06',
         updated: '2026-06-28',
-        url: '/essays/selection/?v=83',
+        url: '/essays/selection/?v=84',
         image: '/assets/photos/selection-8721321.jpg',
+        imageAlt: 'A woman wearing a red-lit VR headset in a blue-lit room surrounded by computer screens, keyboards, and cables.',
         ogImage: '/assets/og/selection.jpg?v=2',
         status: 'draft',
         playlist: {
@@ -86,8 +88,9 @@ window.DISPATCHES = [
         date: 'May 2026',
         published: '2026-05',
         updated: '2026-06-28',
-        url: '/essays/the-students-are-right/?v=83',
+        url: '/essays/the-students-are-right/?v=84',
         image: '/assets/photos/the-students-are-right-2119706.jpg',
+        imageAlt: 'A mural of a hand drawing back a curtain to reveal colorful graffiti beside a snowy street.',
         ogImage: '/assets/og/the-students-are-right.jpg?v=2',
         status: 'draft-v1',
         playlist: {
@@ -103,8 +106,9 @@ window.DISPATCHES = [
         date: 'November 2025',
         published: '2025-11',
         updated: '2026-06-28',
-        url: '/essays/americans-europeans-and-autism-oh-my/?v=83',
+        url: '/essays/americans-europeans-and-autism-oh-my/?v=84',
         image: '/assets/photos/americans-europeans-and-autism-oh-my-38947258.jpg',
+        imageAlt: 'Fluorescent pink, blue, and green liquid layers glowing in a glass beaker under ultraviolet light.',
         ogImage: '/assets/og/americans-europeans-and-autism-oh-my.jpg?v=2',
         status: 'final-v3',
         playlist: {

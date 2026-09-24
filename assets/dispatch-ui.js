@@ -51,7 +51,7 @@
             var arch = (d.playlist && d.playlist.archetype) || 'logic';
             var last = (i === list.length - 1) ? ' tl-entry--last' : '';
             var thumb = d.image
-                ? '<div class="tl-thumb"><img src="' + esc(d.image) + '" alt="Lead photograph for ' + esc(d.title) + '" loading="lazy" decoding="async"></div>'
+                ? '<div class="tl-thumb"><img src="' + esc(d.image) + '" alt="' + esc(d.imageAlt || ('Lead photograph for ' + d.title)) + '" loading="lazy" decoding="async"></div>'
                 : '';
             var excerpt = d.excerpt ? '<p class="tl-excerpt">' + esc(d.excerpt) + '</p>' : '';
             return '<div class="tl-entry tl-entry--' + esc(arch) + last + '">' +
@@ -222,7 +222,7 @@
         var imgEl = card.querySelector('#featured-img');
         if (imgEl && d.image) {
             imgEl.setAttribute('src', d.image);
-            if (d.title) imgEl.setAttribute('alt', 'Lead photograph for ' + d.title);
+            if (d.title) imgEl.setAttribute('alt', d.imageAlt || ('Lead photograph for ' + d.title));
             imgEl.removeAttribute('loading');
             imgEl.setAttribute('fetchpriority', 'high');
         }

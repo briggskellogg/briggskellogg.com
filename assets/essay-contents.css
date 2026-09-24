@@ -127,6 +127,7 @@ body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
 /* Aim the arrow inward at the artwork's upper-left shoulder. Keep its tip
    just outside the image, with the height proportional to the rendered
    blob so the curve keeps the same aim on phones. */
+/* Keep the detailed charm readable on phones as well as larger screens. */
 body[data-essay-id] .essay-soundtrack { --soundtrack-size:46px; }
 body[data-essay-id] .essay-vibe-img {
  width:var(--soundtrack-size);
@@ -136,7 +137,4 @@ body[data-essay-id] .soundtrack-note {
  left:calc(50% - var(--soundtrack-size) / 2 + 8px);
  right:auto;
  bottom:calc(76% - 18px);
-}
-@media(max-width:600px) {
- body[data-essay-id] .essay-soundtrack { --soundtrack-size:30px; }
 }
