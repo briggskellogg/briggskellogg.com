@@ -1,0 +1,176 @@
+/* A shared mobile spacing layer, loaded after each page's desktop styles. */
+@media (max-width:1024px) {
+ body[data-essay-id] .essay-jump {
+  width:100%;
+  max-width:none;
+  margin-left:0;
+  margin-right:0;
+ }
+ body.essays-index,
+ body[data-essay-id] { padding-bottom:calc(100px + env(safe-area-inset-bottom)); }
+ .reading-subscribe .subscribe-row { min-height:50px; }
+ .reading-subscribe input[type="email"],
+ .reading-subscribe button,
+ .essays-index .reading-subscribe button { font-size:16px !important; letter-spacing:-.025em; }
+ .reading-subscribe input[type="email"] {
+  min-width:0;
+  width:100%;
+  height:50px;
+  padding:0 132px 0 12px;
+ }
+ .reading-subscribe .subscribe-row::before { left:12px; font-size:16px; letter-spacing:-.025em; }
+ .reading-subscribe button,
+ .essays-index .reading-subscribe button {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+  width:120px;
+  height:42px;
+  padding:0 8px;
+ }
+ .reading-subscribe .essay-subscribe.is-confirmed button,
+ .essays-index .reading-subscribe .essay-subscribe.is-confirmed button {
+  font-size:12px !important;
+  width:170px;
+  gap:6px;
+ }
+ .reading-subscribe .essay-subscribe.is-confirmed input[type="email"] { padding-right:182px; }
+ .reading-subscribe .subscribe-row .subscribe-status { right:132px; }
+}
+
+@media (max-width:700px) {
+ :root {
+  --mobile-gutter:clamp(12px,4vw,20px);
+  --mobile-inset:clamp(14px,4vw,22px);
+  --mobile-panel:clamp(18px,5vw,24px);
+ }
+
+ /* Use the available width once, rather than accumulating desktop insets. */
+ body.home,
+ body.essays-index,
+ body.essays-index.archive-journey,
+ body[data-essay-id] {
+  padding-left:max(var(--mobile-gutter),env(safe-area-inset-left));
+  padding-right:max(var(--mobile-gutter),env(safe-area-inset-right));
+ }
+ body.essays-index,
+ body[data-essay-id] {
+  padding-top:80px;
+  padding-bottom:calc(100px + env(safe-area-inset-bottom));
+ }
+ body[data-essay-id] .frame {
+  padding:48px var(--mobile-inset) 28px;
+ }
+ body[data-essay-id] .essay-head {
+  width:100%;
+  max-width:100%;
+  margin:20px 0 28px;
+  padding:16px 12px;
+ }
+ body[data-essay-id] .essay-title-row { padding-top:92px; }
+ body[data-essay-id] .essay-soundtrack { top:34px; right:24px; }
+ body[data-essay-id] .essay-head .hc-tl,
+ body[data-essay-id] .essay-head .hc-tr { top:0; }
+ body[data-essay-id] .essay-subtitle { max-width:100%; }
+ body[data-essay-id] .essay-dates { flex-wrap:wrap; row-gap:6px; }
+ body[data-essay-id] .essay-figure { margin-bottom:28px; }
+ body[data-essay-id] .essay-image-frame { padding:8px; }
+ body[data-essay-id] .essay-jump {
+  padding:20px 18px 20px 36px;
+  margin-bottom:32px;
+ }
+ body[data-essay-id] .contents-heading { margin-bottom:12px; }
+ body[data-essay-id] .essay-jump-track { gap:10px; }
+ body[data-essay-id] .essay-jump-row {
+  min-height:44px;
+  padding:10px 0;
+  column-gap:8px;
+ }
+ body[data-essay-id] .essay-jump-row::before { top:17.55px; }
+ body[data-essay-id] .essay-jump-row:not(:last-child)::after {
+  top:21.05px;
+  height:calc(100% + 10px);
+ }
+ body[data-essay-id] .essay-jump-time { margin-left:2px; }
+ body[data-essay-id] .essay-body { overflow-wrap:break-word; }
+ body[data-essay-id] .essay-body blockquote { margin-left:0; margin-right:0; }
+ body[data-essay-id] .essay-notes { margin-top:40px; padding-top:24px; }
+ body[data-essay-id] .footnote { overflow-wrap:anywhere; }
+ body[data-essay-id] .site-footer,
+ .essays-index .site-footer { padding-top:32px; }
+
+ /* Keep the archive compact without squeezing text around a floating image. */
+ .essays-index.archive-journey .frame { padding:22px 12px; }
+ .archive-journey .index-head { margin-bottom:24px; }
+ .archive-journey .tl-entry,
+ .archive-journey .tl-entry:nth-of-type(even) {
+  width:calc(100% - 12px);
+  margin-left:12px;
+  margin-bottom:32px;
+ }
+ .archive-journey .tl-entry:last-of-type { margin-bottom:0; }
+ .essays-index.archive-journey .tl-node { left:-20px; }
+ .archive-journey .tl-card-inner {
+  display:grid;
+  grid-template-columns:88px minmax(0,1fr);
+  gap:14px;
+  padding:14px;
+ }
+ .archive-journey .tl-thumb {
+  float:none;
+  grid-column:1;
+  grid-row:1;
+  width:88px;
+  margin:0;
+  align-self:center;
+ }
+ .archive-journey .tl-thumb img { width:100%; max-height:none; }
+ .archive-journey .tl-card-body { display:contents; }
+ .archive-journey .tl-title {
+  grid-column:2;
+  grid-row:1;
+  align-self:center;
+  margin:0;
+  padding:0;
+  font-size:clamp(21px,5.9vw,25px);
+ }
+ .archive-journey .tl-excerpt {
+  grid-column:1 / -1;
+  margin:0;
+ }
+ .archive-journey .tl-foot {
+  grid-column:1 / -1;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:4px 0 0;
+ }
+
+ /* Both homepage panels use an even inset, independent of browser height. */
+ body.home { padding-top:28px; padding-bottom:calc(104px + env(safe-area-inset-bottom)); }
+ .home .home-panels > .frame,
+ .home .featured-modal { padding:var(--mobile-panel); }
+ .home .quote { font-size:clamp(15px,4vw,17px); line-height:1.6; }
+ .home .attribution { font-size:9px; }
+ .home .recs { padding-top:13px; padding-bottom:13px; }
+ .home .recs-label { font-size:9px; }
+ .home .recs-items { font-size:11px; line-height:1.9; }
+ .home .recs-items a { font-size:inherit; line-height:inherit; }
+ .home .featured-all { min-height:44px; }
+ .home .quote-prev,
+ .home .quote-next { min-width:36px; min-height:36px; }
+ .home .site-footer { padding-top:32px; }
+ .home .social-dock { right:max(16px,env(safe-area-inset-right)); bottom:calc(16px + env(safe-area-inset-bottom)); }
+ .home .social-links a::before { content:''; position:absolute; inset:-13px; }
+
+ /* Equal left/right gutters, with room for the phone's home indicator. */
+ .reading-subscribe,
+ .essays-index .reading-subscribe {
+  left:max(var(--mobile-gutter),env(safe-area-inset-left));
+  right:max(var(--mobile-gutter),env(safe-area-inset-right));
+  bottom:calc(12px + env(safe-area-inset-bottom));
+  width:auto;
+  max-width:none;
+ }
+}
