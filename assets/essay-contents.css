@@ -112,7 +112,7 @@ body[data-essay-id] .contents-corner-br { bottom:-1px; right:-1px; border-bottom
 }
 
 /* Single-line titles, with a moderate independent reading width for subtitles. */
-body[data-essay-id] .essay-title-row { grid-template-columns:60px minmax(0,var(--title-measure,1fr)) 60px; }
+body[data-essay-id] .essay-title-row { grid-template-columns:68px minmax(0,var(--title-measure,1fr)) 68px; }
 body[data-essay-id] .essay-title { white-space:nowrap; min-width:0; }
 body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
 @media(max-width:700px) {
@@ -124,17 +124,20 @@ body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
 @media(min-width:701px) {
  body[data-essay-id] .essay-head { padding-left:40px; padding-right:40px; }
 }
-/* Aim the arrow inward at the artwork's upper-left shoulder. Keep its tip
-   just outside the image, with the height proportional to the rendered
-   blob so the curve keeps the same aim on phones. */
-/* Keep the detailed charm readable on phones as well as larger screens. */
-body[data-essay-id] .essay-soundtrack { --soundtrack-size:46px; }
+/* The cutouts include transparent breathing room: a larger canvas makes the
+   artwork readable, while matching side tracks keep the title centered. */
+body[data-essay-id] .essay-soundtrack {
+ --soundtrack-size:68px;
+ width:var(--soundtrack-size);
+ flex-basis:var(--soundtrack-size);
+}
 body[data-essay-id] .essay-vibe-img {
  width:var(--soundtrack-size);
  height:var(--soundtrack-size);
 }
 body[data-essay-id] .soundtrack-note {
- left:calc(50% - var(--soundtrack-size) / 2 + 8px);
+ /* Aim at the visible shoulder inside the transparent canvas. */
+ left:calc(50% - var(--soundtrack-size) / 2 + 20px);
  right:auto;
- bottom:calc(76% - 18px);
+ bottom:calc(72% - 18px);
 }
