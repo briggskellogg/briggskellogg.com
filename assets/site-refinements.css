@@ -2128,3 +2128,13 @@ body[data-essay-id] .essay-figure figcaption a:visited {
  text-underline-offset:3px;
  text-decoration-thickness:1px;
 }
+
+/* Let the avatar fill more of the dock without shifting its social orbit. */
+.home .social-toggle { position:relative; }
+.home .social-toggle img {
+ position:absolute;
+ inset:-4px;
+ width:72px;
+ height:72px;
+ max-width:none;
+}

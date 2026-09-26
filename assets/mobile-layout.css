@@ -10,42 +10,71 @@
  body[data-essay-id] { padding-bottom:calc(100px + env(safe-area-inset-bottom)); }
 }
 
-/* Enlarge the controls together with the phone layout, rather than squeezing
-   mobile typography into the compact desktop field at tablet window widths. */
-@media (max-width:700px), (max-width:1024px) and (pointer:coarse) {
- .reading-subscribe .subscribe-row { min-height:50px; }
+/* Resizing a window keeps the utility compact: widening the field at 700px
+   no longer also jumps its typography from 10px to 16px. */
+@media (max-width:1024px) {
+ .reading-subscribe {
+  --subscribe-font-size:clamp(10px,calc(18px - .78vw),12px);
+  --subscribe-field-height:48px;
+  --subscribe-button-width:112px;
+  --subscribe-button-inset:2px;
+  --subscribe-text-inset:12px;
+  --subscribe-confirm-size:10px;
+  --subscribe-confirm-width:148px;
+ }
+ .reading-subscribe .subscribe-row { min-height:var(--subscribe-field-height); }
  .reading-subscribe input[type="email"],
  .reading-subscribe button,
- .essays-index .reading-subscribe button { font-size:16px !important; letter-spacing:-.025em; }
+ .essays-index .reading-subscribe button { font-size:var(--subscribe-font-size) !important; letter-spacing:-.01em; }
  .reading-subscribe input[type="email"] {
   min-width:0;
   width:100%;
-  height:50px;
-  padding:0 132px 0 12px;
+  height:var(--subscribe-field-height);
+  padding:0 calc(var(--subscribe-button-width) + 12px) 0 var(--subscribe-text-inset);
  }
- .reading-subscribe .subscribe-row::before { left:12px; font-size:16px; letter-spacing:-.025em; }
+ .reading-subscribe .subscribe-row::before {
+  left:var(--subscribe-text-inset);
+  font-size:var(--subscribe-font-size);
+  letter-spacing:-.01em;
+ }
  .reading-subscribe button,
  .essays-index .reading-subscribe button {
   display:flex;
   align-items:center;
   justify-content:center;
   white-space:nowrap;
-  width:120px;
-  height:42px;
+  top:var(--subscribe-button-inset);
+  bottom:var(--subscribe-button-inset);
+  width:var(--subscribe-button-width);
+  height:calc(var(--subscribe-field-height) - 2 * var(--subscribe-button-inset));
   padding:0 8px;
  }
  .reading-subscribe .essay-subscribe.is-confirmed button,
  .essays-index .reading-subscribe .essay-subscribe.is-confirmed button {
-  font-size:12px !important;
-  width:170px;
+  font-size:var(--subscribe-confirm-size) !important;
+  width:var(--subscribe-confirm-width);
   gap:6px;
  }
- .reading-subscribe .essay-subscribe.is-confirmed input[type="email"] { padding-right:182px; }
- .reading-subscribe .subscribe-row .subscribe-status { right:132px; }
+ .reading-subscribe .essay-subscribe.is-confirmed input[type="email"] { padding-right:calc(var(--subscribe-confirm-width) + 12px); }
+ .reading-subscribe .subscribe-row .subscribe-status { right:calc(var(--subscribe-button-width) + 12px); }
+}
+
+/* A real touch keyboard still needs a 16px field to avoid iOS focus zoom.
+   Give that text proportional breathing room, with the action at the same size. */
+@media (max-width:1024px) and (any-pointer:coarse) {
+ .reading-subscribe {
+  --subscribe-font-size:16px;
+  --subscribe-field-height:58px;
+  --subscribe-button-width:124px;
+  --subscribe-button-inset:4px;
+  --subscribe-text-inset:16px;
+  --subscribe-confirm-size:12px;
+  --subscribe-confirm-width:170px;
+ }
 }
 
 /* Touch tablets keep a 16px input without crowding the email and action. */
-@media (min-width:701px) and (max-width:1024px) and (pointer:coarse) {
+@media (min-width:701px) and (max-width:1024px) and (any-pointer:coarse) {
  .reading-subscribe,
  .essays-index .reading-subscribe { width:420px; max-width:calc(100vw - 48px); }
 }

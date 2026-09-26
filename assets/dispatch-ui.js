@@ -247,24 +247,44 @@
     })();
 })();
 
-/* Measure the title after fonts load so even long names stay on one line. */
+/* Fit actual text, reclaiming the empty balancing track before reducing type. */
 (function () {
  var head = document.querySelector('body[data-essay-id] .essay-head');
  if (!head) return;
  var title = head.querySelector('.essay-title');
+ var row = head.querySelector('.essay-title-row');
+ var charm = head.querySelector('.essay-soundtrack');
  function fitTitle() {
   title.style.fontSize = '';
   head.style.removeProperty('--title-measure');
+  head.classList.remove('title-group-centered');
   var base = parseFloat(getComputedStyle(title).fontSize);
   var range = document.createRange();
   range.selectNodeContents(title);
   var natural = range.getBoundingClientRect().width;
-  head.style.width = Math.min(900, Math.max(520, natural + 284)) + 'px';
-  var available = title.clientWidth;
+  var headStyle = getComputedStyle(head);
+  var rowStyle = getComputedStyle(row);
+  var sidePadding = parseFloat(headStyle.paddingLeft) + parseFloat(headStyle.paddingRight)
+   + parseFloat(rowStyle.paddingLeft) + parseFloat(rowStyle.paddingRight);
+  var charmWidth = charm.getBoundingClientRect().width;
+  var gap = parseFloat(rowStyle.columnGap) || 0;
+  var stacked = rowStyle.display === 'block';
+  head.style.width = stacked ? '100%' : Math.min(900, Math.max(520, natural + sidePadding + 2 * (charmWidth + gap))) + 'px';
+  var rowWidth = row.clientWidth - parseFloat(rowStyle.paddingLeft) - parseFloat(rowStyle.paddingRight);
+  var available = stacked ? rowWidth : rowWidth - 2 * (charmWidth + gap);
+  if (!stacked && natural > available) {
+   head.classList.add('title-group-centered');
+   available = rowWidth - charmWidth - gap;
+  }
+  available = Math.max(1, available);
   if (natural > available) title.style.fontSize = (base * available / natural) + 'px';
   head.style.setProperty('--title-measure', Math.min(natural, available) + 'px');
  }
  fitTitle();
  if (document.fonts) document.fonts.ready.then(fitTitle);
- window.addEventListener('resize', fitTitle);
+ var resizeFrame;
+ window.addEventListener('resize', function () {
+  cancelAnimationFrame(resizeFrame);
+  resizeFrame = requestAnimationFrame(fitTitle);
+ });
 })();
