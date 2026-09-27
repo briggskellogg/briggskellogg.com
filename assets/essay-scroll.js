@@ -70,7 +70,7 @@
 
     document.addEventListener('click', function(event) {
         if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        var link = event.target.closest('.essay-jump a[href]');
+        var link = event.target.closest('.essay-jump a[href], a[data-essay-scroll][href]');
         if (!link || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
         var url = new URL(link.href, window.location.href);
         if (url.origin !== location.origin || url.pathname !== location.pathname || url.search !== location.search || !url.hash) return;

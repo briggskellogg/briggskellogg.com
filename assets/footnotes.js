@@ -87,7 +87,7 @@
 
     function archetypeDotFill(archetype) {
         var vars = getComputedStyle(document.documentElement);
-        if (archetype === 'logic') return vars.getPropertyValue('--logic').trim();
+        if (archetype === 'logic') return vars.getPropertyValue('--note-logic').trim() || vars.getPropertyValue('--logic').trim();
         if (archetype === 'instinct') return vars.getPropertyValue('--instinct').trim();
         if (archetype === 'psyche') return vars.getPropertyValue('--psyche').trim();
         return null;

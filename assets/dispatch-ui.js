@@ -23,6 +23,63 @@
         return (window.formatDispatchVersion || function(s) { return { label: s, slug: s }; })(status);
     }
 
+    function connectRevisionNote(entry, badge) {
+        var note = document.querySelector('[data-revision-note]');
+        if (!note || !badge) return;
+        var version = fmtStatus(entry.status || 'draft');
+        note.classList.add('essay-revision-note');
+        note.id = note.id || 'revision-note';
+        note.setAttribute('tabindex', '-1');
+        note.setAttribute('data-status', version.slug || entry.status);
+
+        // Keep the tooltip, state, and corner markup when making the tag a link.
+        if (badge.tagName !== 'A') {
+            var link = document.createElement('a');
+            Array.prototype.slice.call(badge.attributes).forEach(function(attribute) {
+                link.setAttribute(attribute.name, attribute.value);
+            });
+            while (badge.firstChild) link.appendChild(badge.firstChild);
+            badge.parentNode.replaceChild(link, badge);
+            badge = link;
+        }
+        badge.id = badge.id || 'essay-version';
+        badge.setAttribute('href', '#' + note.id);
+        badge.setAttribute('data-essay-scroll', '');
+        badge.setAttribute('aria-label', 'Read revision note for ' + version.label);
+
+        var heading = note.querySelector('h2');
+        if (heading && !note.querySelector('.revision-note-heading')) {
+            var headingRow = document.createElement('div');
+            headingRow.className = 'revision-note-heading';
+            heading.parentNode.insertBefore(headingRow, heading);
+            headingRow.appendChild(heading);
+            var noteVersion = document.createElement('span');
+            noteVersion.className = 'revision-note-version';
+            noteVersion.innerHTML = '<span class="revision-note-dot" aria-hidden="true"></span>' +
+                '<span>' + esc(version.label) + '</span>' +
+                ['tl','tr','bl','br'].map(function(corner) {
+                    return '<span class="revision-badge-corner revision-badge-corner-' + corner + '" aria-hidden="true"></span>';
+                }).join('');
+            headingRow.appendChild(noteVersion);
+        }
+        if (!note.querySelector('.revision-note-corner')) {
+            ['tl','tr','bl','br'].forEach(function(corner) {
+                var mark = document.createElement('span');
+                mark.className = 'revision-note-corner revision-note-corner-' + corner;
+                mark.setAttribute('aria-hidden', 'true');
+                note.appendChild(mark);
+            });
+        }
+        if (!note.querySelector('.revision-note-return')) {
+            var back = document.createElement('a');
+            back.className = 'revision-note-return';
+            back.setAttribute('href', '#' + badge.id);
+            back.setAttribute('data-essay-scroll', '');
+            back.innerHTML = '<span aria-hidden="true">&uarr;</span> back to version';
+            note.appendChild(back);
+        }
+    }
+
     function updatedDate(value) {
         // Parse components directly: calendar dates must not shift with timezone.
         var parts = (value || '').split('-');
@@ -113,6 +170,7 @@
         }
 
         document.body.dataset.archetype = (entry.playlist && entry.playlist.archetype) || 'logic';
+        connectRevisionNote(entry, badgeEl);
     })();
 
     // ---------- Essay contents ----------
