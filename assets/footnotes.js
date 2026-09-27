@@ -35,11 +35,13 @@
             return;
         }
         var containerRect = notes.getBoundingClientRect();
-        var placed = new Set();
+        var queued = new Set();
         var items = refs.map(function(ref) {
+            // Nested anchors can only be measured after their parent note is placed.
+            if (ref.closest('.footnote')) return null;
             var fnId = ref.dataset.fn;
-            if (placed.has(fnId)) return null;
-            placed.add(fnId);
+            if (queued.has(fnId)) return null;
+            queued.add(fnId);
             var note = document.getElementById('fn-' + fnId);
             if (!note) return null;
             var refRect = ref.getBoundingClientRect();
@@ -54,11 +56,21 @@
         var contents = notes.querySelector('.essay-jump');
         if (contents) lastBottom = Math.max(lastBottom, contents.offsetTop + contents.offsetHeight);
         var gap = 32;
-        items.forEach(function(item) {
-            var y = Math.max(item.targetY, lastBottom + gap);
-            item.note.style.top = y + 'px';
-            lastBottom = y + item.note.offsetHeight;
-        });
+        var placed = new Set();
+        function placeNote(note, targetY) {
+            if (placed.has(note.id)) return;
+            placed.add(note.id);
+            var y = Math.max(targetY, lastBottom + gap);
+            note.style.top = y + 'px';
+            lastBottom = y + note.offsetHeight;
+            note.querySelectorAll('.fnref').forEach(function(ref) {
+                var child = document.getElementById('fn-' + ref.dataset.fn);
+                if (!child) return;
+                var refRect = ref.getBoundingClientRect();
+                placeNote(child, Math.max(0, Math.round(refRect.top - containerRect.top - 4)));
+            });
+        }
+        items.forEach(function(item) { placeNote(item.note, item.targetY); });
         notes.style.minHeight = lastBottom + 'px';
         sizeSvg();
     }
@@ -179,7 +191,12 @@
             var fnId = el.dataset.fn;
             el.addEventListener('mouseenter', function() { activate(fnId, el); });
             el.addEventListener('mouseleave', deactivate);
-            el.addEventListener('focusin', function() { activate(fnId, el); });
+            el.addEventListener('focusin', function(event) {
+                // Let a nested reference own focus instead of its containing note.
+                var ref = event.target.closest('.fnref');
+                if (ref && ref !== el) return;
+                activate(fnId, el);
+            });
             el.addEventListener('focusout', deactivate);
         });
     }

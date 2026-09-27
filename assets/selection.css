@@ -1,0 +1,37 @@
+/* The author's paired illustrations follow the same appearance as the essay. */
+.selection-diagram { margin:2rem 0; }
+.selection-diagram a { display:block; }
+.selection-diagram img { display:block; width:100%; height:auto; }
+.selection-diagram .selection-diagram-dark { display:none; }
+@media (prefers-color-scheme:dark) {
+ :root:not([data-reading-theme="light"]) .selection-diagram-light { display:none; }
+ :root:not([data-reading-theme="light"]) .selection-diagram-dark { display:block; }
+}
+:root[data-reading-theme="dark"] .selection-diagram-light { display:none; }
+:root[data-reading-theme="dark"] .selection-diagram-dark { display:block; }
+.selection-diagram figcaption {
+ margin-top:12px;
+ color:var(--ink-50);
+ font:400 11px/1.7 var(--font-mono);
+}
+.selection-diagram a:focus-visible { outline:1px solid var(--logic-gold); outline-offset:4px; }
+.selection-revision-note {
+ margin:3rem 0 0;
+ padding-top:1.5rem;
+ border-top:1px solid var(--border-25);
+ color:var(--ink-80);
+ font:400 1rem/1.7 var(--font-body);
+}
+.selection-revision-note h2 {
+ margin:0 0 1rem;
+ color:var(--ink-50);
+ font:400 10px/1.5 var(--font-mono);
+ letter-spacing:.1em;
+ text-transform:uppercase;
+}
+.selection-revision-note p { margin:0 0 1rem; }
+.selection-revision-note a { color:inherit; text-underline-offset:3px; }
+@media print {
+ .selection-diagram .selection-diagram-dark { display:none !important; }
+ .selection-diagram .selection-diagram-light { display:block !important; }
+}
