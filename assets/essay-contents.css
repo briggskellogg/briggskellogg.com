@@ -113,12 +113,12 @@ body[data-essay-id] .contents-corner-br { bottom:-1px; right:-1px; border-bottom
 
 /* Keep short titles centered; when space is tight, center the title and charm
    together instead of shrinking the type for an empty matching charm track. */
-body[data-essay-id] .essay-title-row { grid-template-columns:68px minmax(0,var(--title-measure,1fr)) 68px; }
+body[data-essay-id] .essay-title-row { grid-template-columns:58px minmax(0,var(--title-measure,1fr)) 58px; }
 body[data-essay-id] .essay-title { font-size:1.95rem; white-space:nowrap; min-width:0; }
 body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
 @media(min-width:701px) {
  body[data-essay-id] .essay-head.title-group-centered .essay-title-row {
-  grid-template-columns:minmax(0,var(--title-measure,1fr)) 68px;
+  grid-template-columns:minmax(0,var(--title-measure,1fr)) 58px;
  }
  body[data-essay-id] .essay-head.title-group-centered .essay-title-row::after { display:none; }
  body[data-essay-id] .essay-head.title-group-centered .essay-title { grid-column:1; }
@@ -136,7 +136,7 @@ body[data-essay-id] .essay-subtitle { width:100%; max-width:560px; }
 /* The cutouts include transparent breathing room, so keep their canvas large
    enough to remain readable at every viewport. */
 body[data-essay-id] .essay-soundtrack {
- --soundtrack-size:68px;
+ --soundtrack-size:58px;
  width:var(--soundtrack-size);
  flex-basis:var(--soundtrack-size);
 }
@@ -146,7 +146,7 @@ body[data-essay-id] .essay-vibe-img {
 }
 body[data-essay-id] .soundtrack-note {
  /* Aim at the visible shoulder inside the transparent canvas. */
- left:calc(50% - var(--soundtrack-size) / 2 + 20px);
+ left:calc(50% - var(--soundtrack-size) / 2 + 17px);
  right:auto;
  bottom:calc(72% - 18px);
 }
