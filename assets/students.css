@@ -1,0 +1,16 @@
+.students-revision-note {
+ margin:3rem 0 0;
+ padding-top:1.5rem;
+ border-top:1px solid var(--border-25);
+ color:var(--ink-80);
+ font:400 1rem/1.7 var(--font-body);
+}
+.students-revision-note h2 {
+ margin:0 0 1rem;
+ color:var(--ink-50);
+ font:400 10px/1.5 var(--font-mono);
+ letter-spacing:.1em;
+ text-transform:uppercase;
+}
+.students-revision-note p { margin:0 0 1rem; }
+.students-revision-note a { color:inherit; text-underline-offset:3px; }

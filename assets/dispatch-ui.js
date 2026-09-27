@@ -8,7 +8,15 @@
     function esc(s) {
         var d = document.createElement('div');
         d.textContent = (s == null ? '' : s);
-        return d.innerHTML;
+        return d.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function renderTitle(dispatch) {
+        var parts = dispatch.titleParts;
+        if (!parts) return esc(dispatch.title);
+        return esc(parts.prefix) + ' <del class="title-retracted" aria-hidden="true">' +
+            esc(parts.removed) + '<svg viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M2 9 C25 6 63 10 98 5"/></svg></del> ' +
+            esc(parts.replacement);
     }
 
     function fmtStatus(status) {
@@ -66,7 +74,7 @@
                         '<span class="pc pc-tl"></span><span class="pc pc-tr"></span><span class="pc pc-bl"></span><span class="pc pc-br"></span>' +
                         thumb +
                         '<div class="tl-card-body">' +
-                            '<h2 class="tl-title">' + esc(d.title) + '</h2>' +
+                            '<h2 class="tl-title" aria-label="' + esc(d.title) + '">' + renderTitle(d) + '</h2>' +
                             excerpt +
                             '<div class="tl-foot">' +
                                 '<span class="tl-read">read the essay <span class="arr">&rarr;</span></span>' +
@@ -193,7 +201,7 @@
                 a.className = slot.className.replace('essay-nav-empty', '');
                 a.href = dispatch.url;
                 a.innerHTML = '<span class="essay-nav-label">' + labelText + '</span>' +
-                              '<span class="essay-nav-title">' + dispatch.title + '</span>';
+                              '<span class="essay-nav-title" aria-label="' + esc(dispatch.title) + '">' + renderTitle(dispatch) + '</span>';
                 slot.parentNode.replaceChild(a, slot);
             }
         }
@@ -216,7 +224,10 @@
         var dateEl = card.querySelector('.featured-date');
         if (dateEl && (d.published || d.date)) dateEl.innerHTML = '<span class="publication-label">Published</span> <time datetime="' + esc(d.published || '') + '">' + esc(d.published ? updatedDate(d.published) : d.date) + '</time>';
         var titleEl = card.querySelector('.featured-title');
-        if (titleEl && d.title) titleEl.textContent = d.title;
+        if (titleEl && d.title) {
+            titleEl.innerHTML = renderTitle(d);
+            titleEl.setAttribute('aria-label', d.title);
+        }
         var exEl = card.querySelector('.featured-excerpt');
         if (exEl && d.excerpt) exEl.textContent = d.excerpt;
         var imgEl = card.querySelector('#featured-img');

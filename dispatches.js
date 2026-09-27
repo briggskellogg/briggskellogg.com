@@ -52,7 +52,7 @@ window.DISPATCHES = [
         date: 'September 2026',
         published: '2026-09-20',
         updated: '2026-09-20',
-        url: '/essays/primal-intelligence/?v=89',
+        url: '/essays/primal-intelligence/?v=90',
         image: '/assets/photos/primal-intelligence.jpg?v=1',
         imageAlt: 'An intricately carved horned mask in gold, crossed by dramatic shadows against a green wall.',
         ogImage: '/assets/og/primal-intelligence.jpg?v=1',
@@ -70,7 +70,7 @@ window.DISPATCHES = [
         date: 'June 2026',
         published: '2026-06',
         updated: '2026-09-26',
-        url: '/essays/selection/?v=89',
+        url: '/essays/selection/?v=90',
         image: '/assets/photos/selection-8721321.jpg',
         imageAlt: 'A woman wearing a red-lit VR headset in a blue-lit room surrounded by computer screens, keyboards, and cables.',
         ogImage: '/assets/og/selection.jpg?v=2',
@@ -82,22 +82,23 @@ window.DISPATCHES = [
         excerpt: "A feeling produced between two people can become a verdict about one of them. Hiring gives that verdict consequences."
     },
     {
-        id: 'the-students-are-right',
+        id: 'the-students-are-wrong',
         number: 2,
-        title: 'The Students Are Right',
+        title: 'The Students Are Wrong',
+        titleParts: { prefix: 'The Students Are', removed: 'Right', replacement: 'Wrong' },
         date: 'May 2026',
         published: '2026-05',
-        updated: '2026-06-28',
-        url: '/essays/the-students-are-right/?v=89',
+        updated: '2026-09-26',
+        url: '/essays/the-students-are-wrong/?v=90',
         image: '/assets/photos/the-students-are-right-2119706.jpg',
         imageAlt: 'A mural of a hand drawing back a curtain to reveal colorful graffiti beside a snowy street.',
         ogImage: '/assets/og/the-students-are-right.jpg?v=2',
-        status: 'draft-v1',
+        status: 'final-v2',
         playlist: {
             archetype: 'psyche',
             url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
         },
-        excerpt: 'This spring, graduates booed the mention of AI at their own commencements. I work in the industry being booed at \u2014 and the students are right.'
+        excerpt: "The anger deserves an answer. Blanket rejection of AI is the wrong one."
     },
     {
         id: 'americans-europeans-and-autism-oh-my',
@@ -106,7 +107,7 @@ window.DISPATCHES = [
         date: 'November 2025',
         published: '2025-11',
         updated: '2026-06-28',
-        url: '/essays/americans-europeans-and-autism-oh-my/?v=89',
+        url: '/essays/americans-europeans-and-autism-oh-my/?v=90',
         image: '/assets/photos/americans-europeans-and-autism-oh-my-38947258.jpg',
         imageAlt: 'Fluorescent pink, blue, and green liquid layers glowing in a glass beaker under ultraviolet light.',
         ogImage: '/assets/og/americans-europeans-and-autism-oh-my.jpg?v=2',

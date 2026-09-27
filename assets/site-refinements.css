@@ -2138,3 +2138,34 @@ body[data-essay-id] .essay-figure figcaption a:visited {
  height:72px;
  max-width:none;
 }
+
+/* An authored correction, retaining the crossed-out thought in the title. */
+.title-retracted {
+ position:relative;
+ display:inline-block;
+ font-family:'Caveat',cursive;
+ font-style:normal;
+ font-weight:400;
+ letter-spacing:0;
+ text-transform:none;
+ text-decoration:none;
+ color:inherit;
+ opacity:.62;
+}
+.title-retracted svg {
+ position:absolute;
+ left:-4%;
+ top:50%;
+ width:108%;
+ height:.2em;
+ transform:translateY(-50%);
+ overflow:visible;
+ pointer-events:none;
+}
+.title-retracted path {
+ fill:none;
+ stroke:currentColor;
+ stroke-width:1.3;
+ stroke-linecap:round;
+ vector-effect:non-scaling-stroke;
+}
