@@ -16,7 +16,7 @@
         if (!parts) return esc(dispatch.title);
         return esc(parts.prefix) + ' <del class="title-retracted" aria-hidden="true">' +
             esc(parts.removed) + '<svg viewBox="0 0 100 14" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M2 9 C25 6 63 10 98 5"/></svg></del> ' +
-            esc(parts.replacement);
+            '<span class="title-replacement">' + esc(parts.replacement) + '</span>';
     }
 
     function fmtStatus(status) {

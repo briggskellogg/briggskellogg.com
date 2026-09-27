@@ -2146,14 +2146,22 @@ body[data-essay-id] .essay-figure figcaption a:visited {
 .title-retracted {
  position:relative;
  display:inline-block;
+ font-family:inherit;
+ font-style:inherit;
+ font-weight:inherit;
+ letter-spacing:inherit;
+ text-transform:inherit;
+ text-decoration:none;
+ color:inherit;
+ opacity:.62;
+}
+.title-replacement {
  font-family:'Caveat',cursive;
+ font-size:inherit;
  font-style:normal;
  font-weight:400;
  letter-spacing:0;
  text-transform:none;
- text-decoration:none;
- color:inherit;
- opacity:.62;
 }
 .title-retracted svg {
  position:absolute;
