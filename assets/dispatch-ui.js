@@ -15,7 +15,7 @@
         var parts = dispatch.titleParts;
         if (!parts) return esc(dispatch.title);
         return esc(parts.prefix) + ' <del class="title-retracted" aria-hidden="true">' +
-            esc(parts.removed) + '<svg viewBox="0 0 100 18" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1 10 C4 1 9 1 13 9 S21 17 25 7 S33 1 37 10 S45 16 49 6 S57 2 61 11 S69 15 73 5 S81 2 85 10 S93 15 97 6 L100 8"/></svg></del> ' +
+            esc(parts.removed) + '<svg viewBox="0 0 100 18" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M1 9 H99"/></svg></del> ' +
             '<span class="title-replacement">' + esc(parts.replacement) + '</span>';
     }
 

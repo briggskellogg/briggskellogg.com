@@ -2158,8 +2158,8 @@ body[data-essay-id] .essay-figure figcaption a:visited {
  left:-4%;
  top:50%;
  width:108%;
- height:.38em;
- transform:translateY(-50%) rotate(-2deg);
+ height:.28em;
+ transform:translateY(-50%);
  overflow:visible;
  pointer-events:none;
 }
