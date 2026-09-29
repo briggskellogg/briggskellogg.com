@@ -2292,3 +2292,7 @@ body[data-essay-id] .essay-revision-note .revision-note-return:focus-visible { c
 @media(min-width:1010px) {
  .home .featured { margin-top:calc(clamp(200px,24vh,250px) + 48px); }
 }
+
+/* Short quotations sit as a centered thought beneath the mark. */
+.home .quotes-carousel.is-single-line .quote { text-align:center; }
+.home .attribution.is-single-line { justify-content:center; margin-top:.65rem; }

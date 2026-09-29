@@ -27,6 +27,11 @@
         var inView = true;
 
         function updateHeight() {
+            var quote = slides[current].querySelector('.quote');
+            var lineHeight = parseFloat(getComputedStyle(quote).lineHeight);
+            var singleLine = quote.getBoundingClientRect().height <= lineHeight * 1.25;
+            carousel.classList.toggle('is-single-line', singleLine);
+            nameEl.closest('.attribution').classList.toggle('is-single-line', singleLine);
             carousel.style.height = slides[current].scrollHeight + 'px';
             if (window.updateHomeLink) requestAnimationFrame(window.updateHomeLink);
             if (window.preventArchetypeOverlap) requestAnimationFrame(window.preventArchetypeOverlap);
