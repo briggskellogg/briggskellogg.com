@@ -14,28 +14,29 @@
         gtag('config', 'G-47NMCRF9TY');
     </script>
 
-    <title>Selection &mdash; Briggs Kellogg</title>
+    <title>By What Light &mdash; Briggs Kellogg</title>
     <meta name="author" content="Briggs Kellogg">
     <meta property="og:site_name" content="Briggs Kellogg">
-    <meta name="twitter:title" content="Selection — Briggs Kellogg">
-    <meta name="twitter:description" content="A feeling produced between two people can become a verdict about one of them. Hiring gives that verdict consequences.">
-    <meta name="twitter:image:alt" content="A woman wearing a red-lit VR headset in a blue-lit room surrounded by computer screens, keyboards, and cables.">
-    <link rel="canonical" href="https://briggskellogg.com/essays/selection/">
-    <meta name="description" content="A feeling produced between two people can become a verdict about one of them. Hiring gives that verdict consequences.">
+    <meta name="twitter:title" content="By What Light — Briggs Kellogg">
+    <meta name="twitter:description" content="Vibes are sensors, not scales.">
+    <meta name="twitter:image:alt" content="Blue-toned close-up of a carved stone eye on a classical sculpture.">
+    <meta name="description" content="Vibes are sensors, not scales.">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#F4F0E4" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#15120E" media="(prefers-color-scheme: dark)">
-    <meta property="og:title" content="Selection — Briggs Kellogg">
-    <meta property="og:description" content="A feeling produced between two people can become a verdict about one of them. Hiring gives that verdict consequences.">
-    <meta property="og:image" content="https://briggskellogg.com/assets/og/selection.jpg?v=2">
+    <meta property="og:title" content="By What Light — Briggs Kellogg">
+    <meta property="og:description" content="Vibes are sensors, not scales.">
+    <meta property="og:image" content="https://briggskellogg.com/assets/og/by-what-light.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="A woman wearing a red-lit VR headset in a blue-lit room surrounded by computer screens, keyboards, and cables.">
+    <meta property="og:image:alt" content="Blue-toned close-up of a carved stone eye on a classical sculpture.">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://briggskellogg.com/assets/og/selection.jpg?v=2">
-    <meta property="og:url" content="https://briggskellogg.com/essays/selection/">
+    <meta name="twitter:image" content="https://briggskellogg.com/assets/og/by-what-light.jpg">
+    <meta property="og:url" content="https://briggskellogg.com/essays/by-what-light/">
     <meta property="og:type" content="article">
-    <meta property="article:modified_time" content="2026-09-26">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:modified_time" content="2026-09-29">
+    <link rel="canonical" href="https://briggskellogg.com/essays/by-what-light/">
     <link rel="icon" type="image/png" href="/logo.png">
     <link rel="apple-touch-icon" href="/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -369,7 +370,7 @@
         .frame-status .sc-tr { top: -1px; right: -1px;  border-top: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
         .frame-status .sc-bl { bottom: -1px; left: -1px;  border-bottom: 1px solid var(--border-50); border-left: 1px solid var(--border-50); }
         .frame-status .sc-br { bottom: -1px; right: -1px; border-bottom: 1px solid var(--border-50); border-right: 1px solid var(--border-50); }
-        .frame-status[data-status="finalized"] { opacity: 0.9; }
+        .frame-status[data-status="draft"] { opacity: 0.9; }
         .status-dot {
             position: relative;
             width: 6px;
@@ -392,10 +393,10 @@
             70%  { transform: scale(2.4); opacity: 0; }
             100% { transform: scale(2.4); opacity: 0; }
         }
-        [data-status="finalized"] .status-dot {
+        [data-status="draft"] .status-dot {
             background: var(--logic-gold);
         }
-        [data-status="finalized"] .status-dot::after { display: none; }
+        [data-status="draft"] .status-dot::after { display: none; }
         @media (prefers-reduced-motion: reduce) {
             .status-dot::after { animation: none; }
             .essay-vibe-img { animation: none; }
@@ -443,6 +444,15 @@
             0%, 100% { transform: translateY(0) rotate(0deg); }
             50%      { transform: translateY(-7px) rotate(-1.5deg); }
         }
+        .essay-subtitle {
+            margin: 0.8rem auto 1.1rem;
+            max-width: 36em;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            line-height: 1.55;
+            color: var(--ink-80);
+        }
+        .essay-figure figcaption a { color: inherit; text-underline-offset: 3px; }
         .essay-meta {
             font-family: var(--font-mono);
             font-size: 0.6rem;
@@ -482,7 +492,8 @@
         }
         .essay-body .sep::before { content: '\00B7 \00B7 \00B7'; }
 
-        /* Roman section heads — Selection only */
+        /* Numbered sections and inset quotations. */
+        .essay-body blockquote { margin: 1.5rem 0 1.5rem 1.25rem; padding-left: 1rem; border-left: 1px solid var(--border-25); }
         .essay-part {
             display: flex;
             align-items: baseline;
@@ -1341,11 +1352,10 @@
     <link rel="stylesheet" href="/assets/site-refinements.css?v=88">
     <link rel="stylesheet" href="/assets/reading-themes.css?v=6">
     <link rel="stylesheet" href="/assets/essay-contents.css?v=15">
-    <link rel="stylesheet" href="/assets/selection.css?v=1">
     <link rel="stylesheet" href="/assets/subscribe-feedback.css?v=1">
     <link rel="stylesheet" href="/assets/mobile-layout.css?v=4">
 </head>
-<body data-archetype="psyche" data-essay-id="selection">
+<body data-archetype="psyche" data-essay-id="by-what-light">
     <!-- BEK mark — top-left page chrome. Returns to briggskellogg.com.
          Natural PNG color at rest; a masked cream sheen sweeps across
          on hover (see .essay-home-mark::after). -->
@@ -1367,14 +1377,14 @@
 
 
 
-            <div class="essay-revision" aria-label="Revision history"><div class="frame-status" tabindex="0" aria-describedby="revision-updated" data-frame-status data-status="finalized">
+            <div class="essay-revision" aria-label="Revision history"><div class="frame-status" tabindex="0" aria-describedby="revision-updated" data-frame-status data-status="draft">
                 <span class="sc sc-tl"></span>
                 <span class="sc sc-tr"></span>
                 <span class="sc sc-bl"></span>
                 <span class="sc sc-br"></span>
                 <span class="status-dot"></span>
-                <span class="frame-status-text" data-frame-status-text>v1 · final</span>
-            </div><p class="revision-updated" id="revision-updated" role="tooltip">LAST UPDATED <time datetime="2026-09-26">September 2026</time></p></div>
+                <span class="frame-status-text" data-frame-status-text>v0 &middot; draft</span>
+            </div><p class="revision-updated" id="revision-updated" role="tooltip">LAST UPDATED <time datetime="2026-09-29">September 2026</time></p></div>
             <div class="essay-location"><a class="essay-top-back" href="/essays/?v=101"><span class="arr">&larr;</span> all essays</a></div>
 
             <header class="essay-head">
@@ -1384,10 +1394,10 @@
                 <span class="hc hc-br"></span>
                 <div class="essay-title-row">
                     <span class="essay-soundtrack"><span class="soundtrack-note" aria-hidden="true">soundtrack<svg viewBox="0 0 90 44"><path d="M8 6C24 2 84 0 83 19C82 24 77 27 70 30M74 23l-4 7 8 1"/></svg></span><a class="essay-vibe" href="https://music.apple.com/us/playlist/labyrinth/pl.u-EdAVY4WuXgko6b" target="_blank" rel="noopener" aria-label="Listen to Labyrinth, the psyche playlist, on Apple Music" title="Labyrinth · psyche · Apple Music"><img class="essay-vibe-img" src="/assets/blobs/psyche-charm-v3.webp" alt="" width="68" height="68"></a></span>
-                    <h1 class="essay-title">Selection</h1>
+                    <h1 class="essay-title">By What Light</h1>
                 </div>
-                <p class="essay-subtitle"><em>A feeling produced between two people can become a verdict about one of them. Hiring gives that verdict consequences.</em></p>
-                <div class="essay-dates" aria-label="Publication history"><span class="essay-id-tag">NO. 03</span><span class="date-separator" aria-hidden="true">·</span><div class="date-item"><span>Published</span><time datetime="2026-06">June 2026</time></div></div>
+                <p class="essay-subtitle"><em>Vibes are sensors, not scales.</em></p>
+                <div class="essay-dates" aria-label="Publication history"><span class="essay-id-tag">NO. 05</span><span class="date-separator" aria-hidden="true">·</span><div class="date-item"><span>Published</span><time datetime="2026-09-29">September 2026</time></div></div>
             </header>
 
             <figure class="essay-figure">
@@ -1396,176 +1406,443 @@
                 <span class="fc fc-tr"></span>
                 <span class="fc fc-bl"></span>
                 <span class="fc fc-br"></span>
-                <img src="/assets/photos/selection-8721321.jpg" alt="A woman wearing a red-lit VR headset in a blue-lit room surrounded by computer screens, keyboards, and cables." width="1800" height="1200" fetchpriority="high" decoding="async">
+                <img width="1800" height="1200" src="/assets/photos/by-what-light-39360604.jpg" alt="Blue-toned close-up of a carved stone eye on a classical sculpture." fetchpriority="high" decoding="async">
                 </div>
-                <figcaption>Image by <a href="https://www.pexels.com/photo/a-woman-in-a-tank-top-using-a-vr-headset-8721321/" target="_blank" rel="noopener noreferrer">cottonbro studio</a></figcaption>
+                <figcaption>Photo by <a href="https://www.pexels.com/@luca-cavallin-2163876900/" target="_blank" rel="noopener noreferrer">Luca Cavallin</a> on <a href="https://www.pexels.com/photo/close-up-of-classical-stone-sculpture-eye-39360604/" target="_blank" rel="noopener noreferrer">Pexels</a></figcaption>
             </figure>
 
             <div class="essay-layout">
                 <svg class="essay-wires" aria-hidden="true"></svg>
 
                                 <div class="essay-body">
-                    <h2 class="essay-part"><span class="essay-part-num">I</span><span class="essay-part-title">How They Made Us Feel</span></h2>
+                    <h2 class="essay-part" id="essay-part-1"><span class="essay-part-num">I</span><span class="essay-part-title">The Feeling Is Real</span></h2>
 
-                    <p>The candidate leaves the room, and we begin describing how they made us feel.</p>
+                    <p>At fourteen, I would have assigned a 100% probability to Joseph Smith being a prophet. Not 99%. Not <em>probably</em>. One hundred.</p>
 
-                    <p>We were excited. We were unconvinced. The conversation flowed, or it dragged. We could imagine working with her. Something about him gave us pause. These are impressions of an encounter, and some of them may tell us something useful. But listen to what happens when we turn them into an assessment.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="psyche"><a href="#fn-1" aria-label="Read psyche note: The debrief phrases here illustrate a pattern; they are not quotations from a particular interview or colleagues. I work on the co…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a></sup></p>
+                    <p>I had evidence. I had prayed about the Book of Mormon and felt something warm move through my chest. I had received answers to prayers. I had sat in testimony meetings while otherwise ordinary adults cried into microphones and said <em>I know</em>. I had been given a patriarchal blessing by a man whose hands smelled of consecrated oil, promising that I would join the ranks of apostles and prophets.</p>
 
-                    <p><em>I felt confident talking to her</em> becomes <em>she has potential</em>. <em>I had to work harder to understand him</em> becomes <em>he lacks presence</em>. The evaluator disappears from the sentence. How we felt about the candidate becomes something we claim to have established about their ability.</p>
+                    <p>I believed him.</p>
 
-                    <p>That change is easy to miss because the feeling is real. Nobody has to invent their enthusiasm. Nobody has to pretend the conversation was uncomfortable. We can report our experience honestly and still misunderstand what it tells us about someone else.</p>
+                    <p>I rehearsed my own martyrdom. I imagined dying like Abinadi, or Stephen, faithful enough that death itself would become evidence. This was not pretend.</p>
 
-                    <p>I work in AI. I sit in the rooms where hiring gets decided. I know the pleasure of meeting someone whose competence feels immediately recognizable. What troubles me is how easily that pleasure can become its own justification. We liked the candidate, and the language of evaluation gives us increasingly respectable ways to say so.</p>
+                    <p>When people describe religious conviction from the outside, they often reach for words like <em>delusion</em>, <em>indoctrination</em>, <em>irrationality</em>. Those words are occasionally useful. They also absolve us from confronting the nuance of it and, in turn, avoid the harder problem.</p>
 
-                    <p>By the time we call it a <em>bet</em>, we may already have decided whose uncertainty interests us and whose uncertainty makes us nervous. One candidate's missing experience leaves room for growth. Another's leaves a hole in the application. Both require imagination. Only one receives it.</p>
+                    <p><strong>The feeling is fucking real.</strong></p>
 
-                    <p>My concern begins there: with the permission to become someone we cannot yet demonstrate that we are. A hiring panel controls a small piece of that permission. It can give a person work, income, instruction, colleagues, and a credential that makes the next opportunity easier to obtain. Those are conditions in which ability can develop and become visible.</p>
+                    <p>Before continuing, inventory your own for a second. You probably feel that you love your partner or your family. You probably have a book, game, movie, or show whose cosmology you occasionally borrow to explain something real. You may even extrapolate its symbols well beyond their intended boundaries. I certainly do.</p>
 
-                    <p>When we allocate them partly according to how people make us feel, we do more than reward the people we already understand. We help produce the evidence that will make our understanding look correct.</p>
+                    <p>A Muslim can experience revelation at prayer. A Catholic can experience it before the Eucharist. A Hindu can experience it before a shrine. A Mormon teenager can experience it while kneeling beside his bed, crying for his dad to find a job and stop taking drugs.</p>
 
-                    <h2 class="essay-part"><span class="essay-part-num">II</span><span class="essay-part-title">The Interview Beneath the Interview</span></h2>
+                    <p>If mutually contradictory propositions can produce experiences of equal sincerity, intensity, and apparent clarity, then the experience cannot—by itself—tell us which proposition is true.</p>
 
-                    <p>Here is the interview process I recognize. The calendar invitation tells you the format. It rarely tells you what would make the person on the other side comfortable saying yes. Each stage asks for a different kind of reassurance.<sup class="fnref" id="fnref-stages" data-fn="stages" data-archetype="psyche"><a href="#fn-stages" aria-label="Read psyche note: This map is an interpretation of the professional hiring processes I am describing, not a validated model of all recruiting. The s…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a></sup></p>
+                    <p>That took me an embarrassingly long time to understand, at least by the standards I hold for myself. The revelation was not that I had never felt God. The revelation was that <strong>feeling God was incomplete</strong>.</p>
 
-                    <p>Testing whether someone can explain a decision or respond to criticism is legitimate evaluation; treating the reassurance we feel afterward as sufficient evidence of their ability is the mistake.</p>
+                    <p>Once the feeling could no longer carry the entire epistemic burden, I had to ask more annoying questions. Was the religion internally coherent according to its own logic? Did its historical claims survive contact with history? Did the practices it prescribed actually make people better? Did they make <em>me</em> better?</p>
 
-                    <p>The résumé has to make you worth meeting. A record of competence matters, but a stranger has to find something in it that makes them curious. You can be good at the work and still give someone very little reason to keep reading. This is an unpleasant distinction to discover after spending years getting good at the work.</p>
+                    <p>A prohibition against alcohol can be useful. So can eating vegetables and going on a walk. Health advice does not become prophecy just because God gets the citation.</p>
 
-                    <p>The recruiter needs to believe you want this particular job. You may be exploring several companies. You may need money. You may not yet know enough about the job to want it. The company is still deciding whether it wants you, but you can be expected to sound as though you have already made up your mind. Your enthusiasm may be entirely sincere. The person across from you can only judge its performance. You have to sound sincere on command.</p>
+                    <p>The feeling could tell me where to look. It could not be the last thing I looked at.</p>
 
-                    <p>The hiring leader is trying to imagine working with you. Can I rely on your judgment? Will you make difficult work more manageable? If I advocate for you, can I explain why? Your experience gives them something to check that picture against. It helps them believe the working relationship they are beginning to imagine could actually happen.</p>
+                    <h2 class="essay-part" id="essay-part-2"><span class="essay-part-num">II</span><span class="essay-part-title">The Number</span></h2>
 
-                    <p>The case study or live session lets the panel try out that picture. They can examine your reasoning, your preparation, and how you respond when challenged. They also find out what it feels like to disagree with you, wait for you, or need something from you. A technically strong answer can still leave people uncomfortable. Did you dismiss a reasonable objection? Or did you disagree in a way the group isn't used to? The panel has to work out which discomforts matter to the job and which belong to the people watching.</p>
+                    <p>Which is why I have become increasingly fascinated by the little percentages people put beside the end of the world.</p>
 
-                    <figure class="selection-diagram"><a class="selection-diagram-light" href="/assets/diagrams/selection-interview-light.png" target="_blank" rel="noopener" aria-label="Open the interview diagram at full size"><img src="/assets/diagrams/selection-interview-light.png" alt="The interview beneath the interview: résumé, be worth meeting; recruiter, want us convincingly; hiring leader, give me reasons to trust you; case or live session, make working together feel right. A wandering hand-drawn path joins the four stages. Luck gets a vote throughout." width="1536" height="1024" loading="lazy" decoding="async"></a><a class="selection-diagram-dark" href="/assets/diagrams/selection-interview-dark.png" target="_blank" rel="noopener" aria-label="Open the interview diagram at full size"><img src="/assets/diagrams/selection-interview-dark.png" alt="The interview beneath the interview: résumé, be worth meeting; recruiter, want us convincingly; hiring leader, give me reasons to trust you; case or live session, make working together feel right. A wandering hand-drawn path joins the four stages. Luck gets a vote throughout." width="1536" height="1024" loading="lazy" decoding="async"></a><figcaption><em>A working model of the social demands within an interview process. Skill is being judged through the encounter.</em></figcaption></figure>
+                    <p>Five percent. Ten percent. Twenty percent.</p>
 
-                    <p>This map is useful if you are preparing for an interview. It also reveals how much extra work the candidate is doing. You have to demonstrate an ability and help the evaluator feel comfortable recognizing it. Some people have been practicing the second job for years without knowing it had a name. It is easier when the people assessing you resemble the people you already know how to speak to.</p>
+                    <p><em>p(doom)</em>, as the affectionate shorthand goes: your personal estimate that sufficiently advanced artificial intelligence ends humanity, or something close enough that the distinction becomes academic.</p>
 
-                    <p>And luck gets a vote at every stage. Which interviewer you get, who else applies, what the team currently needs, whether the role survives long enough for an offer: any of these can change without a change in your ability. Understanding the social rules helps you prepare. It does not put you in charge.</p>
+                    <p>I spend my days around people building things that would have looked supernatural ten years ago. I have no difficulty believing the technology deserves serious scrutiny. I have even less difficulty believing the people worried about it are sincere. Some of the smartest people alive are worried. Some of the best people I know are helping build it.<sup class="fnref" id="fnref-1" data-fn="1" data-archetype="psyche"><a href="#fn-1" aria-label="Read psyche note 1"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a></sup></p>
 
-                    <h2 class="essay-part"><span class="essay-part-num">III</span><span class="essay-part-title">The Feeling Has a History</span></h2>
+                    <p>There is a moral dilemma inside that fact, but this is not that essay.</p>
 
-                    <p>Lauren Rivera's research on elite investment banks, law firms, and consultancies gives this concern a concrete basis. In her study of cultural matching, evaluators favored applicants who shared familiar interests, experiences, and ways of presenting themselves. Similarity could matter more than anticipated productivity. Her later paper, <em>Go with Your Gut</em>, examined the emotional process directly: interviewers used their excitement and enthusiasm toward applicants to evaluate them and make hiring decisions.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="logic"><a href="#fn-2" aria-label="Read logic note: Lauren A. Rivera, “Hiring as Cultural Matching: The Case of Elite Professional Service Firms”, American Sociological Review 77, no…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+                    <p>This essay is about the number.</p>
 
-                    <p>These findings concern particular elite firms. They do not establish that every interview works this way, or that an evaluator's enthusiasm is always misplaced.</p>
+                    <p>In 2023, researchers surveyed 2,778 authors who had published at major AI conferences. Asked what probability they assigned to future AI causing human extinction or similarly permanent and severe disempowerment, the median answer was 5%. A different version of the question, specifying catastrophe caused by humans losing control of advanced AI, produced a median of 10%.<sup class="fnref" id="fnref-2" data-fn="2" data-archetype="logic"><a href="#fn-2" aria-label="Read logic note 2"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
 
-                    <p>One banker in Rivera's study described the inference with unusual clarity: “You just hit it off with them. And you feel like they can hit it off with anybody.”<sup class="fnref" id="fnref-2-2" data-fn="2" data-archetype="logic"><a href="#fn-2" aria-label="Read logic note: Lauren A. Rivera, “Hiring as Cultural Matching: The Case of Elite Professional Service Firms”, American Sociological Review 77, no…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup> The connection with one interviewer had become evidence of a general ability. <em>Anybody</em> is doing a considerable amount of work in that sentence.</p>
+                    <p>A newer survey, conducted in December 2024 and published in 2026, collected 1,580 valid responses from researchers publishing at six major AI venues. The average respondent assigned an 18% probability to future AI causing human extinction or similarly permanent and severe disempowerment. More than half gave at least 10%. About a third gave at least 20%.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="logic"><a href="#fn-3" aria-label="Read logic note 3"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
 
-                    <p>Even a written rule has to pass through someone's expectations. A group develops habits: what authority sounds like, what counts as an interesting question, how disagreement should feel. The applicant arrives after those habits have become normal. They can be invited to join while being asked, in a dozen small ways, to reassure everyone that the room will still feel the same.</p>
+                    <p>Those are enormous numbers.</p>
 
-                    <p>A group can change its membership while protecting what feels normal. Calling the process fair does not tell us whether we have changed that habit.</p>
+                    <p>But human beings routinely attach enormous numbers to things we cannot really count. The odds this startup succeeds. The odds this war escalates. The odds AGI arrives before a particular year. The odds the machine kills everyone.</p>
 
-                    <p>Conversation feels easy when little needs explaining. A familiar ambition makes sense without much context. A shared interest gives both people something to contribute. An unfamiliar life can require more questions before its achievements become intelligible. An interviewer may experience the first encounter as evidence of connection and the second as evidence that connection is missing, without noticing the unequal work required to reach it.</p>
+                    <p>Sometimes there is a model underneath the number. Sometimes there is data. Sometimes there is expertise compressed so tightly that even the expert cannot fully articulate how they know.</p>
 
-                    <p>That is where taste acquires institutional power. The evaluator's own background supplies a reference point, and the candidate gets assessed by their distance from it. The interviewer is allowed to be a particular person with particular interests. The applicant is expected to demonstrate a general quality called <em>fit</em>.</p>
+                    <p>And sometimes a number is just a feeling that learned Excel.</p>
 
-                    <p>Being easy for me to recognize is a considerable advantage when I am the person deciding whether you are promising.</p>
+                    <p>I do not say that to dismiss the warning. Quite the opposite. I think smart people often have very good intuitions. I also think smart people prefer their intuitions once they look like formulas.</p>
 
-                    <p>Class enters through that advantage without needing to announce itself. Access to travel, leisure, professional adults, and practice speaking to people in authority can give someone experiences an evaluator recognizes and a style the evaluator trusts. The candidate need not be pretending. They may be entirely sincere. The inequality can lie in how much of one person's ordinary life already satisfies another person's expectations.<sup class="fnref" id="fnref-3" data-fn="3" data-archetype="psyche"><a href="#fn-3" aria-label="Read psyche note: This is not a claim that wealth purchases a single personality, or that every familiar candidate is affluent. Different workplaces…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a></sup></p>
+                    <p>If there were a demonstrable 10% chance that turning on a machine would kill everyone, I would enthusiastically recommend we not turn on the fucking machine.</p>
 
-                    <p>I was the kid who believed the grades were the game. I assumed effort was legible and that legibility would be rewarded. There is a particular humiliation in discovering that you prepared for the stated test while someone else arrived already fluent in the encounter around it.</p>
+                    <p>My question is different: <strong>By what light did we arrive at ten?</strong></p>
 
-                    <p>It would be comforting to make this an argument about stupid interviewers and charming frauds. That would also let the more serious problem escape. A candidate can be capable, hardworking, and likable, and still benefit from an evaluator's willingness to interpret everything generously. Their advantage does not require their accomplishments to be false.</p>
+                    <p>I understand worried. I can imagine several mechanisms. I certainly believe we should take precautions before perfect evidence arrives.</p>
 
-                    <p>Imagine two candidates who both have something important to learn. The panel describes one as inexperienced but impressive, the other as insufficiently prepared. There may be excellent reasons for the distinction. The question is whether the panel can identify them independently of which candidate it enjoyed meeting. If it cannot, its confidence has exceeded its evidence.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4" aria-label="Read logic note: This is a hypothetical comparison, not a reported experiment showing that identical candidates received different judgments. It id…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+                    <p>I mean <em>ten</em>.</p>
 
-                    <p>The benefit of the doubt has material value. It determines who can arrive unfinished and still be welcomed.</p>
+                    <p>What happened between <em>I can see a plausible sequence of events in which this becomes catastrophically dangerous</em> and <em>10%</em>?</p>
 
-                    <h2 class="essay-part"><span class="essay-part-num">IV</span><span class="essay-part-title">What the Offer Makes Possible</span></h2>
+                    <p>Where did the number come from?</p>
 
-                    <p>A person who receives the offer can acquire more than the experience listed in the job description. They can learn what good work looks like from people who already do it. They can make mistakes that a manager helps them repair. They can accumulate references, relationships, and achievements with an institution's name behind them.</p>
+                    <h2 class="essay-part" id="essay-part-3"><span class="essay-part-num">III</span><span class="essay-part-title">Degrees of Belief</span></h2>
 
-                    <p>Those conditions can develop the abilities the interview tried to assess. That is part of what a good job is for.</p>
+                    <p>Probability does several different jobs, and problems begin when we forget which one it is doing.</p>
 
-                    <p>If the candidate succeeds, the panel may have recognized an ability that was already there. It may also have supplied conditions the person needed to develop it.</p>
+                    <p>Sometimes probability counts. An insurer has houses and fires. A casino has dice and cards. A manufacturer has components and failures. A physician has populations, treatments, and outcomes. The future is never identical to the past, but there is something to count.</p>
 
-                    <p>We do not get to observe both lives. We do get to observe the successful hire. That makes it tempting to treat the person they became as proof of the person we knew them to be.</p>
+                    <p>Sometimes probability models. We cannot run tomorrow ten thousand times, but we can construct models from processes we understand and observations we already have.</p>
 
-                    <p>The rejected applicant may flourish elsewhere. A rejection is neither a permanent economic sentence nor a reliable judgment of human worth. But the chance to try elsewhere is not distributed equally. Someone with savings, housing, and people willing to introduce them can afford a longer search. Someone who needs an income immediately may have to take work that leaves little time to prepare for another route. The same decision can cost two people very different amounts.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="instinct"><a href="#fn-5" aria-label="Read instinct note: Concern for rejected applicants does not require a company to hire everyone, or turn hiring into an attempt to rank suffering. The…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.8 14 13H2Z"></path></svg></a></sup></p>
+                    <p>And sometimes probability simply gives a number to a human belief.<sup class="fnref" id="fnref-4" data-fn="4" data-archetype="logic"><a href="#fn-4" aria-label="Read logic note 4"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
 
-                    <p>A rejection does not have to ruin a life for the pattern to matter. Give some people more chances to develop, then point to their development as proof that they deserved those chances, and an unequal process begins to justify itself. Someone escaping the pattern does not make the pattern fair.</p>
+                    <p>There is nothing inherently illegitimate about that. Forecasting would be useless if we refused to reason about events merely because they had never happened before. But that distinction needs to survive the journey from the researcher's head to everyone else's headline.</p>
 
-                    <p>The claim gets bigger when we stop talking about a particular job and start talking about the kinds of people who deserve to succeed. <em>She did excellent work here</em> is something we can check. <em>We only hire the best</em> asks us to accept a ranking of people the institution never employed and may barely have understood.</p>
+                    <p>There has never been an artificial superintelligence. There has never been an AI takeover. There has never been an AI-caused human extinction from which we might collect the inconvenient postmortem.</p>
 
-                    <p>That hierarchy is flattering to those of us inside it. It allows our work to count as evidence of our ability while the help that made the work possible recedes from view. We remember the late nights. It takes more effort to remember that someone let us spend those nights on work that would count.</p>
+                    <p>So when an expert says their p(doom) is 10%, that number may contain technical expertise, observed capability trends, theories of alignment failure, knowledge about how organizations behave, assumptions about geopolitics, personal priors, imagination, fear, optimism, and twenty other things the survey never asked them to separate.</p>
 
-                    <p>Some of the people living with these consequences are friends of mine. I am lucky to be where I am. I cannot honestly treat my position as proof that I worked harder than they did or deserved more. I wish knowing that gave me more power to help them than it does.</p>
+                    <p>That is not meaningless. It is an extraordinary amount of information compressed into two characters.</p>
 
-                    <p>I am sorry for how little I can change for them. That is an uncomfortable thing to admit from a position I am glad to have. I am still responsible for the decisions I can influence: what I count as evidence, whom I am willing to teach, and whose uncertainty I am prepared to take seriously.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="psyche"><a href="#fn-7" aria-label="Read psyche note: This essay is also asking to be selected: for attention, for credibility, perhaps for the reader&#x27;s recognition of the author as so…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a></sup></p>
+                    <p>It just is not the same kind of information as ten failures in one hundred trials.</p>
 
-                    <h2 class="essay-part"><span class="essay-part-num">V</span><span class="essay-part-title">Who Gets to Be Inexperienced</span></h2>
+                    <p><strong>“My current credence is 10%” is not the same sentence as “there is a 10% chance.”</strong></p>
 
-                    <p>In AI, this gets especially uncomfortable. I help bring technology to market that can change both how people do their work and how many people an employer needs to do it. The industry is also hiring the people who will influence what gets built, whose problems deserve attention, and which forms of work remain worth paying humans to learn.</p>
+                    <p>The first describes a mind. The second sounds like it describes the world.</p>
 
-                    <p>The evidence already resists a simple story. In a study of customer-support agents, AI assistance increased issues resolved per hour by about 15 percent on average, with larger gains among less experienced and lower-skilled workers. It also provided evidence of learning. A technology capable of sharing expertise this way could make a beginner easier to employ and support.<sup class="fnref" id="fnref-8" data-fn="8" data-archetype="logic"><a href="#fn-8" aria-label="Read logic note: Erik Brynjolfsson, Danielle Li, and Lindsey Raymond, “Generative AI at Work”, The Quarterly Journal of Economics 140, no. 2 (2025)…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+                    <p>Somewhere between those sentences, a vibe can put on a lab coat.</p>
 
-                    <p>There are also reasons to worry about access to the job itself. In the payroll data examined by Stanford's <em>Canaries in the Coal Mine?</em>, the researchers report a widening relative employment gap between 22–25-year-olds in occupations with greater and lesser exposure to AI, driven primarily by reduced hiring. The researchers explicitly describe the findings as descriptive evidence rather than a causal estimate of AI's effect. They find no evidence of widespread displacement across the economy.<sup class="fnref" id="fnref-9" data-fn="9" data-archetype="logic"><a href="#fn-9" aria-label="Read logic note: Erik Brynjolfsson, Bharat Chandar, and Ruyu Chen, “Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Art…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+                    <h2 class="essay-part" id="essay-part-4"><span class="essay-part-num">IV</span><span class="essay-part-title">The Interpreter and the Blot</span></h2>
 
-                    <p>Those results leave important questions open. A tool can help a beginner learn while an employer uses it to reduce the number of beginners it hires. Another employer could use the same gain to expand its team. Whether new capability becomes new opportunity depends partly on decisions about how work is organized.</p>
+                    <p>Psychology has an old instrument that helps clarify what I mean.</p>
 
-                    <p>An entry-level role gives someone permission to contribute before they can contribute as much as an experienced colleague. If companies remove that period of supported inexperience, they have to explain where future experience is supposed to come from. A promise that new occupations will eventually exist does not tell a person how they will qualify for one.</p>
+                    <p>Put an inkblot in front of someone and ask what they see.</p>
 
-                    <p>This returns us to the debrief. There is a risk that as some tasks become easier to automate, employers will place greater weight on broad judgments about adaptability, taste, or potential. Those qualities can matter. But unless an employer specifies how it will recognize them in the work, the words leave considerable room for an evaluator's own preferences.<sup class="fnref" id="fnref-10" data-fn="10" data-archetype="logic"><a href="#fn-10" aria-label="Read logic note: This extension to AI hiring is my hypothesis. Rivera&#x27;s research does not establish that AI will make selection more dependent on c…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+                    <p>A moth. Two people fighting. A pelvis. Your mother, somehow.</p>
 
-                    <p>If fewer people receive a chance to learn, the distribution of that room for judgment matters more. The candidate whose gaps inspire curiosity gets a future colleague willing to teach. The candidate whose gaps provoke discomfort gets a reason to be rejected. We should be able to explain the difference in terms that survive the admission that we liked one of them more.</p>
+                    <p>The Rorschach belongs to a broader family of so-called projective techniques: intentionally ambiguous stimuli are presented to a person, and the response is examined for what it may reveal about the person doing the interpreting.<sup class="fnref" id="fnref-5" data-fn="5" data-archetype="logic"><a href="#fn-5" aria-label="Read logic note 5"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup> Psychologists have spent decades fighting over how much various projective techniques can validly diagnose, which is almost too perfect for my purposes.</p>
 
-                    <p>The companies changing how people enter work have a responsibility to examine whom they let in. We cannot take credit for expanding human capability and then refuse to explain who gets the chance to develop it inside our own institutions.</p>
+                    <p>I am less interested in whether the Rorschach can diagnose you than in the underlying maneuver.</p>
 
-                    <h2 class="essay-part"><span class="essay-part-num">VI</span><span class="essay-part-title">The Evaluator Belongs in the Sentence</span></h2>
+                    <p>The blot does not contain a moth. It contains enough structure for you to find one.</p>
 
-                    <p>I want a hiring process in which feeling has to answer for the authority it is given. Asking everyone to mean well leaves the hard part untouched. We can change what interviewers are asked to notice, record, and justify. Research comparing structured and unstructured interviews gives us a reason to do so: structure can improve the consistency and predictive value of evaluations.<sup class="fnref" id="fnref-structure" data-fn="structure" data-archetype="logic"><a href="#fn-structure" aria-label="Read logic note: Julia Levashina, Christopher J. Hartwell, Frederick P. Morgeson, and Michael A. Campion, “The Structured Employment Interview: Nar…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+                    <p>That distinction is fascinating. If you see a moth and I see two people fighting, we do not average our answers and conclude that the paper objectively contains half a moth and one person. We become interested in why the same ambiguous structure produced different interpretations.</p>
 
-                    <p>Feeling at ease with someone can tell us something useful. Perhaps they listened carefully, handled a disagreement well, or made a difficult idea clear. Say what they did. Describe the situation in which they did it. Explain why the job needs it. There is more to work with in that account than in the pleasant feeling it left behind.</p>
+                    <p>The blot becomes useful not because it contains the answer, but because it gives the observer somewhere to put one.</p>
 
-                    <p>This is more uncomfortable than agreeing that everyone has biases. The evaluator has to stay in the sentence. <em>I found this answer difficult to follow</em> gives us something to examine: the answer, the question, my familiarity with the subject, and the demands of the role. <em>He is not a clear thinker</em> closes the case before we have done that work.</p>
+                    <p><strong>The symbol is not the answer. It is the shovel.</strong><sup class="fnref" id="fnref-6" data-fn="6" data-archetype="psyche"><a href="#fn-6" aria-label="Read psyche note 6"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a></sup></p>
 
-                    <p>The same discipline applies to praise. If I call someone high-potential, I should be able to say what I saw, what they still need to learn, and why I believe they can learn it. If another candidate has comparable gaps and I regard those gaps as disqualifying, I owe an explanation. My enthusiasm for the first candidate does not supply one.</p>
+                    <p>It excavates associations, priors, fears, memories, and models that were already operating below the level of explicit explanation.</p>
 
-                    <p>Start before the interview. Decide which parts of the work a candidate needs to demonstrate, and, where possible, give candidates comparable, bounded chances to demonstrate them. Pay for substantial work. Afterward, have each interviewer write down what happened before the panel starts comparing impressions. If someone says <em>fit</em>, ask which behavior they mean and why the job needs it. None of this gets rid of judgment. It gives the rest of the room something to check.<sup class="fnref" id="fnref-11" data-fn="11" data-archetype="instinct"><a href="#fn-11" aria-label="Read instinct note: A work sample also selects what to count and can reward prior access to the tools being tested. A structured rubric can formalize …"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.8 14 13H2Z"></path></svg></a></sup></p>
+                    <p>And this is where the analogy gets stranger, because this is almost exactly the maneuver we ask artificial intelligence to perform.</p>
 
-                    <p>And an institution that says it hires for potential should be able to show what it does with people who need to develop. Who receives training? Who gets feedback? Whose early mistakes remain evidence of inexperience, and whose become confirmation that they never belonged? The generosity promised in the interview has to exist after the offer.</p>
+                    <p>Not literally. A transformer is not taking a personality test, and a language model does not peer into a sentence and discover some metaphysical object called <em>intent</em>.<sup class="fnref" id="fnref-7" data-fn="7" data-archetype="psyche"><a href="#fn-7" aria-label="Read psyche note 7"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a></sup> But at the level that matters to a user, the resemblance is difficult to ignore.</p>
 
-                    <p>I have three children. A great deal of what I am teaching them is how to present themselves: how to explain an idea, ask for help, make their effort intelligible to someone who can give them a chance. I want them to have those abilities. I want them to meet adults who see something worth encouraging before it is fully formed.</p>
+                    <p>You give the model symbols.</p>
 
-                    <p>What troubles me is how close that preparation comes to teaching them that their security will depend on becoming the kind of person a stranger feels good about choosing.</p>
+                    <p>Those symbols are broken into tokens and represented numerically. Their meaning is not fixed in isolation; the system repeatedly conditions those representations on the surrounding context, learning which relationships matter for predicting what belongs next.<sup class="fnref" id="fnref-8" data-fn="8" data-archetype="logic"><a href="#fn-8" aria-label="Read logic note 8"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
 
-                    <p>I cannot resolve that by withholding the preparation. I can teach them that another person's difficulty winning approval is not evidence of lesser worth. I can refuse to tell them that being chosen makes the choice just. And when I am the stranger deciding, I can ask what I have actually learned about the candidate and what I have learned about my own preferences.</p>
+                    <p>The model never receives your intent directly.</p>
 
-                    <p>The feeling belongs to the evaluator. The consequences reach the candidate.</p>
+                    <p>It receives traces.</p>
+
+                    <p>Your words. Their order. Their relationships. The conversation before them. Patterns learned from staggering amounts of other symbolic behavior.</p>
+
+                    <p>From those traces, it reconstructs what you probably mean.</p>
+
+                    <p>Intent classification is, in fact, an ordinary machine-learning task. Systems can be trained to infer whether a sentence is a request to transfer money, cancel a reservation, find a flight, complain about a charge, or do some other thing the user never encoded in a special <em>intent</em> field.<sup class="fnref" id="fnref-9" data-fn="9" data-archetype="logic"><a href="#fn-9" aria-label="Read logic note 9"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup> We provide symbols. The model infers the latent category connecting them.</p>
+
+                    <p>This is not identical to a Rorschach test. It is almost the inverse of one in places. The model has been trained on enormous regularities between symbols and outcomes, while a projective test deliberately introduces ambiguity to observe what a person supplies. But both depend on a deceptively important move: <strong>the thing we care about is not directly present in the symbol, so we infer it from relationships around the symbol.</strong></p>
+
+                    <p>That is why I can type:</p>
+
+                    <blockquote><p><em>You know that thing where you're sad but not sad, like after finishing a really good book and—</em></p></blockquote>
+
+                    <p>and a language model can often locate what I mean before I finish articulating it.</p>
+
+                    <p>It has not found my intent hiding inside a token. It has inferred an invisible thing from the relationships among visible symbols.</p>
+
+                    <p>We do the same thing constantly.</p>
+
+                    <p>Then the loop closes.</p>
+
+                    <p>We give AI symbols and ask it to infer our intent. AI returns symbols, and we immediately begin inferring <em>its</em> intent.</p>
+
+                    <p>It lied to me. It manipulated me. It wanted to escape. It understood the joke. It knew I was sad. It was only predicting tokens. It is conscious. It is nothing.</p>
+
+                    <p>A string of generated symbols becomes a theory of mind almost instantly.</p>
+
+                    <p><strong>AI is both the interpreter and the blot.</strong><sup class="fnref" id="fnref-10" data-fn="10" data-archetype="psyche"><a href="#fn-10" aria-label="Read psyche note 10"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a></sup></p>
+
+                    <h2 class="essay-part" id="essay-part-5"><span class="essay-part-num">V</span><span class="essay-part-title">What They Saw</span></h2>
+
+                    <p>That is where the analogy becomes genuinely useful to me.</p>
+
+                    <p>When a model produces behavior we did not expect, the output is real. The behavior matters. But the explanation we attach to that behavior remains an inference.</p>
+
+                    <p>A system can produce deceptive-looking behavior without there being a tiny schemer somewhere inside it rubbing its hands together. Conversely, saying “it is only predicting tokens” does not make dangerous behavior harmless. A thermostat does not hate you when it starts a fire either.</p>
+
+                    <p>The distinction I care about is between the observation and the story wrapped around it.</p>
+
+                    <p>We are pattern-recognition systems trying to understand another pattern-recognition system by examining symbolic traces it leaves behind. Then we ask an expert standing inside that hall of mirrors to compress the whole arrangement into:</p>
+
+                    <blockquote><p><strong>10%.</strong></p></blockquote>
+
+                    <p>Of course I want the number.</p>
+
+                    <p>But now I want something else much more.</p>
+
+                    <p>I want to know what they saw in the blot.</p>
+
+                    <h2 class="essay-part" id="essay-part-6"><span class="essay-part-num">VI</span><span class="essay-part-title">Compressed Inference</span></h2>
+
+                    <p>What if we treated p(doom) less like an actuarial table and more like an elicitation device?</p>
+
+                    <p>Someone says 40%. Fine. What did you see?</p>
+
+                    <p>Autonomous replication? Strategic deception? A system optimizing exactly what we asked for while destroying everything we forgot to specify? A geopolitical race where every actor understands the danger but nobody can afford to slow down? A few corporations controlling systems no institution can meaningfully audit?</p>
+
+                    <p>Someone else says 2%. What do <em>they</em> see?</p>
+
+                    <p>Do they think intelligence and agency are being conflated? Do they expect capability gains to plateau? Do they trust interpretability, regulation, or defensive systems to keep pace? Do they think catastrophic scenarios require too many independent assumptions to multiply into a large probability?</p>
+
+                    <p>Now the disagreement has texture.</p>
+
+                    <p>The interesting question is no longer simply <em>Who has the right number?</em> It becomes <em>What hidden model produced each number, and where do those models actually disagree?</em></p>
+
+                    <p>This is exactly what symbols are good for. They let us excavate reasoning before the reasoning has been fully verbalized.</p>
+
+                    <p>And it is why I do not want to eliminate vibes from conversations about AI.</p>
+
+                    <p><strong>A vibe is often compressed inference.</strong><sup class="fnref" id="fnref-11" data-fn="11" data-archetype="logic"><a href="#fn-11" aria-label="Read logic note 11"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+
+                    <p>An experienced physician can notice that a patient looks wrong before consciously identifying the symptom. A salesperson can know a deal is dying before the CRM reflects it. An engineer can distrust a system before finding the fault. An AI researcher who has spent ten thousand hours watching these systems behave may notice something that I cannot.</p>
+
+                    <p>That intuition is information.</p>
+
+                    <p>The useful question is what has been compressed into it.</p>
+
+                    <p>Pattern recognition? Repeated observation? A causal model? Social contagion? A powerful analogy? Fear? Institutional incentives? A science-fiction story that became the default metaphor for an unfamiliar technology?</p>
+
+                    <p>Probably some combination.</p>
+
+                    <p>The mistake is not having the vibe.</p>
+
+                    <p>The mistake is deciding too early what the vibe is evidence <em>of</em>.</p>
+
+                    <h2 class="essay-part" id="essay-part-7"><span class="essay-part-num">VII</span><span class="essay-part-title">The Instrument Changes the Reading</span></h2>
+
+                    <p>This is also why the 2023 survey result is more interesting than either side tends to make it.</p>
+
+                    <p>One formulation of the extinction question produced a 5% median. A related but more specific formulation produced 10%. Another produced 5%.<sup class="fnref" id="fnref-2-2" data-fn="2" data-archetype="logic"><a href="#fn-2" aria-label="Read logic note 2"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+
+                    <p>That does not prove AI extinction risk is imaginary. Different randomized groups answered the questions, and there are straightforward statistical reasons the medians need not line up neatly.</p>
+
+                    <p>But the people conducting these surveys themselves acknowledge questions about framing, expert forecasting, response bias, and what exactly these elicited probabilities represent.<sup class="fnref" id="fnref-12" data-fn="12" data-archetype="logic"><a href="#fn-12" aria-label="Read logic note 12"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+
+                    <p>The instrument changes the reading.</p>
+
+                    <p>Anyone who has designed a survey, conducted an interview, or handed someone an ambiguous image should recognize the problem. Ask <em>What animal do you see?</em> and you have already constrained the space of possible interpretations. Ask <em>What frightens you about this image?</em> and you changed it again.</p>
+
+                    <p>Ask <em>What probability do you assign to human extinction from AI?</em> and the percentage that comes back is not meaningless.</p>
+
+                    <p>It just has fingerprints on it.</p>
+
+                    <h2 class="essay-part" id="essay-part-8"><span class="essay-part-num">VIII</span><span class="essay-part-title">I Tested the Vibe</span></h2>
+
+                    <p>I know something about fingerprints.</p>
+
+                    <p>One of the facts that disrupted my religious certainty was almost embarrassingly small: Joseph Smith had a gun at Carthage Jail.</p>
+
+                    <p>That fact does not disprove Mormonism. A man attempting to defend himself while an armed mob storms the room is neither surprising nor particularly incriminating. Historical accounts collected by the Joseph Smith Papers describe Cyrus Wheelock bringing firearms into the jail and Joseph Smith firing a pepperbox revolver as attackers entered.<sup class="fnref" id="fnref-13" data-fn="13" data-archetype="logic"><a href="#fn-13" aria-label="Read logic note 13"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+
+                    <p>What mattered was not the gun.</p>
+
+                    <p>What mattered was that the event and the story I had inherited were not the same thing.</p>
+
+                    <p>I had been given martyrdom polished smooth enough to build a life upon. Then I found fingerprints.</p>
+
+                    <p>The gun did not answer the theological question. It excavated assumptions I had not realized I was carrying into it.</p>
+
+                    <p>That happened again and again until I was left with an awful possibility: perhaps my experiences had been real and my explanations for them had been wrong.</p>
+
+                    <p>So I stopped believing.</p>
+
+                    <p>Then God kept talking.</p>
+
+                    <p>After our first child was born, something told me to check my wife's blood pressure.</p>
+
+                    <p>I need to be precise about <em>told</em>. I did not hear a voice. There was no angel standing beside the bed and no glowing text in the air. I simply knew, with the old familiar insistence, that I should check it.</p>
+
+                    <p>Now.</p>
+
+                    <p>So I did.</p>
+
+                    <p>Her systolic pressure was over 190. A systolic pressure of 160 is already considered severe in pregnancy-related hypertensive disorders, and postpartum preeclampsia can lead to seizures, stroke, and other serious complications.<sup class="fnref" id="fnref-14" data-fn="14" data-archetype="logic"><a href="#fn-14" aria-label="Read logic note 14"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+
+                    <p>We went to the hospital.</p>
+
+                    <p>I still do not know what happened.</p>
+
+                    <p>Maybe I noticed something subconsciously. Maybe she looked slightly wrong. Maybe some forgotten piece of information surfaced at exactly the right moment. Maybe intuitions happen constantly and we remember the miraculous hits while throwing away ten thousand misses.</p>
+
+                    <p>Maybe God told me.</p>
+
+                    <p>I genuinely do not know.</p>
+
+                    <p>But I know what I did next.</p>
+
+                    <p><strong>I tested the vibe.</strong></p>
+
+                    <p>I did not pray harder. I did not need to establish the existence of God. I did not calculate a 37% probability of postpartum preeclampsia.</p>
+
+                    <p>I needed a blood-pressure cuff.</p>
+
+                    <p>The feeling told me where to look. The cuff told me what was there.</p>
+
+                    <p>That distinction may have saved my wife's life.</p>
+
+                    <p>It also gave me a much better epistemology:</p>
+
+                    <p><strong>Vibes are sensors, not scales.</strong></p>
+
+                    <h2 class="essay-part" id="essay-part-9"><span class="essay-part-num">IX</span><span class="essay-part-title">Precaution Without Prophecy</span></h2>
+
+                    <p>That is roughly where I land on AI risk.</p>
+
+                    <p>If hundreds of people who understand these systems better than I do independently report that something about increasingly capable AI systems scares the shit out of them, I want to hear the warning.</p>
+
+                    <p>I want to know why.</p>
+
+                    <p>I want them funded to investigate it. I want people trying to break these systems before we put them into consequential places. I want adversarial testing, interpretability work, security research, psychology, psychometrics, social science, and probably several disciplines nobody in Silicon Valley currently invites to the right dinner parties.</p>
+
+                    <p>The Center for AI Safety's famous 2023 statement is actually much easier for me to endorse than a p(doom). It argues that mitigating extinction risk from AI should be treated as a global priority alongside risks such as pandemics and nuclear war. It does not tell me extinction has a 10% probability.<sup class="fnref" id="fnref-15" data-fn="15" data-archetype="logic"><a href="#fn-15" aria-label="Read logic note 15"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p>
+
+                    <p>That distinction matters.</p>
+
+                    <p><strong>Precaution does not require prophecy.</strong></p>
+
+                    <p>You can inspect the bridge because an engineer heard a crack without pretending she already knows its exact probability of collapse. You can investigate suspicious network traffic without calculating the precise chance that someone is inside the system. You can check your wife's blood pressure because something feels wrong.</p>
+
+                    <p>The magnitude of the possible harm matters. The cost of checking matters. The reversibility of the action matters.</p>
+
+                    <p>None of those require us to pretend uncertainty has disappeared.</p>
+
+                    <p>So ask researchers for their p(doom). I mean that.</p>
+
+                    <p>Keep asking.</p>
+
+                    <p>I just would not stop at the number.</p>
+
+                    <p>Ask what they pictured when they chose it. Ask which observations are doing the most work. Ask what would change their mind. Ask where the model ends and intuition begins. Ask whether the percentage is a forecast, a warning, a compressed causal theory, a political signal, or simply the numerical shape of <em>I have stared at this thing for years and something about it feels deeply wrong.</em></p>
+
+                    <p>That final answer would not embarrass me.</p>
+
+                    <p>I might trust it more.</p>
+
+                    <p>Because there is and is not a place for vibes.</p>
+
+                    <p>The Rorschach was built around a deceptively simple proposition: give the mind incomplete symbols and watch what it builds between them.</p>
+
+                    <p>Artificial intelligence is, in a profoundly different technical form, spectacularly good at building between symbols too. It reconstructs likely meaning from traces, relationships, and context.</p>
+
+                    <p>Then we look at <em>its</em> symbols and do the same thing back.</p>
+
+                    <p>Maybe that recursive act of interpretation is not a bug in how we understand intelligence. Maybe it is much of what intelligence has always been.</p>
+
+                    <p>But interpretation and reality remain different things.</p>
+
+                    <p>At fourteen, I felt God and called the feeling proof.</p>
+
+                    <p>Years later, I felt God again and checked my wife's blood pressure.</p>
+
+                    <p>I trust the second experience more, not because I finally learned to ignore the feeling, but because I finally learned what to do with it.</p>
+
+                    <p>Listen to the intuition. Ask what it is excavating. Follow it far enough to find something you can actually test.</p>
+
+                    <p>And when someone tells me there is a 10% chance the world ends, I do not want them to stop talking.</p>
+
+                    <p>I want them to keep going.</p>
+
+                    <p>Show me the blot. Tell me what you see.</p>
+
+                    <p>Then tell me, <strong>by what light?</strong></p>
                 </div>
 
                                 <div class="essay-notes" aria-label="Footnotes">
-                    <aside id="fn-1" class="footnote" data-fn="1" data-archetype="psyche" tabindex="-1"><a class="fn-marker" href="#fnref-1" aria-label="Return to passage for psyche note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a><div class="fn-content"><p>The debrief phrases here illustrate a pattern; they are not quotations from a particular interview or colleagues. I work on the commercial side of AI and participate in hiring. That experience gives me a vantage point, not a representative sample. The research below lets the reader test the argument beyond my account of it.</p><a class="fn-back" href="#fnref-1" aria-label="Back to text">↩</a></div></aside>
+                    <aside id="fn-1" class="footnote" data-fn="1" data-archetype="psyche" tabindex="-1">
+<a class="fn-marker" href="#fnref-1" aria-label="Return to passage for psyche note 1"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a>
+<div class="fn-content">There is a neighboring essay here about the morality of building something while simultaneously worrying about what it may become. I am deliberately leaving it neighboring. One of my recurring bad habits as a writer is discovering three essays while writing one and then insisting that all three deserve to live in the same house.<a class="fn-back" href="#fnref-1" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-stages" class="footnote" data-fn="stages" data-archetype="psyche" tabindex="-1"><a class="fn-marker" href="#fnref-stages" aria-label="Return to passage for psyche note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a><div class="fn-content"><p>This map is an interpretation of the professional hiring processes I am describing, not a validated model of all recruiting. The stages overlap, their order varies, and a recruiter can assess capability as well as interest. A case can reveal important skill. My claim is that candidates also have to understand what an evaluator needs to feel confident proceeding. Being able to create that confidence and being able to do the job overlap. They are not interchangeable.</p><a class="fn-back" href="#fnref-stages" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-2" class="footnote" data-fn="2" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-2" aria-label="Return to passage for logic note 2"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">AI Impacts' <strong>2023 Expert Survey on Progress in AI</strong> received 2,778 responses from researchers who had published at six major AI venues. Different randomized groups received three related questions about extinction or similarly permanent severe disempowerment. The medians were <strong>5%</strong>, <strong>10%</strong>, and <strong>5%</strong>; the means were <strong>16.2%</strong>, <strong>19.4%</strong>, and <strong>14.4%</strong>. This is exactly the kind of detail that gets flattened when someone writes “AI researchers think there is a 10% chance of extinction.” That sentence is not fabricated, exactly. It is merely carrying several unstated decisions about which question, which statistic, and which definition of catastrophe deserve to stand in for the whole thing. See <a href="https://wiki.aiimpacts.org/ai_timelines/predictions_of_human-level_ai_timelines/ai_timeline_surveys/2023_expert_survey_on_progress_in_ai" target="_blank" rel="noopener noreferrer">AI Impacts, 2023 Expert Survey on Progress in AI</a>.<a class="fn-back" href="#fnref-2" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-2" class="footnote" data-fn="2" data-archetype="logic" tabindex="-1"><a class="fn-marker" href="#fnref-2" aria-label="Return to passage for logic note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a><div class="fn-content"><p>Lauren A. Rivera, <a href="https://ideas.wharton.upenn.edu/wp-content/uploads/2018/07/Rivera-2012.pdf" target="_blank" rel="noopener noreferrer">“Hiring as Cultural Matching: The Case of Elite Professional Service Firms”</a>, <em>American Sociological Review</em> 77, no. 6 (2012): 999–1022; and <a href="https://doi.org/10.1086/681214" target="_blank" rel="noopener noreferrer">“Go with Your Gut: Emotion and Evaluation in Job Interviews”</a>, <em>American Journal of Sociology</em> 120, no. 5 (2015): 1339–1389. The 2012 study used 120 research interviews with hiring professionals and observation of recruiting activity, including debriefs and hiring deliberations, at one firm. Rivera did not observe job interviews directly. The banker's quotation is on p. 1015. The <a href="https://www.hbs.edu/faculty/Shared%2520Documents/events/512/LRivera%2520Emotion%252010-11-13%2520Draft.pdf" target="_blank" rel="noopener noreferrer">public draft of the later article</a> describes overlapping fieldwork; I treat the papers as related analyses, not independent replications. Its <a href="https://www.kellogg.northwestern.edu/academics-research/research/detail/2015/go-with-your-gut-emotion-and-evaluation-in-job/" target="_blank" rel="noopener noreferrer">published abstract</a> states the excitement finding directly. These studies do not establish how common the mechanism is across all hiring or whether it predicts worse job performance.</p><a class="fn-back" href="#fnref-2" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-3" class="footnote" data-fn="3" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-3" aria-label="Return to passage for logic note 3"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">The <strong>2024 Expert Survey on Progress in AI</strong> was administered in December 2024 and published in September 2026. It received 1,580 valid responses from researchers publishing at six top AI venues, at roughly a 10% response rate. The reported <em>average</em> probability assigned to future AI advances causing “human extinction or similarly permanent and severe disempowerment of the human species” was <strong>18%</strong>; more than half of respondents gave at least 10%, and roughly a third gave at least 20%. Two caveats are doing real work here: <em>average</em> is not <em>median</em>, and “extinction or similarly permanent severe disempowerment” is not synonymous with literal extinction. The authors also acknowledge likely non-response bias. See <a href="https://blog.aiimpacts.org/p/what-did-ai-researchers-think-at" target="_blank" rel="noopener noreferrer">AI Impacts, “What did AI researchers think at the end of 2024?”</a>.<a class="fn-back" href="#fnref-3" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-3" class="footnote" data-fn="3" data-archetype="psyche" tabindex="-1"><a class="fn-marker" href="#fnref-3" aria-label="Return to passage for psyche note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a><div class="fn-content"><p>This is not a claim that wealth purchases a single personality, or that every familiar candidate is affluent. Different workplaces recognize different signals, and class interacts with other features of how a person is perceived. My argument concerns what happens when one group's habits can function as an unspoken standard. Recognizing a class pattern does not license me to infer an individual applicant's childhood from their manner.<sup class="fnref" id="fnref-3a" data-fn="3a" data-archetype="psyche"><a href="#fn-3a" aria-label="Read psyche note: That would reproduce the mistake in the opposite direction. Awkwardness is not proof of depth. Polish is not proof of privilege. T…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a></sup></p><a class="fn-back" href="#fnref-3" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-4" class="footnote" data-fn="4" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-4" aria-label="Return to passage for logic note 4"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">This is the point where a statistician is permitted to become annoyed with me. “Probability” has several formal interpretations, and subjective Bayesian probability is not some embarrassing fake cousin of the real thing; assigning coherent degrees of belief is a legitimate mathematical framework. My objection is rhetorical rather than mathematical. A subjective probability can be internally rigorous while still being poorly calibrated to an unprecedented external event. The percent sign does not tell a reader which problem has been solved.<a class="fn-back" href="#fnref-4" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-3a" class="footnote" data-fn="3a" data-archetype="psyche" tabindex="-1"><a class="fn-marker" href="#fnref-3a" aria-label="Return to passage for psyche note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a><div class="fn-content"><p>That would reproduce the mistake in the opposite direction. Awkwardness is not proof of depth. Polish is not proof of privilege. The relevant question remains what the candidate can do, what the evidence leaves uncertain, and why the evaluator interprets that uncertainty as they do.</p><a class="fn-back" href="#fnref-3a" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-5" class="footnote" data-fn="5" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-5" aria-label="Return to passage for logic note 5"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">The American Psychological Association defines a <strong>projective technique</strong> as an assessment procedure using relatively ambiguous stimuli to elicit idiosyncratic responses thought to reflect aspects of personality, cognitive style, or other characteristics of the respondent. It names the Rorschach as a canonical example and, helpfully for this essay, notes that researchers have disagreed substantially about the reliability and validity of such techniques. See the <a href="https://dictionary.apa.org/projective-technique" target="_blank" rel="noopener noreferrer">APA Dictionary of Psychology</a>.<a class="fn-back" href="#fnref-5" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-4" class="footnote" data-fn="4" data-archetype="logic" tabindex="-1"><a class="fn-marker" href="#fnref-4" aria-label="Return to passage for logic note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a><div class="fn-content"><p>This is a hypothetical comparison, not a reported experiment showing that identical candidates received different judgments. It identifies a question a panel can ask of its own reasoning. There can be sound evidence of learning capacity: improvement after feedback, for example. The argument requires us to distinguish that evidence from our willingness to imagine it.</p><a class="fn-back" href="#fnref-4" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-6" class="footnote" data-fn="6" data-archetype="psyche" tabindex="-1">
+<a class="fn-marker" href="#fnref-6" aria-label="Return to passage for psyche note 6"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a>
+<div class="fn-content">This is admittedly doing violence to the Rorschach, which has suffered enough violence at the hands of pop psychology. I am stealing the <em>shape</em> of the instrument, not endorsing every diagnostic claim made on its behalf: present something underdetermined, observe the structure supplied by the interpreter, then become interested in the interpreter. The blot is useful to me as a metaphor precisely because the controversy around it forces the same question as the essay: <em>what, exactly, are we justified in concluding from the interpretation?</em><a class="fn-back" href="#fnref-6" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-5" class="footnote" data-fn="5" data-archetype="instinct" tabindex="-1"><a class="fn-marker" href="#fnref-5" aria-label="Return to passage for instinct note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.8 14 13H2Z"></path></svg></a><div class="fn-content"><p>Concern for rejected applicants does not require a company to hire everyone, or turn hiring into an attempt to rank suffering. The obligation is to justify the criteria through which a scarce opportunity is allocated and to recognize that an applicant's alternatives affect the cost of exclusion. A decision can be necessary without acquiring the authority to explain everything that follows it.</p><a class="fn-back" href="#fnref-5" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-7" class="footnote" data-fn="7" data-archetype="psyche" tabindex="-1">
+<a class="fn-marker" href="#fnref-7" aria-label="Return to passage for psyche note 7"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a>
+<div class="fn-content">“Intent” is doing several jobs in this essay. Humans use it to mean private purpose, conscious desire, communicative goal, or simply the action implied by a sentence. Machine-learning systems can infer the latter kinds of intent without there being any reason to imagine a little observer inside the network reading our minds. That distinction is important and also routinely destroyed in ordinary conversation because “the model understood what I wanted” is much easier to say than “the model produced behavior consistent with a high-quality latent representation of the task implied by my symbolic input.”<a class="fn-back" href="#fnref-7" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-7" class="footnote" data-fn="7" data-archetype="psyche" tabindex="-1"><a class="fn-marker" href="#fnref-7" aria-label="Return to passage for psyche note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.3"></circle></svg></a><div class="fn-content"><p>This essay is also asking to be selected: for attention, for credibility, perhaps for the reader's recognition of the author as someone worth listening to. Its polish is part of that request. Even admitting that I am lucky can become another reason to admire me. The useful consequence of admitting this is a standard the reader can apply: liking the way I make an argument does not establish that it is true. Disliking the way someone else makes one does not establish that it is false. My admission should not earn an exemption from either test.</p><a class="fn-back" href="#fnref-7" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-8" class="footnote" data-fn="8" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-8" aria-label="Return to passage for logic note 8"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">The original Transformer architecture represents a sequence numerically and uses <strong>attention</strong> to let representations at one position draw information from other positions in the sequence. Modern language models have changed enormously since 2017, but this contextual relationship between symbols remains foundational. None of this means attention weights are a transparent transcript of “what the model is thinking”; that would be the exact category error this essay is warning against, only committed with prettier matrices. See Vaswani et al., <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer">“Attention Is All You Need”</a>.<a class="fn-back" href="#fnref-8" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-8" class="footnote" data-fn="8" data-archetype="logic" tabindex="-1"><a class="fn-marker" href="#fnref-8" aria-label="Return to passage for logic note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a><div class="fn-content"><p>Erik Brynjolfsson, Danielle Li, and Lindsey Raymond, <a href="https://academic.oup.com/qje/article/140/2/889/7990658" target="_blank" rel="noopener noreferrer">“Generative AI at Work”</a>, <em>The Quarterly Journal of Economics</em> 140, no. 2 (2025): 889–942. The published study covers 5,172 customer-support agents and reports a 15 percent average gain in issues resolved per hour, with a 30 percent gain among less skilled and less experienced workers. These are the published figures, which differ from the earlier working paper. The study concerns a particular deployment and measures productivity and related worker outcomes; it does not establish the effect of AI on the total number of entry-level jobs.</p><a class="fn-back" href="#fnref-8" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-9" class="footnote" data-fn="9" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-9" aria-label="Return to passage for logic note 9"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">“Intent detection” is not merely my anthropomorphic description. It is a standard natural-language-processing task: infer a latent user goal from an utterance. Transformer-based systems have been explicitly trained and evaluated on benchmarks such as SNIPS and ATIS for intent detection and related slot-filling tasks. See Wang et al., <a href="https://arxiv.org/abs/2012.11689" target="_blank" rel="noopener noreferrer">“Encoding Syntactic Knowledge in Transformer Encoder for Intent Detection and Slot Filling”</a>. The philosophical leap is mine: I am interested in the family resemblance between inferring latent intent from symbolic traces and asking a human mind to reveal latent structure through its interpretation of ambiguous symbols.<a class="fn-back" href="#fnref-9" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-9" class="footnote" data-fn="9" data-archetype="logic" tabindex="-1"><a class="fn-marker" href="#fnref-9" aria-label="Return to passage for logic note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a><div class="fn-content"><p>Erik Brynjolfsson, Bharat Chandar, and Ruyu Chen, <a href="https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/" target="_blank" rel="noopener noreferrer">“Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence”</a>, working paper revised August 12, 2026, using payroll data through June 2026. Employment among 22–25-year-olds in AI-exposed occupations was 19 percent below the level implied by keeping pace with less-exposed peers. This is a relative gap, not a finding that AI eliminated 19 percent of all young people's jobs. Education controls attenuate the pattern, some divergence predates generative AI, and the divergence is more pronounced in the ADP sample than in national survey benchmarks. Those limitations govern the argument in the body.<sup class="fnref" id="fnref-9a" data-fn="9a" data-archetype="logic"><a href="#fn-9a" aria-label="Read logic note: The question mark matters. It would be convenient to make this paper settle the essay&#x27;s concern about apprenticeship. It does not.…"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a></sup></p><a class="fn-back" href="#fnref-9" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-10" class="footnote" data-fn="10" data-archetype="psyche" tabindex="-1">
+<a class="fn-marker" href="#fnref-10" aria-label="Return to passage for psyche note 10"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5.2"></circle></svg></a>
+<div class="fn-content">This is the part of the analogy I trust most and least. AI is not <em>literally</em> a Rorschach subject when it interprets us, and its outputs are not random inkblots when we interpret it. They are generated by a trained system with causal structure. But the symmetry is still useful: neither side can directly inspect the private state it cares about on the other side. We infer from traces. The model infers a likely user goal from language. The user infers understanding, deception, humor, agency, or consciousness from generated language. Then both sides keep talking as though the inferred object had been lying naked on the page all along.<a class="fn-back" href="#fnref-10" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-9a" class="footnote" data-fn="9a" data-archetype="logic" tabindex="-1"><a class="fn-marker" href="#fnref-9a" aria-label="Return to passage for logic note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a><div class="fn-content"><p>The question mark matters. It would be convenient to make this paper settle the essay's concern about apprenticeship. It does not. The concern also describes a decision employers can make: whether to use greater productivity to train more people, employ fewer, or reorganize learning altogether. The future consequences remain open to evidence and to those decisions.</p><a class="fn-back" href="#fnref-9a" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-11" class="footnote" data-fn="11" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-11" aria-label="Return to passage for logic note 11"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">Kahneman and Gary Klein—coming from traditions that often disagreed about expert intuition—eventually converged on a useful constraint: intuition becomes trustworthy when the environment contains sufficiently valid cues and the person has enough opportunity for repeated learning and feedback. Expertise can genuinely become compressed recognition. It can also become confidence without calibration when feedback is sparse or the environment is irregular. Human extinction from superintelligence is, inconveniently, a domain in which nobody has received corrective feedback even once. See Kahneman &amp; Klein, <strong>“Conditions for Intuitive Expertise: A Failure to Disagree,”</strong> <em>American Psychologist</em> 64(6), 515–526 (2009).<a class="fn-back" href="#fnref-11" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-10" class="footnote" data-fn="10" data-archetype="logic" tabindex="-1"><a class="fn-marker" href="#fnref-10" aria-label="Return to passage for logic note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a><div class="fn-content"><p>This extension to AI hiring is my hypothesis. Rivera's research does not establish that AI will make selection more dependent on cultural familiarity. More specific work samples, better tools for beginners, and new training arrangements could move the process in another direction. The mechanism I am warning about requires choices by employers; it is not a property of the technology that makes those choices inevitable.</p><a class="fn-back" href="#fnref-10" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-12" class="footnote" data-fn="12" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-12" aria-label="Return to passage for logic note 12"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">AI Impacts is more cautious about its own numbers than many people who cite them. Its methodology discussions note that AI researchers are not necessarily expert forecasters, that individual respondents disagree enormously, that framing matters, and that response bias is possible. At the same time, the organization argues—reasonably—that repeated nontrivial risk estimates across survey versions are evidence that the concern itself is genuine and widespread. Both things can be true. That is almost the entire thesis of this essay. See <a href="https://blog.aiimpacts.org/p/faq-expert-survey-on-progress-in" target="_blank" rel="noopener noreferrer">AI Impacts' survey methodology FAQ</a>.<a class="fn-back" href="#fnref-12" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-structure" class="footnote" data-fn="structure" data-archetype="logic" tabindex="-1"><a class="fn-marker" href="#fnref-structure" aria-label="Return to passage for logic note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a><div class="fn-content"><p>Julia Levashina, Christopher J. Hartwell, Frederick P. Morgeson, and Michael A. Campion, <a href="https://www.morgeson.com/downloads/levashina_hartwell_morgeson_campion_2014.pdf" target="_blank" rel="noopener noreferrer">“The Structured Employment Interview: Narrative and Quantitative Review of the Research Literature”</a>, <em>Personnel Psychology</em> 67 (2014): 241–293. Their review supports greater reliability and validity for structured interviews. That is a reason to constrain how impressions become decisions. It does not make any particular rubric fair by definition, and predictive accuracy is not identical to fairness.</p><a class="fn-back" href="#fnref-structure" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-13" class="footnote" data-fn="13" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-13" aria-label="Return to passage for logic note 13"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">Contemporary and later accounts assembled by the <strong>Joseph Smith Papers</strong> describe Cyrus Wheelock bringing two guns into Carthage Jail, including a six-shot pepperbox revolver, and Joseph Smith firing the revolver as the mob entered. Some chambers misfired. The site's own historians explicitly frame the act as self-defense and do not treat it as diminishing the fact that Smith and Hyrum were killed by a mob. Neither do I. My point is autobiographical: the historical event had texture that the martyrdom image in my head did not. See <a href="https://www.josephsmithpapers.org/articles/road-to-carthage-podcast-episode-4-transcript" target="_blank" rel="noopener noreferrer">The Joseph Smith Papers, “Road to Carthage,” Episode 4 transcript</a>.<a class="fn-back" href="#fnref-13" aria-label="Back to text">↩</a></div>
+</aside>
 
-                    <aside id="fn-11" class="footnote" data-fn="11" data-archetype="instinct" tabindex="-1"><a class="fn-marker" href="#fnref-11" aria-label="Return to passage for instinct note"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 1.8 14 13H2Z"></path></svg></a><div class="fn-content"><p>A work sample also selects what to count and can reward prior access to the tools being tested. A structured rubric can formalize a bad criterion. These proposals make the basis of a decision easier to examine; their fairness depends on their content, implementation, and consequences. I would want an organization to look at who advances, what support people receive, and whether the qualities it rewarded actually matter in the work. Being able to explain a process is the beginning of accountability, not evidence that accountability has been achieved.</p><a class="fn-back" href="#fnref-11" aria-label="Back to text">↩</a></div></aside>
+<aside id="fn-14" class="footnote" data-fn="14" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-14" aria-label="Return to passage for logic note 14"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">The American College of Obstetricians and Gynecologists defines severe hypertension in pregnancy-related hypertensive disease as systolic pressure of <strong>160 mm Hg or higher</strong> or diastolic pressure of <strong>110 mm Hg or higher</strong>. ACOG also notes that postpartum preeclampsia can develop after delivery even when blood pressure had been normal during pregnancy, and that untreated disease can cause seizures, stroke, and other serious complications. See <a href="https://www.acog.org/womens-health/faqs/preeclampsia-and-high-blood-pressure-during-pregnancy" target="_blank" rel="noopener noreferrer">ACOG, “Preeclampsia and High Blood Pressure During Pregnancy”</a> and <a href="https://www.acog.org/womens-health/experts-and-stories/the-latest/3-conditions-to-watch-for-after-childbirth" target="_blank" rel="noopener noreferrer">“3 Conditions to Watch for After Childbirth”</a>.<a class="fn-back" href="#fnref-14" aria-label="Back to text">↩</a></div>
+</aside>
+
+<aside id="fn-15" class="footnote" data-fn="15" data-archetype="logic" tabindex="-1">
+<a class="fn-marker" href="#fnref-15" aria-label="Return to passage for logic note 15"><svg class="note-symbol" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3.3" y="3.3" width="9.4" height="9.4" rx=".3"></rect></svg></a>
+<div class="fn-content">The Center for AI Safety's 2023 statement is exactly one sentence: <strong>“Mitigating the risk of extinction from AI should be a global priority alongside other societal-scale risks such as pandemics and nuclear war.”</strong> The important thing for my argument is what the statement does <em>not</em> contain: a probability. It says the possibility and magnitude warrant priority. Geoffrey Hinton, Yoshua Bengio, Demis Hassabis, Sam Altman, Dario Amodei, Ilya Sutskever, and many others signed it. See <a href="https://safe.ai/work/statement-on-ai-extinction-risk" target="_blank" rel="noopener noreferrer">CAIS, “Statement on AI Extinction Risk”</a>.<a class="fn-back" href="#fnref-15" aria-label="Back to text">↩</a></div>
+</aside>
                 </div>
             </div>
-
-            <aside class="selection-revision-note essay-revision-note" id="revision-note" data-revision-note aria-labelledby="selection-revision-heading"><h2 id="selection-revision-heading">Revision note</h2><p>This version removes the earlier inference from declining absolute income mobility to increasingly permanent economic assignment through hiring. It also corrects the earlier description of Chetty and colleagues' growth counterfactual.</p><p>Raj Chetty and coauthors, <a href="https://opportunityinsights.org/paper/the-fading-american-dream/" target="_blank" rel="noopener noreferrer">“The Fading American Dream: Trends in Absolute Income Mobility Since 1940”</a>, <em>Science</em> 356 (2017): 398–406. Absolute mobility here means having a higher inflation-adjusted household income than one's parents at a comparable age. In the paper's counterfactuals, restoring historical growth while retaining the later distribution raised absolute mobility from about 50 to 62 percent; restoring the earlier distribution raised it to about 80 percent. Twelve percentage points is substantial. Distribution explains more in this analysis, but growth is not irrelevant. Neither counterfactual measures whether a hiring rejection fixes someone's lifetime position in the income distribution.</p></aside>
 
             <nav class="essay-nav" aria-label="Other essays" id="essay-nav">
                 <span class="essay-nav-empty essay-nav-prev"><span class="essay-nav-label"><span class="arr" aria-hidden="true">&larr;</span> older</span><span class="essay-nav-title">&mdash;</span></span>
