@@ -14,9 +14,9 @@
 //                  'patch-N'     — incremental revision N (shown as vN · revision)
 //                  'final-vN'    — locked at revision N (shown as vN · final)
 //                  'finalized'   — locked, no version number (shown as final · locked)
-//   playlist — optional Spotify playlist while reading:
+//   playlist — optional soundtrack playlist while reading:
 //                  archetype — 'logic' | 'psyche' | 'instinct' (picks the blob)
-//                  url       — Spotify playlist link
+//                  url       — playlist link
 //   audio    — optional root-relative path to the essay audio version
 //                  (e.g. '/audio/the-students-are-right.mp3')
 //   excerpt  — one-line standfirst for index + homepage featured card
@@ -59,7 +59,7 @@ window.DISPATCHES = [
         status: 'final-v3',
         playlist: {
             archetype: 'logic',
-            url: 'https://open.spotify.com/playlist/3duYMOE5MlilW3590dBPXw?si=94176ed853a64e30'
+            url: 'https://music.apple.com/us/playlist/thread/pl.u-06oxNK6IXMk6Zd'
         },
         excerpt: 'What if AI never develops a will of its own—and only inherits, infers, and extrapolates ours?'
     },
@@ -77,7 +77,7 @@ window.DISPATCHES = [
         status: 'final-v1',
         playlist: {
             archetype: 'psyche',
-            url: 'https://open.spotify.com/playlist/3GaaEib2F7gZM9QixCJs8j?si=ca74b8c19fd247ab'
+            url: 'https://music.apple.com/us/playlist/labyrinth/pl.u-EdAVY4WuXgko6b'
         },
         excerpt: "A feeling produced between two people can become a verdict about one of them. Hiring gives that verdict consequences."
     },
@@ -96,7 +96,7 @@ window.DISPATCHES = [
         status: 'final-v2',
         playlist: {
             archetype: 'instinct',
-            url: 'https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec'
+            url: 'https://music.apple.com/us/playlist/hearth/pl.u-MDAWqJ9I4z17ky'
         },
         excerpt: "The anger deserves an answer. Blanket rejection of AI is the wrong one."
     },
@@ -114,7 +114,7 @@ window.DISPATCHES = [
         status: 'final-v3',
         playlist: {
             archetype: 'instinct',
-            url: 'https://open.spotify.com/playlist/1qwoBlF1bzMnW8A4XTrdS7?si=5c8afa7e14d246ec'
+            url: 'https://music.apple.com/us/playlist/hearth/pl.u-MDAWqJ9I4z17ky'
         },
         excerpt: 'A colleague flagged my writing as AI-generated. It wasn\u2019t \u2014 I\u2019m autistic, and my directness happens to match how much of the world already talks. A case for clarity as kindness.'
     }
