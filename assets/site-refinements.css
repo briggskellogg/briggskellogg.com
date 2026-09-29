@@ -2132,16 +2132,6 @@ body[data-essay-id] .essay-figure figcaption a:visited {
  text-decoration-thickness:1px;
 }
 
-/* Let the avatar fill more of the dock without shifting its social orbit. */
-.home .social-toggle { position:relative; }
-.home .social-toggle img {
- position:absolute;
- inset:-4px;
- width:72px;
- height:72px;
- max-width:none;
-}
-
 /* An authored correction, retaining the crossed-out thought in the title. */
 .title-retracted {
  position:relative;
