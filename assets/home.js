@@ -240,8 +240,8 @@
                 route = 'M '+x1+' '+y1+' L '+(x2 - dx * radius)+' '+y1+
                     ' Q '+x2+' '+y1+' '+x2+' '+(y1 + dy * radius)+
                     ' L '+x2+' '+y2;
-                label.style.left = ((x1 + x2) / 2 - label.offsetWidth / 2) + 'px';
-                label.style.top = (y1 - label.offsetHeight / 2) + 'px';
+                label.style.left = (x2 - label.offsetWidth / 2) + 'px';
+                label.style.top = ((y1 + dy * radius + y2) / 2 - label.offsetHeight / 2) + 'px';
             }
             svg.setAttribute('viewBox','0 0 '+pr.width+' '+pr.height);
             line.setAttribute('d', route);

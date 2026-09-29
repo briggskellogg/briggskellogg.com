@@ -1270,8 +1270,8 @@ body[data-essay-id] .essay-soundtrack { transform:translateY(-6px); }
  background-size:20px 20px;
  background-position:0 0;
  background-attachment:fixed;
- -webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);
- mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);
+ -webkit-mask-image:linear-gradient(180deg,transparent,#000 13%,#000 87%,transparent);
+ mask-image:linear-gradient(180deg,transparent,#000 13%,#000 87%,transparent);
 }
 .home .home-link-line {
  stroke:color-mix(in srgb,var(--ink) 31%,transparent);
@@ -2287,3 +2287,8 @@ body[data-essay-id] .essay-revision-note .revision-note-return:focus-visible { c
 :root[data-reading-theme="dark"] { --note-logic:var(--logic-gold); }
 .fnref[data-archetype="logic"],
 .footnote[data-archetype="logic"] { --logic:var(--note-logic); }
+
+/* Give the contact note room within the vertical connector. */
+@media(min-width:1010px) {
+ .home .featured { margin-top:calc(clamp(200px,24vh,250px) + 48px); }
+}
