@@ -61,7 +61,7 @@ window.DISPATCHES = [
             archetype: 'psyche',
             url: 'https://music.apple.com/us/playlist/labyrinth/pl.u-EdAVY4WuXgko6b'
         },
-        excerpt: 'Vibes are sensors, not scales.'
+        excerpt: 'Mormonism, inkblots, and what vibes are good for.'
     },
     {
         id: 'primal-intelligence',
