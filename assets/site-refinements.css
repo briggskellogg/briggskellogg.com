@@ -603,9 +603,9 @@ body[data-essay-id] .essay-title-row { padding-top:34px; }
 body.home { --panel-edge:clamp(24px,4vh,56px); padding-top:var(--panel-edge); }
 .home .site-footer { flex:none; margin:0 auto; padding-top:var(--panel-edge); }
 @media(min-width:1010px) {
- .home .page { flex:1 0 auto; display:flex; flex-direction:column; }
- .home .home-panels { flex:1; }
- .home .featured { align-self:end; }
+ .home .page { flex:1 0 auto; display:flex; flex-direction:column; justify-content:center; }
+ .home .home-panels { flex:none; }
+ .home .featured { align-self:start; }
 }
 .social-toggle, .social-toggle img { width:64px; height:64px; }
 .social-links { bottom:80px; }
@@ -2288,9 +2288,10 @@ body[data-essay-id] .essay-revision-note .revision-note-return:focus-visible { c
 .fnref[data-archetype="logic"],
 .footnote[data-archetype="logic"] { --logic:var(--note-logic); }
 
-/* Give the contact note room within the vertical connector. */
+/* Center the staggered pair as one composition. A bounded offset keeps the
+   cards overlapping vertically on tall displays, with room for the note. */
 @media(min-width:1010px) {
- .home .featured { margin-top:calc(clamp(200px,24vh,250px) + 48px); }
+ .home .featured { margin-top:clamp(288px,28vh,320px); }
 }
 
 /* Short quotations sit as a centered thought beneath the mark. */
